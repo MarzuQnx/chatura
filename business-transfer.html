@@ -30,8 +30,8 @@
     <header id="navbar-sticky" class="sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <div class="font-bold text-2xl tracking-wider brand-green flex items-center gap-2">
-                    <img src="assets/chatura.webp" alt="Chatura Indonesia" width="96" height="96" class="h-24 w-auto">
+                <div class="font-bold text-2xl tracking-wider text-[#004D34] flex items-center gap-2">
+                    <img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto">
                 </div>
             </div>
 
@@ -40,7 +40,7 @@
                 <i data-lucide="menu" class="text-xl"></i>
             </button>
 
-                        <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+                        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
                 <a href="index.html" class="hover:text-emerald-800 transition" data-i18n="nav.about_us">About Us</a>
                 <div class="nav-dropdown">
                     <a href="services.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.services">Services</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
@@ -57,11 +57,11 @@
             </nav>
 
             <div class="hidden md:flex items-center space-x-6 text-sm">
-                <div id="lang-selector" class="flex items-center space-x-1 rounded-full bg-white px-3 py-1 shadow-xs transition-all duration-300">
-                    <a href="#" class="lang-active font-bold text-xs bg-brand-green text-white px-2.5 py-0.5 rounded-full transition-all duration-300">EN</a>
-                    <a href="#" class="lang-inactive font-medium text-xs text-gray-400 hover:text-gray-600 px-1 transition-all duration-300">ID</a>
+                <div id="lang-selector">
+                    <a href="#" data-lang="en" class="lang-active">EN</a>
+                    <a href="#" data-lang="id" class="lang-inactive">ID</a>
                 </div>
-                <a href="access-portal.html" class="inline-flex items-center gap-1 bg-brand-green text-white px-5 py-2 rounded font-medium hover-bg-green transition text-xs shadow-2xs">
+                <a href="access-portal.html" class="inline-flex items-center gap-1 bg-[#004D34] text-white px-5 py-2 rounded font-medium transition text-xs shadow-2xs hover:bg-[#003322]">
                     <span data-i18n="transfer.nav_access_portal">Access Portal</span> <i data-lucide="log-in" class="text-xs ml-1"></i>
                 </a>
             </div>
@@ -69,7 +69,7 @@
 
         <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
-                <img src="assets/chatura.webp" alt="Chatura Indonesia" class="h-24 w-auto">
+                <img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto">
                 <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden')"
                     class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
             </div>
@@ -85,7 +85,7 @@
                 <a href="contact-us.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.contact">Contact</a>
             </nav>
             <div class="p-6 border-t border-gray-100">
-                <a href="access-portal.html" class="block w-full bg-brand-green text-white text-center px-5 py-3 rounded font-medium hover-bg-green transition"><span data-i18n="transfer.nav_access_portal">Access Portal</span></a>
+                <a href="access-portal.html" class="block w-full bg-[#004D34] text-white text-center px-5 py-3 rounded font-medium transition hover:bg-[#003322]"><span data-i18n="transfer.nav_access_portal">Access Portal</span></a>
             </div>
         </div>
     </header>
@@ -93,20 +93,20 @@
     <main id="main-content">
 
     <!-- ============ HERO ============ -->
-    <section id="hero-transfer" class="relative bg-brand-green text-white overflow-hidden -mt-[128px] pt-[128px]">
+    <section id="hero-transfer" class="relative bg-[#004D34] text-white overflow-hidden -mt-[128px] pt-[128px]">
         <div id="hero-bg" class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/hero-business.webp');"></div>
         <div class="absolute inset-0" style="background: linear-gradient(100deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 30%, transparent 50%);"></div>
         <div class="container mx-auto px-6 relative z-10 py-24 md:py-32">
             <div class="max-w-3xl">
                 <span class="reveal-up inline-block text-xs font-bold uppercase tracking-widest text-emerald-900 mb-4" data-i18n="transfer.hero_label">Business Transfer Platform</span>
                 <h1 class="reveal-up text-3xl md:text-5xl font-serif font-light text-gray-900 mb-6 leading-tight">
-                    <span data-i18n="transfer.hero_title_1">Transform. Strengthen.</span> <span class="italic font-normal brand-green" data-i18n="transfer.hero_title_green">Grow Your Equity.</span>
+                    <span data-i18n="transfer.hero_title_1">Transform. Strengthen.</span> <span class="italic font-normal text-[#004D34]" data-i18n="transfer.hero_title_green">Grow Your Equity.</span>
                 </h1>
                 <p class="reveal-up text-gray-700/80 text-lg mb-8 max-w-2xl pr-20" data-i18n="transfer.hero_desc">
                     Helping business owners unlock value through strategic corporate transformation, confidential asset matchmaking, and verified transactional pipelines.
                 </p>
                 <div class="reveal-up flex flex-wrap gap-4">
-                    <a href="#featured-listings" class="bg-brand-green text-white px-6 py-3 rounded font-medium hover-bg-green transition">
+                    <a href="#featured-listings" class="bg-[#004D34] text-white px-6 py-3 rounded font-medium transition hover:bg-[#003322]">
                         <span data-i18n="transfer.hero_cta_1">Explore Open Listings</span>
                     </a>
                     <a href="#portal-cta" class="border border-gray-300 text-gray-700 px-6 py-3 rounded font-medium hover:bg-gray-900 hover:text-white transition">
@@ -210,7 +210,7 @@
                     <span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="transfer.listings_label">Verified Opportunities</span>
                     <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="transfer.listings_title">Featured Investment Listings</h2>
                 </div>
-                <button onclick="openLoginModal()" class="text-xs font-bold brand-green hover:underline flex items-center gap-1" data-i18n="transfer.view_all">View All Investment Deals <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
+                <button onclick="openLoginModal()" class="text-xs font-bold text-[#004D34] hover:underline flex items-center gap-1" data-i18n="transfer.view_all">View All Investment Deals <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
             </div>
 
             <!-- Structural 3-Column Grid Layout -->
@@ -278,15 +278,16 @@
 
             <!-- GATEWAY BARRIER PANEL -->
             <div class="reveal-up bg-emerald-50 rounded-2xl border border-emerald-200 p-6 md:p-10 grid md:grid-cols-[auto_1fr_auto] gap-6 items-center shadow-2xs max-w-4xl mx-auto">
-                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center brand-green shadow-3xs flex-shrink-0 mx-auto md:mx-0"><i data-lucide="lock" class="w-5 h-5"></i></div>
+                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#004D34] shadow-3xs flex-shrink-0 mx-auto md:mx-0"><i data-lucide="lock" class="w-5 h-5"></i></div>
                 <div class="text-center md:text-left">
                     <h4 class="font-serif font-bold text-gray-950 text-lg mb-1" data-i18n="transfer.buyer_db_title">Access Fully Secured Buyer Database Corridor</h4>
                     <p class="text-xs text-gray-600 leading-relaxed" data-i18n="transfer.buyer_db_desc">To comply with international M&A confidentiality codes, certified user profiles must authenticate identity records before exploring detailed transaction metrics or Information Memorandum sheets.</p>
                 </div>
                 <div class="w-full md:w-auto text-center">
-                    <button onclick="openLoginModal()" class="w-full md:w-auto bg-brand-green text-white text-xs px-6 py-3 rounded-lg font-bold hover-bg-green transition whitespace-nowrap shadow-xs" data-i18n="transfer.login_cta">
-                        Sign In to Access Portal <i data-lucide="log-in" class="w-3.5 h-3.5 ml-1 inline"></i>
-                    </button>
+                    <a href="access-portal.html" class="inline-flex w-full md:w-auto items-center justify-center gap-2 bg-[#004D34] text-white text-xs px-6 py-3 rounded-lg font-bold transition whitespace-nowrap shadow-xs hover:bg-[#003322]">
+                        <span data-i18n="transfer.login_cta">Sign In to Access Portal</span>
+                        <i data-lucide="log-in" class="w-3.5 h-3.5 flex-shrink-0"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -301,37 +302,37 @@
             </div>
             <div class="reveal-up flex flex-wrap justify-center items-start gap-0 max-w-5xl mx-auto">
                 <div class="flex flex-col items-center text-center flex-1 min-w-[120px] max-w-[140px]">
-                    <div class="w-10 h-10 rounded-full bg-brand-green text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">1</div>
+                    <div class="w-10 h-10 rounded-full bg-[#004D34] text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">1</div>
                     <h4 class="font-bold text-xs text-gray-950 mb-1" data-i18n="transfer.pipeline_step_1_title">Business Valuation</h4>
                     <p class="text-[10px] text-gray-400 leading-tight" data-i18n="transfer.pipeline_step_1_desc">Assess enterprise value</p>
                 </div>
                 <div class="hidden sm:flex items-center pt-5 text-gray-300"><i data-lucide="chevron-right" class="w-4 h-4"></i></div>
                 <div class="flex flex-col items-center text-center flex-1 min-w-[120px] max-w-[140px]">
-                    <div class="w-10 h-10 rounded-full bg-brand-green text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">2</div>
+                    <div class="w-10 h-10 rounded-full bg-[#004D34] text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">2</div>
                     <h4 class="font-bold text-xs text-gray-950 mb-1" data-i18n="transfer.pipeline_step_2_title">Preparation</h4>
                     <p class="text-[10px] text-gray-400 leading-tight" data-i18n="transfer.pipeline_step_2_desc">IM & room setup</p>
                 </div>
                 <div class="hidden sm:flex items-center pt-5 text-gray-300"><i data-lucide="chevron-right" class="w-4 h-4"></i></div>
                 <div class="flex flex-col items-center text-center flex-1 min-w-[120px] max-w-[140px]">
-                    <div class="w-10 h-10 rounded-full bg-brand-green text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">3</div>
+                    <div class="w-10 h-10 rounded-full bg-[#004D34] text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">3</div>
                     <h4 class="font-bold text-xs text-gray-950 mb-1" data-i18n="transfer.pipeline_step_3_title">Buyer Matching</h4>
                     <p class="text-[10px] text-gray-400 leading-tight" data-i18n="transfer.pipeline_step_3_desc">Connect qualified buyers</p>
                 </div>
                 <div class="hidden sm:flex items-center pt-5 text-gray-300"><i data-lucide="chevron-right" class="w-4 h-4"></i></div>
                 <div class="flex flex-col items-center text-center flex-1 min-w-[120px] max-w-[140px]">
-                    <div class="w-10 h-10 rounded-full bg-brand-green text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">4</div>
+                    <div class="w-10 h-10 rounded-full bg-[#004D34] text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">4</div>
                     <h4 class="font-bold text-xs text-gray-950 mb-1" data-i18n="transfer.pipeline_step_4_title">Due Diligence</h4>
                     <p class="text-[10px] text-gray-400 leading-tight" data-i18n="transfer.pipeline_step_4_desc">Comprehensive review</p>
                 </div>
                 <div class="hidden sm:flex items-center pt-5 text-gray-300"><i data-lucide="chevron-right" class="w-4 h-4"></i></div>
                 <div class="flex flex-col items-center text-center flex-1 min-w-[120px] max-w-[140px]">
-                    <div class="w-10 h-10 rounded-full bg-brand-green text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">5</div>
+                    <div class="w-10 h-10 rounded-full bg-[#004D34] text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">5</div>
                     <h4 class="font-bold text-xs text-gray-950 mb-1" data-i18n="transfer.pipeline_step_5_title">Negotiation</h4>
                     <p class="text-[10px] text-gray-400 leading-tight" data-i18n="transfer.pipeline_step_5_desc">Terms structuring</p>
                 </div>
                 <div class="hidden sm:flex items-center pt-5 text-gray-300"><i data-lucide="chevron-right" class="w-4 h-4"></i></div>
                 <div class="flex flex-col items-center text-center flex-1 min-w-[120px] max-w-[140px]">
-                    <div class="w-10 h-10 rounded-full bg-brand-green text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">6</div>
+                    <div class="w-10 h-10 rounded-full bg-[#004D34] text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">6</div>
                     <h4 class="font-bold text-xs text-gray-950 mb-1" data-i18n="transfer.pipeline_step_6_title">Closing</h4>
                     <p class="text-[10px] text-gray-400 leading-tight" data-i18n="transfer.pipeline_step_6_desc">Transaction execution</p>
                 </div>
@@ -474,7 +475,7 @@
                     <p class="text-sm text-gray-500 leading-[1.8]" data-i18n="transfer.heatmap_desc">Sector distribution based on listings and recent transaction volume across the platform.</p>
                 </div>
                 <div class="reveal-up space-y-4">
-                    <div class="flex items-center gap-4"><span class="text-xs font-medium text-gray-700 w-28 flex-shrink-0 text-right">Manufacturing</span><div class="flex-1 h-7 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-green rounded-full flex items-center justify-end pr-3" style="width: 21%"><span class="text-[10px] font-bold text-white">21%</span></div></div></div>
+                    <div class="flex items-center gap-4"><span class="text-xs font-medium text-gray-700 w-28 flex-shrink-0 text-right">Manufacturing</span><div class="flex-1 h-7 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-[#004D34] rounded-full flex items-center justify-end pr-3" style="width: 21%"><span class="text-[10px] font-bold text-white">21%</span></div></div></div>
                     <div class="flex items-center gap-4"><span class="text-xs font-medium text-gray-700 w-28 flex-shrink-0 text-right">Energy</span><div class="flex-1 h-7 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-emerald-600 rounded-full flex items-center justify-end pr-3" style="width: 18%"><span class="text-[10px] font-bold text-white">18%</span></div></div></div>
                     <div class="flex items-center gap-4"><span class="text-xs font-medium text-gray-700 w-28 flex-shrink-0 text-right">Technology</span><div class="flex-1 h-7 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-emerald-500 rounded-full flex items-center justify-end pr-3" style="width: 16%"><span class="text-[10px] font-bold text-white">16%</span></div></div></div>
                     <div class="flex items-center gap-4"><span class="text-xs font-medium text-gray-700 w-28 flex-shrink-0 text-right">Healthcare</span><div class="flex-1 h-7 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-emerald-400 rounded-full flex items-center justify-end pr-3" style="width: 14%"><span class="text-[10px] font-bold text-white">14%</span></div></div></div>
@@ -549,7 +550,7 @@
             <p class="text-neutral-400 text-xs md:text-sm mb-8 leading-relaxed" data-i18n="transfer.cta_desc">
                 Engage directly and confidentially with our Corporate Valuation & M&A execution advisors to structure an aligned valuation framework for your commercial group.
             </p>
-            <a href="contact-us.html" class="inline-flex items-center bg-brand-green text-white text-xs px-6 py-3 rounded font-semibold hover:bg-emerald-700 transition" data-i18n="transfer.cta">
+            <a href="contact-us.html" class="inline-flex items-center bg-[#004D34] text-white text-xs px-6 py-3 rounded font-semibold hover:bg-emerald-700 transition" data-i18n="transfer.cta">
                 Initiate Confidential Dialogue <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-2"></i>
             </a>
         </div>
@@ -568,7 +569,7 @@
 
             <div>
                 <div class="text-center mb-6">
-                    <img src="assets/chatura.webp" alt="Chatura Indonesia" class="h-16 w-auto mx-auto mb-2">
+                    <img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-16 w-auto mx-auto mb-2">
                     <h3 class="font-serif font-bold text-gray-900 text-lg" data-i18n="transfer.login_modal_title">M&A Buyer Portal Access</h3>
                     <p class="text-[11px] text-gray-400 mt-1" data-i18n="transfer.login_modal_desc">Provide verified executive credentials</p>
                 </div>
@@ -581,7 +582,7 @@
                     <div>
                         <div class="flex justify-between items-center mb-1.5">
                             <label class="font-bold text-gray-700" data-i18n="transfer.login_password">Secure Password *</label>
-                            <a href="#" class="brand-green font-medium hover:underline text-[10px]" data-i18n="transfer.login_forgot">Forgot Kredensial?</a>
+                            <a href="#" class="text-[#004D34] font-medium hover:underline text-[10px]" data-i18n="transfer.login_forgot">Forgot Kredensial?</a>
                         </div>
                         <input type="password" autocomplete="current-password" placeholder="••••••••" class="w-full bg-white border border-gray-300 px-3 py-2.5 rounded-lg focus:outline-none focus:border-emerald-700 transition" required>
                     </div>
@@ -589,14 +590,14 @@
                         <input type="checkbox" id="remember-me" class="w-3.5 h-3.5 text-emerald-800 border-gray-300 rounded focus:ring-emerald-700 mr-2">
                         <label for="remember-me" class="text-gray-500 font-medium select-none" data-i18n="transfer.login_remember">Maintain verified status on this machine</label>
                     </div>
-                    <button type="submit" class="w-full bg-brand-green text-white text-xs py-3 rounded-lg font-bold hover-bg-green transition mt-3 shadow-xs" data-i18n="transfer.login_submit">
+                    <button type="submit" class="w-full bg-[#004D34] text-white text-xs py-3 rounded-lg font-bold transition mt-3 shadow-xs hover:bg-[#003322]" data-i18n="transfer.login_submit">
                         Unlock Secure Listings Corridor
                     </button>
                 </form>
             </div>
 
             <div class="text-center text-[11px] text-gray-400 pt-4 border-t border-gray-100 mt-6">
-                <span data-i18n="transfer.login_no_account">Account registry pending validation?</span> <a href="contact-us.html" class="brand-green font-semibold hover:underline" data-i18n="transfer.login_contact">Contact onboarding teams</a>
+                <span data-i18n="transfer.login_no_account">Account registry pending validation?</span> <a href="contact-us.html" class="text-[#004D34] font-semibold hover:underline" data-i18n="transfer.login_contact">Contact onboarding teams</a>
             </div>
         </div>
     </div>
@@ -646,7 +647,7 @@
             <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
                 <div class="reveal-up">
                     <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500 block mb-6" data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
-                    <img src="assets/chatura-footer.webp" alt="Chatura Indonesia" width="96" height="96" class="h-20 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
+                    <img width="487" height="350" src="assets/chatura-footer.webp" alt="Chatura Indonesia" class="h-36 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
                     <p class="text-sm text-gray-400 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated professional services providing accounting, tax, business advisory, and risk management solutions across the Indonesian archipelago and Southeast Asian markets.</p>
                     <div class="flex items-center gap-5 mt-8 text-gray-500">
                         <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-[18px] h-[18px]"></i></a>
@@ -697,7 +698,7 @@
                         <h2 class="text-2xl md:text-[1.75rem] font-serif text-white leading-snug max-w-xl" data-i18n="footer.cta_title">Let's Discuss Your Next Business Decision.</h2>
                         <p class="text-sm text-gray-500 mt-4 max-w-md leading-relaxed" data-i18n="footer.cta_desc">Our advisory team is prepared to structure tailored solutions for your organization's most critical transitions.</p>
                     </div>
-                    <a href="contact-us.html" class="inline-flex items-center gap-2.5 bg-brand-green text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-emerald-600 transition-all duration-300 shadow-lg shadow-brand-green/20 hover:shadow-xl hover:shadow-brand-green/30 hover:-translate-y-0.5 flex-shrink-0 group">
+                    <a href="contact-us.html" class="inline-flex items-center gap-2.5 bg-[#004D34] text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-emerald-600 transition-all duration-300 shadow-lg shadow-[#004D34]/20 hover:shadow-xl hover:shadow-[#004D34]/30 hover:-translate-y-0.5 flex-shrink-0 group">
                         <span data-i18n="footer.cta_button">Talk To Advisors</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
                     </a>
@@ -712,7 +713,7 @@
         <div class="container mx-auto px-6 py-10">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-4">
-                    <img src="assets/chatura-footer.webp" alt="Chatura" width="96" height="96" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
+                    <img width="487" height="350" src="assets/chatura-footer.webp" alt="Chatura" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
                     <span class="text-[11px] text-gray-500" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
                 </div>
                 <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-gray-500">

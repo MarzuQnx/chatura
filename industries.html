@@ -42,8 +42,8 @@
     <header id="navbar-sticky" class="sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <div class="font-bold text-2xl tracking-wider brand-green flex items-center gap-2">
-                    <img src="assets/chatura.webp" alt="Chatura Indonesia" width="96" height="96" class="h-24 w-auto">
+                <div class="font-bold text-2xl tracking-wider text-[#004D34] flex items-center gap-2">
+                    <img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto">
                 </div>
             </div>
 
@@ -52,7 +52,7 @@
                 <i data-lucide="menu" class="text-xl"></i>
             </button>
 
-                        <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+                        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
                 <a href="index.html" class="hover:text-emerald-800 transition" data-i18n="nav.about_us">About Us</a>
                 <div class="nav-dropdown">
                     <a href="services.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.services">Services</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
@@ -61,7 +61,7 @@
                         <a href="business-transfer.html" data-i18n="nav.business_transfer">Business Transfer</a>
                     </div>
                 </div>
-                <a href="industries.html" class="brand-green font-semibold"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs ml-1"></i></a>
+                <a href="industries.html" class="text-[#004D34] font-semibold"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs ml-1"></i></a>
                 <a href="our-people.html" class="hover:text-emerald-800 transition" data-i18n="nav.our_people">Our People</a>
                 <a href="insights.html" class="hover:text-emerald-800 transition" data-i18n="nav.insights">Insights</a>
                 <a href="join-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.join_us">Join Us</a>
@@ -69,15 +69,12 @@
             </nav>
 
             <div class="hidden md:flex items-center space-x-6 text-sm">
-                <div id="lang-selector"
-                    class="flex items-center space-x-1 rounded-full bg-white px-3 py-1 shadow-xs transition-all duration-300">
-                    <a href="#"
-                        class="lang-active font-bold text-xs bg-brand-green text-white px-2.5 py-0.5 rounded-full transition-all duration-300">EN</a>
-                    <a href="#"
-                        class="lang-inactive font-medium text-xs text-gray-400 hover:text-gray-600 px-1 transition-all duration-300">ID</a>
+                <div id="lang-selector">
+                    <a href="#" data-lang="en" class="lang-active">EN</a>
+                    <a href="#" data-lang="id" class="lang-inactive">ID</a>
                 </div>
                 <a href="contact-us.html"
-                    class="bg-brand-green text-white px-5 py-2 rounded font-medium hover-bg-green transition">
+                    class="bg-[#004D34] text-white px-5 py-2 rounded font-medium hover:bg-[#003322] transition">
                     <span data-i18n="nav.lets_talk">Let's Talk</span> <i data-lucide="arrow-right" class="text-xs ml-1"></i>
                 </a>
             </div>
@@ -85,7 +82,7 @@
 
         <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
-                <img src="assets/chatura.webp" alt="Chatura Indonesia" class="h-24 w-auto">
+                <img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto">
                 <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden')"
                     class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
             </div>
@@ -110,7 +107,7 @@
             </nav>
             <div class="p-6 border-t border-gray-100">
                 <a href="contact-us.html"
-                    class="block w-full bg-brand-green text-white text-center px-5 py-3 rounded font-medium hover-bg-green transition"><span data-i18n="nav.lets_talk">Let's
+                    class="block w-full bg-[#004D34] text-white text-center px-5 py-3 rounded font-medium hover:bg-[#003322] transition"><span data-i18n="nav.lets_talk">Let's
                     Talk</span></a>
             </div>
         </div>
@@ -118,20 +115,20 @@
 
     <main id="main-content">
     <!-- ============ HERO ============ -->
-    <section id="hero-industry" class="relative bg-brand-green text-white overflow-hidden -mt-[128px] pt-[128px]">
+    <section id="hero-industry" class="relative bg-[#004D34] text-white overflow-hidden -mt-[128px] pt-[128px]">
         <div id="hero-bg" class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/hero-industries.webp');"></div>
         <div class="absolute inset-0" style="background: linear-gradient(100deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 30%, transparent 50%);"></div>
         <div class="container mx-auto px-6 relative z-10 py-24 md:py-32">
             <div class="max-w-3xl">
                 <span class="reveal-up inline-block text-xs font-bold uppercase tracking-widest text-emerald-900 mb-4" data-i18n="industries.hero_label">Industry Expertise</span>
                 <h1 class="reveal-up text-3xl md:text-5xl font-serif font-light text-gray-900 mb-6 leading-tight">
-                    <span data-i18n="industries.hero_title_1">Deep Insights Tailored to</span> <span class="italic font-normal brand-green" data-i18n="industries.hero_title_green">Your Sector Dynamics</span>
+                    <span data-i18n="industries.hero_title_1">Deep Insights Tailored to</span> <span class="italic font-normal text-[#004D34]" data-i18n="industries.hero_title_green">Your Sector Dynamics</span>
                 </h1>
                 <p class="reveal-up text-gray-700/80 text-lg mb-8 max-w-2xl pr-20" data-i18n="industries.hero_desc">
                     We understand the unique challenges in every industry. Chatura delivers multi-disciplinary solutions to help your business adapt and grow competitively.
                 </p>
                 <div class="reveal-up flex flex-wrap gap-4">
-                    <a href="#industry-selector" class="bg-brand-green text-white px-6 py-3 rounded font-medium hover-bg-green transition">
+                    <a href="#industry-selector" class="bg-[#004D34] text-white px-6 py-3 rounded font-medium hover:bg-[#003322] transition">
                         <span data-i18n="industries.explore_cta">Explore Industries</span>
                     </a>
                     <a href="contact-us.html" class="border border-gray-300 text-gray-700 px-6 py-3 rounded font-medium hover:bg-gray-900 hover:text-white transition">
@@ -190,7 +187,7 @@
     </section>
 
     <!-- ============ REPRESENTATIVE EXPERIENCE ============ -->
-    <section id="industry-experience" class="py-20 bg-brand-green text-white relative overflow-hidden">
+    <section id="industry-experience" class="py-20 bg-[#004D34] text-white relative overflow-hidden">
         <div class="container mx-auto px-6 relative z-10">
             <span class="reveal-up text-xs font-bold uppercase tracking-widest text-emerald-300 block mb-10" data-i18n="industries.experience_label">Representative Experience</span>
             <div class="grid lg:grid-cols-[1.1fr_1fr] gap-10 items-start">
@@ -217,7 +214,7 @@
                     <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="industries.insights_title">Industry Perspectives</h2>
                     <p class="text-sm text-gray-400 mt-2" data-i18n="industries.insights_description">Expert analysis market outlook sector.</p>
                 </div>
-                <a href="insights.html" class="text-sm brand-green font-semibold hover:underline flex items-center gap-1 flex-shrink-0">
+                <a href="insights.html" class="text-sm text-[#004D34] font-semibold hover:underline flex items-center gap-1 flex-shrink-0">
                     <span data-i18n="industries.view_insights">View All Insights</span> <i data-lucide="arrow-right" class="text-xs"></i>
                 </a>
             </div>
@@ -248,8 +245,8 @@
                 <h2 class="text-2xl sm:text-3xl font-serif mt-2 mb-3" data-i18n="industries.experts_title">Meet Decision Makers</h2>
                 <p class="text-sm text-gray-500 max-w-xl mx-auto" data-i18n="industries.experts_subtitle">Professional advisors with deep expertise across industries.</p>
                 <div class="mt-4 inline-flex items-center gap-2 bg-emerald-50 px-4 py-1.5 rounded-full">
-                    <span class="text-xs font-semibold brand-green" data-i18n="industries.experts_service_label">Experts in</span>
-                    <span id="expertsIndustryLabel" class="text-xs font-bold brand-green">Energy & Resources</span>
+                    <span class="text-xs font-semibold text-[#004D34]" data-i18n="industries.experts_service_label">Experts in</span>
+                    <span id="expertsIndustryLabel" class="text-xs font-bold text-[#004D34]">Energy & Resources</span>
                 </div>
             </div>
             <div id="expertsGrid" class="experts-row"></div>
@@ -259,7 +256,7 @@
     <!-- ============ FINAL CTA ============ -->
     <section id="final-cta" class="py-16 bg-white">
         <div class="container mx-auto px-6">
-            <div class="reveal-up bg-brand-green rounded-2xl px-8 py-12 md:px-14 md:py-14 flex flex-col md:flex-row items-center justify-between gap-8 text-white relative overflow-hidden">
+            <div class="reveal-up bg-[#004D34] rounded-2xl px-8 py-12 md:px-14 md:py-14 flex flex-col md:flex-row items-center justify-between gap-8 text-white relative overflow-hidden">
                 <div class="flex items-start gap-5 relative z-10">
                     <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
                         <i data-lucide="message-square" class="w-5 h-5"></i>
@@ -269,7 +266,7 @@
                         <p class="text-emerald-100/80 text-sm max-w-md" data-i18n="industries.cta_desc">Our team ready help you navigate complex industry challenges achieve sustainable growth.</p>
                     </div>
                 </div>
-                <a href="contact-us.html" class="inline-flex items-center bg-white text-brand-green text-sm px-6 py-2.5 rounded font-medium hover:bg-emerald-50 transition whitespace-nowrap relative z-10">
+                <a href="contact-us.html" class="inline-flex items-center bg-white text-[#004D34] text-sm px-6 py-2.5 rounded font-medium hover:bg-emerald-50 transition whitespace-nowrap relative z-10">
                     <span data-i18n="industries.cta_button">Talk To Us</span> <i data-lucide="arrow-right" class="text-xs ml-2"></i>
                 </a>
             </div>
@@ -321,7 +318,7 @@
             <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
                 <div class="reveal-up">
                     <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500 block mb-6" data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
-                    <img src="assets/chatura-footer.webp" alt="Chatura Indonesia" width="96" height="96" class="h-20 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
+                    <img width="487" height="350" src="assets/chatura-footer.webp" alt="Chatura Indonesia" class="h-36 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
                     <p class="text-sm text-gray-400 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated professional services providing accounting, tax, business advisory, and risk management solutions across the Indonesian archipelago and Southeast Asian markets.</p>
                     <div class="flex items-center gap-5 mt-8 text-gray-500">
                         <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-[18px] h-[18px]"></i></a>
@@ -372,7 +369,7 @@
                         <h2 class="text-2xl md:text-[1.75rem] font-serif text-white leading-snug max-w-xl" data-i18n="footer.cta_title">Let's Discuss Your Next Business Decision.</h2>
                         <p class="text-sm text-gray-500 mt-4 max-w-md leading-relaxed" data-i18n="footer.cta_desc">Our advisory team is prepared to structure tailored solutions for your organization's most critical transitions.</p>
                     </div>
-                    <a href="contact-us.html" class="inline-flex items-center gap-2.5 bg-brand-green text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-emerald-600 transition-all duration-300 shadow-lg shadow-brand-green/20 hover:shadow-xl hover:shadow-brand-green/30 hover:-translate-y-0.5 flex-shrink-0 group">
+                    <a href="contact-us.html" class="inline-flex items-center gap-2.5 bg-[#004D34] text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-emerald-600 transition-all duration-300 shadow-lg shadow-[#004D34]/20 hover:shadow-xl hover:shadow-[#004D34]/30 hover:-translate-y-0.5 flex-shrink-0 group">
                         <span data-i18n="footer.cta_button">Talk To Advisors</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
                     </a>
@@ -387,7 +384,7 @@
         <div class="container mx-auto px-6 py-10">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-4">
-                    <img src="assets/chatura-footer.webp" alt="Chatura" width="96" height="96" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
+                    <img width="487" height="350" src="assets/chatura-footer.webp" alt="Chatura" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
                     <span class="text-[11px] text-gray-500" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
                 </div>
                 <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-gray-500">
@@ -700,10 +697,10 @@
                 return '<button type="button" data-key="' + ind.key + '" ' +
                     'class="industry-card flex items-center gap-3 px-4 py-4 rounded-xl border text-left transition ' +
                     (isActive
-                        ? 'bg-brand-green border-brand-green text-white shadow-md'
+                        ? 'bg-[#004D34] border-[#004D34] text-white shadow-md'
                         : 'bg-white border-gray-200 text-gray-700 hover:border-emerald-300') + '">' +
                     '<span class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ' +
-                    (isActive ? 'bg-white/15 text-white' : 'bg-emerald-50 brand-green') + '">' +
+                    (isActive ? 'bg-white/15 text-white' : 'bg-emerald-50 text-[#004D34]') + '">' +
                     '<i data-lucide="' + ind.icon + '" class="w-5 h-5"></i></span>' +
                     '<span class="font-medium text-sm">' + label + '</span>' +
                     '</button>';
@@ -739,7 +736,7 @@
                 desc2.textContent = o.desc2;
                 statsWrap.innerHTML = o.stats.map(function (s) {
                     return '<div class="bg-emerald-50 rounded-lg p-4 text-center">' +
-                        '<p class="text-xl font-bold brand-green">' + s.value + '</p>' +
+                        '<p class="text-xl font-bold text-[#004D34]">' + s.value + '</p>' +
                         '<p class="text-xs text-gray-500 mt-1">' + s.label + '</p></div>';
                 }).join('');
             }

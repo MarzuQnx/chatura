@@ -49,8 +49,8 @@
     <header id="navbar-sticky" class="sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <div class="font-bold text-2xl tracking-wider brand-green flex items-center gap-2">
-                    <img src="assets/chatura.webp" alt="Chatura Indonesia" width="96" height="96" class="h-24 w-auto">
+                <div class="font-bold text-2xl tracking-wider text-[#004D34] flex items-center gap-2">
+                    <img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto">
                 </div>
             </div>
 
@@ -59,7 +59,7 @@
                 <i data-lucide="menu" class="text-xl"></i>
             </button>
 
-                        <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+                        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
                 <a href="index.html" class="hover:text-emerald-800 transition" data-i18n="nav.about_us">About Us</a>
                 <div class="nav-dropdown">
                     <a href="services.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.services">Services</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
@@ -69,19 +69,18 @@
                     </div>
                 </div>
                 <a href="industries.html" class="hover:text-emerald-800"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs ml-1"></i></a>
-                <a href="our-people.html" class="brand-green font-semibold transition" data-i18n="nav.our_people">Our People</a>
+                <a href="our-people.html" class="text-[#004D34] font-semibold transition" data-i18n="nav.our_people">Our People</a>
                 <a href="insights.html" class="hover:text-emerald-800 transition" data-i18n="nav.insights">Insights</a>
                 <a href="join-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.join_us">Join Us</a>
                 <a href="contact-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.contact">Contact</a>
             </nav>
 
             <div class="hidden md:flex items-center space-x-6 text-sm">
-                <div id="lang-selector"
-                    class="flex items-center space-x-1 rounded-full bg-white px-3 py-1 shadow-xs transition-all duration-300">
-                    <a href="#" class="lang-active font-bold text-xs bg-brand-green text-white px-2.5 py-0.5 rounded-full transition-all duration-300">EN</a>
-                    <a href="#" class="lang-inactive font-medium text-xs text-gray-400 hover:text-gray-600 px-1 transition-all duration-300">ID</a>
+                <div id="lang-selector">
+                    <a href="#" data-lang="en" class="lang-active">EN</a>
+                    <a href="#" data-lang="id" class="lang-inactive">ID</a>
                 </div>
-                <a href="contact-us.html" class="bg-brand-green text-white px-5 py-2 rounded font-medium hover-bg-green transition">
+                <a href="contact-us.html" class="bg-[#004D34] text-white px-5 py-2 rounded font-medium hover:bg-[#003322] transition">
                     <span data-i18n="nav.lets_talk">Let's Talk</span> <i data-lucide="arrow-right" class="text-xs ml-1"></i>
                 </a>
             </div>
@@ -89,7 +88,7 @@
 
         <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
-                <img src="assets/chatura.webp" alt="Chatura Indonesia" class="h-24 w-auto">
+                <img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto">
                 <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden')"
                     class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
             </div>
@@ -105,7 +104,7 @@
                 <a href="contact-us.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.contact">Contact</a>
             </nav>
             <div class="p-6 border-t border-gray-100">
-                <a href="contact-us.html" class="block w-full bg-brand-green text-white text-center px-5 py-3 rounded font-medium hover-bg-green transition"><span data-i18n="nav.lets_talk">Let's Talk</span></a>
+                <a href="contact-us.html" class="block w-full bg-[#004D34] text-white text-center px-5 py-3 rounded font-medium hover:bg-[#003322] transition"><span data-i18n="nav.lets_talk">Let's Talk</span></a>
             </div>
         </div>
     </header>
@@ -121,13 +120,13 @@
             <div class="max-w-2xl">
                 <span class="reveal-up inline-block text-xs font-bold uppercase tracking-widest text-emerald-800 mb-4" data-i18n="people.hero_label">Our People</span>
                 <h1 class="reveal-up text-3xl md:text-5xl font-serif font-light text-gray-900 mb-6 leading-tight">
-                    <span data-i18n="people.hero_title_1">Driven by Deep Expertise and</span> <span class="italic font-normal brand-green">Commercial Acumen</span>
+                    <span data-i18n="people.hero_title_1">Driven by Deep Expertise and</span> <span class="italic font-normal text-[#004D34]">Commercial Acumen</span>
                 </h1>
                 <p class="reveal-up text-gray-600 text-base md:text-lg mb-8 leading-relaxed pr-6" data-i18n="people.hero_desc">
                     Our multi-disciplinary professionals combine standard industry insight with localized regulatory capability to help organizations grow with confidence and navigate systemic complexity.
                 </p>
                 <div class="reveal-up">
-                    <a href="#people-listing" class="bg-brand-green text-white px-6 py-3 rounded font-medium hover-bg-green transition text-sm">
+                    <a href="#people-listing" class="bg-[#004D34] text-white px-6 py-3 rounded font-medium hover:bg-[#003322] transition text-sm">
                         <span data-i18n="people.view_all">View Leadership & Experts</span> <i data-lucide="arrow-down" class="text-xs ml-2"></i>
                     </a>
                 </div>
@@ -168,7 +167,7 @@
             <div class="w-full md:w-1/3 bg-gray-50 p-8 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-gray-100 flex-shrink-0 text-center">
                 <img id="modal-img" src="" alt="" class="w-36 h-48 rounded-xl object-cover shadow-md border-4 border-white mb-4 bg-gray-200">
                 <h3 id="modal-name" class="text-xl font-bold text-gray-900 leading-tight"></h3>
-                <p id="modal-title" class="text-xs font-bold brand-green uppercase tracking-wide mt-1 mb-2"></p>
+                <p id="modal-title" class="text-xs font-bold text-[#004D34] uppercase tracking-wide mt-1 mb-2"></p>
                 <p id="modal-location" class="text-xs text-gray-400 flex items-center gap-1 mb-6"><i data-lucide="map-pin" class="w-3 h-3"></i> <span></span></p>
                 
                 <div class="flex gap-2.5 w-full">
@@ -339,7 +338,7 @@
                 <h2 class="text-3xl md:text-4xl font-serif font-light text-gray-950" data-i18n="people.insights_title">Latest Insights</h2>
                 <p class="text-xs text-gray-400 mt-2 font-medium">Strategic publications and recent market briefings curated by our practice groups.</p>
             </div>
-            <a href="insights.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider brand-green border-b border-gray-300 pb-1 hover:border-emerald-800 transition duration-300 group/link">
+            <a href="insights.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#004D34] border-b border-gray-300 pb-1 hover:border-emerald-800 transition duration-300 group/link">
                 <span data-i18n="people.view_all_insights">Explore Editorial</span> 
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide lucide-arrow-right w-3.5 h-3.5 transition-transform duration-300 group-hover/link:translate-x-1.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
             </a>
@@ -383,7 +382,7 @@
                         </div>
                         <div class="text-right text-[10px] font-medium text-gray-400 uppercase tracking-wider space-y-0.5">
                             <p>Published Jul 2026</p>
-                            <p class="brand-green font-bold text-right flex items-center justify-end gap-0.5">5 Min Read <i data-lucide="clock" class="w-3 h-3"></i></p>
+                            <p class="text-[#004D34] font-bold text-right flex items-center justify-end gap-0.5">5 Min Read <i data-lucide="clock" class="w-3 h-3"></i></p>
                         </div>
                     </div>
                 </a>
@@ -455,13 +454,13 @@
 </section>
 
     <!-- ============ 5. PREMIUM CTA ============ -->
-    <section class="bg-brand-green text-white py-20">
+    <section class="bg-[#004D34] text-white py-20">
         <div class="container mx-auto px-6 max-w-4xl text-center">
             <div class="reveal-up">
                 <h2 class="text-2xl md:text-3xl font-serif mb-4" data-i18n="people.cta_title">Looking for the Right Advisor?</h2>
                 <p class="text-emerald-100/70 text-sm mb-10 max-w-lg mx-auto leading-relaxed" data-i18n="people.cta_desc">Connect with our specialists for a confidential discussion on how Chatura can support your business objectives.</p>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <a href="contact-us.html" class="bg-white text-brand-green px-7 py-3 rounded font-medium hover:bg-emerald-50 transition text-sm">
+                    <a href="contact-us.html" class="bg-white text-[#004D34] px-7 py-3 rounded font-medium hover:bg-emerald-50 transition text-sm">
                         <span data-i18n="people.cta_contact">Contact Us</span>
                     </a>
                     <a href="services.html" class="border border-white/40 text-white px-7 py-3 rounded font-medium hover:bg-white hover:text-emerald-900 transition text-sm">
@@ -519,7 +518,7 @@
             <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
                 <div class="reveal-up">
                     <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500 block mb-6" data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
-                    <img src="assets/chatura-footer.webp" alt="Chatura Indonesia" width="96" height="96" class="h-20 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
+                    <img width="487" height="350" src="assets/chatura-footer.webp" alt="Chatura Indonesia" class="h-36 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
                     <p class="text-sm text-gray-400 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated professional services providing accounting, tax, business advisory, and risk management solutions across the Indonesian archipelago and Southeast Asian markets.</p>
                     <div class="flex items-center gap-5 mt-8 text-gray-500">
                         <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-[18px] h-[18px]"></i></a>
@@ -570,7 +569,7 @@
                         <h2 class="text-2xl md:text-[1.75rem] font-serif text-white leading-snug max-w-xl" data-i18n="footer.cta_title">Let's Discuss Your Next Business Decision.</h2>
                         <p class="text-sm text-gray-500 mt-4 max-w-md leading-relaxed" data-i18n="footer.cta_desc">Our advisory team is prepared to structure tailored solutions for your organization's most critical transitions.</p>
                     </div>
-                    <a href="contact-us.html" class="inline-flex items-center gap-2.5 bg-brand-green text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-emerald-600 transition-all duration-300 shadow-lg shadow-brand-green/20 hover:shadow-xl hover:shadow-brand-green/30 hover:-translate-y-0.5 flex-shrink-0 group">
+                    <a href="contact-us.html" class="inline-flex items-center gap-2.5 bg-[#004D34] text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-emerald-600 transition-all duration-300 shadow-lg shadow-[#004D34]/20 hover:shadow-xl hover:shadow-[#004D34]/30 hover:-translate-y-0.5 flex-shrink-0 group">
                         <span data-i18n="footer.cta_button">Talk To Advisors</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
                     </a>
@@ -585,7 +584,7 @@
         <div class="container mx-auto px-6 py-10">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-4">
-                    <img src="assets/chatura-footer.webp" alt="Chatura" width="96" height="96" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
+                    <img width="487" height="350" src="assets/chatura-footer.webp" alt="Chatura" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
                     <span class="text-[11px] text-gray-500" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
                 </div>
                 <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-gray-500">
@@ -751,7 +750,7 @@
                     '</div>' +
                     '<div class="flex items-center justify-between pt-4 border-t border-gray-50 text-gray-400 text-xs">' +
                     '<span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i>' + t(p.locationKey) + '</span>' +
-                    '<span class="brand-green font-semibold group-hover:underline flex items-center gap-0.5">' + (t('people.view_all') || 'Profile') + ' <i data-lucide="chevron-right" class="w-3 h-3"></i></span>' +
+                    '<span class="text-[#004D34] font-semibold group-hover:underline flex items-center gap-0.5">' + (t('people.view_all') || 'Profile') + ' <i data-lucide="chevron-right" class="w-3 h-3"></i></span>' +
                     '</div>' +
                     '</div>';
             }).join('');

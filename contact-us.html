@@ -51,8 +51,8 @@
     <header id="navbar-sticky" class="sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <div class="font-bold text-2xl tracking-wider brand-green flex items-center gap-2">
-                    <img src="assets/chatura.webp" alt="Chatura Indonesia" width="96" height="96" class="h-24 w-auto">
+                <div class="font-bold text-2xl tracking-wider text-[#004D34] flex items-center gap-2">
+                    <img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto">
                 </div>
             </div>
 
@@ -61,7 +61,7 @@
                 <i data-lucide="menu" class="text-xl"></i>
             </button>
 
-                        <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+                        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
                 <a href="index.html" class="hover:text-emerald-800 transition" data-i18n="nav.about_us">About Us</a>
                 <div class="nav-dropdown">
                     <a href="services.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.services">Services</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
@@ -74,15 +74,15 @@
                 <a href="our-people.html" class="hover:text-emerald-800 transition" data-i18n="nav.our_people">Our People</a>
                 <a href="insights.html" class="hover:text-emerald-800 transition" data-i18n="nav.insights">Insights</a>
                 <a href="join-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.join_us">Join Us</a>
-                <a href="contact-us.html" class="brand-green font-semibold transition" data-i18n="nav.contact">Contact</a>
+                <a href="contact-us.html" class="text-[#004D34] font-semibold transition" data-i18n="nav.contact">Contact</a>
             </nav>
 
             <div class="hidden md:flex items-center space-x-6 text-sm">
-                <div id="lang-selector" class="flex items-center space-x-1 rounded-full bg-white px-3 py-1 shadow-xs transition-all duration-300">
-                    <a href="#" class="lang-active font-bold text-xs bg-brand-green text-white px-2.5 py-0.5 rounded-full transition-all duration-300">EN</a>
-                    <a href="#" class="lang-inactive font-medium text-xs text-gray-400 hover:text-gray-600 px-1 transition-all duration-300">ID</a>
+                <div id="lang-selector">
+                    <a href="#" data-lang="en" class="lang-active">EN</a>
+                    <a href="#" data-lang="id" class="lang-inactive">ID</a>
                 </div>
-                <a href="contact-us.html" class="bg-brand-green text-white px-5 py-2 rounded font-medium hover-bg-green transition">
+                <a href="contact-us.html" class="bg-[#004D34] text-white px-5 py-2 rounded font-medium transition hover:bg-[#003322]">
                     <span data-i18n="nav.lets_talk">Let's Talk</span> <i data-lucide="arrow-right" class="text-xs ml-1"></i>
                 </a>
             </div>
@@ -90,7 +90,7 @@
 
         <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
-                <img src="assets/chatura.webp" alt="Chatura Indonesia" class="h-24 w-auto">
+                <img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto">
                 <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden')"
                     class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
             </div>
@@ -106,27 +106,27 @@
                 <a href="contact-us.html" class="block py-3 px-4 rounded-lg text-base font-medium bg-emerald-50 text-emerald-800" data-i18n="nav.contact">Contact</a>
             </nav>
             <div class="p-6 border-t border-gray-100">
-                <a href="contact-us.html" class="block w-full bg-brand-green text-white text-center px-5 py-3 rounded font-medium hover-bg-green transition"><span data-i18n="nav.lets_talk">Let's Talk</span></a>
+                <a href="contact-us.html" class="block w-full bg-[#004D34] text-white text-center px-5 py-3 rounded font-medium transition hover:bg-[#003322]"><span data-i18n="nav.lets_talk">Let's Talk</span></a>
             </div>
         </div>
     </header>
 
     <!-- ============ HERO ============ -->
     <main id="main-content">
-    <section id="hero-contact" class="relative bg-brand-green text-white overflow-hidden -mt-[128px] pt-[128px]">
+    <section id="hero-contact" class="relative bg-[#004D34] text-white overflow-hidden -mt-[128px] pt-[128px]">
         <div id="hero-bg" class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/hero-contact.webp');"></div>
         <div class="absolute inset-0" style="background: linear-gradient(100deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 30%, transparent 50%);"></div>
         <div class="container mx-auto px-6 relative z-10 py-24 md:py-32">
             <div class="max-w-3xl">
                 <span class="reveal-up inline-block text-xs font-bold uppercase tracking-widest text-emerald-900 mb-4" data-i18n="contact.hero_label">Contact Us</span>
                 <h1 class="reveal-up text-3xl md:text-5xl font-serif font-light text-gray-900 mb-6 leading-tight">
-                    <span data-i18n="contact.hero_title_1">Let's Start a</span> <span class="italic font-normal brand-green" data-i18n="contact.hero_title_green">Conversation</span>
+                    <span data-i18n="contact.hero_title_1">Let's Start a</span> <span class="italic font-normal text-[#004D34]" data-i18n="contact.hero_title_green">Conversation</span>
                 </h1>
                 <p class="reveal-up text-gray-700/80 text-lg mb-8 max-w-2xl pr-20" data-i18n="contact.hero_desc">
                     Whether you are exploring investment listings, corporate restructuring, or strategic advisory, our team stands ready to assist.
                 </p>
                 <div class="reveal-up flex flex-wrap gap-4">
-                    <a href="#form-section" class="bg-brand-green text-white px-6 py-3 rounded font-medium hover-bg-green transition">
+                    <a href="#form-section" class="bg-[#004D34] text-white px-6 py-3 rounded font-medium transition hover:bg-[#003322]">
                         <span data-i18n="contact.hero_cta_1">Send a Message</span>
                     </a>
                     <a href="https://wa.me/622112345678?text=Hi%20Chatura%20Indonesia%2C%20I%20would%20like%20to%20schedule%20a%20corporate%20consultation." target="_blank" rel="noopener noreferrer" class="border border-gray-300 text-gray-700 px-6 py-3 rounded font-medium hover:bg-gray-900 hover:text-white transition">
@@ -149,29 +149,29 @@
                         <div class="grid gap-4">
                             <!-- Office -->
                             <div class="bg-neutral-50 border border-gray-200 rounded-xl p-5 flex items-start gap-4 transition hover:shadow-xs">
-                                <div class="w-9 h-9 rounded-lg bg-emerald-50 brand-green flex items-center justify-center flex-shrink-0"><i data-lucide="map-pin" class="w-4 h-4"></i></div>
+                                <div class="w-9 h-9 rounded-lg bg-emerald-50 text-[#004D34] flex items-center justify-center flex-shrink-0"><i data-lucide="map-pin" class="w-4 h-4"></i></div>
                                 <div>
                                     <h4 class="font-bold text-gray-950 text-sm mb-1" data-i18n="contact.office_label">Visit Our Office</h4>
                                     <p class="text-gray-500 text-xs leading-relaxed mb-3">Wisma 46, 30th Floor, Jl. Jenderal Sudirman Kav. 1, Jakarta 10220, Indonesia</p>
-                                    <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold brand-green hover:underline flex items-center gap-0.5" data-i18n="contact.view_map">View Map →</a>
+                                    <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-[#004D34] hover:underline flex items-center gap-0.5" data-i18n="contact.view_map">View Map →</a>
                                 </div>
                             </div>
                             <!-- Email -->
                             <div class="bg-neutral-50 border border-gray-200 rounded-xl p-5 flex items-start gap-4 transition hover:shadow-xs">
-                                <div class="w-9 h-9 rounded-lg bg-emerald-50 brand-green flex items-center justify-center flex-shrink-0"><i data-lucide="mail" class="w-4 h-4"></i></div>
+                                <div class="w-9 h-9 rounded-lg bg-emerald-50 text-[#004D34] flex items-center justify-center flex-shrink-0"><i data-lucide="mail" class="w-4 h-4"></i></div>
                                 <div>
                                     <h4 class="font-bold text-gray-950 text-sm mb-1" data-i18n="contact.email_label">Email Us</h4>
                                     <p class="text-gray-500 text-xs leading-relaxed mb-3" data-i18n="contact.email_desc">For general inquiries and dynamic business opportunities frameworks.</p>
-                                    <a href="mailto:hello@chatura.id" class="text-[11px] font-bold brand-green hover:underline">hello@chatura.id</a>
+                                    <a href="mailto:hello@chatura.id" class="text-[11px] font-bold text-[#004D34] hover:underline">hello@chatura.id</a>
                                 </div>
                             </div>
                             <!-- Phone -->
                             <div class="bg-neutral-50 border border-gray-200 rounded-xl p-5 flex items-start gap-4 transition hover:shadow-xs">
-                                <div class="w-9 h-9 rounded-lg bg-emerald-50 brand-green flex items-center justify-center flex-shrink-0"><i data-lucide="phone" class="w-4 h-4"></i></div>
+                                <div class="w-9 h-9 rounded-lg bg-emerald-50 text-[#004D34] flex items-center justify-center flex-shrink-0"><i data-lucide="phone" class="w-4 h-4"></i></div>
                                 <div>
                                     <h4 class="font-bold text-gray-950 text-sm mb-1" data-i18n="contact.phone_label">Call Us</h4>
                                     <p class="text-gray-500 text-xs leading-relaxed mb-3" data-i18n="contact.phone_desc">Speak directly with our dedicated practice advisory group members.</p>
-                                    <a href="tel:+622112345678" class="text-[11px] font-bold brand-green hover:underline">+62 21 1234 5678</a>
+                                    <a href="tel:+622112345678" class="text-[11px] font-bold text-[#004D34] hover:underline">+62 21 1234 5678</a>
                                 </div>
                             </div>
                         </div>
@@ -252,7 +252,7 @@
                             <input type="checkbox" id="privacy-check" class="mt-0.5 mr-2 w-3.5 h-3.5 border-gray-300 rounded focus:ring-emerald-700" required>
                             <label for="privacy-check" class="text-gray-500 leading-normal select-none" data-i18n="contact.privacy_consent">I verify that the parameters specified follow compliance codes and consent to secure data handling procedures.</label>
                         </div>
-                        <button type="submit" class="w-full bg-brand-green text-white text-xs py-3.5 rounded-lg font-bold hover-bg-green transition mt-3 shadow-xs flex justify-center items-center gap-1.5">
+                        <button type="submit" class="w-full bg-[#004D34] text-white text-xs py-3.5 rounded-lg font-bold transition mt-3 shadow-xs flex justify-center items-center gap-1.5 hover:bg-[#003322]">
                             <span data-i18n="contact.form_submit">Submit via Secure WhatsApp Business API</span> <i data-lucide="send" class="w-3.5 h-3.5"></i>
                         </button>
                     </form>
@@ -304,7 +304,7 @@
             </div>
             
             <div class="text-center mt-10 reveal-up">
-                <a href="#" class="text-xs font-bold brand-green hover:underline flex justify-center items-center gap-1" data-i18n="contact.view_all_faqs">View All FAQs <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
+                <a href="#" class="text-xs font-bold text-[#004D34] hover:underline flex justify-center items-center gap-1" data-i18n="contact.view_all_faqs">View All FAQs <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
             </div>
         </div>
     </section>
@@ -319,7 +319,7 @@
             <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
                 <div class="reveal-up">
                     <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500 block mb-6" data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
-                    <img src="assets/chatura-footer.webp" alt="Chatura Indonesia" width="96" height="96" class="h-20 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
+                    <img width="487" height="350" src="assets/chatura-footer.webp" alt="Chatura Indonesia" class="h-36 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
                     <p class="text-sm text-gray-400 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated professional services providing accounting, tax, business advisory, and risk management solutions across the Indonesian archipelago and Southeast Asian markets.</p>
                     <div class="flex items-center gap-5 mt-8 text-gray-500">
                         <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-[18px] h-[18px]"></i></a>
@@ -370,7 +370,7 @@
                         <h2 class="text-2xl md:text-[1.75rem] font-serif text-white leading-snug max-w-xl" data-i18n="footer.cta_title">Let's Discuss Your Next Business Decision.</h2>
                         <p class="text-sm text-gray-500 mt-4 max-w-md leading-relaxed" data-i18n="footer.cta_desc">Our advisory team is prepared to structure tailored solutions for your organization's most critical transitions.</p>
                     </div>
-                    <a href="contact-us.html" class="inline-flex items-center gap-2.5 bg-brand-green text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-emerald-600 transition-all duration-300 shadow-lg shadow-brand-green/20 hover:shadow-xl hover:shadow-brand-green/30 hover:-translate-y-0.5 flex-shrink-0 group">
+                    <a href="contact-us.html" class="inline-flex items-center gap-2.5 bg-[#004D34] text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-emerald-600 transition-all duration-300 shadow-lg shadow-[#004D34]/20 hover:shadow-xl hover:shadow-[#004D34]/30 hover:-translate-y-0.5 flex-shrink-0 group">
                         <span data-i18n="footer.cta_button">Talk To Advisors</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
                     </a>
@@ -385,7 +385,7 @@
         <div class="container mx-auto px-6 py-10">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-4">
-                    <img src="assets/chatura-footer.webp" alt="Chatura" width="96" height="96" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
+                    <img width="487" height="350" src="assets/chatura-footer.webp" alt="Chatura" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
                     <span class="text-[11px] text-gray-500" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
                 </div>
                 <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-gray-500">
