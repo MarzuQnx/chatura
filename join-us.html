@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="join.page_title">Join Us - Chatura Indonesia | Build Your Corporate Career Future</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        a:has(> svg[data-lucide]), a:has(> i[data-lucide]) { display: inline-flex; align-items: center; gap: 0.25rem; }
+        .brand-green,.text-brand-green { color: #004D34; }
+        .bg-brand-green { background-color: #004D34; }
+        .border-brand-green { border-color: #004D34; }
+        .hover-bg-green:hover { background-color: #003322; }
+        #navbar-sticky { transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; background-color: transparent; border-color: transparent; box-shadow: none; }
+        #navbar-sticky.scrolled { background-color: white; border-color: #f3f4f6; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1); }
+        #navbar-sticky #lang-selector { background-color: white; }
+        #navbar-sticky #lang-selector .lang-active { background-color: #004D34; color: white; }
+        #navbar-sticky #lang-selector .lang-inactive { color: #383b3f; }
+        #navbar-sticky.scrolled #lang-selector { background-color: #fff; }
+        #navbar-sticky.scrolled #lang-selector .lang-active { background-color: #004D34; color: rgba(167,243,208,0.9); }
+        #navbar-sticky.scrolled #lang-selector .lang-inactive { color: #383b3f; }
+        #navbar-sticky.scrolled #lang-selector .lang-inactive:hover { color: #555; }
+        * { touch-action: manipulation; }
+        .reveal-up { opacity: 0; transform: translateY(36px); }
+        .reveal-fade { opacity: 0; }
+        .job-tab-btn[aria-selected="true"] { background-color: #004D34; border-color: #004D34; color: #fff; }
+        .faq-accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease-out; }
+        .faq-accordion-item.active .faq-accordion-content { max-height: 200px; padding-top: 1rem; }
+        .faq-accordion-item.active .faq-icon { transform: rotate(45deg); }
+        #jobDrawer.active { opacity: 1; pointer-events: auto; }
+        #jobDrawer.active .drawer-body { transform: translateX(0); }
+        .counter-num { font-variant-numeric: tabular-nums; }
+        @media (prefers-reduced-motion: reduce) { .reveal-up, .reveal-fade { opacity: 1 !important; transform: none !important; } }
+        .wa-widget { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50; }
+        .wa-launcher { width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 24px rgba(37,211,102,.4); transition: transform .3s ease, box-shadow .3s ease; position: relative; }
+        .wa-launcher:hover { transform: scale(1.08); box-shadow: 0 6px 32px rgba(37,211,102,.55); }
+        .wa-launcher .wa-icon { width: 26px; height: 26px; }
+        .wa-pulse { position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #25D366; animation: wa-pulse-ring 2s ease-out infinite; pointer-events: none; }
+        @keyframes wa-pulse-ring { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.5); opacity: 0; } }
+        .wa-popup { position: absolute; bottom: 72px; right: 0; width: 340px; background: #fff; border-radius: 16px; box-shadow: 0 12px 48px rgba(0,0,0,.18); overflow: hidden; opacity: 0; transform: translateY(12px) scale(.95); pointer-events: none; transition: all .25s ease; }
+        .wa-popup.is-open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+        .wa-header { background: #075E54; color: #fff; padding: 20px 20px 16px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .wa-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .08em; opacity: .7; margin-bottom: 2px; }
+        .wa-title { font-size: 18px; font-weight: 600; margin: 0; }
+        .wa-close { background: none; border: none; color: #fff; cursor: pointer; padding: 4px; border-radius: 6px; transition: background .2s; }
+        .wa-close:hover { background: rgba(255,255,255,.15); }
+        .wa-intro { padding: 16px 20px 12px; font-size: 13px; color: #667; line-height: 1.5; margin: 0; border-bottom: 1px solid #f0f0f0; }
+        .wa-options { padding: 8px 12px; }
+        .wa-option { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; text-decoration: none; color: inherit; transition: background .2s; }
+        .wa-option:hover { background: #f0faf4; }
+        .wa-option-icon { flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; background: #e8f5ee; color: #075E54; display: flex; align-items: center; justify-content: center; }
+        .wa-option-content { flex: 1; min-width: 0; }
+        .wa-option-content strong { display: block; font-size: 14px; color: #1a1a2e; font-weight: 600; }
+        .wa-option-content span { display: block; font-size: 12px; color: #888; margin-top: 2px; }
+        .wa-arrow { font-size: 16px; color: #25D366; font-weight: 600; flex-shrink: 0; }
+        .wa-notice { padding: 12px 20px; background: #f8f9fa; border-top: 1px solid #f0f0f0; font-size: 11px; color: #888; text-align: center; }
+        .wa-notice strong { display: block; color: #555; font-size: 10px; letter-spacing: .06em; margin-bottom: 2px; }
+        @media (max-width: 400px) { .wa-popup { width: calc(100vw - 2rem); right: -0.5rem; } }
+    
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-menu { position: absolute; top: 100%; left: 0; padding-top: 0.5rem; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.2s ease, visibility 0.2s ease; }
+        .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; }
+        .nav-dropdown-menu a { display: block; padding: 0.625rem 1rem; font-size: 0.875rem; color: #374151; border-radius: 0.5rem; transition: background-color 0.15s ease, color 0.15s ease; white-space: nowrap; }
+        .nav-dropdown-menu a:hover { background-color: #f9fafb; color: #065f46; }
+        .nav-dropdown-menu a.active { color: #065f46; font-weight: 600; }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 font-sans antialiased">
+
+    <!-- HEADER -->
+    <header id="navbar-sticky" class="sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2"><div class="font-bold text-2xl tracking-wider brand-green flex items-center gap-2"><img src="assets/chatura.png" alt="Chatura Indonesia" width="96" height="96" class="h-24 w-auto"></div></div>
+            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="menu" class="text-xl"></i></button>
+                        <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+                <a href="index.html" class="hover:text-emerald-800 transition" data-i18n="nav.about_us">About Us</a>
+                <div class="nav-dropdown">
+                    <a href="services.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.services">Services</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="services.html" data-i18n="nav.services_overview">Overview</a>
+                        <a href="business-transfer.html" data-i18n="nav.business_transfer">Business Transfer</a>
+                    </div>
+                </div>
+                <a href="industries.html" class="hover:text-emerald-800"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs ml-1"></i></a>
+                <a href="our-people.html" class="hover:text-emerald-800 transition" data-i18n="nav.our_people">Our People</a>
+                <a href="insights.html" class="hover:text-emerald-800 transition" data-i18n="nav.insights">Insights</a>
+                <a href="join-us.html" class="brand-green font-semibold transition" data-i18n="nav.join_us">Join Us</a>
+                <a href="contact-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.contact">Contact</a>
+            </nav>
+            <div class="hidden md:flex items-center space-x-6 text-sm">
+                <div id="lang-selector" class="flex items-center space-x-1 rounded-full bg-white px-3 py-1 shadow-xs transition-all duration-300">
+                    <a href="#" class="lang-active font-bold text-xs bg-brand-green text-white px-2.5 py-0.5 rounded-full transition-all duration-300">EN</a>
+                    <a href="#" class="lang-inactive font-medium text-xs text-gray-400 hover:text-gray-600 px-1 transition-all duration-300">ID</a>
+                </div>
+                <a href="contact-us.html" class="bg-brand-green text-white px-5 py-2 rounded font-medium hover-bg-green transition"><span data-i18n="nav.lets_talk">Let's Talk</span> <i data-lucide="arrow-right" class="text-xs ml-1"></i></a>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
+            <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
+                <img src="assets/chatura.png" alt="Chatura Indonesia" class="h-24 w-auto">
+                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
+            </div>
+            <nav class="flex-1 overflow-y-auto p-6 space-y-1">
+                <a href="index.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.about_us">About Us</a>
+                <a href="services.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.services">Services</a>
+                <a href="business-transfer.html" class="block py-3 pl-8 pr-4 rounded-lg text-sm text-gray-500 hover:bg-gray-50" data-i18n="nav.business_transfer">Business Transfer</a>
+                <a href="industries.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.industries">Industries</a>
+                <a href="our-people.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.our_people">Our People</a>
+                <a href="insights.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.insights">Insights</a>
+                <a href="join-us.html" class="block py-3 px-4 rounded-lg text-base font-medium bg-emerald-50 text-emerald-800" data-i18n="nav.join_us">Join Us</a>
+                
+                <a href="contact-us.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.contact">Contact</a>
+            </nav>
+            <div class="p-6 border-t border-gray-100"><a href="contact-us.html" class="block w-full bg-brand-green text-white text-center px-5 py-3 rounded font-medium hover-bg-green transition"><span data-i18n="nav.lets_talk">Let's Talk</span></a></div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="hero-careers" class="relative bg-brand-green text-white overflow-hidden -mt-[128px] pt-[128px]">
+        <div id="hero-bg" class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/hero-join-01.png');"></div>
+        <div class="absolute inset-0" style="background: linear-gradient(100deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 30%, transparent 50%);"></div>
+        <div class="container mx-auto px-6 relative z-10 py-24 md:py-32">
+            <div class="max-w-3xl">
+                <span class="reveal-up inline-block text-xs font-bold uppercase tracking-widest text-emerald-900 mb-4" data-i18n="join.hero_label">Careers at Chatura</span>
+                <h1 class="reveal-up text-3xl md:text-5xl font-serif font-light text-gray-900 mb-6 leading-tight">
+                    <span data-i18n="join.hero_title_1">Build Your Future with</span><br /><span class="italic font-normal brand-green" data-i18n="join.hero_title_green">with Chatura Indonesia</span>
+                </h1>
+                <p class="reveal-up text-gray-700/80 text-lg mb-8 max-w-2xl pr-20" data-i18n="join.hero_desc">
+                    Where legal, tax, finance, and business strategy professionals grow together to solve Indonesia's most complex business challenges.
+                </p>
+                <div class="reveal-up flex flex-wrap gap-4">
+                    <a href="#open-positions" class="bg-brand-green text-white px-6 py-3 rounded font-medium hover-bg-green transition">
+                        <span data-i18n="join.explore_cta">Explore Opportunities</span>
+                    </a>
+                    <a href="#apply-form" class="border border-gray-300 text-gray-700 px-6 py-3 rounded font-medium hover:bg-gray-900 hover:text-white transition">
+                        <span data-i18n="join.talent_cta">Join Our Talent Pool</span> <i data-lucide="arrow-right" class="text-xs ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATISTICS -->
+    <section id="stats-bar" class="py-14 bg-gray-50 border-t border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="reveal-up"><p class="text-3xl md:text-4xl font-bold text-gray-950 counter-num" data-target="200">0</p><span class="text-xs text-gray-500 font-medium mt-1 block" data-i18n="join.stat_employees">Employees</span></div>
+                <div class="reveal-up"><p class="text-3xl md:text-4xl font-bold text-gray-950 counter-num" data-target="96">0</p><span class="text-xs text-gray-500 font-medium mt-1 block"><span data-i18n="join.stat_retention">Retention</span></span></div>
+                <div class="reveal-up"><p class="text-3xl md:text-4xl font-bold text-gray-950 counter-num" data-target="4.8">0</p><span class="text-xs text-gray-500 font-medium mt-1 block" data-i18n="join.stat_glassdoor">Glassdoor Rating</span></div>
+                <div class="reveal-up"><p class="text-3xl md:text-4xl font-bold text-gray-950 counter-num" data-target="15">0</p><span class="text-xs text-gray-500 font-medium mt-1 block" data-i18n="join.stat_partners">Industry Partners</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHATURA -->
+    <section id="company-culture" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up text-center max-w-xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="join.why_label">Why Chatura</span>
+                <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="join.why_title">An Empowering Workplace Culture</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6 items-stretch">
+                <div class="reveal-up bg-white p-8 rounded-2xl border border-gray-200 flex flex-col justify-between text-center transition hover:shadow-lg hover:-translate-y-1 duration-300">
+                    <div><div class="w-14 h-14 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center mx-auto mb-5"><i data-lucide="trending-up" class="w-6 h-6"></i></div><h3 class="font-bold text-gray-950 text-lg mb-2" data-i18n="join.value_1_title">Grow</h3><p class="text-sm text-gray-500 leading-relaxed" data-i18n="join.value_1_desc">Accelerate your career with real work challenges, continuous learning, and exposure to high-impact cross-border engagements.</p></div>
+                </div>
+                <div class="reveal-up bg-white p-8 rounded-2xl border border-gray-200 flex flex-col justify-between text-center transition hover:shadow-lg hover:-translate-y-1 duration-300">
+                    <div><div class="w-14 h-14 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center mx-auto mb-5"><i data-lucide="users" class="w-6 h-6"></i></div><h3 class="font-bold text-gray-950 text-lg mb-2" data-i18n="join.value_2_title">Collaborate</h3><p class="text-sm text-gray-500 leading-relaxed" data-i18n="join.value_2_desc">Work alongside experts from various multi-disciplinary functions within our integrated advisory practice.</p></div>
+                </div>
+                <div class="reveal-up bg-white p-8 rounded-2xl border border-gray-200 flex flex-col justify-between text-center transition hover:shadow-lg hover:-translate-y-1 duration-300">
+                    <div><div class="w-14 h-14 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center mx-auto mb-5"><i data-lucide="target" class="w-6 h-6"></i></div><h3 class="font-bold text-gray-950 text-lg mb-2" data-i18n="join.value_3_title">Make an Impact</h3><p class="text-sm text-gray-500 leading-relaxed" data-i18n="join.value_3_desc">Help our clients navigate critical decisions and shape sustainable long-term business growth.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIFE AT CHATURA — Masonry -->
+    <section id="life-at-chatura" class="py-20 bg-gray-50 border-t border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-12">
+                <div><span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="join.culture_label">Culture</span><h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="join.culture_title">Life at Chatura</h2></div>
+                <span class="text-xs text-gray-400 font-semibold" data-i18n="join.view_more_photos">View Experience Gallery</span>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="col-span-1 row-span-2 rounded-2xl overflow-hidden h-80 lg:h-full shadow-sm group"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="Workshop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+                <div class="rounded-2xl overflow-hidden h-36 shadow-sm group"><img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80" alt="Discussion" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+                <div class="rounded-2xl overflow-hidden h-36 shadow-sm group"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80" alt="Session" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+                <div class="col-span-1 row-span-2 rounded-2xl overflow-hidden h-80 lg:h-full shadow-sm group"><img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=600&q=80" alt="Offsite" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+                <div class="rounded-2xl overflow-hidden h-36 shadow-sm group"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" alt="Office" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+                <div class="rounded-2xl overflow-hidden h-36 shadow-sm group"><img src="https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=600&q=80" alt="Workspace" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAREER PROGRAMS -->
+    <section id="career-programs" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up text-center max-w-xl mx-auto mb-16"><span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="join.pathways_label">Pathways</span><h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="join.pathways_title">Kickstart Your Career</h2></div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="reveal-up border border-gray-200 rounded-2xl overflow-hidden bg-white hover:shadow-lg transition duration-300">
+                    <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Internship" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+                    <div class="p-8">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 brand-green flex items-center justify-center text-lg mb-5"><i data-lucide="graduation-cap"></i></div>
+                        <h3 class="text-xl font-bold text-gray-950 mb-3" data-i18n="join.internship_title">Internship Program</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed mb-6" data-i18n="join.internship_desc">A 3-6 month internship program designed for penultimate-year students in law, economics, accounting, and related disciplines.</p>
+                        <ul class="text-sm text-gray-600 space-y-2.5 mb-8">
+                            <li class="flex items-center"><i data-lucide="check" class="text-emerald-700 mr-2 w-4 h-4"></i> <span data-i18n="join.internship_bullet_1">Direct project involvement</span></li>
+                            <li class="flex items-center"><i data-lucide="check" class="text-emerald-700 mr-2 w-4 h-4"></i> <span data-i18n="join.internship_bullet_2">Open to law/economics students</span></li>
+                            <li class="flex items-center"><i data-lucide="check" class="text-emerald-700 mr-2 w-4 h-4"></i> <span data-i18n="join.internship_bullet_3">Potential full-time offer</span></li>
+                        </ul>
+                        <a href="#apply-form" onclick="prefillPosition('General Interest')" class="text-sm brand-green font-semibold hover:underline flex items-center gap-1" data-i18n="join.explore_program">Explore Program →</a>
+                    </div>
+                </div>
+                <div class="reveal-up border border-gray-200 rounded-2xl overflow-hidden bg-white hover:shadow-lg transition duration-300">
+                    <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=800&q=80" alt="Future Leaders" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+                    <div class="p-8">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 brand-green flex items-center justify-center text-lg mb-5"><i data-lucide="award"></i></div>
+                        <h3 class="text-xl font-bold text-gray-950 mb-3" data-i18n="join.leaders_title">Future Leaders Program</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed mb-6" data-i18n="join.leaders_desc">An intensive structured rotational program for talented new graduates fast-tracked to senior management roles.</p>
+                        <ul class="text-sm text-gray-600 space-y-2.5 mb-8">
+                            <li class="flex items-center"><i data-lucide="check" class="text-emerald-700 mr-2 w-4 h-4"></i> <span data-i18n="join.leaders_bullet_1">Cross-functional rotation</span></li>
+                            <li class="flex items-center"><i data-lucide="check" class="text-emerald-700 mr-2 w-4 h-4"></i> <span data-i18n="join.leaders_bullet_2">Leadership competency development</span></li>
+                            <li class="flex items-center"><i data-lucide="check" class="text-emerald-700 mr-2 w-4 h-4"></i> <span data-i18n="join.leaders_bullet_3">Fast-track executive management career path</span></li>
+                        </ul>
+                        <a href="#apply-form" onclick="prefillPosition('General Interest')" class="text-sm brand-green font-semibold hover:underline flex items-center gap-1" data-i18n="join.explore_program">Explore Program →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMPLOYEE STORIES -->
+    <section id="employee-stories" class="py-20 bg-gray-50 border-t border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 reveal-up"><span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="join.stories_label">Testimonials</span><h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="join.stories_title">What People Say</h2></div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="reveal-up bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-lg transition duration-300">
+                    <div class="flex text-amber-400 mb-4 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="text-sm text-gray-600 italic mb-6" data-i18n="join.story_1_text">"Working at Chatura transformed my career trajectory. The exposure to cross-border engagements gave me confidence I never knew I had."</p>
+                    <div class="flex items-center gap-3"><img class="w-10 h-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=80&h=80&q=80" alt="Sarah K." loading="lazy"><div><p class="text-sm font-bold text-gray-950" data-i18n="join.story_1_name">Sarah K.</p><p class="text-xs text-gray-500" data-i18n="join.story_1_role">Tax Consultant, 2 years</p></div></div>
+                </div>
+                <div class="reveal-up bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-lg transition duration-300">
+                    <div class="flex text-amber-400 mb-4 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="text-sm text-gray-600 italic mb-6" data-i18n="join.story_2_text">"The mentorship from senior partners accelerated my growth. Within 18 months, I was leading my own client engagements."</p>
+                    <div class="flex items-center gap-3"><img class="w-10 h-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80" alt="Rizky P." loading="lazy"><div><p class="text-sm font-bold text-gray-950" data-i18n="join.story_2_name">Rizky P.</p><p class="text-xs text-gray-500" data-i18n="join.story_2_role">Finance Analyst, 3 years</p></div></div>
+                </div>
+                <div class="reveal-up bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-lg transition duration-300">
+                    <div class="flex text-amber-400 mb-4 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="text-sm text-gray-600 italic mb-6" data-i18n="join.story_3_text">"The collaborative culture here is genuine. Every team member genuinely wants to see you succeed and grow professionally."</p>
+                    <div class="flex items-center gap-3"><img class="w-10 h-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=80&h=80&q=80" alt="Dimas A." loading="lazy"><div><p class="text-sm font-bold text-gray-950" data-i18n="join.story_3_name">Dimas A.</p><p class="text-xs text-gray-500" data-i18n="join.story_3_role">Risk Management Associate, 1 year</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HIRING PROCESS -->
+    <section id="hiring-process" class="py-20 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-12 reveal-up"><span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="join.process_label">How We Hire</span><h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="join.process_title">Our Hiring Process</h2></div>
+            <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-6">
+                <div class="reveal-up text-center flex-1 max-w-[200px] mx-auto"><div class="w-12 h-12 rounded-full bg-brand-green text-white flex items-center justify-center mx-auto mb-3 text-sm font-bold">1</div><h4 class="font-bold text-sm text-gray-950" data-i18n="join.process_step_1_title">Apply</h4><p class="text-xs text-gray-500 mt-1" data-i18n="join.process_step_1_desc">Submit your application</p></div>
+                <div class="reveal-up text-center flex-1 max-w-[200px] mx-auto"><div class="w-12 h-12 rounded-full bg-brand-green text-white flex items-center justify-center mx-auto mb-3 text-sm font-bold">2</div><h4 class="font-bold text-sm text-gray-950" data-i18n="join.process_step_2_title">Screening</h4><p class="text-xs text-gray-500 mt-1" data-i18n="join.process_step_2_desc">CV & initial review</p></div>
+                <div class="reveal-up text-center flex-1 max-w-[200px] mx-auto"><div class="w-12 h-12 rounded-full bg-brand-green text-white flex items-center justify-center mx-auto mb-3 text-sm font-bold">3</div><h4 class="font-bold text-sm text-gray-950" data-i18n="join.process_step_3_title">Interview</h4><p class="text-xs text-gray-500 mt-1" data-i18n="join.process_step_3_desc">Technical & culture fit</p></div>
+                <div class="reveal-up text-center flex-1 max-w-[200px] mx-auto"><div class="w-12 h-12 rounded-full bg-brand-green text-white flex items-center justify-center mx-auto mb-3 text-sm font-bold">4</div><h4 class="font-bold text-sm text-gray-950" data-i18n="join.process_step_4_title">Offer</h4><p class="text-xs text-gray-500 mt-1" data-i18n="join.process_step_4_desc">Receive your proposal</p></div>
+                <div class="reveal-up text-center flex-1 max-w-[200px] mx-auto"><div class="w-12 h-12 rounded-full bg-brand-green text-white flex items-center justify-center mx-auto mb-3 text-sm font-bold">5</div><h4 class="font-bold text-sm text-gray-950" data-i18n="join.process_step_5_title">Welcome</h4><p class="text-xs text-gray-500 mt-1" data-i18n="join.process_step_5_desc">Onboarding & start</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section id="benefits" class="py-20 bg-gray-50 border-t border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 reveal-up"><span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="join.benefits_label">Benefits</span><h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="join.benefits_title">Benefits & Perks</h2></div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="reveal-up flex items-start gap-4 p-6 rounded-xl bg-white border border-gray-200 hover:shadow-md transition duration-300"><div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0"><i data-lucide="heart-pulse" class="w-5 h-5"></i></div><div><h4 class="font-bold text-sm text-gray-950" data-i18n="join.benefit_1_title">Health Insurance</h4><p class="text-xs text-gray-500 mt-1" data-i18n="join.benefit_1_desc">Comprehensive coverage for you and your family</p></div></div>
+                <div class="reveal-up flex items-start gap-4 p-6 rounded-xl bg-white border border-gray-200 hover:shadow-md transition duration-300"><div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0"><i data-lucide="award" class="w-5 h-5"></i></div><div><h4 class="font-bold text-sm text-gray-950" data-i18n="join.benefit_2_title">Professional Certifications</h4><p class="text-xs text-gray-500 mt-1" data-i18n="join.benefit_2_desc">Sponsored CPA, CFA, and tax certification programs</p></div></div>
+                <div class="reveal-up flex items-start gap-4 p-6 rounded-xl bg-white border border-gray-200 hover:shadow-md transition duration-300"><div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0"><i data-lucide="trophy" class="w-5 h-5"></i></div><div><h4 class="font-bold text-sm text-gray-950" data-i18n="join.benefit_3_title">Performance Bonus</h4><p class="text-xs text-gray-500 mt-1" data-i18n="join.benefit_3_desc">Competitive annual performance-based incentives</p></div></div>
+                <div class="reveal-up flex items-start gap-4 p-6 rounded-xl bg-white border border-gray-200 hover:shadow-md transition duration-300"><div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0"><i data-lucide="home" class="w-5 h-5"></i></div><div><h4 class="font-bold text-sm text-gray-950" data-i18n="join.benefit_4_title">Hybrid Work</h4><p class="text-xs text-gray-500 mt-1" data-i18n="join.benefit_4_desc">Flexible remote and office work arrangements</p></div></div>
+                <div class="reveal-up flex items-start gap-4 p-6 rounded-xl bg-white border border-gray-200 hover:shadow-md transition duration-300"><div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0"><i data-lucide="book-open" class="w-5 h-5"></i></div><div><h4 class="font-bold text-sm text-gray-950" data-i18n="join.benefit_5_title">Learning & Development</h4><p class="text-xs text-gray-500 mt-1" data-i18n="join.benefit_5_desc">Continuous training, workshops, and conferences</p></div></div>
+                <div class="reveal-up flex items-start gap-4 p-6 rounded-xl bg-white border border-gray-200 hover:shadow-md transition duration-300"><div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0"><i data-lucide="party-popper" class="w-5 h-5"></i></div><div><h4 class="font-bold text-sm text-gray-950" data-i18n="join.benefit_6_title">Team Events</h4><p class="text-xs text-gray-500 mt-1" data-i18n="join.benefit_6_desc">Regular team outings, retreats, and social gatherings</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPEN POSITIONS -->
+    <section id="open-positions" class="py-20 bg-white border-b border-gray-100 scroll-mt-24">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-12">
+                <div><span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="join.positions_label">Opportunities</span><h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="join.positions_title">Open Positions</h2></div>
+                <div class="flex flex-wrap gap-1.5" role="tablist" id="jobFilterWrap">
+                    <button type="button" data-filter="all" aria-selected="true" class="job-tab-btn px-4 py-1.5 border border-gray-200 bg-white text-xs font-medium rounded-full text-gray-700 hover:border-emerald-700 transition" data-i18n="join.filter_all">All Departments</button>
+                    <button type="button" data-filter="tax" aria-selected="false" class="job-tab-btn px-4 py-1.5 border border-gray-200 bg-white text-xs font-medium rounded-full text-gray-700 hover:border-emerald-700 transition">Tax</button>
+                    <button type="button" data-filter="finance" aria-selected="false" class="job-tab-btn px-4 py-1.5 border border-gray-200 bg-white text-xs font-medium rounded-full text-gray-700 hover:border-emerald-700 transition">Finance</button>
+                    <button type="button" data-filter="risk" aria-selected="false" class="job-tab-btn px-4 py-1.5 border border-gray-200 bg-white text-xs font-medium rounded-full text-gray-700 hover:border-emerald-700 transition">Risk Management</button>
+                    <button type="button" data-filter="legal" aria-selected="false" class="job-tab-btn px-4 py-1.5 border border-gray-200 bg-white text-xs font-medium rounded-full text-gray-700 hover:border-emerald-700 transition">Legal</button>
+                </div>
+            </div>
+            <div id="positionsContainer" class="grid gap-4 max-w-4xl mx-auto"></div>
+        </div>
+    </section>
+
+    <!-- JOB DRAWER -->
+    <div id="jobDrawer" class="fixed inset-0 z-50 opacity-0 pointer-events-none transition-all duration-300 flex justify-end">
+        <div class="absolute inset-0 bg-gray-900/50 backdrop-blur-xs" onclick="closeJobDrawer()"></div>
+        <div class="drawer-body w-full max-w-xl bg-white h-full relative z-10 shadow-2xl flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+            <div class="p-6 border-b border-gray-100 flex justify-between items-start">
+                <div>
+                    <span id="drawerDept" class="text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 px-2.5 py-0.5 rounded-full inline-block mb-2"></span>
+                    <h3 id="drawerTitle" class="text-xl font-bold font-serif text-gray-950 leading-tight"></h3>
+                    <div class="flex gap-4 text-xs text-gray-400 mt-2">
+                        <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> <span id="drawerLocation"></span></span>
+                        <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> <span id="drawerType"></span></span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button class="text-gray-400 hover:text-gray-700 p-1.5 rounded-lg border border-gray-100 transition" title="Bookmark"><i data-lucide="bookmark" class="w-4 h-4"></i></button>
+                    <button class="text-gray-400 hover:text-gray-700 p-1.5 rounded-lg border border-gray-100 transition" title="Share"><i data-lucide="share-2" class="w-4 h-4"></i></button>
+                    <button onclick="closeJobDrawer()" class="text-gray-400 hover:text-gray-700 p-1.5 rounded-lg border border-gray-100 transition"><i data-lucide="x" class="w-5 h-5"></i></button>
+                </div>
+            </div>
+            <div class="p-6 overflow-y-auto flex-1 space-y-6 text-xs text-gray-600 leading-relaxed">
+                <div><h4 class="font-bold text-gray-950 mb-2 text-sm" data-i18n="join.about_role">About the Role</h4><p id="drawerAbout" class="text-gray-600"></p></div>
+                <div><h4 class="font-bold text-gray-950 mb-2 text-sm" data-i18n="join.what_do">What You'll Do</h4><ul id="drawerTasks" class="list-disc pl-4 space-y-1.5"></ul></div>
+                <div><h4 class="font-bold text-gray-950 mb-2 text-sm" data-i18n="join.what_bring">What You'll Bring</h4><ul id="drawerRequirements" class="list-disc pl-4 space-y-1.5"></ul></div>
+                <div class="bg-emerald-50 rounded-xl p-5 border border-emerald-100">
+                    <h4 class="font-bold text-gray-950 mb-3 text-sm" data-i18n="join.drawer_benefits">Key Benefits</h4>
+                    <ul class="text-xs text-gray-600 space-y-1.5">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-700 flex-shrink-0"></i> <span data-i18n="join.drawer_benefit_1">Health insurance coverage</span></li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-700 flex-shrink-0"></i> <span data-i18n="join.drawer_benefit_2">Performance bonus program</span></li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-700 flex-shrink-0"></i> <span data-i18n="join.drawer_benefit_3">Professional development budget</span></li>
+                    </ul>
+                </div>
+                <div><h4 class="font-bold text-gray-950 mb-3 text-sm" data-i18n="join.drawer_similar">Similar Roles</h4><div id="drawerSimilar" class="space-y-2"></div></div>
+            </div>
+            <div class="p-6 border-t border-gray-100 bg-gray-50 flex items-center gap-3">
+                <button id="drawerApplyBtn" class="flex-1 bg-brand-green text-white font-bold py-3 px-4 rounded-lg hover-bg-green transition shadow-xs text-center" data-i18n="join.apply_now">Apply Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <section class="py-20 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <div class="reveal-up text-center mb-16"><span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="join.faq_label">Questions</span><h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="join.faq_title">Frequently Asked Questions</h2></div>
+            <div class="space-y-3" id="faqAccordionWrap">
+                <div class="faq-accordion-item bg-white border border-gray-200 rounded-xl p-5 transition cursor-pointer"><div class="flex justify-between items-center gap-4 text-sm font-bold text-gray-950"><span data-i18n="join.faq_1">What is the recruitment selection process at Chatura?</span><div class="faq-icon w-5 h-5 rounded-full border border-gray-200 flex items-center justify-center transition-transform duration-300"><i data-lucide="plus" class="w-3 h-3 text-gray-400"></i></div></div><div class="faq-accordion-content text-xs text-gray-500 leading-relaxed">Our recruitment cycle includes CV screening, technical competency assessment, analytical case study evaluation, and a closing panel interview with Practice Partners.</div></div>
+                <div class="faq-accordion-item bg-white border border-gray-200 rounded-xl p-5 transition cursor-pointer"><div class="flex justify-between items-center gap-4 text-sm font-bold text-gray-950"><span data-i18n="join.faq_2">Are remote / hybrid work arrangements available?</span><div class="faq-icon w-5 h-5 rounded-full border border-gray-200 flex items-center justify-center transition-transform duration-300"><i data-lucide="plus" class="w-3 h-3 text-gray-400"></i></div></div><div class="faq-accordion-content text-xs text-gray-500 leading-relaxed">Yes. We implement a balanced hybrid work framework, providing up to 2 remote work days per week depending on project requirements and team coordination.</div></div>
+                <div class="faq-accordion-item bg-white border border-gray-200 rounded-xl p-5 transition cursor-pointer"><div class="flex justify-between items-center gap-4 text-sm font-bold text-gray-950"><span data-i18n="join.faq_3">What documents do I need to prepare when applying?</span><div class="faq-icon w-5 h-5 rounded-full border border-gray-200 flex items-center justify-center transition-transform duration-300"><i data-lucide="plus" class="w-3 h-3 text-gray-400"></i></div></div><div class="faq-accordion-content text-xs text-gray-500 leading-relaxed">Candidates should provide an updated CV/resume (PDF format), valid degree certificates, professional certifications if available, and a cover letter.</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPLY FORM — 2-Column -->
+    <section id="apply-form" class="py-20 bg-gray-50 border-t border-gray-100 scroll-mt-24">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="bg-white p-8 md:p-12 rounded-2xl border border-gray-200 shadow-xs">
+                <div class="text-center mb-10"><h2 class="text-2xl font-serif font-bold text-gray-950" data-i18n="join.apply_title">Submit Your Application</h2><p class="text-xs text-gray-500 mt-2" data-i18n="join.apply_desc">Complete the form below along with your latest CV.</p></div>
+                <form class="text-xs" onsubmit="handleJobSubmit(event)">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-5">
+                            <div><label class="block font-bold text-gray-700 mb-1.5" data-i18n="join.form_name">Full Name *</label><input type="text" data-i18n-placeholder="join.form_name_placeholder" placeholder="Enter your full name" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-emerald-700 transition shadow-2xs" required></div>
+                            <div><label class="block font-bold text-gray-700 mb-1.5" data-i18n="join.form_email">Business / Personal Email *</label><input type="email" data-i18n-placeholder="join.form_email_placeholder" placeholder="name@domain.com" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-emerald-700 transition shadow-2xs" required></div>
+                            <div><label class="block font-bold text-gray-700 mb-1.5" data-i18n="join.form_phone">Phone Number (WhatsApp) *</label><input type="tel" data-i18n-placeholder="join.form_phone_placeholder" placeholder="+62 8..." class="w-full bg-white border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-emerald-700 transition shadow-2xs" required></div>
+                            <div><label class="block font-bold text-gray-700 mb-1.5" data-i18n="join.form_position">Position Applied For *</label><select id="positionDropdown" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-emerald-700 transition shadow-2xs" required><option value="" data-i18n="join.form_position_placeholder">-- Select Position --</option><option value="Legal Associate" data-i18n="join.position_1">Legal Associate</option><option value="Tax Consultant" data-i18n="join.position_2">Tax Consultant</option><option value="Finance Analyst" data-i18n="join.position_3">Finance Analyst</option><option value="Risk Management Associate" data-i18n="join.position_4">Risk Management Associate</option><option value="General Interest" data-i18n="join.form_position_general">General Interest / Talent Pool</option></select></div>
+                        </div>
+                        <div class="space-y-5">
+                            <div><label class="block font-bold text-gray-700 mb-1.5" data-i18n="join.form_cv">Upload CV / Resume (PDF, max 5MB) *</label><input type="file" accept=".pdf" class="w-full bg-white border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:border-emerald-700 transition file:bg-gray-100 file:border-0 file:rounded-md file:px-3 file:py-1 file:text-xs file:font-semibold file:text-gray-700 hover:file:bg-gray-200" required></div>
+                            <div><label class="block font-bold text-gray-700 mb-1.5" data-i18n="join.form_message">Additional Message / Cover Letter</label><textarea rows="6" data-i18n-placeholder="join.form_message_placeholder" placeholder="Briefly tell us about your motivation to join..." class="w-full bg-white border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-emerald-700 transition shadow-2xs"></textarea></div>
+                            <button type="submit" class="w-full bg-brand-green text-white text-sm py-3.5 rounded-lg font-bold hover-bg-green transition shadow-xs" data-i18n="join.form_submit">Submit Application</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section id="final-cta" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up bg-brand-green rounded-2xl px-8 py-12 md:px-14 md:py-14 flex flex-col md:flex-row items-center justify-between gap-8 text-white relative overflow-hidden">
+                <div class="flex items-start gap-5 relative z-10">
+                    <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0"><i data-lucide="message-square" class="text-lg"></i></div>
+                    <div><h2 class="text-2xl md:text-3xl font-serif mb-2" data-i18n="join.cta_title">Ready to Start Your Career?</h2><p class="text-emerald-100/80 text-sm max-w-md" data-i18n="join.cta_desc">Our team is ready to help you find the right path.</p></div>
+                </div>
+                <a href="contact-us.html" class="inline-flex items-center bg-gray-900 text-white text-sm px-6 py-2.5 rounded font-medium hover:bg-gray-600 transition whitespace-nowrap relative z-10"><span data-i18n="join.cta_button">Talk To Us</span> <i data-lucide="arrow-right" class="text-xs ml-2"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHATSAPP -->
+    <div class="wa-widget">
+        <button type="button" class="wa-launcher" id="waLauncher" aria-label="Chat via WhatsApp" aria-expanded="false" aria-controls="waPopup">
+            <svg viewBox="0 0 24 24" class="wa-icon" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19.11 4.93A9.9 9.9 0 0 0 3.6 16.88L2 22l5.24-1.54a9.89 9.89 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.79-6.84Zm-7.12 15.1h-.01c-1.53 0-3.03-.41-4.34-1.18l-.31-.18-3.11.91.84-3.03-.2-.32a8.26 8.26 0 1 1 7.13 3.8Zm4.53-6.18c-.25-.13-1.49-.74-1.72-.82-.23-.08-.4-.12-.57.13-.17.25-.66.82-.8.99-.15.17-.29.19-.54.06-.25-.13-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.36-1.69-.14-.25-.02-.38.11-.5.12-.12.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.57-1.37-.78-1.87-.21-.51-.42-.44-.57-.45h-.49c-.17 0-.45.06-.68.32-.23.25-.89.87-.89 2.11s.92 2.44 1.05 2.6c.13.17 1.82 2.77 4.42 3.89.62.27 1.11.43 1.49.55.63.2 1.2.17 1.65.1.5-.08 1.49-.61 1.7-1.2.21-.59.21-1.09.15-1.2-.06-.1-.23-.17-.48-.3Z"></path></svg>
+            <span class="wa-pulse" aria-hidden="true"></span>
+        </button>
+        <div id="waPopup" class="wa-popup" role="dialog" aria-modal="false" aria-labelledby="wa-title" aria-hidden="true">
+            <div class="wa-header"><div><p class="wa-eyebrow">CHATURA SUPPORT</p><h2 id="wa-title" class="wa-title">How can we help?</h2></div><button type="button" class="wa-close" id="waClose" aria-label="Close"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg></button></div>
+            <p class="wa-intro">Choose the department that best matches your enquiry and we'll connect you directly on WhatsApp.</p>
+            <div class="wa-options">
+                <a href="https://wa.me/6212345678?text=Hi+Chatura%2C+I+need+help+with+general+inquiry." target="_blank" rel="noopener noreferrer" class="wa-option"><span class="wa-option-icon"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 12a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><rect x="3.5" y="12" width="4" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"></rect><rect x="16.5" y="12" width="4" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"></rect><path d="M8 20c0 1.1.9 2 2 2h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span class="wa-option-content"><strong>General Inquiry</strong><span>Accounting, Tax & Advisory</span></span><span class="wa-arrow">→</span></a>
+                <a href="https://wa.me/6212345678?text=Hi+Chatura%2C+I+need+help+with+business+transfer." target="_blank" rel="noopener noreferrer" class="wa-option"><span class="wa-option-icon"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 3 5 6v5c0 4.5 2.7 7.6 7 10 4.3-2.4 7-5.5 7-10V6l-7-3Zm-3 9 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span class="wa-option-content"><strong>Business Transfer</strong><span>M&A and deal advisory</span></span><span class="wa-arrow">→</span></a>
+            </div>
+            <div class="wa-notice"><strong>CLIENT SUPPORT HOURS</strong><span>Monday - Friday, 9AM - 6PM WIB</span></div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <!-- ============ FOOTER ============ -->
+    <footer class="bg-neutral-900 text-gray-400">
+
+        <!-- Brand Manifesto -->
+        <div class="container mx-auto px-6 pt-24 pb-20">
+            <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
+                <div class="reveal-up">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500 block mb-6" data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
+                    <img src="assets/chatura-footer.png" alt="Chatura Indonesia" width="96" height="96" class="h-20 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
+                    <p class="text-sm text-gray-400 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated professional services providing accounting, tax, business advisory, and risk management solutions across the Indonesian archipelago and Southeast Asian markets.</p>
+                    <div class="flex items-center gap-5 mt-8 text-gray-500">
+                        <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-[18px] h-[18px]"></i></a>
+                        <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-[18px] h-[18px]"></i></a>
+                        <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-[18px] h-[18px]"></i></a>
+                        <a href="mailto:hello@chatura.co.id" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-[18px] h-[18px]"></i></a>
+                    </div>
+                </div>
+
+                <div class="reveal-up grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-12">
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.services_heading">Services</h4>
+                        <ul class="space-y-3.5">
+                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_1">Accounting & Finance<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_2">Tax Services<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="business-transfer.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_3">Business Transfer<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_4">Risk Management<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_5">Corporate Advisory<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.industries_heading">Industries</h4>
+                        <ul class="space-y-3.5">
+                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_1">Energy & Resources<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_2">Manufacturing<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_3">Technology & Digital<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_4">Healthcare<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.company_heading">Company</h4>
+                        <ul class="space-y-3.5">
+                            <li><a href="index.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_1">About Us<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="our-people.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_2">Our People<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="join-us.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_3">Careers<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="insights.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_4">Insights<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conversation Block -->
+        <div class="border-t border-neutral-800/50">
+            <div class="container mx-auto px-6 py-20">
+                <div class="reveal-up flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
+                    <div>
+                        <h2 class="text-2xl md:text-[1.75rem] font-serif text-white leading-snug max-w-xl" data-i18n="footer.cta_title">Let's Discuss Your Next Business Decision.</h2>
+                        <p class="text-sm text-gray-500 mt-4 max-w-md leading-relaxed" data-i18n="footer.cta_desc">Our advisory team is prepared to structure tailored solutions for your organization's most critical transitions.</p>
+                    </div>
+                    <a href="contact-us.html" class="inline-flex items-center gap-2.5 bg-brand-green text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-emerald-600 transition-all duration-300 shadow-lg shadow-brand-green/20 hover:shadow-xl hover:shadow-brand-green/30 hover:-translate-y-0.5 flex-shrink-0 group">
+                        <span data-i18n="footer.cta_button">Talk To Advisors</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hairline Divider -->
+        <div class="container mx-auto px-6"><div class="h-px bg-neutral-800/60"></div></div>
+
+        <!-- Bottom Strip -->
+        <div class="container mx-auto px-6 py-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-4">
+                    <img src="assets/chatura-footer.png" alt="Chatura" width="96" height="96" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
+                    <span class="text-[11px] text-gray-500" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-gray-500">
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.privacy">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.terms">Terms of Use</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.cookies">Cookies</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.disclaimer">Disclaimer</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.sitemap">Sitemap</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.conduct">Code of Conduct</a>
+                </div>
+                <div class="flex items-center gap-4 text-gray-500">
+                    <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                    <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                    <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+                    <a href="mailto:hello@chatura.co.id" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legal Disclosure -->
+        <div class="border-t border-neutral-800/40">
+            <div class="container mx-auto px-6 py-6">
+                <p class="text-[10px] text-gray-600 leading-relaxed text-center" data-i18n="footer.legal">Chatura Indonesia is an integrated professional services firm. This website is for general informational purposes only and does not constitute professional advice. All information is subject to change without notice.</p>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="assets/i18n/i18n.js"></script>
+    <script>document.addEventListener("DOMContentLoaded",function(){lucide.createIcons();});</script>
+    <script>
+        (function () { var nav = document.getElementById('navbar-sticky'); if (!nav) return; function toggle() { if (window.scrollY > 50) { nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); } } toggle(); window.addEventListener('scroll', toggle, { passive: true }); })();
+
+        var JOBS = [
+            { id: "j1", title: "Project Leader to Partner, Insurance Practice", dept: "advisory", deptLabel: "Corporate Advisory", location: "Jakarta", type: "Full-Time", about: "As a Project Leader to Partner in the Insurance Practice, you will lead multiple client engagements, drive impactful solutions, and contribute to the growth of our practice across Southeast Asia.", tasks: ["Lead and manage consulting engagement teams to deliver high-quality results for insurance clients.", "Develop and implement strategies to address complex business challenges across the insurance value chain.", "Advise on digital transformation, operational improvement, risk management, and growth strategies."], requirements: ["Minimum 10 years of experience in strategy consulting and the insurance industry.", "Deep knowledge of insurance sectors (Life, P&C, Commercial & Reinsurance, Health).", "Proven track record of leading large-scale consulting projects."] },
+            { id: "j2", title: "Tax Consultant", dept: "tax", deptLabel: "Tax Services", location: "Jakarta", type: "Full-Time", about: "Join Chatura's tax expert advisory track group, providing structured multi-practice solutions regarding strategic local corporate tax implementations and compliance pipelines.", tasks: ["Formulate corporate tax compliance dossiers and structure defense papers.", "Deliver comprehensive cross-border transactional transfer pricing advisory templates.", "Perform quantitative fiscal risk monitoring assessments for industrial clients."], requirements: ["Bachelor's degree in Tax, Accounting, or Law with minimum 3 years structural exposure.", "Active Brevet B certification registry is preferred.", "Excellent analytical competencies regarding local structural tax laws."] },
+            { id: "j3", title: "Finance Analyst", dept: "finance", deptLabel: "Accounting & Finance", location: "Jakarta", type: "Full-Time", about: "Execute core transaction calculations, formulate enterprise performance reports, and manage analytical frameworks for structural M&A support pipelines.", tasks: ["Develop detailed projection sheets and quantitative financial visibility models.", "Generate valuation reviews for family business transfer framework integrations.", "Monitor post-acquisition asset performance metrics across manufacturing client sectors."], requirements: ["Strong background in corporate finance architectures and standard accounting definitions.", "Advanced execution capabilities regarding spreadsheet modeling structures.", "CFA level candidacy or local evaluation equivalency is highly valued."] },
+            { id: "j4", title: "Risk Management Associate", dept: "risk", deptLabel: "Risk Management", location: "Jakarta", type: "Full-Time", about: "Design corporate resilience plans, analyze structural enterprise operational risks, and align operational parameters with modern GRC standards.", tasks: ["Formulate independent operational internal control audit test blueprints.", "Conduct structured asset risk exposure mapping across infrastructure client projects.", "Coordinate cyber governance and resilience policy alignment tracking."], requirements: ["2-4 years of experience within a corporate risk advisory or compliance audit role.", "Familiarity with ISO 31000 standard framework implementations.", "Strong cross-functional communication and strategic advisory capabilities."] }
+        ];
+
+        var activeFilter = "all";
+        function renderPositions() {
+            var container = document.getElementById('positionsContainer');
+            var filtered = JOBS.filter(function(j) { return activeFilter === "all" || j.dept === activeFilter; });
+            if (filtered.length === 0) { container.innerHTML = '<p class="text-xs text-gray-400 italic text-center py-6 bg-white border border-gray-200 rounded-xl">No active open positions on this specific track category presently.</p>'; return; }
+            var deptIcons = { advisory: "briefcase", tax: "file-text", finance: "calculator", risk: "shield" };
+            var deptColors = { advisory: "bg-indigo-50 text-indigo-700", tax: "bg-blue-50 text-blue-700", finance: "bg-emerald-50 text-emerald-700", risk: "bg-amber-50 text-amber-700" };
+            container.innerHTML = filtered.map(function(j) {
+                return '<div class="bg-white border border-gray-200 p-6 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:shadow-md hover:border-emerald-700 transition duration-300">' +
+                    '<div class="flex items-start gap-4"><div class="w-11 h-11 rounded-xl ' + (deptColors[j.dept] || 'bg-gray-100 text-gray-600') + ' flex items-center justify-center flex-shrink-0"><i data-lucide="' + (deptIcons[j.dept] || 'briefcase') + '" class="w-5 h-5"></i></div>' +
+                    '<div><h3 class="font-bold text-gray-950 text-sm leading-tight">' + j.title + '</h3><div class="flex flex-wrap gap-3 text-[11px] text-gray-400 mt-1.5"><span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i>' + j.location + '</span><span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i>' + j.type + '</span><span class="flex items-center gap-1"><i data-lucide="folder" class="w-3 h-3"></i>' + j.deptLabel + '</span></div></div></div>' +
+                    '<div class="flex items-center gap-2 w-full sm:w-auto flex-row-reverse sm:flex-row"><button onclick="openJobDrawer(\'' + j.id + '\')" class="flex-1 sm:flex-none border border-gray-300 text-gray-700 text-xs px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition whitespace-nowrap flex items-center gap-1">View Details <i data-lucide="arrow-right" class="w-3 h-3"></i></button><button onclick="scrollToApply(\'' + j.title + '\')" class="flex-1 sm:flex-none bg-brand-green text-white text-xs px-4 py-2 rounded-lg font-medium hover-bg-green transition whitespace-nowrap">Apply Now</button></div></div>';
+            }).join('');
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        document.querySelectorAll('.job-tab-btn').forEach(function(btn) { btn.addEventListener('click', function() { document.querySelectorAll('.job-tab-btn').forEach(function(b) { b.setAttribute('aria-selected', 'false'); }); btn.setAttribute('aria-selected', 'true'); activeFilter = btn.getAttribute('data-filter'); if (typeof gsap !== 'undefined') { gsap.to('#positionsContainer', { opacity: 0, y: 12, duration: 0.15, onComplete: function() { renderPositions(); gsap.to('#positionsContainer', { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' }); } }); } else { renderPositions(); } }); });
+
+        var drawer = document.getElementById('jobDrawer');
+        window.openJobDrawer = function(id) {
+            var j = JOBS.find(function(x) { return x.id === id; });
+            if (!j) return;
+            document.getElementById('drawerDept').textContent = j.deptLabel;
+            document.getElementById('drawerTitle').textContent = j.title;
+            document.getElementById('drawerLocation').textContent = j.location;
+            document.getElementById('drawerType').textContent = j.type;
+            document.getElementById('drawerAbout').textContent = j.about;
+            document.getElementById('drawerTasks').innerHTML = j.tasks.map(function(t) { return '<li>' + t + '</li>'; }).join('');
+            document.getElementById('drawerRequirements').innerHTML = j.requirements.map(function(r) { return '<li>' + r + '</li>'; }).join('');
+            var similar = JOBS.filter(function(x) { return x.dept === j.dept && x.id !== j.id; }).slice(0, 2);
+            document.getElementById('drawerSimilar').innerHTML = similar.length > 0 ? similar.map(function(s) { return '<a href="javascript:void(0)" onclick="openJobDrawer(\'' + s.id + '\')" class="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:border-emerald-700 hover:shadow-sm transition text-left"><div><p class="text-xs font-bold text-gray-950">' + s.title + '</p><p class="text-[10px] text-gray-400 mt-0.5">' + s.location + ' · ' + s.type + '</p></div></a>'; }).join('') : '<p class="text-xs text-gray-400 italic">No similar roles found.</p>';
+            document.getElementById('drawerApplyBtn').setAttribute('onclick', "scrollToApply('" + j.title + "'); closeJobDrawer();");
+            drawer.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        };
+
+        window.closeJobDrawer = function() { drawer.classList.remove('active'); document.body.style.overflow = ''; };
+        window.scrollToApply = function(jobTitle) { prefillPosition(jobTitle); document.getElementById('apply-form').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+        function prefillPosition(title) { var dropdown = document.getElementById('positionDropdown'); var matched = false; for (var i = 0; i < dropdown.options.length; i++) { if (dropdown.options[i].value === title) { dropdown.selectedIndex = i; matched = true; break; } } if (!matched) { dropdown.selectedIndex = dropdown.options.length - 1; } }
+
+        document.querySelectorAll('.faq-accordion-item').forEach(function(item) { item.addEventListener('click', function() { var isActive = item.classList.contains('active'); document.querySelectorAll('.faq-accordion-item').forEach(function(el) { el.classList.remove('active'); }); if (!isActive) { item.classList.add('active'); } }); });
+
+        window.handleJobSubmit = function(e) { e.preventDefault(); alert("Application data package sent successfully to Chatura's talent framework dashboard system!"); e.target.reset(); };
+        window.addEventListener('langChange', function() { renderPositions(); });
+        renderPositions();
+
+        function animateCounters() {
+            document.querySelectorAll('.counter-num').forEach(function(el) {
+                var target = parseFloat(el.getAttribute('data-target'));
+                var isDecimal = target % 1 !== 0;
+                var duration = 2000;
+                var startTime = null;
+                function step(ts) { if (!startTime) startTime = ts; var progress = Math.min((ts - startTime) / duration, 1); var eased = 1 - Math.pow(1 - progress, 3); var current = eased * target; el.textContent = isDecimal ? current.toFixed(1) : Math.floor(current); if (progress < 1) requestAnimationFrame(step); else el.textContent = isDecimal ? target.toFixed(1) : target + '+'; }
+                requestAnimationFrame(step);
+            });
+        }
+
+        if (typeof gsap !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.to('#hero-careers .reveal-up', { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power2.out', delay: 0.15 });
+            ScrollTrigger.batch('.reveal-up:not(#hero-careers .reveal-up)', { start: 'top 85%', once: true, onEnter: function (batch) { gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out' }); } });
+            ScrollTrigger.create({ trigger: '#stats-bar', start: 'top 80%', once: true, onEnter: animateCounters });
+            setTimeout(function () { document.querySelectorAll('.reveal-up').forEach(function (el) { if (getComputedStyle(el).opacity === '0') { el.style.opacity = 1; el.style.transform = 'none'; } }); }, 4000);
+        } else {
+            document.querySelectorAll('.reveal-up, .reveal-fade').forEach(function (el) { el.style.opacity = 1; el.style.transform = 'none'; });
+            animateCounters();
+        }
+    </script>
+    <script>
+        (function(){ var launcher = document.getElementById('waLauncher'); var popup = document.getElementById('waPopup'); var close = document.getElementById('waClose'); if (!launcher || !popup) return; function togglePopup() { var isOpen = popup.classList.contains('is-open'); popup.classList.toggle('is-open'); launcher.setAttribute('aria-expanded', !isOpen); popup.setAttribute('aria-hidden', isOpen); } launcher.addEventListener('click', togglePopup); close.addEventListener('click', function(e) { e.stopPropagation(); togglePopup(); }); document.addEventListener('click', function(e) { if (!popup.contains(e.target) && !launcher.contains(e.target) && popup.classList.contains('is-open')) { togglePopup(); } }); document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && popup.classList.contains('is-open')) togglePopup(); }); })();
+    </script>
+</body>
+</html>

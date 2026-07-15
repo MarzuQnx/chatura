@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal Surfing Carousel</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #a3b899, #2c5d63, #0e243a);
+            background-size: 300% 300%;
+            animation: gradientMove 15s ease infinite;
+            overflow: hidden;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .carousel-container {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding: 50px;
+            width: 100%;
+            max-width: 1400px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; /* Sembunyikan scrollbar di Firefox */
+        }
+
+        /* Sembunyikan scrollbar di Chrome/Safari */
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card {
+            position: relative;
+            flex: 0 0 350px; /* Lebar default kartu */
+            height: 450px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            scroll-snap-align: center;
+            transition: transform 0.4s ease, filter 0.4s ease;
+            cursor: pointer;
+        }
+
+        /* Efek fokus saat kartu di-hover atau aktif */
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Overlay Gelap di bawah teks */
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30px;
+            color: white;
+        }
+
+        /* Label Kategori */
+        .badge {
+            align-self: flex-start;
+            padding: 6px 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge.news { background-color: #e63946; }
+        .badge.gallery { background-color: #f4a261; }
+
+        /* Konten Teks */
+        .card-content h2 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .card-content .date {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .read-more {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            opacity: 0.9;
+        }
+
+        .read-more-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 16px;
+            font-size: 14px;
+        }
+
+        /* Animasi Lingkaran Progress di Samping Kartu (Variasi UI Video) */
+        .progress-ring {
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 3s linear infinite;
+            z-index: 10;
+            pointer-events: none;
+            display: none; /* Munculkan dengan JS jika ingin otomatis geser */
+        }
+
+        /* Tampilkan progress hanya di kartu aktif (simulasi) */
+        .card:hover .progress-ring {
+            display: block;
+        }
+
+        @keyframes spin {
+            0% { transform: translateY(-50%) rotate(0deg); }
+            100% { transform: translateY(-50%) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="carousel-container">
+        <div class="card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=600&q=80" alt="Surf 1">
+            <div class="card-overlay">
+                <span class="badge news">News</span>
+                <div class="card-content">
+                    <h2>Tiptoe Simplicity with Honolua Blomfield</h2>
+                    <span class="date">36 mins ago</span>
+                    <a href="#" class="read-more"><span class="read-more-icon">+</span> Read more</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Surf 2">
+            <div class="card-overlay">
+                <span class="badge news">News</span>
+                <div class="card-content">
+                    <h2>Ocean Wave of the Decade Contender</h2>
+                    <span class="date">1 hour ago</span>
+                    <a href="#" class="read-more"><span class="read-more-icon">+</span> Read more</a>
+                </div>
+            </div>
+            <div class="progress-ring"></div>
+        </div>
+
+        <div class="card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=600&q=80" alt="Surf 3">
+            <div class="card-overlay">
+                <span class="badge gallery">Gallery</span>
+                <div class="card-content">
+                    <h2>Board Review: John John Florence and Jon Pyzel</h2>
+                    <span class="date">Yesterday</span>
+                    <a href="#" class="read-more"><span class="read-more-icon">+</span> Read more</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1534329539061-64ae317548ee?auto=format&fit=crop&w=600&q=80" alt="Surf 4">
+            <div class="card-overlay">
+                <span class="badge news">News</span>
+                <div class="card-content">
+                    <h2>Ultimate Guide to Understanding Neoprene</h2>
+                    <span class="date">Yesterday</span>
+                    <a href="#" class="read-more"><span class="read-more-icon">+</span> Read more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

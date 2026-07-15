@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n-title="site.title">Chatura Indonesia - Corporate Strategic Partner</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        a:has(> svg[data-lucide]),
+        a:has(> i[data-lucide]) {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .brand-green,
+        .text-brand-green {
+            color: #004D34;
+        }
+        .bg-brand-green {
+            background-color: #004D34;
+        }
+        .border-brand-green {
+            border-color: #004D34;
+        }
+        .hover-bg-green:hover {
+            background-color: #003322;
+        }
+        #navbar-sticky {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            background-color: transparent;
+            border-color: transparent;
+            box-shadow: none;
+        }
+        #navbar-sticky.scrolled {
+            background-color: white;
+            border-color: #f3f4f6;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        #navbar-sticky #lang-selector {
+            background-color: white;
+        }
+        #navbar-sticky #lang-selector .lang-active {
+            background-color: #004D34;
+            color: white;
+        }
+        #navbar-sticky #lang-selector .lang-inactive {
+            color: #383b3f;
+        }
+        #navbar-sticky.scrolled #lang-selector {
+            background-color: #fff;
+        }
+        #navbar-sticky.scrolled #lang-selector .lang-active {
+            background-color: #004D34;
+            color: rgba(167, 243, 208, 0.9);
+        }
+        #navbar-sticky.scrolled #lang-selector .lang-inactive {
+            color: #383b3f;
+        }
+        #navbar-sticky.scrolled #lang-selector .lang-inactive:hover {
+            color: #555;
+        }
+        .fm-hidden {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        .fm-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .filter-tab-btn[aria-selected="true"] {
+            background-color: #004D34;
+            border-color: #004D34;
+            color: #fff;
+        }
+        
+        /* WhatsApp Widget */
+        .wa-widget {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 50;
+        }
+        .wa-launcher {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #25D366;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 24px rgba(37, 211, 102, .4);
+            transition: transform .3s ease, box-shadow .3s ease;
+            position: relative;
+        }
+        .wa-launcher:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 32px rgba(37, 211, 102, .55);
+        }
+        .wa-launcher .wa-icon {
+            width: 26px;
+            height: 26px;
+        }
+        .wa-pulse {
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid #25D366;
+            animation: wa-pulse-ring 2s ease-out infinite;
+            pointer-events: none;
+        }
+        @keyframes wa-pulse-ring {
+            0% {
+                transform: scale(1);
+                opacity: .6;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+        .wa-popup {
+            position: absolute;
+            bottom: 72px;
+            right: 0;
+            width: 340px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, .18);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(12px) scale(.95);
+            pointer-events: none;
+            transition: all .25s ease;
+        }
+        .wa-popup.is-open {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+        .wa-header {
+            background: #075E54;
+            color: #fff;
+            padding: 20px 20px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .wa-eyebrow {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .08em;
+            opacity: .7;
+            margin-bottom: 2px;
+        }
+        .wa-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+        }
+        .wa-close {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 6px;
+            transition: background .2s;
+        }
+        .wa-close:hover {
+            background: rgba(255, 255, 255, .15);
+        }
+        .wa-intro {
+            padding: 16px 20px 12px;
+            font-size: 13px;
+            color: #667;
+            line-height: 1.5;
+            margin: 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .wa-options {
+            padding: 8px 12px;
+        }
+        .wa-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            transition: background .2s;
+        }
+        .wa-option:hover {
+            background: #f0faf4;
+        }
+        .wa-option-icon {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: #e8f5ee;
+            color: #075E54;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .wa-option-content {
+            flex: 1;
+            min-width: 0;
+        }
+        .wa-option-content strong {
+            display: block;
+            font-size: 14px;
+            color: #1a1a2e;
+            font-weight: 600;
+        }
+        .wa-option-content span {
+            display: block;
+            font-size: 12px;
+            color: #888;
+            margin-top: 2px;
+        }
+        .wa-shadow {
+            font-size: 16px;
+            color: #25D366;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .wa-notice {
+            padding: 12px 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #f0f0f0;
+            font-size: 11px;
+            color: #888;
+            text-align: center;
+        }
+        .wa-notice strong {
+            display: block;
+            color: #555;
+            font-size: 10px;
+            letter-spacing: .06em;
+            margin-bottom: 2px;
+        }
+        @media (max-width: 400px) {
+            .wa-popup {
+                width: calc(100vw - 2rem);
+                right: -0.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 font-sans antialiased">
+    <header id="navbar-sticky" class="sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="font-bold text-2xl tracking-wider brand-green flex items-center gap-2">
+                    <img src="assets/chatura.png" alt="Chatura Indonesia" class="h-24 w-auto">
+                </div>
+            </div>
+            <button onclick="document.getElementById('mobileMenu').classList.remove('hidden')"
+                class="md:hidden text-gray-600 focus:outline-none">
+                <i data-lucide="menu" class="text-xl"></i>
+            </button>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+                <a href="index.html" class="brand-green font-semibold transition"><span data-i18n="nav.about_us">About Us</span></a>
+                <a href="services.html" class="hover:text-emerald-800 transition"><span
+                        data-i18n="nav.services">Services</span> <i data-lucide="chevron-down"
+                        class="text-xs ml-1"></i></a>
+                <a href="industries.html" class="hover:text-emerald-800 transition"><span
+                        data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down"
+                        class="text-xs ml-1"></i></a>
+                <a href="our-people.html" class="hover:text-emerald-800 transition"><span data-i18n="nav.our_people">Our
+                        People</span></a>
+                <a href="insights.html" class="hover:text-emerald-800 transition"><span
+                        data-i18n="nav.insights">Insights</span></a>
+                <a href="join-us.html" class="hover:text-emerald-800 transition"><span data-i18n="nav.join_us">Join
+                        Us</span></a>
+                <a href="business-transfer.html" class="hover:text-emerald-800 transition"><span
+                        data-i18n="nav.business_transfer">Business Transfer</span></a>
+                <a href="contact-us.html" class="hover:text-emerald-800 transition"><span
+                        data-i18n="nav.contact">Contact</span></a>
+            </nav>
+            <div class="hidden md:flex items-center space-x-6 text-sm">
+                <div id="lang-selector"
+                    class="flex items-center space-x-1 rounded-full bg-white px-3 py-1 shadow-xs transition-all duration-300">
+                    <a href="#"
+                        class="lang-active font-bold text-xs bg-brand-green text-white px-2.5 py-0.5 rounded-full transition-all duration-300">EN</a>
+                    <a href="#"
+                        class="lang-inactive font-medium text-xs text-gray-400 hover:text-gray-600 px-1 transition-all duration-300">ID</a>
+                </div>
+                <a href="contact-us.html"
+                    class="bg-brand-green text-white px-5 py-2 rounded font-medium hover-bg-green transition">
+                    <span data-i18n="nav.lets_talk">Let's Talk</span> <i data-lucide="arrow-right"
+                        class="text-xs ml-1"></i>
+                </a>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
+            <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
+                <img src="assets/chatura.png" alt="Chatura Indonesia" class="h-24 w-auto">
+                <button onclick="document.getElementById('mobileMenu').classList.add('hidden')"
+                    class="text-gray-600 focus:outline-none"><i data-lucide="x" class="text-xl"></i></button>
+            </div>
+            <nav class="flex-1 overflow-y-auto p-6 space-y-1">
+                <a href="index.html"
+                    class="block py-3 px-4 rounded-lg text-base font-medium bg-emerald-50 text-emerald-800"><span
+                        data-i18n="nav.about_us">About Us</span></a>
+                <a href="services.html"
+                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span
+                        data-i18n="nav.services">Services</span></a>
+                <a href="industries.html"
+                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span
+                        data-i18n="nav.industries">Industries</span></a>
+                <a href="our-people.html"
+                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span
+                        data-i18n="nav.our_people">Our
+                        People</span></a>
+                <a href="insights.html"
+                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span
+                        data-i18n="nav.insights">Insights</span></a>
+                <a href="join-us.html"
+                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span
+                        data-i18n="nav.join_us">Join Us</span></a>
+                <a href="business-transfer.html"
+                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span
+                        data-i18n="nav.business_transfer">Business
+                        Transfer</span></a>
+                <a href="contact-us.html"
+                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span
+                        data-i18n="nav.contact">Contact</span></a>
+            </nav>
+            <div class="p-6 border-t border-gray-100">
+                <div id="lang-selector-mobile" class="flex items-center space-x-2 mb-4">
+                    <a href="#"
+                        class="lang-active font-bold text-xs bg-brand-green text-white px-2.5 py-0.5 rounded-full transition-all duration-300">EN</a>
+                    <a href="#"
+                        class="lang-inactive font-medium text-xs text-gray-400 hover:text-gray-600 px-1 transition-all duration-300">ID</a>
+                </div>
+                <a href="contact-us.html"
+                    class="block w-full bg-brand-green text-white text-center px-5 py-3 rounded font-medium hover-bg-green transition"><span
+                        data-i18n="nav.lets_talk">Let's
+                        Talk</span></a>
+            </div>
+        </div>
+    </header>
+    <section id="hero-big"
+        class="relative bg-white text-gray-900 min-h-screen flex items-center overflow-hidden -mt-[128px]">
+        <div id="hero-bg" class="absolute inset-0 bg-cover bg-center"
+            style="background-image: url('assets/hero-landing.png');">
+        </div>
+        <div class="absolute inset-0"
+            style="background: linear-gradient(100deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 30%, transparent 50%);">
+        </div>
+        <div class="container mx-auto px-6 relative z-10 py-20">
+            <div class="max-w-2xl">
+                <h1 class="text-4xl md:text-6xl font-serif font-light mb-6 leading-tight text-gray-900">
+                    <span data-i18n="hero.title_1">Transforming</span><br><span data-i18n="hero.title_2">Business
+                        Into</span><br><span class="italic font-normal brand-green"
+                        data-i18n="hero.title_green">Strategic
+                        Opportunities</span>
+                </h1>
+                <p class="text-gray-600 text-lg mb-8 max-w-xl" data-i18n="hero.subtitle">
+                    We provide integrated solutions in accounting, tax, and business advisory to help your business
+                    grow, adapt, and lead in a changing world.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="services.html"
+                        class="bg-brand-green text-white px-6 py-3 rounded font-medium hover-bg-green transition">
+                        <span data-i18n="hero.cta_services">Explore Our Services</span>
+                    </a>
+                    <a href="business-transfer.html"
+                        class="border border-gray-300 text-gray-700 px-6 py-3 rounded font-medium hover:bg-gray-900 hover:text-white transition">
+                        <span data-i18n="hero.cta_transfer">Business Transfer</span> <i data-lucide="external-link"
+                            class="text-xs ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            <div id="scroll-down" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 cursor-pointer transition-opacity duration-500">
+                <div class="w-11 h-11 rounded-full bg-white/90 backdrop-blur-sm shadow-lg border border-gray-200 flex items-center justify-center hover:bg-white hover:shadow-xl hover:scale-110 transition-all duration-300">
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-600"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="trust-indicators" class="bg-gray-50 border-b border-gray-100 pt-20">
+        <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="flex items-center justify-center gap-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-calendar-icon lucide-calendar">
+                    <path d="M8 2v4" />
+                    <path d="M16 2v4" />
+                    <rect width="18" height="18" x="3" y="4" rx="2" />
+                    <path d="M3 10h18" />
+                </svg>
+                <div>
+                    <div class="text-3xl md:text-4xl font-bold brand-green leading-none mb-1">12+</div>
+                    <div class="text-sm text-gray-500 font-medium" data-i18n="trust.years">Years of Experience</div>
+                </div>
+            </div>
+            <div class="flex items-center justify-center gap-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                    stroke="#6F7774" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+                <div>
+                    <div class="text-3xl md:text-4xl font-bold brand-green leading-none mb-1">500+</div>
+                    <div class="text-sm text-gray-500 font-medium" data-i18n="trust.clients">Satisfied Clients</div>
+                </div>
+            </div>
+            <div class="flex items-center justify-center gap-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                    stroke="#6F7774" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                </svg>
+                <div>
+                    <div class="text-3xl md:text-4xl font-bold brand-green leading-none mb-1">20+</div>
+                    <div class="text-sm text-gray-500 font-medium" data-i18n="trust.industries_served">Industries Served
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-center gap-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                    stroke="#6F7774" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                    <path d="M2 12h20" />
+                </svg>
+                <div>
+                    <div class="text-3xl md:text-4xl font-bold brand-green leading-none mb-1">APAC</div>
+                    <div class="text-sm text-gray-500 font-medium" data-i18n="trust.presence">Regional Presence</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="py-40 bg-white relative overflow-hidden">
+        <div class="absolute -bottom-100 animate-floating w-full h-[800px]"
+            style="background-image: url('assets/bg-section-anim.png'); background-size: contain; background-repeat: no-repeat; background-position: center;">
+        </div>
+        <div class="container mx-auto px-6 grid md:grid-cols-[2fr_3fr] gap-12 items-center relative z-10">
+            <div class="fm-hidden">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="about.label">About Chatura</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-normal mt-2 mb-6" data-i18n="about.title">
+                    Trusted Partner in Building Sustainable Business Value
+                </h2>
+                <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="about.desc">
+                    Chatura is an integrated professional services firm providing accounting, tax, business advisory,
+                    and risk management solutions. We combine deep expertise with strategic insight to help businesses
+                    unlock their full potential.
+                </p>
+                <ul class="space-y-3 text-gray-700 mb-8">
+                    <li class="flex items-center"><i data-lucide="check-circle-2" class="mr-3"></i> <span
+                            data-i18n="about.bullet_1">Integrated & Multidisciplinary Team</span></li>
+                    <li class="flex items-center"><i data-lucide="check-circle-2" class="mr-3"></i> <span
+                            data-i18n="about.bullet_2">Data-Driven Insights & Solutions</span></li>
+                    <li class="flex items-center"><i data-lucide="check-circle-2" class="mr-3"></i> <span
+                            data-i18n="about.bullet_3">Commitment to Long-Term Partnership</span></li>
+                </ul>
+                <a href="services.html"
+                    class="border border-gray-300 text-gray-700 px-5 py-2.5 rounded hover:bg-gray-50 transition inline-block">
+                    <span data-i18n="about.cta">Learn More About Us</span>
+                </a>
+            </div>
+            <div class="relative fm-hidden" style="transition-delay: 0.2s;">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+                    alt="Chatura Office" class="rounded-lg shadow-xl w-full">
+                <div
+                    class="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-lg max-w-xs border border-gray-100 hidden sm:block">
+                    <p class="text-xs font-bold text-emerald-800 uppercase tracking-wide mb-2"
+                        data-i18n="about.our_purpose">Our Purpose</p>
+                    <p class="text-sm text-gray-600 italic" data-i18n="about.our_purpose_quote">"Empowering businesses to grow, adapt, and create lasting impact."</p>
+                </div>
+            </div>
+        </div>
+        <style>
+            @keyframes float {
+                0% {
+                    transform: translateY(-50%) scale(1);
+                    opacity: 0.1;
+                }
+                50% {
+                    transform: translateY(-53%) scale(1.03);
+                    opacity: 0.2;
+                }
+                100% {
+                    transform: translateY(-50%) scale(1);
+                    opacity: 0.1;
+                }
+            }
+            .animate-floating {
+                animation: float 10s ease-in-out infinite;
+            }
+        </style>
+    </section>
+
+    <!-- ============ REFACTORED: EXECUTIVE INTELLIGENCE CENTER SECTION ============ -->
+    <section id="executive-intelligence" class="py-24 bg-gray-50 border-t border-b border-gray-150 overflow-hidden">
+        <div class="container mx-auto px-6">
+            
+            <!-- Header & Editorial Title Enclosure -->
+            <div class="reveal-up text-center max-w-3xl mx-auto mb-12">
+                <div class="flex items-center justify-center gap-2 mb-3">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-700"></span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-800" data-i18n="latest_updates.label">Executive Intelligence Center</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-serif font-light text-gray-950 mb-4" data-i18n="latest_updates.title">Insights That Drive Better Business Decisions</h2>
+                <p class="text-xs text-gray-500 max-w-xl mx-auto leading-relaxed">
+                    Weekly perspectives, regulatory insights, transaction advisory and strategic business intelligence.
+                </p>
+                
+                <!-- Out-Of-The-Box Knowledge Status Bar -->
+                <div class="mt-6 inline-flex flex-wrap justify-center items-center gap-x-4 gap-y-2 border-t border-b border-gray-200/70 py-2.5 px-6 text-[10px] font-bold uppercase tracking-wider text-gray-400">
+                    <span class="text-emerald-800 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-700"></span>Executive Briefings</span>
+                    <span class="text-gray-300">•</span>
+                    <span>Multi-Industry Coverage</span>
+                    <span class="text-gray-300">•</span>
+                    <span>Expert Contributors</span>
+                    <span class="text-gray-300">•</span>
+                    <span>Regularly Updated</span>
+                </div>
+            </div>
+
+            <!-- Animated Category Filter Pills Layout -->
+            <div class="reveal-up flex flex-wrap justify-center gap-1.5 max-w-4xl mx-auto border-b border-gray-150 pb-8 mb-10" id="intelligenceFilterWrap">
+                <button type="button" data-filter="all" aria-selected="true" class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-[11px] font-medium rounded-lg text-gray-700 hover:border-emerald-700 transition duration-300">All</button>
+                <button type="button" data-filter="tax" aria-selected="false" class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-[11px] font-medium rounded-lg text-gray-700 hover:border-emerald-700 transition duration-300">Tax Advisory</button>
+                <button type="button" data-filter="finance" aria-selected="false" class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-[11px] font-medium rounded-lg text-gray-700 hover:border-emerald-700 transition duration-300">Corporate Finance</button>
+                <button type="button" data-filter="transfer" aria-selected="false" class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-[11px] font-medium rounded-lg text-gray-700 hover:border-emerald-700 transition duration-300">Business Transfer</button>
+                <button type="button" data-filter="risk" aria-selected="false" class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-[11px] font-medium rounded-lg text-gray-700 hover:border-emerald-700 transition duration-300">Risk Advisory</button>
+            </div>
+
+            <!-- Premium 4-Column Asymmetric Grid Enclosure (Proportional with gap-4) -->
+            <div id="intelligenceGrid" class="reveal-up grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 justify-center items-stretch mb-12">
+                
+                <!-- CARD 1: TAXATION ARTICLE -->
+                <div data-category="tax" class="insight-editorial-card bg-white border border-gray-200 rounded-2xl p-5 flex flex-col justify-between relative group transition-all duration-400 hover:-translate-y-1.5 hover:border-emerald-200 hover:shadow-xl">
+                    <div>
+                        <div class="relative overflow-hidden aspect-[16/10] bg-neutral-900 rounded-xl mb-4">
+                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=500&q=80" alt="Executive Meeting" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                            <span class="absolute top-3 left-3 text-[9px] font-bold uppercase tracking-wider bg-white/95 text-gray-900 px-2 py-0.5 rounded shadow-3xs">ARTICLE</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-2">
+                            <span class="text-emerald-800 border-l-2 border-emerald-700 pl-2">Tax Advisory</span>
+                            <span>Manufacturing</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-sm text-gray-950 leading-snug mb-3 group-hover:text-emerald-800 transition-colors duration-300">
+                            Tax Implications on Business Transfer in Indonesia
+                        </h3>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 mt-4">
+                        <div class="text-[10px] font-medium text-gray-400 mb-3">
+                            Suitable for: <span class="font-bold text-gray-700">CEO • CFO • Tax Manager</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[10px] text-gray-400">
+                            <span class="flex items-center gap-1 font-medium text-emerald-800"><i data-lucide="clock" class="w-3 h-3"></i> 5 min read</span>
+                            <span>Updated Jul 2026</span>
+                        </div>
+                        <a href="insights.html" class="mt-4 w-full border border-gray-200 hover:border-emerald-700 hover:bg-[#004D34] hover:text-white transition-all duration-300 text-center text-[11px] font-bold text-gray-700 py-2 rounded-lg flex items-center justify-center gap-1">
+                            Read Insight <i data-lucide="arrow-right" class="w-3 h-3 transition-transform hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 2: TAX INCENTIVES PUBLICATION -->
+                <div data-category="tax" class="insight-editorial-card bg-neutral-50/60 border border-gray-200 rounded-2xl p-5 flex flex-col justify-between relative group transition-all duration-400 hover:-translate-y-1.5 hover:border-emerald-200 hover:shadow-xl">
+                    <div>
+                        <div class="relative overflow-hidden aspect-[16/10] bg-neutral-900 rounded-xl mb-4">
+                            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=500&q=80" alt="Financial Dashboard" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                            <span class="absolute top-3 left-3 text-[9px] font-bold uppercase tracking-wider bg-white/95 text-gray-900 px-2 py-0.5 rounded shadow-3xs">PUBLICATION</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-2">
+                            <span class="text-emerald-800 border-l-2 border-emerald-700 pl-2">Tax Advisory</span>
+                            <span>Corporation</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-sm text-gray-950 leading-snug mb-3 group-hover:text-emerald-800 transition-colors duration-300">
+                            Indonesia's New Tax Incentives in 2026
+                        </h3>
+                    </div>
+                    <div class="pt-4 border-t border-gray-200/60 mt-4">
+                        <div class="text-[10px] font-medium text-gray-400 mb-3">
+                            Suitable for: <span class="font-bold text-gray-700">CFO • Legal Lead</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[10px] text-gray-400">
+                            <span class="flex items-center gap-1 font-medium text-emerald-800"><i data-lucide="clock" class="w-3 h-3"></i> 8 min read</span>
+                            <span class="text-emerald-700 font-bold">Updated Today</span>
+                        </div>
+                        <a href="insights.html" class="mt-4 w-full border border-gray-200 hover:border-emerald-700 hover:bg-[#004D34] hover:text-white transition-all duration-300 text-center text-[11px] font-bold text-gray-700 py-2 rounded-lg flex items-center justify-center gap-1">
+                            Read Insight <i data-lucide="arrow-right" class="w-3 h-3 transition-transform hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 3: STRATEGIC M&A CLIENT UPDATE -->
+                <div data-category="finance" class="insight-editorial-card bg-white border border-gray-200 rounded-2xl p-5 flex flex-col justify-between relative group transition-all duration-400 hover:-translate-y-1.5 hover:border-emerald-200 hover:shadow-xl">
+                    <div>
+                        <div class="relative overflow-hidden aspect-[16/10] bg-neutral-900 rounded-xl mb-4">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="M&A Discussion" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                            <span class="absolute top-3 left-3 text-[9px] font-bold uppercase tracking-wider bg-white/95 text-gray-900 px-2 py-0.5 rounded shadow-3xs">CLIENT UPDATE</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-2">
+                            <span class="text-emerald-800 border-l-2 border-emerald-700 pl-2">Corporate Finance</span>
+                            <span>Manufacturing</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-sm text-gray-950 leading-snug mb-3 group-hover:text-emerald-800 transition-colors duration-300">
+                            Chatura Advises on Strategic Advisory for Manufacturing Company
+                        </h3>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 mt-4">
+                        <div class="text-[10px] font-medium text-gray-400 mb-3">
+                            Suitable for: <span class="font-bold text-gray-700">Managing Director • Investor</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[10px] text-gray-400">
+                            <span class="flex items-center gap-1 font-medium text-emerald-800"><i data-lucide="clock" class="w-3 h-3"></i> 6 min read</span>
+                            <span class="text-amber-700 font-semibold">Updated Yesterday</span>
+                        </div>
+                        <a href="insights.html" class="mt-4 w-full border border-gray-200 hover:border-emerald-700 hover:bg-[#004D34] hover:text-white transition-all duration-300 text-center text-[11px] font-bold text-gray-700 py-2 rounded-lg flex items-center justify-center gap-1">
+                            Read Insight <i data-lucide="arrow-right" class="w-3 h-3 transition-transform hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 4: FAMILY SUCCESSION PLANNING -->
+                <div data-category="transfer" class="insight-editorial-card bg-neutral-50/60 border border-gray-200 rounded-2xl p-5 flex flex-col justify-between relative group transition-all duration-400 hover:-translate-y-1.5 hover:border-emerald-200 hover:shadow-xl">
+                    <div>
+                        <div class="relative overflow-hidden aspect-[16/10] bg-neutral-900 rounded-xl mb-4">
+                            <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=500&q=80" alt="Boardroom Discussion" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                            <span class="absolute top-3 left-3 text-[9px] font-bold uppercase tracking-wider bg-white/95 text-gray-900 px-2 py-0.5 rounded shadow-3xs">ARTICLE</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-2">
+                            <span class="text-emerald-800 border-l-2 border-emerald-700 pl-2">Business Transfer</span>
+                            <span>Family Enterprise</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-sm text-gray-950 leading-snug mb-3 group-hover:text-emerald-800 transition-colors duration-300">
+                            Succession Planning for Family-Owned Businesses
+                        </h3>
+                    </div>
+                    <div class="pt-4 border-t border-gray-200/60 mt-4">
+                        <div class="text-[10px] font-medium text-gray-400 mb-3">
+                            Suitable for: <span class="font-bold text-gray-700">Business Owner • Successor</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[10px] text-gray-400">
+                            <span class="flex items-center gap-1 font-medium text-emerald-800"><i data-lucide="clock" class="w-3 h-3"></i> 4 min read</span>
+                            <span>Updated Jul 2026</span>
+                        </div>
+                        <a href="insights.html" class="mt-4 w-full border border-gray-200 hover:border-emerald-700 hover:bg-[#004D34] hover:text-white transition-all duration-300 text-center text-[11px] font-bold text-gray-700 py-2 rounded-lg flex items-center justify-center gap-1">
+                            Read Insight <i data-lucide="arrow-right" class="w-3 h-3 transition-transform hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Unified Navigation Button -->
+            <div class="reveal-up text-center pt-4 border-t border-gray-150">
+                <a href="insights.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider bg-neutral-900 text-white hover:bg-neutral-800 px-6 py-3 rounded-lg transition duration-300 shadow-sm group/all">
+                    <span data-i18n="latest_updates.view_all">View All Publications</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/all:translate-x-1"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="services" class="py-20 bg-gray-50 border-t border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700"
+                    data-i18n="services.section_label">Our Services</span>
+                <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="services.section_title">Integrated Solutions Across Every Challenge</h2>
+            </div>
+            <div id="servicesTabs" class="grid md:grid-cols-4 gap-3 mb-8">
+                <button type="button" data-service="0"
+                    class="service-tab-btn flex items-center gap-3 px-5 py-4 rounded-lg border transition text-left bg-brand-green border-brand-green text-white">
+                    <span
+                        class="service-tab-icon w-9 h-9 rounded-md bg-white/15 flex items-center justify-center flex-shrink-0"><i
+                            data-lucide="calculator" class=""></i></span>
+                    <span class="font-medium text-sm" data-i18n="index.tab_accounting">Accounting & Finance</span>
+                </button>
+                <button type="button" data-service="1"
+                    class="service-tab-btn flex items-center gap-3 px-5 py-4 rounded-lg border border-gray-200 bg-white text-gray-700 hover:border-emerald-300 transition text-left">
+                    <span
+                        class="service-tab-icon w-9 h-9 rounded-md bg-emerald-50 flex items-center justify-center flex-shrink-0 brand-green"><i
+                            data-lucide="file-text" class=""></i></span>
+                    <span class="font-medium text-sm" data-i18n="index.tab_tax">Tax</span>
+                </button>
+                <button type="button" data-service="2"
+                    class="service-tab-btn flex items-center gap-3 px-5 py-4 rounded-lg border border-gray-200 bg-white text-gray-700 hover:border-emerald-300 transition text-left">
+                    <span
+                        class="service-tab-icon w-9 h-9 rounded-md bg-emerald-50 flex items-center justify-center flex-shrink-0 brand-green"><i
+                            data-lucide="arrow-left-right" class=""></i></span>
+                    <span class="font-medium text-sm" data-i18n="index.tab_transfer">Business Transfer</span>
+                </button>
+                <button type="button" data-service="3"
+                    class="service-tab-btn flex items-center gap-3 px-5 py-4 rounded-lg border border-gray-200 bg-white text-gray-700 hover:border-emerald-300 transition text-left">
+                    <span
+                        class="service-tab-icon w-9 h-9 rounded-md bg-emerald-50 flex items-center justify-center flex-shrink-0 brand-green"><i
+                            data-lucide="shield" class=""></i></span>
+                    <span class="font-medium text-sm" data-i18n="index.tab_risk">Risk Management</span>
+                </button>
+            </div>
+            <div
+                class="bg-white rounded-xl border border-gray-200 p-4 sm:p-6 grid md:grid-cols-[1fr_1.4fr_auto] gap-8 items-center">
+                <img id="serviceImage"
+                    src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=700&q=80"
+                    alt="Accounting & Finance" class="rounded-lg w-full h-56 md:h-64 object-cover">
+                <div>
+                    <h3 id="serviceTitle" class="text-xl font-serif mb-3" data-i18n="services.accounting_card_title">
+                        Accounting & Finance</h3>
+                    <p id="serviceDesc" class="text-gray-600 text-sm mb-4 leading-relaxed"
+                        data-i18n="services.accounting_card_desc">
+                        Delivering financial clarity and strategic insight for smarter decisions.
+                    </p>
+                    <ul id="serviceList" class="space-y-2 text-sm text-gray-700 mb-6">
+                        <li class="flex items-center"><i data-lucide="check" class="mr-2 text-xs"></i>
+                            <span data-i18n="services.fin_reporting">Financial Reporting</span>
+                        </li>
+                        <li class="flex items-center"><i data-lucide="check" class="mr-2 text-xs"></i>
+                            <span data-i18n="services.mgmt_accounting">Management Accounting</span>
+                        </li>
+                        <li class="flex items-center"><i data-lucide="check" class="mr-2 text-xs"></i>
+                            <span data-i18n="services.internal_audit">Internal Audit</span>
+                        </li>
+                        <li class="flex items-center"><i data-lucide="check" class="mr-2 text-xs"></i>
+                            <span data-i18n="services.transaction_advisory">Transaction Advisory</span>
+                        </li>
+                        <li class="flex items-center"><i data-lucide="check" class="mr-2 text-xs"></i>
+                            <span data-i18n="services.corp_finance">Corporate Finance</span>
+                        </li>
+                    </ul>
+                    <a href="services.html"
+                        class="inline-block border border-gray-300 text-gray-700 px-5 py-2.5 rounded font-medium hover-bg-gray-50 transition text-sm">
+                        <span data-i18n="services.explore_service">Explore This Service</span> <i
+                            data-lucide="arrow-right" class="text-xs ml-1"></i>
+                    </a>
+                </div>
+                <div class="hidden md:flex flex-col items-center text-center max-w-[160px] mx-auto">
+                    <div class="w-16 h-16 rounded-full bg-amber-50 flex items-center justify-center mb-3">
+                        <i data-lucide="trending-up" class="text-amber-600 text-xl"></i>
+                    </div>
+                    <p id="serviceCaption" class="text-xs text-gray-500 leading-relaxed"
+                        data-i18n="services.accurate_data">Accurate data. Clear insight. Stronger business decisions.</p>
+                    <a href="services.html" class="text-xs font-bold brand-green hover:underline mt-2"><span
+                            data-i18n="services.learn_approach">Learn more about our approach</span> <i data-lucide="arrow-right" class="text-[10px]"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section
+        class="py-24 bg-gradient-to-b from-white to-neutral-50/60 border-t border-b border-gray-100 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up text-center max-w-2xl mx-auto mb-16">
+                <div class="flex items-center justify-center gap-2 mb-3">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-700"></span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-800"
+                        data-i18n="transfer.exposure_label">Industry Exposure</span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-serif font-light text-gray-950"
+                    data-i18n="transfer.exposure_title">Representative Industry Experience</h2>
+                <p class="text-xs text-gray-500 mt-3 leading-relaxed" data-i18n="transfer.exposure_desc">
+                    Supporting corporate entities, state-owned enterprises, and family conglomerates through
+                    comprehensive tax configurations, structural advisory, and confidential business transfers.
+                </p>
+                <div class="w-12 h-[1px] bg-gray-200 mx-auto mt-6"></div>
+            </div>
+            <div class="reveal-up relative w-full overflow-hidden mb-16"
+                style="mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);">
+                <div
+                    class="flex gap-16 items-center w-max animate-[marquee_25s_linear_infinite] hover:[animation-play-state:paused]">
+                    <div
+                        class="flex gap-16 items-center justify-center text-gray-400 font-serif font-bold text-lg tracking-widest">
+                        <span
+                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2"
+                            role="img" aria-label="BCA Logo">BCA</span>
+                        <span
+                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2"
+                            role="img" aria-label="MANDIRI Logo">MANDIRI</span>
+                        <span
+                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2"
+                            role="img" aria-label="PERTAMINA Logo">PERTAMINA</span>
+                        <span
+                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2"
+                            role="img" aria-label="APRIL Logo">APRIL</span>
+                        <span
+                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2"
+                            role="img" aria-label="ADARO Logo">ADARO</span>
+                        <span
+                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2"
+                            role="img" aria-label="TELKOM Logo">TELKOM</span>
+                    </div>
+                    <div class="flex gap-16 items-center justify-center text-gray-400 font-serif font-bold text-lg tracking-widest"
+                        aria-hidden="true">
+                        <span
+                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2">BCA</span>
+                        <span
+                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2">MANDIRI</span>
+                        <span
+                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2">PERTAMINA</span>
+                        <span
+                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2">APRIL</span>
+                        <span
+                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2">ADARO</span>
+                        <span
+                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2">TELKOM</span>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal-up w-full h-[1px] bg-gray-200/70 mb-12"></div>
+            <div class="reveal-up grid grid-cols-2 md:grid-cols-4 gap-4 justify-center items-stretch text-center">
+                <div
+                    class="bg-white border border-gray-100 p-6 rounded-xl shadow-2xs hover:border-emerald-200 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-2xl font-serif font-bold text-gray-950 leading-tight">15+</h4>
+                        <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mt-1.5"
+                            data-i18n="transfer.m1">Industry Sectors</p>
+                    </div>
+                    <p class="text-[11px] text-gray-400 mt-2 leading-relaxed">Cross-sector alignment adaptability index.</p>
+                </div>
+                <div
+                    class="bg-white border border-gray-100 p-6 rounded-xl shadow-2xs hover:border-emerald-200 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-2xl font-serif font-bold text-gray-950 leading-tight">120+</h4>
+                        <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mt-1.5"
+                            data-i18n="transfer.m2">Advisory Projects</p>
+                    </div>
+                    <p class="text-[11px] text-gray-400 mt-2 leading-relaxed">Successfully delivered structural mandates.</p>
+                </div>
+                <div
+                    class="bg-white border border-gray-100 p-6 rounded-xl shadow-2xs hover:border-emerald-200 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-2xl font-serif font-bold text-gray-950 leading-tight">Regional</h4>
+                        <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mt-1.5"
+                            data-i18n="transfer.m3">Business Network</p>
+                    </div>
+                    <p class="text-[11px] text-gray-400 mt-2 leading-relaxed">Strategic hub footprints spanning APAC desk channels.</p>
+                </div>
+                <div
+                    class="bg-white border border-gray-100 p-6 rounded-xl shadow-2xs hover:border-emerald-200 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-2xl font-serif font-bold text-gray-950 leading-tight">Confidential</h4>
+                        <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mt-1.5"
+                            data-i18n="transfer.m4">Engagements</p>
+                    </div>
+                    <p class="text-[11px] text-gray-400 mt-2 leading-relaxed">Strict adherence to standard non-disclosure codes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <style>
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+    <section id="opportunities" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-700"
+                        data-i18n="opportunities.label">Featured Opportunities</span>
+                    <h2 class="text-3xl font-serif mt-2" data-i18n="opportunities.title">Discover High-Quality Business Asset Listings</h2>
+                </div>
+                <a href="business-transfer.html"
+                    class="text-sm brand-green font-semibold hover:underline mt-4 sm:mt-0"><span
+                        data-i18n="opportunities.view_all">View All Listings</span> <i data-lucide="arrow-right"
+                        class="text-xs ml-1"></i></a>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div
+                    class="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=400&h=250&q=80"
+                        alt="Asset" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <span
+                            class="bg-gray-100 text-gray-600 text-[10px] font-bold uppercase px-2 py-0.5 rounded tracking-wider"
+                            data-i18n="opportunities.cat_manufacturing">Manufacturing</span>
+                        <h3 class="font-bold text-gray-900 mt-2 mb-1 truncate text-base"
+                            data-i18n="opportunities.asset_1_title">Precision Parts Manufacturer</h3>
+                        <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin"
+                                class="w-3.5 h-3.5 flex-shrink-0"></i> <span
+                                data-i18n="opportunities.asset_1_location">Surabaya, Indonesia</span></p>
+                        <div class="border-t border-gray-100 pt-3 flex justify-between text-xs">
+                            <div>
+                                <p class="text-gray-400" data-i18n="opportunities.revenue">Revenue</p>
+                                <p class="font-bold text-gray-800">IDR 45B</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-gray-400" data-i18n="opportunities.ebitda">EBITDA</p>
+                                <p class="font-bold text-gray-800">IDR 12B</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=400&h=250&q=80"
+                        alt="Asset" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <span
+                            class="bg-amber-50 text-amber-700 text-[10px] font-bold uppercase px-2 py-0.5 rounded tracking-wider"
+                            data-i18n="opportunities.cat_food_beverage">Food & Beverage</span>
+                        <h3 class="font-bold text-gray-900 mt-2 mb-1 truncate text-base"
+                            data-i18n="opportunities.asset_2_title">Premium Coffee Chain</h3>
+                        <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin"
+                                class="w-3.5 h-3.5 flex-shrink-0"></i> <span
+                                data-i18n="opportunities.asset_2_location">Jakarta, Indonesia</span></p>
+                        <div class="border-t border-gray-100 pt-3 flex justify-between text-xs">
+                            <div>
+                                <p class="text-gray-400" data-i18n="opportunities.revenue">Revenue</p>
+                                <p class="font-bold text-gray-800">IDR 32B</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-gray-400" data-i18n="opportunities.ebitda">EBITDA</p>
+                                <p class="font-bold text-gray-800">IDR 8.2B</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=400&h=250&q=80"
+                        alt="Asset" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <span
+                            class="bg-blue-50 text-blue-700 text-[10px] font-bold uppercase px-2 py-0.5 rounded tracking-wider"
+                            data-i18n="opportunities.cat_logistics">Logistics</span>
+                        <h3 class="font-bold text-gray-900 mt-2 mb-1 truncate text-base"
+                            data-i18n="opportunities.asset_3_title">Logistics & Distribution Company</h3>
+                        <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin"
+                                class="w-3.5 h-3.5 flex-shrink-0"></i> <span
+                                data-i18n="opportunities.asset_3_location">Semarang, Indonesia</span></p>
+                        <div class="border-t border-gray-100 pt-3 flex justify-between text-xs">
+                            <div>
+                                <p class="text-gray-400" data-i18n="opportunities.revenue">Revenue</p>
+                                <p class="font-bold text-gray-800">IDR 60B</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-gray-400" data-i18n="opportunities.ebitda">EBITDA</p>
+                                <p class="font-bold text-gray-800">IDR 18B</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=400&h=250&q=80"
+                        alt="Asset" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <span
+                            class="bg-emerald-50 text-emerald-700 text-[10px] font-bold uppercase px-2 py-0.5 rounded tracking-wider"
+                            data-i18n="opportunities.cat_healthcare">Healthcare</span>
+                        <h3 class="font-bold text-gray-900 mt-2 mb-1 truncate text-base"
+                            data-i18n="opportunities.asset_4_title">Private Diagnostic Clinic</h3>
+                        <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin"
+                                class="w-3.5 h-3.5 flex-shrink-0"></i> <span
+                                data-i18n="opportunities.asset_4_location">Bandung, Indonesia</span></p>
+                        <div class="border-t border-gray-100 pt-3 flex justify-between text-xs">
+                            <div>
+                                <p class="text-gray-400" data-i18n="opportunities.revenue">Revenue</p>
+                                <p class="font-bold text-gray-800">IDR 21B</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-gray-400" data-i18n="opportunities.ebitda">EBITDA</p>
+                                <p class="font-bold text-gray-800">IDR 6.5B</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="bg-amber-50 rounded-xl border border-amber-200 p-6 flex flex-col md:flex-row items-center justify-between shadow-sm">
+                <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                    <div class="text-amber-700 text-3xl"><i data-lucide="lock" class=""></i></div>
+                    <div>
+                        <h4 class="font-bold text-gray-900" data-i18n="opportunities.buyer_title">Access More Opportunities in Our Buyer Database</h4>
+                        <p class="text-sm text-gray-600" data-i18n="opportunities.buyer_desc">Login to see complete verified business listings and connect directly with our advisory team.</p>
+                    </div>
+                </div>
+                <a href="business-transfer.html"
+                    class="bg-brand-green text-white text-sm px-6 py-2.5 rounded font-medium hover-bg-green transition whitespace-nowrap">
+                    <span data-i18n="opportunities.buyer_cta">Login to Buyer Database</span> <i data-lucide="log-in"
+                        class="text-xs ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section id="strategic-expertise" class="bg-brand-green text-white py-16 relative overflow-hidden">
+        <div class="container mx-auto px-6 grid lg:grid-cols-[1fr_2fr] gap-10 items-center relative z-10">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-300"
+                    data-i18n="index.our_partnership">Our Partnership, Your Advantage</span>
+                <h2 class="text-2xl sm:text-3xl font-serif mt-2 mb-4 leading-snug"><span
+                        data-i18n="index.strategic_title">Strategic Expertise.</span><br><span
+                        data-i18n="index.strategic_impact">Measurable Impact.</span></h2>
+                <p class="text-emerald-100/80 text-sm leading-relaxed max-w-sm" data-i18n="index.strategic_desc">We go
+                    beyond advice. We become your strategic partner in achieving sustainable growth and long-term value.</p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
+                <div>
+                    <i data-lucide="lightbulb" class="text-amber-300 text-2xl"></i>
+                    <h4 class="font-semibold mb-1 text-sm" data-i18n="index.strat_1_title">Strategic Thinking</h4>
+                    <p class="text-emerald-100/70 text-xs leading-relaxed" data-i18n="index.strat_1_desc">Turning insights into winning strategies.</p>
+                </div>
+                <div>
+                    <i data-lucide="award" class="text-amber-300 text-2xl"></i>
+                    <h4 class="font-semibold mb-1 text-sm" data-i18n="index.strat_2_title">Proven Track Record</h4>
+                    <p class="text-emerald-100/70 text-xs leading-relaxed" data-i18n="index.strat_2_desc">Delivering results across industries and sectors.</p>
+                </div>
+                <div>
+                    <i data-lucide="users" class="text-amber-300 text-2xl"></i>
+                    <h4 class="font-semibold mb-1 text-sm" data-i18n="index.strat_3_title">Collaborative Approach</h4>
+                    <p class="text-emerald-100/70 text-xs leading-relaxed" data-i18n="index.strat_3_desc">Working together as an extension of your team.</p>
+                </div>
+                <div>
+                    <i data-lucide="sprout" class="text-amber-300 text-2xl"></i>
+                    <h4 class="font-semibold mb-1 text-sm" data-i18n="index.strat_4_title">Long-Term Value</h4>
+                    <p class="text-emerald-100/70 text-xs leading-relaxed" data-i18n="index.strat_4_desc">Building sustainable businesses for the future.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="final-cta" class="py-14 bg-gray-50 border-b border-gray-100">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <h2 class="text-2xl sm:text-3xl font-serif" data-i18n="index.cta_title">Ready to Unlock Your Business Potential?</h2>
+                <p class="text-gray-500 text-sm mt-2" data-i18n="index.cta_desc">Let's start a conversation about how we can support your business growth journey.</p>
+            </div>
+            <a href="contact-us.html"
+                class="bg-brand-green text-white px-6 py-3 rounded font-medium hover-bg-green transition whitespace-nowrap">
+                <span data-i18n="nav.lets_talk">Let's Talk</span> <i data-lucide="arrow-right" class="text-xs ml-2"></i>
+            </a>
+        </div>
+    </section>
+    <!-- WhatsApp Widget -->
+    <div class="wa-widget">
+        <button type="button" class="wa-launcher" id="waLauncher" aria-label="Chat via WhatsApp" aria-expanded="false"
+            aria-controls="waPopup">
+            <svg viewBox="0 0 24 24" class="wa-icon" aria-hidden="true" focusable="false">
+                <path fill="currentColor"
+                    d="M19.11 4.93A9.9 9.9 0 0 0 3.6 16.88L2 22l5.24-1.54a9.89 9.89 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.79-6.84Zm-7.12 15.1h-.01c-1.53 0-3.03-.41-4.34-1.18l-.31-.18-3.11.91.84-3.03-.2-.32a8.26 8.26 0 1 1 7.13 3.8Zm4.53-6.18c-.25-.13-1.49-.74-1.72-.82-.23-.08-.4-.12-.57.13-.17.25-.66.82-.8.99-.15.17-.29.19-.54.06-.25-.13-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.36-1.69-.14-.25-.02-.38.11-.5.12-.12.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.57-1.37-.78-1.87-.21-.51-.42-.44-.57-.45h-.49c-.17 0-.45.06-.68.32-.23.25-.89.87-.89 2.11s.92 2.44 1.05 2.6c.13.17 1.82 2.77 4.42 3.89.62.27 1.11.43 1.49.55.63.2 1.2.17 1.65.1.5-.08 1.49-.61 1.7-1.2.21-.59.21-1.09.15-1.2-.06-.1-.23-.17-.48-.3Z">
+                </path>
+            </svg>
+            <span class="wa-pulse" aria-hidden="true"></span>
+        </button>
+        <div id="waPopup" class="wa-popup" role="dialog" aria-modal="false" aria-labelledby="wa-title"
+            aria-hidden="true">
+            <div class="wa-header">
+                <div>
+                    <p class="wa-eyebrow">CHATURA SUPPORT</p>
+                    <h2 id="wa-title" class="wa-title">How can we help?</h2>
+                </div>
+                <button type="button" class="wa-close" id="waClose" aria-label="Close WhatsApp contact options">
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                        <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round"></path>
+                    </svg>
+                </button>
+            </div>
+            <p class="wa-intro">Choose the department that best matches your enquiry and we'll connect you directly on WhatsApp.</p>
+            <div class="wa-options">
+                <a href="https://wa.me/6212345678?text=Hi+Chatura%2C+I+need+help+with+general+inquiry." target="_blank"
+                    rel="noopener noreferrer" class="wa-option">
+                    <span class="wa-option-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                            <path d="M4 12a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            <rect x="3.5" y="12" width="4" height="7" rx="2" fill="none" stroke="currentColor"
+                                stroke-width="1.8"></rect>
+                            <rect x="16.5" y="12" width="4" height="7" rx="2" fill="none" stroke="currentColor"
+                                stroke-width="1.8"></rect>
+                            <path d="M8 20c0 1.1.9 2 2 2h2" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg></span>
+                    <span class="wa-option-content"><strong>General Inquiry</strong><span>Accounting, Tax & Advisory</span></span>
+                    <span class="wa-arrow" aria-hidden="true">→</span>
+                </a>
+                <a href="https://wa.me/6212345678?text=Hi+Chatura%2C+I+need+help+with+business+transfer."
+                    target="_blank" rel="noopener noreferrer" class="wa-option">
+                    <span class="wa-option-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                            <path d="M12 3 5 6v5c0 4.5 2.7 7.6 7 10 4.3-2.4 7-5.5 7-10V6l-7-3Zm-3 9 2 2 4-4" fill="none"
+                                stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                        </svg></span>
+                    <span class="wa-option-content"><strong>Business Transfer</strong><span>M&A and deal advisory</span></span>
+                    <span class="wa-arrow" aria-hidden="true">→</span>
+                </a>
+            </div>
+            <div class="wa-notice">
+                <strong>CLIENT SUPPORT HOURS</strong>
+                <span>Monday – Friday, 9AM – 6PM WIB</span>
+            </div>
+        </div>
+    </div>
+    <!-- ============ FOOTER ============ -->
+    <footer class="bg-neutral-900 text-gray-400">
+
+        <!-- Brand Manifesto -->
+        <div class="container mx-auto px-6 pt-24 pb-20">
+            <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
+                <div class="reveal-up">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500 block mb-6" data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
+                    <img src="assets/chatura-footer.png" alt="Chatura Indonesia" width="96" height="96" class="h-20 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
+                    <p class="text-sm text-gray-400 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated professional services providing accounting, tax, business advisory, and risk management solutions across the Indonesian archipelago and Southeast Asian markets.</p>
+                    <div class="flex items-center gap-5 mt-8 text-gray-500">
+                        <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-[18px] h-[18px]"></i></a>
+                        <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-[18px] h-[18px]"></i></a>
+                        <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-[18px] h-[18px]"></i></a>
+                        <a href="mailto:hello@chatura.co.id" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-[18px] h-[18px]"></i></a>
+                    </div>
+                </div>
+
+                <div class="reveal-up grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-12">
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.services_heading">Services</h4>
+                        <ul class="space-y-3.5">
+                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_1">Accounting & Finance<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_2">Tax Services<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="business-transfer.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_3">Business Transfer<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_4">Risk Management<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_5">Corporate Advisory<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.industries_heading">Industries</h4>
+                        <ul class="space-y-3.5">
+                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_1">Energy & Resources<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_2">Manufacturing<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_3">Technology & Digital<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_4">Healthcare<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.company_heading">Company</h4>
+                        <ul class="space-y-3.5">
+                            <li><a href="index.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_1">About Us<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="our-people.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_2">Our People<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="join-us.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_3">Careers<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="insights.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_4">Insights<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conversation Block -->
+        <div class="border-t border-neutral-800/50">
+            <div class="container mx-auto px-6 py-20">
+                <div class="reveal-up flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
+                    <div>
+                        <h2 class="text-2xl md:text-[1.75rem] font-serif text-white leading-snug max-w-xl" data-i18n="footer.cta_title">Let's Discuss Your Next Business Decision.</h2>
+                        <p class="text-sm text-gray-500 mt-4 max-w-md leading-relaxed" data-i18n="footer.cta_desc">Our advisory team is prepared to structure tailored solutions for your organization's most critical transitions.</p>
+                    </div>
+                    <a href="contact-us.html" class="inline-flex items-center gap-2.5 bg-brand-green text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-emerald-600 transition-all duration-300 shadow-lg shadow-brand-green/20 hover:shadow-xl hover:shadow-brand-green/30 hover:-translate-y-0.5 flex-shrink-0 group">
+                        <span data-i18n="footer.cta_button">Talk To Advisors</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hairline Divider -->
+        <div class="container mx-auto px-6"><div class="h-px bg-neutral-800/60"></div></div>
+
+        <!-- Bottom Strip -->
+        <div class="container mx-auto px-6 py-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-4">
+                    <img src="assets/chatura-footer.png" alt="Chatura" width="96" height="96" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
+                    <span class="text-[11px] text-gray-500" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-gray-500">
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.privacy">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.terms">Terms of Use</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.cookies">Cookies</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.disclaimer">Disclaimer</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.sitemap">Sitemap</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.conduct">Code of Conduct</a>
+                </div>
+                <div class="flex items-center gap-4 text-gray-500">
+                    <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                    <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                    <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+                    <a href="mailto:hello@chatura.co.id" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legal Disclosure -->
+        <div class="border-t border-neutral-800/40">
+            <div class="container mx-auto px-6 py-6">
+                <p class="text-[10px] text-gray-600 leading-relaxed text-center" data-i18n="footer.legal">Chatura Indonesia is an integrated professional services firm. This website is for general informational purposes only and does not constitute professional advice. All information is subject to change without notice.</p>
+            </div>
+        </div>
+
+    </footer>
+    <script>
+        (function () {
+            var nav = document.getElementById('navbar-sticky');
+            if (nav) {
+                function toggle() {
+                    if (window.scrollY > 50) { nav.classList.add('scrolled'); }
+                    else { nav.classList.remove('scrolled'); }
+                }
+                toggle();
+                window.addEventListener('scroll', toggle, { passive: true });
+            }
+            var heroBg = document.getElementById('hero-bg');
+            if (heroBg) {
+                window.addEventListener('scroll', function () {
+                    var y = window.scrollY;
+                    if (y < 1200) {
+                        heroBg.style.transform = 'translateY(' + (y * 0.3) + 'px) scale(1.1)';
+                    }
+                }, { passive: true });
+            }
+            var scrollBtn = document.getElementById('scroll-down');
+            if (scrollBtn) {
+                scrollBtn.addEventListener('click', function () {
+                    var about = document.getElementById('about');
+                    if (about) {
+                        about.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+                window.addEventListener('scroll', function () {
+                    if (window.scrollY > 100) { scrollBtn.style.opacity = '0'; scrollBtn.style.pointerEvents = 'none'; }
+                    else { scrollBtn.style.opacity = '1'; scrollBtn.style.pointerEvents = 'auto'; }
+                }, { passive: true });
+            }
+            var obs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.remove('fm-hidden');
+                        e.target.classList.add('fm-visible');
+                        obs.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.fm-hidden').forEach(function (el) { obs.observe(el); });
+        })();
+        
+        // Dynamic Filter Tab Architecture for Executive Intelligence Center
+        (function initIntelligenceHub() {
+            var wrap = document.getElementById('intelligenceFilterWrap');
+            if (!wrap) return;
+            var pills = document.querySelectorAll('.filter-tab-btn');
+            var cards = document.querySelectorAll('.insight-editorial-card');
+
+            pills.forEach(function(pill) {
+                pill.addEventListener('click', function() {
+                    pills.forEach(function(p) { p.setAttribute('aria-selected', 'false'); });
+                    pill.setAttribute('aria-selected', 'true');
+                    
+                    var filterTarget = pill.getAttribute('data-filter');
+
+                    if (typeof gsap !== 'undefined') {
+                        gsap.to('#intelligenceGrid', { opacity: 0, y: 12, duration: 0.15, onComplete: function() {
+                            executeCardToggle(filterTarget);
+                            gsap.to('#intelligenceGrid', { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
+                        }});
+                    } else {
+                        executeCardToggle(filterTarget);
+                    }
+                });
+            });
+
+            function executeCardToggle(target) {
+                cards.forEach(function(card) {
+                    if (target === "all" || card.getAttribute('data-category') === target) {
+                        card.style.display = "flex";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            }
+        })();
+
+        // ===== Our Services tabs =====
+        (function initServicesTabs() {
+            var wrap = document.getElementById('servicesTabs');
+            if (!wrap) return;
+            var services = [
+                {
+                    title: 'Accounting & Finance',
+                    desc: 'Delivering financial clarity and strategic insight for smarter decisions.',
+                    list: ['Financial Reporting', 'Management Accounting', 'Internal Audit', 'Transaction Advisory', 'Corporate Finance'],
+                    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=700&q=80',
+                    caption: 'Accurate data. Clear insight. Stronger business decisions.',
+                    icon: 'fa-chart-line'
+                },
+                {
+                    title: 'Tax',
+                    desc: 'Comprehensive tax planning and compliance to keep your business ahead of regulation.',
+                    list: ['Tax Compliance', 'Tax Planning & Advisory', 'Transfer Pricing', 'Tax Dispute Resolution', 'International Tax'],
+                    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=700&q=80',
+                    caption: 'Optimized structure. Full compliance. Peace of mind.',
+                    icon: 'fa-file-invoice-dollar'
+                },
+                {
+                    title: 'Business Transfer',
+                    desc: 'Connecting buyers and sellers through a trusted, end-to-end M&A advisory process.',
+                    list: ['Business Valuation', 'Buy-Side Advisory', 'Sell-Side Advisory', 'Due Diligence', 'Deal Structuring'],
+                    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80',
+                    caption: 'Right partner. Right price. Right transition.',
+                    icon: 'fa-right-left'
+                },
+                {
+                    title: 'Risk Management',
+                    desc: 'Protecting business value through proactive risk identification and governance.',
+                    list: ['Enterprise Risk Assessment', 'Internal Controls', 'Compliance Advisory', 'Fraud Investigation', 'Governance Framework'],
+                    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=700&q=80',
+                    caption: 'Fewer surprises. Stronger governance. Safer growth.',
+                    icon: 'fa-shield-halved'
+                }
+            ];
+            var buttons = Array.from(wrap.querySelectorAll('.service-tab-btn'));
+            var imageEl = document.getElementById('serviceImage');
+            var titleEl = document.getElementById('serviceTitle');
+            var descEl = document.getElementById('serviceDesc');
+            var listEl = document.getElementById('serviceList');
+            var captionEl = document.getElementById('serviceCaption');
+            function render(idx) {
+                var s = services[idx];
+                imageEl.src = s.image;
+                imageEl.alt = s.title;
+                titleEl.textContent = s.title;
+                descEl.textContent = s.desc;
+                captionEl.textContent = s.caption;
+                listEl.innerHTML = s.list.map(function (item) {
+                    return '<li class="flex items-center"><i data-lucide="check" class="mr-2 text-xs"></i> ' + item + '</li>';
+                }).join('');
+                buttons.forEach(function (btn, i) {
+                    var icon = btn.querySelector('.service-tab-icon');
+                    if (i === idx) {
+                        btn.classList.add('bg-brand-green', 'border-brand-green', 'text-white');
+                        btn.classList.remove('bg-white', 'border-gray-200', 'text-gray-700');
+                        if (icon) { icon.classList.add('bg-white/15'); icon.classList.remove('bg-emerald-50', 'brand-green'); }
+                    } else {
+                        btn.classList.remove('bg-brand-green', 'border-brand-green', 'text-white');
+                        btn.classList.add('bg-white', 'border-gray-200', 'text-gray-700');
+                        if (icon) { icon.classList.remove('bg-white/15'); icon.classList.add('bg-emerald-50', 'brand-green'); }
+                    }
+                });
+            }
+            buttons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    render(parseInt(btn.getAttribute('data-service'), 10));
+                });
+            });
+        })();
+        // ===== Trusted-by logo strip (true seamless infinite loop) =====
+        var logoIndex = 0;
+        var logoOriginalCount = 0;
+        (function initLogoCarousel() {
+            var track = document.getElementById('logoTrack');
+            if (!track) return;
+            var originals = Array.from(track.querySelectorAll('.logo-item'));
+            logoOriginalCount = originals.length;
+            originals.forEach(function (c) {
+                var clone = c.cloneNode(true);
+                clone.classList.add('clone');
+                track.appendChild(clone);
+            });
+            originals.slice().reverse().forEach(function (c) {
+                var clone = c.cloneNode(true);
+                clone.classList.add('clone');
+                track.insertBefore(clone, track.firstChild);
+            });
+            logoIndex = logoOriginalCount;
+            setLogoPosition(track, false);
+            track.addEventListener('transitionend', function () {
+                if (logoIndex >= logoOriginalCount * 2) {
+                    logoIndex = logoOriginalCount;
+                    setLogoPosition(track, false);
+                } else if (logoIndex < logoOriginalCount) {
+                    logoIndex = logoOriginalCount * 2 - 1;
+                    setLogoPosition(track, false);
+                }
+            });
+            var resizeTimeout;
+            window.addEventListener('resize', function () {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function () { setLogoPosition(track, false); }, 150);
+            });
+        })();
+        function getLogoStep(track) {
+            var item = track.querySelector('.logo-item');
+            if (!item) return 0;
+            var styles = getComputedStyle(track);
+            var gap = parseFloat(styles.columnGap || styles.gap) || 0;
+            return item.getBoundingClientRect().width + gap;
+        }
+        function setLogoPosition(track, animate) {
+            track.style.transition = animate ? 'transform 0.6s ease' : 'none';
+            var step = getLogoStep(track);
+            track.style.transform = 'translateX(' + (-logoIndex * step) + 'px)';
+        }
+        function scrollLogos(dir) {
+            var track = document.getElementById('logoTrack');
+            if (!track) return;
+            logoIndex += dir;
+            setLogoPosition(track, true);
+        }
+        (function initLogoAutoplay() {
+            var wrap = document.getElementById('logoCarouselWrap');
+            var track = document.getElementById('logoTrack');
+            if (!wrap || !track) return;
+            var AUTOPLAY_DELAY = 2500;
+            var RESUME_DELAY = 4000;
+            var autoplayTimer = null;
+            var resumeTimeout = null;
+            var isPaused = false;
+            function tick() {
+                if (isPaused) return;
+                scrollLogos(1);
+            }
+            function startAutoplay() {
+                stopAutoplay();
+                autoplayTimer = setInterval(tick, AUTOPLAY_DELAY);
+            }
+            function stopAutoplay() {
+                if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+            }
+            function pauseTemporarily() {
+                isPaused = true;
+                clearTimeout(resumeTimeout);
+                resumeTimeout = setTimeout(function () { isPaused = false; }, RESUME_DELAY);
+            }
+            wrap.addEventListener('mouseenter', function () { isPaused = true; });
+            wrap.addEventListener('mouseleave', function () { isPaused = false; });
+            wrap.addEventListener('touchstart', function () { isPaused = true; }, { passive: true });
+            wrap.addEventListener('touchend', pauseTemporarily, { passive: true });
+            wrap.querySelectorAll('button').forEach(function (btn) {
+                btn.addEventListener('click', pauseTemporarily);
+            });
+            document.addEventListener('visibilitychange', function () {
+                isPaused = document.hidden;
+            });
+            startAutoplay();
+        })();
+    </script>
+    <script>
+        // Additional GSAP Scroll Reveal Setup for Hub Section
+        if (typeof gsap !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+            ScrollTrigger.batch('.reveal-up:not(#hero-big .reveal-up)', {
+                start: 'top 88%',
+                once: true,
+                onEnter: function (batch) {
+                    gsap.to(batch, { opacity: 1, y: 0, duration: 0.65, stagger: 0.08, ease: 'power2.out' });
+                }
+            });
+        }
+    </script>
+    <script src="assets/i18n/i18n.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function () { lucide.createIcons(); });</script>
+    <script>
+        (function () {
+            var launcher = document.getElementById('waLauncher');
+            var popup = document.getElementById('waPopup');
+            var close = document.getElementById('waClose');
+            if (!launcher || !popup) return;
+            function togglePopup() {
+                var isOpen = popup.classList.contains('is-open');
+                popup.classList.toggle('is-open');
+                launcher.setAttribute('aria-expanded', !isOpen);
+                popup.setAttribute('aria-hidden', isOpen);
+            }
+            launcher.addEventListener('click', togglePopup);
+            close.addEventListener('click', function (e) { e.stopPropagation(); togglePopup(); });
+            document.addEventListener('click', function (e) {
+                if (!popup.contains(e.target) && !launcher.contains(e.target) && popup.classList.contains('is-open')) {
+                    togglePopup();
+                }
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && popup.classList.contains('is-open')) togglePopup();
+            });
+        })();
+    </script>
+</body>
+</html>

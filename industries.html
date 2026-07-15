@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="industries.page_title">Industries - Chatura Indonesia | Corporate Strategic Partner</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        a:has(> svg[data-lucide]), a:has(> i[data-lucide]) { display: inline-flex; align-items: center; gap: 0.25rem; }
+
+        .brand-green,.text-brand-green { color: #004D34; }
+        .bg-brand-green { background-color: #004D34; }
+        .border-brand-green { border-color: #004D34; }
+        .hover-bg-green:hover { background-color: #003322; }
+
+        #navbar-sticky {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            background-color: transparent;
+            border-color: transparent;
+            box-shadow: none;
+        }
+
+        #navbar-sticky.scrolled {
+            background-color: white;
+            border-color: #f3f4f6;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        #navbar-sticky #lang-selector { background-color: white; }
+        #navbar-sticky #lang-selector .lang-active { background-color: #004D34; color: white; }
+        #navbar-sticky #lang-selector .lang-inactive { color: #383b3f; }
+        #navbar-sticky.scrolled #lang-selector { background-color: #fff; }
+        #navbar-sticky.scrolled #lang-selector .lang-active { background-color: #004D34; color: rgba(167, 243, 208, 0.9); }
+        #navbar-sticky.scrolled #lang-selector .lang-inactive { color: #383b3f; }
+        #navbar-sticky.scrolled #lang-selector .lang-inactive:hover { color: #555; }
+
+        * { touch-action: manipulation; }
+
+        .reveal-up { opacity: 0; transform: translateY(36px); }
+        .reveal-fade { opacity: 0; }
+
+        #heroCanvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-up, .reveal-fade { opacity: 1 !important; transform: none !important; }
+        }
+
+        .related-highlight {
+            box-shadow: 0 0 0 2px #004D34, 0 8px 20px -6px rgba(0,77,52,0.35);
+        }
+
+        .expert-item { transition: transform 0.3s ease; }
+        .expert-item:hover { transform: translateY(-8px); }
+        .expert-item:hover .expert-name { color: #004D34; }
+        .expert-item:hover .expert-social { opacity: 1; transform: translateY(0); }
+        .expert-social { opacity: 0; transform: translateY(8px); transition: all 0.3s ease; }
+        .experts-row { scrollbar-width: none; -ms-overflow-style: none; }
+        .experts-row::-webkit-scrollbar { display: none; }
+        @media (max-width: 640px) {
+            .experts-row { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 2rem; padding-bottom: 1rem; }
+            .expert-item { flex: 0 0 260px; scroll-snap-align: center; }
+        }
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .experts-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+        }
+        @media (min-width: 1025px) {
+            .experts-row { display: flex; justify-content: center; gap: 3rem; }
+            .expert-item { flex: 0 0 calc(25% - 2.25rem); }
+        }
+
+        .insight-featured-card { transition: transform 0.4s ease; }
+        .insight-featured-card:hover { transform: translateY(-4px); }
+        .insight-featured-card:hover .insight-featured-img { transform: scale(1.05); }
+        .insight-featured-card:hover .insight-featured-overlay { opacity: 0.7; }
+        .insight-featured-img { transition: transform 0.6s ease; }
+        .insight-featured-overlay { transition: opacity 0.4s ease; }
+        .insight-side-card { transition: transform 0.3s ease, border-color 0.3s ease; }
+        .insight-side-card:hover { transform: translateX(6px); border-color: #004D34; }
+        .insight-side-card:hover .insight-side-img { transform: scale(1.08); }
+        .insight-side-img { transition: transform 0.5s ease; }
+    
+        /* WhatsApp Widget */
+        .wa-widget { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50; }
+        .wa-launcher { width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 24px rgba(37,211,102,.4); transition: transform .3s ease, box-shadow .3s ease; position: relative; }
+        .wa-launcher:hover { transform: scale(1.08); box-shadow: 0 6px 32px rgba(37,211,102,.55); }
+        .wa-launcher .wa-icon { width: 26px; height: 26px; }
+        .wa-pulse { position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #25D366; animation: wa-pulse-ring 2s ease-out infinite; pointer-events: none; }
+        @keyframes wa-pulse-ring { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.5); opacity: 0; } }
+        .wa-popup { position: absolute; bottom: 72px; right: 0; width: 340px; background: #fff; border-radius: 16px; box-shadow: 0 12px 48px rgba(0,0,0,.18); overflow: hidden; opacity: 0; transform: translateY(12px) scale(.95); pointer-events: none; transition: all .25s ease; }
+        .wa-popup.is-open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+        .wa-header { background: #075E54; color: #fff; padding: 20px 20px 16px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .wa-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .08em; opacity: .7; margin-bottom: 2px; }
+        .wa-title { font-size: 18px; font-weight: 600; margin: 0; }
+        .wa-close { background: none; border: none; color: #fff; cursor: pointer; padding: 4px; border-radius: 6px; transition: background .2s; }
+        .wa-close:hover { background: rgba(255,255,255,.15); }
+        .wa-intro { padding: 16px 20px 12px; font-size: 13px; color: #667; line-height: 1.5; margin: 0; border-bottom: 1px solid #f0f0f0; }
+        .wa-options { padding: 8px 12px; }
+        .wa-option { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; text-decoration: none; color: inherit; transition: background .2s; }
+        .wa-option:hover { background: #f0faf4; }
+        .wa-option-icon { flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; background: #e8f5ee; color: #075E54; display: flex; align-items: center; justify-content: center; }
+        .wa-option-content { flex: 1; min-width: 0; }
+        .wa-option-content strong { display: block; font-size: 14px; color: #1a1a2e; font-weight: 600; }
+        .wa-option-content span { display: block; font-size: 12px; color: #888; margin-top: 2px; }
+        .wa-arrow { font-size: 16px; color: #25D366; font-weight: 600; flex-shrink: 0; }
+        .wa-notice { padding: 12px 20px; background: #f8f9fa; border-top: 1px solid #f0f0f0; font-size: 11px; color: #888; text-align: center; }
+        .wa-notice strong { display: block; color: #555; font-size: 10px; letter-spacing: .06em; margin-bottom: 2px; }
+        @media (max-width: 400px) { .wa-popup { width: calc(100vw - 2rem); right: -0.5rem; } }
+    
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-menu { position: absolute; top: 100%; left: 0; padding-top: 0.5rem; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.2s ease, visibility 0.2s ease; }
+        .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; }
+        .nav-dropdown-menu a { display: block; padding: 0.625rem 1rem; font-size: 0.875rem; color: #374151; border-radius: 0.5rem; transition: background-color 0.15s ease, color 0.15s ease; white-space: nowrap; }
+        .nav-dropdown-menu a:hover { background-color: #f9fafb; color: #065f46; }
+        .nav-dropdown-menu a.active { color: #065f46; font-weight: 600; }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 font-sans antialiased">
+
+    <header id="navbar-sticky" class="sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="font-bold text-2xl tracking-wider brand-green flex items-center gap-2">
+                    <img src="assets/chatura.png" alt="Chatura Indonesia" width="96" height="96" class="h-24 w-auto">
+                </div>
+            </div>
+
+            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden')"
+                class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
+                <i data-lucide="menu" class="text-xl"></i>
+            </button>
+
+                        <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+                <a href="index.html" class="hover:text-emerald-800 transition" data-i18n="nav.about_us">About Us</a>
+                <div class="nav-dropdown">
+                    <a href="services.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.services">Services</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="services.html" data-i18n="nav.services_overview">Overview</a>
+                        <a href="business-transfer.html" data-i18n="nav.business_transfer">Business Transfer</a>
+                    </div>
+                </div>
+                <a href="industries.html" class="brand-green font-semibold"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs ml-1"></i></a>
+                <a href="our-people.html" class="hover:text-emerald-800 transition" data-i18n="nav.our_people">Our People</a>
+                <a href="insights.html" class="hover:text-emerald-800 transition" data-i18n="nav.insights">Insights</a>
+                <a href="join-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.join_us">Join Us</a>
+                <a href="contact-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.contact">Contact</a>
+            </nav>
+
+            <div class="hidden md:flex items-center space-x-6 text-sm">
+                <div id="lang-selector"
+                    class="flex items-center space-x-1 rounded-full bg-white px-3 py-1 shadow-xs transition-all duration-300">
+                    <a href="#"
+                        class="lang-active font-bold text-xs bg-brand-green text-white px-2.5 py-0.5 rounded-full transition-all duration-300">EN</a>
+                    <a href="#"
+                        class="lang-inactive font-medium text-xs text-gray-400 hover:text-gray-600 px-1 transition-all duration-300">ID</a>
+                </div>
+                <a href="contact-us.html"
+                    class="bg-brand-green text-white px-5 py-2 rounded font-medium hover-bg-green transition">
+                    <span data-i18n="nav.lets_talk">Let's Talk</span> <i data-lucide="arrow-right" class="text-xs ml-1"></i>
+                </a>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
+            <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
+                <img src="assets/chatura.png" alt="Chatura Indonesia" class="h-24 w-auto">
+                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden')"
+                    class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
+            </div>
+            <nav class="flex-1 overflow-y-auto p-6 space-y-1">
+                <a href="index.html"
+                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.about_us">About Us</a>
+                <a href="services.html"
+                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.services">Services</a>
+                <a href="industries.html"
+                    class="block py-3 px-4 rounded-lg text-base font-medium bg-emerald-50 text-emerald-800" data-i18n="nav.industries">Industries</a>
+                <a href="our-people.html"
+                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.our_people">Our People</a>
+                <a href="insights.html"
+                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.insights">Insights</a>
+                <a href="join-us.html"
+                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.join_us">Join Us</a>
+                <a href="business-transfer.html"
+                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.business_transfer">Business
+                    Transfer</a>
+                <a href="contact-us.html"
+                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.contact">Contact</a>
+            </nav>
+            <div class="p-6 border-t border-gray-100">
+                <a href="contact-us.html"
+                    class="block w-full bg-brand-green text-white text-center px-5 py-3 rounded font-medium hover-bg-green transition"><span data-i18n="nav.lets_talk">Let's
+                    Talk</span></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ HERO ============ -->
+    <section id="hero-industry" class="relative bg-brand-green text-white overflow-hidden -mt-[128px] pt-[128px]">
+        <div id="hero-bg" class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/hero-industries.png');"></div>
+        <div class="absolute inset-0" style="background: linear-gradient(100deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 30%, transparent 50%);"></div>
+        <div class="container mx-auto px-6 relative z-10 py-24 md:py-32">
+            <div class="max-w-3xl">
+                <span class="reveal-up inline-block text-xs font-bold uppercase tracking-widest text-emerald-900 mb-4" data-i18n="industries.hero_label">Industry Expertise</span>
+                <h1 class="reveal-up text-3xl md:text-5xl font-serif font-light text-gray-900 mb-6 leading-tight">
+                    <span data-i18n="industries.hero_title_1">Deep Insights Tailored to</span> <span class="italic font-normal brand-green" data-i18n="industries.hero_title_green">Your Sector Dynamics</span>
+                </h1>
+                <p class="reveal-up text-gray-700/80 text-lg mb-8 max-w-2xl pr-20" data-i18n="industries.hero_desc">
+                    We understand the unique challenges in every industry. Chatura delivers multi-disciplinary solutions to help your business adapt and grow competitively.
+                </p>
+                <div class="reveal-up flex flex-wrap gap-4">
+                    <a href="#industry-selector" class="bg-brand-green text-white px-6 py-3 rounded font-medium hover-bg-green transition">
+                        <span data-i18n="industries.explore_cta">Explore Industries</span>
+                    </a>
+                    <a href="contact-us.html" class="border border-gray-300 text-gray-700 px-6 py-3 rounded font-medium hover:bg-gray-900 hover:text-white transition">
+                        <span data-i18n="industries.expert_cta">Talk to Our Experts</span> <i data-lucide="arrow-right" class="text-xs ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ INDUSTRY SELECTOR ============ -->
+    <section id="industry-selector" class="py-20 bg-white scroll-mt-24">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up mb-10 text-center">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="industries.selector_label">Select Industry</span>
+                <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="industries.selector_title">Choose an Industry to Explore</h2>
+            </div>
+            <div id="industryCards" class="reveal-up grid sm:grid-cols-2 lg:grid-cols-5 gap-4"></div>
+        </div>
+    </section>
+
+    <!-- ============ INDUSTRY OVERVIEW ============ -->
+    <section id="industry-overview" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal-up">
+                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="industries.overview_label">Industry Overview</span>
+                    <h2 id="overviewTitle" class="text-2xl sm:text-3xl font-serif mt-2 mb-6"></h2>
+                    <p id="overviewDesc1" class="text-gray-600 leading-relaxed mb-4"></p>
+                    <p id="overviewDesc2" class="text-gray-600 leading-relaxed mb-6"></p>
+                    <div id="overviewStats" class="grid grid-cols-2 gap-4"></div>
+                </div>
+                <div class="reveal-up">
+                    <img id="overviewImage" src="" alt="" width="800" height="500" class="rounded-2xl shadow-lg w-full object-cover h-80">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CHALLENGES & SOLUTIONS ============ -->
+    <section id="industry-challenges" class="py-20 bg-gray-50 border-t border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="reveal-up bg-white p-8 rounded-xl border border-gray-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-lg bg-red-50 text-red-700 flex items-center justify-center mb-6"><i data-lucide="triangle-alert" class="w-6 h-6"></i></div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4" data-i18n="industries.challenges_title">Key Industry Challenges</h3>
+                    <ul id="challengesList" class="space-y-4 text-sm text-gray-600"></ul>
+                </div>
+                <div class="reveal-up bg-white p-8 rounded-xl border border-emerald-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center mb-6"><i data-lucide="lightbulb" class="w-6 h-6"></i></div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4" data-i18n="industries.solutions_title">Our Core Solutions</h3>
+                    <ul id="solutionsList" class="space-y-4 text-sm text-gray-700"></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ REPRESENTATIVE EXPERIENCE ============ -->
+    <section id="industry-experience" class="py-20 bg-brand-green text-white relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <span class="reveal-up text-xs font-bold uppercase tracking-widest text-emerald-300 block mb-10" data-i18n="industries.experience_label">Representative Experience</span>
+            <div class="grid lg:grid-cols-[1.1fr_1fr] gap-10 items-start">
+                <div class="reveal-up">
+                    <p id="expTag" class="text-sm text-emerald-300 font-semibold mb-2"></p>
+                    <h3 id="expTitle" class="text-2xl md:text-3xl font-serif mb-2"></h3>
+                    <p id="expValue" class="text-3xl font-bold mb-5"></p>
+                    <p id="expDesc" class="text-emerald-100/80 leading-relaxed mb-6 max-w-lg"></p>
+                    <a href="business-transfer.html" class="inline-flex items-center gap-1 text-sm font-semibold border-b border-white/50 hover:border-white pb-0.5 transition">
+                        <span data-i18n="industries.read_case">Read Case Study</span> <i data-lucide="arrow-right" class="text-xs"></i>
+                    </a>
+                </div>
+                <div id="experienceSidebar" class="space-y-5"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ RELATED INSIGHTS ============ -->
+    <section id="industry-insights" class="py-20 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-10">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="industries.insights_label">Sector Insights</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="industries.insights_title">Industry Perspectives</h2>
+                    <p class="text-sm text-gray-400 mt-2" data-i18n="industries.insights_description">Expert analysis market outlook sector.</p>
+                </div>
+                <a href="insights.html" class="text-sm brand-green font-semibold hover:underline flex items-center gap-1 flex-shrink-0">
+                    <span data-i18n="industries.view_insights">View All Insights</span> <i data-lucide="arrow-right" class="text-xs"></i>
+                </a>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-8 items-stretch">
+                <a id="insightFeatured" href="insights.html" class="insight-featured-card reveal-up group relative rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl block lg:w-7/12 min-h-[380px]">
+                    <div id="insightFeaturedImg" class="insight-featured-img absolute inset-0 bg-cover bg-center"></div>
+                    <div class="insight-featured-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10"></div>
+                    <div class="relative z-10 p-8 sm:p-10 flex flex-col justify-end h-full">
+                        <span id="insightFeaturedTag" class="text-[10px] font-bold uppercase tracking-wider bg-emerald-500/90 text-white px-3 py-1 rounded-full inline-block mb-4 w-fit"></span>
+                        <h3 id="insightFeaturedTitle" class="font-serif text-2xl sm:text-3xl text-white mb-4 leading-snug max-w-lg"></h3>
+                        <div class="flex items-center gap-4 text-xs text-white/60">
+                            <span id="insightFeaturedDate"></span>
+                            <span class="w-1 h-1 rounded-full bg-white/40"></span>
+                            <span id="insightFeaturedRead"></span>
+                        </div>
+                    </div>
+                </a>
+                <div id="insightList" class="flex flex-col justify-center gap-5 lg:w-5/12"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ OUR EXPERTS ============ -->
+    <section id="our-experts" class="py-20" style="background: linear-gradient(180deg, #ffffff, #fafcfb);">
+        <div class="container mx-auto px-6">
+            <div class="text-center reveal-up mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="industries.experts_label">Our Experts</span>
+                <h2 class="text-2xl sm:text-3xl font-serif mt-2 mb-3" data-i18n="industries.experts_title">Meet Decision Makers</h2>
+                <p class="text-sm text-gray-500 max-w-xl mx-auto" data-i18n="industries.experts_subtitle">Professional advisors with deep expertise across industries.</p>
+                <div class="mt-4 inline-flex items-center gap-2 bg-emerald-50 px-4 py-1.5 rounded-full">
+                    <span class="text-xs font-semibold brand-green" data-i18n="industries.experts_service_label">Experts in</span>
+                    <span id="expertsIndustryLabel" class="text-xs font-bold brand-green">Energy & Resources</span>
+                </div>
+            </div>
+            <div id="expertsGrid" class="experts-row"></div>
+        </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section id="final-cta" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up bg-brand-green rounded-2xl px-8 py-12 md:px-14 md:py-14 flex flex-col md:flex-row items-center justify-between gap-8 text-white relative overflow-hidden">
+                <div class="flex items-start gap-5 relative z-10">
+                    <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="message-square" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-serif mb-2" data-i18n="industries.cta_title">Ready to Navigate Your Industry Challenges?</h2>
+                        <p class="text-emerald-100/80 text-sm max-w-md" data-i18n="industries.cta_desc">Our team ready help you navigate complex industry challenges achieve sustainable growth.</p>
+                    </div>
+                </div>
+                <a href="contact-us.html" class="inline-flex items-center bg-white text-brand-green text-sm px-6 py-2.5 rounded font-medium hover:bg-emerald-50 transition whitespace-nowrap relative z-10">
+                    <span data-i18n="industries.cta_button">Talk To Us</span> <i data-lucide="arrow-right" class="text-xs ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Widget -->
+    <div class="wa-widget">
+        <button type="button" class="wa-launcher" id="waLauncher" aria-label="Chat via WhatsApp" aria-expanded="false" aria-controls="waPopup">
+            <svg viewBox="0 0 24 24" class="wa-icon" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19.11 4.93A9.9 9.9 0 0 0 3.6 16.88L2 22l5.24-1.54a9.89 9.89 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.79-6.84Zm-7.12 15.1h-.01c-1.53 0-3.03-.41-4.34-1.18l-.31-.18-3.11.91.84-3.03-.2-.32a8.26 8.26 0 1 1 7.13 3.8Zm4.53-6.18c-.25-.13-1.49-.74-1.72-.82-.23-.08-.4-.12-.57.13-.17.25-.66.82-.8.99-.15.17-.29.19-.54.06-.25-.13-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.36-1.69-.14-.25-.02-.38.11-.5.12-.12.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.57-1.37-.78-1.87-.21-.51-.42-.44-.57-.45h-.49c-.17 0-.45.06-.68.32-.23.25-.89.87-.89 2.11s.92 2.44 1.05 2.6c.13.17 1.82 2.77 4.42 3.89.62.27 1.11.43 1.49.55.63.2 1.2.17 1.65.1.5-.08 1.49-.61 1.7-1.2.21-.59.21-1.09.15-1.2-.06-.1-.23-.17-.48-.3Z"></path></svg>
+            <span class="wa-pulse" aria-hidden="true"></span>
+        </button>
+        <div id="waPopup" class="wa-popup" role="dialog" aria-modal="false" aria-labelledby="wa-title" aria-hidden="true">
+            <div class="wa-header">
+                <div>
+                    <p class="wa-eyebrow">CHATURA SUPPORT</p>
+                    <h2 id="wa-title" class="wa-title">How can we help?</h2>
+                </div>
+                <button type="button" class="wa-close" id="waClose" aria-label="Close WhatsApp contact options">
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+                </button>
+            </div>
+            <p class="wa-intro">Choose the department that best matches your enquiry and we'll connect you directly on WhatsApp.</p>
+            <div class="wa-options">
+                <a href="https://wa.me/6212345678?text=Hi+Chatura%2C+I+need+help+with+general+inquiry." target="_blank" rel="noopener noreferrer" class="wa-option">
+                    <span class="wa-option-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 12a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><rect x="3.5" y="12" width="4" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"></rect><rect x="16.5" y="12" width="4" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"></rect><path d="M8 20c0 1.1.9 2 2 2h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                    <span class="wa-option-content"><strong>General Inquiry</strong><span>Accounting, Tax & Advisory</span></span>
+                    <span class="wa-arrow" aria-hidden="true">→</span>
+                </a>
+                <a href="https://wa.me/6212345678?text=Hi+Chatura%2C+I+need+help+with+business+transfer." target="_blank" rel="noopener noreferrer" class="wa-option">
+                    <span class="wa-option-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 2.7 7.6 7 10 4.3-2.4 7-5.5 7-10V6l-7-3Zm-3 9 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                    <span class="wa-option-content"><strong>Business Transfer</strong><span>M&A and deal advisory</span></span>
+                    <span class="wa-arrow" aria-hidden="true">→</span>
+                </a>
+            </div>
+            <div class="wa-notice">
+                <strong>CLIENT SUPPORT HOURS</strong>
+                <span>Monday – Friday, 9AM – 6PM WIB</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="bg-neutral-900 text-gray-400">
+
+        <!-- Brand Manifesto -->
+        <div class="container mx-auto px-6 pt-24 pb-20">
+            <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
+                <div class="reveal-up">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500 block mb-6" data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
+                    <img src="assets/chatura-footer.png" alt="Chatura Indonesia" width="96" height="96" class="h-20 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
+                    <p class="text-sm text-gray-400 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated professional services providing accounting, tax, business advisory, and risk management solutions across the Indonesian archipelago and Southeast Asian markets.</p>
+                    <div class="flex items-center gap-5 mt-8 text-gray-500">
+                        <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-[18px] h-[18px]"></i></a>
+                        <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-[18px] h-[18px]"></i></a>
+                        <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-[18px] h-[18px]"></i></a>
+                        <a href="mailto:hello@chatura.co.id" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-[18px] h-[18px]"></i></a>
+                    </div>
+                </div>
+
+                <div class="reveal-up grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-12">
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.services_heading">Services</h4>
+                        <ul class="space-y-3.5">
+                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_1">Accounting & Finance<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_2">Tax Services<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="business-transfer.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_3">Business Transfer<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_4">Risk Management<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_5">Corporate Advisory<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.industries_heading">Industries</h4>
+                        <ul class="space-y-3.5">
+                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_1">Energy & Resources<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_2">Manufacturing<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_3">Technology & Digital<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_4">Healthcare<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.company_heading">Company</h4>
+                        <ul class="space-y-3.5">
+                            <li><a href="index.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_1">About Us<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="our-people.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_2">Our People<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="join-us.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_3">Careers<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="insights.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_4">Insights<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conversation Block -->
+        <div class="border-t border-neutral-800/50">
+            <div class="container mx-auto px-6 py-20">
+                <div class="reveal-up flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
+                    <div>
+                        <h2 class="text-2xl md:text-[1.75rem] font-serif text-white leading-snug max-w-xl" data-i18n="footer.cta_title">Let's Discuss Your Next Business Decision.</h2>
+                        <p class="text-sm text-gray-500 mt-4 max-w-md leading-relaxed" data-i18n="footer.cta_desc">Our advisory team is prepared to structure tailored solutions for your organization's most critical transitions.</p>
+                    </div>
+                    <a href="contact-us.html" class="inline-flex items-center gap-2.5 bg-brand-green text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-emerald-600 transition-all duration-300 shadow-lg shadow-brand-green/20 hover:shadow-xl hover:shadow-brand-green/30 hover:-translate-y-0.5 flex-shrink-0 group">
+                        <span data-i18n="footer.cta_button">Talk To Advisors</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hairline Divider -->
+        <div class="container mx-auto px-6"><div class="h-px bg-neutral-800/60"></div></div>
+
+        <!-- Bottom Strip -->
+        <div class="container mx-auto px-6 py-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-4">
+                    <img src="assets/chatura-footer.png" alt="Chatura" width="96" height="96" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
+                    <span class="text-[11px] text-gray-500" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-gray-500">
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.privacy">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.terms">Terms of Use</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.cookies">Cookies</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.disclaimer">Disclaimer</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.sitemap">Sitemap</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.conduct">Code of Conduct</a>
+                </div>
+                <div class="flex items-center gap-4 text-gray-500">
+                    <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                    <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                    <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+                    <a href="mailto:hello@chatura.co.id" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legal Disclosure -->
+        <div class="border-t border-neutral-800/40">
+            <div class="container mx-auto px-6 py-6">
+                <p class="text-[10px] text-gray-600 leading-relaxed text-center" data-i18n="footer.legal">Chatura Indonesia is an integrated professional services firm. This website is for general informational purposes only and does not constitute professional advice. All information is subject to change without notice.</p>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="assets/i18n/i18n.js"></script>
+    <script>document.addEventListener("DOMContentLoaded",function(){lucide.createIcons();});</script>
+    <script>
+        /* =========================================================
+           0. Navbar scroll effect
+        ========================================================= */
+        (function () {
+            var nav = document.getElementById('navbar-sticky');
+            if (!nav) return;
+            function toggle() {
+                if (window.scrollY > 50) { nav.classList.add('scrolled'); }
+                else { nav.classList.remove('scrolled'); }
+            }
+            toggle();
+            window.addEventListener('scroll', toggle, { passive: true });
+        })();
+
+        /* =========================================================
+           1. DATA — INDUSTRIES array (5 industries)
+        ========================================================= */
+        var INDUSTRIES = [
+            {
+                key: 'energy',
+                icon: 'zap',
+                label: 'Energy & Natural Resources',
+                overview: {
+                    title: "Understanding Indonesia's Energy Landscape",
+                    desc1: "Indonesia's energy and natural resources sector stands at a critical transformation point. The shift toward clean energy and global sustainability demands require companies to fundamentally overhaul their operational and financial strategies.",
+                    desc2: "Chatura combines deep industry expertise with commercial insight to guide safe investments, efficient capital structuring, and regulatory risk mitigation across the energy value chain.",
+                    image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80',
+                    stats: [
+                        { value: 'USD 50M+', label: 'Deal Value Advised' },
+                        { value: '15+', label: 'Energy Clients' },
+                        { value: '98%', label: 'Client Retention' },
+                        { value: '10+', label: 'Years Experience' }
+                    ]
+                },
+                challenges: [
+                    'Global commodity market volatility and cash flow uncertainty.',
+                    'Tight domestic regulatory adjustments for decarbonization targets.',
+                    'Need for large-scale capital restructuring for green transition projects.'
+                ],
+                solutions: [
+                    { label: 'Transaction Advisory:', desc: 'Full M&A and joint venture support for mining & energy sectors.' },
+                    { label: 'Project Financing:', desc: 'Optimal structuring of large-scale project financing arrangements.' },
+                    { label: 'Tax Structuring:', desc: 'Green tax incentive optimization and transfer pricing compliance.' }
+                ],
+                caseStudy: {
+                    tag: 'Energy Sector',
+                    title: 'PT XYZ Acquisition Advisory',
+                    value: 'USD 50 Million',
+                    desc: 'Chatura acted as exclusive financial advisor in the 100% share acquisition of a mining infrastructure provider. We guided the transaction structure from comprehensive financial due diligence to post-acquisition tax risk minimization.'
+                },
+                engagements: [
+                    { label: 'Project Financing', title: '200MW Solar Plant Development in Eastern Indonesia', value: 'USD 120M' },
+                    { label: 'Debt Restructuring', title: 'Energy Infrastructure Corporate Debt Restructuring', value: 'EUR 75M' }
+                ],
+                insights: [
+                    { title: 'Global Energy Transition Impacts on Indonesian Mining Corporate Valuation', tag: 'Report & Analysis', tagColor: 'text-emerald-800', date: 'May 2026', read: '6 min read', image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=500&q=80' },
+                    { title: 'New Tax Incentives Framework for Renewable Energy Projects in 2026', tag: 'Tax Flash', tagColor: 'text-blue-700', date: 'Apr 2026', read: '4 min read', image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=500&q=80' },
+                    { title: 'LNG Market Outlook: Strategic Commercial Opportunities for Domestic Infrastructure', tag: 'Market Outlook', tagColor: 'text-amber-700', date: 'Mar 2026', read: '5 min read', image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=500&q=80' }
+                ],
+                experts: [
+                    { name: 'Andi Rio Ilham Manry', role: 'Managing Partner', photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&h=300&q=80' },
+                    { name: 'Bezalel B. Erlan', role: 'Partner, Business Transfer', photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&h=300&q=80' },
+                    { name: 'Dyna Agustina', role: 'Partner, Tax Services', photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&h=300&q=80' },
+                    { name: 'Adine K. Nadya', role: 'Partner, Risk Management', photo: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=300&h=300&q=80' }
+                ]
+            },
+            {
+                key: 'manufacturing',
+                icon: 'factory',
+                label: 'Manufacturing',
+                overview: {
+                    title: 'Navigating the Manufacturing Evolution',
+                    desc1: "Indonesia's manufacturing sector is undergoing rapid modernization driven by Industry 4.0 adoption, supply chain realignment, and increasing sustainability requirements. Companies must balance operational efficiency with strategic growth.",
+                    desc2: "Chatura supports manufacturers with end-to-end advisory from operational optimization and supply chain strengthening to M&A transactions and regulatory compliance across the production value chain.",
+                    image: 'https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=800&q=80',
+                    stats: [
+                        { value: 'USD 35M+', label: 'Transaction Value' },
+                        { value: '12+', label: 'Manufacturing Clients' },
+                        { value: '95%', label: 'Client Satisfaction' },
+                        { value: '8+', label: 'Years in Sector' }
+                    ]
+                },
+                challenges: [
+                    'Supply chain disruptions and rising raw material costs.',
+                    'Digital transformation requirements for Industry 4.0 compliance.',
+                    'Increasing ESG reporting demands from international buyers and regulators.'
+                ],
+                solutions: [
+                    { label: 'Operational Advisory:', desc: 'Process optimization and lean manufacturing implementation.' },
+                    { label: 'Supply Chain Structuring:', desc: 'End-to-end supply chain risk assessment and restructuring.' },
+                    { label: 'Growth Strategy:', desc: 'Market expansion planning and strategic partnership facilitation.' }
+                ],
+                caseStudy: {
+                    tag: 'Manufacturing',
+                    title: 'PT Manufacturing Corp Restructuring',
+                    value: 'USD 35 Million',
+                    desc: 'Chatura advised a leading Indonesian manufacturer on operational restructuring and capital optimization, enabling the company to expand production capacity by 40% while maintaining strong financial health.'
+                },
+                engagements: [
+                    { label: 'M&A Advisory', title: 'Acquisition of Regional Steel Processing Facilities', value: 'USD 85M' },
+                    { label: 'Operational Efficiency', title: 'Lean Manufacturing Transformation Program', value: 'USD 12M' }
+                ],
+                insights: [
+                    { title: 'Industry 4.0 Readiness: Digital Investment Roadmap for Indonesian Manufacturers', tag: 'Report & Analysis', tagColor: 'text-emerald-800', date: 'May 2026', read: '7 min read', image: 'https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=500&q=80' },
+                    { title: 'ESG Compliance Framework for Export-Oriented Manufacturing', tag: 'Regulatory Update', tagColor: 'text-blue-700', date: 'Apr 2026', read: '5 min read', image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=500&q=80' },
+                    { title: 'Supply Chain Resilience: Post-Pandemic Strategies for Indonesian Factories', tag: 'Market Outlook', tagColor: 'text-amber-700', date: 'Mar 2026', read: '6 min read', image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=500&q=80' }
+                ],
+                experts: [
+                    { name: 'Andi Rio Ilham Manry', role: 'Managing Partner', photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&h=300&q=80' },
+                    { name: 'Adine K. Nadya', role: 'Partner, Risk Management', photo: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=300&h=300&q=80' },
+                    { name: 'Dyna Agustina', role: 'Partner, Tax Services', photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&h=300&q=80' },
+                    { name: 'Bezalel B. Erlan', role: 'Partner, Business Transfer', photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&h=300&q=80' }
+                ]
+            },
+            {
+                key: 'technology',
+                icon: 'cpu',
+                label: 'Technology & Digital',
+                overview: {
+                    title: 'Accelerating Digital Economy Growth',
+                    desc1: "Indonesia's technology sector is experiencing unprecedented growth with digital economy projected to reach USD 130 billion by 2025. Startups, scale-ups, and established tech companies face unique challenges in funding, scaling, and regulatory compliance.",
+                    desc2: "Chatura provides specialized advisory for tech companies navigating venture financing, digital taxation, cross-border transactions, and IPO readiness in an evolving regulatory landscape.",
+                    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
+                    stats: [
+                        { value: 'USD 80M+', label: 'Funding Advised' },
+                        { value: '20+', label: 'Tech Clients' },
+                        { value: '97%', label: 'Client Retention' },
+                        { value: '6+', label: 'Years in Tech' }
+                    ]
+                },
+                challenges: [
+                    'Complex digital taxation frameworks and cross-border compliance.',
+                    'Rapid scaling demands requiring efficient capital structuring.',
+                    'Data privacy regulations and cybersecurity risk management.'
+                ],
+                solutions: [
+                    { label: 'Venture Advisory:', desc: 'End-to-end support from seed funding to Series C and beyond.' },
+                    { label: 'Digital Tax Compliance:', desc: 'Multi-jurisdictional tax planning for digital economy players.' },
+                    { label: 'IPO Readiness:', desc: 'Financial audit preparation and governance framework for public listing.' }
+                ],
+                caseStudy: {
+                    tag: 'Technology',
+                    title: 'Series C Funding Advisory for FinTech Unicorn',
+                    value: 'USD 80 Million',
+                    desc: 'Chatura served as financial advisor for a leading Indonesian fintech company in its Series C funding round, structuring the deal to optimize valuation while maintaining founder control and investor alignment.'
+                },
+                engagements: [
+                    { label: 'M&A Advisory', title: 'Cross-border Acquisition of Regional SaaS Platform', value: 'USD 45M' },
+                    { label: 'Tax Advisory', title: 'Digital Economy Tax Optimization Structure', value: 'USD 8M savings' }
+                ],
+                insights: [
+                    { title: 'Indonesian Digital Economy Tax Framework: What Tech Companies Must Know in 2026', tag: 'Tax Flash', tagColor: 'text-blue-700', date: 'May 2026', read: '5 min read', image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80' },
+                    { title: 'Venture Capital Landscape in Indonesia: Q2 2026 Market Report', tag: 'Market Outlook', tagColor: 'text-amber-700', date: 'Apr 2026', read: '8 min read', image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=500&q=80' },
+                    { title: 'IPO Readiness Checklist for Indonesian Tech Companies', tag: 'Report & Analysis', tagColor: 'text-emerald-800', date: 'Mar 2026', read: '6 min read', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80' }
+                ],
+                experts: [
+                    { name: 'Andi Rio Ilham Manry', role: 'Managing Partner', photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&h=300&q=80' },
+                    { name: 'Dyna Agustina', role: 'Partner, Tax Services', photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&h=300&q=80' },
+                    { name: 'Bezalel B. Erlan', role: 'Partner, Business Transfer', photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&h=300&q=80' },
+                    { name: 'Adine K. Nadya', role: 'Partner, Risk Management', photo: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=300&h=300&q=80' }
+                ]
+            },
+            {
+                key: 'healthcare',
+                icon: 'heart-pulse',
+                label: 'Healthcare',
+                overview: {
+                    title: 'Healthcare Sector Transformation',
+                    desc1: "Indonesia's healthcare industry is expanding rapidly with growing middle-class demand, universal health coverage goals, and digital health innovation. Hospitals, pharmaceutical companies, and health-tech startups face complex regulatory and operational challenges.",
+                    desc2: "Chatura delivers comprehensive advisory for healthcare organizations from hospital group transactions and pharmaceutical tax optimization to health-tech venture financing and regulatory compliance.",
+                    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80',
+                    stats: [
+                        { value: 'USD 25M+', label: 'Deal Value Advised' },
+                        { value: '10+', label: 'Healthcare Clients' },
+                        { value: '96%', label: 'Client Retention' },
+                        { value: '7+', label: 'Years in Healthcare' }
+                    ]
+                },
+                challenges: [
+                    'Complex healthcare regulations and licensing requirements.',
+                    'Capital-intensive facility expansion and modernization needs.',
+                    'Digital health integration and data privacy compliance.'
+                ],
+                solutions: [
+                    { label: 'Transaction Advisory:', desc: 'Hospital group M&A, joint ventures, and strategic partnerships.' },
+                    { label: 'Tax Optimization:', desc: 'Healthcare-specific tax incentives and compliance frameworks.' },
+                    { label: 'Growth Strategy:', desc: 'Market expansion, digital health integration, and operational scaling.' }
+                ],
+                caseStudy: {
+                    tag: 'Healthcare',
+                    title: 'Regional Hospital Group Consolidation',
+                    value: 'USD 25 Million',
+                    desc: 'Chatura advised on the consolidation of three regional hospital groups into a unified healthcare network, optimizing the transaction structure for tax efficiency while ensuring regulatory compliance across all jurisdictions.'
+                },
+                engagements: [
+                    { label: 'M&A Advisory', title: 'Pharmaceutical Distribution Network Acquisition', value: 'USD 40M' },
+                    { label: 'Regulatory Advisory', title: 'Universal Health Coverage Compliance Framework', value: 'USD 5M' }
+                ],
+                insights: [
+                    { title: 'Indonesia Universal Health Coverage: Financial Implications for Private Hospitals', tag: 'Report & Analysis', tagColor: 'text-emerald-800', date: 'May 2026', read: '6 min read', image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=500&q=80' },
+                    { title: 'Digital Health Tax Incentives and Regulatory Framework in 2026', tag: 'Tax Flash', tagColor: 'text-blue-700', date: 'Apr 2026', read: '4 min read', image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=500&q=80' },
+                    { title: 'Healthcare M&A Trends: Southeast Asia Market Outlook', tag: 'Market Outlook', tagColor: 'text-amber-700', date: 'Mar 2026', read: '7 min read', image: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=500&q=80' }
+                ],
+                experts: [
+                    { name: 'Andi Rio Ilham Manry', role: 'Managing Partner', photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&h=300&q=80' },
+                    { name: 'Adine K. Nadya', role: 'Partner, Risk Management', photo: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=300&h=300&q=80' },
+                    { name: 'Bezalel B. Erlan', role: 'Partner, Business Transfer', photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&h=300&q=80' },
+                    { name: 'Dyna Agustina', role: 'Partner, Tax Services', photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&h=300&q=80' }
+                ]
+            },
+            {
+                key: 'consumer',
+                icon: 'shopping-bag',
+                label: 'Consumer & Retail',
+                overview: {
+                    title: 'Consumer Market Dynamics',
+                    desc1: "Indonesia's consumer and retail sector is one of Southeast Asia's largest, driven by a young, digitally connected population of 270+ million. E-commerce growth, changing consumer preferences, and omnichannel strategies are reshaping the competitive landscape.",
+                    desc2: "Chatura supports consumer brands, retailers, and FMCG companies with strategic advisory from market entry and brand acquisitions to supply chain optimization and tax-efficient structuring.",
+                    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80',
+                    stats: [
+                        { value: 'USD 40M+', label: 'Transaction Value' },
+                        { value: '14+', label: 'Consumer Clients' },
+                        { value: '97%', label: 'Client Satisfaction' },
+                        { value: '9+', label: 'Years in Consumer' }
+                    ]
+                },
+                challenges: [
+                    'Rapidly evolving consumer behavior and channel shift to digital.',
+                    'Supply chain complexity and last-mile delivery optimization.',
+                    'Intensifying competition from regional and global players.'
+                ],
+                solutions: [
+                    { label: 'Brand Acquisition:', desc: 'M&A advisory for consumer brands and retail chains.' },
+                    { label: 'Supply Chain Advisory:', desc: 'End-to-end supply chain optimization and cost reduction.' },
+                    { label: 'Market Entry Strategy:', desc: 'Foreign brand market entry and localization support.' }
+                ],
+                caseStudy: {
+                    tag: 'Consumer & Retail',
+                    title: 'FMCG Brand Portfolio Optimization',
+                    value: 'USD 40 Million',
+                    desc: 'Chatura advised a leading consumer goods company on portfolio optimization through selective divestitures and strategic acquisitions, resulting in a 25% improvement in operational margins within 18 months.'
+                },
+                engagements: [
+                    { label: 'M&A Advisory', title: 'E-commerce Platform Acquisition by Regional Retailer', value: 'USD 60M' },
+                    { label: 'Operational Advisory', title: 'Omnichannel Supply Chain Transformation', value: 'USD 15M' }
+                ],
+                insights: [
+                    { title: 'Indonesian E-commerce Landscape 2026: Investment and M&A Opportunities', tag: 'Market Outlook', tagColor: 'text-amber-700', date: 'May 2026', read: '7 min read', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=500&q=80' },
+                    { title: 'FMCG Tax Optimization Strategies for Multi-Channel Distribution', tag: 'Tax Flash', tagColor: 'text-blue-700', date: 'Apr 2026', read: '5 min read', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80' },
+                    { title: 'Consumer Behavior Shifts: Post-Pandemic Retail Financial Planning', tag: 'Report & Analysis', tagColor: 'text-emerald-800', date: 'Mar 2026', read: '6 min read', image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=500&q=80' }
+                ],
+                experts: [
+                    { name: 'Andi Rio Ilham Manry', role: 'Managing Partner', photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&h=300&q=80' },
+                    { name: 'Bezalel B. Erlan', role: 'Partner, Business Transfer', photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&h=300&q=80' },
+                    { name: 'Dyna Agustina', role: 'Partner, Tax Services', photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&h=300&q=80' },
+                    { name: 'Adine K. Nadya', role: 'Partner, Risk Management', photo: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=300&h=300&q=80' }
+                ]
+            }
+        ];
+
+        var currentIndustryKey = 'energy';
+
+        /* =========================================================
+           2. Render: Industry card selector
+        ========================================================= */
+        function renderIndustryCards() {
+            var wrap = document.getElementById('industryCards');
+            var t = window.getTranslations() || {};
+            var LABELS = {
+                energy: t['industries.tab_energy'] || 'Energy & Natural Resources',
+                manufacturing: t['industries.tab_manufacturing'] || 'Manufacturing',
+                technology: t['industries.tab_technology'] || 'Technology & Digital',
+                healthcare: t['industries.tab_healthcare'] || 'Healthcare',
+                consumer: t['industries.tab_consumer'] || 'Consumer & Retail'
+            };
+            wrap.innerHTML = INDUSTRIES.map(function (ind) {
+                var label = LABELS[ind.key] || ind.label;
+                var isActive = ind.key === currentIndustryKey;
+                return '<button type="button" data-key="' + ind.key + '" ' +
+                    'class="industry-card flex items-center gap-3 px-4 py-4 rounded-xl border text-left transition ' +
+                    (isActive
+                        ? 'bg-brand-green border-brand-green text-white shadow-md'
+                        : 'bg-white border-gray-200 text-gray-700 hover:border-emerald-300') + '">' +
+                    '<span class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ' +
+                    (isActive ? 'bg-white/15 text-white' : 'bg-emerald-50 brand-green') + '">' +
+                    '<i data-lucide="' + ind.icon + '" class="w-5 h-5"></i></span>' +
+                    '<span class="font-medium text-sm">' + label + '</span>' +
+                    '</button>';
+            }).join('');
+
+            Array.from(wrap.querySelectorAll('.industry-card')).forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    selectIndustry(btn.getAttribute('data-key'));
+                });
+            });
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        /* =========================================================
+           3. Render: Overview section
+        ========================================================= */
+        function renderOverview(animate) {
+            var ind = INDUSTRIES.find(function (x) { return x.key === currentIndustryKey; });
+            var o = ind.overview;
+
+            var img = document.getElementById('overviewImage');
+            var title = document.getElementById('overviewTitle');
+            var desc1 = document.getElementById('overviewDesc1');
+            var desc2 = document.getElementById('overviewDesc2');
+            var statsWrap = document.getElementById('overviewStats');
+            var container = document.getElementById('industry-overview');
+
+            function apply() {
+                img.src = o.image;
+                img.alt = o.title;
+                title.textContent = o.title;
+                desc1.textContent = o.desc1;
+                desc2.textContent = o.desc2;
+                statsWrap.innerHTML = o.stats.map(function (s) {
+                    return '<div class="bg-emerald-50 rounded-lg p-4 text-center">' +
+                        '<p class="text-xl font-bold brand-green">' + s.value + '</p>' +
+                        '<p class="text-xs text-gray-500 mt-1">' + s.label + '</p></div>';
+                }).join('');
+            }
+
+            if (animate && typeof gsap !== 'undefined') {
+                gsap.to(container, {
+                    opacity: 0, y: 8, duration: 0.18, ease: 'power1.in', onComplete: function () {
+                        apply();
+                        gsap.fromTo(container, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
+                    }
+                });
+            } else {
+                apply();
+            }
+        }
+
+        /* =========================================================
+           4. Render: Challenges & Solutions
+        ========================================================= */
+        function renderChallenges(animate) {
+            var ind = INDUSTRIES.find(function (x) { return x.key === currentIndustryKey; });
+            var challengesEl = document.getElementById('challengesList');
+            var solutionsEl = document.getElementById('solutionsList');
+            var section = document.getElementById('industry-challenges');
+
+            function apply() {
+                challengesEl.innerHTML = ind.challenges.map(function (c) {
+                    return '<li class="flex items-start"><i data-lucide="circle-minus" class="text-red-400 mr-3 mt-0.5 flex-shrink-0"></i> <span>' + c + '</span></li>';
+                }).join('');
+                solutionsEl.innerHTML = ind.solutions.map(function (s) {
+                    return '<li class="flex items-start"><i data-lucide="check-circle-2" class="text-emerald-500 mr-3 mt-0.5 flex-shrink-0"></i> <span><strong>' + s.label + '</strong> ' + s.desc + '</span></li>';
+                }).join('');
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            }
+
+            if (animate) {
+                gsap.to(section, {
+                    opacity: 0, y: 8, duration: 0.18, ease: 'power1.in', onComplete: function () {
+                        apply();
+                        gsap.fromTo(section, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
+                    }
+                });
+            } else {
+                apply();
+            }
+        }
+
+        /* =========================================================
+           5. Render: Representative Experience
+        ========================================================= */
+        function renderExperience(animate) {
+            var ind = INDUSTRIES.find(function (x) { return x.key === currentIndustryKey; });
+            var cs = ind.caseStudy;
+
+            var tagEl = document.getElementById('expTag');
+            var titleEl = document.getElementById('expTitle');
+            var valueEl = document.getElementById('expValue');
+            var descEl = document.getElementById('expDesc');
+            var sidebar = document.getElementById('experienceSidebar');
+            var section = document.getElementById('industry-experience');
+
+            function apply() {
+                tagEl.textContent = cs.tag;
+                titleEl.textContent = cs.title;
+                valueEl.textContent = cs.value;
+                descEl.textContent = cs.desc;
+
+                sidebar.innerHTML = ind.engagements.map(function (e) {
+                    return '<div class="reveal-up bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm hover:bg-white/10 transition">' +
+                        '<span class="text-[10px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded inline-block mb-3">' + e.label + '</span>' +
+                        '<h4 class="font-bold text-lg mb-1">' + e.title + '</h4>' +
+                        '<p class="text-emerald-300 font-semibold mb-3">' + e.value + '</p>' +
+                        '</div>';
+                }).join('');
+            }
+
+            if (animate) {
+                gsap.to(section, {
+                    opacity: 0, y: 8, duration: 0.18, ease: 'power1.in', onComplete: function () {
+                        apply();
+                        gsap.fromTo(section, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
+                    }
+                });
+            } else {
+                apply();
+            }
+        }
+
+        /* =========================================================
+           6. Render: Related Insights
+        ========================================================= */
+        function renderInsights(animate) {
+            var ind = INDUSTRIES.find(function (x) { return x.key === currentIndustryKey; });
+            var ins = ind.insights;
+
+            var featured = ins[0];
+            var list = ins.slice(1, 3);
+
+            document.getElementById('insightFeaturedImg').style.backgroundImage = "url('" + featured.image + "')";
+            document.getElementById('insightFeaturedTag').textContent = featured.tag;
+            document.getElementById('insightFeaturedTitle').textContent = featured.title;
+            document.getElementById('insightFeaturedDate').textContent = featured.date;
+            document.getElementById('insightFeaturedRead').textContent = featured.read;
+
+            var listEl = document.getElementById('insightList');
+            listEl.innerHTML = list.map(function (i) {
+                return '<a href="insights.html" class="insight-side-card flex gap-4 bg-white rounded-xl border border-gray-100 p-4 hover:shadow-md">' +
+                    '<div class="w-32 h-24 rounded-lg bg-cover bg-center flex-shrink-0 overflow-hidden">' +
+                    '<div class="insight-side-img w-full h-full" style="background-image:url(\'' + i.image + '\')"></div>' +
+                    '</div>' +
+                    '<div class="min-w-0 flex flex-col justify-center">' +
+                    '<span class="text-[10px] font-bold uppercase tracking-wider ' + i.tagColor + ' px-2 py-0.5 rounded-full inline-block mb-2 w-fit">' + i.tag + '</span>' +
+                    '<h4 class="font-semibold text-sm text-gray-900 leading-snug mb-2 line-clamp-2">' + i.title + '</h4>' +
+                    '<div class="flex items-center gap-2 text-xs text-gray-400">' +
+                    '<span>' + i.date + '</span>' +
+                    '<span class="w-1 h-1 rounded-full bg-gray-300"></span>' +
+                    '<span>' + i.read + '</span>' +
+                    '</div>' +
+                    '</div></a>';
+            }).join('');
+
+            if (animate && typeof gsap !== 'undefined') {
+                gsap.fromTo(listEl.querySelectorAll('.insight-side-card'), { opacity: 0, x: 16 },
+                    { opacity: 1, x: 0, duration: 0.4, stagger: 0.08, ease: 'power2.out' });
+            }
+        }
+
+        /* =========================================================
+           7. Render: Experts row
+        ========================================================= */
+        function renderExperts(animate) {
+            var ind = INDUSTRIES.find(function (x) { return x.key === currentIndustryKey; });
+            var grid = document.getElementById('expertsGrid');
+            document.getElementById('expertsIndustryLabel').textContent = ind.label;
+
+            function build() {
+                grid.innerHTML = ind.experts.map(function (e) {
+                    return '<div class="expert-item text-center">' +
+                        '<div class="relative overflow-hidden rounded-2xl mb-4 bg-gray-50">' +
+                        '<img src="' + e.photo + '" alt="' + e.name + '" width="300" height="400" loading="lazy" class="w-full h-72 object-cover object-top transition-transform duration-500 hover:scale-105">' +
+                        '</div>' +
+                        '<h4 class="expert-name font-semibold text-[18px] text-gray-900 mb-1 transition-colors">' + e.name + '</h4>' +
+                        '<p class="text-sm text-gray-500 mb-3">' + e.role + '</p>' +
+                        '<div class="expert-social flex items-center justify-center gap-3">' +
+                        '<a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-800 hover:text-emerald-800 hover:border-emerald-800 transition"><i data-lucide="linkedin" class="w-4 h-4"></i></a>' +
+                        '<a href="mailto:hello@chatura.co.id" aria-label="Email" class="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-800 hover:text-emerald-800 hover:border-emerald-800 transition"><i data-lucide="mail" class="w-4 h-4"></i></a>' +
+                        '<a href="our-people.html" aria-label="View Profile" class="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-800 hover:text-emerald-800 hover:border-emerald-800 transition"><i data-lucide="external-link" class="w-4 h-4"></i></a>' +
+                        '</div>' +
+                        '</div>';
+                }).join('');
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            }
+
+            if (animate) {
+                grid.style.opacity = '0';
+                grid.style.transform = 'translateY(30px)';
+                setTimeout(function () {
+                    build();
+                    if (typeof gsap !== 'undefined') {
+                        gsap.fromTo(grid, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' });
+                    } else {
+                        grid.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                        grid.style.opacity = '1';
+                        grid.style.transform = 'translateY(0)';
+                    }
+                }, 250);
+            } else {
+                build();
+            }
+        }
+
+        /* =========================================================
+           8. Select industry -> update everything downstream
+        ========================================================= */
+        function selectIndustry(key) {
+            if (key === currentIndustryKey) return;
+            currentIndustryKey = key;
+            renderIndustryCards();
+            renderOverview(true);
+            renderChallenges(true);
+            renderExperience(true);
+            renderInsights(true);
+            renderExperts(true);
+        }
+
+        /* =========================================================
+           9. Initial render
+        ========================================================= */
+        renderIndustryCards();
+        renderOverview(false);
+        renderChallenges(false);
+        renderExperience(false);
+        renderInsights(false);
+        renderExperts(false);
+
+        // Re-render dynamic sections on language change
+        window.addEventListener('langChange', function () {
+            renderIndustryCards();
+            renderOverview(false);
+            renderChallenges(false);
+            renderExperience(false);
+            renderInsights(false);
+            renderExperts(false);
+        });
+
+        /* =========================================================
+           10. GSAP ScrollTrigger — scroll reveal
+        ========================================================= */
+        if (typeof gsap === 'undefined') {
+            document.querySelectorAll('.reveal-up, .reveal-fade').forEach(function (el) {
+                el.style.opacity = 1; el.style.transform = 'none';
+            });
+        } else {
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.to('#hero-industry .reveal-up', {
+                opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power2.out', delay: 0.15
+            });
+
+            ScrollTrigger.batch('.reveal-up:not(#hero-industry .reveal-up)', {
+                start: 'top 85%',
+                once: true,
+                onEnter: function (batch) {
+                    gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out' });
+                }
+            });
+
+            setTimeout(function () {
+                document.querySelectorAll('.reveal-up').forEach(function (el) {
+                    if (getComputedStyle(el).opacity === '0') { el.style.opacity = 1; el.style.transform = 'none'; }
+                });
+            }, 4000);
+        }
+
+        /* =========================================================
+           11. Parallax effect on hero background
+        ========================================================= */
+        (function () {
+            var heroBg = document.getElementById('hero-bg');
+            if (!heroBg) return;
+            window.addEventListener('scroll', function () {
+                var scrolled = window.scrollY;
+                if (scrolled < 800) {
+                    heroBg.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
+                }
+            }, { passive: true });
+        })();
+    </script>
+
+    <script>
+        (function(){
+            var launcher = document.getElementById('waLauncher');
+            var popup = document.getElementById('waPopup');
+            var close = document.getElementById('waClose');
+            if (!launcher || !popup) return;
+            function togglePopup() {
+                var isOpen = popup.classList.contains('is-open');
+                popup.classList.toggle('is-open');
+                launcher.setAttribute('aria-expanded', !isOpen);
+                popup.setAttribute('aria-hidden', isOpen);
+            }
+            launcher.addEventListener('click', togglePopup);
+            close.addEventListener('click', function(e) { e.stopPropagation(); togglePopup(); });
+            document.addEventListener('click', function(e) {
+                if (!popup.contains(e.target) && !launcher.contains(e.target) && popup.classList.contains('is-open')) {
+                    togglePopup();
+                }
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && popup.classList.contains('is-open')) togglePopup();
+            });
+        })();
+    </script>
+
+</body>
+
+</html>
