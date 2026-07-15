@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Business Transfer Portal - Chatura Indonesia</title>
+    <meta name="description"
+        content="Secure access portal for Chatura Indonesia's confidential business transfer and M&A advisory services.">
+    <link rel="canonical" href="https://www.chatura.co.id/access-portal.html">
+    <meta property="og:title" content="Private Business Transfer Portal - Chatura Indonesia">
+    <meta property="og:description" content="Secure access portal for confidential business transfer and M&A advisory.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.chatura.co.id/access-portal.html">
+    <meta property="og:image" content="https://www.chatura.co.id/assets/chatura.png">
+    <link rel="stylesheet" href="assets/design-system.css">
+    <style>
+        :root {
+            --portal-green: #073525;
+            --portal-emerald: #0F8F6A;
+            --portal-gold: #C9A34A;
+            --portal-bg: #FFFFFF;
+            --portal-surface: #F8FAF9;
+            --portal-border: #E8EDEA;
+            --portal-text: #1A2E28;
+            --portal-muted: #6B7F77;
+            --portal-caption: #94A89E;
+            --font-editorial: 'Playfair Display', Georgia, serif;
+            --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-ui);
+            background: var(--portal-bg);
+            color: var(--portal-text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 1rem;
+            z-index: 10000;
+            padding: 0.75rem 1.5rem;
+            background: var(--portal-green);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border-radius: 0 0 8px 8px;
+            transition: top 0.15s ease;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 3px solid #fff;
+            outline-offset: 2px;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--portal-emerald);
+            outline-offset: 2px;
+        }
+
+        *:focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+            #em-layer-01,
+            #em-layer-02,
+            #em-layer-03,
+            #em-layer-04,
+            #em-layer-05 {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .portal-editorial,
+            .portal-auth-card {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* === LAYOUT === */
+        .portal-container {
+            display: grid;
+            grid-template-columns: 55fr 45fr;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        @media (max-width: 1024px) {
+            .portal-container {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+        }
+
+        /* === EXECUTIVE MOTION SYSTEM === */
+        .portal-bg-layer {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .em-layer {
+            position: absolute;
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+
+        /* Layer 01: Primary swirl - sharp image, 1050px, centered */
+        #em-layer-01 {
+            width: 1050px;
+            height: 1050px;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            background: url('assets/bg-section-anim.webp') center/contain no-repeat;
+            opacity: 0;
+        }
+
+        /* Layer 02: Large blurred swirl - scale 1.25, blur 8px, reverse rotation, centered */
+        #em-layer-02 {
+            width: 1050px;
+            height: 1050px;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            background: url('assets/bg-section-anim.webp') center/contain no-repeat;
+            filter: blur(8px);
+            opacity: 0;
+        }
+
+        /* Layer 03: Small swirl - 500px, independent floating, centered */
+        #em-layer-03 {
+            width: 500px;
+            height: 500px;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            background: url('assets/bg-section-anim.webp') center/contain no-repeat;
+            opacity: 0;
+        }
+
+        /* Layer 04: Emerald radial glow, centered */
+        #em-layer-04 {
+            width: 950px;
+            height: 950px;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(15, 143, 106, 0.08) 0%, rgba(15, 143, 106, 0.03) 40%, transparent 70%);
+            opacity: 0;
+        }
+
+        /* Layer 05: Subtle noise texture */
+        #em-layer-05 {
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            mix-blend-mode: overlay;
+        }
+
+        /* === EDITORIAL COLUMN === */
+        .portal-editorial {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 5rem 4rem 6rem;
+            background: transparent;
+        }
+
+        @media (max-width: 1024px) {
+            .portal-editorial {
+                padding: 3rem 2rem;
+                order: 2;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .portal-editorial {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        .portal-editorial-inner {
+            max-width: 520px;
+        }
+
+        .portal-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--portal-emerald);
+            margin-bottom: 2rem;
+        }
+
+        .portal-label-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--portal-emerald);
+        }
+
+        .portal-hero-title {
+            font-family: var(--font-editorial);
+            font-size: 3rem;
+            font-weight: 400;
+            line-height: 1.15;
+            color: var(--portal-green);
+            margin-bottom: 1.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        @media (max-width: 768px) {
+            .portal-hero-title {
+                font-size: 2.25rem;
+            }
+        }
+
+        .portal-hero-desc {
+            font-size: 1.125rem;
+            line-height: 1.75;
+            color: var(--portal-muted);
+            max-width: 440px;
+            margin-bottom: 3rem;
+        }
+
+        /* === TRUST INDICATORS === */
+        .portal-trust {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            max-width: 440px;
+        }
+
+        @media (max-width: 480px) {
+            .portal-trust {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .portal-trust-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem 1.25rem;
+            background: var(--portal-surface);
+            border: 1px solid var(--portal-border);
+            border-radius: 12px;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .portal-trust-item:hover {
+            border-color: rgba(15, 143, 106, 0.2);
+            box-shadow: 0 2px 12px rgba(15, 143, 106, 0.06);
+        }
+
+        .portal-trust-icon {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(15, 143, 106, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--portal-emerald);
+        }
+
+        .portal-trust-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .portal-trust-text {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--portal-text);
+            line-height: 1.4;
+        }
+
+        .portal-trust-sub {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--portal-caption);
+            margin-top: 0.125rem;
+        }
+
+        /* === AUTH COLUMN === */
+        .portal-auth {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 5rem 4rem 3rem;
+        }
+
+        @media (max-width: 1024px) {
+            .portal-auth {
+                padding: 3rem 2rem;
+                order: 1;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .portal-auth {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        .portal-auth-card {
+            width: 100%;
+            max-width: 420px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 32px rgba(0, 0, 0, 0.06);
+            padding: 2.75rem 2.5rem;
+            position: relative;
+        }
+
+        @media (max-width: 480px) {
+            .portal-auth-card {
+                padding: 2rem 1.5rem;
+                border-radius: 16px;
+            }
+        }
+
+        .portal-card-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-size: 0.625rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--portal-gold);
+            background: rgba(201, 163, 74, 0.08);
+            border: 1px solid rgba(201, 163, 74, 0.2);
+            border-radius: 100px;
+            padding: 0.375rem 0.875rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .portal-card-badge svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        .portal-card-title {
+            font-family: var(--font-editorial);
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: var(--portal-green);
+            margin-bottom: 0.5rem;
+            line-height: 1.25;
+        }
+
+        .portal-card-subtitle {
+            font-size: 0.875rem;
+            color: var(--portal-muted);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* === FORM === */
+        .portal-field {
+            position: relative;
+            margin-bottom: 1.25rem;
+        }
+
+        .portal-field label {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.875rem;
+            color: var(--portal-caption);
+            pointer-events: none;
+            transition: all 0.2s ease;
+            transform-origin: left center;
+            background: transparent;
+            padding: 0 0.25rem;
+        }
+
+        .portal-field input:focus+label,
+        .portal-field input:not(:placeholder-shown)+label {
+            top: -0.5rem;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--portal-emerald);
+            background: #fff;
+            letter-spacing: 0.03em;
+        }
+
+        .portal-field input {
+            width: 100%;
+            padding: 1rem 1rem;
+            font-family: var(--font-ui);
+            font-size: 0.9375rem;
+            color: var(--portal-text);
+            background: var(--portal-surface);
+            border: 1.5px solid var(--portal-border);
+            border-radius: 12px;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            min-height: 52px;
+        }
+
+        .portal-field input::placeholder {
+            color: transparent;
+        }
+
+        .portal-field input:focus {
+            border-color: var(--portal-emerald);
+            box-shadow: 0 0 0 3px rgba(15, 143, 106, 0.1);
+            background: #fff;
+        }
+
+        .portal-form-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.75rem;
+            margin-top: -0.25rem;
+        }
+
+        .portal-remember {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .portal-remember input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            border-radius: 5px;
+            border: 1.5px solid var(--portal-border);
+            background: var(--portal-surface);
+            cursor: pointer;
+            accent-color: var(--portal-emerald);
+            min-height: auto;
+        }
+
+        .portal-remember span {
+            font-size: 0.8125rem;
+            color: var(--portal-muted);
+        }
+
+        .portal-forgot {
+            font-size: 0.8125rem;
+            color: var(--portal-emerald);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .portal-forgot:hover {
+            color: var(--portal-green);
+        }
+
+        .portal-btn-primary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.625rem;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-family: var(--font-ui);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: #fff;
+            background: var(--portal-green);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+            min-height: 52px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portal-btn-primary:hover {
+            background: var(--portal-emerald);
+            box-shadow: 0 4px 16px rgba(7, 53, 37, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .portal-btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .portal-btn-primary .btn-arrow {
+            transition: transform 0.25s ease;
+        }
+
+        .portal-btn-primary:hover .btn-arrow {
+            transform: translateX(3px);
+        }
+
+        .portal-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.75rem 0;
+            color: var(--portal-caption);
+            font-size: 0.75rem;
+        }
+
+        .portal-divider::before,
+        .portal-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--portal-border);
+        }
+
+        .portal-card-footer {
+            text-align: center;
+            font-size: 0.8125rem;
+            color: var(--portal-muted);
+        }
+
+        .portal-card-footer a {
+            color: var(--portal-emerald);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .portal-card-footer a:hover {
+            color: var(--portal-green);
+        }
+
+        /* === SECURITY NOTE === */
+        .portal-security {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            padding: 0.875rem 1rem;
+            background: rgba(15, 143, 106, 0.04);
+            border: 1px solid rgba(15, 143, 106, 0.1);
+            border-radius: 10px;
+            font-size: 0.6875rem;
+            color: var(--portal-muted);
+            line-height: 1.5;
+        }
+
+        .portal-security svg {
+            flex-shrink: 0;
+            width: 14px;
+            height: 14px;
+            color: var(--portal-emerald);
+        }
+
+
+
+        /* === FOOTER === */
+        .portal-footer {
+            position: relative;
+            z-index: 1;
+            grid-column: 1 / -1;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.5rem 6rem;
+            border-top: 1px solid var(--portal-border);
+            font-size: 0.6875rem;
+            color: var(--portal-caption);
+        }
+
+        @media (max-width: 1024px) {
+            .portal-footer {
+                padding: 1.5rem 2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .portal-footer {
+                padding: 1.25rem 1.5rem;
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .portal-footer-links {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .portal-footer-links a {
+            color: var(--portal-caption);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .portal-footer-links a:hover {
+            color: var(--portal-text);
+        }
+
+        .portal-footer-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            color: var(--portal-emerald);
+            font-weight: 500;
+            text-decoration: none;
+            transition: gap 0.2s ease;
+        }
+
+        .portal-footer-back:hover {
+            gap: 0.625rem;
+        }
+
+        .portal-footer-lang {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .portal-footer-lang a {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background 0.15s ease, color 0.15s ease;
+        }
+
+        .portal-footer-lang .lang-active {
+            background: var(--portal-green);
+            color: #fff;
+        }
+
+        /* === DIVIDER LINE === */
+        .portal-section-divider {
+            width: 100%;
+            height: 1px;
+            background: var(--portal-border);
+        }
+
+        /* === ERROR STATE === */
+        .portal-field.error input {
+            border-color: #DC4446;
+            box-shadow: 0 0 0 3px rgba(220, 68, 70, 0.08);
+        }
+
+        .portal-field.error label {
+            color: #DC4446;
+        }
+
+        .portal-error-msg {
+            display: none;
+            font-size: 0.75rem;
+            color: #DC4446;
+            margin-top: 0.375rem;
+            padding-left: 0.25rem;
+        }
+
+        .portal-field.error .portal-error-msg {
+            display: block;
+        }
+
+        /* === MOBILE EDITORIAL === */
+        @media (max-width: 1024px) {
+            .portal-trust {
+                max-width: 100%;
+            }
+
+            .portal-editorial-inner {
+                max-width: 100%;
+            }
+
+            .portal-hero-desc {
+                max-width: 100%;
+            }
+        }
+
+        /* === LOADING STATE === */
+        .portal-btn-primary.loading .btn-text {
+            opacity: 0;
+        }
+
+        .portal-btn-primary.loading .btn-spinner {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: portalSpin 0.6s linear infinite;
+        }
+
+        @keyframes portalSpin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#portal-form" class="skip-link" data-i18n="portal.skip">Skip to login form</a>
+
+    <!-- Executive Motion System - Five Independent Layers -->
+    <div class="portal-bg-layer" aria-hidden="true">
+        <div class="em-layer" id="em-layer-01"></div>
+        <div class="em-layer" id="em-layer-02"></div>
+        <div class="em-layer" id="em-layer-03"></div>
+        <div class="em-layer" id="em-layer-04"></div>
+        <div class="em-layer" id="em-layer-05">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <filter id="em-noise">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+                    <feColorMatrix type="saturate" values="0" />
+                </filter>
+                <rect width="100%" height="100%" filter="url(#em-noise)" opacity="0.03" />
+            </svg>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <div class="portal-container">
+
+            <!-- === EDITORIAL COLUMN === -->
+            <section class="portal-editorial" aria-label="Portal introduction">
+                <div class="portal-editorial-inner">
+                    <div class="portal-label">
+                        <span class="portal-label-dot" aria-hidden="true"></span>
+                        <span data-i18n="portal.label">Private Business Transfer Portal</span>
+                    </div>
+
+                    <h1 class="portal-hero-title" data-i18n="portal.title">Confidential Business Transactions Handled
+                        with Executive Precision.</h1>
+
+                    <p class="portal-hero-desc" data-i18n="portal.desc">Access verified investment opportunities,
+                        confidential business listings, and secure transaction workspaces managed by Chatura Indonesia.
+                    </p>
+
+                    <div class="portal-trust" role="list" aria-label="Portal features">
+                        <div class="portal-trust-item" role="listitem">
+                            <div class="portal-trust-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                    <path d="m9 12 2 2 4-4" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="portal-trust-text" data-i18n="portal.trust_1">Verified Listings</div>
+                                <div class="portal-trust-sub" data-i18n="portal.trust_1_sub">Legally verified assets
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portal-trust-item" role="listitem">
+                            <div class="portal-trust-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                    <path d="M14 2v6h6" />
+                                    <path d="M16 13H8" />
+                                    <path d="M16 17H8" />
+                                    <path d="M10 9H8" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="portal-trust-text" data-i18n="portal.trust_2">Legal Due Diligence</div>
+                                <div class="portal-trust-sub" data-i18n="portal.trust_2_sub">Comprehensive review scope
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portal-trust-item" role="listitem">
+                            <div class="portal-trust-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="portal-trust-text" data-i18n="portal.trust_3">Confidential NDA Process</div>
+                                <div class="portal-trust-sub" data-i18n="portal.trust_3_sub">Strict privacy protocols
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portal-trust-item" role="listitem">
+                            <div class="portal-trust-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="portal-trust-text" data-i18n="portal.trust_4">Professional Advisory</div>
+                                <div class="portal-trust-sub" data-i18n="portal.trust_4_sub">Dedicated M&A team</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- === AUTH COLUMN === -->
+            <section class="portal-auth" aria-label="Portal authentication">
+                <div class="portal-auth-card">
+                    <div class="portal-card-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                        <span data-i18n="portal.badge">Secure Portal</span>
+                    </div>
+
+                    <h2 class="portal-card-title" data-i18n="portal.card_title">Portal Access</h2>
+                    <p class="portal-card-subtitle" data-i18n="portal.card_subtitle">Enter your verified credentials to
+                        access confidential business listings and transaction workspaces.</p>
+
+                    <form id="portal-form" novalidate aria-label="Portal login form">
+                        <div class="portal-field">
+                            <input type="email" id="portal-email" name="email" placeholder="Email" autocomplete="email"
+                                required aria-required="true" aria-describedby="portal-email-error"
+                                data-i18n-placeholder="portal.email_placeholder">
+                            <label for="portal-email" data-i18n="portal.email_label">Email Address</label>
+                            <div class="portal-error-msg" id="portal-email-error" role="alert" data-i18n="portal.error_email">Please enter a valid
+                                email address.</div>
+                        </div>
+
+                        <div class="portal-field">
+                            <input type="password" id="portal-password" name="password" placeholder="Password"
+                                autocomplete="current-password" required aria-required="true"
+                                aria-describedby="portal-password-error"
+                                data-i18n-placeholder="portal.password_placeholder">
+                            <label for="portal-password" data-i18n="portal.password_label">Password</label>
+                            <div class="portal-error-msg" id="portal-password-error" role="alert" data-i18n="portal.error_password">Please enter your
+                                password.</div>
+                        </div>
+
+                        <div class="portal-form-row">
+                            <label class="portal-remember">
+                                <input type="checkbox" name="remember">
+                                <span data-i18n="portal.remember">Remember me</span>
+                            </label>
+                            <a href="#" class="portal-forgot" data-i18n="portal.forgot">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" class="portal-btn-primary" data-i18n-title="portal.cta_aria" aria-label="Access Secure Portal">
+                            <span class="btn-text" data-i18n="portal.cta">Access Secure Portal</span>
+                            <span class="btn-arrow" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14" />
+                                    <path d="m12 5 7 7-7 7" />
+                                </svg>
+                            </span>
+                        </button>
+                    </form>
+
+                    <div class="portal-divider" data-i18n="portal.divider">or</div>
+
+                    <div class="portal-card-footer">
+                        <span data-i18n="portal.no_account">Need an account?</span>
+                        <a href="business-transfer.html" data-i18n="portal.apply">Apply for Investor Access</a>
+                    </div>
+
+                    <div class="portal-security">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                        <span data-i18n="portal.security_note">All portal activity is monitored and governed by Chatura
+                            Indonesia's confidentiality framework.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- === FOOTER === -->
+            <footer class="portal-footer">
+                <div class="portal-footer-links">
+                    <span data-i18n="portal.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
+                    <a href="#" data-i18n="portal.privacy">Privacy Policy</a>
+                    <a href="#" data-i18n="portal.terms">Terms of Use</a>
+                </div>
+                <div class="portal-footer-links">
+                    <a href="index.html" class="portal-footer-back">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="m12 19-7-7 7-7" />
+                            <path d="M19 12H5" />
+                        </svg>
+                        <span data-i18n="portal.back_corporate">Return to Corporate Website</span>
+                    </a>
+                    <div class="portal-footer-lang" aria-label="Language selector">
+                        <a href="#" class="lang-active" aria-label="English">EN</a>
+                        <a href="#" aria-label="Bahasa Indonesia">ID</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="assets/i18n/i18n.js"></script>
+    <script>
+        (function () {
+            var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (typeof gsap === 'undefined') return;
+
+            var layer01 = document.getElementById('em-layer-01');
+            var layer02 = document.getElementById('em-layer-02');
+            var layer03 = document.getElementById('em-layer-03');
+            var layer04 = document.getElementById('em-layer-04');
+            var layer05 = document.getElementById('em-layer-05');
+
+            if (prefersReducedMotion) {
+                if (layer01) layer01.style.opacity = '0.18';
+                if (layer02) layer02.style.opacity = '0.08';
+                if (layer03) layer03.style.opacity = '0.12';
+                if (layer04) layer04.style.opacity = '1';
+                if (layer05) layer05.style.opacity = '1';
+
+                gsap.set('.portal-editorial-inner', { opacity: 1, y: 0 });
+                gsap.set('.portal-auth-card', { opacity: 1, y: 0 });
+                gsap.set('.portal-trust-item', { opacity: 1, y: 0 });
+                return;
+            }
+
+            /* === CENTER LAYERS VIA GSAP === */
+            gsap.set(layer01, { xPercent: -50, yPercent: -50 });
+            gsap.set(layer02, { xPercent: -50, yPercent: -50, scale: 1.25 });
+            gsap.set(layer03, { xPercent: -50, yPercent: -50 });
+            gsap.set(layer04, { xPercent: -50, yPercent: -50 });
+
+            /* === LAYER QUICKSETTERS === */
+            var set01Rotate = gsap.quickSetter(layer01, 'rotation', 'deg');
+            var set01Scale = gsap.quickSetter(layer01, 'scale');
+            var set01X = gsap.quickSetter(layer01, 'x', 'px');
+            var set01Y = gsap.quickSetter(layer01, 'y', 'px');
+            var set01Opacity = gsap.quickSetter(layer01, 'opacity');
+
+            var set02Rotate = gsap.quickSetter(layer02, 'rotation', 'deg');
+            var set02X = gsap.quickSetter(layer02, 'x', 'px');
+            var set02Y = gsap.quickSetter(layer02, 'y', 'px');
+            var set02Opacity = gsap.quickSetter(layer02, 'opacity');
+
+            var set03X = gsap.quickSetter(layer03, 'x', 'px');
+            var set03Y = gsap.quickSetter(layer03, 'y', 'px');
+            var set03Opacity = gsap.quickSetter(layer03, 'opacity');
+            var set03Scale = gsap.quickSetter(layer03, 'scale');
+
+            var set04X = gsap.quickSetter(layer04, 'x', 'px');
+            var set04Y = gsap.quickSetter(layer04, 'y', 'px');
+            var set04Opacity = gsap.quickSetter(layer04, 'opacity');
+            var set04Scale = gsap.quickSetter(layer04, 'scale');
+
+            /* === MOUSE TRACKING STATE === */
+            var mouseX = 0;
+            var mouseY = 0;
+            var mouseTargetX = 0;
+            var mouseTargetY = 0;
+
+            document.addEventListener('mousemove', function (e) {
+                mouseTargetX = (e.clientX / window.innerWidth - 0.5) * 2;
+                mouseTargetY = (e.clientY / window.innerHeight - 0.5) * 2;
+            }, { passive: true });
+
+            /* === INERTIA LOOP (single rAF, no layout thrash) === */
+            function tick() {
+                mouseX += (mouseTargetX - mouseX) * 0.06;
+                mouseY += (mouseTargetY - mouseY) * 0.06;
+
+                var px = mouseX * 18;
+                var py = mouseY * 18;
+                var rx = mouseX * -12;
+                var ry = mouseY * -12;
+
+                set01X(px);
+                set01Y(py);
+                set02X(rx);
+                set02Y(ry);
+                set04X(rx * 0.5);
+                set04Y(ry * 0.5);
+
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+
+            /* === ROTATION TIMELINES === */
+            gsap.to({ r: 0 }, {
+                r: 360,
+                duration: 180,
+                ease: 'none',
+                repeat: -1,
+                onUpdate: function () { set01Rotate(this.targets()[0].r); }
+            });
+
+            gsap.to({ r: 0 }, {
+                r: -360,
+                duration: 240,
+                ease: 'none',
+                repeat: -1,
+                onUpdate: function () { set02Rotate(this.targets()[0].r); }
+            });
+
+            /* === BREATHING SCALE (Layer 01) === */
+            gsap.to({ s: 1 }, {
+                s: 1.04,
+                duration: 10,
+                ease: 'sine.inOut',
+                repeat: -1,
+                yoyo: true,
+                onUpdate: function () { set01Scale(this.targets()[0].s); }
+            });
+
+            /* === FLOATING MOVEMENT (Layer 03) === */
+            var floatTl = gsap.timeline({ repeat: -1, yoyo: true });
+            floatTl.to({ val: 0 }, {
+                val: 25,
+                duration: 14,
+                ease: 'sine.inOut',
+                onUpdate: function () { set03X(this.targets()[0].val); }
+            });
+            gsap.to({ val: 0 }, {
+                val: -20,
+                duration: 18,
+                ease: 'sine.inOut',
+                repeat: -1,
+                yoyo: true,
+                onUpdate: function () { set03Y(this.targets()[0].val); }
+            });
+
+            /* === OPACITY PULSE (Layer 03) === */
+            gsap.to({ o: 0.08 }, {
+                o: 0.15,
+                duration: 8,
+                ease: 'sine.inOut',
+                repeat: -1,
+                yoyo: true,
+                onUpdate: function () { set03Opacity(this.targets()[0].o); }
+            });
+
+            /* === GLOW PULSE (Layer 04) === */
+            gsap.to({ o: 0.8, s: 1 }, {
+                o: 1,
+                s: 1.15,
+                duration: 12,
+                ease: 'sine.inOut',
+                repeat: -1,
+                yoyo: true,
+                onUpdate: function () {
+                    set04Opacity(this.targets()[0].o);
+                    set04Scale(this.targets()[0].s);
+                }
+            });
+
+            /* === ENTRANCE: FADE IN LAYERS === */
+            var entranceTl = gsap.timeline({ delay: 0.3 });
+            entranceTl.to(layer01, { opacity: 0.18, duration: 1.8, ease: 'power2.out' })
+                .to(layer02, { opacity: 0.08, duration: 2.0, ease: 'power2.out' }, '-=1.5')
+                .to(layer03, { opacity: 0.12, duration: 1.6, ease: 'power2.out' }, '-=1.4')
+                .to(layer04, { opacity: 1, duration: 2.2, ease: 'power2.out' }, '-=1.6')
+                .to(layer05, { opacity: 1, duration: 2.5, ease: 'power2.out' }, '-=2.0');
+
+            /* === CONTENT ENTRANCE === */
+            gsap.set('.portal-editorial-inner', { opacity: 0, y: 30 });
+            gsap.set('.portal-auth-card', { opacity: 0, y: 20 });
+            gsap.set('.portal-trust-item', { opacity: 0, y: 15 });
+
+            entranceTl.to('.portal-editorial-inner', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, 0.4)
+                .to('.portal-auth-card', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.4')
+                .to('.portal-trust-item', { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'power2.out' }, '-=0.3');
+
+            /* === FORM VALIDATION === */
+            var form = document.getElementById('portal-form');
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    var email = document.getElementById('portal-email');
+                    var password = document.getElementById('portal-password');
+                    var valid = true;
+
+                    email.closest('.portal-field').classList.remove('error');
+                    password.closest('.portal-field').classList.remove('error');
+
+                    if (!email.value || !email.value.includes('@')) {
+                        email.closest('.portal-field').classList.add('error');
+                        valid = false;
+                    }
+                    if (!password.value) {
+                        password.closest('.portal-field').classList.add('error');
+                        valid = false;
+                    }
+
+                    if (valid) {
+                        var btn = form.querySelector('.portal-btn-primary');
+                        btn.classList.add('loading');
+                        btn.setAttribute('aria-busy', 'true');
+                        setTimeout(function () {
+                            btn.classList.remove('loading');
+                            btn.setAttribute('aria-busy', 'false');
+                        }, 2000);
+                    }
+                });
+
+                form.querySelectorAll('input').forEach(function (input) {
+                    input.addEventListener('input', function () {
+                        this.closest('.portal-field').classList.remove('error');
+                    });
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>

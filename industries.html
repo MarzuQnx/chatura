@@ -2,48 +2,27 @@
 <html lang="en">
 
 <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="industries.page_title">Industries - Chatura Indonesia | Corporate Strategic Partner</title>
+    <meta name="description" content="Deep industry expertise across energy, manufacturing, technology, healthcare, consumer sectors in Indonesia.">
+    <link rel="canonical" href="https://www.chatura.co.id/industries.html">
+    <meta property="og:title" content="Industry Expertise - Chatura Indonesia">
+    <meta property="og:description" content="Multi-disciplinary solutions tailored to every industry's unique challenges.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.chatura.co.id/industries.html">
+    <meta property="og:image" content="https://www.chatura.co.id/assets/chatura.png">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="assets/design-system.css">
     <style>
-        a:has(> svg[data-lucide]), a:has(> i[data-lucide]) { display: inline-flex; align-items: center; gap: 0.25rem; }
-
-        .brand-green,.text-brand-green { color: #004D34; }
-        .bg-brand-green { background-color: #004D34; }
-        .border-brand-green { border-color: #004D34; }
-        .hover-bg-green:hover { background-color: #003322; }
-
-        #navbar-sticky {
-            transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            background-color: transparent;
-            border-color: transparent;
-            box-shadow: none;
-        }
-
-        #navbar-sticky.scrolled {
-            background-color: white;
-            border-color: #f3f4f6;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-        }
-
-        #navbar-sticky #lang-selector { background-color: white; }
-        #navbar-sticky #lang-selector .lang-active { background-color: #004D34; color: white; }
-        #navbar-sticky #lang-selector .lang-inactive { color: #383b3f; }
-        #navbar-sticky.scrolled #lang-selector { background-color: #fff; }
-        #navbar-sticky.scrolled #lang-selector .lang-active { background-color: #004D34; color: rgba(167, 243, 208, 0.9); }
-        #navbar-sticky.scrolled #lang-selector .lang-inactive { color: #383b3f; }
-        #navbar-sticky.scrolled #lang-selector .lang-inactive:hover { color: #555; }
-
-        * { touch-action: manipulation; }
-
-        .reveal-up { opacity: 0; transform: translateY(36px); }
-        .reveal-fade { opacity: 0; }
-
         #heroCanvas {
             position: absolute;
             inset: 0;
@@ -51,87 +30,20 @@
             height: 100%;
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            .reveal-up, .reveal-fade { opacity: 1 !important; transform: none !important; }
-        }
-
-        .related-highlight {
-            box-shadow: 0 0 0 2px #004D34, 0 8px 20px -6px rgba(0,77,52,0.35);
-        }
-
-        .expert-item { transition: transform 0.3s ease; }
-        .expert-item:hover { transform: translateY(-8px); }
-        .expert-item:hover .expert-name { color: #004D34; }
-        .expert-item:hover .expert-social { opacity: 1; transform: translateY(0); }
-        .expert-social { opacity: 0; transform: translateY(8px); transition: all 0.3s ease; }
-        .experts-row { scrollbar-width: none; -ms-overflow-style: none; }
-        .experts-row::-webkit-scrollbar { display: none; }
-        @media (max-width: 640px) {
-            .experts-row { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 2rem; padding-bottom: 1rem; }
-            .expert-item { flex: 0 0 260px; scroll-snap-align: center; }
-        }
-        @media (min-width: 641px) and (max-width: 1024px) {
-            .experts-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; }
-        }
-        @media (min-width: 1025px) {
-            .experts-row { display: flex; justify-content: center; gap: 3rem; }
-            .expert-item { flex: 0 0 calc(25% - 2.25rem); }
-        }
-
-        .insight-featured-card { transition: transform 0.4s ease; }
-        .insight-featured-card:hover { transform: translateY(-4px); }
-        .insight-featured-card:hover .insight-featured-img { transform: scale(1.05); }
         .insight-featured-card:hover .insight-featured-overlay { opacity: 0.7; }
-        .insight-featured-img { transition: transform 0.6s ease; }
         .insight-featured-overlay { transition: opacity 0.4s ease; }
-        .insight-side-card { transition: transform 0.3s ease, border-color 0.3s ease; }
-        .insight-side-card:hover { transform: translateX(6px); border-color: #004D34; }
-        .insight-side-card:hover .insight-side-img { transform: scale(1.08); }
-        .insight-side-img { transition: transform 0.5s ease; }
-    
-        /* WhatsApp Widget */
-        .wa-widget { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50; }
-        .wa-launcher { width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 24px rgba(37,211,102,.4); transition: transform .3s ease, box-shadow .3s ease; position: relative; }
-        .wa-launcher:hover { transform: scale(1.08); box-shadow: 0 6px 32px rgba(37,211,102,.55); }
-        .wa-launcher .wa-icon { width: 26px; height: 26px; }
-        .wa-pulse { position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #25D366; animation: wa-pulse-ring 2s ease-out infinite; pointer-events: none; }
-        @keyframes wa-pulse-ring { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.5); opacity: 0; } }
-        .wa-popup { position: absolute; bottom: 72px; right: 0; width: 340px; background: #fff; border-radius: 16px; box-shadow: 0 12px 48px rgba(0,0,0,.18); overflow: hidden; opacity: 0; transform: translateY(12px) scale(.95); pointer-events: none; transition: all .25s ease; }
-        .wa-popup.is-open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
-        .wa-header { background: #075E54; color: #fff; padding: 20px 20px 16px; display: flex; justify-content: space-between; align-items: flex-start; }
-        .wa-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .08em; opacity: .7; margin-bottom: 2px; }
-        .wa-title { font-size: 18px; font-weight: 600; margin: 0; }
-        .wa-close { background: none; border: none; color: #fff; cursor: pointer; padding: 4px; border-radius: 6px; transition: background .2s; }
-        .wa-close:hover { background: rgba(255,255,255,.15); }
-        .wa-intro { padding: 16px 20px 12px; font-size: 13px; color: #667; line-height: 1.5; margin: 0; border-bottom: 1px solid #f0f0f0; }
-        .wa-options { padding: 8px 12px; }
-        .wa-option { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; text-decoration: none; color: inherit; transition: background .2s; }
-        .wa-option:hover { background: #f0faf4; }
-        .wa-option-icon { flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; background: #e8f5ee; color: #075E54; display: flex; align-items: center; justify-content: center; }
-        .wa-option-content { flex: 1; min-width: 0; }
-        .wa-option-content strong { display: block; font-size: 14px; color: #1a1a2e; font-weight: 600; }
-        .wa-option-content span { display: block; font-size: 12px; color: #888; margin-top: 2px; }
-        .wa-arrow { font-size: 16px; color: #25D366; font-weight: 600; flex-shrink: 0; }
-        .wa-notice { padding: 12px 20px; background: #f8f9fa; border-top: 1px solid #f0f0f0; font-size: 11px; color: #888; text-align: center; }
-        .wa-notice strong { display: block; color: #555; font-size: 10px; letter-spacing: .06em; margin-bottom: 2px; }
-        @media (max-width: 400px) { .wa-popup { width: calc(100vw - 2rem); right: -0.5rem; } }
-    
-        .nav-dropdown { position: relative; }
-        .nav-dropdown-menu { position: absolute; top: 100%; left: 0; padding-top: 0.5rem; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.2s ease, visibility 0.2s ease; }
-        .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; }
-        .nav-dropdown-menu a { display: block; padding: 0.625rem 1rem; font-size: 0.875rem; color: #374151; border-radius: 0.5rem; transition: background-color 0.15s ease, color 0.15s ease; white-space: nowrap; }
-        .nav-dropdown-menu a:hover { background-color: #f9fafb; color: #065f46; }
-        .nav-dropdown-menu a.active { color: #065f46; font-weight: 600; }
     </style>
 </head>
 
 <body class="bg-white text-gray-800 font-sans antialiased">
 
+    <a href="#main-content" class="skip-link">Skip main content</a>
+
     <header id="navbar-sticky" class="sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <div class="font-bold text-2xl tracking-wider brand-green flex items-center gap-2">
-                    <img src="assets/chatura.png" alt="Chatura Indonesia" width="96" height="96" class="h-24 w-auto">
+                    <img src="assets/chatura.webp" alt="Chatura Indonesia" width="96" height="96" class="h-24 w-auto">
                 </div>
             </div>
 
@@ -173,7 +85,7 @@
 
         <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
-                <img src="assets/chatura.png" alt="Chatura Indonesia" class="h-24 w-auto">
+                <img src="assets/chatura.webp" alt="Chatura Indonesia" class="h-24 w-auto">
                 <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden')"
                     class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
             </div>
@@ -204,9 +116,10 @@
         </div>
     </header>
 
+    <main id="main-content">
     <!-- ============ HERO ============ -->
     <section id="hero-industry" class="relative bg-brand-green text-white overflow-hidden -mt-[128px] pt-[128px]">
-        <div id="hero-bg" class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/hero-industries.png');"></div>
+        <div id="hero-bg" class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/hero-industries.webp');"></div>
         <div class="absolute inset-0" style="background: linear-gradient(100deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 30%, transparent 50%);"></div>
         <div class="container mx-auto px-6 relative z-10 py-24 md:py-32">
             <div class="max-w-3xl">
@@ -362,39 +275,40 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- WhatsApp Widget -->
     <div class="wa-widget">
-        <button type="button" class="wa-launcher" id="waLauncher" aria-label="Chat via WhatsApp" aria-expanded="false" aria-controls="waPopup">
+        <button type="button" class="wa-launcher" id="waLauncher" aria-label="Chat via WhatsApp" aria-expanded="false" aria-controls="waPopup" data-i18n-aria="industries.wa_aria_chat">
             <svg viewBox="0 0 24 24" class="wa-icon" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19.11 4.93A9.9 9.9 0 0 0 3.6 16.88L2 22l5.24-1.54a9.89 9.89 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.79-6.84Zm-7.12 15.1h-.01c-1.53 0-3.03-.41-4.34-1.18l-.31-.18-3.11.91.84-3.03-.2-.32a8.26 8.26 0 1 1 7.13 3.8Zm4.53-6.18c-.25-.13-1.49-.74-1.72-.82-.23-.08-.4-.12-.57.13-.17.25-.66.82-.8.99-.15.17-.29.19-.54.06-.25-.13-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.36-1.69-.14-.25-.02-.38.11-.5.12-.12.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.57-1.37-.78-1.87-.21-.51-.42-.44-.57-.45h-.49c-.17 0-.45.06-.68.32-.23.25-.89.87-.89 2.11s.92 2.44 1.05 2.6c.13.17 1.82 2.77 4.42 3.89.62.27 1.11.43 1.49.55.63.2 1.2.17 1.65.1.5-.08 1.49-.61 1.7-1.2.21-.59.21-1.09.15-1.2-.06-.1-.23-.17-.48-.3Z"></path></svg>
             <span class="wa-pulse" aria-hidden="true"></span>
         </button>
         <div id="waPopup" class="wa-popup" role="dialog" aria-modal="false" aria-labelledby="wa-title" aria-hidden="true">
             <div class="wa-header">
                 <div>
-                    <p class="wa-eyebrow">CHATURA SUPPORT</p>
-                    <h2 id="wa-title" class="wa-title">How can we help?</h2>
+                    <p class="wa-eyebrow" data-i18n="industries.wa_eyebrow">CHATURA SUPPORT</p>
+                    <h2 id="wa-title" class="wa-title" data-i18n="industries.wa_title">How can we help?</h2>
                 </div>
-                <button type="button" class="wa-close" id="waClose" aria-label="Close WhatsApp contact options">
+                <button type="button" class="wa-close" id="waClose" aria-label="Close WhatsApp contact options" data-i18n-aria="industries.wa_aria_close">
                     <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
                 </button>
             </div>
-            <p class="wa-intro">Choose the department that best matches your enquiry and we'll connect you directly on WhatsApp.</p>
+            <p class="wa-intro" data-i18n="industries.wa_intro">Choose the department that best matches your enquiry and we'll connect you directly on WhatsApp.</p>
             <div class="wa-options">
                 <a href="https://wa.me/6212345678?text=Hi+Chatura%2C+I+need+help+with+general+inquiry." target="_blank" rel="noopener noreferrer" class="wa-option">
                     <span class="wa-option-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 12a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><rect x="3.5" y="12" width="4" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"></rect><rect x="16.5" y="12" width="4" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"></rect><path d="M8 20c0 1.1.9 2 2 2h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
-                    <span class="wa-option-content"><strong>General Inquiry</strong><span>Accounting, Tax & Advisory</span></span>
+                    <span class="wa-option-content"><strong data-i18n="industries.wa_opt1_title">General Inquiry</strong><span data-i18n="industries.wa_opt1_desc">Accounting, Tax & Advisory</span></span>
                     <span class="wa-arrow" aria-hidden="true">→</span>
                 </a>
                 <a href="https://wa.me/6212345678?text=Hi+Chatura%2C+I+need+help+with+business+transfer." target="_blank" rel="noopener noreferrer" class="wa-option">
                     <span class="wa-option-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 2.7 7.6 7 10 4.3-2.4 7-5.5 7-10V6l-7-3Zm-3 9 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
-                    <span class="wa-option-content"><strong>Business Transfer</strong><span>M&A and deal advisory</span></span>
+                    <span class="wa-option-content"><strong data-i18n="industries.wa_opt2_title">Business Transfer</strong><span data-i18n="industries.wa_opt2_desc">M&A and deal advisory</span></span>
                     <span class="wa-arrow" aria-hidden="true">→</span>
                 </a>
             </div>
             <div class="wa-notice">
-                <strong>CLIENT SUPPORT HOURS</strong>
-                <span>Monday – Friday, 9AM – 6PM WIB</span>
+                <strong data-i18n="industries.wa_hours_label">CLIENT SUPPORT HOURS</strong>
+                <span data-i18n="industries.wa_hours_value">Monday – Friday, 9AM – 6PM WIB</span>
             </div>
         </div>
     </div>
@@ -407,7 +321,7 @@
             <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
                 <div class="reveal-up">
                     <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500 block mb-6" data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
-                    <img src="assets/chatura-footer.png" alt="Chatura Indonesia" width="96" height="96" class="h-20 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
+                    <img src="assets/chatura-footer.webp" alt="Chatura Indonesia" width="96" height="96" class="h-20 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
                     <p class="text-sm text-gray-400 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated professional services providing accounting, tax, business advisory, and risk management solutions across the Indonesian archipelago and Southeast Asian markets.</p>
                     <div class="flex items-center gap-5 mt-8 text-gray-500">
                         <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-[18px] h-[18px]"></i></a>
@@ -473,7 +387,7 @@
         <div class="container mx-auto px-6 py-10">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-4">
-                    <img src="assets/chatura-footer.png" alt="Chatura" width="96" height="96" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
+                    <img src="assets/chatura-footer.webp" alt="Chatura" width="96" height="96" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
                     <span class="text-[11px] text-gray-500" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
                 </div>
                 <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-gray-500">

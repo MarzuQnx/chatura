@@ -2,46 +2,28 @@
 <html lang="en">
 
 <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="contact.page_title">Contact Our Advisors - Chatura Indonesia | Corporate Strategic Partner</title>
+    <meta name="description" content="Contact Chatura Indonesia corporate consulting, accounting, tax advisory, business transfer services. Jakarta office.">
+    <link rel="canonical" href="https://www.chatura.co.id/contact-us.html">
+    <meta property="og:title" content="Contact Us - Chatura Indonesia">
+    <meta property="og:description" content="Get in touch with our specialist team confidential business consultations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.chatura.co.id/contact-us.html">
+    <meta property="og:image" content="https://www.chatura.co.id/assets/chatura.png">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="assets/design-system.css">
     <style>
         a:has(> svg[data-lucide]), a:has(> i[data-lucide]) { display: inline-flex; align-items: center; gap: 0.25rem; }
 
-        .brand-green, .text-brand-green { color: #004D34; }
-        .bg-brand-green { background-color: #004D34; }
-        .border-brand-green { border-color: #004D34; }
-        .hover-bg-green:hover { background-color: #003322; }
-
-        #navbar-sticky {
-            transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            background-color: transparent;
-            border-color: transparent;
-            box-shadow: none;
-        }
-
-        #navbar-sticky.scrolled {
-            background-color: white;
-            border-color: #f3f4f6;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-        }
-
-        #navbar-sticky #lang-selector { background-color: white; }
-        #navbar-sticky #lang-selector .lang-active { background-color: #004D34; color: white; }
-        #navbar-sticky #lang-selector .lang-inactive { color: #383b3f; }
-        #navbar-sticky.scrolled #lang-selector { background-color: #fff; }
-        #navbar-sticky.scrolled #lang-selector .lang-active { background-color: #004D34; color: rgba(167, 243, 208, 0.9); }
-        #navbar-sticky.scrolled #lang-selector .lang-inactive { color: #383b3f; }
-        #navbar-sticky.scrolled #lang-selector .lang-inactive:hover { color: #555; }
-
-        * { touch-action: manipulation; }
-        .reveal-up { opacity: 0; transform: translateY(36px); }
-
-        /* Custom Accordion Styles */
         .faq-accordion-content {
             max-height: 0;
             overflow: hidden;
@@ -58,55 +40,19 @@
             border-color: #004D34;
             color: #004D34;
         }
-
-        @media (prefers-reduced-motion: reduce) {
-            .reveal-up { opacity: 1 !important; transform: none !important; }
-        }
-
-        /* WhatsApp Widget */
-        .wa-widget { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50; }
-        .wa-launcher { width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 24px rgba(37,211,102,.4); transition: transform .3s ease, box-shadow .3s ease; position: relative; }
-        .wa-launcher:hover { transform: scale(1.08); box-shadow: 0 6px 32px rgba(37,211,102,.55); }
-        .wa-launcher .wa-icon { width: 26px; height: 26px; }
-        .wa-pulse { position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #25D366; animation: wa-pulse-ring 2s ease-out infinite; pointer-events: none; }
-        @keyframes wa-pulse-ring { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.5); opacity: 0; } }
-        .wa-popup { position: absolute; bottom: 72px; right: 0; width: 340px; background: #fff; border-radius: 16px; box-shadow: 0 12px 48px rgba(0,0,0,.18); overflow: hidden; opacity: 0; transform: translateY(12px) scale(.95); pointer-events: none; transition: all .25s ease; }
-        .wa-popup.is-open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
-        .wa-header { background: #075E54; color: #fff; padding: 20px 20px 16px; display: flex; justify-content: space-between; align-items: flex-start; }
-        .wa-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .08em; opacity: .7; margin-bottom: 2px; }
-        .wa-title { font-size: 18px; font-weight: 600; margin: 0; }
-        .wa-close { background: none; border: none; color: #fff; cursor: pointer; padding: 4px; border-radius: 6px; transition: background .2s; }
-        .wa-close:hover { background: rgba(255,255,255,.15); }
-        .wa-intro { padding: 16px 20px 12px; font-size: 13px; color: #667; line-height: 1.5; margin: 0; border-bottom: 1px solid #f0f0f0; }
-        .wa-options { padding: 8px 12px; }
-        .wa-option { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; text-decoration: none; color: inherit; transition: background .2s; }
-        .wa-option:hover { background: #f0faf4; }
-        .wa-option-icon { flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; background: #e8f5ee; color: #075E54; display: flex; align-items: center; justify-content: center; }
-        .wa-option-content { flex: 1; min-width: 0; }
-        .wa-option-content strong { display: block; font-size: 14px; color: #1a1a2e; font-weight: 600; }
-        .wa-option-content span { display: block; font-size: 12px; color: #888; margin-top: 2px; }
-        .wa-arrow { font-size: 16px; color: #25D366; font-weight: 600; flex-shrink: 0; }
-        .wa-notice { padding: 12px 20px; background: #f8f9fa; border-top: 1px solid #f0f0f0; font-size: 11px; color: #888; text-align: center; }
-        .wa-notice strong { display: block; color: #555; font-size: 10px; letter-spacing: .06em; margin-bottom: 2px; }
-        @media (max-width: 400px) { .wa-popup { width: calc(100vw - 2rem); right: -0.5rem; } }
-    
-        .nav-dropdown { position: relative; }
-        .nav-dropdown-menu { position: absolute; top: 100%; left: 0; padding-top: 0.5rem; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.2s ease, visibility 0.2s ease; }
-        .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; }
-        .nav-dropdown-menu a { display: block; padding: 0.625rem 1rem; font-size: 0.875rem; color: #374151; border-radius: 0.5rem; transition: background-color 0.15s ease, color 0.15s ease; white-space: nowrap; }
-        .nav-dropdown-menu a:hover { background-color: #f9fafb; color: #065f46; }
-        .nav-dropdown-menu a.active { color: #065f46; font-weight: 600; }
     </style>
 </head>
 
 <body class="bg-white text-gray-800 font-sans antialiased">
+
+    <a href="#main-content" class="skip-link">Skip main content</a>
 
     <!-- ============ HEADER ============ -->
     <header id="navbar-sticky" class="sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <div class="font-bold text-2xl tracking-wider brand-green flex items-center gap-2">
-                    <img src="assets/chatura.png" alt="Chatura Indonesia" width="96" height="96" class="h-24 w-auto">
+                    <img src="assets/chatura.webp" alt="Chatura Indonesia" width="96" height="96" class="h-24 w-auto">
                 </div>
             </div>
 
@@ -144,7 +90,7 @@
 
         <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
-                <img src="assets/chatura.png" alt="Chatura Indonesia" class="h-24 w-auto">
+                <img src="assets/chatura.webp" alt="Chatura Indonesia" class="h-24 w-auto">
                 <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden')"
                     class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
             </div>
@@ -166,8 +112,9 @@
     </header>
 
     <!-- ============ HERO ============ -->
+    <main id="main-content">
     <section id="hero-contact" class="relative bg-brand-green text-white overflow-hidden -mt-[128px] pt-[128px]">
-        <div id="hero-bg" class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/hero-contact.png');"></div>
+        <div id="hero-bg" class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/hero-contact.webp');"></div>
         <div class="absolute inset-0" style="background: linear-gradient(100deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 30%, transparent 50%);"></div>
         <div class="container mx-auto px-6 relative z-10 py-24 md:py-32">
             <div class="max-w-3xl">
@@ -206,7 +153,7 @@
                                 <div>
                                     <h4 class="font-bold text-gray-950 text-sm mb-1" data-i18n="contact.office_label">Visit Our Office</h4>
                                     <p class="text-gray-500 text-xs leading-relaxed mb-3">Wisma 46, 30th Floor, Jl. Jenderal Sudirman Kav. 1, Jakarta 10220, Indonesia</p>
-                                    <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold brand-green hover:underline flex items-center gap-0.5">View Map →</a>
+                                    <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold brand-green hover:underline flex items-center gap-0.5" data-i18n="contact.view_map">View Map →</a>
                                 </div>
                             </div>
                             <!-- Email -->
@@ -214,7 +161,7 @@
                                 <div class="w-9 h-9 rounded-lg bg-emerald-50 brand-green flex items-center justify-center flex-shrink-0"><i data-lucide="mail" class="w-4 h-4"></i></div>
                                 <div>
                                     <h4 class="font-bold text-gray-950 text-sm mb-1" data-i18n="contact.email_label">Email Us</h4>
-                                    <p class="text-gray-500 text-xs leading-relaxed mb-3">For general inquiries and dynamic business opportunities frameworks.</p>
+                                    <p class="text-gray-500 text-xs leading-relaxed mb-3" data-i18n="contact.email_desc">For general inquiries and dynamic business opportunities frameworks.</p>
                                     <a href="mailto:hello@chatura.id" class="text-[11px] font-bold brand-green hover:underline">hello@chatura.id</a>
                                 </div>
                             </div>
@@ -223,7 +170,7 @@
                                 <div class="w-9 h-9 rounded-lg bg-emerald-50 brand-green flex items-center justify-center flex-shrink-0"><i data-lucide="phone" class="w-4 h-4"></i></div>
                                 <div>
                                     <h4 class="font-bold text-gray-950 text-sm mb-1" data-i18n="contact.phone_label">Call Us</h4>
-                                    <p class="text-gray-500 text-xs leading-relaxed mb-3">Speak directly with our dedicated practice advisory group members.</p>
+                                    <p class="text-gray-500 text-xs leading-relaxed mb-3" data-i18n="contact.phone_desc">Speak directly with our dedicated practice advisory group members.</p>
                                     <a href="tel:+622112345678" class="text-[11px] font-bold brand-green hover:underline">+62 21 1234 5678</a>
                                 </div>
                             </div>
@@ -258,55 +205,55 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block font-bold text-gray-700 mb-1.5" data-i18n="contact.form_name">Full Name *</label>
-                                <input id="form-name" type="text" placeholder="Enter your name" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-emerald-700 transition shadow-2xs" required>
+                                <input id="form-name" type="text" placeholder="Enter your name" data-i18n-placeholder="contact.placeholder_name" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-emerald-700 transition shadow-2xs" required>
                             </div>
                             <div>
                                 <label class="block font-bold text-gray-700 mb-1.5" data-i18n="contact.form_email">Email Address *</label>
-                                <input id="form-email" type="email" placeholder="name@corporate.com" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-emerald-700 transition shadow-2xs" required>
+                                <input id="form-email" type="email" placeholder="name@corporate.com" data-i18n-placeholder="contact.placeholder_email" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-emerald-700 transition shadow-2xs" required>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block font-bold text-gray-700 mb-1.5" data-i18n="contact.form_title_label">Job Title</label>
-                                <input id="form-title" type="text" placeholder="e.g. Managing Director" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-emerald-700 transition shadow-2xs">
+                                <input id="form-title" type="text" placeholder="e.g. Managing Director" data-i18n-placeholder="contact.placeholder_title" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-emerald-700 transition shadow-2xs">
                             </div>
                             <div>
                                 <label class="block font-bold text-gray-700 mb-1.5" data-i18n="contact.form_company">Company</label>
-                                <input id="form-company" type="text" placeholder="Your enterprise name" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-emerald-700 transition shadow-2xs">
+                                <input id="form-company" type="text" placeholder="Your enterprise name" data-i18n-placeholder="contact.placeholder_company" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-emerald-700 transition shadow-2xs">
                             </div>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block font-bold text-gray-700 mb-1.5" data-i18n="contact.form_area">Service Area *</label>
                                 <select id="form-service" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-emerald-700 transition shadow-2xs" required>
-                                    <option value="">-- Select Corporate Track --</option>
-                                    <option value="Accounting & Finance">Accounting & Finance</option>
-                                    <option value="Tax Services">Tax Services</option>
-                                    <option value="Business Transfer Platform">Business Transfer Platform</option>
-                                    <option value="Risk Management">Risk Management</option>
-                                    <option value="Corporate Turnaround Strategy">Corporate Advisory / Other</option>
+                                    <option value="" data-i18n="contact.select_track">-- Select Corporate Track --</option>
+                                    <option value="Accounting & Finance" data-i18n="contact.opt_accounting">Accounting & Finance</option>
+                                    <option value="Tax Services" data-i18n="contact.opt_tax">Tax Services</option>
+                                    <option value="Business Transfer Platform" data-i18n="contact.opt_bt">Business Transfer Platform</option>
+                                    <option value="Risk Management" data-i18n="contact.opt_risk">Risk Management</option>
+                                    <option value="Corporate Turnaround Strategy" data-i18n="contact.opt_advisory">Corporate Advisory / Other</option>
                                 </select>
                             </div>
                             <div>
                                 <label class="block font-bold text-gray-700 mb-1.5" data-i18n="contact.form_location">Office Location *</label>
                                 <select id="form-location" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-emerald-700 transition shadow-2xs" required>
-                                    <option value="">-- Select Target Jurisdiction --</option>
-                                    <option value="Jakarta Desk">Jakarta Head Office</option>
-                                    <option value="Singapore Hub Desk">Singapore Regional Hub</option>
-                                    <option value="Cross-Border Desk">Cross-Border Execution</option>
+                                    <option value="" data-i18n="contact.select_jurisdiction">-- Select Target Jurisdiction --</option>
+                                    <option value="Jakarta Desk" data-i18n="contact.opt_jakarta">Jakarta Head Office</option>
+                                    <option value="Singapore Hub Desk" data-i18n="contact.opt_singapore">Singapore Regional Hub</option>
+                                    <option value="Cross-Border Desk" data-i18n="contact.opt_crossborder">Cross-Border Execution</option>
                                 </select>
                             </div>
                         </div>
                         <div>
                             <label class="block font-bold text-gray-700 mb-1.5" data-i18n="contact.form_message">Message *</label>
-                            <textarea id="form-message" rows="4" placeholder="Briefly detail your structural business challenges or strategic transactional intent..." class="w-full bg-white border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-emerald-700 transition shadow-2xs" required></textarea>
+                            <textarea id="form-message" rows="4" placeholder="Briefly detail your structural business challenges or strategic transactional intent..." data-i18n-placeholder="contact.placeholder_message" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-emerald-700 transition shadow-2xs" required></textarea>
                         </div>
                         <div class="flex items-start pt-2">
                             <input type="checkbox" id="privacy-check" class="mt-0.5 mr-2 w-3.5 h-3.5 border-gray-300 rounded focus:ring-emerald-700" required>
-                            <label for="privacy-check" class="text-gray-500 leading-normal select-none">I verify that the parameters specified follow compliance codes and consent to secure data handling procedures.</label>
+                            <label for="privacy-check" class="text-gray-500 leading-normal select-none" data-i18n="contact.privacy_consent">I verify that the parameters specified follow compliance codes and consent to secure data handling procedures.</label>
                         </div>
                         <button type="submit" class="w-full bg-brand-green text-white text-xs py-3.5 rounded-lg font-bold hover-bg-green transition mt-3 shadow-xs flex justify-center items-center gap-1.5">
-                            Submit via Secure WhatsApp Business API <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                            <span data-i18n="contact.form_submit">Submit via Secure WhatsApp Business API</span> <i data-lucide="send" class="w-3.5 h-3.5"></i>
                         </button>
                     </form>
                 </div>
@@ -330,7 +277,7 @@
                         <span data-i18n="contact.faq_1_q">How soon will I receive a response?</span>
                         <div class="faq-icon w-5 h-5 rounded-full border border-gray-200 flex items-center justify-center transition-transform duration-300"><i data-lucide="plus" class="w-3 h-3 text-gray-400"></i></div>
                     </div>
-                    <div class="faq-accordion-content text-xs text-gray-500 leading-relaxed">
+                    <div class="faq-accordion-content text-xs text-gray-500 leading-relaxed" data-i18n="contact.faq_1_a">
                         Our centralized operations response group systematically reviews incoming briefs, channeling communication to specialized practice leads within a maximum period of 24 strategic business hours.
                     </div>
                 </div>
@@ -340,7 +287,7 @@
                         <span data-i18n="contact.faq_2_q">Can I request a consultation meeting?</span>
                         <div class="faq-icon w-5 h-5 rounded-full border border-gray-200 flex items-center justify-center transition-transform duration-300"><i data-lucide="plus" class="w-3 h-3 text-gray-400"></i></div>
                     </div>
-                    <div class="faq-accordion-content text-xs text-gray-500 leading-relaxed">
+                    <div class="faq-accordion-content text-xs text-gray-500 leading-relaxed" data-i18n="contact.faq_2_a">
                         Yes, formal preliminary alignment reviews can be secured either physically at our corporate headquarters or via encryption-secured video conference channels upon advisory clearance.
                     </div>
                 </div>
@@ -350,17 +297,18 @@
                         <span data-i18n="contact.faq_3_q">Do you support cross-border transactions?</span>
                         <div class="faq-icon w-5 h-5 rounded-full border border-gray-200 flex items-center justify-center transition-transform duration-300"><i data-lucide="plus" class="w-3 h-3 text-gray-400"></i></div>
                     </div>
-                    <div class="faq-accordion-content text-xs text-gray-500 leading-relaxed">
+                    <div class="faq-accordion-content text-xs text-gray-500 leading-relaxed" data-i18n="contact.faq_3_a">
                         Our integrated practice framework maintains cross-border task groups configured to navigate legal, fiscal, and operational transacting rules across multiple Southeast Asian financial markets.
                     </div>
                 </div>
             </div>
             
             <div class="text-center mt-10 reveal-up">
-                <a href="#" class="text-xs font-bold brand-green hover:underline flex justify-center items-center gap-1">View All FAQs <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
+                <a href="#" class="text-xs font-bold brand-green hover:underline flex justify-center items-center gap-1" data-i18n="contact.view_all_faqs">View All FAQs <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
             </div>
         </div>
     </section>
+    </main>
 
     <!-- ============ REFACTOR SYNCHRONIZED FOOTER ============ -->
     <!-- ============ FOOTER ============ -->
@@ -371,7 +319,7 @@
             <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
                 <div class="reveal-up">
                     <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500 block mb-6" data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
-                    <img src="assets/chatura-footer.png" alt="Chatura Indonesia" width="96" height="96" class="h-20 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
+                    <img src="assets/chatura-footer.webp" alt="Chatura Indonesia" width="96" height="96" class="h-20 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
                     <p class="text-sm text-gray-400 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated professional services providing accounting, tax, business advisory, and risk management solutions across the Indonesian archipelago and Southeast Asian markets.</p>
                     <div class="flex items-center gap-5 mt-8 text-gray-500">
                         <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-[18px] h-[18px]"></i></a>
@@ -437,7 +385,7 @@
         <div class="container mx-auto px-6 py-10">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-4">
-                    <img src="assets/chatura-footer.png" alt="Chatura" width="96" height="96" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
+                    <img src="assets/chatura-footer.webp" alt="Chatura" width="96" height="96" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
                     <span class="text-[11px] text-gray-500" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
                 </div>
                 <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-gray-500">

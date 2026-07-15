@@ -1,0 +1,24 @@
+# Disable directory listing
+Options -Indexes
+
+# Block direct access to non-web files
+<FilesMatch "\.(log|txt|md|json|xml|yml|yaml|bak|old|swp|tmp|sh|bat|cmd|ps1|py|rb|php)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Block .git and hidden files
+<FilesMatch "^\.">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Hotlink protection - block requests with no referer or from other domains
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_REFERER} !^$
+    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?chatura\.co\.id [NC]
+    RewriteCond %{HTTP_REFERER} !^https?://localhost [NC]
+    RewriteCond %{HTTP_REFERER} !^https?://127\.0\.0\.1 [NC]
+    RewriteRule \.(webp|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|css|js)$ - [F,NC]
+</IfModule>

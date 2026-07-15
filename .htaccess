@@ -1,0 +1,30 @@
+# Disable directory listing
+Options -Indexes
+
+# Block access to hidden files
+<FilesMatch "^\.">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Block access to sensitive files
+<FilesMatch "\.(log|md|json|xml|yml|yaml|bak|old|swp|tmp|sh|bat|cmd|ps1|py|rb)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Block node_modules and component folders
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^node_modules/ - [F,L]
+    RewriteRule ^component/ - [F,L]
+    RewriteRule ^_tmp_ - [F,L]
+    RewriteRule ^package\.json$ - [F,L]
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

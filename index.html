@@ -1,9 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n-title="site.title">Chatura Indonesia - Corporate Strategic Partner</title>
+    <meta name="description" content="Chatura Indonesia provides integrated professional services in accounting, tax, business advisory, risk management. Trusted by leading corporations across Indonesia Southeast Asia.">
+    <meta name="keywords" content="corporate consulting, accounting, tax advisory, business transfer, M&A, risk management, Indonesia">
+    <link rel="canonical" href="https://www.chatura.co.id/index.html">
+    <meta property="og:title" content="Chatura Indonesia - Corporate Strategic Partner">
+    <meta property="og:description" content="Integrated professional services in accounting, tax, business advisory, risk management.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.chatura.co.id/">
+    <meta property="og:image" content="https://www.chatura.co.id/assets/chatura.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Chatura Indonesia - Corporate Strategic Partner">
+    <meta name="twitter:description" content="Integrated professional services in accounting, tax, business advisory, risk management.">
+    <link rel="stylesheet" href="assets/design-system.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -15,254 +31,15 @@
             align-items: center;
             gap: 0.25rem;
         }
-        .brand-green,
-        .text-brand-green {
-            color: #004D34;
-        }
-        .bg-brand-green {
-            background-color: #004D34;
-        }
-        .border-brand-green {
-            border-color: #004D34;
-        }
-        .hover-bg-green:hover {
-            background-color: #003322;
-        }
-        #navbar-sticky {
-            transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            background-color: transparent;
-            border-color: transparent;
-            box-shadow: none;
-        }
-        #navbar-sticky.scrolled {
-            background-color: white;
-            border-color: #f3f4f6;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-        }
-        #navbar-sticky #lang-selector {
-            background-color: white;
-        }
-        #navbar-sticky #lang-selector .lang-active {
-            background-color: #004D34;
-            color: white;
-        }
-        #navbar-sticky #lang-selector .lang-inactive {
-            color: #383b3f;
-        }
-        #navbar-sticky.scrolled #lang-selector {
-            background-color: #fff;
-        }
-        #navbar-sticky.scrolled #lang-selector .lang-active {
-            background-color: #004D34;
-            color: rgba(167, 243, 208, 0.9);
-        }
-        #navbar-sticky.scrolled #lang-selector .lang-inactive {
-            color: #383b3f;
-        }
-        #navbar-sticky.scrolled #lang-selector .lang-inactive:hover {
-            color: #555;
-        }
-        .fm-hidden {
-            opacity: 0;
-            transform: translateY(50px);
-        }
-        .fm-visible {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        
-        .filter-tab-btn[aria-selected="true"] {
-            background-color: #004D34;
-            border-color: #004D34;
-            color: #fff;
-        }
-        
-        /* WhatsApp Widget */
-        .wa-widget {
-            position: fixed;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            z-index: 50;
-        }
-        .wa-launcher {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: #25D366;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 24px rgba(37, 211, 102, .4);
-            transition: transform .3s ease, box-shadow .3s ease;
-            position: relative;
-        }
-        .wa-launcher:hover {
-            transform: scale(1.08);
-            box-shadow: 0 6px 32px rgba(37, 211, 102, .55);
-        }
-        .wa-launcher .wa-icon {
-            width: 26px;
-            height: 26px;
-        }
-        .wa-pulse {
-            position: absolute;
-            inset: -4px;
-            border-radius: 50%;
-            border: 2px solid #25D366;
-            animation: wa-pulse-ring 2s ease-out infinite;
-            pointer-events: none;
-        }
-        @keyframes wa-pulse-ring {
-            0% {
-                transform: scale(1);
-                opacity: .6;
-            }
-            100% {
-                transform: scale(1.5);
-                opacity: 0;
-            }
-        }
-        .wa-popup {
-            position: absolute;
-            bottom: 72px;
-            right: 0;
-            width: 340px;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 12px 48px rgba(0, 0, 0, .18);
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(12px) scale(.95);
-            pointer-events: none;
-            transition: all .25s ease;
-        }
-        .wa-popup.is-open {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            pointer-events: auto;
-        }
-        .wa-header {
-            background: #075E54;
-            color: #fff;
-            padding: 20px 20px 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-        .wa-eyebrow {
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: .08em;
-            opacity: .7;
-            margin-bottom: 2px;
-        }
-        .wa-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin: 0;
-        }
-        .wa-close {
-            background: none;
-            border: none;
-            color: #fff;
-            cursor: pointer;
-            padding: 4px;
-            border-radius: 6px;
-            transition: background .2s;
-        }
-        .wa-close:hover {
-            background: rgba(255, 255, 255, .15);
-        }
-        .wa-intro {
-            padding: 16px 20px 12px;
-            font-size: 13px;
-            color: #667;
-            line-height: 1.5;
-            margin: 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .wa-options {
-            padding: 8px 12px;
-        }
-        .wa-option {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: inherit;
-            transition: background .2s;
-        }
-        .wa-option:hover {
-            background: #f0faf4;
-        }
-        .wa-option-icon {
-            flex-shrink: 0;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: #e8f5ee;
-            color: #075E54;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .wa-option-content {
-            flex: 1;
-            min-width: 0;
-        }
-        .wa-option-content strong {
-            display: block;
-            font-size: 14px;
-            color: #1a1a2e;
-            font-weight: 600;
-        }
-        .wa-option-content span {
-            display: block;
-            font-size: 12px;
-            color: #888;
-            margin-top: 2px;
-        }
-        .wa-shadow {
-            font-size: 16px;
-            color: #25D366;
-            font-weight: 600;
-            flex-shrink: 0;
-        }
-        .wa-notice {
-            padding: 12px 20px;
-            background: #f8f9fa;
-            border-top: 1px solid #f0f0f0;
-            font-size: 11px;
-            color: #888;
-            text-align: center;
-        }
-        .wa-notice strong {
-            display: block;
-            color: #555;
-            font-size: 10px;
-            letter-spacing: .06em;
-            margin-bottom: 2px;
-        }
-        @media (max-width: 400px) {
-            .wa-popup {
-                width: calc(100vw - 2rem);
-                right: -0.5rem;
-            }
-        }
     </style>
 </head>
 <body class="bg-white text-gray-800 font-sans antialiased">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header id="navbar-sticky" class="sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <div class="font-bold text-2xl tracking-wider brand-green flex items-center gap-2">
-                    <img src="assets/chatura.png" alt="Chatura Indonesia" class="h-24 w-auto">
+                    <img src="assets/chatura.webp" alt="Chatura Indonesia" class="h-24 w-auto">
                 </div>
             </div>
             <button onclick="document.getElementById('mobileMenu').classList.remove('hidden')"
@@ -306,7 +83,7 @@
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
-                <img src="assets/chatura.png" alt="Chatura Indonesia" class="h-24 w-auto">
+                <img src="assets/chatura.webp" alt="Chatura Indonesia" class="h-24 w-auto">
                 <button onclick="document.getElementById('mobileMenu').classList.add('hidden')"
                     class="text-gray-600 focus:outline-none"><i data-lucide="x" class="text-xl"></i></button>
             </div>
@@ -352,17 +129,18 @@
             </div>
         </div>
     </header>
+    <main id="main-content">
     <section id="hero-big"
         class="relative bg-white text-gray-900 min-h-screen flex items-center overflow-hidden -mt-[128px]">
         <div id="hero-bg" class="absolute inset-0 bg-cover bg-center"
-            style="background-image: url('assets/hero-landing.png');">
+            style="background-image: url('assets/hero-landing.webp');">
         </div>
         <div class="absolute inset-0"
             style="background: linear-gradient(100deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 30%, transparent 50%);">
         </div>
         <div class="container mx-auto px-6 relative z-10 py-20">
             <div class="max-w-2xl">
-                <h1 class="text-4xl md:text-6xl font-serif font-light mb-6 leading-tight text-gray-900">
+                <h1 class="text-4xl md:text-6xl font-serif font-light mb-6 leading-tight text-gray-900" data-i18n="hero.title">
                     <span data-i18n="hero.title_1">Transforming</span><br><span data-i18n="hero.title_2">Business
                         Into</span><br><span class="italic font-normal brand-green"
                         data-i18n="hero.title_green">Strategic
@@ -384,7 +162,7 @@
                     </a>
                 </div>
             </div>
-            <div id="scroll-down" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 cursor-pointer transition-opacity duration-500">
+            <div id="scroll-down" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 cursor-pointer transition-opacity duration-500" role="button" aria-label="Scroll down to content" tabindex="0">
                 <div class="w-11 h-11 rounded-full bg-white/90 backdrop-blur-sm shadow-lg border border-gray-200 flex items-center justify-center hover:bg-white hover:shadow-xl hover:scale-110 transition-all duration-300">
                     <i data-lucide="chevron-down" class="w-5 h-5 text-gray-600"></i>
                 </div>
@@ -448,7 +226,7 @@
     </section>
     <section id="about" class="py-40 bg-white relative overflow-hidden">
         <div class="absolute -bottom-100 animate-floating w-full h-[800px]"
-            style="background-image: url('assets/bg-section-anim.png'); background-size: contain; background-repeat: no-repeat; background-position: center;">
+            style="background-image: url('assets/bg-section-anim.webp'); background-size: contain; background-repeat: no-repeat; background-position: center;">
         </div>
         <div class="container mx-auto px-6 grid md:grid-cols-[2fr_3fr] gap-12 items-center relative z-10">
             <div class="fm-hidden">
@@ -485,25 +263,6 @@
                 </div>
             </div>
         </div>
-        <style>
-            @keyframes float {
-                0% {
-                    transform: translateY(-50%) scale(1);
-                    opacity: 0.1;
-                }
-                50% {
-                    transform: translateY(-53%) scale(1.03);
-                    opacity: 0.2;
-                }
-                100% {
-                    transform: translateY(-50%) scale(1);
-                    opacity: 0.1;
-                }
-            }
-            .animate-floating {
-                animation: float 10s ease-in-out infinite;
-            }
-        </style>
     </section>
 
     <!-- ============ REFACTORED: EXECUTIVE INTELLIGENCE CENTER SECTION ============ -->
@@ -535,11 +294,11 @@
 
             <!-- Animated Category Filter Pills Layout -->
             <div class="reveal-up flex flex-wrap justify-center gap-1.5 max-w-4xl mx-auto border-b border-gray-150 pb-8 mb-10" id="intelligenceFilterWrap">
-                <button type="button" data-filter="all" aria-selected="true" class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-[11px] font-medium rounded-lg text-gray-700 hover:border-emerald-700 transition duration-300">All</button>
-                <button type="button" data-filter="tax" aria-selected="false" class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-[11px] font-medium rounded-lg text-gray-700 hover:border-emerald-700 transition duration-300">Tax Advisory</button>
-                <button type="button" data-filter="finance" aria-selected="false" class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-[11px] font-medium rounded-lg text-gray-700 hover:border-emerald-700 transition duration-300">Corporate Finance</button>
-                <button type="button" data-filter="transfer" aria-selected="false" class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-[11px] font-medium rounded-lg text-gray-700 hover:border-emerald-700 transition duration-300">Business Transfer</button>
-                <button type="button" data-filter="risk" aria-selected="false" class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-[11px] font-medium rounded-lg text-gray-700 hover:border-emerald-700 transition duration-300">Risk Advisory</button>
+                <button type="button" data-filter="all" aria-selected="true" class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-[11px] font-medium rounded-lg text-gray-700 hover:border-emerald-700 transition duration-300"><span data-i18n="filter.all">All</span></button>
+                <button type="button" data-filter="tax" aria-selected="false" class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-[11px] font-medium rounded-lg text-gray-700 hover:border-emerald-700 transition duration-300"><span data-i18n="filter.tax">Tax Advisory</span></button>
+                <button type="button" data-filter="finance" aria-selected="false" class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-[11px] font-medium rounded-lg text-gray-700 hover:border-emerald-700 transition duration-300"><span data-i18n="filter.finance">Corporate Finance</span></button>
+                <button type="button" data-filter="transfer" aria-selected="false" class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-[11px] font-medium rounded-lg text-gray-700 hover:border-emerald-700 transition duration-300"><span data-i18n="filter.transfer">Business Transfer</span></button>
+                <button type="button" data-filter="risk" aria-selected="false" class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-[11px] font-medium rounded-lg text-gray-700 hover:border-emerald-700 transition duration-300"><span data-i18n="filter.risk">Risk Advisory</span></button>
             </div>
 
             <!-- Premium 4-Column Asymmetric Grid Enclosure (Proportional with gap-4) -->
@@ -550,7 +309,7 @@
                     <div>
                         <div class="relative overflow-hidden aspect-[16/10] bg-neutral-900 rounded-xl mb-4">
                             <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=500&q=80" alt="Executive Meeting" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-                            <span class="absolute top-3 left-3 text-[9px] font-bold uppercase tracking-wider bg-white/95 text-gray-900 px-2 py-0.5 rounded shadow-3xs">ARTICLE</span>
+                            <span class="absolute top-3 left-3 text-[9px] font-bold uppercase tracking-wider bg-white/95 text-gray-900 px-2 py-0.5 rounded shadow-3xs"><span data-i18n="latest_updates.tag_article">ARTICLE</span></span>
                         </div>
                         <div class="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-2">
                             <span class="text-emerald-800 border-l-2 border-emerald-700 pl-2">Tax Advisory</span>
@@ -562,13 +321,13 @@
                     </div>
                     <div class="pt-4 border-t border-gray-100 mt-4">
                         <div class="text-[10px] font-medium text-gray-400 mb-3">
-                            Suitable for: <span class="font-bold text-gray-700">CEO • CFO • Tax Manager</span>
+                            <span data-i18n="insight.suitable_for">Suitable for:</span> <span class="font-bold text-gray-700">CEO • CFO • Tax Manager</span>
                         </div>
                         <div class="flex items-center justify-between text-[10px] text-gray-400">
                             <span class="flex items-center gap-1 font-medium text-emerald-800"><i data-lucide="clock" class="w-3 h-3"></i> 5 min read</span>
                             <span>Updated Jul 2026</span>
                         </div>
-                        <a href="insights.html" class="mt-4 w-full border border-gray-200 hover:border-emerald-700 hover:bg-[#004D34] hover:text-white transition-all duration-300 text-center text-[11px] font-bold text-gray-700 py-2 rounded-lg flex items-center justify-center gap-1">
+                        <a href="insights.html" role="button" aria-label="Read Insight: Tax Implications on Business Transfer in Indonesia" class="mt-4 w-full border border-gray-200 hover:border-emerald-700 hover:bg-[#004D34] hover:text-white transition-all duration-300 text-center text-[11px] font-bold text-gray-700 py-2 rounded-lg flex items-center justify-center gap-1">
                             Read Insight <i data-lucide="arrow-right" class="w-3 h-3 transition-transform hover:translate-x-1"></i>
                         </a>
                     </div>
@@ -579,7 +338,7 @@
                     <div>
                         <div class="relative overflow-hidden aspect-[16/10] bg-neutral-900 rounded-xl mb-4">
                             <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=500&q=80" alt="Financial Dashboard" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-                            <span class="absolute top-3 left-3 text-[9px] font-bold uppercase tracking-wider bg-white/95 text-gray-900 px-2 py-0.5 rounded shadow-3xs">PUBLICATION</span>
+                            <span class="absolute top-3 left-3 text-[9px] font-bold uppercase tracking-wider bg-white/95 text-gray-900 px-2 py-0.5 rounded shadow-3xs"><span data-i18n="latest_updates.tag_publication">PUBLICATION</span></span>
                         </div>
                         <div class="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-2">
                             <span class="text-emerald-800 border-l-2 border-emerald-700 pl-2">Tax Advisory</span>
@@ -591,13 +350,13 @@
                     </div>
                     <div class="pt-4 border-t border-gray-200/60 mt-4">
                         <div class="text-[10px] font-medium text-gray-400 mb-3">
-                            Suitable for: <span class="font-bold text-gray-700">CFO • Legal Lead</span>
+                            <span data-i18n="insight.suitable_for">Suitable for:</span> <span class="font-bold text-gray-700">CFO • Legal Lead</span>
                         </div>
                         <div class="flex items-center justify-between text-[10px] text-gray-400">
                             <span class="flex items-center gap-1 font-medium text-emerald-800"><i data-lucide="clock" class="w-3 h-3"></i> 8 min read</span>
                             <span class="text-emerald-700 font-bold">Updated Today</span>
                         </div>
-                        <a href="insights.html" class="mt-4 w-full border border-gray-200 hover:border-emerald-700 hover:bg-[#004D34] hover:text-white transition-all duration-300 text-center text-[11px] font-bold text-gray-700 py-2 rounded-lg flex items-center justify-center gap-1">
+                        <a href="insights.html" role="button" aria-label="Read Insight: Indonesia's New Tax Incentives in 2026" class="mt-4 w-full border border-gray-200 hover:border-emerald-700 hover:bg-[#004D34] hover:text-white transition-all duration-300 text-center text-[11px] font-bold text-gray-700 py-2 rounded-lg flex items-center justify-center gap-1">
                             Read Insight <i data-lucide="arrow-right" class="w-3 h-3 transition-transform hover:translate-x-1"></i>
                         </a>
                     </div>
@@ -608,7 +367,7 @@
                     <div>
                         <div class="relative overflow-hidden aspect-[16/10] bg-neutral-900 rounded-xl mb-4">
                             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="M&A Discussion" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-                            <span class="absolute top-3 left-3 text-[9px] font-bold uppercase tracking-wider bg-white/95 text-gray-900 px-2 py-0.5 rounded shadow-3xs">CLIENT UPDATE</span>
+                            <span class="absolute top-3 left-3 text-[9px] font-bold uppercase tracking-wider bg-white/95 text-gray-900 px-2 py-0.5 rounded shadow-3xs"><span data-i18n="latest_updates.tag_client_update">CLIENT UPDATE</span></span>
                         </div>
                         <div class="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-2">
                             <span class="text-emerald-800 border-l-2 border-emerald-700 pl-2">Corporate Finance</span>
@@ -620,13 +379,13 @@
                     </div>
                     <div class="pt-4 border-t border-gray-100 mt-4">
                         <div class="text-[10px] font-medium text-gray-400 mb-3">
-                            Suitable for: <span class="font-bold text-gray-700">Managing Director • Investor</span>
+                            <span data-i18n="insight.suitable_for">Suitable for:</span> <span class="font-bold text-gray-700">Managing Director • Investor</span>
                         </div>
                         <div class="flex items-center justify-between text-[10px] text-gray-400">
                             <span class="flex items-center gap-1 font-medium text-emerald-800"><i data-lucide="clock" class="w-3 h-3"></i> 6 min read</span>
                             <span class="text-amber-700 font-semibold">Updated Yesterday</span>
                         </div>
-                        <a href="insights.html" class="mt-4 w-full border border-gray-200 hover:border-emerald-700 hover:bg-[#004D34] hover:text-white transition-all duration-300 text-center text-[11px] font-bold text-gray-700 py-2 rounded-lg flex items-center justify-center gap-1">
+                        <a href="insights.html" role="button" aria-label="Read Insight: Chatura Advises on Strategic Advisory for Manufacturing Company" class="mt-4 w-full border border-gray-200 hover:border-emerald-700 hover:bg-[#004D34] hover:text-white transition-all duration-300 text-center text-[11px] font-bold text-gray-700 py-2 rounded-lg flex items-center justify-center gap-1">
                             Read Insight <i data-lucide="arrow-right" class="w-3 h-3 transition-transform hover:translate-x-1"></i>
                         </a>
                     </div>
@@ -637,7 +396,7 @@
                     <div>
                         <div class="relative overflow-hidden aspect-[16/10] bg-neutral-900 rounded-xl mb-4">
                             <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=500&q=80" alt="Boardroom Discussion" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-                            <span class="absolute top-3 left-3 text-[9px] font-bold uppercase tracking-wider bg-white/95 text-gray-900 px-2 py-0.5 rounded shadow-3xs">ARTICLE</span>
+                            <span class="absolute top-3 left-3 text-[9px] font-bold uppercase tracking-wider bg-white/95 text-gray-900 px-2 py-0.5 rounded shadow-3xs"><span data-i18n="latest_updates.tag_article">ARTICLE</span></span>
                         </div>
                         <div class="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-2">
                             <span class="text-emerald-800 border-l-2 border-emerald-700 pl-2">Business Transfer</span>
@@ -649,13 +408,13 @@
                     </div>
                     <div class="pt-4 border-t border-gray-200/60 mt-4">
                         <div class="text-[10px] font-medium text-gray-400 mb-3">
-                            Suitable for: <span class="font-bold text-gray-700">Business Owner • Successor</span>
+                            <span data-i18n="insight.suitable_for">Suitable for:</span> <span class="font-bold text-gray-700">Business Owner • Successor</span>
                         </div>
                         <div class="flex items-center justify-between text-[10px] text-gray-400">
                             <span class="flex items-center gap-1 font-medium text-emerald-800"><i data-lucide="clock" class="w-3 h-3"></i> 4 min read</span>
                             <span>Updated Jul 2026</span>
                         </div>
-                        <a href="insights.html" class="mt-4 w-full border border-gray-200 hover:border-emerald-700 hover:bg-[#004D34] hover:text-white transition-all duration-300 text-center text-[11px] font-bold text-gray-700 py-2 rounded-lg flex items-center justify-center gap-1">
+                        <a href="insights.html" role="button" aria-label="Read Insight: Succession Planning for Family-Owned Businesses" class="mt-4 w-full border border-gray-200 hover:border-emerald-700 hover:bg-[#004D34] hover:text-white transition-all duration-300 text-center text-[11px] font-bold text-gray-700 py-2 rounded-lg flex items-center justify-center gap-1">
                             Read Insight <i data-lucide="arrow-right" class="w-3 h-3 transition-transform hover:translate-x-1"></i>
                         </a>
                     </div>
@@ -1047,6 +806,7 @@
             </a>
         </div>
     </section>
+    </main>
     <!-- WhatsApp Widget -->
     <div class="wa-widget">
         <button type="button" class="wa-launcher" id="waLauncher" aria-label="Chat via WhatsApp" aria-expanded="false"
@@ -1114,7 +874,7 @@
             <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
                 <div class="reveal-up">
                     <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500 block mb-6" data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
-                    <img src="assets/chatura-footer.png" alt="Chatura Indonesia" width="96" height="96" class="h-20 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
+                    <img src="assets/chatura-footer.webp" alt="Chatura Indonesia" width="96" height="96" class="h-20 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
                     <p class="text-sm text-gray-400 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated professional services providing accounting, tax, business advisory, and risk management solutions across the Indonesian archipelago and Southeast Asian markets.</p>
                     <div class="flex items-center gap-5 mt-8 text-gray-500">
                         <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-[18px] h-[18px]"></i></a>
@@ -1180,7 +940,7 @@
         <div class="container mx-auto px-6 py-10">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-4">
-                    <img src="assets/chatura-footer.png" alt="Chatura" width="96" height="96" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
+                    <img src="assets/chatura-footer.webp" alt="Chatura" width="96" height="96" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
                     <span class="text-[11px] text-gray-500" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
                 </div>
                 <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-gray-500">
