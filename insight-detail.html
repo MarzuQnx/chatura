@@ -73,6 +73,57 @@
             color: #4b5563;
             border-radius: 0 8px 8px 0;
         }
+
+        /* ---- Related insight "drop" cards (sidebar) ---- */
+        .related-drop-row {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            padding: 0.85rem 0.85rem 0.85rem 1rem;
+            border: 1px solid #f0f1ef;
+            border-radius: 0.85rem;
+            background: #fff;
+            text-decoration: none;
+            overflow: hidden;
+            transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+        }
+        .related-drop-row::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 50%;
+            width: 3px; height: 0%;
+            background: #004D34;
+            transform: translateY(-50%);
+            transition: height .4s cubic-bezier(.16,1,.3,1);
+        }
+        .related-drop-row:hover,
+        .related-drop-row:focus-visible {
+            border-color: #d7ddda;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+        .related-drop-row:hover::before,
+        .related-drop-row:focus-visible::before { height: 60%; }
+        .related-drop-num {
+            font-family: ui-serif, Georgia, serif;
+            font-weight: 300;
+            font-size: 1.1rem;
+            color: #d1d5db;
+            min-width: 1.5rem;
+            transition: color .3s ease;
+        }
+        .related-drop-row:hover .related-drop-num { color: #004D34; }
+        .related-drop-thumb { overflow: hidden; }
+        .related-drop-thumb img { transition: transform .5s cubic-bezier(.16,1,.3,1); }
+        .related-drop-row:hover .related-drop-thumb img { transform: scale(1.08); }
+        .related-drop-title { transition: color .25s ease; }
+        .related-drop-row:hover .related-drop-title { color: #004D34; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .related-drop-row, .related-drop-row::before, .related-drop-num,
+            .related-drop-thumb img, .related-drop-title { transition: none !important; }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800 font-sans antialiased">
@@ -336,42 +387,16 @@
                                 </a>
                             </div>
                         </div>
-                        <!-- Daftar Artikel Rekomendasi Terkait Samping -->
+                        <!-- Daftar Artikel Rekomendasi Terkait Samping — generated from Insights data -->
                         <div class="reveal-up space-y-4">
                             <h4 class="text-xs font-bold uppercase tracking-widest text-gray-400"
                                 data-i18n="insight.rec_title">Rekomendasi Publikasi Lainnya</h4>
-                            <div class="grid gap-3">
-                                <a href="#"
-                                    class="flex gap-4 p-3 bg-white border border-gray-100 hover:border-emerald-700/30 hover:shadow-xs rounded-xl transition group">
-                                    <div class="w-20 h-20 bg-gray-50 rounded-lg overflow-hidden flex-shrink-0">
-                                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=150&q=80"
-                                            alt="Insentif Pajak Baru"
-                                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                                    </div>
-                                    <div class="min-w-0 flex flex-col justify-center">
-                                        <h5 class="text-xs font-bold text-gray-950 leading-snug mb-1 line-clamp-2 group-hover:text-[#004D34] transition"
-                                            data-i18n="insight.rec_1_title">Indonesia's New Tax Incentives 2026: Peluang
-                                            Infrastruktur Hijau</h5>
-                                        <span class="text-[10px] text-gray-400" data-i18n="insight.rec_1_date">Published
-                                            Today &nbsp;&bull;&nbsp; 5 Min Read</span>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="flex gap-4 p-3 bg-white border border-gray-100 hover:border-emerald-700/30 hover:shadow-xs rounded-xl transition group">
-                                    <div class="w-20 h-20 bg-gray-50 rounded-lg overflow-hidden flex-shrink-0">
-                                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=150&q=80"
-                                            alt="M&A Manufaktur"
-                                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                                    </div>
-                                    <div class="min-w-0 flex flex-col justify-center">
-                                        <h5 class="text-xs font-bold text-gray-950 leading-snug mb-1 line-clamp-2 group-hover:text-[#004D34] transition"
-                                            data-i18n="insight.rec_2_title">Strategi Transaksi M&A Korporat Manufaktur
-                                            di Asia Tenggara</h5>
-                                        <span class="text-[10px] text-gray-400" data-i18n="insight.rec_2_date">May 05,
-                                            2026 &nbsp;&bull;&nbsp; 6 Min Read</span>
-                                    </div>
-                                </a>
-                            </div>
+                            <div id="relatedInsightsList" class="grid gap-3"></div>
+                            <a href="insights.html"
+                                class="flex items-center justify-center gap-2 text-xs font-bold text-[#004D34] hover:gap-3 transition-all duration-300 pt-2">
+                                <span>Lihat Semua Insight</span>
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </a>
                         </div>
                     </aside>
                 </div>
@@ -691,6 +716,90 @@
             document.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape' && popup.classList.contains('is-open')) togglePopup();
             });
+        })();
+    </script>
+    <script>
+        // Related insights — generated from the same article pool used on insights.html
+        (function () {
+            var RELATED_INSIGHTS = [
+                {
+                    badgeColor: '#059669',
+                    title: 'Tax Implications on Business Transfer in Indonesia',
+                    date: 'May 12, 2026',
+                    readTime: '6 min read',
+                    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=150&q=80',
+                    href: 'insights.html'
+                },
+                {
+                    badgeColor: '#b45309',
+                    title: 'Chatura Advises Strategic M&A for Manufacturing Group',
+                    date: 'May 05, 2026',
+                    readTime: '5 min read',
+                    image: 'https://images.unsplash.com/photo-1776057441344-38e0587ad1e6?auto=format&fit=crop&w=150&q=80',
+                    href: 'insights.html'
+                },
+                {
+                    badgeColor: '#059669',
+                    title: 'Succession Planning for Family-Owned Businesses',
+                    date: 'April 28, 2026',
+                    readTime: '7 min read',
+                    image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=150&q=80',
+                    href: 'insights.html'
+                },
+                {
+                    badgeColor: '#1d4ed8',
+                    title: 'Managing Risk in a Volatile Economic Landscape',
+                    date: 'April 15, 2026',
+                    readTime: '12 min read',
+                    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=150&q=80',
+                    href: 'insights.html'
+                },
+                {
+                    badgeColor: '#059669',
+                    title: 'Cross-Border Tax Planning for Multinational Corporations',
+                    date: 'March 10, 2026',
+                    readTime: '9 min read',
+                    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=150&q=80',
+                    href: 'insights.html'
+                }
+            ];
+
+            var list = document.getElementById('relatedInsightsList');
+            if (!list) return;
+
+            list.innerHTML = RELATED_INSIGHTS.map(function (item, i) {
+                var num = String(i + 1).padStart(2, '0');
+                return '<a href="' + item.href + '" class="related-drop-row">' +
+                    '<span class="related-drop-num">' + num + '</span>' +
+                    '<div class="related-drop-thumb w-16 h-16 rounded-lg flex-shrink-0">' +
+                        '<img src="' + item.image + '" alt="' + item.title + '" class="w-full h-full object-cover" loading="lazy">' +
+                    '</div>' +
+                    '<div class="min-w-0 flex-1">' +
+                        '<h5 class="related-drop-title text-xs font-bold text-gray-950 leading-snug mb-1 line-clamp-2">' + item.title + '</h5>' +
+                        '<span class="text-[10px] text-gray-400">' + item.date + ' &nbsp;&bull;&nbsp; ' + item.readTime + '</span>' +
+                    '</div>' +
+                '</a>';
+            }).join('');
+
+            var rows = list.querySelectorAll('.related-drop-row');
+            if (typeof gsap !== 'undefined') {
+                gsap.set(rows, { opacity: 0, y: -28 });
+                var dropTl = function () {
+                    gsap.to(rows, { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'back.out(1.6)' });
+                };
+                if (typeof ScrollTrigger !== 'undefined') {
+                    ScrollTrigger.create({
+                        trigger: list,
+                        start: 'top 92%',
+                        once: true,
+                        onEnter: dropTl
+                    });
+                } else {
+                    dropTl();
+                }
+            } else {
+                rows.forEach(function (el) { el.style.opacity = '1'; });
+            }
         })();
     </script>
 </body>
