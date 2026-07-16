@@ -210,7 +210,7 @@
                     <h3 id="expTitle" class="text-2xl md:text-3xl font-serif mb-2"></h3>
                     <p id="expValue" class="text-3xl font-bold mb-5"></p>
                     <p id="expDesc" class="text-emerald-100/80 leading-relaxed mb-6 max-w-lg"></p>
-                    <a href="business-transfer.html" class="inline-flex items-center gap-1 text-sm font-semibold border-b border-white/50 hover:border-white pb-0.5 transition">
+                    <a id="expLink" href="case-studies.html" class="inline-flex items-center gap-1 text-sm font-semibold border-b border-white/50 hover:border-white pb-0.5 transition">
                         <span data-i18n="industries.read_case">Read Case Study</span> <i data-lucide="arrow-right" class="text-xs"></i>
                     </a>
                 </div>
@@ -478,7 +478,8 @@
                     tag: 'Energy Sector',
                     title: 'PT XYZ Acquisition Advisory',
                     value: 'USD 50 Million',
-                    desc: 'Chatura acted as exclusive financial advisor in the 100% share acquisition of a mining infrastructure provider. We guided the transaction structure from comprehensive financial due diligence to post-acquisition tax risk minimization.'
+                    desc: 'Chatura acted as exclusive financial advisor in the 100% share acquisition of a mining infrastructure provider. We guided the transaction structure from comprehensive financial due diligence to post-acquisition tax risk minimization.',
+                    hash: '#xyz-acquisition-advisory'
                 },
                 engagements: [
                     { label: 'Project Financing', title: '200MW Solar Plant Development in Eastern Indonesia', value: 'USD 120M' },
@@ -526,7 +527,8 @@
                     tag: 'Manufacturing',
                     title: 'PT Manufacturing Corp Restructuring',
                     value: 'USD 35 Million',
-                    desc: 'Chatura advised a leading Indonesian manufacturer on operational restructuring and capital optimization, enabling the company to expand production capacity by 40% while maintaining strong financial health.'
+                    desc: 'Chatura advised a leading Indonesian manufacturer on operational restructuring and capital optimization, enabling the company to expand production capacity by 40% while maintaining strong financial health.',
+                    hash: '#manufacturing-corp-restructuring'
                 },
                 engagements: [
                     { label: 'M&A Advisory', title: 'Acquisition of Regional Steel Processing Facilities', value: 'USD 85M' },
@@ -574,7 +576,8 @@
                     tag: 'Technology',
                     title: 'Series C Funding Advisory for FinTech Unicorn',
                     value: 'USD 80 Million',
-                    desc: 'Chatura served as financial advisor for a leading Indonesian fintech company in its Series C funding round, structuring the deal to optimize valuation while maintaining founder control and investor alignment.'
+                    desc: 'Chatura served as financial advisor for a leading Indonesian fintech company in its Series C funding round, structuring the deal to optimize valuation while maintaining founder control and investor alignment.',
+                    hash: '#fintech-unicorn-series-c'
                 },
                 engagements: [
                     { label: 'M&A Advisory', title: 'Cross-border Acquisition of Regional SaaS Platform', value: 'USD 45M' },
@@ -622,7 +625,8 @@
                     tag: 'Healthcare',
                     title: 'Regional Hospital Group Consolidation',
                     value: 'USD 25 Million',
-                    desc: 'Chatura advised on the consolidation of three regional hospital groups into a unified healthcare network, optimizing the transaction structure for tax efficiency while ensuring regulatory compliance across all jurisdictions.'
+                    desc: 'Chatura advised on the consolidation of three regional hospital groups into a unified healthcare network, optimizing the transaction structure for tax efficiency while ensuring regulatory compliance across all jurisdictions.',
+                    hash: '#hospital-group-consolidation'
                 },
                 engagements: [
                     { label: 'M&A Advisory', title: 'Pharmaceutical Distribution Network Acquisition', value: 'USD 40M' },
@@ -670,7 +674,8 @@ experts: [
                     tag: 'Consumer & Retail',
                     title: 'FMCG Brand Portfolio Optimization',
                     value: 'USD 40 Million',
-                    desc: 'Chatura advised a leading consumer goods company on portfolio optimization through selective divestitures and strategic acquisitions, resulting in a 25% improvement in operational margins within 18 months.'
+                    desc: 'Chatura advised a leading consumer goods company on portfolio optimization through selective divestitures and strategic acquisitions, resulting in a 25% improvement in operational margins within 18 months.',
+                    hash: '#fmcg-portfolio-optimization'
                 },
                 engagements: [
                     { label: 'M&A Advisory', title: 'E-commerce Platform Acquisition by Regional Retailer', value: 'USD 60M' },
@@ -809,6 +814,7 @@ experts: [
             var titleEl = document.getElementById('expTitle');
             var valueEl = document.getElementById('expValue');
             var descEl = document.getElementById('expDesc');
+            var linkEl = document.getElementById('expLink');
             var sidebar = document.getElementById('experienceSidebar');
             var section = document.getElementById('industry-experience');
 
@@ -817,6 +823,7 @@ experts: [
                 titleEl.textContent = cs.title;
                 valueEl.textContent = cs.value;
                 descEl.textContent = cs.desc;
+                if (linkEl && cs.hash) linkEl.href = 'case-studies.html' + cs.hash;
 
                 sidebar.innerHTML = ind.engagements.map(function (e) {
                     return '<div class="reveal-up bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm hover:bg-white/10 transition">' +
