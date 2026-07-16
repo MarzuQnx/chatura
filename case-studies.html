@@ -27,6 +27,97 @@
         .case-post { transition: opacity 0.35s ease, transform 0.35s ease; }
         .case-post.hidden { display: none; }
         #empty-state.hidden { display: none; }
+
+        /* ---- Transaction Docket (ledger index) ---- */
+        .ledger-row {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 1.6rem 0 1.6rem 1.5rem;
+            text-decoration: none;
+            border-bottom: 1px solid #eef0ee;
+        }
+        .ledger-row:last-child { border-bottom: none; }
+        .ledger-row::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 50%;
+            width: 3px; height: 0%;
+            background: #004D34;
+            transform: translateY(-50%);
+            transition: height .45s cubic-bezier(.16,1,.3,1);
+        }
+        .ledger-row:hover::before,
+        .ledger-row:focus-visible::before { height: 62%; }
+        .ledger-row:hover .ledger-num,
+        .ledger-row:focus-visible .ledger-num { color: #004D34; }
+        .ledger-row:hover .ledger-title,
+        .ledger-row:focus-visible .ledger-title { color: #004D34; }
+        .ledger-row:hover .ledger-arrow,
+        .ledger-row:focus-visible .ledger-arrow { transform: translateX(5px); opacity: 1; }
+        .ledger-num {
+            font-family: ui-serif, Georgia, serif;
+            font-weight: 300;
+            font-size: 1.85rem;
+            color: #cfd3d0;
+            min-width: 2.75rem;
+            transition: color .35s ease;
+            line-height: 1;
+        }
+        .ledger-title { transition: color .35s ease; }
+        .ledger-arrow { transition: transform .35s cubic-bezier(.16,1,.3,1), opacity .35s ease; opacity: 0.4; }
+
+        /* ---- Case snapshot card ---- */
+        .file-watermark {
+            position: absolute;
+            right: -0.25rem;
+            top: -1.25rem;
+            font-family: ui-serif, Georgia, serif;
+            font-weight: 300;
+            font-size: 6.5rem;
+            line-height: 1;
+            color: #004D34;
+            opacity: 0.06;
+            pointer-events: none;
+            user-select: none;
+        }
+        .snapshot-card { position: relative; overflow: hidden; }
+
+        /* ---- Editorial lead paragraph ---- */
+        .lead-dropcap::first-letter {
+            float: left;
+            font-family: ui-serif, Georgia, serif;
+            font-weight: 700;
+            font-size: 3.4rem;
+            line-height: 0.78;
+            padding: 0.2rem 0.55rem 0 0;
+            color: #004D34;
+        }
+
+        /* ---- Related transaction cards ---- */
+        .related-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.1rem 1.25rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.85rem;
+            text-decoration: none;
+            transition: border-color .3s ease, background-color .3s ease, transform .3s ease;
+        }
+        .related-card:hover, .related-card:focus-visible {
+            border-color: #004D34;
+            background-color: #f7faf8;
+            transform: translateY(-2px);
+        }
+        .related-card:hover .ledger-arrow,
+        .related-card:focus-visible .ledger-arrow { transform: translateX(4px); opacity: 1; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .case-post, .ledger-row, .ledger-row::before, .ledger-num, .ledger-title,
+            .ledger-arrow, .related-card { transition: none !important; }
+        }
     </style>
 </head>
 
@@ -118,29 +209,102 @@
         </section>
 
         <!-- ============ KEY METRICS ============ -->
-        <section class="container mx-auto px-6 max-w-7xl -mt-8 z-20 relative">
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div class="reveal-up bg-white p-6 rounded-xl shadow-md border-t-4 border-[#004D34] text-center">
-                    <p class="text-3xl font-serif font-bold text-[#004D34] mb-1" data-i18n="casestudies.metric_1_value">USD 150 Juta+</p>
-                    <p class="text-xs text-gray-500 font-medium uppercase tracking-wider" data-i18n="casestudies.metric_1_label">Total Nilai Transaksi Dikawal</p>
+        <section class="container mx-auto px-6 max-w-5xl -mt-8 z-20 relative">
+            <div class="reveal-up bg-white rounded-xl shadow-md border border-gray-100 px-8 py-6 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-0">
+                <div class="flex items-center gap-4 text-center sm:text-left">
+                    <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="trending-up" class="w-5 h-5 text-[#004D34]"></i>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-serif font-bold text-[#004D34] leading-none" data-i18n="casestudies.metric_1_value">USD 150 Juta+</p>
+                        <p class="text-[10px] text-gray-500 font-medium uppercase tracking-wider mt-1" data-i18n="casestudies.metric_1_label">Total Nilai Transaksi Dikawal</p>
+                    </div>
                 </div>
-                <div class="reveal-up bg-white p-6 rounded-xl shadow-md border-t-4 border-[#004D34] text-center">
-                    <p class="text-3xl font-serif font-bold text-[#004D34] mb-1" data-i18n="casestudies.metric_2_value">45+</p>
-                    <p class="text-xs text-gray-500 font-medium uppercase tracking-wider" data-i18n="casestudies.metric_2_label">Transaksi M&A Sukses</p>
+                <div class="hidden sm:block w-px h-10 bg-gray-200 mx-8"></div>
+                <div class="flex items-center gap-4 text-center sm:text-left">
+                    <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="handshake" class="w-5 h-5 text-[#004D34]"></i>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-serif font-bold text-[#004D34] leading-none" data-i18n="casestudies.metric_2_value">45+</p>
+                        <p class="text-[10px] text-gray-500 font-medium uppercase tracking-wider mt-1" data-i18n="casestudies.metric_2_label">Transaksi M&A Sukses</p>
+                    </div>
                 </div>
-                <div class="reveal-up bg-white p-6 rounded-xl shadow-md border-t-4 border-[#004D34] text-center">
-                    <p class="text-3xl font-serif font-bold text-[#004D34] mb-1" data-i18n="casestudies.metric_3_value">100%</p>
-                    <p class="text-xs text-gray-500 font-medium uppercase tracking-wider" data-i18n="casestudies.metric_3_label">Kepatuhan Regulasi & Due Diligence</p>
+                <div class="hidden sm:block w-px h-10 bg-gray-200 mx-8"></div>
+                <div class="flex items-center gap-4 text-center sm:text-left">
+                    <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-[#004D34]"></i>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-serif font-bold text-[#004D34] leading-none" data-i18n="casestudies.metric_3_value">100%</p>
+                        <p class="text-[10px] text-gray-500 font-medium uppercase tracking-wider mt-1" data-i18n="casestudies.metric_3_label">Kepatuhan Regulasi & Due Diligence</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ============ EMPTY STATE + HASH-FILTERED ARTICLES ============ -->
-        <section class="container mx-auto px-6 max-w-4xl py-16 md:py-24">
-            <div id="empty-state" class="text-center py-16 bg-white rounded-2xl border border-gray-200 shadow-xs reveal-up">
-                <i data-lucide="folder-open" class="w-12 h-12 mx-auto mb-4 opacity-60 text-gray-400"></i>
-                <h2 class="text-2xl font-serif font-bold text-gray-950 mb-2" data-i18n="casestudies.empty_title">Representative Experience</h2>
-                <p class="text-gray-500 text-sm max-w-sm mx-auto">
+        <!-- ============ EMPTY STATE (TRANSACTION DOCKET) + HASH-FILTERED ARTICLES ============ -->
+        <section class="container mx-auto px-6 max-w-5xl py-16 md:py-24">
+
+            <!-- Docket index — browsable list, no dead end on direct visits -->
+            <div id="empty-state" class="reveal-up">
+                <div class="text-center mb-10">
+                    <span class="inline-block text-xs text-emerald-700 font-semibold mb-3 tracking-wider uppercase" data-i18n="casestudies.docket_eyebrow">Transaction Docket</span>
+                    <h2 class="text-2xl md:text-3xl font-serif font-bold text-gray-950" data-i18n="casestudies.empty_title">Representative Experience</h2>
+                </div>
+                <div class="bg-white rounded-2xl border border-gray-200 shadow-xs px-6 md:px-10">
+                    <a href="#xyz-acquisition-advisory" class="ledger-row">
+                        <span class="ledger-num">01</span>
+                        <i data-lucide="flame" class="w-4 h-4 text-gray-300 flex-shrink-0"></i>
+                        <span class="flex-1 min-w-0">
+                            <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1" data-i18n="casestudies.cs1_tag">Energy Sector</span>
+                            <span class="ledger-title block font-serif text-lg font-semibold text-gray-900 truncate" data-i18n="casestudies.cs1_title">PT XYZ Acquisition Advisory</span>
+                        </span>
+                        <span class="hidden sm:block text-sm text-gray-400 flex-shrink-0" data-i18n="casestudies.cs1_value">Valuasi: USD 50 Million</span>
+                        <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                    </a>
+                    <a href="#manufacturing-corp-restructuring" class="ledger-row">
+                        <span class="ledger-num">02</span>
+                        <i data-lucide="factory" class="w-4 h-4 text-gray-300 flex-shrink-0"></i>
+                        <span class="flex-1 min-w-0">
+                            <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1" data-i18n="casestudies.cs2_tag">Manufacturing</span>
+                            <span class="ledger-title block font-serif text-lg font-semibold text-gray-900 truncate" data-i18n="casestudies.cs2_title">PT Manufacturing Corp Restructuring</span>
+                        </span>
+                        <span class="hidden sm:block text-sm text-gray-400 flex-shrink-0" data-i18n="casestudies.cs2_value">Valuasi: USD 35 Million</span>
+                        <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                    </a>
+                    <a href="#fintech-unicorn-series-c" class="ledger-row">
+                        <span class="ledger-num">03</span>
+                        <i data-lucide="cpu" class="w-4 h-4 text-gray-300 flex-shrink-0"></i>
+                        <span class="flex-1 min-w-0">
+                            <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1" data-i18n="casestudies.cs3_tag">Technology</span>
+                            <span class="ledger-title block font-serif text-lg font-semibold text-gray-900 truncate" data-i18n="casestudies.cs3_title">Series C Funding Advisory FinTech Unicorn</span>
+                        </span>
+                        <span class="hidden sm:block text-sm text-gray-400 flex-shrink-0" data-i18n="casestudies.cs3_value">Valuasi: USD 80 Million</span>
+                        <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                    </a>
+                    <a href="#hospital-group-consolidation" class="ledger-row">
+                        <span class="ledger-num">04</span>
+                        <i data-lucide="heart-pulse" class="w-4 h-4 text-gray-300 flex-shrink-0"></i>
+                        <span class="flex-1 min-w-0">
+                            <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1" data-i18n="casestudies.cs4_tag">Healthcare</span>
+                            <span class="ledger-title block font-serif text-lg font-semibold text-gray-900 truncate" data-i18n="casestudies.cs4_title">Regional Hospital Group Consolidation</span>
+                        </span>
+                        <span class="hidden sm:block text-sm text-gray-400 flex-shrink-0" data-i18n="casestudies.cs4_value">Valuasi: USD 25 Million</span>
+                        <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                    </a>
+                    <a href="#fmcg-portfolio-optimization" class="ledger-row">
+                        <span class="ledger-num">05</span>
+                        <i data-lucide="shopping-bag" class="w-4 h-4 text-gray-300 flex-shrink-0"></i>
+                        <span class="flex-1 min-w-0">
+                            <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1" data-i18n="casestudies.cs5_tag">Consumer &amp; Retail</span>
+                            <span class="ledger-title block font-serif text-lg font-semibold text-gray-900 truncate" data-i18n="casestudies.cs5_title">FMCG Brand Portfolio Optimization</span>
+                        </span>
+                        <span class="hidden sm:block text-sm text-gray-400 flex-shrink-0" data-i18n="casestudies.cs5_value">Valuasi: USD 40 Million</span>
+                        <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                    </a>
+                </div>
+                <p class="text-gray-500 text-sm max-w-sm mx-auto text-center mt-8">
                     <span data-i18n="casestudies.empty_desc">Silakan pilih studi kasus dari halaman</span>
                     <a href="industries.html" class="text-[#004D34] font-semibold hover:underline" data-i18n="casestudies.empty_link">Industries</a>
                     <span data-i18n="casestudies.empty_desc2">untuk melihat detail transaksi.</span>
@@ -148,72 +312,247 @@
             </div>
 
             <!-- CASE STUDY 1 — Energy & Resources -->
-            <article id="xyz-acquisition-advisory" class="case-post hidden space-y-6 bg-white p-8 md:p-10 rounded-2xl border border-gray-200 shadow-xs">
-                <div class="border-b border-gray-100 pb-5">
-                    <span class="text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-900 px-3 py-1 rounded-md" data-i18n="casestudies.cs1_tag">Energy Sector</span>
-                    <h1 class="text-3xl md:text-4xl font-serif font-bold text-gray-950 mt-4" data-i18n="casestudies.cs1_title">PT XYZ Acquisition Advisory</h1>
-                    <p class="text-2xl font-bold text-[#004D34] mt-2" data-i18n="casestudies.cs1_value">Valuasi: USD 50 Million</p>
+            <article id="xyz-acquisition-advisory" class="case-post hidden">
+                <a href="#" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-400 hover:text-[#004D34] transition-colors mb-8" aria-label="Back to case studies overview">
+                    <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> <span data-i18n="casestudies.docket_eyebrow">Transaction Docket</span>
+                </a>
+                <div class="grid lg:grid-cols-[260px_1fr] gap-10 lg:gap-14">
+                    <aside class="lg:sticky lg:top-32 lg:self-start">
+                        <div class="snapshot-card rounded-xl border border-gray-200 bg-gradient-to-br from-white to-emerald-50/50 p-6">
+                            <span class="file-watermark">01</span>
+                            <div class="relative flex items-center gap-2 mb-5">
+                                <i data-lucide="flame" class="w-4 h-4 text-[#004D34]"></i>
+                                <span class="text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-900 px-3 py-1 rounded-md" data-i18n="casestudies.cs1_tag">Energy Sector</span>
+                            </div>
+                            <p class="relative text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-1" data-i18n="casestudies.snapshot_deal_value">Deal Value</p>
+                            <p class="relative text-xl font-serif font-bold text-[#004D34]" data-i18n="casestudies.cs1_value">Valuasi: USD 50 Million</p>
+                        </div>
+                    </aside>
+                    <div class="min-w-0 bg-white p-8 md:p-10 rounded-2xl border border-gray-200 shadow-xs">
+                        <h1 class="text-3xl md:text-4xl font-serif font-bold text-gray-950 mb-8 pb-6 border-b border-gray-100" data-i18n="casestudies.cs1_title">PT XYZ Acquisition Advisory</h1>
+                        <div class="text-gray-600 leading-relaxed space-y-5 text-justify">
+                            <p class="lead-dropcap text-lg font-medium text-gray-950 leading-relaxed" data-i18n="casestudies.cs1_p1">Chatura bertindak sebagai penasihat keuangan eksklusif dalam akuisisi 100% saham penyedia infrastruktur pertambangan oleh PT XYZ, memperkuat posisi klien di sektor jasa pertambangan nasional.</p>
+                            <p data-i18n="casestudies.cs1_p2">Dalam penugasan ini, kami memandu struktur transaksi mulai dari uji tuntas keuangan menyeluruh hingga minimisasi risiko pajak paska-akuisisi. Pendekatan ini memastikan integritas aset target tetap terjaga seiring konvergensi regulasi kepatuhan multilateral OECD yang semakin ketat.</p>
+                            <p data-i18n="casestudies.cs1_p3">Tim Chatura secara simultan menangani negosiasi klausul escrow serta validasi struktur holding untuk entitas E&P asing yang mengakuisisi operasi hulu di Kalimantan Timur. Transaksi ini mencakup restrukturisasi pajak lintas negara dan penyelesaian aset tidak berwujud bernilai tinggi.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-gray-600 leading-relaxed space-y-4 text-justify">
-                    <p class="text-lg font-medium text-gray-950 leading-relaxed" data-i18n="casestudies.cs1_p1">Chatura bertindak sebagai penasihat keuangan eksklusif dalam akuisisi 100% saham penyedia infrastruktur pertambangan oleh PT XYZ, memperkuat posisi klien di sektor jasa pertambangan nasional.</p>
-                    <p data-i18n="casestudies.cs1_p2">Dalam penugasan ini, kami memandu struktur transaksi mulai dari uji tuntas keuangan menyeluruh hingga minimisasi risiko pajak paska-akuisisi. Pendekatan ini memastikan integritas aset target tetap terjaga seiring konvergensi regulasi kepatuhan multilateral OECD yang semakin ketat.</p>
-                    <p data-i18n="casestudies.cs1_p3">Tim Chatura secara simultan menangani negosiasi klausul escrow serta validasi struktur holding untuk entitas E&P asing yang mengakuisisi operasi hulu di Kalimantan Timur. Transaksi ini mencakup restrukturisasi pajak lintas negara dan penyelesaian aset tidak berwujud bernilai tinggi.</p>
+                <div class="mt-12 pt-10 border-t border-gray-100">
+                    <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-400 mb-5" data-i18n="casestudies.continue_browsing">Continue Browsing</p>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <a href="#manufacturing-corp-restructuring" class="related-card">
+                            <i data-lucide="factory" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <span class="flex-1 min-w-0">
+                                <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs2_tag">Manufacturing</span>
+                                <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs2_title">PT Manufacturing Corp Restructuring</span>
+                            </span>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                        </a>
+                        <a href="#fintech-unicorn-series-c" class="related-card">
+                            <i data-lucide="cpu" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <span class="flex-1 min-w-0">
+                                <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs3_tag">Technology</span>
+                                <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs3_title">Series C Funding Advisory FinTech Unicorn</span>
+                            </span>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                        </a>
+                    </div>
                 </div>
             </article>
 
             <!-- CASE STUDY 2 — Manufacturing -->
-            <article id="manufacturing-corp-restructuring" class="case-post hidden space-y-6 bg-white p-8 md:p-10 rounded-2xl border border-gray-200 shadow-xs">
-                <div class="border-b border-gray-100 pb-5">
-                    <span class="text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-900 px-3 py-1 rounded-md" data-i18n="casestudies.cs2_tag">Manufacturing</span>
-                    <h1 class="text-3xl md:text-4xl font-serif font-bold text-gray-950 mt-4" data-i18n="casestudies.cs2_title">PT Manufacturing Corp Restructuring</h1>
-                    <p class="text-2xl font-bold text-[#004D34] mt-2" data-i18n="casestudies.cs2_value">Valuasi: USD 35 Million</p>
+            <article id="manufacturing-corp-restructuring" class="case-post hidden">
+                <a href="#" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-400 hover:text-[#004D34] transition-colors mb-8" aria-label="Back to case studies overview">
+                    <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> <span data-i18n="casestudies.docket_eyebrow">Transaction Docket</span>
+                </a>
+                <div class="grid lg:grid-cols-[260px_1fr] gap-10 lg:gap-14">
+                    <aside class="lg:sticky lg:top-32 lg:self-start">
+                        <div class="snapshot-card rounded-xl border border-gray-200 bg-gradient-to-br from-white to-emerald-50/50 p-6">
+                            <span class="file-watermark">02</span>
+                            <div class="relative flex items-center gap-2 mb-5">
+                                <i data-lucide="factory" class="w-4 h-4 text-[#004D34]"></i>
+                                <span class="text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-900 px-3 py-1 rounded-md" data-i18n="casestudies.cs2_tag">Manufacturing</span>
+                            </div>
+                            <p class="relative text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-1" data-i18n="casestudies.snapshot_deal_value">Deal Value</p>
+                            <p class="relative text-xl font-serif font-bold text-[#004D34]" data-i18n="casestudies.cs2_value">Valuasi: USD 35 Million</p>
+                        </div>
+                    </aside>
+                    <div class="min-w-0 bg-white p-8 md:p-10 rounded-2xl border border-gray-200 shadow-xs">
+                        <h1 class="text-3xl md:text-4xl font-serif font-bold text-gray-950 mb-8 pb-6 border-b border-gray-100" data-i18n="casestudies.cs2_title">PT Manufacturing Corp Restructuring</h1>
+                        <div class="text-gray-600 leading-relaxed space-y-5 text-justify">
+                            <p class="lead-dropcap text-lg font-medium text-gray-950 leading-relaxed" data-i18n="casestudies.cs2_p1">Chatura mengawal restrukturisasi operasional dan optimasi modal bagi produsen manufaktur terkemuka Indonesia, memungkinkan perusahaan meningkatkan kapasitas produksi sebesar 40% tanpa mengorbankan kesehatan finansial.</p>
+                            <p data-i18n="casestudies.cs2_p2">Penugasan ini meliputi penataan ulang liabilitas jangka panjang dan audit kepatuhan PPh Badan menyeluruh pasca-pemberlakuan undang-undang perpajakan baru, mengamankan arus kas operasional entitas di kawasan industri Cikarang.</p>
+                            <p data-i18n="casestudies.cs2_p3">Melalui analisis mendalam terhadap inefisiensi biaya overhead secara struktural, tim kami berhasil merancang ulang arsitektur likuiditas yang menghasilkan penghematan biaya operasional signifikan bagi konglomerasi manufaktur lokal.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-gray-600 leading-relaxed space-y-4 text-justify">
-                    <p class="text-lg font-medium text-gray-950 leading-relaxed" data-i18n="casestudies.cs2_p1">Chatura mengawal restrukturisasi operasional dan optimasi modal bagi produsen manufaktur terkemuka Indonesia, memungkinkan perusahaan meningkatkan kapasitas produksi sebesar 40% tanpa mengorbankan kesehatan finansial.</p>
-                    <p data-i18n="casestudies.cs2_p2">Penugasan ini meliputi penataan ulang liabilitas jangka panjang dan audit kepatuhan PPh Badan menyeluruh pasca-pemberlakuan undang-undang perpajakan baru, mengamankan arus kas operasional entitas di kawasan industri Cikarang.</p>
-                    <p data-i18n="casestudies.cs2_p3">Melalui analisis mendalam terhadap inefisiensi biaya overhead secara struktural, tim kami berhasil merancang ulang arsitektur likuiditas yang menghasilkan penghematan biaya operasional signifikan bagi konglomerasi manufaktur lokal.</p>
+                <div class="mt-12 pt-10 border-t border-gray-100">
+                    <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-400 mb-5" data-i18n="casestudies.continue_browsing">Continue Browsing</p>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <a href="#fintech-unicorn-series-c" class="related-card">
+                            <i data-lucide="cpu" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <span class="flex-1 min-w-0">
+                                <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs3_tag">Technology</span>
+                                <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs3_title">Series C Funding Advisory FinTech Unicorn</span>
+                            </span>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                        </a>
+                        <a href="#hospital-group-consolidation" class="related-card">
+                            <i data-lucide="heart-pulse" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <span class="flex-1 min-w-0">
+                                <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs4_tag">Healthcare</span>
+                                <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs4_title">Regional Hospital Group Consolidation</span>
+                            </span>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                        </a>
+                    </div>
                 </div>
             </article>
 
             <!-- CASE STUDY 3 — Technology & Digital -->
-            <article id="fintech-unicorn-series-c" class="case-post hidden space-y-6 bg-white p-8 md:p-10 rounded-2xl border border-gray-200 shadow-xs">
-                <div class="border-b border-gray-100 pb-5">
-                    <span class="text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-900 px-3 py-1 rounded-md" data-i18n="casestudies.cs3_tag">Technology</span>
-                    <h1 class="text-3xl md:text-4xl font-serif font-bold text-gray-950 mt-4" data-i18n="casestudies.cs3_title">Series C Funding Advisory FinTech Unicorn</h1>
-                    <p class="text-2xl font-bold text-[#004D34] mt-2" data-i18n="casestudies.cs3_value">Valuasi: USD 80 Million</p>
+            <article id="fintech-unicorn-series-c" class="case-post hidden">
+                <a href="#" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-400 hover:text-[#004D34] transition-colors mb-8" aria-label="Back to case studies overview">
+                    <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> <span data-i18n="casestudies.docket_eyebrow">Transaction Docket</span>
+                </a>
+                <div class="grid lg:grid-cols-[260px_1fr] gap-10 lg:gap-14">
+                    <aside class="lg:sticky lg:top-32 lg:self-start">
+                        <div class="snapshot-card rounded-xl border border-gray-200 bg-gradient-to-br from-white to-emerald-50/50 p-6">
+                            <span class="file-watermark">03</span>
+                            <div class="relative flex items-center gap-2 mb-5">
+                                <i data-lucide="cpu" class="w-4 h-4 text-[#004D34]"></i>
+                                <span class="text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-900 px-3 py-1 rounded-md" data-i18n="casestudies.cs3_tag">Technology</span>
+                            </div>
+                            <p class="relative text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-1" data-i18n="casestudies.snapshot_deal_value">Deal Value</p>
+                            <p class="relative text-xl font-serif font-bold text-[#004D34]" data-i18n="casestudies.cs3_value">Valuasi: USD 80 Million</p>
+                        </div>
+                    </aside>
+                    <div class="min-w-0 bg-white p-8 md:p-10 rounded-2xl border border-gray-200 shadow-xs">
+                        <h1 class="text-3xl md:text-4xl font-serif font-bold text-gray-950 mb-8 pb-6 border-b border-gray-100" data-i18n="casestudies.cs3_title">Series C Funding Advisory FinTech Unicorn</h1>
+                        <div class="text-gray-600 leading-relaxed space-y-5 text-justify">
+                            <p class="lead-dropcap text-lg font-medium text-gray-950 leading-relaxed" data-i18n="casestudies.cs3_p1">Chatura bertindak sebagai penasihat keuangan bagi perusahaan fintech terkemuka Indonesia dalam putaran pendanaan Series C, merancang struktur transaksi untuk mengoptimalkan valuasi sambil mempertahankan kontrol pendiri dan keselarasan dengan investor.</p>
+                            <p data-i18n="casestudies.cs3_p2">Dalam penugasan ini, kami berfokus pada structuring deal untuk mengoptimalkan valuasi sambil mempertahankan kontrol pendiri dan keselarasan investor. Penyelarasan ini memberikan fleksibilitas ekspansi teknologi jangka panjang bagi korporasi di pasar regional ASEAN.</p>
+                            <p data-i18n="casestudies.cs3_p3">Validasi kepatuhan OJK, struktur escrow aset digital, serta penilaian aset tak berwujud menjadi komponen kritis yang kami tangani secara paralel guna memastikan kelancaran transaksi lintas batas antara entitas regional Singapura dan perusahaan teknologi lokal Indonesia.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-gray-600 leading-relaxed space-y-4 text-justify">
-                    <p class="text-lg font-medium text-gray-950 leading-relaxed" data-i18n="casestudies.cs3_p1">Chatura bertindak sebagai penasihat keuangan bagi perusahaan fintech terkemuka Indonesia dalam putaran pendanaan Series C, merancang struktur transaksi untuk mengoptimalkan valuasi sambil mempertahankan kontrol pendiri dan keselarasan dengan investor.</p>
-                    <p data-i18n="casestudies.cs3_p2">Dalam penugasan ini, kami berfokus pada structuring deal untuk mengoptimalkan valuasi sambil mempertahankan kontrol pendiri dan keselarasan investor. Penyelarasan ini memberikan fleksibilitas ekspansi teknologi jangka panjang bagi korporasi di pasar regional ASEAN.</p>
-                    <p data-i18n="casestudies.cs3_p3">Validasi kepatuhan OJK, struktur escrow aset digital, serta penilaian aset tak berwujud menjadi komponen kritis yang kami tangani secara paralel guna memastikan kelancaran transaksi lintas batas antara entitas regional Singapura dan perusahaan teknologi lokal Indonesia.</p>
+                <div class="mt-12 pt-10 border-t border-gray-100">
+                    <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-400 mb-5" data-i18n="casestudies.continue_browsing">Continue Browsing</p>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <a href="#hospital-group-consolidation" class="related-card">
+                            <i data-lucide="heart-pulse" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <span class="flex-1 min-w-0">
+                                <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs4_tag">Healthcare</span>
+                                <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs4_title">Regional Hospital Group Consolidation</span>
+                            </span>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                        </a>
+                        <a href="#fmcg-portfolio-optimization" class="related-card">
+                            <i data-lucide="shopping-bag" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <span class="flex-1 min-w-0">
+                                <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs5_tag">Consumer &amp; Retail</span>
+                                <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs5_title">FMCG Brand Portfolio Optimization</span>
+                            </span>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                        </a>
+                    </div>
                 </div>
             </article>
 
             <!-- CASE STUDY 4 — Healthcare -->
-            <article id="hospital-group-consolidation" class="case-post hidden space-y-6 bg-white p-8 md:p-10 rounded-2xl border border-gray-200 shadow-xs">
-                <div class="border-b border-gray-100 pb-5">
-                    <span class="text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-900 px-3 py-1 rounded-md" data-i18n="casestudies.cs4_tag">Healthcare</span>
-                    <h1 class="text-3xl md:text-4xl font-serif font-bold text-gray-950 mt-4" data-i18n="casestudies.cs4_title">Regional Hospital Group Consolidation</h1>
-                    <p class="text-2xl font-bold text-[#004D34] mt-2" data-i18n="casestudies.cs4_value">Valuasi: USD 25 Million</p>
+            <article id="hospital-group-consolidation" class="case-post hidden">
+                <a href="#" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-400 hover:text-[#004D34] transition-colors mb-8" aria-label="Back to case studies overview">
+                    <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> <span data-i18n="casestudies.docket_eyebrow">Transaction Docket</span>
+                </a>
+                <div class="grid lg:grid-cols-[260px_1fr] gap-10 lg:gap-14">
+                    <aside class="lg:sticky lg:top-32 lg:self-start">
+                        <div class="snapshot-card rounded-xl border border-gray-200 bg-gradient-to-br from-white to-emerald-50/50 p-6">
+                            <span class="file-watermark">04</span>
+                            <div class="relative flex items-center gap-2 mb-5">
+                                <i data-lucide="heart-pulse" class="w-4 h-4 text-[#004D34]"></i>
+                                <span class="text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-900 px-3 py-1 rounded-md" data-i18n="casestudies.cs4_tag">Healthcare</span>
+                            </div>
+                            <p class="relative text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-1" data-i18n="casestudies.snapshot_deal_value">Deal Value</p>
+                            <p class="relative text-xl font-serif font-bold text-[#004D34]" data-i18n="casestudies.cs4_value">Valuasi: USD 25 Million</p>
+                        </div>
+                    </aside>
+                    <div class="min-w-0 bg-white p-8 md:p-10 rounded-2xl border border-gray-200 shadow-xs">
+                        <h1 class="text-3xl md:text-4xl font-serif font-bold text-gray-950 mb-8 pb-6 border-b border-gray-100" data-i18n="casestudies.cs4_title">Regional Hospital Group Consolidation</h1>
+                        <div class="text-gray-600 leading-relaxed space-y-5 text-justify">
+                            <p class="lead-dropcap text-lg font-medium text-gray-950 leading-relaxed" data-i18n="casestudies.cs4_p1">Chatura mengawal konsolidasi tiga grup rumah sakit regional menjadi jaringan kesehatan terpadu, mengoptimalkan struktur transaksi untuk efisiensi pajak sambil memastikan kepatuhan regulasi di seluruh yurisdiksi.</p>
+                            <p data-i18n="casestudies.cs4_p2">Pasca-merger, integrasi laporan keuangan konsolidated serta harmonisasi standar akuntansi antar entitas menjadi tantangan utama yang harus diselesaikan dengan presisi. Tim kami memandu seluruh proses restrukturisasi holding untuk memastikan stabilitas arus kas operasional.</p>
+                            <p data-i18n="casestudies.cs4_p3">Konfirmasi kepatuhan universal health coverage dan penyesuaian kerangka insentif pajak kesehatan menjadi pilar utama yang menjamin keberlanjutan operasional jaringan rumah sakit terintegrasi ini di masa mendatang.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-gray-600 leading-relaxed space-y-4 text-justify">
-                    <p class="text-lg font-medium text-gray-950 leading-relaxed" data-i18n="casestudies.cs4_p1">Chatura mengawal konsolidasi tiga grup rumah sakit regional menjadi jaringan kesehatan terpadu, mengoptimalkan struktur transaksi untuk efisiensi pajak sambil memastikan kepatuhan regulasi di seluruh yurisdiksi.</p>
-                    <p data-i18n="casestudies.cs4_p2">Pasca-merger, integrasi laporan keuangan konsolidated serta harmonisasi standar akuntansi antar entitas menjadi tantangan utama yang harus diselesaikan dengan presisi. Tim kami memandu seluruh proses restrukturisasi holding untuk memastikan stabilitas arus kas operasional.</p>
-                    <p data-i18n="casestudies.cs4_p3">Konfirmasi kepatuhan universal health coverage dan penyesuaian kerangka insentif pajak kesehatan menjadi pilar utama yang menjamin keberlanjutan operasional jaringan rumah sakit terintegrasi ini di masa mendatang.</p>
+                <div class="mt-12 pt-10 border-t border-gray-100">
+                    <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-400 mb-5" data-i18n="casestudies.continue_browsing">Continue Browsing</p>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <a href="#fmcg-portfolio-optimization" class="related-card">
+                            <i data-lucide="shopping-bag" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <span class="flex-1 min-w-0">
+                                <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs5_tag">Consumer &amp; Retail</span>
+                                <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs5_title">FMCG Brand Portfolio Optimization</span>
+                            </span>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                        </a>
+                        <a href="#xyz-acquisition-advisory" class="related-card">
+                            <i data-lucide="flame" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <span class="flex-1 min-w-0">
+                                <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs1_tag">Energy Sector</span>
+                                <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs1_title">PT XYZ Acquisition Advisory</span>
+                            </span>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                        </a>
+                    </div>
                 </div>
             </article>
 
             <!-- CASE STUDY 5 — Consumer & Retail -->
-            <article id="fmcg-portfolio-optimization" class="case-post hidden space-y-6 bg-white p-8 md:p-10 rounded-2xl border border-gray-200 shadow-xs">
-                <div class="border-b border-gray-100 pb-5">
-                    <span class="text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-900 px-3 py-1 rounded-md" data-i18n="casestudies.cs5_tag">Consumer &amp; Retail</span>
-                    <h1 class="text-3xl md:text-4xl font-serif font-bold text-gray-950 mt-4" data-i18n="casestudies.cs5_title">FMCG Brand Portfolio Optimization</h1>
-                    <p class="text-2xl font-bold text-[#004D34] mt-2" data-i18n="casestudies.cs5_value">Valuasi: USD 40 Million</p>
+            <article id="fmcg-portfolio-optimization" class="case-post hidden">
+                <a href="#" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-400 hover:text-[#004D34] transition-colors mb-8" aria-label="Back to case studies overview">
+                    <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> <span data-i18n="casestudies.docket_eyebrow">Transaction Docket</span>
+                </a>
+                <div class="grid lg:grid-cols-[260px_1fr] gap-10 lg:gap-14">
+                    <aside class="lg:sticky lg:top-32 lg:self-start">
+                        <div class="snapshot-card rounded-xl border border-gray-200 bg-gradient-to-br from-white to-emerald-50/50 p-6">
+                            <span class="file-watermark">05</span>
+                            <div class="relative flex items-center gap-2 mb-5">
+                                <i data-lucide="shopping-bag" class="w-4 h-4 text-[#004D34]"></i>
+                                <span class="text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-900 px-3 py-1 rounded-md" data-i18n="casestudies.cs5_tag">Consumer &amp; Retail</span>
+                            </div>
+                            <p class="relative text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-1" data-i18n="casestudies.snapshot_deal_value">Deal Value</p>
+                            <p class="relative text-xl font-serif font-bold text-[#004D34]" data-i18n="casestudies.cs5_value">Valuasi: USD 40 Million</p>
+                        </div>
+                    </aside>
+                    <div class="min-w-0 bg-white p-8 md:p-10 rounded-2xl border border-gray-200 shadow-xs">
+                        <h1 class="text-3xl md:text-4xl font-serif font-bold text-gray-950 mb-8 pb-6 border-b border-gray-100" data-i18n="casestudies.cs5_title">FMCG Brand Portfolio Optimization</h1>
+                        <div class="text-gray-600 leading-relaxed space-y-5 text-justify">
+                            <p class="lead-dropcap text-lg font-medium text-gray-950 leading-relaxed" data-i18n="casestudies.cs5_p1">Chatura menasihati perusahaan barang konsumen terkemuka dalam optimasi portofolio melalui divestasi selektif dan akuisisi strategis, menghasilkan peningkatan margin operasional sebesar 25% dalam 18 bulan.</p>
+                            <p data-i18n="casestudies.cs5_p2">Pendekatan kami mencakup analisis mendalam terhadap kinerja SKU lintas kategori, identifikasi aset non-inti yang berpotensi di-divestasi, serta perancangan struktur akuisisi merek premium yang selaras dengan visi pertumbuhan jangka panjang klien.</p>
+                            <p data-i18n="casestudies.cs5_p3">Transformasi supply chain omnichannel menjadi komponen kritis kedua dari penugasan ini, memastikan efisiensi logistik last-mile dan optimasi biaya operasional di seluruh saluran distribusi nasional.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-gray-600 leading-relaxed space-y-4 text-justify">
-                    <p class="text-lg font-medium text-gray-950 leading-relaxed" data-i18n="casestudies.cs5_p1">Chatura menasihati perusahaan barang konsumen terkemuka dalam optimasi portofolio melalui divestasi selektif dan akuisisi strategis, menghasilkan peningkatan margin operasional sebesar 25% dalam 18 bulan.</p>
-                    <p data-i18n="casestudies.cs5_p2">Pendekatan kami mencakup analisis mendalam terhadap kinerja SKU lintas kategori, identifikasi aset non-inti yang berpotensi di-divestasi, serta perancangan struktur akuisisi merek premium yang selaras dengan visi pertumbuhan jangka panjang klien.</p>
-                    <p data-i18n="casestudies.cs5_p3">Transformasi supply chain omnichannel menjadi komponen kritis kedua dari penugasan ini, memastikan efisiensi logistik last-mile dan optimasi biaya operasional di seluruh saluran distribusi nasional.</p>
+                <div class="mt-12 pt-10 border-t border-gray-100">
+                    <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-400 mb-5" data-i18n="casestudies.continue_browsing">Continue Browsing</p>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <a href="#xyz-acquisition-advisory" class="related-card">
+                            <i data-lucide="flame" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <span class="flex-1 min-w-0">
+                                <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs1_tag">Energy Sector</span>
+                                <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs1_title">PT XYZ Acquisition Advisory</span>
+                            </span>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                        </a>
+                        <a href="#manufacturing-corp-restructuring" class="related-card">
+                            <i data-lucide="factory" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <span class="flex-1 min-w-0">
+                                <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs2_tag">Manufacturing</span>
+                                <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs2_title">PT Manufacturing Corp Restructuring</span>
+                            </span>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                        </a>
+                    </div>
                 </div>
             </article>
         </section>
@@ -354,20 +693,38 @@
     <!-- Scripts -->
     <script src="assets/i18n/i18n.js"></script>
     <script>
+        function revealPanel(el) {
+            if (!el) return;
+            if (typeof gsap !== 'undefined') {
+                gsap.fromTo(el, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' });
+            }
+        }
         function checkUrlHashFilter() {
             var urlHash = window.location.hash;
             var allPosts = document.querySelectorAll('.case-post');
             var emptyState = document.getElementById('empty-state');
-            allPosts.forEach(function (post) { post.classList.add('hidden'); });
-            if (emptyState) emptyState.classList.remove('hidden');
+            var target = null;
+
             if (urlHash) {
                 var requestedArticle = document.querySelector(urlHash);
                 if (requestedArticle && requestedArticle.classList.contains('case-post')) {
-                    requestedArticle.classList.remove('hidden');
-                    if (emptyState) emptyState.classList.add('hidden');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    target = requestedArticle;
                 }
             }
+
+            allPosts.forEach(function (post) {
+                if (post !== target) post.classList.add('hidden');
+            });
+
+            if (target) {
+                if (emptyState) emptyState.classList.add('hidden');
+                target.classList.remove('hidden');
+                revealPanel(target);
+            } else if (emptyState) {
+                emptyState.classList.remove('hidden');
+                revealPanel(emptyState);
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         window.addEventListener('DOMContentLoaded', checkUrlHashFilter);
         window.addEventListener('hashchange', checkUrlHashFilter);
