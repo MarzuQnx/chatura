@@ -338,7 +338,12 @@ button:has(> i[data-lucide]) {
   visibility: hidden;
   pointer-events: none;
   transition: opacity var(--duration-fast) var(--ease-smooth),
-              visibility var(--duration-fast) var(--ease-smooth);
+            visibility var(--duration-fast) var(--ease-smooth);
+  background-color: var(--color-bg-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  min-width: 180px;
 }
 .nav-dropdown:hover .nav-dropdown-menu {
   opacity: 1;
