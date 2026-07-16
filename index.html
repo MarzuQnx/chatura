@@ -61,15 +61,22 @@
                 </div>
             </div>
             <button onclick="document.getElementById('mobileMenu').classList.remove('hidden')"
-                class="md:hidden text-gray-600 focus:outline-none">
+                class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
                 <i data-lucide="menu" class="text-xl"></i>
             </button>
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
                 <a href="index.html" class="text-[#004D34] font-semibold transition"><span
                         data-i18n="nav.about_us">About Us</span></a>
-                <a href="services.html" class="hover:text-emerald-800 transition"><span
-                        data-i18n="nav.services">Services</span> <i data-lucide="chevron-down"
-                        class="text-xs ml-1"></i></a>
+                <div class="nav-dropdown">
+                    <a href="services.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span
+                            data-i18n="nav.services">Services</span> <i data-lucide="chevron-down"
+                            class="text-xs"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="services.html" data-i18n="nav.services_overview">Overview</a>
+                        <a href="business-transfer.html"
+                            data-i18n="nav.business_transfer">Business Transfer</a>
+                    </div>
+                </div>
                 <a href="industries.html" class="hover:text-emerald-800 transition"><span
                         data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down"
                         class="text-xs ml-1"></i></a>
@@ -79,8 +86,6 @@
                         data-i18n="nav.insights">Insights</span></a>
                 <a href="join-us.html" class="hover:text-emerald-800 transition"><span data-i18n="nav.join_us">Join
                         Us</span></a>
-                <a href="business-transfer.html" class="hover:text-emerald-800 transition"><span
-                        data-i18n="nav.business_transfer">Business Transfer</span></a>
                 <a href="contact-us.html" class="hover:text-emerald-800 transition"><span
                         data-i18n="nav.contact">Contact</span></a>
             </nav>
