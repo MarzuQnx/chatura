@@ -40,12 +40,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="assets/design-system.css">
     <style type="text/tailwindcss">
-        .people-filter-btn[aria-selected="true"] {
-            background-color: #004D34;
-            border-color: #004D34;
-            color: #fff;
-        }
-
         .profile-card { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         .profile-card:hover { transform: translateY(-6px); }
         
@@ -200,14 +194,6 @@
     <section id="people-listing" class="py-20 bg-white scroll-mt-24">
         <div class="container mx-auto px-6">
             
-            <!-- Category Navigation -->
-            <div class="reveal-up flex flex-wrap gap-2 border-b border-gray-200 pb-6 mb-12" role="tablist">
-                <button type="button" role="tab" data-filter="all" aria-selected="true" class="people-filter-btn px-5 py-2.5 border border-gray-200 bg-white rounded-lg text-sm font-medium text-gray-700 hover:border-emerald-700 transition" data-i18n="people.filter_all">All People</button>
-                <button type="button" role="tab" data-filter="leadership" aria-selected="false" class="people-filter-btn px-5 py-2.5 border border-gray-200 bg-white rounded-lg text-sm font-medium text-gray-700 hover:border-emerald-700 transition" data-i18n="people.filter_leadership">Leadership</button>
-                <button type="button" role="tab" data-filter="partner" aria-selected="false" class="people-filter-btn px-5 py-2.5 border border-gray-200 bg-white rounded-lg text-sm font-medium text-gray-700 hover:border-emerald-700 transition" data-i18n="people.filter_partners">Partners</button>
-                <button type="button" role="tab" data-filter="director" aria-selected="false" class="people-filter-btn px-5 py-2.5 border border-gray-200 bg-white rounded-lg text-sm font-medium text-gray-700 hover:border-emerald-700 transition" data-i18n="people.filter_directors">Directors</button>
-            </div>
-
             <!-- Grid Container -->
             <div id="peopleGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
                 <!-- Dynamically populated from JS single source of truth -->
@@ -269,7 +255,7 @@
     </div>
 
     <!-- ============ 1. COLLECTIVE EXPERTISE ============ -->
-    <section class="py-20 bg-gray-50 border-t border-b border-gray-100">
+    <section class="py-20 bg-gray-100 border-t border-b border-gray-100">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div class="reveal-up">
@@ -277,20 +263,7 @@
                     <h2 class="text-2xl sm:text-3xl font-serif mt-2 mb-5" data-i18n="people.expertise_title">Deep Capability Across Every Business Function</h2>
                     <p class="text-sm text-gray-500 leading-[1.8]" data-i18n="people.expertise_desc">Our team brings multi-disciplinary excellence spanning finance, tax, advisory, and risk — unified by a single commitment to delivering measurable outcomes for every engagement.</p>
                 </div>
-                <div class="reveal-up flex flex-wrap gap-3">
-                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition cursor-default">Accounting</span>
-                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition cursor-default">Tax</span>
-                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition cursor-default">Corporate Finance</span>
-                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition cursor-default">Business Advisory</span>
-                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition cursor-default">Risk Management</span>
-                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition cursor-default">Business Transfer</span>
-                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition cursor-default">Due Diligence</span>
-                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition cursor-default">Transfer Pricing</span>
-                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition cursor-default">ESG</span>
-                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition cursor-default">Digital Transformation</span>
-                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition cursor-default">Internal Control</span>
-                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition cursor-default">Regulatory Compliance</span>
-                </div>
+                <div id="expertiseGrid" class="reveal-up flex flex-wrap gap-3"></div>
             </div>
         </div>
     </section>
@@ -302,88 +275,20 @@
                 <span class="text-xs font-bold uppercase tracking-widest text-emerald-700 mb-3 block" data-i18n="people.industries_label">Industries We Support</span>
                 <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="people.industries_title">Sector Expertise That Drives Results</h2>
             </div>
-            <div class="reveal-up grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <a href="industries.html" class="flex items-start gap-4 p-6 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-md transition group">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 group-hover:bg-emerald-100 transition"><i data-lucide="zap" class="w-5 h-5"></i></div>
-                    <div><h4 class="font-bold text-sm text-gray-950 mb-1 group-hover:text-emerald-800 transition" data-i18n="people.ind_energy">Energy & Natural Resources</h4><p class="text-xs text-gray-500">Oil, gas, mining, and renewable energy sectors.</p></div>
-                </a>
-                <a href="industries.html" class="flex items-start gap-4 p-6 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-md transition group">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 group-hover:bg-emerald-100 transition"><i data-lucide="factory" class="w-5 h-5"></i></div>
-                    <div><h4 class="font-bold text-sm text-gray-950 mb-1 group-hover:text-emerald-800 transition" data-i18n="people.ind_manufacturing">Manufacturing</h4><p class="text-xs text-gray-500">Industrial operations and supply chain.</p></div>
-                </a>
-                <a href="industries.html" class="flex items-start gap-4 p-6 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-md transition group">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 group-hover:bg-emerald-100 transition"><i data-lucide="heart-pulse" class="w-5 h-5"></i></div>
-                    <div><h4 class="font-bold text-sm text-gray-950 mb-1 group-hover:text-emerald-800 transition" data-i18n="people.ind_healthcare">Healthcare</h4><p class="text-xs text-gray-500">Health systems, pharmaceuticals, and medical devices.</p></div>
-                </a>
-                <a href="industries.html" class="flex items-start gap-4 p-6 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-md transition group">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 group-hover:bg-emerald-100 transition"><i data-lucide="cpu" class="w-5 h-5"></i></div>
-                    <div><h4 class="font-bold text-sm text-gray-950 mb-1 group-hover:text-emerald-800 transition" data-i18n="people.ind_tech">Technology</h4><p class="text-xs text-gray-500">Digital platforms, SaaS, and tech startups.</p></div>
-                </a>
-                <a href="industries.html" class="flex items-start gap-4 p-6 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-md transition group">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 group-hover:bg-emerald-100 transition"><i data-lucide="building-2" class="w-5 h-5"></i></div>
-                    <div><h4 class="font-bold text-sm text-gray-950 mb-1 group-hover:text-emerald-800 transition" data-i18n="people.ind_infra">Infrastructure</h4><p class="text-xs text-gray-500">Transportation, utilities, and public works.</p></div>
-                </a>
-                <a href="industries.html" class="flex items-start gap-4 p-6 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-md transition group">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 group-hover:bg-emerald-100 transition"><i data-lucide="shopping-bag" class="w-5 h-5"></i></div>
-                    <div><h4 class="font-bold text-sm text-gray-950 mb-1 group-hover:text-emerald-800 transition" data-i18n="people.ind_consumer">Consumer Goods</h4><p class="text-xs text-gray-500">FMCG, retail, and consumer services.</p></div>
-                </a>
-                <a href="industries.html" class="flex items-start gap-4 p-6 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-md transition group">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 group-hover:bg-emerald-100 transition"><i data-lucide="landmark" class="w-5 h-5"></i></div>
-                    <div><h4 class="font-bold text-sm text-gray-950 mb-1 group-hover:text-emerald-800 transition" data-i18n="people.ind_financial">Financial Services</h4><p class="text-xs text-gray-500">Banking, insurance, and capital markets.</p></div>
-                </a>
-                <a href="industries.html" class="flex items-start gap-4 p-6 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-md transition group">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 group-hover:bg-emerald-100 transition"><i data-lucide="graduation-cap" class="w-5 h-5"></i></div>
-                    <div><h4 class="font-bold text-sm text-gray-950 mb-1 group-hover:text-emerald-800 transition" data-i18n="people.ind_education">Education</h4><p class="text-xs text-gray-500">Universities, EdTech, and training institutions.</p></div>
-                </a>
-                <a href="industries.html" class="flex items-start gap-4 p-6 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-md transition group">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 group-hover:bg-emerald-100 transition"><i data-lucide="car" class="w-5 h-5"></i></div>
-                    <div><h4 class="font-bold text-sm text-gray-950 mb-1 group-hover:text-emerald-800 transition" data-i18n="people.ind_automotive">Automotive</h4><p class="text-xs text-gray-500">OEMs, parts suppliers, and EV transition.</p></div>
-                </a>
-            </div>
+            <div id="industriesGrid" class="reveal-up grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         </div>
     </section>
 
     <!-- ============ 3. GLOBAL STANDARDS ============ -->
-    <section class="py-20 bg-white border-t border-gray-100">
+    <section class="py-20 bg-gray-100 border-t border-gray-100">
         <div class="container mx-auto px-6">
             <div class="reveal-up text-center mb-14">
                 <span class="text-xs font-bold uppercase tracking-widest text-emerald-700 mb-3 block" data-i18n="people.standards_label">Global Standards</span>
                 <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="people.standards_title">Frameworks We Operate Within</h2>
             </div>
-            <div class="reveal-up grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-6">
-                <div class="flex flex-col items-center text-center gap-3 py-6 px-3 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
-                    <span class="text-lg font-bold text-gray-950 tracking-tight">IFRS</span>
-                    <span class="text-[10px] text-gray-400 leading-tight">International Financial Reporting Standards</span>
-                </div>
-                <div class="flex flex-col items-center text-center gap-3 py-6 px-3 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
-                    <span class="text-lg font-bold text-gray-950 tracking-tight">PSAK</span>
-                    <span class="text-[10px] text-gray-400 leading-tight">Pernyataan Standar Akuntansi Keuangan</span>
-                </div>
-                <div class="flex flex-col items-center text-center gap-3 py-6 px-3 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
-                    <span class="text-lg font-bold text-gray-950 tracking-tight">OECD</span>
-                    <span class="text-[10px] text-gray-400 leading-tight">Organisation for Economic Co-operation</span>
-                </div>
-                <div class="flex flex-col items-center text-center gap-3 py-6 px-3 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
-                    <span class="text-lg font-bold text-gray-950 tracking-tight">COSO</span>
-                    <span class="text-[10px] text-gray-400 leading-tight">Committee of Sponsoring Organizations</span>
-                </div>
-                <div class="flex flex-col items-center text-center gap-3 py-6 px-3 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
-                    <span class="text-lg font-bold text-gray-950 tracking-tight">ISO</span>
-                    <span class="text-[10px] text-gray-400 leading-tight">International Organization for Standardization</span>
-                </div>
-                <div class="flex flex-col items-center text-center gap-3 py-6 px-3 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
-                    <span class="text-lg font-bold text-gray-950 tracking-tight">ISA</span>
-                    <span class="text-[10px] text-gray-400 leading-tight">International Standards on Auditing</span>
-                </div>
-                <div class="flex flex-col items-center text-center gap-3 py-6 px-3 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
-                    <span class="text-lg font-bold text-gray-950 tracking-tight">BEPS</span>
-                    <span class="text-[10px] text-gray-400 leading-tight">Base Erosion & Profit Shifting</span>
-                </div>
-                <div class="flex flex-col items-center text-center gap-3 py-6 px-3 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
-                    <span class="text-lg font-bold text-gray-950 tracking-tight">GRI</span>
-                    <span class="text-[10px] text-gray-400 leading-tight">Global Reporting Initiative</span>
-                </div>
-            </div>
+        </div>
+        <div id="standards-marquee" class="reveal-up overflow-hidden py-4" role="region" aria-label="Global Standards marquee" style="mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);">
+            <div id="marquee-track" class="flex will-change-transform" style="transform: translate3d(0, 0, 0);"></div>
         </div>
     </section>
 
@@ -408,115 +313,16 @@
 
         <div class="reveal-up grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <div class="lg:col-span-6">
-                <a href="insights.html" class="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1.5 hover:border-emerald-200 hover:shadow-xl flex flex-col justify-between min-h-145">
-                    <span class="absolute right-6 top-4 text-7xl font-serif font-bold text-gray-900 opacity-5 pointer-events-none select-none z-10">01</span>
-                    
-                    <div>
-                        <div class="relative overflow-hidden aspect-16/10 bg-neutral-900 w-full">
-                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Taxation Framework" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-                            <div class="absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        </div>
-                        
-                        <div class="p-8">
-                            <div class="flex items-center gap-2 mb-4 transition-transform duration-300 group-hover:-translate-y-0.5">
-                                <span class="text-[9px] font-bold uppercase tracking-widest bg-emerald-800 text-white px-2.5 py-0.5 rounded-sm">NEW</span>
-                                <span class="text-[10px] font-bold uppercase tracking-wider text-gray-400">REPORT & ANALYSIS</span>
-                            </div>
-                            <div class="border-l-2 border-emerald-700 pl-4">
-                                <h3 class="font-serif font-bold text-xl md:text-2xl text-gray-950 leading-tight mb-4 group-hover:text-emerald-800 transition-colors duration-300">
-                                    Indonesian Tax Reform 2026: What Businesses Need to Prepare Ahead
-                                </h3>
-                            </div>
-                            <p class="text-xs text-gray-500 leading-relaxed mb-6 pl-4 line-clamp-3">
-                                Menelaah kerangka regulasi perpajakan korporasi terbaru, implikasi insentif hijau, dan langkah mitigasi strategis demi menjaga kepatuhan operasional penuh secara menyeluruh.
-                            </p>
-                        </div>
-                    </div>
+            <div id="insightFeatured" class="lg:col-span-6"></div>
 
-                    <div class="px-8 pb-8 pt-4 border-t border-gray-100 flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <img class="w-8 h-8 rounded-full object-cover bg-gray-100 border border-gray-200" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&h=150&q=80" alt="Dyna Agustina">
-                            <div class="text-left">
-                                <p class="text-xs font-bold text-gray-900 leading-none">Dyna Agustina</p>
-                                <p class="text-[10px] text-gray-400 mt-1">Senior Tax Advisor</p>
-                            </div>
-                        </div>
-                        <div class="text-right text-[10px] font-medium text-gray-400 uppercase tracking-wider space-y-0.5">
-                            <p>Published Jul 2026</p>
-                            <p class="text-[#004D34] font-bold text-right flex items-center justify-end gap-0.5">5 Min Read <i data-lucide="clock" class="w-3 h-3"></i></p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="lg:col-span-6 flex flex-col gap-4">
-                
-                <a href="insights.html" class="group relative bg-neutral-50 border border-gray-200 rounded-2xl overflow-hidden transition-all duration-400 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-lg p-6 flex flex-col justify-between min-h-42">
-                    <span class="absolute right-6 top-4 text-5xl font-serif font-bold text-gray-900 opacity-5 pointer-events-none select-none">02</span>
-                    <div>
-                        <div class="flex items-center gap-3 mb-2.5">
-                            <span class="text-[10px] font-bold uppercase tracking-wider text-blue-700 bg-blue-50/60 px-2 py-0.5 rounded">CASE STUDY</span>
-                            <span class="text-[11px] text-gray-400">• &nbsp; 7 Min Read</span>
-                        </div>
-                        <div class="border-l-2 border-gray-300 group-hover:border-emerald-700 pl-3 transition-colors duration-300">
-                            <h4 class="font-serif font-bold text-sm md:text-base text-gray-950 leading-snug group-hover:text-emerald-800 transition-colors duration-300 line-clamp-2">
-                                Managing Risk in a Volatile Economic Landscape: Systemic GRC Architecture
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="pt-4 border-t border-gray-200/40 flex justify-between items-center text-[11px] text-gray-400">
-                        <span class="font-semibold text-gray-600">Adine Nadya &nbsp;<span class="text-gray-300 font-normal">|</span>&nbsp; <span class="text-gray-400 font-normal text-[10px]">Risk Management</span></span>
-                        <span>Apr 15, 2026</span>
-                    </div>
-                </a>
-
-                <a href="insights.html" class="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-400 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-lg p-6 flex flex-col justify-between min-h-42">
-                    <span class="absolute right-6 top-4 text-5xl font-serif font-bold text-gray-900 opacity-5 pointer-events-none select-none">03</span>
-                    <div>
-                        <div class="flex items-center gap-3 mb-2.5">
-                            <span class="text-[10px] font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-2 py-0.5 rounded">INSIGHT REPORT</span>
-                            <span class="text-[11px] text-gray-400">• &nbsp; 4 Min Read</span>
-                        </div>
-                        <div class="border-l-2 border-gray-300 group-hover:border-emerald-700 pl-3 transition-colors duration-300">
-                            <h4 class="font-serif font-bold text-sm md:text-base text-gray-950 leading-snug group-hover:text-emerald-800 transition-colors duration-300 line-clamp-2">
-                                Succession Planning for Family-Owned Businesses: Securing Generational Transfers
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="pt-4 border-t border-gray-100 flex justify-between items-center text-[11px] text-gray-400">
-                        <span class="font-semibold text-gray-600">Bezaliel Erlan &nbsp;<span class="text-gray-300 font-normal">|</span>&nbsp; <span class="text-gray-400 font-normal text-[10px]">Business Transfer</span></span>
-                        <span>Apr 28, 2026</span>
-                    </div>
-                </a>
-
-                <a href="insights.html" class="group relative bg-neutral-50 border border-gray-200 rounded-2xl overflow-hidden transition-all duration-400 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-lg p-6 flex flex-col justify-between min-h-42">
-                    <span class="absolute right-6 top-4 text-5xl font-serif font-bold text-gray-900 opacity-5 pointer-events-none select-none">04</span>
-                    <div>
-                        <div class="flex items-center gap-3 mb-2.5">
-                            <span class="text-[10px] font-bold uppercase tracking-wider text-red-700 bg-red-50 px-2 py-0.5 rounded">LEGAL UPDATE</span>
-                            <span class="text-[11px] text-gray-400">• &nbsp; 6 Min Read</span>
-                        </div>
-                        <div class="border-l-2 border-gray-300 group-hover:border-emerald-700 pl-3 transition-colors duration-300">
-                            <h4 class="font-serif font-bold text-sm md:text-base text-gray-950 leading-snug group-hover:text-emerald-800 transition-colors duration-300 line-clamp-2">
-                                Cross-Border M&A Valuation Alignment: Navigating Systemic Buyout Channels
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="pt-4 border-t border-gray-200/40 flex justify-between items-center text-[11px] text-gray-400">
-                        <span class="font-semibold text-gray-600">Andi Rio Monry &nbsp;<span class="text-gray-300 font-normal">|</span>&nbsp; <span class="text-gray-400 font-normal text-[10px]">Corporate Finance</span></span>
-                        <span>May 05, 2026</span>
-                    </div>
-                </a>
-
-            </div>
+            <div id="insightNext" class="lg:col-span-6 flex flex-col gap-4"></div>
 
         </div>
     </div>
 </section>
 
     <!-- ============ 5. PREMIUM CTA ============ -->
-    <section class="bg-[#004D34] text-white py-20">
+    <section class="bg-gray-900 text-white py-20">
         <div class="container mx-auto px-6 max-w-4xl text-center">
             <div class="reveal-up">
                 <h2 class="text-2xl md:text-3xl font-serif mb-4" data-i18n="people.cta_title">Looking for the Right Advisor?</h2>
@@ -661,6 +467,7 @@
     </footer>
 
     <!-- ============ ARCHITECTURE SYSTEM LOGIC ============ -->
+    <script src="assets/js/articles.js"></script>
     <script src="assets/i18n/i18n.js"></script>
     <script>document.addEventListener("DOMContentLoaded",function(){lucide.createIcons();});</script>
     <script>
@@ -778,13 +585,9 @@
 
         function t(key) { var d = window.getTranslations() || {}; return d[key] || key; }
 
-        var activeFilter = "all";
-
         function renderPeopleGrid() {
             var grid = document.getElementById('peopleGrid');
-            var filtered = PEOPLE.filter(function(p) {
-                return activeFilter === "all" || p.category === activeFilter;
-            });
+            var filtered = PEOPLE;
 
             grid.innerHTML = filtered.map(function(p) {
                 return '<div class="profile-card bg-white border border-gray-100 rounded-2xl p-5 hover:shadow-xl cursor-pointer flex flex-col justify-between" onclick="openBioModal(\'' + p.id + '\')">' +
@@ -803,24 +606,6 @@
             }).join('');
             if (typeof lucide !== 'undefined') lucide.createIcons();
         }
-
-        // Filter Controls Setup
-        document.querySelectorAll('.people-filter-btn').forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.people-filter-btn').forEach(function(b) { b.setAttribute('aria-selected', 'false'); });
-                btn.setAttribute('aria-selected', 'true');
-                activeFilter = btn.getAttribute('data-filter');
-                
-                if (typeof gsap !== 'undefined') {
-                    gsap.to('#peopleGrid', { opacity: 0, y: 15, duration: 0.2, onComplete: function() {
-                        renderPeopleGrid();
-                        gsap.to('#peopleGrid', { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
-                    }});
-                } else {
-                    renderPeopleGrid();
-                }
-            });
-        });
 
         // Modal Action Systems
         var modal = document.getElementById('bioModal');
@@ -873,7 +658,263 @@
         // Re-render on language change
         window.addEventListener('langChange', function () {
             renderPeopleGrid();
+            renderExpertise();
+            renderIndustries();
+            renderInsights();
         });
+
+        // ─── EXPERTISE DATA ───────────────────────────────────────────────
+        var EXPERTISE = [
+            { name: 'Accounting', nameKey: 'people.exp_accounting' },
+            { name: 'Tax', nameKey: 'people.exp_tax' },
+            { name: 'Corporate Finance', nameKey: 'people.exp_corp_finance' },
+            { name: 'Business Advisory', nameKey: 'people.exp_biz_advisory' },
+            { name: 'Risk Management', nameKey: 'people.exp_risk_mgmt' },
+            { name: 'Business Transfer', nameKey: 'people.exp_biz_transfer' },
+            { name: 'Due Diligence', nameKey: 'people.exp_due_diligence' },
+            { name: 'Transfer Pricing', nameKey: 'people.exp_transfer_pricing' },
+            { name: 'ESG', nameKey: 'people.exp_esg' },
+            { name: 'Digital Transformation', nameKey: 'people.exp_digital' },
+            { name: 'Internal Control', nameKey: 'people.exp_internal_ctrl' },
+            { name: 'Regulatory Compliance', nameKey: 'people.exp_regulatory' }
+        ];
+
+        function renderExpertise() {
+            var grid = document.getElementById('expertiseGrid');
+            if (!grid) return;
+            grid.innerHTML = EXPERTISE.map(function(e) {
+                return '<span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition cursor-default">' + (t(e.nameKey) !== e.nameKey ? t(e.nameKey) : e.name) + '</span>';
+            }).join('');
+        }
+
+        // ─── INDUSTRIES DATA ──────────────────────────────────────────────
+        var INDUSTRIES_DATA = [
+            { slug: 'industries/energy/', icon: 'zap', nameKey: 'people.ind_energy', name: 'Energy & Natural Resources', desc: 'Oil, gas, mining, and renewable energy sectors.', relatedPeople: ['p3', 'p4'] },
+            { slug: 'industries/manufacturing/', icon: 'factory', nameKey: 'people.ind_manufacturing', name: 'Manufacturing', desc: 'Industrial operations and supply chain.', relatedPeople: ['p3'] },
+            { slug: 'industries/healthcare/', icon: 'heart-pulse', nameKey: 'people.ind_healthcare', name: 'Healthcare', desc: 'Health systems, pharmaceuticals, and medical devices.', relatedPeople: [] },
+            { slug: 'industries/technology/', icon: 'cpu', nameKey: 'people.ind_tech', name: 'Technology', desc: 'Digital platforms, SaaS, and tech startups.', relatedPeople: [] },
+            { slug: 'industries/infrastructure/', icon: 'building-2', nameKey: 'people.ind_infra', name: 'Infrastructure', desc: 'Transportation, utilities, and public works.', relatedPeople: [] },
+            { slug: 'industries/consumer/', icon: 'shopping-bag', nameKey: 'people.ind_consumer', name: 'Consumer Goods', desc: 'FMCG, retail, and consumer services.', relatedPeople: ['p4'] },
+            { slug: 'industries/financial/', icon: 'landmark', nameKey: 'people.ind_financial', name: 'Financial Services', desc: 'Banking, insurance, and capital markets.', relatedPeople: ['p1', 'p6'] },
+            { slug: 'industries/education/', icon: 'graduation-cap', nameKey: 'people.ind_education', name: 'Education', desc: 'Universities, EdTech, and training institutions.', relatedPeople: [] },
+            { slug: 'industries/automotive/', icon: 'car', nameKey: 'people.ind_automotive', name: 'Automotive', desc: 'OEMs, parts suppliers, and EV transition.', relatedPeople: ['p3'] }
+        ];
+
+        function renderIndustries() {
+            var grid = document.getElementById('industriesGrid');
+            if (!grid) return;
+            grid.innerHTML = INDUSTRIES_DATA.map(function(ind) {
+                var displayName = t(ind.nameKey) !== ind.nameKey ? t(ind.nameKey) : ind.name;
+                return '<a href="' + ind.slug + '" class="flex items-start gap-4 p-6 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-md transition group">' +
+                    '<div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 group-hover:bg-emerald-100 transition"><i data-lucide="' + ind.icon + '" class="w-5 h-5"></i></div>' +
+                    '<div><h4 class="font-bold text-sm text-gray-950 mb-1 group-hover:text-emerald-800 transition">' + displayName + '</h4>' +
+                    '<p class="text-xs text-gray-500">' + ind.desc + '</p></div>' +
+                    '</a>';
+            }).join('');
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        // ─── STANDARDS DATA ───────────────────────────────────────────────
+        var STANDARDS = [
+            { name: 'IFRS', desc: 'International Financial Reporting Standards', url: 'https://www.ifrs.org' },
+            { name: 'PSAK', desc: 'Pernyataan Standar Akuntansi Keuangan', url: '' },
+            { name: 'OECD', desc: 'Organisation for Economic Co-operation', url: 'https://www.oecd.org' },
+            { name: 'COSO', desc: 'Committee of Sponsoring Organizations', url: 'https://www.coso.org' },
+            { name: 'ISO', desc: 'International Organization for Standardization', url: 'https://www.iso.org' },
+            { name: 'ISA', desc: 'International Standards on Auditing', url: '' },
+            { name: 'BEPS', desc: 'Base Erosion & Profit Shifting', url: 'https://www.oecd.org/beps' },
+            { name: 'GRI', desc: 'Global Reporting Initiative', url: 'https://www.globalreporting.org' }
+        ];
+
+        // ─── ARTICLES DATA SOURCE ─────────────────────────────────────────
+        function getLatestArticles() {
+            var allArticles = (window.CHATURA && window.CHATURA.ARTICLES) ? window.CHATURA.ARTICLES : [];
+            var sorted = allArticles.slice().sort(function(a, b) {
+                return new Date(b.dates.published) - new Date(a.dates.published);
+            });
+            return sorted.slice(0, 5);
+        }
+
+        function getArticleCategoryLabel(category) {
+            if (window.CHATURA && window.CHATURA.CATEGORIES && window.CHATURA.CATEGORIES[category]) {
+                var lang = document.documentElement.lang === 'id' ? 'id' : 'en';
+                return { label: window.CHATURA.CATEGORIES[category][lang], badgeClass: window.CHATURA.CATEGORIES[category].badgeClass };
+            }
+            return { label: category.toUpperCase(), badgeClass: 'text-gray-700 bg-gray-50' };
+        }
+
+        function renderInsights() {
+            var articles = getLatestArticles();
+            if (articles.length === 0) return;
+
+            var lang = document.documentElement.lang === 'id' ? 'id' : 'en';
+            var featuredEl = document.getElementById('insightFeatured');
+            var nextEl = document.getElementById('insightNext');
+            if (!featuredEl || !nextEl) return;
+
+            var featured = articles[0];
+            var catInfo = getArticleCategoryLabel(featured.category);
+            var articleUrl = (window.CHATURA && window.CHATURA.getArticleUrl) ? window.CHATURA.getArticleUrl(featured) : 'insight-detail.html?slug=' + featured.slug;
+            var authorName = featured.author && featured.author.name ? (typeof featured.author.name === 'string' ? featured.author.name : featured.author.name[lang]) : '';
+            var authorRole = featured.author && featured.author.role ? (typeof featured.author.role === 'string' ? featured.author.role : featured.author.role[lang]) : '';
+            var authorPhoto = featured.author ? (featured.author.photo || featured.author.image || '') : '';
+            var title = typeof featured.title === 'string' ? featured.title : featured.title[lang];
+            var subtitle = featured.subtitle ? (typeof featured.subtitle === 'string' ? featured.subtitle : featured.subtitle[lang]) : '';
+            var displayDate = featured.dates && featured.dates.display ? (typeof featured.dates.display === 'string' ? featured.dates.display : featured.dates.display[lang]) : '';
+            var readTime = featured.readingTime ? (typeof featured.readingTime === 'string' ? featured.readingTime : featured.readingTime[lang]) : '';
+
+            featuredEl.innerHTML = '<a href="' + articleUrl + '" class="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1.5 hover:border-emerald-200 hover:shadow-xl flex flex-col justify-between min-h-145">' +
+                '<span class="absolute right-6 top-4 text-7xl font-serif font-bold text-gray-900 opacity-5 pointer-events-none select-none z-10">01</span>' +
+                '<div>' +
+                    '<div class="relative overflow-hidden aspect-16/10 bg-neutral-900 w-full">' +
+                        '<img src="' + (featured.image || '') + '" alt="' + title + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">' +
+                        '<div class="absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>' +
+                    '</div>' +
+                    '<div class="p-8">' +
+                        '<div class="flex items-center gap-2 mb-4 transition-transform duration-300 group-hover:-translate-y-0.5">' +
+                            '<span class="text-[9px] font-bold uppercase tracking-widest bg-emerald-800 text-white px-2.5 py-0.5 rounded-sm">NEW</span>' +
+                            '<span class="text-[10px] font-bold uppercase tracking-wider ' + catInfo.badgeClass + ' px-2 py-0.5 rounded">' + catInfo.label + '</span>' +
+                        '</div>' +
+                        '<div class="border-l-2 border-emerald-700 pl-4">' +
+                            '<h3 class="font-serif font-bold text-xl md:text-2xl text-gray-950 leading-tight mb-4 group-hover:text-emerald-800 transition-colors duration-300">' + title + '</h3>' +
+                        '</div>' +
+                        '<p class="text-xs text-gray-500 leading-relaxed mb-6 pl-4 line-clamp-3">' + subtitle + '</p>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="px-8 pb-8 pt-4 border-t border-gray-100 flex items-center justify-between">' +
+                    '<div class="flex items-center gap-3">' +
+                        '<img class="w-8 h-8 rounded-full object-cover bg-gray-100 border border-gray-200" src="' + authorPhoto + '" alt="' + authorName + '" loading="lazy">' +
+                        '<div class="text-left">' +
+                            '<p class="text-xs font-bold text-gray-900 leading-none">' + authorName + '</p>' +
+                            '<p class="text-[10px] text-gray-400 mt-1">' + authorRole + '</p>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="text-right text-[10px] font-medium text-gray-400 uppercase tracking-wider space-y-0.5">' +
+                        '<p>' + displayDate + '</p>' +
+                        '<p class="text-[#004D34] font-bold text-right flex items-center justify-end gap-0.5">' + readTime + ' <i data-lucide="clock" class="w-3 h-3"></i></p>' +
+                    '</div>' +
+                '</div>' +
+                '</a>';
+
+            var bgAlternates = ['bg-neutral-50', 'bg-white', 'bg-neutral-50', 'bg-white'];
+            nextEl.innerHTML = articles.slice(1, 5).map(function(article, i) {
+                var aCatInfo = getArticleCategoryLabel(article.category);
+                var aUrl = (window.CHATURA && window.CHATURA.getArticleUrl) ? window.CHATURA.getArticleUrl(article) : 'insight-detail.html?slug=' + article.slug;
+                var aAuthor = article.author && article.author.name ? (typeof article.author.name === 'string' ? article.author.name : article.author.name[lang]) : '';
+                var aRole = article.author && article.author.role ? (typeof article.author.role === 'string' ? article.author.role : article.author.role[lang]) : '';
+                var aTitle = typeof article.title === 'string' ? article.title : article.title[lang];
+                var aDate = article.dates && article.dates.display ? (typeof article.dates.display === 'string' ? article.dates.display : article.dates.display[lang]) : '';
+                var aReadTime = article.readingTime ? (typeof article.readingTime === 'string' ? article.readingTime : article.readingTime[lang]) : '';
+                var num = String(i + 2).padStart(2, '0');
+                return '<a href="' + aUrl + '" class="group relative ' + bgAlternates[i] + ' border border-gray-200 rounded-2xl overflow-hidden transition-all duration-400 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-lg p-6 flex flex-col justify-between min-h-42">' +
+                    '<span class="absolute right-6 top-4 text-5xl font-serif font-bold text-gray-900 opacity-5 pointer-events-none select-none">' + num + '</span>' +
+                    '<div>' +
+                        '<div class="flex items-center gap-3 mb-2.5">' +
+                            '<span class="text-[10px] font-bold uppercase tracking-wider ' + aCatInfo.badgeClass + ' px-2 py-0.5 rounded">' + aCatInfo.label + '</span>' +
+                            '<span class="text-[11px] text-gray-400">• &nbsp; ' + aReadTime + '</span>' +
+                        '</div>' +
+                        '<div class="border-l-2 border-gray-300 group-hover:border-emerald-700 pl-3 transition-colors duration-300">' +
+                            '<h4 class="font-serif font-bold text-sm md:text-base text-gray-950 leading-snug group-hover:text-emerald-800 transition-colors duration-300 line-clamp-2">' + aTitle + '</h4>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="pt-4 border-t border-gray-200/40 flex justify-between items-center text-[11px] text-gray-400">' +
+                        '<span class="font-semibold text-gray-600">' + aAuthor + ' &nbsp;<span class="text-gray-300 font-normal">|</span>&nbsp; <span class="text-gray-400 font-normal text-[10px]">' + aRole + '</span></span>' +
+                        '<span>' + aDate + '</span>' +
+                    '</div>' +
+                    '</a>';
+            }).join('');
+
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        // ─── PREMIUM INFINITE MARQUEE ENGINE ───────────────────────────────
+        (function initStandardsMarquee() {
+            var wrapper = document.getElementById('standards-marquee');
+            var track = document.getElementById('marquee-track');
+            if (!wrapper || !track) return;
+
+            var data = STANDARDS;
+            var ITEM_GAP = 32;
+            var speed = 0.5;
+            var pos = 0;
+            var paused = false;
+            var srcIdx = 0;
+            var raf;
+            var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+            function createMarqueeItem(std) {
+                var el = document.createElement('div');
+                el.className = 'flex-shrink-0 flex flex-col items-center text-center gap-3 py-6 px-6 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition cursor-default';
+                el.style.marginRight = ITEM_GAP + 'px';
+                var content = '<span class="text-lg font-bold text-gray-950 tracking-tight">' + std.name + '</span>';
+                content += '<span class="text-[10px] text-gray-400 leading-tight max-w-[130px]">' + std.desc + '</span>';
+                el.innerHTML = content;
+                return el;
+            }
+
+            function fillRight() {
+                var needed = wrapper.offsetWidth * 2;
+                while (track.scrollWidth + pos < needed) {
+                    var item = createMarqueeItem(data[srcIdx % data.length]);
+                    track.appendChild(item);
+                    srcIdx++;
+                }
+            }
+
+            function trimLeft() {
+                while (track.firstElementChild) {
+                    var first = track.firstElementChild;
+                    var itemWidth = first.offsetWidth + ITEM_GAP;
+                    if (pos + itemWidth < 0) {
+                        track.removeChild(first);
+                        pos += itemWidth;
+                    } else {
+                        break;
+                    }
+                }
+            }
+
+            function tick() {
+                if (!paused && !reducedMotion.matches) {
+                    pos -= speed;
+                    trimLeft();
+                    fillRight();
+                    track.style.transform = 'translate3d(' + pos + 'px, 0, 0)';
+                }
+                raf = requestAnimationFrame(tick);
+            }
+
+            fillRight();
+            raf = requestAnimationFrame(tick);
+
+            wrapper.addEventListener('mouseenter', function() { paused = true; }, { passive: true });
+            wrapper.addEventListener('mouseleave', function() { paused = false; }, { passive: true });
+
+            if (reducedMotion.matches) {
+                cancelAnimationFrame(raf);
+                track.style.transform = 'translate3d(0, 0, 0)';
+            }
+            reducedMotion.addEventListener('change', function(e) {
+                if (e.matches) {
+                    cancelAnimationFrame(raf);
+                    track.style.transform = 'translate3d(0, 0, 0)';
+                } else {
+                    paused = false;
+                    raf = requestAnimationFrame(tick);
+                }
+            });
+
+            var resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(fillRight, 150);
+            }, { passive: true });
+        })();
+
+        // ─── INITIALIZE ALL DYNAMIC SECTIONS ───────────────────────────────
+        renderExpertise();
+        renderIndustries();
+        renderInsights();
 
         // GSAP Animate Initialization Pipeline
         if (typeof gsap !== 'undefined') {
