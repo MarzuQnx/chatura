@@ -895,7 +895,15 @@
   "insight.rec_1_title": "Indonesia's New Tax Incentives 2026: Green Infrastructure Opportunities",
   "insight.rec_1_date": "Published Today \u2022 5 Min Read",
   "insight.rec_2_title": "Corporate M&A Transaction Strategy for Manufacturing in Southeast Asia",
-  "insight.rec_2_date": "May 05, 2026 \u2022 6 Min Read"
+  "insight.rec_2_date": "May 05, 2026 \u2022 6 Min Read",
+  "insight.published_label": "Published",
+  "insight.exec_title": "Executive Summary",
+  "insight.exec_findings": "Key Findings",
+  "insight.exec_impact": "Business Impact",
+  "insight.exec_recommendations": "Recommendations",
+  "insight.related_services": "Related Services",
+  "insight.related_industries": "Related Industries",
+  "insight.view_all_insights": "View All Insights"
 },
         id: {
   "site.title": "Chatura Indonesia - Mitra Strategis Korporasi",
@@ -1791,7 +1799,15 @@
   "insight.rec_1_title": "Indonesia's New Tax Incentives 2026: Peluang Infrastruktur Hijau",
   "insight.rec_1_date": "Diterbitkan Hari Ini \u2022 5 Menit Baca",
   "insight.rec_2_title": "Strategi Transaksi M&A Korporat Manufaktur di Asia Tenggara",
-  "insight.rec_2_date": "05 Mei 2026 \u2022 6 Menit Baca"
+  "insight.rec_2_date": "05 Mei 2026 \u2022 6 Menit Baca",
+  "insight.published_label": "Diterbitkan",
+  "insight.exec_title": "Ringkasan Eksekutif",
+  "insight.exec_findings": "Temuan Utama",
+  "insight.exec_impact": "Dampak Bisnis",
+  "insight.exec_recommendations": "Rekomendasi",
+  "insight.related_services": "Layanan Terkait",
+  "insight.related_industries": "Industri Terkait",
+  "insight.view_all_insights": "Lihat Semua Wawasan"
 }
     };
     var supportedLangs = ['en', 'id'];
