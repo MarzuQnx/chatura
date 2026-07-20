@@ -1,0 +1,21 @@
+(function(){
+var d=window.__CHATURA_LOCALES=window.__CHATURA_LOCALES||{};
+d['id']=d['id']||{};
+d['id']['insight.suitable_for']='Disarankan untuk:';
+d['id']['insight.published_label']='Diterbitkan';
+d['id']['insight.exec_title']='Ringkasan Eksekutif';
+d['id']['insight.exec_findings']='Temuan Utama';
+d['id']['insight.exec_impact']='Dampak Bisnis';
+d['id']['insight.exec_recommendations']='Rekomendasi';
+d['id']['insight.related_services']='Layanan Terkait';
+d['id']['insight.related_industries']='Industri Terkait';
+d['id']['insight.view_all_insights']='Lihat Semua Wawasan';
+d['id']['insight.cta_desk_label']='Meja Advisory Praktik';
+d['id']['insight.cta_desk_title']='Butuh Strategi Kesiapan Regulasi Fiskal Perusahaan Anda?';
+d['id']['insight.cta_desk_desc']='Konsultasikan restrukturisasi arsitektur perpajakan korporat, valuasi transaksi M&A, atau manajemen risiko bisnis Anda bersama tim mitra ahli senior kami di Jakarta Head Office.';
+d['id']['insight.cta_desk_button']='Mulai Konsultasi Rahasia';
+d['id']['insight.rec_title']='Rekomendasi Bacaan Lainnya';
+d['id']['insight.share_label']='Bagikan:';
+d['id']['insight.breadcrumb_home']='Beranda';
+d['id']['insight.breadcrumb_insights']='Wawasan';
+})();

@@ -1,0 +1,21 @@
+(function(){
+var d=window.__CHATURA_LOCALES=window.__CHATURA_LOCALES||{};
+d['en']=d['en']||{};
+d['en']['insight.suitable_for']='Suitable for:';
+d['en']['insight.published_label']='Published';
+d['en']['insight.exec_title']='Executive Summary';
+d['en']['insight.exec_findings']='Key Findings';
+d['en']['insight.exec_impact']='Business Impact';
+d['en']['insight.exec_recommendations']='Recommendations';
+d['en']['insight.related_services']='Related Services';
+d['en']['insight.related_industries']='Related Industries';
+d['en']['insight.view_all_insights']='View All Insights';
+d['en']['insight.cta_desk_label']='Practice Advisory Desk';
+d['en']['insight.cta_desk_title']='Need Strategic Fiscal Readiness for Your Company?';
+d['en']['insight.cta_desk_desc']='Consult your corporate tax restructuring, M&A transaction valuation, or business risk management with our senior expert advisory team at Jakarta Head Office.';
+d['en']['insight.cta_desk_button']='Start Confidential Consultation';
+d['en']['insight.rec_title']='Recommended Reading';
+d['en']['insight.share_label']='Share:';
+d['en']['insight.breadcrumb_home']='Home';
+d['en']['insight.breadcrumb_insights']='Insights';
+})();
