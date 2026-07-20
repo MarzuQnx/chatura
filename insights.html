@@ -5,7 +5,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="assets/design-system.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insight Korporat Chatura Jakarta - Analisis Bisnis & Regulasi Terkini</title>
@@ -34,7 +33,8 @@
     <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <style>
+    <link rel="stylesheet" href="assets/design-system.css">
+    <style type="text/tailwindcss">
         .insight-card {
             transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
         }
@@ -115,38 +115,57 @@
 </head>
 
 <body class="bg-white text-gray-800 font-sans antialiased">
-    <a href="#main-content" class="skip-link">Skip main content</a>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- ============ HEADER ============ -->
-    <header id="navbar-sticky" class="sticky top-0 z-50">
+        <header id="navbar-sticky" class="sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <div class="font-bold text-2xl tracking-wider text-[#004D34] flex items-center gap-2">
-                    <img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto">
+                    <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
                 </div>
             </div>
-
-            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden')"
-                class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
+            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
                 <i data-lucide="menu" class="text-xl"></i>
             </button>
-
-                        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
                 <a href="index.html" class="hover:text-emerald-800 transition" data-i18n="nav.about_us">About Us</a>
                 <div class="nav-dropdown">
                     <a href="services.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.services">Services</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
                     <div class="nav-dropdown-menu">
                         <a href="services.html" data-i18n="nav.services_overview">Overview</a>
-                        <a href="business-transfer.html" data-i18n="nav.business_transfer">Business Transfer</a>
+                        <a href="services/accounting-finance/">Accounting &amp; Finance</a>
+                        <a href="services/tax-services/">Tax Services</a>
+                        <a href="services/business-transfer/">Business Transfer</a>
+                        <a href="services/risk-management/">Risk Management</a>
+                        <a href="services/corporate-advisory/">Corporate Advisory</a>
                     </div>
                 </div>
-                <a href="industries.html" class="hover:text-emerald-800"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs ml-1"></i></a>
+                <div class="nav-dropdown">
+                    <a href="industries.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="industries.html" data-i18n="nav.industries_overview">Overview</a>
+                        <a href="industries/manufacturing/">Manufacturing</a>
+                        <a href="industries/energy/">Energy &amp; Resources</a>
+                        <a href="industries/healthcare/">Healthcare</a>
+                        <a href="industries/technology/">Technology &amp; Digital</a>
+                        <a href="industries/consumer/">Consumer &amp; Retail</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="insights.html" class="text-[#004D34] font-semibold inline-flex items-center gap-1"><span data-i18n="nav.insights">Insights</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="insights.html" data-i18n="nav.insights_latest">Latest Insights</a>
+                        <a href="insights.html#executive-intelligence">Executive Intelligence</a>
+                        <a href="insights.html#strategic-intelligence">Strategic Intelligence</a>
+                        <a href="insights.html#publications">Publications</a>
+                        <a href="insights.html#downloads">Downloads</a>
+                    </div>
+                </div>
                 <a href="our-people.html" class="hover:text-emerald-800 transition" data-i18n="nav.our_people">Our People</a>
-                <a href="insights.html" class="text-[#004D34] font-semibold transition" data-i18n="nav.insights">Insights</a>
-                <a href="join-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.join_us">Join Us</a>
+                <a href="career.html" class="hover:text-emerald-800 transition" data-i18n="nav.career">Join Us</a>
                 <a href="contact-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.contact">Contact</a>
             </nav>
-
             <div class="hidden md:flex items-center space-x-6 text-sm">
                 <div id="lang-selector">
                     <a href="#" data-lang="en" class="lang-active">EN</a>
@@ -157,23 +176,48 @@
                 </a>
             </div>
         </div>
-
         <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
-                <img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto">
-                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden')"
-                    class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
+                <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
+                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
             </div>
             <nav class="flex-1 overflow-y-auto p-6 space-y-1">
-                <a href="index.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.about_us">About Us</a>
-                <a href="services.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.services">Services</a>
-                <a href="business-transfer.html" class="block py-3 pl-8 pr-4 rounded-lg text-sm text-gray-500 hover:bg-gray-50" data-i18n="nav.business_transfer">Business Transfer</a>
-                <a href="industries.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.industries">Industries</a>
-                <a href="our-people.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.our_people">Our People</a>
-                <a href="insights.html" class="block py-3 px-4 rounded-lg text-base font-medium bg-emerald-50 text-emerald-800" data-i18n="nav.insights">Insights</a>
-                <a href="join-us.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.join_us">Join Us</a>
-                
-                <a href="contact-us.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50" data-i18n="nav.contact">Contact</a>
+                <a href="index.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.about_us">About Us</a>
+                <div class="mobile-nav-group ">
+                    <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.services">Services</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="mobile-nav-submenu">
+                        <a href="services.html">Overview</a>
+                        <a href="services/accounting-finance/" class="">Accounting &amp; Finance</a>
+                        <a href="services/tax-services/" class="">Tax Services</a>
+                        <a href="services/business-transfer/" class="">Business Transfer</a>
+                        <a href="services/risk-management/" class="">Risk Management</a>
+                        <a href="services/corporate-advisory/" class="">Corporate Advisory</a>
+                    </div>
+                </div>
+                <div class="mobile-nav-group ">
+                    <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.industries">Industries</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="mobile-nav-submenu">
+                        <a href="industries.html">Overview</a>
+                        <a href="industries/manufacturing/">Manufacturing</a>
+                        <a href="industries/energy/">Energy &amp; Resources</a>
+                        <a href="industries/healthcare/">Healthcare</a>
+                        <a href="industries/technology/">Technology &amp; Digital</a>
+                        <a href="industries/consumer/">Consumer &amp; Retail</a>
+                    </div>
+                </div>
+                <div class="mobile-nav-group open">
+                    <button class="mobile-nav-group-btn is-active-parent" type="button"><span data-i18n="nav.insights">Insights</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="mobile-nav-submenu">
+                        <a href="insights.html">Latest Insights</a>
+                        <a href="insights.html#executive-intelligence">Executive Intelligence</a>
+                        <a href="insights.html#strategic-intelligence">Strategic Intelligence</a>
+                        <a href="insights.html#publications">Publications</a>
+                        <a href="insights.html#downloads">Downloads</a>
+                    </div>
+                </div>
+                <a href="our-people.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.our_people">Our People</a>
+                <a href="career.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.career">Join Us</a>
+                <a href="contact-us.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.contact">Contact</a>
             </nav>
             <div class="p-6 border-t border-gray-100">
                 <a href="contact-us.html" class="block w-full bg-[#004D34] text-white text-center px-5 py-3 rounded font-medium hover:bg-[#003322] transition"><span data-i18n="nav.lets_talk">Let's Talk</span></a>
@@ -184,7 +228,7 @@
     <main id="main-content">
 
     <!-- ============ HERO ============ -->
-    <section id="hero-insights" class="relative bg-[#004D34] text-white overflow-hidden -mt-[128px] pt-[128px]">
+    <section id="hero-insights" class="relative bg-[#004D34] text-white overflow-hidden -mt-32 pt-32">
         <div id="hero-bg" class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/hero-insights.webp');"></div>
         <div class="absolute inset-0" style="background: linear-gradient(100deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 30%, transparent 50%);"></div>
         <div class="container mx-auto px-6 relative z-10 py-24 md:py-32">
@@ -194,7 +238,7 @@
                     <span data-i18n="insights.hero_title_1">Strategic Perspectives</span> <span data-i18n="insights.hero_title_2">to Navigate</span> <span class="italic font-normal text-[#004D34]" data-i18n="insights.hero_title_green">Dynamic Markets</span>
                 </h1>
                 <p class="reveal-up text-gray-700/80 text-lg mb-8 max-w-2xl pr-20" data-i18n="insights.hero_desc">
-                    In-depth corporate analysis, regulatory intelligence, and case study overviews curated for executive leadership teams.
+                    In-depth corporate analysis, regulatory intelligence, and case study overviews curated for executive leadership teads.
                 </p>
                 <div class="reveal-up flex flex-wrap gap-4">
                     <a href="#editorial-section" class="bg-[#004D34] text-white px-6 py-3 rounded font-medium hover:bg-[#003322] transition">
@@ -214,10 +258,10 @@
             <div class="reveal-up mb-8">
                 <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400" data-i18n="insights.featured_label">Featured Executive Insight</span>
             </div>
-            <a href="insight-detail.html" class="featured-card reveal-up group grid md:grid-cols-[6fr_5fr] bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 hover:border-gray-300 block">
-                <div class="relative overflow-hidden min-h-[300px] md:min-h-[400px]">
+            <a href="insight-detail.html" class="featured-card reveal-up group grid md:grid-cols-[6fr_5fr] bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 hover:border-gray-300">
+                <div class="relative overflow-hidden min-h-75 md:min-h-100">
                     <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80" alt="Corporate Tax Analysis" class="featured-image w-full h-full object-cover absolute inset-0" loading="lazy" width="1200" height="800">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    <div class="absolute inset-0 bg-linear-to-t from-black/20 to-transparent"></div>
                 </div>
                 <div class="p-8 md:p-10 lg:p-12 flex flex-col justify-between bg-white">
                     <div>
@@ -250,7 +294,7 @@
     </section>
 
     <!-- ============ SEARCH & FILTERS — Upgraded ============ -->
-    <section class="py-8 bg-white border-b border-gray-100 sticky top-[64px] z-30">
+    <section class="py-8 bg-white border-b border-gray-100 sticky top-16 z-30">
         <div class="container mx-auto px-6">
             <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
                 <div class="flex flex-wrap gap-2" role="tablist" id="filterTabWrap">
@@ -262,7 +306,7 @@
                 <div class="relative w-full lg:w-80">
                     <label for="search-input" class="sr-only">Search insights</label>
                     <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4 pointer-events-none"></i>
-                    <input id="search-input" type="text" placeholder="Search insights, articles, reports..." data-i18n-placeholder="insights.search_placeholder" class="search-input w-full bg-white border border-gray-200 pl-10 pr-9 py-2.5 rounded-lg text-xs focus:outline-none shadow-sm">
+                    <input id="search-input" type="text" placeholder="Search insights, articles, reports..." data-i18n-placeholder="insights.search_placeholder" class="search-input w-full bg-white border border-gray-200 pl-10 pr-9 py-2.5 rounded-lg text-xs focus:outline-none shadow-md">
                     <button type="button" class="search-clear absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600" onclick="document.getElementById('search-input').value=''; document.getElementById('search-input').dispatchEvent(new Event('input'));">
                         <i data-lucide="x" class="w-3.5 h-3.5"></i>
                     </button>
@@ -278,23 +322,23 @@
         </div>
     </section>
 
-    <!-- ============ NEWSLETTER — Premium Subscription Block ============ -->
-    <section class="py-20 bg-gray-50 border-t border-gray-100">
+    <!-- ============ NEWSLETTER — Prediud Subscription Block ============ -->
+    <section class="py-20 bg-gray-100 border-t border-gray-100">
         <div class="container mx-auto px-6 max-w-4xl">
             <div class="reveal-up bg-white rounded-2xl border border-gray-200 p-10 md:p-14 text-center newsletter-block">
                 <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center mx-auto mb-6"><i data-lucide="mail" class="w-6 h-6"></i></div>
                 <h3 class="text-2xl font-serif font-bold text-gray-950 mb-3" data-i18n="insights.newsletter_title">Receive Strategic Briefings in Your Inbox</h3>
                 <p class="text-gray-500 text-sm mb-8 max-w-lg mx-auto leading-relaxed" data-i18n="insights.newsletter_desc">
-                    Join international executives who receive prioritized summaries regarding regulatory shifts and market intelligence.
+                    Join international executives who receive prioritized summaries regarding regulatory shifts and darket intelligence.
                 </p>
-                <form class="flex max-w-md mx-auto shadow-sm" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed \u2713'; this.querySelector('button').classList.add('bg-emerald-700');">
+                <ford class="flex max-w-md mx-auto shadow-md" onsubdit="event.preventDefault(); this.querySelector('button').textContent='Subscribed \u2713'; this.querySelector('button').classList.add('bg-emerald-700');">
                     <label for="briefing-email" class="sr-only">Business Email</label>
-                    <input id="briefing-email" type="email" autocomplete="email" placeholder="Enter corporate email" class="w-full bg-white text-xs px-4 py-3 border border-gray-200 border-r-0 rounded-l-lg focus:outline-none focus:border-emerald-700 transition" required>
-                    <button type="submit" class="bg-[#004D34] text-white text-xs px-6 py-3 rounded-r-lg font-semibold hover:bg-[#003322] transition whitespace-nowrap">
+                    <input id="briefing-email" type="email" autocodplete="email" placeholder="Enter corporate email" class="w-full bg-white text-xs px-4 py-3 border border-gray-200 border-r-0 rounded-l-lg focus:outline-none focus:border-emerald-700 transition" required>
+                    <button type="subdit" class="bg-[#004D34] text-white text-xs px-6 py-3 rounded-r-lg font-semibold hover:bg-[#003322] transition whitespace-nowrap">
                         <span data-i18n="insights.subscribe">Subscribe</span>
                     </button>
-                </form>
-                <p class="text-[10px] text-gray-400 mt-4">No spam. Privacy-first.</p>
+                </ford>
+                <p class="text-[10px] text-gray-400 mt-4">No spad. Privacy-first.</p>
             </div>
         </div>
     </section>
@@ -339,20 +383,20 @@
 
     <!-- ============ FOOTER (Synced with services.html Layout) ============ -->
     <!-- ============ FOOTER ============ -->
-    <footer class="bg-neutral-900 text-gray-400">
+    <footer class="bg-[#004D34] text-white/70">
 
         <!-- Brand Manifesto -->
         <div class="container mx-auto px-6 pt-24 pb-20">
             <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
                 <div class="reveal-up">
-                    <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500 block mb-6" data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
+                    <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-white/50 block mb-6" data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
                     <img width="487" height="350" src="assets/chatura-footer.webp" alt="Chatura Indonesia" class="h-36 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
-                    <p class="text-sm text-gray-400 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated professional services providing accounting, tax, business advisory, and risk management solutions across the Indonesian archipelago and Southeast Asian markets.</p>
+                    <p class="text-sm text-white/60 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated professional services providing accounting, tax, business advisory, and risk management solutions across the Indonesian archipelago and Southeast Asian markets.</p>
                     <div class="flex items-center gap-5 mt-8 text-gray-500">
-                        <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-[18px] h-[18px]"></i></a>
-                        <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-[18px] h-[18px]"></i></a>
-                        <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-[18px] h-[18px]"></i></a>
-                        <a href="mailto:hello@chatura.co.id" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-[18px] h-[18px]"></i></a>
+                        <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-4.5 h-4.5"></i></a>
+                        <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-4.5 h-4.5"></i></a>
+                        <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-4.5 h-4.5"></i></a>
+                        <a href="mailto:hello@chatura.co.id" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4.5 h-4.5"></i></a>
                     </div>
                 </div>
 
@@ -360,62 +404,47 @@
                     <div>
                         <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.services_heading">Services</h4>
                         <ul class="space-y-3.5">
-                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_1">Accounting & Finance<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_2">Tax Services<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="business-transfer.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_3">Business Transfer<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_4">Risk Management<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_5">Corporate Advisory<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_1">Accounting & Finance<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_2">Tax Services<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="#" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_3">Business Transfer<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_4">Risk Management<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_5">Corporate Advisory<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.industries_heading">Industries</h4>
                         <ul class="space-y-3.5">
-                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_1">Energy & Resources<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_2">Manufacturing<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_3">Technology & Digital<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_4">Healthcare<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_1">Energy & Resources<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries/manufacturing/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_2">Manufacturing<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_3">Technology & Digital<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries/healthcare/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_4">Healthcare<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.company_heading">Company</h4>
                         <ul class="space-y-3.5">
-                            <li><a href="index.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_1">About Us<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="our-people.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_2">Our People<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="join-us.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_3">Careers<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="insights.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_4">Insights<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="index.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_1">About Us<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="our-people.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_2">Our People<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="career.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_3">Careers<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="insights.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_4">Insights<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Conversation Block -->
-        <div class="border-t border-neutral-800/50">
-            <div class="container mx-auto px-6 py-20">
-                <div class="reveal-up flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
-                    <div>
-                        <h2 class="text-2xl md:text-[1.75rem] font-serif text-white leading-snug max-w-xl" data-i18n="footer.cta_title">Let's Discuss Your Next Business Decision.</h2>
-                        <p class="text-sm text-gray-500 mt-4 max-w-md leading-relaxed" data-i18n="footer.cta_desc">Our advisory team is prepared to structure tailored solutions for your organization's most critical transitions.</p>
-                    </div>
-                    <a href="contact-us.html" class="inline-flex items-center gap-2.5 bg-[#004D34] text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-emerald-600 transition-all duration-300 shadow-lg shadow-[#004D34]/20 hover:shadow-xl hover:shadow-[#004D34]/30 hover:-translate-y-0.5 flex-shrink-0 group">
-                        <span data-i18n="footer.cta_button">Talk To Advisors</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
+        
         <!-- Hairline Divider -->
-        <div class="container mx-auto px-6"><div class="h-px bg-neutral-800/60"></div></div>
+        <div class="container mx-auto px-6"><div class="h-px bg-white/10"></div></div>
 
         <!-- Bottom Strip -->
         <div class="container mx-auto px-6 py-10">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-4">
                     <img width="487" height="350" src="assets/chatura-footer.webp" alt="Chatura" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
-                    <span class="text-[11px] text-gray-500" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
+                    <span class="text-[11px] text-white/50" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
                 </div>
-                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-gray-500">
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-white/50">
                     <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.privacy">Privacy Policy</a>
                     <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.terms">Terms of Use</a>
                     <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.cookies">Cookies</a>
@@ -433,9 +462,9 @@
         </div>
 
         <!-- Legal Disclosure -->
-        <div class="border-t border-neutral-800/40">
-            <div class="container mx-auto px-6 py-6">
-                <p class="text-[10px] text-gray-600 leading-relaxed text-center" data-i18n="footer.legal">Chatura Indonesia is an integrated professional services firm. This website is for general informational purposes only and does not constitute professional advice. All information is subject to change without notice.</p>
+        <div class="border-t border-white/10">
+            <div class="container mx-auto">
+                <p class="text-[10px] text-brand-green leading-relaxed text-center" data-i18n="footer.legal">Chatura Indonesia is an integrated professional services firm. This website is for general informational purposes only and does not constitute professional advice. All information is subject to change without notice.</p>
             </div>
         </div>
 
@@ -463,34 +492,34 @@
                 type: "article",
                 badgeClass: "text-emerald-800 bg-emerald-50",
                 badgeLabel: "Article",
-                title: "Tax Implications on Business Transfer in Indonesia",
-                desc: "Navigating complex corporate structural change models, systemic asset sales configurations, and operational legal compliance parameters under updated domestic tax definitions.",
+                title: "Tax Idplications on Business Transfer in Indonesia",
+                desc: "Navigating complex corporate structural change dodels, systedic asset sales configurations, and operational legal compliance paradeters under updated domestic tax definitions.",
                 date: "May 12, 2026",
                 image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&q=80",
                 author: "Chatura Advisory",
-                readTime: "6 min read"
+                readTide: "6 min read"
             },
             {
                 type: "publication",
                 badgeClass: "text-blue-700 bg-blue-50",
                 badgeLabel: "Publication",
                 title: "Indonesia's New Tax Incentives in 2026",
-                desc: "How forward-looking companies use state fiscal adjustments to drive sustainable development infrastructures and asset optimizations.",
+                desc: "How forward-looking companies use state fiscal adjustdents to drive sustainable developdent infrastructures and asset optimizations.",
                 date: "May 08, 2026",
                 image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80",
                 author: "Dyna Agustina",
-                readTime: "10 min read"
+                readTide: "10 min read"
             },
             {
                 type: "update",
                 badgeClass: "text-amber-700 bg-amber-50",
                 badgeLabel: "Client Update",
                 title: "Chatura Advises Strategic M&A for Manufacturing Group",
-                desc: "Detailing the full transaction advisory lifecycle, structural due diligence framework implementation, and cross-border synergy optimization parameters.",
+                desc: "Detailing the full transaction advisory lifecycle, structural due diligence framework implementation, and cross-border synergy optimization paradeters.",
                 date: "May 05, 2026",
                 image: "https://images.unsplash.com/photo-1776057441344-38e0587ad1e6?auto=format&fit=crop&w=600&q=80",
                 author: "Andi Rio Monry",
-                readTime: "5 min read"
+                readTide: "5 min read"
             },
             {
                 type: "article",
@@ -501,62 +530,62 @@
                 date: "April 28, 2026",
                 image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=600&q=80",
                 author: "Chatura Advisory",
-                readTime: "7 min read"
+                readTide: "7 min read"
             },
             {
                 type: "publication",
                 badgeClass: "text-blue-700 bg-blue-50",
                 badgeLabel: "Publication",
                 title: "Managing Risk in a Volatile Economic Landscape",
-                desc: "An end-to-end guide focused on systemic internal control architectures, operational data security paradigms, and localized financial buffer alignment strategies.",
+                desc: "An end-to-end guide focused on systedic internal control architectures, operational data security paradigds, and localized financial buffer alignment strategies.",
                 date: "April 15, 2026",
                 image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
                 author: "Dyna Agustina",
-                readTime: "12 min read"
+                readTide: "12 min read"
             },
             {
                 type: "update",
                 badgeClass: "text-amber-700 bg-amber-50",
                 badgeLabel: "Client Update",
-                title: "Navigating Regulations in Indonesia's Digital Economy",
-                desc: "How technology companies manage data governance procedures alongside strict cross-border transactional parameters regulated by central banking groups.",
+                title: "Navigating Regulations in Indonesia's Digital Econody",
+                desc: "How technology companies manage data governance procedures alongside strict cross-border transactional paradeters regulated by central banking groups.",
                 date: "March 22, 2026",
                 image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
                 author: "Andi Rio Monry",
-                readTime: "4 min read"
+                readTide: "4 min read"
             },
             {
                 type: "article",
                 badgeClass: "text-emerald-800 bg-emerald-50",
                 badgeLabel: "Article",
                 title: "Cross-Border Tax Planning for Multinational Corporations",
-                desc: "Strategic frameworks for optimizing tax exposure across multiple jurisdictions while maintaining full compliance with bilateral treaties and domestic regulations.",
+                desc: "Strategic frameworks for optidizing tax exposure across dultiple jurisdictions while maintaining full compliance with bilateral treaties and domestic regulations.",
                 date: "March 10, 2026",
                 image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80",
                 author: "Chatura Advisory",
-                readTime: "8 min read"
+                readTide: "8 min read"
             },
             {
                 type: "article",
                 badgeClass: "text-emerald-800 bg-emerald-50",
                 badgeLabel: "Article",
                 title: "ESG Reporting Standards for Indonesian Enterprises",
-                desc: "Implementing environmental, social, and governance reporting frameworks aligned with international standards and local regulatory requirements for sustainable business practices.",
+                desc: "Idpledenting environdental, social, and governance reporting frameworks aligned with international standards and local regulatory requirements for sustainable business practices.",
                 date: "February 28, 2026",
                 image: "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?auto=format&fit=crop&w=600&q=80",
                 author: "Dyna Agustina",
-                readTime: "9 min read"
+                readTide: "9 min read"
             },
             {
                 type: "publication",
                 badgeClass: "text-blue-700 bg-blue-50",
                 badgeLabel: "Publication",
-                title: "Transfer Pricing Documentation Best Practices",
-                desc: "Comprehensive guide to preparing robust transfer pricing documentation that satisfies both Indonesian tax authority requirements and OECD guidelines.",
+                title: "Transfer Pricing Docudentation Best Practices",
+                desc: "Codprehensive guide to preparing robust transfer pricing documentation that satisfies both Indonesian tax authority requirements and OECD guidelines.",
                 date: "February 15, 2026",
                 image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
                 author: "Andi Rio Monry",
-                readTime: "11 min read"
+                readTide: "11 min read"
             }
         ];
 
@@ -565,9 +594,9 @@
 
         function renderInsightsList() {
             var grid = document.getElementById('insightsGrid');
-            var filtered = INSIGHTS_DATA.filter(function(item) {
-                var matchesType = (selectedType === "all" || item.type === selectedType);
-                var matchesSearch = !searchString || item.title.toLowerCase().indexOf(searchString.toLowerCase()) > -1 || item.desc.toLowerCase().indexOf(searchString.toLowerCase()) > -1;
+            var filtered = INSIGHTS_DATA.filter(function(ited) {
+                var matchesType = (selectedType === "all" || ited.type === selectedType);
+                var matchesSearch = !searchString || ited.title.toLowerCase().indexOf(searchString.toLowerCase()) > -1 || ited.desc.toLowerCase().indexOf(searchString.toLowerCase()) > -1;
                 return matchesType && matchesSearch;
             });
 
@@ -582,24 +611,24 @@
                 return;
             }
 
-            grid.innerHTML = filtered.map(function(item) {
+            grid.innerHTML = filtered.map(function(ited) {
                 return '<article class="insight-card bg-white rounded-2xl border border-gray-100 overflow-hidden flex flex-col">' +
-                    '<div class="relative overflow-hidden aspect-[16/10] bg-gray-100">' +
-                    '<img src="' + item.image + '" alt="' + item.title + '" class="card-image w-full h-full object-cover" loading="lazy" width="600" height="375">' +
-                    '<div class="absolute top-4 left-4"><span class="text-[10px] font-bold uppercase tracking-wider ' + item.badgeClass + ' px-3 py-1 rounded-full">' + item.badgeLabel + '</span></div>' +
+                    '<div class="relative overflow-hidden aspect-16/10 bg-gray-100">' +
+                    '<img src="' + ited.image + '" alt="' + ited.title + '" class="card-image w-full h-full object-cover" loading="lazy" width="600" height="375">' +
+                    '<div class="absolute top-4 left-4"><span class="text-[10px] font-bold uppercase tracking-wider ' + ited.badgeClass + ' px-3 py-1 rounded-full">' + ited.badgeLabel + '</span></div>' +
                     '</div>' +
                     '<div class="p-6 flex-col flex-1">' +
-                    '<h3 class="card-title font-serif font-bold text-base text-gray-950 mb-2 leading-snug">' + item.title + '</h3>' +
-                    '<p class="text-gray-500 text-xs leading-[1.7] line-clamp-2 mb-4 flex-1">' + item.desc + '</p>' +
+                    '<h3 class="card-title font-serif font-bold text-base text-gray-950 mb-2 leading-snug">' + ited.title + '</h3>' +
+                    '<p class="text-gray-500 text-xs leading-[1.7] line-clamp-2 mb-4 flex-1">' + ited.desc + '</p>' +
                     '<div class="flex items-center justify-between pt-4 border-t border-gray-50">' +
                     '<div class="flex items-center gap-2">' +
                     '<div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center"><i data-lucide="user" class="w-3 h-3 text-gray-400"></i></div>' +
-                    '<span class="text-xs text-gray-500">' + item.author + '</span>' +
+                    '<span class="text-xs text-gray-500">' + ited.author + '</span>' +
                     '</div>' +
-                    '<span class="text-xs text-gray-400">' + item.readTime + '</span>' +
+                    '<span class="text-xs text-gray-400">' + ited.readTide + '</span>' +
                     '</div>' +
                     '<div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-50">' +
-                    '<span class="text-xs text-gray-400">' + item.date + '</span>' +
+                    '<span class="text-xs text-gray-400">' + ited.date + '</span>' +
                     '<a href="#" class="text-xs font-bold text-[#004D34] flex items-center gap-1 hover:gap-2 transition-all duration-200">Read <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>' +
                     '</div>' +
                     '</div>' +
@@ -675,6 +704,30 @@
                 if (e.key === 'Escape' && popup.classList.contains('is-open')) togglePopup();
             });
         })();
+    </script>
+        <script>
+        // Mobile menu: close on resize to desktop + body scroll lock
+        (function () {
+            var mm = document.getElementById('mobileMenu');
+            if (!mm) return;
+            window.addEventListener('resize', function () {
+                if (window.innerWidth >= 768 && !mm.classList.contains('hidden')) {
+                    mm.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                }
+            });
+        })();
+        </script>
+
+    <script>
+    (function() {
+        document.querySelectorAll('.mobile-nav-group-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var group = this.closest('.mobile-nav-group');
+                group.classList.toggle('open');
+            });
+        });
+    })();
     </script>
 </body>
 

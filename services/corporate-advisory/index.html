@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="../../site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Advisory | Chatura Indonesia</title>
+    <meta name="description" content="Chatura Indonesia provides expert corporate advisory services including strategic planning, corporate restructuring, governance advisory, succession planning, and performance improvement for businesses in Indonesia.">
+    <link rel="canonical" href="https://www.chatura.co.id/services/corporate-advisory/">
+    <meta property="og:title" content="Corporate Advisory | Chatura Indonesia">
+    <meta property="og:description" content="Strategic partnership for leadership teams — restructuring, governance, succession planning, and performance improvement advisory for businesses in Indonesia.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.chatura.co.id/services/corporate-advisory/">
+    <meta property="og:image" content="https://www.chatura.co.id/assets/chatura.jpg">
+    <meta property="og:site_name" content="Chatura Indonesia">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Corporate Advisory | Chatura Indonesia">
+    <meta name="twitter:description" content="Strategic partnership for leadership teams — restructuring, governance, succession planning, and performance improvement.">
+    <meta name="twitter:image" content="https://www.chatura.co.id/assets/chatura.jpg">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Corporate Advisory",
+      "description": "Chatura Indonesia provides expert corporate advisory services including strategic planning, corporate restructuring, governance advisory, succession planning, and performance improvement.",
+      "provider": {"@type": "Organization", "name": "Chatura Indonesia", "url": "https://www.chatura.co.id"},
+      "areaServed": "ID",
+      "serviceType": "Corporate Advisory",
+      "url": "https://www.chatura.co.id/services/corporate-advisory/"
+    }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="../../assets/design-system.css">
+    <style type="text/tailwindcss">
+        #mobileMenu:not(.hidden) { display: flex; flex-direction: column; }
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(.22,.61,.36,1), padding 0.35s cubic-bezier(.22,.61,.36,1); padding-top: 0; padding-bottom: 0; }
+        .faq-item.open .faq-content { max-height: 500px; padding-bottom: 1.25rem; }
+        .faq-item.open .faq-icon { transform: rotate(180deg); }
+        .faq-icon { transition: transform 0.3s ease; }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 font-sans antialiased">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header id="navbar-sticky" class="sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="font-bold text-2xl tracking-wider text-[#004D34] flex items-center gap-2">
+                    <a href="../../index.html"><img width="487" height="350" src="../../assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
+                </div>
+            </div>
+            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
+                <i data-lucide="menu" class="text-xl"></i>
+            </button>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
+                <a href="../../index.html" class="hover:text-emerald-800 transition" data-i18n="nav.about_us">About Us</a>
+                <div class="nav-dropdown">
+                    <a href="../../services.html" class="text-[#004D34] font-semibold inline-flex items-center gap-1"><span data-i18n="nav.services">Services</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="../../services.html" data-i18n="nav.services_overview">Overview</a>
+                        <a href="../../services/accounting-finance/">Accounting &amp; Finance</a>
+                        <a href="../../services/tax-services/">Tax Services</a>
+                        <a href="../../services/business-transfer/">Business Transfer</a>
+                        <a href="../../services/risk-management/">Risk Management</a>
+                        <a href="../../services/corporate-advisory/" class="active">Corporate Advisory</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../../industries.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="../../industries.html" data-i18n="nav.industries_overview">Overview</a>
+                        <a href="../../industries/manufacturing/">Manufacturing</a>
+                        <a href="../../industries/energy/">Energy &amp; Resources</a>
+                        <a href="../../industries/healthcare/">Healthcare</a>
+                        <a href="../../industries/technology/">Technology &amp; Digital</a>
+                        <a href="../../industries/consumer/">Consumer &amp; Retail</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../../insights.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.insights">Insights</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="../../insights.html" data-i18n="nav.insights_latest">Latest Insights</a>
+                        <a href="../../insights.html#executive-intelligence">Executive Intelligence</a>
+                        <a href="../../insights.html#strategic-intelligence">Strategic Intelligence</a>
+                        <a href="../../insights.html#publications">Publications</a>
+                        <a href="../../insights.html#downloads">Downloads</a>
+                    </div>
+                </div>
+                <a href="../../our-people.html" class="hover:text-emerald-800 transition" data-i18n="nav.our_people">Our People</a>
+                <a href="../../career.html" class="hover:text-emerald-800 transition" data-i18n="nav.career">Join Us</a>
+                <a href="../../contact-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.contact">Contact</a>
+            </nav>
+            <div class="hidden md:flex items-center space-x-6 text-sm">
+                <div id="lang-selector">
+                    <a href="#" data-lang="en" class="lang-active">EN</a>
+                    <a href="#" data-lang="id" class="lang-inactive">ID</a>
+                </div>
+                <a href="../../contact-us.html" class="bg-[#004D34] text-white px-5 py-2 rounded font-medium hover:bg-[#003322] transition">
+                    <span data-i18n="nav.lets_talk">Let's Talk</span> <i data-lucide="arrow-right" class="text-xs ml-1"></i>
+                </a>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
+            <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
+                <a href="../../index.html"><img width="487" height="350" src="../../assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
+                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
+            </div>
+            <nav class="flex-1 overflow-y-auto p-6 space-y-1">
+                <a href="../../index.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium" data-i18n="nav.about_us">About Us</a>
+                <div class="mobile-nav-group open">
+                    <button class="mobile-nav-group-btn is-active-parent" type="button"><span data-i18n="nav.services">Services</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="mobile-nav-submenu">
+                        <a href="../../services.html">Overview</a>
+                        <a href="../../services/accounting-finance/">Accounting &amp; Finance</a>
+                        <a href="../../services/tax-services/">Tax Services</a>
+                        <a href="../../services/business-transfer/">Business Transfer</a>
+                        <a href="../../services/risk-management/">Risk Management</a>
+                        <a href="../../services/corporate-advisory/" class="is-active-sub">Corporate Advisory</a>
+                    </div>
+                </div>
+                <div class="mobile-nav-group">
+                    <button class="mobile-nav-group-btn" type="button"><span data-i18n="nav.industries">Industries</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="mobile-nav-submenu">
+                        <a href="../../industries.html">Overview</a>
+                        <a href="../../industries/manufacturing/">Manufacturing</a>
+                        <a href="../../industries/energy/">Energy &amp; Resources</a>
+                        <a href="../../industries/healthcare/">Healthcare</a>
+                        <a href="../../industries/technology/">Technology &amp; Digital</a>
+                        <a href="../../industries/consumer/">Consumer &amp; Retail</a>
+                    </div>
+                </div>
+                <div class="mobile-nav-group">
+                    <button class="mobile-nav-group-btn" type="button"><span data-i18n="nav.insights">Insights</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="mobile-nav-submenu">
+                        <a href="../../insights.html">Latest Insights</a>
+                        <a href="../../insights.html#executive-intelligence">Executive Intelligence</a>
+                        <a href="../../insights.html#strategic-intelligence">Strategic Intelligence</a>
+                        <a href="../../insights.html#publications">Publications</a>
+                        <a href="../../insights.html#downloads">Downloads</a>
+                    </div>
+                </div>
+                <a href="../../our-people.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium" data-i18n="nav.our_people">Our People</a>
+                <a href="../../career.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium" data-i18n="nav.career">Join Us</a>
+                <a href="../../contact-us.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium" data-i18n="nav.contact">Contact</a>
+            </nav>
+            <div class="p-6 border-t border-gray-100">
+                <a href="../../contact-us.html" class="block w-full bg-[#004D34] text-white text-center px-5 py-3 rounded font-medium hover:bg-[#003322] transition"><span data-i18n="nav.lets_talk">Let's Talk</span></a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+    <!-- ============ 1. HERO ============ -->
+    <section id="hero-service" class="relative bg-[#004D34] text-white overflow-hidden -mt-32 pt-32">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80');"></div>
+        <div class="absolute inset-0" style="background: linear-gradient(100deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.75) 35%, rgba(255,255,255,0.15) 60%, transparent 75%);"></div>
+        <div class="container mx-auto px-6 relative z-10 py-24 md:py-32">
+            <div class="max-w-3xl">
+                <span class="reveal-up inline-block text-[10px] font-bold uppercase tracking-[0.25em] text-emerald-900 mb-4">Service 05</span>
+                <h1 class="reveal-up text-3xl md:text-5xl font-serif font-light text-gray-900 mb-4 leading-tight">
+                    Corporate <span class="italic font-normal text-[#004D34]">Advisory</span>
+                </h1>
+                <p class="reveal-up text-gray-700/80 text-base md:text-lg mb-2 max-w-xl font-serif italic">Strategic Partnership for Transformative Business Leadership.</p>
+                <p class="reveal-up text-gray-600 text-sm mb-8 max-w-2xl leading-relaxed">
+                    We act as a strategic partner to leadership teams, guiding major decisions from restructuring to long-term growth planning with external perspective and deep experience.
+                </p>
+                <div class="reveal-up flex flex-wrap gap-4">
+                    <a href="#challenges" class="bg-[#004D34] text-white px-6 py-3 rounded font-medium hover:bg-[#003322] transition text-sm">
+                        Explore Our Approach
+                    </a>
+                    <a href="../../contact-us.html" class="border border-gray-300 text-gray-700 px-6 py-3 rounded font-medium hover:bg-gray-900 hover:text-white transition text-sm">
+                        Talk to Our Experts <i data-lucide="arrow-right" class="text-xs ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 2. EXECUTIVE SUMMARY ============ -->
+    <section class="py-20 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="reveal-up mb-6">
+                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-700">Our Practice</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif mt-2">Advisory as a Catalyst for Transformation</h2>
+                </div>
+                <div class="reveal-up space-y-5 text-sm text-gray-600 leading-[1.9]">
+                    <p>At Chatura Indonesia, our Corporate Advisory practice is built on the principle that the best strategic decisions come from combining internal leadership insight with external specialist perspective. We work alongside C-suites, boards, and business owners to navigate complexity, manage change, and unlock sustainable growth.</p>
+                    <p>Our advisory team brings deep experience across corporate restructuring, governance design, succession planning, and operational improvement. We don't deliver generic frameworks — we tailor every engagement to your organization's unique context, culture, and strategic objectives.</p>
+                    <p>Whether you are a family enterprise planning generational transition, a listed company undergoing strategic restructuring, or a growing organization seeking to professionalize governance and operations, Chatura provides the objective counsel, structured thinking, and hands-on support your leadership team needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 3. BUSINESS CHALLENGES ============ -->
+    <section id="challenges" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up text-center max-w-xl mx-auto mb-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700">The Challenge</span>
+                <h2 class="text-2xl sm:text-3xl font-serif mt-2">Common Advisory Challenges We Address</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
+                    <div class="w-10 h-10 rounded-lg bg-red-50 text-red-600 flex items-center justify-center mb-5"><i data-lucide="compass" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2">Unclear Strategic Direction</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Without a clear strategic roadmap, organizations drift reactively rather than proactively shaping their future.</p>
+                </div>
+                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
+                    <div class="w-10 h-10 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center mb-5"><i data-lucide="gauge" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2">Organizational Inefficiency</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Structural misalignment and process gaps limit growth potential and drain resources from core business activities.</p>
+                </div>
+                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
+                    <div class="w-10 h-10 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center mb-5"><i data-lucide="users" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2">Leadership Transitions</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Generational changes, founder departures, and executive turnover create uncertainty and risk to business continuity.</p>
+                </div>
+                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
+                    <div class="w-10 h-10 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center mb-5"><i data-lucide="shield" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2">Governance Gaps</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Boards and committees without proper governance frameworks expose organizations to regulatory and reputational risk.</p>
+                </div>
+                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
+                    <div class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center mb-5"><i data-lucide="git-branch" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2">Strategy-Structure Misalignment</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">When organizational structure doesn't support strategic objectives, execution fails regardless of plan quality.</p>
+                </div>
+                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
+                    <div class="w-10 h-10 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center mb-5"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2">Growth Plateau</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Organizations that have outgrown their initial operating model need structured approaches to scale sustainably.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 4. SOLUTION ============ -->
+    <section class="py-20 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div class="reveal-up">
+                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-700 mb-3 block">Our Solution</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif mt-2 mb-5">Integrated Corporate Advisory Practice</h2>
+                    <p class="text-sm text-gray-600 leading-[1.9] mb-5">Our corporate advisory practice works alongside leadership teams as a trusted strategic partner. We bring external perspective, structured thinking, and deep experience to help you navigate complexity and make better decisions.</p>
+                    <p class="text-sm text-gray-600 leading-[1.9] mb-6">From strategic planning and corporate restructuring to governance design and succession planning, we provide the objective counsel and hands-on support your organization needs to transform and grow.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-full text-xs font-semibold text-emerald-800">Strategic Planning</span>
+                        <span class="px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-full text-xs font-semibold text-emerald-800">Restructuring</span>
+                        <span class="px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-full text-xs font-semibold text-emerald-800">Governance</span>
+                        <span class="px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-full text-xs font-semibold text-emerald-800">Succession</span>
+                    </div>
+                </div>
+                <div class="reveal-up">
+                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80" alt="Corporate advisory and leadership" class="rounded-xl shadow-lg w-full object-cover aspect-[4/3]" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 5. CORE SERVICES ============ -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up text-center max-w-xl mx-auto mb-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700">What We Do</span>
+                <h2 class="text-2xl sm:text-3xl font-serif mt-2">Core Services</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5"><i data-lucide="compass" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2">Strategic Planning &amp; Growth Advisory</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Develop clear strategic roadmaps aligned with market opportunities, competitive positioning, and organizational capabilities.</p>
+                </div>
+                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5"><i data-lucide="refresh-cw" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2">Corporate Restructuring &amp; Transformation</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Reorganize operations, optimize cost structures, and implement transformation programs that drive measurable performance improvement.</p>
+                </div>
+                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5"><i data-lucide="shield" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2">Governance Advisory &amp; Board Effectiveness</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Design governance frameworks, assess board effectiveness, and implement best practices for listed and private companies.</p>
+                </div>
+                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5"><i data-lucide="users" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2">Succession Planning &amp; Leadership Development</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Plan generational transitions, develop next-generation leaders, and ensure continuity of family and corporate enterprises.</p>
+                </div>
+                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5"><i data-lucide="bar-chart-3" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2">Performance Improvement &amp; Operational Excellence</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Identify and implement operational improvements that enhance efficiency, reduce costs, and strengthen competitive position.</p>
+                </div>
+                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5"><i data-lucide="layers" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2">Organizational Design &amp; Change Management</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Design organizational structures that support strategy, and manage the people-side of change to ensure successful adoption.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 6. SERVICE WORKFLOW ============ -->
+    <section class="py-20 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up text-center mb-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700">Our Process</span>
+                <h2 class="text-2xl sm:text-3xl font-serif mt-2">Service Workflow</h2>
+            </div>
+            <div class="reveal-up flex flex-col sm:flex-row justify-center items-start sm:items-center gap-0 max-w-5xl mx-auto">
+                <div class="flex flex-col items-center text-center flex-1 min-w-[140px] max-w-[170px]">
+                    <div class="w-12 h-12 rounded-full bg-[#004D34] text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">1</div>
+                    <h4 class="font-bold text-xs text-gray-950 mb-1">Discovery</h4>
+                    <p class="text-[10px] text-gray-400 leading-tight">Understand strategic context and priorities</p>
+                </div>
+                <div class="hidden sm:flex items-center pt-5 text-gray-300"><i data-lucide="chevron-right" class="w-4 h-4"></i></div>
+                <div class="flex flex-col items-center text-center flex-1 min-w-[140px] max-w-[170px]">
+                    <div class="w-12 h-12 rounded-full bg-[#004D34] text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">2</div>
+                    <h4 class="font-bold text-xs text-gray-950 mb-1">Assessment</h4>
+                    <p class="text-[10px] text-gray-400 leading-tight">Evaluate capabilities and market position</p>
+                </div>
+                <div class="hidden sm:flex items-center pt-5 text-gray-300"><i data-lucide="chevron-right" class="w-4 h-4"></i></div>
+                <div class="flex flex-col items-center text-center flex-1 min-w-[140px] max-w-[170px]">
+                    <div class="w-12 h-12 rounded-full bg-[#004D34] text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">3</div>
+                    <h4 class="font-bold text-xs text-gray-950 mb-1">Strategy</h4>
+                    <p class="text-[10px] text-gray-400 leading-tight">Develop strategic roadmap and plan</p>
+                </div>
+                <div class="hidden sm:flex items-center pt-5 text-gray-300"><i data-lucide="chevron-right" class="w-4 h-4"></i></div>
+                <div class="flex flex-col items-center text-center flex-1 min-w-[140px] max-w-[170px]">
+                    <div class="w-12 h-12 rounded-full bg-[#004D34] text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">4</div>
+                    <h4 class="font-bold text-xs text-gray-950 mb-1">Implementation</h4>
+                    <p class="text-[10px] text-gray-400 leading-tight">Guide execution with hands-on advisory</p>
+                </div>
+                <div class="hidden sm:flex items-center pt-5 text-gray-300"><i data-lucide="chevron-right" class="w-4 h-4"></i></div>
+                <div class="flex flex-col items-center text-center flex-1 min-w-[140px] max-w-[170px]">
+                    <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center text-xs font-bold mb-3"><i data-lucide="check" class="w-4 h-4"></i></div>
+                    <h4 class="font-bold text-xs text-gray-950 mb-1">Monitoring</h4>
+                    <p class="text-[10px] text-gray-400 leading-tight">Track progress and adapt as needed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 7. DELIVERABLES ============ -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
+                <div class="reveal-up">
+                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-700 mb-3 block">What You Receive</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif mt-2 mb-8">Key Deliverables</h2>
+                    <div class="grid grid-cols-1 gap-3">
+                        <div class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
+                            <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0"><i data-lucide="map" class="w-4 h-4"></i></div>
+                            <div><p class="text-sm font-semibold text-gray-950">Strategic Plans &amp; Roadmaps</p><p class="text-[11px] text-gray-400">Clear direction with phased implementation milestones</p></div>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
+                            <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0"><i data-lucide="refresh-cw" class="w-4 h-4"></i></div>
+                            <div><p class="text-sm font-semibold text-gray-950">Restructuring Proposals</p><p class="text-[11px] text-gray-400">Detailed reorganization plans with financial impact analysis</p></div>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
+                            <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0"><i data-lucide="clipboard-check" class="w-4 h-4"></i></div>
+                            <div><p class="text-sm font-semibold text-gray-950">Governance Assessments</p><p class="text-[11px] text-gray-400">Board effectiveness reviews and governance gap analysis</p></div>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
+                            <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0"><i data-lucide="users" class="w-4 h-4"></i></div>
+                            <div><p class="text-sm font-semibold text-gray-950">Succession Plans</p><p class="text-[11px] text-gray-400">Leadership transition frameworks and development programs</p></div>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
+                            <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0"><i data-lucide="bar-chart-3" class="w-4 h-4"></i></div>
+                            <div><p class="text-sm font-semibold text-gray-950">Performance Benchmarks</p><p class="text-[11px] text-gray-400">KPI frameworks and operational performance metrics</p></div>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
+                            <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0"><i data-lucide="layers" class="w-4 h-4"></i></div>
+                            <div><p class="text-sm font-semibold text-gray-950">Organizational Design Recommendations</p><p class="text-[11px] text-gray-400">Structure and role design aligned with strategy</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal-up">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Strategic planning and advisory" class="rounded-xl shadow-lg w-full object-cover aspect-[4/3]" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 8. INDUSTRY APPLICATIONS ============ -->
+    <section class="py-20 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up text-center mb-10">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700">Industry Reach</span>
+                <h2 class="text-2xl sm:text-3xl font-serif mt-2">Industries We Serve</h2>
+            </div>
+            <div class="reveal-up flex flex-wrap justify-center gap-3">
+                <a href="../../industries.html" class="px-6 py-3 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition inline-flex items-center gap-2"><i data-lucide="heart" class="w-3.5 h-3.5"></i> Family Enterprises</a>
+                <a href="../../industries.html" class="px-6 py-3 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition inline-flex items-center gap-2"><i data-lucide="factory" class="w-3.5 h-3.5"></i> Manufacturing</a>
+                <a href="../../industries.html" class="px-6 py-3 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition inline-flex items-center gap-2"><i data-lucide="cpu" class="w-3.5 h-3.5"></i> Technology</a>
+                <a href="../../industries.html" class="px-6 py-3 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition inline-flex items-center gap-2"><i data-lucide="landmark" class="w-3.5 h-3.5"></i> Financial Services</a>
+                <a href="../../industries.html" class="px-6 py-3 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition inline-flex items-center gap-2"><i data-lucide="heart-pulse" class="w-3.5 h-3.5"></i> Healthcare</a>
+                <a href="../../industries.html" class="px-6 py-3 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition inline-flex items-center gap-2"><i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i> Consumer Goods</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 9. RELATED INSIGHTS ============ -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-10">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-700">Related Insights</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif mt-2">Latest From Our Practice</h2>
+                </div>
+                <a href="../../insights.html" class="text-xs font-bold text-[#004D34] hover:underline flex items-center gap-1">View All Insights <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <a href="../../insights.html" class="reveal-up bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition group">
+                    <div class="aspect-[16/9] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80" alt="Corporate restructuring" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">Corporate Advisory</span>
+                        <h3 class="font-serif font-bold text-gray-950 text-sm mt-3 mb-2 group-hover:text-emerald-800 transition">Navigating Corporate Restructuring for Sustainable Growth</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed">A practical framework for managing organizational transformation while maintaining business continuity and stakeholder confidence.</p>
+                        <span class="text-[11px] text-gray-400 mt-3 block">6 min read</span>
+                    </div>
+                </a>
+                <a href="../../insights.html" class="reveal-up bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition group">
+                    <div class="aspect-[16/9] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80" alt="Succession planning" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">Succession Planning</span>
+                        <h3 class="font-serif font-bold text-gray-950 text-sm mt-3 mb-2 group-hover:text-emerald-800 transition">Succession Planning for Family-Owned Businesses</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed">Key considerations for navigating generational transitions in family enterprises across governance, estate, and leadership dimensions.</p>
+                        <span class="text-[11px] text-gray-400 mt-3 block">5 min read</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 10. MEET OUR EXPERTS ============ -->
+    <section class="py-20 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up text-center mb-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700">Our Team</span>
+                <h2 class="text-2xl sm:text-3xl font-serif mt-2">Meet Our Experts</h2>
+            </div>
+            <div class="reveal-up grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition group">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&h=500&q=80" alt="Andi Rio Ilhad Monry" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif font-bold text-gray-950 text-base mb-1">Andi Rio Ilhad Monry</h3>
+                        <p class="text-xs text-emerald-700 font-medium mb-3">Managing Partner</p>
+                        <p class="text-xs text-gray-500 leading-relaxed mb-4">Leading the firm's integrated advisory practice with deep expertise in corporate strategy, M&amp;A, and organizational transformation across Southeast Asian markets.</p>
+                        <a href="../../our-people.html" class="inline-flex items-center gap-1 text-xs font-bold text-[#004D34] hover:gap-2 transition-all">View Profile <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition group">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&h=500&q=80" alt="Adine K. Nadya" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif font-bold text-gray-950 text-base mb-1">Adine K. Nadya</h3>
+                        <p class="text-xs text-emerald-700 font-medium mb-3">Partner, Risk Management</p>
+                        <p class="text-xs text-gray-500 leading-relaxed mb-4">Specializing in enterprise risk governance, internal controls, and organizational resilience for corporate and family enterprises.</p>
+                        <a href="../../our-people.html" class="inline-flex items-center gap-1 text-xs font-bold text-[#004D34] hover:gap-2 transition-all">View Profile <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 11. FAQ ============ -->
+    <section id="faq" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up text-center mb-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700">Questions &amp; Answers</span>
+                <h2 class="text-2xl sm:text-3xl font-serif mt-2">Frequently Asked Questions</h2>
+            </div>
+            <div class="reveal-up max-w-3xl mx-auto space-y-3">
+                <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="this.closest('.faq-item').classList.toggle('open')">
+                        <span class="font-bold text-sm text-gray-950 pr-4">When should a company engage corporate advisory services?</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 shrink-0 faq-icon"></i>
+                    </button>
+                    <div class="faq-content px-6"><p class="text-xs text-gray-500 leading-relaxed">The right time is when you face a strategic inflection point — growth plateaus, market shifts, leadership transitions, or organizational complexity that internal teams struggle to address independently. Early engagement often prevents larger issues downstream.</p></div>
+                </div>
+                <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="this.closest('.faq-item').classList.toggle('open')">
+                        <span class="font-bold text-sm text-gray-950 pr-4">Does Chatura work with family-owned businesses?</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 shrink-0 faq-icon"></i>
+                    </button>
+                    <div class="faq-content px-6"><p class="text-xs text-gray-500 leading-relaxed">Family enterprises are a core focus. We understand the unique dynamics of family businesses — including succession planning, governance structuring, next-generation leadership development, and balancing family interests with business objectives.</p></div>
+                </div>
+                <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="this.closest('.faq-item').classList.toggle('open')">
+                        <span class="font-bold text-sm text-gray-950 pr-4">How long do typical advisory engagements last?</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 shrink-0 faq-icon"></i>
+                    </button>
+                    <div class="faq-content px-6"><p class="text-xs text-gray-500 leading-relaxed">Strategic planning engagements typically run 3–6 months. Restructuring and transformation projects may extend to 12+ months depending on scope and complexity. We tailor engagement timelines to your specific needs.</p></div>
+                </div>
+                <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="this.closest('.faq-item').classList.toggle('open')">
+                        <span class="font-bold text-sm text-gray-950 pr-4">Does Chatura provide hands-on implementation support?</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 shrink-0 faq-icon"></i>
+                    </button>
+                    <div class="faq-content px-6"><p class="text-xs text-gray-500 leading-relaxed">Yes. We go beyond recommendations to guide implementation, working alongside your team through the transformation process. Our involvement can range from strategic oversight to hands-on project leadership.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 12. FINAL CTA ============ -->
+    <section class="py-16 bg-neutral-950 text-white">
+        <div class="container mx-auto px-6 text-center max-w-2xl relative z-10">
+            <h2 class="text-2xl md:text-3xl font-serif mb-4">Ready to Transform Your Organization?</h2>
+            <p class="text-neutral-400 text-xs md:text-sm mb-8 leading-relaxed">Engage with our Corporate Advisory experts to develop strategic direction, strengthen governance, and drive sustainable growth across your organization.</p>
+            <a href="../../contact-us.html" class="inline-flex items-center bg-[#004D34] text-white text-xs px-6 py-3 rounded font-semibold hover:bg-emerald-700 transition">
+                Start the Conversation <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Secondary CTA -->
+    <section class="py-10 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <a href="../../services.html" class="inline-flex items-center gap-2 text-sm font-medium text-[#004D34] hover:underline">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> View All Services
+            </a>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- WhatsApp Widget -->
+    <div class="wa-widget">
+        <button type="button" class="wa-launcher" id="waLauncher" aria-label="Chat via WhatsApp" aria-expanded="false" aria-controls="waPopup">
+            <svg viewBox="0 0 24 24" class="wa-icon" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19.11 4.93A9.9 9.9 0 0 0 3.6 16.88L2 22l5.24-1.54a9.89 9.89 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.79-6.84Zm-7.12 15.1h-.01c-1.53 0-3.03-.41-4.34-1.18l-.31-.18-3.11.91.84-3.03-.2-.32a8.26 8.26 0 1 1 7.13 3.8Zm4.53-6.18c-.25-.13-1.49-.74-1.72-.82-.23-.08-.4-.12-.57.13-.17.25-.66.82-.8.99-.15.17-.29.19-.54.06-.25-.13-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.36-1.69-.14-.25-.02-.38.11-.5.12-.12.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.57-1.37-.78-1.87-.21-.51-.42-.44-.57-.45h-.49c-.17 0-.45.06-.68.32-.23.25-.89.87-.89 2.11s.92 2.44 1.05 2.6c.13.17 1.82 2.77 4.42 3.89.62.27 1.11.43 1.49.55.63.2 1.2.17 1.65.1.5-.08 1.49-.61 1.7-1.2.21-.59.21-1.09.15-1.2-.06-.1-.23-.17-.48-.3Z"></path></svg>
+            <span class="wa-pulse" aria-hidden="true"></span>
+        </button>
+        <div id="waPopup" class="wa-popup" role="dialog" aria-modal="false" aria-labelledby="wa-title" aria-hidden="true">
+            <div class="wa-header"><div><p class="wa-eyebrow">CHATURA SUPPORT</p><h2 id="wa-title" class="wa-title">How can we help?</h2></div><button type="button" class="wa-close" id="waClose" aria-label="Close WhatsApp contact options"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg></button></div>
+            <p class="wa-intro">Choose the department that best matches your enquiry and we'll connect you directly on WhatsApp.</p>
+            <div class="wa-options">
+                <a href="https://wa.me/6212345678?text=Hi+Chatura%2C+I+need+help+with+corporate+advisory." target="_blank" rel="noopener noreferrer" class="wa-option"><span class="wa-option-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 12a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><rect x="3.5" y="12" width="4" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"></rect><rect x="16.5" y="12" width="4" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"></rect><path d="M8 20c0 1.1.9 2 2 2h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span class="wa-option-content"><strong>Corporate Advisory</strong><span>Strategy, restructuring, governance</span></span><span class="wa-arrow" aria-hidden="true">→</span></a>
+                <a href="https://wa.me/6212345678?text=Hi+Chatura%2C+I+need+help+with+general+inquiry." target="_blank" rel="noopener noreferrer" class="wa-option"><span class="wa-option-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 2.7 7.6 7 10 4.3-2.4 7-5.5 7-10V6l-7-3Zm-3 9 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span class="wa-option-content"><strong>General Inquiry</strong><span>Accounting, tax, and other services</span></span><span class="wa-arrow" aria-hidden="true">→</span></a>
+            </div>
+            <div class="wa-notice"><strong>CLIENT SUPPORT HOURS</strong><span>Monday – Friday, 9AM – 6PM WIB</span></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#004D34] text-white/70">
+        <div class="container mx-auto px-6 pt-24 pb-20">
+            <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
+                <div class="reveal-up">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-white/50 block mb-6" data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
+                    <img width="487" height="350" src="../../assets/chatura-footer.webp" alt="Chatura Indonesia" class="h-36 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
+                    <p class="text-sm text-white/60 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated professional services providing accounting, tax, business advisory, and risk management solutions across the Indonesian archipelago and Southeast Asian markets.</p>
+                    <div class="flex items-center gap-5 mt-8 text-gray-500">
+                        <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-4.5 h-4.5"></i></a>
+                        <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-4.5 h-4.5"></i></a>
+                        <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-4.5 h-4.5"></i></a>
+                        <a href="mailto:hello@chatura.co.id" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4.5 h-4.5"></i></a>
+                    </div>
+                </div>
+                <div class="reveal-up grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-12">
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.services_heading">Services</h4>
+                        <ul class="space-y-3.5">
+                            <li><a href="../../services/accounting-finance/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group">Accounting &amp; Finance<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../services/tax-services/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group">Tax Services<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../services/business-transfer/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group">Business Transfer<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../services/risk-management/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group">Risk Management<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../services/corporate-advisory/" class="text-xs text-white/80 font-semibold hover:text-white transition-colors duration-300 relative group">Corporate Advisory<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.industries_heading">Industries</h4>
+                        <ul class="space-y-3.5">
+                            <li><a href="../../industries/energy/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_1">Energy &amp; Resources<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../industries/manufacturing/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_2">Manufacturing<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../industries/technology/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_3">Technology &amp; Digital<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../industries/healthcare/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_4">Healthcare<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.company_heading">Company</h4>
+                        <ul class="space-y-3.5">
+                            <li><a href="../../index.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_1">About Us<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../our-people.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_2">Our People<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../career.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_3">Careers<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../insights.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_4">Insights<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-6"><div class="h-px bg-white/10"></div></div>
+        <div class="container mx-auto px-6 py-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-4">
+                    <img width="487" height="350" src="../../assets/chatura-footer.webp" alt="Chatura" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
+                    <span class="text-[11px] text-white/50" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-white/50">
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.privacy">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.terms">Terms of Use</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.cookies">Cookies</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.disclaimer">Disclaimer</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.sitemap">Sitemap</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.conduct">Code of Conduct</a>
+                </div>
+                <div class="flex items-center gap-4 text-gray-500">
+                    <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                    <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                    <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+                    <a href="mailto:hello@chatura.co.id" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/10"><div class="container mx-auto"><p class="text-[10px] text-brand-green leading-relaxed text-center" data-i18n="footer.legal">Chatura Indonesia is an integrated professional services firm. This website is for general informational purposes only and does not constitute professional advice. All information is subject to change without notice.</p></div></div>
+    </footer>
+
+    <script src="../../assets/i18n/i18n.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function () { lucide.createIcons(); });</script>
+    <script>
+        (function () { var nav = document.getElementById('navbar-sticky'); if (!nav) return; function toggle() { if (window.scrollY > 50) { nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); } } toggle(); window.addEventListener('scroll', toggle, { passive: true }); })();
+    </script>
+    <script>
+        if (typeof gsap !== 'undefined') { gsap.registerPlugin(ScrollTrigger); gsap.to('#hero-service .reveal-up', { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power2.out', delay: 0.15 }); ScrollTrigger.batch('.reveal-up:not(#hero-service .reveal-up)', { start: 'top 85%', once: true, onEnter: function (batch) { gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out' }); } }); setTimeout(function () { document.querySelectorAll('.reveal-up').forEach(function (el) { if (getComputedStyle(el).opacity === '0') { el.style.opacity = 1; el.style.transform = 'none'; } }); }, 4000); }
+    </script>
+    <script>
+        (function () { var launcher = document.getElementById('waLauncher'); var popup = document.getElementById('waPopup'); var close = document.getElementById('waClose'); if (!launcher || !popup) return; function togglePopup() { var isOpen = popup.classList.contains('is-open'); popup.classList.toggle('is-open'); launcher.setAttribute('aria-expanded', !isOpen); popup.setAttribute('aria-hidden', isOpen); } launcher.addEventListener('click', togglePopup); close.addEventListener('click', function (e) { e.stopPropagation(); togglePopup(); }); document.addEventListener('click', function (e) { if (!popup.contains(e.target) && !launcher.contains(e.target) && popup.classList.contains('is-open')) togglePopup(); }); document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && popup.classList.contains('is-open')) togglePopup(); }); })();
+    </script>
+    <script>
+        (function () { var mm = document.getElementById('mobileMenu'); if (!mm) return; window.addEventListener('resize', function () { if (window.innerWidth >= 768 && !mm.classList.contains('hidden')) { mm.classList.add('hidden'); document.body.classList.remove('overflow-hidden'); } }); })();
+    </script>
+    <script>
+        (function () { var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; if (prefersReduced) { document.querySelectorAll('.faq-content').forEach(function (el) { el.style.transition = 'none'; }); } })();
+    </script>
+    <script>
+    (function() { document.querySelectorAll('.mobile-nav-group-btn').forEach(function(btn) { btn.addEventListener('click', function() { var group = this.closest('.mobile-nav-group'); group.classList.toggle('open'); }); }); })();
+    </script>
+</body>
+</html>

@@ -26,7 +26,7 @@
     <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <style>
+    <style type="text/tailwindcss">
         .progress-bar-container {
             position: fixed;
             top: 0;
@@ -132,36 +132,52 @@
     </div>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- ============ HEADER ============ -->
-    <header id="navbar-sticky" class="sticky top-0 z-50">
+        <header id="navbar-sticky" class="sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <div class="font-bold text-2xl tracking-wider text-[#004D34] flex items-center gap-2">
-                    <img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto">
+                    <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
                 </div>
             </div>
-            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden')"
-                class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
+            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
                 <i data-lucide="menu" class="text-xl"></i>
             </button>
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
                 <a href="index.html" class="hover:text-emerald-800 transition" data-i18n="nav.about_us">About Us</a>
                 <div class="nav-dropdown">
-                    <a href="services.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span
-                            data-i18n="nav.services">Services</span> <i data-lucide="chevron-down"
-                            class="text-xs"></i></a>
+                    <a href="services.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.services">Services</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
                     <div class="nav-dropdown-menu">
                         <a href="services.html" data-i18n="nav.services_overview">Overview</a>
-                        <a href="business-transfer.html" data-i18n="nav.business_transfer">Business Transfer</a>
+                        <a href="services/accounting-finance/">Accounting &amp; Finance</a>
+                        <a href="services/tax-services/">Tax Services</a>
+                        <a href="services/business-transfer/">Business Transfer</a>
+                        <a href="services/risk-management/">Risk Management</a>
+                        <a href="services/corporate-advisory/">Corporate Advisory</a>
                     </div>
                 </div>
-                <a href="industries.html" class="hover:text-emerald-800"><span
-                        data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down"
-                        class="text-xs ml-1"></i></a>
-                <a href="our-people.html" class="hover:text-emerald-800 transition" data-i18n="nav.our_people">Our
-                    People</a>
-                <a href="insights.html" class="text-[#004D34] font-semibold transition"
-                    data-i18n="nav.insights">Insights</a>
-                <a href="join-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.join_us">Join Us</a>
+                <div class="nav-dropdown">
+                    <a href="industries.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="industries.html" data-i18n="nav.industries_overview">Overview</a>
+                        <a href="industries/manufacturing/">Manufacturing</a>
+                        <a href="industries/energy/">Energy &amp; Resources</a>
+                        <a href="industries/healthcare/">Healthcare</a>
+                        <a href="industries/technology/">Technology &amp; Digital</a>
+                        <a href="industries/consumer/">Consumer &amp; Retail</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="insights.html" class="text-[#004D34] font-semibold inline-flex items-center gap-1"><span data-i18n="nav.insights">Insights</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="insights.html" data-i18n="nav.insights_latest">Latest Insights</a>
+                        <a href="insights.html#executive-intelligence">Executive Intelligence</a>
+                        <a href="insights.html#strategic-intelligence">Strategic Intelligence</a>
+                        <a href="insights.html#publications">Publications</a>
+                        <a href="insights.html#downloads">Downloads</a>
+                    </div>
+                </div>
+                <a href="our-people.html" class="hover:text-emerald-800 transition" data-i18n="nav.our_people">Our People</a>
+                <a href="career.html" class="hover:text-emerald-800 transition" data-i18n="nav.career">Join Us</a>
                 <a href="contact-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.contact">Contact</a>
             </nav>
             <div class="hidden md:flex items-center space-x-6 text-sm">
@@ -169,60 +185,62 @@
                     <a href="#" data-lang="en" class="lang-active">EN</a>
                     <a href="#" data-lang="id" class="lang-inactive">ID</a>
                 </div>
-                <a href="contact-us.html"
-                    class="bg-[#004D34] text-white px-5 py-2 rounded font-medium transition hover:bg-[#003322]">
-                    <span data-i18n="nav.lets_talk">Let's Talk</span> <i data-lucide="arrow-right"
-                        class="text-xs ml-1"></i>
+                <a href="contact-us.html" class="bg-[#004D34] text-white px-5 py-2 rounded font-medium hover:bg-[#003322] transition">
+                    <span data-i18n="nav.lets_talk">Let's Talk</span> <i data-lucide="arrow-right" class="text-xs ml-1"></i>
                 </a>
             </div>
         </div>
         <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
-                <img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto">
-                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden')"
-                    class="text-gray-600 focus:outline-none"><i data-lucide="x" class="text-xl"></i></button>
+                <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
+                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
             </div>
             <nav class="flex-1 overflow-y-auto p-6 space-y-1">
-                <a href="index.html"
-                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span
-                        data-i18n="nav.about_us">About Us</span></a>
-                <a href="services.html"
-                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span
-                        data-i18n="nav.services">Services</span></a>
-                <a href="industries.html"
-                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span
-                        data-i18n="nav.industries">Industries</span></a>
-                <a href="our-people.html"
-                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span
-                        data-i18n="nav.our_people">Our People</span></a>
-                <a href="insights.html"
-                    class="block py-3 px-4 rounded-lg text-base font-medium bg-emerald-50 text-emerald-800"><span
-                        data-i18n="nav.insights">Insights</span></a>
-                <a href="join-us.html"
-                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span
-                        data-i18n="nav.join_us">Join Us</span></a>
-                <a href="business-transfer.html"
-                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span
-                        data-i18n="nav.business_transfer">Business Transfer</span></a>
-                <a href="contact-us.html"
-                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span
-                        data-i18n="nav.contact">Contact</span></a>
+                <a href="index.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.about_us">About Us</a>
+                <div class="mobile-nav-group ">
+                    <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.services">Services</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="mobile-nav-submenu">
+                        <a href="services.html">Overview</a>
+                        <a href="services/accounting-finance/" class="">Accounting &amp; Finance</a>
+                        <a href="services/tax-services/" class="">Tax Services</a>
+                        <a href="services/business-transfer/" class="">Business Transfer</a>
+                        <a href="services/risk-management/" class="">Risk Management</a>
+                        <a href="services/corporate-advisory/" class="">Corporate Advisory</a>
+                    </div>
+                </div>
+                <div class="mobile-nav-group ">
+                    <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.industries">Industries</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="mobile-nav-submenu">
+                        <a href="industries.html">Overview</a>
+                        <a href="industries/manufacturing/">Manufacturing</a>
+                        <a href="industries/energy/">Energy &amp; Resources</a>
+                        <a href="industries/healthcare/">Healthcare</a>
+                        <a href="industries/technology/">Technology &amp; Digital</a>
+                        <a href="industries/consumer/">Consumer &amp; Retail</a>
+                    </div>
+                </div>
+                <div class="mobile-nav-group open">
+                    <button class="mobile-nav-group-btn is-active-parent" type="button"><span data-i18n="nav.insights">Insights</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="mobile-nav-submenu">
+                        <a href="insights.html">Latest Insights</a>
+                        <a href="insights.html#executive-intelligence">Executive Intelligence</a>
+                        <a href="insights.html#strategic-intelligence">Strategic Intelligence</a>
+                        <a href="insights.html#publications">Publications</a>
+                        <a href="insights.html#downloads">Downloads</a>
+                    </div>
+                </div>
+                <a href="our-people.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.our_people">Our People</a>
+                <a href="career.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.career">Join Us</a>
+                <a href="contact-us.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.contact">Contact</a>
             </nav>
             <div class="p-6 border-t border-gray-100">
-                <div id="lang-selector-mobile">
-                    <a href="#" data-lang="en" class="lang-active">EN</a>
-                    <a href="#" data-lang="id" class="lang-inactive">ID</a>
-                </div>
-                <a href="contact-us.html"
-                    class="block w-full bg-[#004D34] text-white text-center px-5 py-3 rounded font-medium transition hover:bg-[#003322] mt-4">
-                    <span data-i18n="nav.lets_talk">Let's Talk</span>
-                </a>
+                <a href="contact-us.html" class="block w-full bg-[#004D34] text-white text-center px-5 py-3 rounded font-medium hover:bg-[#003322] transition"><span data-i18n="nav.lets_talk">Let's Talk</span></a>
             </div>
         </div>
     </header>
     <main id="main-content">
         <!-- ============ HERO ============ -->
-        <section class="relative bg-[#004D34] text-white overflow-hidden -mt-[128px] pt-[128px]">
+        <section class="relative bg-[#004D34] text-white overflow-hidden -mt-32 pt-32">
             <div id="hero-bg" class="absolute inset-0 bg-cover bg-center"
                 style="background-image: url('assets/hero-insights.webp');"></div>
             <div class="absolute inset-0"
@@ -231,13 +249,13 @@
             <div class="container mx-auto px-6 relative z-10 py-24 md:py-32">
                 <div class="max-w-3xl">
                     <nav class="flex items-center gap-2 text-xs text-emerald-700 mb-6" aria-label="Breadcrumb">
-                        <a href="index.html" class="h-auto !min-h-0 hover:text-gray-900 transition"
+                        <a href="index.html" class="h-auto min-h-0! hover:text-gray-900 transition"
                             data-i18n="insight.breadcrumb_home">Beranda</a>
-                        <span class="inline-flex w-3 h-3 flex-shrink-0"><i data-lucide="chevron-right"
+                        <span class="inline-flex w-3 h-3 shrink-0"><i data-lucide="chevron-right"
                                 class="w-3 h-3"></i></span>
-                        <a href="insights.html" class="h-auto !min-h-0 hover:text-gray-900 transition"
+                        <a href="insights.html" class="h-auto min-h-0! hover:text-gray-900 transition"
                             data-i18n="insight.breadcrumb_insights">Insights</a>
-                        <span class="inline-flex w-3 h-3 flex-shrink-0"><i data-lucide="chevron-right"
+                        <span class="inline-flex w-3 h-3 shrink-0"><i data-lucide="chevron-right"
                                 class="w-3 h-3"></i></span>
                         <span class="text-gray-700 font-medium" data-i18n="insight.breadcrumb_current">Reformasi
                             Perpajakan
@@ -279,7 +297,7 @@
                         </div>
                         <!-- Gambar Hero Visual Utama -->
                         <div
-                            class="reveal-up relative overflow-hidden aspect-[16/9] rounded-2xl bg-gray-100 border border-gray-200 shadow-xs">
+                            class="reveal-up relative overflow-hidden aspect-video rounded-2xl bg-gray-100 border border-gray-200 shadow-xs">
                             <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80"
                                 alt="Analisis Keuangan dan Pajak Korporat Chatura Jakarta"
                                 class="w-full h-full object-cover object-center" loading="lazy">
@@ -466,30 +484,30 @@
         </div>
     </div>
     <!-- ============ FOOTER ============ -->
-    <footer class="bg-neutral-900 text-gray-400">
+    <footer class="bg-[#004D34] text-white/70">
         <div class="container mx-auto px-6 pt-24 pb-20">
             <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
                 <div class="reveal-up">
-                    <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500 block mb-6"
+                    <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-white/50 block mb-6"
                         data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
                     <img width="487" height="350" src="assets/chatura-footer.webp" alt="Chatura Indonesia"
                         class="h-36 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
-                    <p class="text-sm text-gray-400 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated
+                    <p class="text-sm text-white/60 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated
                         professional services providing accounting, tax, business advisory, and risk management
                         solutions across the Indonesian archipelago and Southeast Asian markets.</p>
                     <div class="flex items-center gap-5 mt-8 text-gray-500">
                         <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"
                             class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin"
-                                class="w-[18px] h-[18px]"></i></a>
+                                class="w-4.5 h-4.5"></i></a>
                         <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer"
                             class="hover:text-white transition-colors duration-300"><i data-lucide="instagram"
-                                class="w-[18px] h-[18px]"></i></a>
+                                class="w-4.5 h-4.5"></i></a>
                         <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer"
                             class="hover:text-white transition-colors duration-300"><i data-lucide="youtube"
-                                class="w-[18px] h-[18px]"></i></a>
+                                class="w-4.5 h-4.5"></i></a>
                         <a href="mailto:hello@chatura.co.id" aria-label="Email"
                             class="hover:text-white transition-colors duration-300"><i data-lucide="mail"
-                                class="w-[18px] h-[18px]"></i></a>
+                                class="w-4.5 h-4.5"></i></a>
                     </div>
                 </div>
                 <div class="reveal-up grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-12">
@@ -498,27 +516,27 @@
                             data-i18n="footer.services_heading">Services</h4>
                         <ul class="space-y-3.5">
                             <li><a href="services.html"
-                                    class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group"
+                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
                                     data-i18n="footer.service_1">Accounting & Finance<span
                                         class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
                             </li>
                             <li><a href="services.html"
-                                    class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group"
+                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
                                     data-i18n="footer.service_2">Tax Services<span
                                         class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
                             </li>
-                            <li><a href="business-transfer.html"
-                                    class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group"
+                            <li><a href="#"
+                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
                                     data-i18n="footer.service_3">Business Transfer<span
                                         class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
                             </li>
                             <li><a href="services.html"
-                                    class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group"
+                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
                                     data-i18n="footer.service_4">Risk Management<span
                                         class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
                             </li>
                             <li><a href="services.html"
-                                    class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group"
+                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
                                     data-i18n="footer.service_5">Corporate Advisory<span
                                         class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
                             </li>
@@ -529,22 +547,22 @@
                             data-i18n="footer.industries_heading">Industries</h4>
                         <ul class="space-y-3.5">
                             <li><a href="industries.html"
-                                    class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group"
+                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
                                     data-i18n="footer.industry_1">Energy & Resources<span
                                         class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
                             </li>
                             <li><a href="industries.html"
-                                    class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group"
+                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
                                     data-i18n="footer.industry_2">Manufacturing<span
                                         class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
                             </li>
                             <li><a href="industries.html"
-                                    class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group"
+                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
                                     data-i18n="footer.industry_3">Technology & Digital<span
                                         class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
                             </li>
                             <li><a href="industries.html"
-                                    class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group"
+                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
                                     data-i18n="footer.industry_4">Healthcare<span
                                         class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
                             </li>
@@ -555,22 +573,22 @@
                             data-i18n="footer.company_heading">Company</h4>
                         <ul class="space-y-3.5">
                             <li><a href="index.html"
-                                    class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group"
+                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
                                     data-i18n="footer.company_1">About Us<span
                                         class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
                             </li>
                             <li><a href="our-people.html"
-                                    class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group"
+                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
                                     data-i18n="footer.company_2">Our People<span
                                         class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
                             </li>
-                            <li><a href="join-us.html"
-                                    class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group"
+                            <li><a href="career.html"
+                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
                                     data-i18n="footer.company_3">Careers<span
                                         class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
                             </li>
                             <li><a href="insights.html"
-                                    class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group"
+                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
                                     data-i18n="footer.company_4">Insights<span
                                         class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
                             </li>
@@ -579,7 +597,7 @@
                 </div>
             </div>
         </div>
-        <div class="border-t border-neutral-800/50">
+        <div class="border-t border-white/10">
             <div class="container mx-auto px-6 py-20">
                 <div class="reveal-up flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
                     <div>
@@ -590,7 +608,7 @@
                             critical transitions.</p>
                     </div>
                     <a href="contact-us.html"
-                        class="inline-flex items-center gap-2.5 bg-[#004D34] text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-[#003322] transition-all duration-300 shadow-lg shadow-[#004D34]/20 hover:shadow-xl hover:shadow-[#004D34]/30 hover:-translate-y-0.5 flex-shrink-0 group">
+                        class="inline-flex items-center gap-2.5 bg-[#004D34] text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-[#003322] transition-all duration-300 shadow-lg shadow-[#004D34]/20 hover:shadow-xl hover:shadow-[#004D34]/30 hover:-translate-y-0.5 shrink-0 group">
                         <span data-i18n="footer.cta_button">Talk To Advisors</span>
                         <i data-lucide="arrow-right"
                             class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
@@ -599,17 +617,17 @@
             </div>
         </div>
         <div class="container mx-auto px-6">
-            <div class="h-px bg-neutral-800/60"></div>
+            <div class="h-px bg-white/10"></div>
         </div>
         <div class="container mx-auto px-6 py-10">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-4">
                     <img width="487" height="350" src="assets/chatura-footer.webp" alt="Chatura"
                         class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
-                    <span class="text-[11px] text-gray-500" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia.
+                    <span class="text-[11px] text-white/50" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia.
                         All rights reserved.</span>
                 </div>
-                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-gray-500">
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-white/50">
                     <a href="#" class="hover:text-white transition-colors duration-300"
                         data-i18n="footer.privacy">Privacy Policy</a>
                     <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.terms">Terms
@@ -639,9 +657,9 @@
                 </div>
             </div>
         </div>
-        <div class="border-t border-neutral-800/40">
-            <div class="container mx-auto px-6 py-6">
-                <p class="text-[10px] text-gray-600 leading-relaxed text-center" data-i18n="footer.legal">Chatura
+        <div class="border-t border-white/10">
+            <div class="container mx-auto">
+                <p class="text-[10px] text-brand-green leading-relaxed text-center" data-i18n="footer.legal">Chatura
                     Indonesia is an integrated professional services firm. This website is for general informational
                     purposes only and does not constitute professional advice. All information is subject to change
                     without notice.</p>
@@ -771,7 +789,7 @@
                 var num = String(i + 1).padStart(2, '0');
                 return '<a href="' + item.href + '" class="related-drop-row">' +
                     '<span class="related-drop-num">' + num + '</span>' +
-                    '<div class="related-drop-thumb w-16 h-16 rounded-lg flex-shrink-0">' +
+                    '<div class="related-drop-thumb w-16 h-16 rounded-lg shrink-0">' +
                         '<img src="' + item.image + '" alt="' + item.title + '" class="w-full h-full object-cover" loading="lazy">' +
                     '</div>' +
                     '<div class="min-w-0 flex-1">' +
@@ -801,6 +819,30 @@
                 rows.forEach(function (el) { el.style.opacity = '1'; });
             }
         })();
+    </script>
+        <script>
+        // Mobile menu: close on resize to desktop + body scroll lock
+        (function () {
+            var mm = document.getElementById('mobileMenu');
+            if (!mm) return;
+            window.addEventListener('resize', function () {
+                if (window.innerWidth >= 768 && !mm.classList.contains('hidden')) {
+                    mm.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                }
+            });
+        })();
+        </script>
+
+    <script>
+    (function() {
+        document.querySelectorAll('.mobile-nav-group-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var group = this.closest('.mobile-nav-group');
+                group.classList.toggle('open');
+            });
+        });
+    })();
     </script>
 </body>
 </html>

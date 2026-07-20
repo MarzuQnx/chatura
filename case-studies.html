@@ -23,7 +23,7 @@
     <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <style>
+    <style type="text/tailwindcss">
         .case-post { transition: opacity 0.35s ease, transform 0.35s ease; }
         .case-post.hidden { display: none; }
         #empty-state.hidden { display: none; }
@@ -126,15 +126,14 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- ============ HEADER ============ -->
-    <header id="navbar-sticky" class="sticky top-0 z-50">
+        <header id="navbar-sticky" class="sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <div class="font-bold text-2xl tracking-wider text-[#004D34] flex items-center gap-2">
-                    <img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto">
+                    <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
                 </div>
             </div>
-            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden')"
-                class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
+            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
                 <i data-lucide="menu" class="text-xl"></i>
             </button>
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
@@ -143,13 +142,36 @@
                     <a href="services.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.services">Services</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
                     <div class="nav-dropdown-menu">
                         <a href="services.html" data-i18n="nav.services_overview">Overview</a>
-                        <a href="business-transfer.html" data-i18n="nav.business_transfer">Business Transfer</a>
+                        <a href="services/accounting-finance/">Accounting &amp; Finance</a>
+                        <a href="services/tax-services/">Tax Services</a>
+                        <a href="services/business-transfer/">Business Transfer</a>
+                        <a href="services/risk-management/">Risk Management</a>
+                        <a href="services/corporate-advisory/">Corporate Advisory</a>
                     </div>
                 </div>
-                <a href="industries.html" class="hover:text-emerald-800"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs ml-1"></i></a>
+                <div class="nav-dropdown">
+                    <a href="industries.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="industries.html" data-i18n="nav.industries_overview">Overview</a>
+                        <a href="industries/manufacturing/">Manufacturing</a>
+                        <a href="industries/energy/">Energy &amp; Resources</a>
+                        <a href="industries/healthcare/">Healthcare</a>
+                        <a href="industries/technology/">Technology &amp; Digital</a>
+                        <a href="industries/consumer/">Consumer &amp; Retail</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="insights.html" class="text-[#004D34] font-semibold inline-flex items-center gap-1"><span data-i18n="nav.insights">Insights</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="insights.html" data-i18n="nav.insights_latest">Latest Insights</a>
+                        <a href="insights.html#executive-intelligence">Executive Intelligence</a>
+                        <a href="insights.html#strategic-intelligence">Strategic Intelligence</a>
+                        <a href="insights.html#publications">Publications</a>
+                        <a href="insights.html#downloads">Downloads</a>
+                    </div>
+                </div>
                 <a href="our-people.html" class="hover:text-emerald-800 transition" data-i18n="nav.our_people">Our People</a>
-                <a href="insights.html" class="hover:text-emerald-800 transition" data-i18n="nav.insights">Insights</a>
-                <a href="join-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.join_us">Join Us</a>
+                <a href="career.html" class="hover:text-emerald-800 transition" data-i18n="nav.career">Join Us</a>
                 <a href="contact-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.contact">Contact</a>
             </nav>
             <div class="hidden md:flex items-center space-x-6 text-sm">
@@ -157,35 +179,56 @@
                     <a href="#" data-lang="en" class="lang-active">EN</a>
                     <a href="#" data-lang="id" class="lang-inactive">ID</a>
                 </div>
-                <a href="contact-us.html" class="bg-[#004D34] text-white px-5 py-2 rounded font-medium transition hover:bg-[#003322]">
+                <a href="contact-us.html" class="bg-[#004D34] text-white px-5 py-2 rounded font-medium hover:bg-[#003322] transition">
                     <span data-i18n="nav.lets_talk">Let's Talk</span> <i data-lucide="arrow-right" class="text-xs ml-1"></i>
                 </a>
             </div>
         </div>
         <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
-                <img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto">
-                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden')"
-                    class="text-gray-600 focus:outline-none"><i data-lucide="x" class="text-xl"></i></button>
+                <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
+                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
             </div>
             <nav class="flex-1 overflow-y-auto p-6 space-y-1">
-                <a href="index.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span data-i18n="nav.about_us">About Us</span></a>
-                <a href="services.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span data-i18n="nav.services">Services</span></a>
-                <a href="industries.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span data-i18n="nav.industries">Industries</span></a>
-                <a href="our-people.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span data-i18n="nav.our_people">Our People</span></a>
-                <a href="insights.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span data-i18n="nav.insights">Insights</span></a>
-                <a href="join-us.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span data-i18n="nav.join_us">Join Us</span></a>
-                <a href="business-transfer.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span data-i18n="nav.business_transfer">Business Transfer</span></a>
-                <a href="contact-us.html" class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"><span data-i18n="nav.contact">Contact</span></a>
+                <a href="index.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.about_us">About Us</a>
+                <div class="mobile-nav-group ">
+                    <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.services">Services</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="mobile-nav-submenu">
+                        <a href="services.html">Overview</a>
+                        <a href="services/accounting-finance/" class="">Accounting &amp; Finance</a>
+                        <a href="services/tax-services/" class="">Tax Services</a>
+                        <a href="services/business-transfer/" class="">Business Transfer</a>
+                        <a href="services/risk-management/" class="">Risk Management</a>
+                        <a href="services/corporate-advisory/" class="">Corporate Advisory</a>
+                    </div>
+                </div>
+                <div class="mobile-nav-group ">
+                    <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.industries">Industries</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="mobile-nav-submenu">
+                        <a href="industries.html">Overview</a>
+                        <a href="industries/manufacturing/">Manufacturing</a>
+                        <a href="industries/energy/">Energy &amp; Resources</a>
+                        <a href="industries/healthcare/">Healthcare</a>
+                        <a href="industries/technology/">Technology &amp; Digital</a>
+                        <a href="industries/consumer/">Consumer &amp; Retail</a>
+                    </div>
+                </div>
+                <div class="mobile-nav-group open">
+                    <button class="mobile-nav-group-btn is-active-parent" type="button"><span data-i18n="nav.insights">Insights</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="mobile-nav-submenu">
+                        <a href="insights.html">Latest Insights</a>
+                        <a href="insights.html#executive-intelligence">Executive Intelligence</a>
+                        <a href="insights.html#strategic-intelligence">Strategic Intelligence</a>
+                        <a href="insights.html#publications">Publications</a>
+                        <a href="insights.html#downloads">Downloads</a>
+                    </div>
+                </div>
+                <a href="our-people.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.our_people">Our People</a>
+                <a href="career.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.career">Join Us</a>
+                <a href="contact-us.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.contact">Contact</a>
             </nav>
             <div class="p-6 border-t border-gray-100">
-                <div id="lang-selector-mobile">
-                    <a href="#" data-lang="en" class="lang-active">EN</a>
-                    <a href="#" data-lang="id" class="lang-inactive">ID</a>
-                </div>
-                <a href="contact-us.html" class="block w-full bg-[#004D34] text-white text-center px-5 py-3 rounded font-medium transition hover:bg-[#003322] mt-4">
-                    <span data-i18n="nav.lets_talk">Let's Talk</span>
-                </a>
+                <a href="contact-us.html" class="block w-full bg-[#004D34] text-white text-center px-5 py-3 rounded font-medium hover:bg-[#003322] transition"><span data-i18n="nav.lets_talk">Let's Talk</span></a>
             </div>
         </div>
     </header>
@@ -193,7 +236,7 @@
     <main id="main-content">
 
         <!-- ============ HERO ============ -->
-        <section id="hero-case" class="relative bg-[#004D34] text-white overflow-hidden -mt-[128px] pt-[128px]">
+        <section id="hero-case" class="relative bg-[#004D34] text-white overflow-hidden -mt-32 pt-32">
             <div id="hero-bg" class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/hero-casestudies.webp');"></div>
         <div class="absolute inset-0"
             style="background: linear-gradient(100deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 30%, transparent 50%);">
@@ -213,7 +256,7 @@
         <section class="container mx-auto px-6 -mt-8 z-20 relative">
             <div class="reveal-up bg-white rounded-xl shadow-md border border-gray-100 px-8 py-6 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-0">
                 <div class="flex items-center gap-4 text-center sm:text-left">
-                    <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center flex-shrink-0">
+                    <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center shrink-0">
                         <i data-lucide="trending-up" class="w-5 h-5 text-[#004D34]"></i>
                     </div>
                     <div>
@@ -223,7 +266,7 @@
                 </div>
                 <div class="hidden sm:block w-px h-10 bg-gray-200 mx-8"></div>
                 <div class="flex items-center gap-4 text-center sm:text-left">
-                    <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center flex-shrink-0">
+                    <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center shrink-0">
                         <i data-lucide="handshake" class="w-5 h-5 text-[#004D34]"></i>
                     </div>
                     <div>
@@ -233,7 +276,7 @@
                 </div>
                 <div class="hidden sm:block w-px h-10 bg-gray-200 mx-8"></div>
                 <div class="flex items-center gap-4 text-center sm:text-left">
-                    <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center flex-shrink-0">
+                    <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center shrink-0">
                         <i data-lucide="shield-check" class="w-5 h-5 text-[#004D34]"></i>
                     </div>
                     <div>
@@ -256,53 +299,53 @@
                 <div class="bg-white rounded-2xl border border-gray-200 shadow-xs px-6 md:px-10">
                     <a href="#xyz-acquisition-advisory" class="ledger-row">
                         <span class="ledger-num">01</span>
-                        <i data-lucide="flame" class="w-4 h-4 text-gray-300 flex-shrink-0"></i>
+                        <i data-lucide="flame" class="w-4 h-4 text-gray-300 shrink-0"></i>
                         <span class="flex-1 min-w-0">
                             <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1" data-i18n="casestudies.cs1_tag">Energy Sector</span>
                             <span class="ledger-title block font-serif text-lg font-semibold text-gray-900 truncate" data-i18n="casestudies.cs1_title">PT XYZ Acquisition Advisory</span>
                         </span>
-                        <span class="hidden sm:block text-sm text-gray-400 flex-shrink-0" data-i18n="casestudies.cs1_value">Valuasi: USD 50 Million</span>
-                        <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                        <span class="hidden sm:block text-sm text-gray-400 shrink-0" data-i18n="casestudies.cs1_value">Valuasi: USD 50 Million</span>
+                        <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] shrink-0"></i>
                     </a>
                     <a href="#manufacturing-corp-restructuring" class="ledger-row">
                         <span class="ledger-num">02</span>
-                        <i data-lucide="factory" class="w-4 h-4 text-gray-300 flex-shrink-0"></i>
+                        <i data-lucide="factory" class="w-4 h-4 text-gray-300 shrink-0"></i>
                         <span class="flex-1 min-w-0">
                             <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1" data-i18n="casestudies.cs2_tag">Manufacturing</span>
                             <span class="ledger-title block font-serif text-lg font-semibold text-gray-900 truncate" data-i18n="casestudies.cs2_title">PT Manufacturing Corp Restructuring</span>
                         </span>
-                        <span class="hidden sm:block text-sm text-gray-400 flex-shrink-0" data-i18n="casestudies.cs2_value">Valuasi: USD 35 Million</span>
-                        <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                        <span class="hidden sm:block text-sm text-gray-400 shrink-0" data-i18n="casestudies.cs2_value">Valuasi: USD 35 Million</span>
+                        <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] shrink-0"></i>
                     </a>
                     <a href="#fintech-unicorn-series-c" class="ledger-row">
                         <span class="ledger-num">03</span>
-                        <i data-lucide="cpu" class="w-4 h-4 text-gray-300 flex-shrink-0"></i>
+                        <i data-lucide="cpu" class="w-4 h-4 text-gray-300 shrink-0"></i>
                         <span class="flex-1 min-w-0">
                             <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1" data-i18n="casestudies.cs3_tag">Technology</span>
                             <span class="ledger-title block font-serif text-lg font-semibold text-gray-900 truncate" data-i18n="casestudies.cs3_title">Series C Funding Advisory FinTech Unicorn</span>
                         </span>
-                        <span class="hidden sm:block text-sm text-gray-400 flex-shrink-0" data-i18n="casestudies.cs3_value">Valuasi: USD 80 Million</span>
-                        <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                        <span class="hidden sm:block text-sm text-gray-400 shrink-0" data-i18n="casestudies.cs3_value">Valuasi: USD 80 Million</span>
+                        <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] shrink-0"></i>
                     </a>
                     <a href="#hospital-group-consolidation" class="ledger-row">
                         <span class="ledger-num">04</span>
-                        <i data-lucide="heart-pulse" class="w-4 h-4 text-gray-300 flex-shrink-0"></i>
+                        <i data-lucide="heart-pulse" class="w-4 h-4 text-gray-300 shrink-0"></i>
                         <span class="flex-1 min-w-0">
                             <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1" data-i18n="casestudies.cs4_tag">Healthcare</span>
                             <span class="ledger-title block font-serif text-lg font-semibold text-gray-900 truncate" data-i18n="casestudies.cs4_title">Regional Hospital Group Consolidation</span>
                         </span>
-                        <span class="hidden sm:block text-sm text-gray-400 flex-shrink-0" data-i18n="casestudies.cs4_value">Valuasi: USD 25 Million</span>
-                        <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                        <span class="hidden sm:block text-sm text-gray-400 shrink-0" data-i18n="casestudies.cs4_value">Valuasi: USD 25 Million</span>
+                        <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] shrink-0"></i>
                     </a>
                     <a href="#fmcg-portfolio-optimization" class="ledger-row">
                         <span class="ledger-num">05</span>
-                        <i data-lucide="shopping-bag" class="w-4 h-4 text-gray-300 flex-shrink-0"></i>
+                        <i data-lucide="shopping-bag" class="w-4 h-4 text-gray-300 shrink-0"></i>
                         <span class="flex-1 min-w-0">
                             <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1" data-i18n="casestudies.cs5_tag">Consumer &amp; Retail</span>
                             <span class="ledger-title block font-serif text-lg font-semibold text-gray-900 truncate" data-i18n="casestudies.cs5_title">FMCG Brand Portfolio Optimization</span>
                         </span>
-                        <span class="hidden sm:block text-sm text-gray-400 flex-shrink-0" data-i18n="casestudies.cs5_value">Valuasi: USD 40 Million</span>
-                        <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                        <span class="hidden sm:block text-sm text-gray-400 shrink-0" data-i18n="casestudies.cs5_value">Valuasi: USD 40 Million</span>
+                        <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] shrink-0"></i>
                     </a>
                 </div>
                 <p class="text-gray-500 text-sm max-w-sm mx-auto text-center mt-8">
@@ -319,7 +362,7 @@
                 </a>
                 <div class="grid lg:grid-cols-[260px_1fr] gap-10 lg:gap-14">
                     <aside class="lg:sticky lg:top-32 lg:self-start">
-                        <div class="snapshot-card rounded-xl border border-gray-200 bg-gradient-to-br from-white to-emerald-50/50 p-6">
+                        <div class="snapshot-card rounded-xl border border-gray-200 bg-linear-to-br from-white to-emerald-50/50 p-6">
                             <span class="file-watermark">01</span>
                             <div class="relative flex items-center gap-2 mb-5">
                                 <i data-lucide="flame" class="w-4 h-4 text-[#004D34]"></i>
@@ -342,20 +385,20 @@
                     <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-400 mb-5" data-i18n="casestudies.continue_browsing">Continue Browsing</p>
                     <div class="grid sm:grid-cols-2 gap-4">
                         <a href="#manufacturing-corp-restructuring" class="related-card">
-                            <i data-lucide="factory" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="factory" class="w-4 h-4 text-[#004D34] shrink-0"></i>
                             <span class="flex-1 min-w-0">
                                 <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs2_tag">Manufacturing</span>
                                 <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs2_title">PT Manufacturing Corp Restructuring</span>
                             </span>
-                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] shrink-0"></i>
                         </a>
                         <a href="#fintech-unicorn-series-c" class="related-card">
-                            <i data-lucide="cpu" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="cpu" class="w-4 h-4 text-[#004D34] shrink-0"></i>
                             <span class="flex-1 min-w-0">
                                 <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs3_tag">Technology</span>
                                 <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs3_title">Series C Funding Advisory FinTech Unicorn</span>
                             </span>
-                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] shrink-0"></i>
                         </a>
                     </div>
                 </div>
@@ -368,7 +411,7 @@
                 </a>
                 <div class="grid lg:grid-cols-[260px_1fr] gap-10 lg:gap-14">
                     <aside class="lg:sticky lg:top-32 lg:self-start">
-                        <div class="snapshot-card rounded-xl border border-gray-200 bg-gradient-to-br from-white to-emerald-50/50 p-6">
+                        <div class="snapshot-card rounded-xl border border-gray-200 bg-linear-to-br from-white to-emerald-50/50 p-6">
                             <span class="file-watermark">02</span>
                             <div class="relative flex items-center gap-2 mb-5">
                                 <i data-lucide="factory" class="w-4 h-4 text-[#004D34]"></i>
@@ -391,20 +434,20 @@
                     <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-400 mb-5" data-i18n="casestudies.continue_browsing">Continue Browsing</p>
                     <div class="grid sm:grid-cols-2 gap-4">
                         <a href="#fintech-unicorn-series-c" class="related-card">
-                            <i data-lucide="cpu" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="cpu" class="w-4 h-4 text-[#004D34] shrink-0"></i>
                             <span class="flex-1 min-w-0">
                                 <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs3_tag">Technology</span>
                                 <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs3_title">Series C Funding Advisory FinTech Unicorn</span>
                             </span>
-                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] shrink-0"></i>
                         </a>
                         <a href="#hospital-group-consolidation" class="related-card">
-                            <i data-lucide="heart-pulse" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="heart-pulse" class="w-4 h-4 text-[#004D34] shrink-0"></i>
                             <span class="flex-1 min-w-0">
                                 <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs4_tag">Healthcare</span>
                                 <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs4_title">Regional Hospital Group Consolidation</span>
                             </span>
-                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] shrink-0"></i>
                         </a>
                     </div>
                 </div>
@@ -417,7 +460,7 @@
                 </a>
                 <div class="grid lg:grid-cols-[260px_1fr] gap-10 lg:gap-14">
                     <aside class="lg:sticky lg:top-32 lg:self-start">
-                        <div class="snapshot-card rounded-xl border border-gray-200 bg-gradient-to-br from-white to-emerald-50/50 p-6">
+                        <div class="snapshot-card rounded-xl border border-gray-200 bg-linear-to-br from-white to-emerald-50/50 p-6">
                             <span class="file-watermark">03</span>
                             <div class="relative flex items-center gap-2 mb-5">
                                 <i data-lucide="cpu" class="w-4 h-4 text-[#004D34]"></i>
@@ -440,20 +483,20 @@
                     <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-400 mb-5" data-i18n="casestudies.continue_browsing">Continue Browsing</p>
                     <div class="grid sm:grid-cols-2 gap-4">
                         <a href="#hospital-group-consolidation" class="related-card">
-                            <i data-lucide="heart-pulse" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="heart-pulse" class="w-4 h-4 text-[#004D34] shrink-0"></i>
                             <span class="flex-1 min-w-0">
                                 <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs4_tag">Healthcare</span>
                                 <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs4_title">Regional Hospital Group Consolidation</span>
                             </span>
-                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] shrink-0"></i>
                         </a>
                         <a href="#fmcg-portfolio-optimization" class="related-card">
-                            <i data-lucide="shopping-bag" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="shopping-bag" class="w-4 h-4 text-[#004D34] shrink-0"></i>
                             <span class="flex-1 min-w-0">
                                 <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs5_tag">Consumer &amp; Retail</span>
                                 <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs5_title">FMCG Brand Portfolio Optimization</span>
                             </span>
-                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] shrink-0"></i>
                         </a>
                     </div>
                 </div>
@@ -466,7 +509,7 @@
                 </a>
                 <div class="grid lg:grid-cols-[260px_1fr] gap-10 lg:gap-14">
                     <aside class="lg:sticky lg:top-32 lg:self-start">
-                        <div class="snapshot-card rounded-xl border border-gray-200 bg-gradient-to-br from-white to-emerald-50/50 p-6">
+                        <div class="snapshot-card rounded-xl border border-gray-200 bg-linear-to-br from-white to-emerald-50/50 p-6">
                             <span class="file-watermark">04</span>
                             <div class="relative flex items-center gap-2 mb-5">
                                 <i data-lucide="heart-pulse" class="w-4 h-4 text-[#004D34]"></i>
@@ -489,20 +532,20 @@
                     <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-400 mb-5" data-i18n="casestudies.continue_browsing">Continue Browsing</p>
                     <div class="grid sm:grid-cols-2 gap-4">
                         <a href="#fmcg-portfolio-optimization" class="related-card">
-                            <i data-lucide="shopping-bag" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="shopping-bag" class="w-4 h-4 text-[#004D34] shrink-0"></i>
                             <span class="flex-1 min-w-0">
                                 <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs5_tag">Consumer &amp; Retail</span>
                                 <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs5_title">FMCG Brand Portfolio Optimization</span>
                             </span>
-                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] shrink-0"></i>
                         </a>
                         <a href="#xyz-acquisition-advisory" class="related-card">
-                            <i data-lucide="flame" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="flame" class="w-4 h-4 text-[#004D34] shrink-0"></i>
                             <span class="flex-1 min-w-0">
                                 <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs1_tag">Energy Sector</span>
                                 <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs1_title">PT XYZ Acquisition Advisory</span>
                             </span>
-                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] shrink-0"></i>
                         </a>
                     </div>
                 </div>
@@ -515,7 +558,7 @@
                 </a>
                 <div class="grid lg:grid-cols-[260px_1fr] gap-10 lg:gap-14">
                     <aside class="lg:sticky lg:top-32 lg:self-start">
-                        <div class="snapshot-card rounded-xl border border-gray-200 bg-gradient-to-br from-white to-emerald-50/50 p-6">
+                        <div class="snapshot-card rounded-xl border border-gray-200 bg-linear-to-br from-white to-emerald-50/50 p-6">
                             <span class="file-watermark">05</span>
                             <div class="relative flex items-center gap-2 mb-5">
                                 <i data-lucide="shopping-bag" class="w-4 h-4 text-[#004D34]"></i>
@@ -538,20 +581,20 @@
                     <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-400 mb-5" data-i18n="casestudies.continue_browsing">Continue Browsing</p>
                     <div class="grid sm:grid-cols-2 gap-4">
                         <a href="#xyz-acquisition-advisory" class="related-card">
-                            <i data-lucide="flame" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="flame" class="w-4 h-4 text-[#004D34] shrink-0"></i>
                             <span class="flex-1 min-w-0">
                                 <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs1_tag">Energy Sector</span>
                                 <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs1_title">PT XYZ Acquisition Advisory</span>
                             </span>
-                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] shrink-0"></i>
                         </a>
                         <a href="#manufacturing-corp-restructuring" class="related-card">
-                            <i data-lucide="factory" class="w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="factory" class="w-4 h-4 text-[#004D34] shrink-0"></i>
                             <span class="flex-1 min-w-0">
                                 <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5" data-i18n="casestudies.cs2_tag">Manufacturing</span>
                                 <span class="block font-serif text-sm font-semibold text-gray-900 truncate" data-i18n="casestudies.cs2_title">PT Manufacturing Corp Restructuring</span>
                             </span>
-                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] flex-shrink-0"></i>
+                            <i data-lucide="arrow-right" class="ledger-arrow w-4 h-4 text-[#004D34] shrink-0"></i>
                         </a>
                     </div>
                 </div>
@@ -599,60 +642,60 @@
     </div>
 
     <!-- ============ FOOTER ============ -->
-    <footer class="bg-neutral-900 text-gray-400">
+    <footer class="bg-[#004D34] text-white/70">
         <div class="container mx-auto px-6 pt-24 pb-20">
             <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
                 <div class="reveal-up">
-                    <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500 block mb-6" data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
+                    <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-white/50 block mb-6" data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
                     <img width="487" height="350" src="assets/chatura-footer.webp" alt="Chatura Indonesia" class="h-36 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
-                    <p class="text-sm text-gray-400 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated professional services providing accounting, tax, business advisory, and risk management solutions across the Indonesian archipelago and Southeast Asian markets.</p>
+                    <p class="text-sm text-white/60 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated professional services providing accounting, tax, business advisory, and risk management solutions across the Indonesian archipelago and Southeast Asian markets.</p>
                     <div class="flex items-center gap-5 mt-8 text-gray-500">
-                        <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-[18px] h-[18px]"></i></a>
-                        <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-[18px] h-[18px]"></i></a>
-                        <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-[18px] h-[18px]"></i></a>
-                        <a href="mailto:hello@chatura.co.id" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-[18px] h-[18px]"></i></a>
+                        <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-4.5 h-4.5"></i></a>
+                        <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-4.5 h-4.5"></i></a>
+                        <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-4.5 h-4.5"></i></a>
+                        <a href="mailto:hello@chatura.co.id" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4.5 h-4.5"></i></a>
                     </div>
                 </div>
                 <div class="reveal-up grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-12">
                     <div>
                         <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.services_heading">Services</h4>
                         <ul class="space-y-3.5">
-                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_1">Accounting & Finance<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_2">Tax Services<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="business-transfer.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_3">Business Transfer<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_4">Risk Management<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_5">Corporate Advisory<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_1">Accounting & Finance<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_2">Tax Services<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="#" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_3">Business Transfer<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_4">Risk Management<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_5">Corporate Advisory<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.industries_heading">Industries</h4>
                         <ul class="space-y-3.5">
-                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_1">Energy & Resources<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_2">Manufacturing<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_3">Technology & Digital<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_4">Healthcare<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_1">Energy & Resources<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries/manufacturing/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_2">Manufacturing<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_3">Technology & Digital<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries/healthcare/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_4">Healthcare<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.company_heading">Company</h4>
                         <ul class="space-y-3.5">
-                            <li><a href="index.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_1">About Us<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="our-people.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_2">Our People<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="join-us.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_3">Careers<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="insights.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_4">Insights<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="index.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_1">About Us<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="our-people.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_2">Our People<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="career.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_3">Careers<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="insights.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_4">Insights<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="border-t border-neutral-800/50">
+        <div class="border-t border-white/10">
             <div class="container mx-auto px-6 py-20">
                 <div class="reveal-up flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
                     <div>
                         <h2 class="text-2xl md:text-[1.75rem] font-serif text-white leading-snug max-w-xl" data-i18n="footer.cta_title">Let's Discuss Your Next Business Decision.</h2>
                         <p class="text-sm text-gray-500 mt-4 max-w-md leading-relaxed" data-i18n="footer.cta_desc">Our advisory team is prepared to structure tailored solutions for your organization's most critical transitions.</p>
                     </div>
-                    <a href="contact-us.html" class="inline-flex items-center gap-2.5 bg-[#004D34] text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-[#003322] transition-all duration-300 shadow-lg shadow-[#004D34]/20 hover:shadow-xl hover:shadow-[#004D34]/30 hover:-translate-y-0.5 flex-shrink-0 group">
+                    <a href="contact-us.html" class="inline-flex items-center gap-2.5 bg-[#004D34] text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-[#003322] transition-all duration-300 shadow-lg shadow-[#004D34]/20 hover:shadow-xl hover:shadow-[#004D34]/30 hover:-translate-y-0.5 shrink-0 group">
                         <span data-i18n="footer.cta_button">Talk To Advisors</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
                     </a>
@@ -660,15 +703,15 @@
             </div>
         </div>
         <div class="container mx-auto px-6">
-            <div class="h-px bg-neutral-800/60"></div>
+            <div class="h-px bg-white/10"></div>
         </div>
         <div class="container mx-auto px-6 py-10">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-4">
                     <img width="487" height="350" src="assets/chatura-footer.webp" alt="Chatura" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
-                    <span class="text-[11px] text-gray-500" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
+                    <span class="text-[11px] text-white/50" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
                 </div>
-                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-gray-500">
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-white/50">
                     <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.privacy">Privacy Policy</a>
                     <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.terms">Terms of Use</a>
                     <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.cookies">Cookies</a>
@@ -684,9 +727,12 @@
                 </div>
             </div>
         </div>
-        <div class="border-t border-neutral-800/40">
-            <div class="container mx-auto px-6 py-6">
-                <p class="text-[10px] text-gray-600 leading-relaxed text-center" data-i18n="footer.legal">Chatura Indonesia is an integrated professional services firm. This website is for general informational purposes only and does not constitute professional advice. All information is subject to change without notice.</p>
+        <div class="border-t border-white/10">
+            <div class="container mx-auto">
+                <p class="text-[10px] text-brand-green leading-relaxed text-center" data-i18n="footer.legal">Chatura
+                    Indonesia is an integrated professional services firm. This website is for general informational
+                    purposes only and does not constitute professional advice. All information is subject to change
+                    without notice.</p>
             </div>
         </div>
     </footer>
@@ -781,6 +827,30 @@
                 if (e.key === 'Escape' && popup.classList.contains('is-open')) togglePopup();
             });
         })();
+    </script>
+        <script>
+        // Mobile menu: close on resize to desktop + body scroll lock
+        (function () {
+            var mm = document.getElementById('mobileMenu');
+            if (!mm) return;
+            window.addEventListener('resize', function () {
+                if (window.innerWidth >= 768 && !mm.classList.contains('hidden')) {
+                    mm.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                }
+            });
+        })();
+        </script>
+
+    <script>
+    (function() {
+        document.querySelectorAll('.mobile-nav-group-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var group = this.closest('.mobile-nav-group');
+                group.classList.toggle('open');
+            });
+        });
+    })();
     </script>
 </body>
 

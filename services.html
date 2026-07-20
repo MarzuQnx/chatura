@@ -8,35 +8,47 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jasa Konsultan Chatura Jakarta - Akuntansi, Pajak, Financial Advisory</title>
-    <meta name="description" content="Jasa konsultan Chatura Jakarta: akuntansi, pajak, financial advisory, business transfer, dan risk management. Solusi terintegrasi untuk bisnis Indonesia.">
+    <title>Services | Chatura Indonesia - Integrated Corporate Advisory</title>
+    <meta name="description" content="Explore Chatura Indonesia's integrated professional services: accounting & finance, tax, business transfer, risk management, and corporate advisory. Jakarta-based consulting firm.">
     <link rel="canonical" href="https://www.chatura.co.id/services.html">
-    <meta property="og:title" content="Jasa Konsultan Chatura Jakarta - Layanan Profesional">
-    <meta property="og:description" content="Layanan konsultan akuntansi, pajak, dan financial advisory untuk pertumbuhan bisnis Anda di Jakarta dan Asia Tenggara.">
+    <meta property="og:title" content="Services | Chatura Indonesia - Integrated Corporate Advisory">
+    <meta property="og:description" content="Integrated professional services: accounting, tax, business transfer, risk management, and corporate advisory for businesses in Indonesia.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.chatura.co.id/services.html">
     <meta property="og:image" content="https://www.chatura.co.id/assets/chatura.jpg">
     <meta property="og:site_name" content="Chatura Indonesia">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Jasa Konsultan Chatura Jakarta - Layanan Profesional">
-    <meta name="twitter:description" content="Layanan konsultan akuntansi, pajak, dan financial advisory untuk bisnis Indonesia.">
+    <meta name="twitter:title" content="Services | Chatura Indonesia - Integrated Corporate Advisory">
+    <meta name="twitter:description" content="Integrated professional services: accounting, tax, business transfer, risk management, and corporate advisory.">
     <meta name="twitter:image" content="https://www.chatura.co.id/assets/chatura.jpg">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
+      "name": "Chatura Indonesia",
       "serviceType": "Corporate Consulting",
+      "url": "https://www.chatura.co.id",
       "provider": {"@type": "Organization", "name": "Chatura Indonesia"},
-      "areaServed": {"@type": "Place", "address": {"@type": "PostalAddress", "addressLocality": "Jakarta", "addressCountry": "ID"}}
+      "areaServed": {"@type": "Place", "address": {"@type": "PostalAddress", "addressLocality": "Jakarta", "addressCountry": "ID"}},
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Professional Services",
+        "itemListElement": [
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Accounting & Finance", "url": "https://www.chatura.co.id/services/accounting-finance/"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tax Services", "url": "https://www.chatura.co.id/services/tax-services/"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Business Transfer", "url": "https://www.chatura.co.id/services/business-transfer/"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Risk Management", "url": "https://www.chatura.co.id/services/risk-management/"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Corporate Advisory", "url": "https://www.chatura.co.id/services/corporate-advisory/"}}
+        ]
+      }
     }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link rel="stylesheet" href="assets/design-system.css">
-    <style>
+    <style type="text/tailwindcss">
         #heroCanvas {
             position: absolute;
             inset: 0;
@@ -50,87 +62,109 @@
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header id="navbar-sticky" class="sticky top-0 z-50">
+        <header id="navbar-sticky" class="sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <div class="font-bold text-2xl tracking-wider text-[#004D34] flex items-center gap-2">
-                    <img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto">
+                    <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
                 </div>
             </div>
-
-            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden')"
-                class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
+            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
                 <i data-lucide="menu" class="text-xl"></i>
             </button>
-
-                        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
                 <a href="index.html" class="hover:text-emerald-800 transition" data-i18n="nav.about_us">About Us</a>
                 <div class="nav-dropdown">
                     <a href="services.html" class="text-[#004D34] font-semibold inline-flex items-center gap-1"><span data-i18n="nav.services">Services</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
                     <div class="nav-dropdown-menu">
                         <a href="services.html" data-i18n="nav.services_overview">Overview</a>
-                        <a href="business-transfer.html" data-i18n="nav.business_transfer">Business Transfer</a>
+                        <a href="services/accounting-finance/">Accounting &amp; Finance</a>
+                        <a href="services/tax-services/">Tax Services</a>
+                        <a href="services/business-transfer/">Business Transfer</a>
+                        <a href="services/risk-management/">Risk Management</a>
+                        <a href="services/corporate-advisory/">Corporate Advisory</a>
                     </div>
                 </div>
-                <a href="industries.html" class="hover:text-emerald-800"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs ml-1"></i></a>
+                <div class="nav-dropdown">
+                    <a href="industries.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="industries.html" data-i18n="nav.industries_overview">Overview</a>
+                        <a href="industries/manufacturing/">Manufacturing</a>
+                        <a href="industries/energy/">Energy &amp; Resources</a>
+                        <a href="industries/healthcare/">Healthcare</a>
+                        <a href="industries/technology/">Technology &amp; Digital</a>
+                        <a href="industries/consumer/">Consumer &amp; Retail</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="insights.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.insights">Insights</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="insights.html" data-i18n="nav.insights_latest">Latest Insights</a>
+                        <a href="insights.html#executive-intelligence">Executive Intelligence</a>
+                        <a href="insights.html#strategic-intelligence">Strategic Intelligence</a>
+                        <a href="insights.html#publications">Publications</a>
+                        <a href="insights.html#downloads">Downloads</a>
+                    </div>
+                </div>
                 <a href="our-people.html" class="hover:text-emerald-800 transition" data-i18n="nav.our_people">Our People</a>
-                <a href="insights.html" class="hover:text-emerald-800 transition" data-i18n="nav.insights">Insights</a>
-                <a href="join-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.join_us">Join Us</a>
+                <a href="career.html" class="hover:text-emerald-800 transition" data-i18n="nav.career">Join Us</a>
                 <a href="contact-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.contact">Contact</a>
             </nav>
-
             <div class="hidden md:flex items-center space-x-6 text-sm">
                 <div id="lang-selector">
                     <a href="#" data-lang="en" class="lang-active">EN</a>
                     <a href="#" data-lang="id" class="lang-inactive">ID</a>
                 </div>
-                <a href="contact-us.html"
-                    class="bg-[#004D34] text-white px-5 py-2 rounded font-medium hover:bg-[#003322] transition">
-                    <span data-i18n="nav.lets_talk">Let's Talk</span> <i data-lucide="arrow-right"
-                        class="text-xs ml-1"></i>
+                <a href="contact-us.html" class="bg-[#004D34] text-white px-5 py-2 rounded font-medium hover:bg-[#003322] transition">
+                    <span data-i18n="nav.lets_talk">Let's Talk</span> <i data-lucide="arrow-right" class="text-xs ml-1"></i>
                 </a>
             </div>
         </div>
-
         <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
-                <img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto">
-                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden')"
-                    class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i
-                        data-lucide="x" class="text-xl"></i></button>
+                <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
+                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
             </div>
             <nav class="flex-1 overflow-y-auto p-6 space-y-1">
-                <a href="index.html"
-                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"
-                    data-i18n="nav.about_us">About Us</a>
-                <a href="services.html"
-                    class="block py-3 px-4 rounded-lg text-base font-medium bg-emerald-50 text-emerald-800"
-                    data-i18n="nav.services">Services</a>
-                <a href="industries.html"
-                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"
-                    data-i18n="nav.industries">Industries</a>
-                <a href="our-people.html"
-                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"
-                    data-i18n="nav.our_people">Our People</a>
-                <a href="insights.html"
-                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"
-                    data-i18n="nav.insights">Insights</a>
-                <a href="join-us.html"
-                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"
-                    data-i18n="nav.join_us">Join Us</a>
-                <a href="business-transfer.html"
-                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"
-                    data-i18n="nav.business_transfer">Business
-                    Transfer</a>
-                <a href="contact-us.html"
-                    class="block py-3 px-4 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50"
-                    data-i18n="nav.contact">Contact</a>
+                <a href="index.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.about_us">About Us</a>
+                <div class="mobile-nav-group open">
+                    <button class="mobile-nav-group-btn is-active-parent" type="button"><span data-i18n="nav.services">Services</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="mobile-nav-submenu">
+                        <a href="services.html">Overview</a>
+                        <a href="services/accounting-finance/" class="">Accounting &amp; Finance</a>
+                        <a href="services/tax-services/" class="">Tax Services</a>
+                        <a href="services/business-transfer/" class="">Business Transfer</a>
+                        <a href="services/risk-management/" class="">Risk Management</a>
+                        <a href="services/corporate-advisory/" class="">Corporate Advisory</a>
+                    </div>
+                </div>
+                <div class="mobile-nav-group ">
+                    <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.industries">Industries</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="mobile-nav-submenu">
+                        <a href="industries.html">Overview</a>
+                        <a href="industries/manufacturing/">Manufacturing</a>
+                        <a href="industries/energy/">Energy &amp; Resources</a>
+                        <a href="industries/healthcare/">Healthcare</a>
+                        <a href="industries/technology/">Technology &amp; Digital</a>
+                        <a href="industries/consumer/">Consumer &amp; Retail</a>
+                    </div>
+                </div>
+                <div class="mobile-nav-group ">
+                    <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.insights">Insights</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="mobile-nav-submenu">
+                        <a href="insights.html">Latest Insights</a>
+                        <a href="insights.html#executive-intelligence">Executive Intelligence</a>
+                        <a href="insights.html#strategic-intelligence">Strategic Intelligence</a>
+                        <a href="insights.html#publications">Publications</a>
+                        <a href="insights.html#downloads">Downloads</a>
+                    </div>
+                </div>
+                <a href="our-people.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.our_people">Our People</a>
+                <a href="career.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.career">Join Us</a>
+                <a href="contact-us.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.contact">Contact</a>
             </nav>
             <div class="p-6 border-t border-gray-100">
-                <a href="contact-us.html"
-                    class="block w-full bg-[#004D34] text-white text-center px-5 py-3 rounded font-medium hover:bg-[#003322] transition"><span
-                        data-i18n="nav.lets_talk">Let's
-                        Talk</span></a>
+                <a href="contact-us.html" class="block w-full bg-[#004D34] text-white text-center px-5 py-3 rounded font-medium hover:bg-[#003322] transition"><span data-i18n="nav.lets_talk">Let's Talk</span></a>
             </div>
         </div>
     </header>
@@ -138,7 +172,7 @@
     <main id="main-content">
 
     <!-- ============ HERO ============ -->
-    <section id="hero-services" class="relative bg-[#004D34] text-white overflow-hidden -mt-[128px] pt-[128px]">
+    <section id="hero-services" class="relative bg-[#004D34] text-white overflow-hidden -mt-32 pt-32">
         <div id="hero-bg" class="absolute inset-0 bg-cover bg-center"
             style="background-image: url('assets/hero-services.webp');">
         </div>
@@ -150,18 +184,17 @@
                 <span class="reveal-up inline-block text-xs font-bold uppercase tracking-widest text-emerald-900 mb-4"
                     data-i18n="services.hero_label">Layanan Kami</span>
                 <h1 class="reveal-up text-3xl md:text-5xl font-serif font-light text-gray-900 mb-6 leading-tight">
-                    <span data-i18n="services.hero_title_1">Solusi Terintegrasi untuk</span> <span
-                        class="italic font-normal text-[#004D34]" data-i18n="services.hero_title_green">Pertumbuhan di Jakarta</span>
+                    <span data-i18n="services.hero_title_1">Integrated Solutions for</span> <span
+                        class="italic font-normal text-[#004D34]" data-i18n="services.hero_title_green">Business Growth in Jakarta</span>
                 </h1>
                 <p class="reveal-up text-gray-700/80 text-lg mb-8 max-w-2xl pr-20" data-i18n="services.hero_desc">
-                    We combine deep expertise with practical insight to help businesses navigate complexity, manage
-                    risk, and unlock opportunities with confidence.
+                    Five pillars of expertise. One integrated approach. We combine deep domain knowledge with strategic insight to help businesses navigate complexity and unlock opportunity.
                 </p>
                 <div class="reveal-up flex flex-wrap gap-4">
-                    <a href="#service-selector"
+                    <a href="#accounting"
                         class="bg-[#004D34] text-white px-6 py-3 rounded font-medium hover:bg-[#003322] transition"
                         data-i18n="services.explore_cta">
-                        Explore Services
+                        Explore Our Services
                     </a>
                     <a href="contact-us.html"
                         class="border border-gray-300 text-gray-700 px-6 py-3 rounded font-medium hover:bg-gray-900 hover:text-white transition">
@@ -173,258 +206,189 @@
         </div>
     </section>
 
-    <!-- ============ INTERACTIVE SERVICE SELECTOR ============ -->
-    <section id="service-selector" class="py-20 bg-white scroll-mt-24">
+    <!-- ============ SERVICE PHILOSOPHY ============ -->
+    <section class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <div class="reveal-up mb-10">
-                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700"
-                    data-i18n="services.section_label">Our Services</span>
-                <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="services.section_title">Select a Service to
-                    See How We Can Help</h2>
-            </div>
-
-            <div id="servicesTabs" class="reveal-up grid sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-8" role="tablist">
-                <!-- populated by JS -->
-            </div>
-
-            <div
-                class="reveal-up bg-gray-50 rounded-xl border border-gray-200 p-4 sm:p-8 grid md:grid-cols-2 gap-10 items-center">
-                <img id="serviceImage" src="" alt="" width="800" height="400"
-                    class="rounded-lg w-full h-64 md:h-80 object-cover shadow-sm">
-                <div>
-                    <span id="serviceEyebrow"
-                        class="text-xs font-bold uppercase tracking-widest text-emerald-700 mb-2 block"></span>
-                    <h3 id="serviceTitle" class="text-2xl font-serif mb-3"></h3>
-                    <p id="serviceDesc" class="text-gray-600 mb-5 leading-relaxed"></p>
-                    <ul id="serviceList" class="space-y-2 text-sm text-gray-700 mb-6"></ul>
-                    <a id="serviceLink" href="contact-us.html"
-                        class="inline-block bg-[#004D34] text-white px-6 py-2.5 rounded font-medium hover:bg-[#003322] transition text-sm">
-                        <span data-i18n="services.discuss_cta">Discuss This Service</span> <i data-lucide="arrow-right"
-                            class="text-xs ml-1"></i>
-                    </a>
-                </div>
+            <div class="reveal-up max-w-3xl mx-auto text-center">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="services.philosophy_label">Our Approach</span>
+                <h2 class="text-2xl sm:text-3xl font-serif mt-3 mb-6 text-gray-950" data-i18n="services.philosophy_title">Consulting Built on Expertise, Trust, and Results</h2>
+                <p class="text-gray-500 leading-relaxed" data-i18n="services.philosophy_desc">
+                    Every business challenge is unique. Our multidisciplinary teams bring together specialists across finance, tax, transactions, risk, and strategy to deliver integrated solutions that create lasting value.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- ============ INDUSTRY EXPERTISE ============ -->
-    <section id="industry-expertise" class="py-20 bg-gray-50 border-t border-b border-gray-100">
-        <div class="container mx-auto px-6">
-            <div class="reveal-up flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-12">
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-700"
-                        data-i18n="services.industry_label">Industry Expertise</span>
-                    <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="services.industry_title">We Understand
-                        Your Industry and Its Challenges</h2>
-                </div>
-                <a href="industries.html"
-                    class="text-sm text-[#004D34] font-semibold hover:underline flex items-center gap-1">
-                    <span data-i18n="services.view_industries">View All Industries</span> <i data-lucide="arrow-right"
-                        class="text-xs"></i>
-                </a>
-            </div>
-
-            <div id="industryGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="reveal-up bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition">
-                    <div class="w-12 h-12 rounded-lg bg-amber-500 text-white flex items-center justify-center mb-5">
-                        <i data-lucide="zap" class="text-lg"></i>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-2" data-i18n="services.ind_energy">Energy & Natural Resources
-                    </h3>
-                    <p class="text-sm text-gray-500 leading-relaxed mb-4" data-i18n="services.ind_energy_desc">Advising
-                        oil, gas, and energy companies on
-                        transactions, regulation, and the shift to a low-carbon future.</p>
-                    <a href="industries.html"
-                        class="text-xs font-bold text-[#004D34] hover:underline flex items-center gap-1">
-                        <span data-i18n="services.learn_more">Learn more</span> <i data-lucide="arrow-right"
-                            class="text-[10px]"></i>
-                    </a>
-                </div>
-                <div class="reveal-up bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition">
-                    <div class="w-12 h-12 rounded-lg bg-slate-600 text-white flex items-center justify-center mb-5">
-                        <i data-lucide="factory" class="text-lg"></i>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-2" data-i18n="services.ind_manufacturing">Manufacturing</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed mb-4" data-i18n="services.ind_manuf_desc">Helping
-                        manufacturers improve operations,
-                        strengthen supply chains, and scale sustainable growth.</p>
-                    <a href="industries.html"
-                        class="text-xs font-bold text-[#004D34] hover:underline flex items-center gap-1">
-                        <span data-i18n="services.learn_more">Learn more</span> <i data-lucide="arrow-right"
-                            class="text-[10px]"></i>
-                    </a>
-                </div>
-                <div class="reveal-up bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition">
-                    <div class="w-12 h-12 rounded-lg bg-indigo-900 text-white flex items-center justify-center mb-5">
-                        <i data-lucide="cpu" class="text-lg"></i>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-2" data-i18n="services.ind_tech">Technology & Digital</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed mb-4" data-i18n="services.ind_tech_desc">Supporting
-                        tech and digital-economy
-                        companies through strategy, funding, and transformation.</p>
-                    <a href="industries.html"
-                        class="text-xs font-bold text-[#004D34] hover:underline flex items-center gap-1">
-                        <span data-i18n="services.learn_more">Learn more</span> <i data-lucide="arrow-right"
-                            class="text-[10px]"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ SELECTED EXPERIENCE ============ -->
-    <section id="selected-experience" class="py-20 bg-[#004D34] text-white relative overflow-hidden">
-        <div class="container mx-auto px-6 relative z-10">
-            <span class="reveal-up text-xs font-bold uppercase tracking-widest text-emerald-300 block mb-10"
-                data-i18n="services.experience_label">Selected
-                Experience</span>
-            <div class="grid lg:grid-cols-[1.1fr_1fr] gap-10 items-start">
-                <div class="reveal-up">
-                    <p class="text-sm text-emerald-300 font-semibold mb-2" data-i18n="services.exp_mna">M&A Advisory</p>
-                    <h3 class="text-2xl md:text-3xl font-serif mb-2" data-i18n="services.exp_xyz_title">PT XYZ
-                        Acquisition</h3>
-                    <p class="text-3xl font-bold mb-5" data-i18n="services.exp_xyz_value">USD 50 Million</p>
-                    <p class="text-emerald-100/80 leading-relaxed mb-6 max-w-lg" data-i18n="services.exp_xyz_desc">
-                        Chatura acted as exclusive financial
-                        advisor to PT XYZ in its acquisition of 100% shares of ABC, strengthening its position in the
-                        mining services sector.</p>
-                    <a href="case-studies.html"
-                        class="inline-flex items-center gap-1 text-sm font-semibold border-b border-white/50 hover:border-white pb-0.5 transition">
-                        <span data-i18n="services.read_case">Read Case Study</span> <i data-lucide="arrow-right"
-                            class="text-xs"></i>
-                    </a>
-                </div>
-                <div class="space-y-5">
-                    <div
-                        class="reveal-up bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm hover:bg-white/10 transition">
-                        <span
-                            class="text-[10px] font-bold uppercase tracking-wider bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded inline-block mb-3"
-                            data-i18n="services.exp_energy_tag">Energy</span>
-                        <h4 class="font-bold text-lg mb-1" data-i18n="services.exp_project_fin">Project Financing</h4>
-                        <p class="text-emerald-300 font-semibold mb-3" data-i18n="services.exp_project_fin_value">USD
-                            120 Million</p>
-                        <p class="text-emerald-100/70 text-sm leading-relaxed mb-4"
-                            data-i18n="services.exp_project_fin_desc">Advised on senior secured project
-                            financing for a 250MW solar plant in Indonesia.</p>
-                        <a href="#" class="text-xs font-bold text-white hover:underline flex items-center gap-1"><span
-                                data-i18n="services.read_more">Read
-                                more</span> <i data-lucide="arrow-right" class="text-[10px]"></i></a>
-                    </div>
-                    <div
-                        class="reveal-up bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm hover:bg-white/10 transition">
-                        <span
-                            class="text-[10px] font-bold uppercase tracking-wider bg-sky-500/20 text-sky-300 px-2 py-0.5 rounded inline-block mb-3"
-                            data-i18n="services.exp_infra_tag">Infrastructure</span>
-                        <h4 class="font-bold text-lg mb-1" data-i18n="services.exp_debt">Debt Restructuring</h4>
-                        <p class="text-emerald-300 font-semibold mb-3" data-i18n="services.exp_debt_value">EUR 75
-                            Million</p>
-                        <p class="text-emerald-100/70 text-sm leading-relaxed mb-4" data-i18n="services.exp_debt_desc">
-                            Advised on complex debt
-                            restructuring to strengthen capital structure and improve liquidity.</p>
-                        <a href="#" class="text-xs font-bold text-white hover:underline flex items-center gap-1"><span
-                                data-i18n="services.read_more">Read
-                                more</span> <i data-lucide="arrow-right" class="text-[10px]"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ INSIGHTS & UPDATES (dynamic) ============ -->
-    <style>
-        .insight-featured-card {
-            transition: transform 0.4s ease;
+    <!-- ============ IMAGE COMPOSITION MOTION SYSTEM ============ -->
+    <style type="text/tailwindcss">
+        @keyframes si-float {
+            0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--si-rot, 0deg)) scale(1); }
+            25%      { transform: translate3d(var(--si-x, 0px), -6px, 0) rotate(var(--si-rot, 0deg)) scale(1.008); }
+            50%      { transform: translate3d(0, 0, 0) rotate(var(--si-rot, 0deg)) scale(1); }
+            75%      { transform: translate3d(calc(var(--si-x, 0px) * -0.6), 3px, 0) rotate(var(--si-rot, 0deg)) scale(0.995); }
         }
-
-        .insight-featured-card:hover {
-            transform: translateY(-4px);
+        @keyframes si-shadow {
+            0%, 100% { box-shadow: 0 10px 30px -6px rgba(0,0,0,0.08), 0 4px 12px -2px rgba(0,0,0,0.04); }
+            50%      { box-shadow: 0 16px 40px -4px rgba(0,0,0,0.11), 0 6px 16px -1px rgba(0,0,0,0.06); }
         }
-
-        .insight-featured-card:hover .insight-featured-img {
-            transform: scale(1.05);
-        }
-
-        .insight-featured-card:hover .insight-featured-overlay {
-            opacity: 0.7;
-        }
-
-        .insight-featured-img {
-            transition: transform 0.6s ease;
-        }
-
-        .insight-featured-overlay {
-            transition: opacity 0.4s ease;
-        }
-
-        .insight-side-card {
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .insight-side-card:hover {
-            transform: translateX(6px);
-            border-color: #004D34;
-        }
-
-        .insight-side-card:hover .insight-side-img {
-            transform: scale(1.08);
-        }
-
-        .insight-side-img {
-            transition: transform 0.5s ease;
+        .si-float { animation: si-float var(--si-dur, 12s) cubic-bezier(.45,.05,.55,.95) infinite; will-change: transform; transform: translate3d(0, 0, 0); }
+        .si-shadow { animation: si-shadow var(--si-sh-dur, 10s) ease-in-out infinite; will-change: box-shadow; transition: transform 400ms cubic-bezier(.22,.61,.36,1), box-shadow 400ms cubic-bezier(.22,.61,.36,1); }
+        .si-shadow:hover { transform: scale(1.015); box-shadow: 0 20px 48px -4px rgba(0,0,0,0.14), 0 8px 20px -2px rgba(0,0,0,0.07); }
+        @media (prefers-reduced-motion: reduce) {
+            .si-float { animation: none !important; transform: none !important; }
+            .si-shadow { animation: none !important; }
+            .si-shadow:hover { transform: scale(1.01); }
         }
     </style>
 
-    <section id="insights-updates" class="py-20 bg-white border-b border-gray-100">
+    <!-- ============ SECTION 01: ACCOUNTING & FINANCE ============ -->
+    <section id="accounting" class="py-24 bg-white overflow-hidden">
         <div class="container mx-auto px-6">
-            <div class="reveal-up flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-10">
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-700"
-                        data-i18n="services.insights_label">Insights & Updates</span>
-                    <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="services.insights_title">Perspectives
-                        Worth Your Time</h2>
-                    <p class="text-sm text-gray-400 mt-2" data-i18n="services.insights_description">Expert perspectives
-                        on the issues that matter most to your business.</p>
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="reveal-up">
+                    <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-700 mb-4">
+                        <span class="w-8 h-px bg-emerald-700"></span> 01
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-serif text-gray-950 mb-5 leading-snug">Accounting &amp; Finance</h2>
+                    <p class="text-gray-500 leading-relaxed mb-6 max-w-lg">We help businesses maintain financial integrity, improve reporting accuracy, and gain actionable insights for better decision-making.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-sm text-gray-700"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i> Financial Reporting</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-700"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i> Bookkeeping &amp; Payroll</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-700"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i> CFO Advisory</li>
+                    </ul>
+                    <a href="services/accounting-finance/" class="inline-flex items-center gap-2 bg-[#004D34] text-white px-6 py-3 rounded font-medium text-sm hover:bg-[#003322] transition">
+                        Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
                 </div>
-                <a href="insights.html"
-                    class="text-sm text-[#004D34] font-semibold hover:underline flex items-center gap-1 flex-shrink-0">
-                    <span data-i18n="services.view_insights">View All Insights</span> <i data-lucide="arrow-right"
-                        class="text-xs"></i>
-                </a>
-            </div>
-            <p class="reveal-up text-sm text-gray-400 mb-8 -mt-4">
-                <span data-i18n="services.showing_insights">Showing insights related to</span> <span
-                    id="insightsServiceLabel" class="font-semibold text-[#004D34]">Accounting & Finance</span>
-            </p>
-
-            <div class="flex flex-col lg:flex-row gap-8 items-stretch">
-                <a id="insightFeatured" href="insights.html"
-                    class="insight-featured-card reveal-up group relative rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl block lg:w-7/12 min-h-[380px]">
-                    <div id="insightFeaturedImg" class="insight-featured-img absolute inset-0 bg-cover bg-center"></div>
-                    <div
-                        class="insight-featured-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10">
+                <div class="reveal-up relative" style="--si-x:0px;--si-rot:-2deg;--si-dur:14s;--si-sh-dur:11s">
+                    <div class="absolute -inset-4 bg-emerald-50 rounded-3xl -rotate-2 si-float"></div>
+                    <div class="si-shadow relative rounded-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80" alt="Accounting & Finance" class="relative rounded-2xl w-full h-80 md:h-96 object-cover" loading="lazy">
                     </div>
-                    <div class="relative z-10 p-8 sm:p-10 flex flex-col justify-end h-full">
-                        <span id="insightFeaturedTag"
-                            class="text-[10px] font-bold uppercase tracking-wider bg-emerald-500/90 text-white px-3 py-1 rounded-full inline-block mb-4 w-fit"
-                            data-i18n="services.featured_insight">Featured Insight</span>
-                        <h3 id="insightFeaturedTitle"
-                            class="font-serif text-2xl sm:text-3xl text-white mb-4 leading-snug max-w-lg"></h3>
-                        <div class="flex items-center gap-4 text-xs text-white/60">
-                            <span id="insightFeaturedDate"></span>
-                            <span class="w-1 h-1 rounded-full bg-white/40"></span>
-                            <span id="insightFeaturedRead"></span>
-                        </div>
-                    </div>
-                </a>
-
-                <div id="insightList" class="flex flex-col justify-center gap-5 lg:w-5/12"></div>
+                </div>
             </div>
         </div>
     </section>
-    <section
-        class="py-24 bg-gradient-to-b from-white to-neutral-50/60 border-t border-b border-gray-100 overflow-hidden">
-        <div class="container mx-auto px-6">
 
+    <!-- ============ SECTION 02: TAX SERVICES ============ -->
+    <section id="tax" class="py-24 bg-gray-50 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="reveal-up relative order-2 md:order-1" style="--si-x:5px;--si-rot:2deg;--si-dur:11s;--si-sh-dur:9s">
+                    <div class="absolute -inset-4 bg-amber-50 rounded-3xl rotate-2 si-float"></div>
+                    <div class="si-shadow relative rounded-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80" alt="Tax Services" class="relative rounded-2xl w-full h-80 md:h-96 object-cover" loading="lazy">
+                    </div>
+                </div>
+                <div class="reveal-up order-1 md:order-2">
+                    <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-700 mb-4">
+                        <span class="w-8 h-px bg-emerald-700"></span> 02
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-serif text-gray-950 mb-5 leading-snug">Tax Services</h2>
+                    <p class="text-gray-500 leading-relaxed mb-6 max-w-lg">We help businesses manage their tax obligations, optimize tax positions, and ensure compliance with applicable regulations.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-sm text-gray-700"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i> Corporate Tax Compliance</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-700"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i> Transfer Pricing</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-700"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i> International Tax Advisory</li>
+                    </ul>
+                    <a href="services/tax-services/" class="inline-flex items-center gap-2 bg-[#004D34] text-white px-6 py-3 rounded font-medium text-sm hover:bg-[#003322] transition">
+                        Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION 03: BUSINESS TRANSFER ============ -->
+    <section id="transfer" class="py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="reveal-up">
+                    <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-700 mb-4">
+                        <span class="w-8 h-px bg-emerald-700"></span> 03
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-serif text-gray-950 mb-5 leading-snug">Business Transfer</h2>
+                    <p class="text-gray-500 leading-relaxed mb-6 max-w-lg">We find the right buyers and sellers, structure transactions, and manage transitions to build long-term successful outcomes.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-sm text-gray-700"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i> Business Valuation</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-700"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i> Buy-Side &amp; Sell-Side Advisory</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-700"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i> Due Diligence</li>
+                    </ul>
+                    <a href="services/business-transfer/" class="inline-flex items-center gap-2 bg-[#004D34] text-white px-6 py-3 rounded font-medium text-sm hover:bg-[#003322] transition">
+                        Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                <div class="reveal-up relative" style="--si-x:4px;--si-rot:-1deg;--si-dur:12s;--si-sh-dur:10s">
+                    <div class="absolute -inset-4 bg-sky-50 rounded-3xl -rotate-1 si-float"></div>
+                    <div class="si-shadow relative rounded-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1744957279993-3395a9c4fe05?auto=format&fit=crop&w=900&q=80" alt="Business Transfer" class="relative rounded-2xl w-full h-80 md:h-96 object-cover" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION 04: RISK MANAGEMENT ============ -->
+    <section id="risk" class="py-24 bg-gray-50 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="reveal-up relative order-2 md:order-1" style="--si-x:2px;--si-rot:1deg;--si-dur:13s;--si-sh-dur:12s">
+                    <div class="absolute -inset-4 bg-rose-50 rounded-3xl rotate-1 si-float"></div>
+                    <div class="si-shadow relative rounded-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80" alt="Risk Management" class="relative rounded-2xl w-full h-80 md:h-96 object-cover" loading="lazy">
+                    </div>
+                </div>
+                <div class="reveal-up order-1 md:order-2">
+                    <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-700 mb-4">
+                        <span class="w-8 h-px bg-emerald-700"></span> 04
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-serif text-gray-950 mb-5 leading-snug">Risk Management</h2>
+                    <p class="text-gray-500 leading-relaxed mb-6 max-w-lg">We identify, assess, and manage business risks to build resilience and support sustainable, confident growth.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-sm text-gray-700"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i> Enterprise Risk Assessment</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-700"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i> Internal Controls</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-700"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i> Governance Framework</li>
+                    </ul>
+                    <a href="services/risk-management/" class="inline-flex items-center gap-2 bg-[#004D34] text-white px-6 py-3 rounded font-medium text-sm hover:bg-[#003322] transition">
+                        Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION 05: CORPORATE ADVISORY ============ -->
+    <section id="advisory" class="py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="reveal-up">
+                    <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-700 mb-4">
+                        <span class="w-8 h-px bg-emerald-700"></span> 05
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-serif text-gray-950 mb-5 leading-snug">Corporate Advisory</h2>
+                    <p class="text-gray-500 leading-relaxed mb-6 max-w-lg">We act as a strategic partner to leadership teams, guiding major decisions from restructuring to long-term growth planning.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-sm text-gray-700"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i> Strategic Planning</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-700"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i> Corporate Restructuring</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-700"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i> Succession Planning</li>
+                    </ul>
+                    <a href="services/corporate-advisory/" class="inline-flex items-center gap-2 bg-[#004D34] text-white px-6 py-3 rounded font-medium text-sm hover:bg-[#003322] transition">
+                        Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                <div class="reveal-up relative" style="--si-x:3px;--si-rot:-2deg;--si-dur:10s;--si-sh-dur:8s">
+                    <div class="absolute -inset-4 bg-indigo-50 rounded-3xl -rotate-2 si-float"></div>
+                    <div class="si-shadow relative rounded-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80" alt="Corporate Advisory" class="relative rounded-2xl w-full h-80 md:h-96 object-cover" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ INDUSTRY EXPOSURE ============ -->
+    <section id="industry-exposure" class="py-24 bg-gray-100 border-t border-b border-gray-100 overflow-hidden">
+        <div class="container mx-auto px-6">
             <div class="reveal-up text-center max-w-2xl mx-auto mb-16">
                 <div class="flex items-center justify-center gap-2 mb-3">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-700"></span>
@@ -437,230 +401,208 @@
                     Supporting corporate entities, state-owned enterprises, and family conglomerates through
                     comprehensive tax configurations, structural advisory, and confidential business transfers.
                 </p>
-                <div class="w-12 h-[1px] bg-gray-200 mx-auto mt-6"></div>
+                <div class="w-12 h-px bg-gray-200 mx-auto mt-6"></div>
             </div>
 
-            <div class="reveal-up relative w-full overflow-hidden mb-16"
-                style="mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);">
+            <div id="marqueeWrap" class="reveal-up relative w-full overflow-hidden mb-16" style="mask-image:linear-gradient(90deg,transparent,black 15%,black 85%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 15%,black 85%,transparent)"></div>
 
-                <div
-                    class="flex gap-16 items-center w-max animate-[marquee_25s_linear_infinite] hover:[animation-play-state:paused]">
-
-                    <div
-                        class="flex gap-16 items-center justify-center text-gray-400 font-serif font-bold text-lg tracking-widest">
-                        <span
-                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2"
-                            role="img" aria-label="BCA Logo">BCA</span>
-                        <span
-                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2"
-                            role="img" aria-label="MANDIRI Logo">MANDIRI</span>
-                        <span
-                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2"
-                            role="img" aria-label="PERTAMINA Logo">PERTAMINA</span>
-                        <span
-                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2"
-                            role="img" aria-label="APRIL Logo">APRIL</span>
-                        <span
-                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2"
-                            role="img" aria-label="ADARO Logo">ADARO</span>
-                        <span
-                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2"
-                            role="img" aria-label="TELKOM Logo">TELKOM</span>
-                    </div>
-
-                    <div class="flex gap-16 items-center justify-center text-gray-400 font-serif font-bold text-lg tracking-widest"
-                        aria-hidden="true">
-                        <span
-                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2">BCA</span>
-                        <span
-                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2">MANDIRI</span>
-                        <span
-                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2">PERTAMINA</span>
-                        <span
-                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2">APRIL</span>
-                        <span
-                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2">ADARO</span>
-                        <span
-                            class="grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2">TELKOM</span>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="reveal-up w-full h-[1px] bg-gray-200/70 mb-12"></div>
+            <div class="reveal-up w-full h-px bg-gray-200/70 mb-12"></div>
 
             <div class="reveal-up grid grid-cols-2 md:grid-cols-4 gap-4 justify-center items-stretch text-center">
-
-                <div
-                    class="bg-white border border-gray-100 p-6 rounded-xl shadow-2xs hover:border-emerald-200 transition duration-300 flex flex-col justify-between">
+                <div class="bg-white border border-gray-100 p-6 rounded-xl shadow-2xs hover:border-emerald-200 transition duration-300 flex flex-col justify-between">
                     <div>
                         <h4 class="text-2xl font-serif font-bold text-gray-950 leading-tight">15+</h4>
-                        <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mt-1.5"
-                            data-i18n="transfer.m1">Industry Sectors</p>
+                        <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mt-1.5" data-i18n="transfer.d1">Industry Sectors</p>
                     </div>
-                    <p class="text-[11px] text-gray-400 mt-2 leading-relaxed">Cross-sector alignment adaptability index.
-                    </p>
+                    <p class="text-[11px] text-gray-400 mt-2 leading-relaxed">Cross-sector alignment adaptability index.</p>
                 </div>
-
-                <div
-                    class="bg-white border border-gray-100 p-6 rounded-xl shadow-2xs hover:border-emerald-200 transition duration-300 flex flex-col justify-between">
+                <div class="bg-white border border-gray-100 p-6 rounded-xl shadow-2xs hover:border-emerald-200 transition duration-300 flex flex-col justify-between">
                     <div>
                         <h4 class="text-2xl font-serif font-bold text-gray-950 leading-tight">120+</h4>
-                        <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mt-1.5"
-                            data-i18n="transfer.m2">Advisory Projects</p>
+                        <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mt-1.5" data-i18n="transfer.d2">Advisory Projects</p>
                     </div>
-                    <p class="text-[11px] text-gray-400 mt-2 leading-relaxed">Successfully delivered structural
-                        mandates.</p>
+                    <p class="text-[11px] text-gray-400 mt-2 leading-relaxed">Successfully delivered structural mandates.</p>
                 </div>
-
-                <div
-                    class="bg-white border border-gray-100 p-6 rounded-xl shadow-2xs hover:border-emerald-200 transition duration-300 flex flex-col justify-between">
+                <div class="bg-white border border-gray-100 p-6 rounded-xl shadow-2xs hover:border-emerald-200 transition duration-300 flex flex-col justify-between">
                     <div>
                         <h4 class="text-2xl font-serif font-bold text-gray-950 leading-tight">Regional</h4>
-                        <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mt-1.5"
-                            data-i18n="transfer.m3">Business Network</p>
+                        <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mt-1.5" data-i18n="transfer.d3">Business Network</p>
                     </div>
-                    <p class="text-[11px] text-gray-400 mt-2 leading-relaxed">Strategic hub footprints spanning APAC
-                        desk channels.</p>
+                    <p class="text-[11px] text-gray-400 mt-2 leading-relaxed">Strategic hub footprints spanning APAC desk channels.</p>
                 </div>
-
-                <div
-                    class="bg-white border border-gray-100 p-6 rounded-xl shadow-2xs hover:border-emerald-200 transition duration-300 flex flex-col justify-between">
+                <div class="bg-white border border-gray-100 p-6 rounded-xl shadow-2xs hover:border-emerald-200 transition duration-300 flex flex-col justify-between">
                     <div>
                         <h4 class="text-2xl font-serif font-bold text-gray-950 leading-tight">Confidential</h4>
-                        <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mt-1.5"
-                            data-i18n="transfer.m4">Engagements</p>
+                        <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mt-1.5" data-i18n="transfer.d4">Engagements</p>
                     </div>
-                    <p class="text-[11px] text-gray-400 mt-2 leading-relaxed">Strict adherence to standard
-                        non-disclosure codes.</p>
+                    <p class="text-[11px] text-gray-400 mt-2 leading-relaxed">Strict adherence to standard non-disclosure codes.</p>
                 </div>
-
             </div>
-
         </div>
     </section>
 
-    <style>
-        @keyframes marquee {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
+    <style type="text/tailwindcss">
+        #marqueeWrap .marquee-track { display: flex; align-items: center; width: max-content; animation-name: marquee-scroll; animation-timing-function: linear; animation-iteration-count: infinite; animation-play-state: paused; }
+        #marqueeWrap .marquee-track.is-ready { animation-play-state: running; }
+        @keyframes marquee-scroll { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(var(--marquee-distance, -50%), 0, 0); } }
+        @media (prefers-reduced-motion: reduce) { #marqueeWrap .marquee-track { animation: none !important; transform: none !important; } }
     </style>
 
-    <!-- ============ OUR EXPERTS (dynamic) ============ -->
-    <style>
-        .expert-item {
-            transition: transform 0.3s ease;
-        }
-
-        .expert-item:hover {
-            transform: translateY(-8px);
-        }
-
-        .expert-item:hover .expert-name {
-            color: #004D34;
-        }
-
-        .expert-item:hover .expert-social {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .expert-social {
-            opacity: 0;
-            transform: translateY(8px);
-            transition: all 0.3s ease;
-        }
-
-        .experts-row {
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .experts-row::-webkit-scrollbar {
-            display: none;
-        }
-
-        @media (max-width: 640px) {
-            .experts-row {
-                display: flex;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                gap: 2rem;
-                padding-bottom: 1rem;
-            }
-
-            .expert-item {
-                flex: 0 0 260px;
-                scroll-snap-align: center;
-            }
-        }
-
-        @media (min-width: 641px) and (max-width: 1024px) {
-            .experts-row {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 3rem;
-            }
-        }
-
-        @media (min-width: 1025px) {
-            .experts-row {
-                display: flex;
-                justify-content: center;
-                gap: 3rem;
-            }
-
-            .expert-item {
-                flex: 0 0 calc(25% - 2.25rem);
-            }
-        }
+    <!-- ============ OUR EXPERTS ============ -->
+    <style type="text/tailwindcss">
+        .expert-card { display: flex; align-items: center; gap: 10px; background: #E8EFEC; border: 1px solid #E8EFEC; border-radius:1%; padding: 10px; cursor: pointer; transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform; }
+        .expert-card:hover { background: #004D34; border-color: #004D34; transform: translateY(-8px); box-shadow: 0 12px 32px rgba(0, 77, 52, 0.12); }
+        .expert-card:hover .expert-card__name, .expert-card:hover .expert-card__role, .expert-card:hover .expert-card__expertise, .expert-card:hover .expert-card__cta { color: #ffffff; }
+        .expert-card:hover .expert-card__expertise { color: rgba(255,255,255,0.8); }
+        .expert-card:hover .expert-card__arrow { color: #ffffff; transform: translateX(4px); }
+        .expert-card:hover .expert-card__img { transform: scale(1.04); }
+        .expert-card__img { width: 100px; height: 100%; border-radius: 1%; object-fit: cover; object-position: top; flex-shrink: 0; transition: transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .expert-card__body { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+        .expert-card__name { font-weight: 600; font-size: 1rem; line-height: 1.3; color: #111827; transition: color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-bottom: 6px; }
+        .expert-card__role { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #6B7280; transition: color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-bottom: 14px; }
+        .expert-card__expertise { font-size: 0.75rem; color: #004D34; font-weight: 500; transition: color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-bottom: 18px; }
+        .expert-card__cta { display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 600; color: #004D34; transition: color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .expert-card__arrow { transition: color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        @media (max-width: 1024px) { .expert-card__img { width: 80px; height: 104px; border-radius: 14px; } .expert-card { padding: 1.25rem; gap: 1rem; } }
+        @media (max-width: 640px) { .expert-card { padding: 1.25rem; gap: 1rem; } .expert-card__img { width: 72px; height: 96px; border-radius: 12px; } .expert-card__name { font-size: 0.9375rem; } }
+        .expert-modal-overlay { opacity: 0; pointer-events: none; }
+        .expert-modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .expert-modal-overlay.active .expert-modal-content { transform: scale(1) translateY(0); }
+        .expert-modal-content { transform: scale(0.95) translateY(15px); }
+        .expert-custom-scroll::-webkit-scrollbar { width: 6px; }
+        .expert-custom-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
+        .expert-custom-scroll::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 4px; }
     </style>
 
-    <section id="our-experts" class="py-20" style="background: linear-gradient(180deg, #ffffff, #fafcfb);">
-        <div class="container mx-auto px-6">
-            <div class="text-center reveal-up mb-12">
+    <section id="our-experts" class="py-28" style="background: #ffffff;">
+        <div class="mx-auto px-6" style="max-width: 1280px;">
+            <div class="text-center mb-16 reveal-up">
                 <span class="text-xs font-bold uppercase tracking-widest text-emerald-700"
                     data-i18n="services.experts_label">Our Experts</span>
-                <h2 class="text-2xl sm:text-3xl font-serif mt-2 mb-3" data-i18n="services.experts_title_2">Meet
-                    Specialists Behind Every Business Decision</h2>
-                <p class="text-sm text-gray-500 max-w-xl mx-auto" data-i18n="services.experts_subtitle">Professional
-                    advisors with deep expertise across finance, tax, transactions, and risk.</p>
-                <div class="mt-4 inline-flex items-center gap-2 bg-emerald-50 px-4 py-1.5 rounded-full">
-                    <span class="text-xs font-semibold text-[#004D34]" data-i18n="services.experts_service_label">Experts
-                        in</span>
-                    <span id="expertsServiceLabel" class="text-xs font-bold text-[#004D34]">Accounting & Finance</span>
+                <h2 class="text-2xl sm:text-3xl font-serif mt-3 mb-4" data-i18n="services.experts_title_2">Meet Specialists Behind Every Business Decision</h2>
+                <p class="text-sm text-gray-500 max-w-xl mx-auto" data-i18n="services.experts_subtitle">Professional advisors with deep expertise across finance, tax, transactions, and risk.</p>
+            </div>
+            <div id="expertsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+            <div class="text-center mt-14">
+                <a href="our-people.html" class="inline-flex items-center text-sm font-medium text-[#004D34] hover:text-emerald-700 transition">
+                    <span data-i18n="services.view_all_experts">View All Experts</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 ml-1.5"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Bio Modal -->
+    <div id="expertBioModal" class="expert-modal-overlay fixed inset-0 z-50 transition-all duration-300 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-gray-900/60 backdrop-blur-xs" onclick="closeExpertModal()"></div>
+        <div class="expert-modal-content bg-white max-w-4xl w-full z-10 shadow-2xl overflow-hidden border border-gray-100 flex flex-col md:flex-row transition-all duration-300 max-h-[90vh] md:max-h-[85vh]">
+            <button onclick="closeExpertModal()" class="absolute top-4 right-4 bg-white/80 p-1.5 rounded-full text-gray-500 hover:text-gray-800 shadow-xs border border-gray-100 transition z-20">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="w-full md:w-1/3 bg-gray-50 p-8 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-gray-100 shrink-0 text-center">
+                <img id="expertModalImg" src="" alt="" class="w-36 h-48 rounded-xl object-cover shadow-md border-4 border-white mb-4 bg-gray-200">
+                <h3 id="expertModalName" class="text-xl font-bold text-gray-900 leading-tight"></h3>
+                <p id="expertModalTitle" class="text-xs font-bold text-[#004D34] uppercase tracking-wide mt-1 mb-2"></p>
+                <div class="flex gap-2.5 w-full mt-4">
+                    <a id="expertModalLinkedin" href="#" target="_blank" rel="noopener noreferrer" class="flex-1 bg-white border border-gray-200 rounded-lg py-2 text-xs font-semibold text-gray-600 hover:text-emerald-900 hover:border-emerald-700 flex justify-center items-center gap-1 transition">
+                        <i data-lucide="linkedin" class="w-3.5 h-3.5"></i> LinkedIn
+                    </a>
+                    <a id="expertModalEmail" href="#" class="flex-1 bg-white border border-gray-200 rounded-lg py-2 text-xs font-semibold text-gray-600 hover:text-emerald-900 hover:border-emerald-700 flex justify-center items-center gap-1 transition">
+                        <i data-lucide="mail" class="w-3.5 h-3.5"></i> Email
+                    </a>
                 </div>
             </div>
+            <div class="w-full md:w-2/3 p-8 overflow-y-auto expert-custom-scroll flex flex-col gap-6">
+                <div>
+                    <h4 class="text-xs font-bold uppercase text-gray-400 tracking-wider mb-2" data-i18n="people.modal_bio">Biography</h4>
+                    <p id="expertModalBio" class="text-gray-600 text-sm leading-relaxed"></p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold uppercase text-gray-400 tracking-wider mb-2" data-i18n="people.modal_expertise">Expertise &amp; Practice Focus</h4>
+                    <div id="expertModalExpertise" class="flex flex-wrap gap-1.5"></div>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold uppercase text-gray-400 tracking-wider mb-3" data-i18n="people.modal_experience">Representative Experience</h4>
+                    <ul id="expertModalExperience" class="space-y-2 text-xs text-gray-600"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            <div id="expertsGrid" class="experts-row"></div>
+    <!-- ============ STRATEGIC INTELLIGENCE ============ -->
+    <style type="text/tailwindcss">
+        .si-featured { position: relative; border-radius: 20px; overflow: hidden; background: #111; height: 100%; cursor: pointer; will-change: transform; }
+        .si-featured-img { position: absolute; inset: 0; }
+        .si-featured-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 460ms cubic-bezier(.22,.61,.36,1); will-change: transform; }
+        .si-featured:hover .si-featured-img img { transform: scale(1.05); }
+        .si-featured-badge { position: absolute; top: 16px; left: 16px; z-index: 3; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(255,255,255,0.95); color: #111; padding: 4px 10px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.12); }
+        .si-featured-glass { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px; background: rgba(255,255,255,0.88); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-top: 1px solid rgba(255,255,255,0.45); transition: height 460ms cubic-bezier(.22,.61,.36,1), padding 460ms cubic-bezier(.22,.61,.36,1); height: 140px; z-index: 2; }
+        .si-featured:hover .si-featured-glass { height: calc(100% - 40px); padding: 28px; }
+        .si-featured-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #004D34; margin-bottom: 8px; }
+        .si-featured-title { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; font-weight: 700; color: #111; line-height: 1.3; margin-bottom: 0; }
+        .si-featured-desc { font-size: 13px; line-height: 1.65; color: #555; margin-top: 10px; opacity: 0; transform: translateY(12px); transition: opacity 280ms ease 80ms, transform 280ms ease 80ms; }
+        .si-featured:hover .si-featured-desc { opacity: 1; transform: translateY(0); }
+        .si-featured-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; opacity: 0; transform: translateY(10px); transition: opacity 280ms ease 160ms, transform 280ms ease 160ms; }
+        .si-featured:hover .si-featured-footer { opacity: 1; transform: translateY(0); }
+        .si-featured-meta { font-size: 10px; color: #999; font-weight: 500; }
+        .si-featured-cta { font-size: 11px; font-weight: 700; color: #004D34; display: inline-flex; align-items: center; gap: 4px; transition: gap 200ms ease; }
+        .si-featured-cta:hover { gap: 8px; }
+        .si-list { display: flex; flex-direction: column; height: 100%; justify-content: space-between; }
+        .si-list-item { display: flex; align-items: center; gap: 16px; flex: 1; padding: 16px 12px; border-bottom: 1px solid #E8EFEC; cursor: pointer; transition: background 350ms ease; border-radius: 12px; }
+        .si-list-item:last-child { border-bottom: none; }
+        .si-list-item:hover { background: #004D34; }
+        .si-list-thumb { width: 64px; height: 64px; border-radius: 10px; object-fit: cover; flex-shrink: 0; transition: transform 350ms ease; }
+        .si-list-item:hover .si-list-thumb { transform: scale(1.06); }
+        .si-list-body { flex: 1; min-width: 0; }
+        .si-list-cat { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #004D34; transition: color 350ms ease; }
+        .si-list-item:hover .si-list-cat { color: rgba(255,255,255,0.7); }
+        .si-list-title { font-size: 14px; font-weight: 600; color: #111827; line-height: 1.35; margin-top: 3px; transition: color 350ms ease; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .si-list-item:hover .si-list-title { color: #fff; }
+        .si-list-meta { font-size: 10px; color: #999; font-weight: 500; margin-top: 4px; transition: color 350ms ease; }
+        .si-list-item:hover .si-list-meta { color: rgba(255,255,255,0.6); }
+        .si-list-arrow { color: #d1d5db; flex-shrink: 0; transition: color 350ms ease, transform 350ms ease; }
+        .si-list-item:hover .si-list-arrow { color: #fff; transform: translateX(4px); }
+        @media (max-width: 1024px) { .si-featured-title { font-size: 20px; } }
+        @media (max-width: 768px) { .si-featured { height: auto; min-height: 320px; } .si-featured-img { position: relative; height: 220px; } .si-featured-glass { position: relative; height: auto !important; border-radius: 0 0 20px 20px; backdrop-filter: none; background: #fff; border-top: none; } .si-featured:hover .si-featured-glass { height: auto !important; } .si-featured-desc, .si-featured-footer { opacity: 1 !important; transform: none !important; } .si-list { height: auto; } .si-list-item { flex: none; } .si-list-thumb { width: 52px; height: 52px; } }
+        @media (max-width: 640px) { .si-featured-img { height: 180px; } .si-featured-title { font-size: 18px; } }
+    </style>
+
+    <section id="strategic-intelligence" class="py-24" style="background: #ffffff;">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up text-center max-w-3xl mx-auto mb-14">
+                <div class="flex items-center justify-center gap-2 mb-3">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-700"></span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-800"
+                        data-i18n="services.si_label">Strategic Intelligence</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-serif font-light text-gray-950 mb-4"
+                    data-i18n="services.si_title">Insights Supporting Every Professional Service</h2>
+                <p class="text-sm text-gray-500 max-w-xl mx-auto leading-relaxed"
+                    data-i18n="services.si_subtitle">Stay informed with regulatory updates, market intelligence,
+                    strategic perspectives, and executive insights that empower better business decisions.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 reveal-up" id="siGrid">
+                <div class="lg:col-span-7" id="siFeatured"></div>
+                <div class="lg:col-span-5" id="siList"></div>
+            </div>
         </div>
     </section>
 
     <!-- ============ FINAL CTA ============ -->
-    <section id="final-cta" class="py-16 bg-white">
+    <section id="final-cta" class="bg-gray-100 text-white py-16 relative overflow-hidden">
         <div class="container mx-auto px-6">
-            <div
-                class="reveal-up bg-[#004D34] rounded-2xl px-8 py-12 md:px-14 md:py-14 flex flex-col md:flex-row items-center justify-between gap-8 text-white relative overflow-hidden">
+            <div class="reveal-up px-8 py-12 md:px-14 md:py-14 flex flex-col md:flex-row items-center justify-between gap-8 text-gray-900 relative overflow-hidden">
                 <div class="flex items-start gap-5 relative z-10">
-                    <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                    <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
                         <i data-lucide="message-square" class="text-lg"></i>
                     </div>
                     <div>
-                        <h2 class="text-2xl md:text-3xl font-serif mb-2" data-i18n="services.cta_title">Let's Discuss
-                            Your Business Goals</h2>
-                        <p class="text-emerald-100/80 text-sm max-w-md" data-i18n="services.cta_desc">Our team is ready
-                            to help you navigate
-                            complex challenges and achieve sustainable growth.</p>
+                        <h2 class="text-2xl md:text-3xl font-serif mb-2" data-i18n="services.cta_title">Let's Discuss Your Business Goals</h2>
+                        <p class="text-emerald-900/80 text-sm max-w-dd" data-i18n="services.cta_desc">Our team is ready to help you navigate complex challenges and achieve sustainable growth.</p>
                     </div>
                 </div>
                 <a href="contact-us.html"
-                    class="inline-flex items-center bg-gray-900 text-white text-sm px-6 py-2.5 rounded font-medium hover:bg-gray-600 transition whitespace-nowrap">
+                    class="inline-flex items-center bg-gray-900 text-white text-sm px-6 py-2.5 rounded font-medium hover:bg-[#004D34] transition whitespace-nowrap">
                     <span data-i18n="services.cta_button">Talk To Us</span> <i data-lucide="arrow-right"
                         class="text-xs ml-2"></i>
                 </a>
@@ -672,17 +614,13 @@
 
     <!-- WhatsApp Widget -->
     <div class="wa-widget">
-        <button type="button" class="wa-launcher" id="waLauncher" aria-label="Chat via WhatsApp" aria-expanded="false"
-            aria-controls="waPopup">
+        <button type="button" class="wa-launcher" id="waLauncher" aria-label="Chat via WhatsApp" aria-expanded="false" aria-controls="waPopup">
             <svg viewBox="0 0 24 24" class="wa-icon" aria-hidden="true" focusable="false">
-                <path fill="currentColor"
-                    d="M19.11 4.93A9.9 9.9 0 0 0 3.6 16.88L2 22l5.24-1.54a9.89 9.89 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.79-6.84Zm-7.12 15.1h-.01c-1.53 0-3.03-.41-4.34-1.18l-.31-.18-3.11.91.84-3.03-.2-.32a8.26 8.26 0 1 1 7.13 3.8Zm4.53-6.18c-.25-.13-1.49-.74-1.72-.82-.23-.08-.4-.12-.57.13-.17.25-.66.82-.8.99-.15.17-.29.19-.54.06-.25-.13-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.36-1.69-.14-.25-.02-.38.11-.5.12-.12.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.57-1.37-.78-1.87-.21-.51-.42-.44-.57-.45h-.49c-.17 0-.45.06-.68.32-.23.25-.89.87-.89 2.11s.92 2.44 1.05 2.6c.13.17 1.82 2.77 4.42 3.89.62.27 1.11.43 1.49.55.63.2 1.2.17 1.65.1.5-.08 1.49-.61 1.7-1.2.21-.59.21-1.09.15-1.2-.06-.1-.23-.17-.48-.3Z">
-                </path>
+                <path fill="currentColor" d="M19.11 4.93A9.9 9.9 0 0 0 3.6 16.88L2 22l5.24-1.54a9.89 9.89 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.79-6.84Zm-7.12 15.1h-.01c-1.53 0-3.03-.41-4.34-1.18l-.31-.18-3.11.91.84-3.03-.2-.32a8.26 8.26 0 1 1 7.13 3.8Zm4.53-6.18c-.25-.13-1.49-.74-1.72-.82-.23-.08-.4-.12-.57.13-.17.25-.66.82-.8.99-.15.17-.29.19-.54.06-.25-.13-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.36-1.69-.14-.25-.02-.38.11-.5.12-.12.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.57-1.37-.78-1.87-.21-.51-.42-.44-.57-.45h-.49c-.17 0-.45.06-.68.32-.23.25-.89.87-.89 2.11s.92 2.44 1.05 2.6c.13.17 1.82 2.77 4.42 3.89.62.27 1.11.43 1.49.55.63.2 1.2.17 1.65.1.5-.08 1.49-.61 1.7-1.2.21-.59.21-1.09.15-1.2-.06-.1-.23-.17-.48-.3Z"></path>
             </svg>
             <span class="wa-pulse" aria-hidden="true"></span>
         </button>
-        <div id="waPopup" class="wa-popup" role="dialog" aria-modal="false" aria-labelledby="wa-title"
-            aria-hidden="true">
+        <div id="waPopup" class="wa-popup" role="dialog" aria-modal="false" aria-labelledby="wa-title" aria-hidden="true">
             <div class="wa-header">
                 <div>
                     <p class="wa-eyebrow">CHATURA SUPPORT</p>
@@ -690,39 +628,20 @@
                 </div>
                 <button type="button" class="wa-close" id="waClose" aria-label="Close WhatsApp contact options">
                     <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-                        <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8"
-                            stroke-linecap="round"></path>
+                        <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
                     </svg>
                 </button>
             </div>
-            <p class="wa-intro">Choose the department that best matches your enquiry and we'll connect you directly on
-                WhatsApp.</p>
+            <p class="wa-intro">Choose the department that best matches your enquiry and we'll connect you directly on WhatsApp.</p>
             <div class="wa-options">
-                <a href="https://wa.me/6212345678?text=Hi+Chatura%2C+I+need+help+with+general+inquiry." target="_blank"
-                    rel="noopener noreferrer" class="wa-option">
-                    <span class="wa-option-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                            <path d="M4 12a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8"
-                                stroke-linecap="round" stroke-linejoin="round"></path>
-                            <rect x="3.5" y="12" width="4" height="7" rx="2" fill="none" stroke="currentColor"
-                                stroke-width="1.8"></rect>
-                            <rect x="16.5" y="12" width="4" height="7" rx="2" fill="none" stroke="currentColor"
-                                stroke-width="1.8"></rect>
-                            <path d="M8 20c0 1.1.9 2 2 2h2" fill="none" stroke="currentColor" stroke-width="1.8"
-                                stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg></span>
-                    <span class="wa-option-content"><strong>General Inquiry</strong><span>Accounting, Tax &
-                            Advisory</span></span>
+                <a href="https://wa.me/6212345678?text=Hi+Chatura%2C+I+need+help+with+general+inquiry." target="_blank" rel="noopener noreferrer" class="wa-option">
+                    <span class="wa-option-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 12a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><rect x="3.5" y="12" width="4" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"></rect><rect x="16.5" y="12" width="4" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"></rect><path d="M8 20c0 1.1.9 2 2 2h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                    <span class="wa-option-content"><strong>General Inquiry</strong><span>Accounting, Tax &amp; Advisory</span></span>
                     <span class="wa-arrow" aria-hidden="true">→</span>
                 </a>
-                <a href="https://wa.me/6212345678?text=Hi+Chatura%2C+I+need+help+with+business+transfer."
-                    target="_blank" rel="noopener noreferrer" class="wa-option">
-                    <span class="wa-option-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                            <path d="M12 3 5 6v5c0 4.5 2.7 7.6 7 10 4.3-2.4 7-5.5 7-10V6l-7-3Zm-3 9 2 2 4-4" fill="none"
-                                stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                            </path>
-                        </svg></span>
-                    <span class="wa-option-content"><strong>Business Transfer</strong><span>M&A and deal
-                            advisory</span></span>
+                <a href="https://wa.me/6212345678?text=Hi+Chatura%2C+I+need+help+with+business+transfer." target="_blank" rel="noopener noreferrer" class="wa-option">
+                    <span class="wa-option-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 2.7 7.6 7 10 4.3-2.4 7-5.5 7-10V6l-7-3Zm-3 9 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                    <span class="wa-option-content"><strong>Business Transfer</strong><span>M&amp;A and deal advisory</span></span>
                     <span class="wa-arrow" aria-hidden="true">→</span>
                 </a>
             </div>
@@ -732,84 +651,62 @@
             </div>
         </div>
     </div>
-    <!-- ============ FOOTER ============ -->
-    <footer class="bg-neutral-900 text-gray-400">
 
-        <!-- Brand Manifesto -->
+    <!-- ============ FOOTER ============ -->
+    <footer class="bg-[#004D34] text-white/70">
         <div class="container mx-auto px-6 pt-24 pb-20">
             <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
                 <div class="reveal-up">
-                    <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500 block mb-6" data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
+                    <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-white/50 block mb-6" data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
                     <img width="487" height="350" src="assets/chatura-footer.webp" alt="Chatura Indonesia" class="h-36 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
-                    <p class="text-sm text-gray-400 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated professional services providing accounting, tax, business advisory, and risk management solutions across the Indonesian archipelago and Southeast Asian markets.</p>
+                    <p class="text-sm text-white/60 leading-[1.9] max-w-dd" data-i18n="footer.manifesto_desc">Integrated professional services providing accounting, tax, business advisory, and risk management solutions across the Indonesian archipelago and Southeast Asian markets.</p>
                     <div class="flex items-center gap-5 mt-8 text-gray-500">
-                        <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-[18px] h-[18px]"></i></a>
-                        <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-[18px] h-[18px]"></i></a>
-                        <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-[18px] h-[18px]"></i></a>
-                        <a href="mailto:hello@chatura.co.id" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-[18px] h-[18px]"></i></a>
+                        <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-4.5 h-4.5"></i></a>
+                        <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-4.5 h-4.5"></i></a>
+                        <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-4.5 h-4.5"></i></a>
+                        <a href="mailto:hello@chatura.co.id" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4.5 h-4.5"></i></a>
                     </div>
                 </div>
-
                 <div class="reveal-up grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-12">
                     <div>
                         <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.services_heading">Services</h4>
                         <ul class="space-y-3.5">
-                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_1">Accounting & Finance<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_2">Tax Services<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="business-transfer.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_3">Business Transfer<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_4">Risk Management<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="services.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.service_5">Corporate Advisory<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services/accounting-finance/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group">Accounting &amp; Finance<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services/tax-services/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group">Tax Services<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services/business-transfer/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group">Business Transfer<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services/risk-management/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group">Risk Management<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="services/corporate-advisory/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group">Corporate Advisory<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.industries_heading">Industries</h4>
                         <ul class="space-y-3.5">
-                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_1">Energy & Resources<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_2">Manufacturing<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_3">Technology & Digital<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="industries.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_4">Healthcare<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries/energy/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_1">Energy &amp; Resources<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries/manufacturing/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_2">Manufacturing<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries/technology/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_3">Technology &amp; Digital<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="industries/healthcare/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_4">Healthcare<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.company_heading">Company</h4>
                         <ul class="space-y-3.5">
-                            <li><a href="index.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_1">About Us<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="our-people.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_2">Our People<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="join-us.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_3">Careers<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
-                            <li><a href="insights.html" class="text-xs text-gray-400 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_4">Insights<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="index.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_1">About Us<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="our-people.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_2">Our People<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="career.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_3">Careers<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="insights.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_4">Insights<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Conversation Block -->
-        <div class="border-t border-neutral-800/50">
-            <div class="container mx-auto px-6 py-20">
-                <div class="reveal-up flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
-                    <div>
-                        <h2 class="text-2xl md:text-[1.75rem] font-serif text-white leading-snug max-w-xl" data-i18n="footer.cta_title">Let's Discuss Your Next Business Decision.</h2>
-                        <p class="text-sm text-gray-500 mt-4 max-w-md leading-relaxed" data-i18n="footer.cta_desc">Our advisory team is prepared to structure tailored solutions for your organization's most critical transitions.</p>
-                    </div>
-                    <a href="contact-us.html" class="inline-flex items-center gap-2.5 bg-[#004D34] text-white px-8 py-4 rounded-full font-medium text-sm hover:bg-emerald-600 transition-all duration-300 shadow-lg shadow-[#004D34]/20 hover:shadow-xl hover:shadow-[#004D34]/30 hover:-translate-y-0.5 flex-shrink-0 group">
-                        <span data-i18n="footer.cta_button">Talk To Advisors</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Hairline Divider -->
-        <div class="container mx-auto px-6"><div class="h-px bg-neutral-800/60"></div></div>
-
-        <!-- Bottom Strip -->
+        <div class="container mx-auto px-6"><div class="h-px bg-white/10"></div></div>
         <div class="container mx-auto px-6 py-10">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-4">
                     <img width="487" height="350" src="assets/chatura-footer.webp" alt="Chatura" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
-                    <span class="text-[11px] text-gray-500" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
+                    <span class="text-[11px] text-white/50" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
                 </div>
-                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-gray-500">
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-white/50">
                     <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.privacy">Privacy Policy</a>
                     <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.terms">Terms of Use</a>
                     <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.cookies">Cookies</a>
@@ -825,22 +722,16 @@
                 </div>
             </div>
         </div>
-
-        <!-- Legal Disclosure -->
-        <div class="border-t border-neutral-800/40">
-            <div class="container mx-auto px-6 py-6">
-                <p class="text-[10px] text-gray-600 leading-relaxed text-center" data-i18n="footer.legal">Chatura Indonesia is an integrated professional services firm. This website is for general informational purposes only and does not constitute professional advice. All information is subject to change without notice.</p>
+        <div class="border-t border-white/10">
+            <div class="container mx-auto">
+                <p class="text-[10px] text-brand-green leading-relaxed text-center" data-i18n="footer.legal">Chatura Indonesia is an integrated professional services firm. This website is for general informational purposes only and does not constitute professional advice. All information is subject to change without notice.</p>
             </div>
         </div>
-
     </footer>
 
     <script src="assets/i18n/i18n.js"></script>
     <script>document.addEventListener("DOMContentLoaded", function () { lucide.createIcons(); });</script>
     <script>
-        /* =========================================================
-           0. Navbar scroll effect (same behavior as homepage)
-        ========================================================= */
         (function () {
             var nav = document.getElementById('navbar-sticky');
             if (!nav) return;
@@ -852,500 +743,98 @@
             window.addEventListener('scroll', toggle, { passive: true });
         })();
 
-        /* =========================================================
-           1. DATA — single source of truth for services, experts,
-              and insights. Selecting a service re-renders the panel
-              AND re-ranks the Experts / Insights sections below.
-        ========================================================= */
-        var SERVICES = [
-            {
-                key: 'accounting',
-                label: 'Accounting & Finance',
-                icon: 'calculator',
-                eyebrow: 'Accounting & Finance',
-                title: 'Accounting & Finance',
-                desc: 'We help businesses maintain financial integrity, improve reporting accuracy, and gain actionable insights for better decision-making.',
-                list: ['Financial Reporting', 'Bookkeeping & Payroll', 'CFO Advisory', 'Management Reporting'],
-                image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80'
-            },
-            {
-                key: 'tax',
-                label: 'Tax Services',
-                icon: 'file-text',
-                eyebrow: 'Tax Services',
-                title: 'Tax Services',
-                desc: 'We help businesses manage their tax obligations, optimize tax positions, and ensure compliance with applicable regulations.',
-                list: ['Corporate Tax Compliance', 'Transfer Pricing', 'Tax Dispute Resolution', 'International Tax Advisory'],
-                image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80'
-            },
-            {
-                key: 'transfer',
-                label: 'Business Transfer',
-                icon: 'arrow-left-right',
-                eyebrow: 'Business Transfer',
-                title: 'Business Transfer',
-                desc: 'We find the right buyers and sellers, structure transactions, and manage transitions to build long-term successful outcomes.',
-                list: ['Business Valuation', 'Buy-Side & Sell-Side Advisory', 'Due Diligence', 'Deal Structuring'],
-                image: 'https://images.unsplash.com/photo-1744957279993-3395a9c4fe05?auto=format&fit=crop&w=900&q=80'
-            },
-            {
-                key: 'risk',
-                label: 'Risk Management',
-                icon: 'shield',
-                eyebrow: 'Risk Management',
-                title: 'Risk Management',
-                desc: 'We identify, assess, and manage business risks to build resilience and support sustainable, confident growth.',
-                list: ['Enterprise Risk Assessment', 'Internal Controls', 'Fraud Investigation', 'Governance Framework'],
-                image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80'
-            },
-            {
-                key: 'advisory',
-                label: 'Corporate Advisory',
-                icon: 'handshake',
-                eyebrow: 'Corporate Advisory',
-                title: 'Corporate Advisory',
-                desc: 'We act as a strategic partner to leadership teams, guiding major decisions from restructuring to long-term growth planning.',
-                list: ['Strategic Planning', 'Corporate Restructuring', 'Governance Advisory', 'Succession Planning'],
-                image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80'
-            }
-        ];
-
         var EXPERTS = [
-            {
-                name: 'Andi Rio Ilham Monry',
-                role: 'Managing Partner',
-                tags: ['accounting', 'advisory'],
-                photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&h=300&q=80'
-            },
-            {
-                name: 'Dyna Agustina',
-                role: 'Partner, Tax Services',
-                tags: ['tax'],
-                photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&h=300&q=80'
-            },
-            {
-                name: 'Bezaliel B. Erlan',
-                role: 'Partner, Business Transfer',
-                tags: ['transfer'],
-                photo: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&h=300&q=80'
-            },
-            {
-                name: 'Adine K. Nadya',
-                role: 'Partner, Risk Management',
-                tags: ['risk'],
-                photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&h=300&q=80'
-            }
+            { name: 'Andi Rio Ilhad Monry', role: 'Managing Partner', tags: ['accounting', 'advisory'], tagsDisplay: 'M&A · Corporate Advisory', photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&h=500&q=80', email: 'monry.a@chatura.co.id', linkedin: 'https://linkedin.com', bioKey: 'people.p3_bio', expertiseKeys: ['people.p3_exp_1', 'people.p3_exp_2', 'people.p3_exp_3'], experienceKeys: ['people.p3_exp_4', 'people.p3_exp_5'] },
+            { name: 'Dyna Agustina', role: 'Partner, Tax Services', tags: ['tax'], tagsDisplay: 'International Tax · Transfer Pricing', photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=500&q=80', email: 'agustina.d@chatura.co.id', linkedin: 'https://linkedin.com', bioKey: 'people.p6_bio', expertiseKeys: ['people.p6_exp_1', 'people.p6_exp_2', 'people.p6_exp_3'], experienceKeys: ['people.p6_exp_4', 'people.p6_exp_5'] },
+            { name: 'Bezaliel B. Erlan', role: 'Partner, Business Transfer', tags: ['transfer'], tagsDisplay: 'Deal Structuring · Due Diligence', photo: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&h=500&q=80', email: 'erlan.b@chatura.co.id', linkedin: 'https://linkedin.com', bioKey: 'people.p4_bio', expertiseKeys: ['people.p4_exp_1', 'people.p4_exp_2', 'people.p4_exp_3'], experienceKeys: ['people.p4_exp_4', 'people.p4_exp_5'] },
+            { name: 'Adine K. Nadya', role: 'Partner, Risk Management', tags: ['risk'], tagsDisplay: 'Enterprise Risk · Governance', photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&h=500&q=80', email: 'nadya.a@chatura.co.id', linkedin: 'https://linkedin.com', bioKey: 'people.p5_bio', expertiseKeys: ['people.p5_exp_1', 'people.p5_exp_2', 'people.p5_exp_3'], experienceKeys: ['people.p5_exp_4', 'people.p5_exp_5'] }
         ];
 
-        var INSIGHTS = [
-            {
-                title: 'Indonesian Tax Reform: What Businesses Need to Prepare for in 2026',
-                tag: 'Tax', tagColor: 'bg-blue-50 text-blue-700',
-                date: 'May 22, 2026', read: '6 min read',
-                tags: ['tax'],
-                image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80'
-            },
-            {
-                title: 'Global Minimum Tax: What It Means for Indonesian Companies',
-                tag: 'Tax', tagColor: 'bg-blue-50 text-blue-700',
-                date: 'May 02, 2026', read: '4 min read',
-                tags: ['tax'],
-                image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=300&h=300&q=80'
-            },
-            {
-                title: 'Family Business Succession Planning: Key Considerations',
-                tag: 'Business Transfer', tagColor: 'bg-emerald-50 text-emerald-700',
-                date: 'Apr 25, 2026', read: '5 min read',
-                tags: ['transfer', 'advisory'],
-                image: 'https://images.unsplash.com/photo-1542744094-24638eff59d3?auto=format&fit=crop&w=300&h=300&q=80'
-            },
-            {
-                title: 'Managing Risk in a Volatile Economic Landscape',
-                tag: 'Risk Management', tagColor: 'bg-amber-50 text-amber-700',
-                date: 'Apr 15, 2026', read: '7 min read',
-                tags: ['risk'],
-                image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=300&h=300&q=80'
-            },
-            {
-                title: 'Strengthening Financial Reporting Standards Ahead of Audit Season',
-                tag: 'Accounting & Finance', tagColor: 'bg-emerald-50 text-emerald-700',
-                date: 'Apr 08, 2026', read: '5 min read',
-                tags: ['accounting'],
-                image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=300&h=300&q=80'
-            },
-            {
-                title: 'Building a Governance Framework for Family-Owned Conglomerates',
-                tag: 'Corporate Advisory', tagColor: 'bg-indigo-50 text-indigo-700',
-                date: 'Mar 30, 2026', read: '6 min read',
-                tags: ['advisory'],
-                image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=300&h=300&q=80'
-            }
-        ];
-
-        var currentServiceKey = 'accounting';
-
-        /* =========================================================
-           2. Render: Service tab bar
-        ========================================================= */
-        function renderServiceTabs() {
-            var wrap = document.getElementById('servicesTabs');
+        function renderExperts() {
+            var grid = document.getElementById('expertsGrid');
             var t = window.getTranslations() || {};
-            var SERVICE_LABELS = { accounting: t['services.tab_accounting'] || 'Accounting & Finance', tax: t['services.tab_tax'] || 'Tax', transfer: t['services.tab_transfer'] || 'Business Transfer', risk: t['services.tab_risk'] || 'Risk Management', advisory: t['services.tab_advisory'] || 'Corporate Advisory' };
-            wrap.innerHTML = SERVICES.map(function (s, i) {
-                var label = SERVICE_LABELS[s.key] || s.label;
-                return '<button type="button" role="tab" data-key="' + s.key + '" aria-selected="' + (s.key === currentServiceKey) + '" ' +
-                    'class="service-tab-btn flex items-center gap-3 px-4 py-4 rounded-lg border border-gray-200 bg-white text-gray-700 hover:border-emerald-300 transition text-left">' +
-                    '<span class="service-tab-icon w-9 h-9 rounded-md bg-emerald-50 text-[#004D34] flex items-center justify-center flex-shrink-0"><i data-lucide="' + s.icon + '" class="w-5 h-5"></i></span>' +
-                    '<span class="font-medium text-sm">' + label + '</span>' +
-                    '</button>';
+            grid.innerHTML = EXPERTS.map(function (e, i) {
+                return '<div class="expert-card" onclick="openExpertModal(' + i + ')">' +
+                    '<img src="' + e.photo + '" alt="' + e.name + '" loading="lazy" class="expert-card__img">' +
+                    '<div class="expert-card__body">' +
+                    '<h3 class="expert-card__name">' + e.name + '</h3>' +
+                    '<p class="expert-card__role">' + e.role + '</p>' +
+                    '<p class="expert-card__expertise">' + (e.tagsDisplay || '') + '</p>' +
+                    '<span class="expert-card__cta">View Profile <i data-lucide="arrow-right" class="w-3.5 h-3.5 expert-card__arrow"></i></span>' +
+                    '</div></div>';
             }).join('');
-
-            Array.from(wrap.querySelectorAll('.service-tab-btn')).forEach(function (btn) {
-                btn.addEventListener('click', function () {
-                    selectService(btn.getAttribute('data-key'));
-                });
-            });
             if (typeof lucide !== 'undefined') lucide.createIcons();
         }
 
-        /* =========================================================
-           3. Render: Service detail panel (with GSAP crossfade)
-        ========================================================= */
-        function renderServicePanel(animate) {
-            var s = SERVICES.find(function (x) { return x.key === currentServiceKey; });
+        var _expertModal = document.getElementById('expertBioModal');
+        window.openExpertModal = function (idx) {
+            var e = EXPERTS[idx];
+            if (!e) return;
             var t = window.getTranslations() || {};
-            var SERVICE_TITLES = { accounting: t['services.tab_accounting'] || s.title, tax: t['services.tab_tax'] || s.title, transfer: t['services.tab_transfer'] || s.title, risk: t['services.tab_risk'] || s.title, advisory: t['services.tab_advisory'] || s.title };
-            var SERVICE_DESCS = { accounting: t['services.accounting_desc'] || s.desc, tax: t['services.tax_desc'] || s.desc, transfer: t['services.transfer_desc'] || s.desc, risk: t['services.risk_desc'] || s.desc, advisory: t['services.advisory_desc'] || s.desc };
-            var SERVICE_LISTS = {
-                accounting: [t['services.accounting_list_1'] || s.list[0], t['services.accounting_list_2'] || s.list[1], t['services.accounting_list_3'] || s.list[2], t['services.accounting_list_4'] || s.list[3]],
-                tax: [t['services.tax_list_1'] || s.list[0], t['services.tax_list_2'] || s.list[1], t['services.tax_list_3'] || s.list[2], t['services.tax_list_4'] || s.list[3]],
-                transfer: [t['services.transfer_list_1'] || s.list[0], t['services.transfer_list_2'] || s.list[1], t['services.transfer_list_3'] || s.list[2], t['services.transfer_list_4'] || s.list[3]],
-                risk: [t['services.risk_list_1'] || s.list[0], t['services.risk_list_2'] || s.list[1], t['services.risk_list_3'] || s.list[2], t['services.risk_list_4'] || s.list[3]],
-                advisory: [t['services.advisory_list_1'] || s.list[0], t['services.advisory_list_2'] || s.list[1], t['services.advisory_list_3'] || s.list[2], t['services.advisory_list_4'] || s.list[3]]
-            };
-            var translatedList = SERVICE_LISTS[s.key] || s.list;
-            var translatedTitle = SERVICE_TITLES[s.key] || s.title;
-            var translatedDesc = SERVICE_DESCS[s.key] || s.desc;
-
-            var img = document.getElementById('serviceImage');
-            var eyebrow = document.getElementById('serviceEyebrow');
-            var title = document.getElementById('serviceTitle');
-            var desc = document.getElementById('serviceDesc');
-            var list = document.getElementById('serviceList');
-
-            function apply() {
-                img.src = s.image;
-                img.alt = translatedTitle;
-                eyebrow.textContent = translatedTitle;
-                title.textContent = translatedTitle;
-                desc.textContent = translatedDesc;
-                list.innerHTML = translatedList.map(function (item) {
-                    return '<li class="flex items-center"><i data-lucide="check" class="mr-2 text-xs"></i> ' + item + '</li>';
-                }).join('');
-            }
-
-            var panel = document.getElementById('service-selector').querySelector('.grid.md\\:grid-cols-2');
-
-            if (animate && typeof gsap !== 'undefined') {
-                gsap.to(panel, {
-                    opacity: 0, y: 8, duration: 0.18, ease: 'power1.in', onComplete: function () {
-                        apply();
-                        gsap.fromTo(panel, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
-                    }
-                });
-            } else {
-                apply();
-            }
-
-            // sync active tab styling
-            document.querySelectorAll('.service-tab-btn').forEach(function (btn) {
-                btn.setAttribute('aria-selected', btn.getAttribute('data-key') === currentServiceKey ? 'true' : 'false');
-            });
-        }
-
-        /* =========================================================
-           4. Render: Related Experts (re-ranked by relevance)
-        ========================================================= */
-        function renderExperts(animate) {
-            var grid = document.getElementById('expertsGrid');
-            var s = SERVICES.find(function (x) { return x.key === currentServiceKey; });
-            var t = window.getTranslations() || {};
-            document.getElementById('expertsServiceLabel').textContent = s.label;
-
-            var ranked = EXPERTS.slice().sort(function (a, b) {
-                var aMatch = a.tags.indexOf(currentServiceKey) > -1 ? 0 : 1;
-                var bMatch = b.tags.indexOf(currentServiceKey) > -1 ? 0 : 1;
-                return aMatch - bMatch;
-            });
-
-            function build() {
-                grid.innerHTML = ranked.map(function (e) {
-                    return '<div class="expert-item text-center">' +
-                        '<div class="relative overflow-hidden rounded-2xl mb-4 bg-gray-50">' +
-                        '<img src="' + e.photo + '" alt="' + e.name + '" width="300" height="400" loading="lazy" class="w-full h-72 object-cover object-top transition-transform duration-500 hover:scale-105">' +
-                        '</div>' +
-                        '<h4 class="expert-name font-semibold text-[18px] text-gray-900 mb-1 transition-colors">' + e.name + '</h4>' +
-                        '<p class="text-sm text-gray-500 mb-3">' + e.role + '</p>' +
-                        '<div class="expert-social flex items-center justify-center gap-3">' +
-                        '<a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-800 hover:text-emerald-800 hover:border-emerald-800 transition"><i data-lucide="linkedin" class="w-4 h-4"></i></a>' +
-                        '<a href="mailto:hello@chatura.co.id" aria-label="Email" class="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-800 hover:text-emerald-800 hover:border-emerald-800 transition"><i data-lucide="mail" class="w-4 h-4"></i></a>' +
-                        '<a href="our-people.html" aria-label="View Profile" class="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-800 hover:text-emerald-800 hover:border-emerald-800 transition"><i data-lucide="external-link" class="w-4 h-4"></i></a>' +
-                        '</div>' +
-                        '</div>';
-                }).join('');
-                if (typeof lucide !== 'undefined') lucide.createIcons();
-            }
-
-            if (animate) {
-                grid.style.opacity = '0';
-                grid.style.transform = 'translateY(30px)';
-                setTimeout(function () {
-                    build();
-                    if (typeof gsap !== 'undefined') {
-                        gsap.fromTo(grid, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' });
-                    } else {
-                        grid.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                        grid.style.opacity = '1';
-                        grid.style.transform = 'translateY(0)';
-                    }
-                }, 250);
-            } else {
-                build();
-            }
-        }
-
-        /* =========================================================
-           5. Render: Related Insights (featured + list, re-ranked)
-        ========================================================= */
-        function renderInsights(animate) {
-            var s = SERVICES.find(function (x) { return x.key === currentServiceKey; });
-            document.getElementById('insightsServiceLabel').textContent = s.label;
-
-            var matched = INSIGHTS.filter(function (i) { return i.tags.indexOf(currentServiceKey) > -1; });
-            var rest = INSIGHTS.filter(function (i) { return i.tags.indexOf(currentServiceKey) === -1; });
-            var ordered = matched.concat(rest);
-
-            var featured = ordered[0];
-            var list = ordered.slice(1, 4);
-
-            document.getElementById('insightFeaturedImg').style.backgroundImage = "url('" + featured.image + "')";
-            document.getElementById('insightFeaturedTag').textContent = featured.tag;
-            document.getElementById('insightFeaturedTitle').textContent = featured.title;
-            document.getElementById('insightFeaturedDate').textContent = featured.date;
-            document.getElementById('insightFeaturedRead').textContent = featured.read;
-
-            var listEl = document.getElementById('insightList');
-            listEl.innerHTML = list.map(function (i) {
-                var isMatch = i.tags.indexOf(currentServiceKey) > -1;
-                return '<a href="insights.html" class="insight-side-card flex gap-4 bg-white rounded-xl border border-gray-100 p-4 hover:shadow-md ' + (isMatch ? 'related-highlight' : '') + '">' +
-                    '<div class="w-32 h-24 rounded-lg bg-cover bg-center flex-shrink-0 overflow-hidden">' +
-                    '<div class="insight-side-img w-full h-full" style="background-image:url(\'' + i.image + '\')"></div>' +
-                    '</div>' +
-                    '<div class="min-w-0 flex flex-col justify-center">' +
-                    '<span class="text-[10px] font-bold uppercase tracking-wider ' + i.tagColor + ' px-2 py-0.5 rounded-full inline-block mb-2 w-fit">' + i.tag + '</span>' +
-                    '<h4 class="font-semibold text-sm text-gray-900 leading-snug mb-2 line-clamp-2">' + i.title + '</h4>' +
-                    '<div class="flex items-center gap-2 text-xs text-gray-400">' +
-                    '<span>' + i.date + '</span>' +
-                    '<span class="w-1 h-1 rounded-full bg-gray-300"></span>' +
-                    '<span>' + i.read + '</span>' +
-                    '</div>' +
-                    '</div></a>';
+            document.getElementById('expertModalImg').src = e.photo;
+            document.getElementById('expertModalImg').alt = e.name;
+            document.getElementById('expertModalName').textContent = e.name;
+            document.getElementById('expertModalTitle').textContent = e.role;
+            document.getElementById('expertModalLinkedin').href = e.linkedin;
+            document.getElementById('expertModalEmail').href = 'mailto:' + e.email;
+            document.getElementById('expertModalBio').textContent = t[e.bioKey] || e.bioKey;
+            document.getElementById('expertModalExpertise').innerHTML = (e.expertiseKeys || []).map(function (k) {
+                return '<span class="text-[11px] font-medium bg-emerald-50 text-emerald-900 border border-emerald-100/60 px-2.5 py-0.5 rounded-full">' + (t[k] || k) + '</span>';
             }).join('');
+            document.getElementById('expertModalExperience').innerHTML = (e.experienceKeys || []).map(function (k) {
+                return '<li class="flex items-start gap-2 mb-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-emerald-700 shrink-0"></i> <span>' + (t[k] || k) + '</span></li>';
+            }).join('');
+            _expertModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        };
+        window.closeExpertModal = function () {
+            _expertModal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+        renderExperts();
+        window.addEventListener('langChange', function () { renderExperts(); });
 
-            if (animate && typeof gsap !== 'undefined') {
-                gsap.fromTo(listEl.querySelectorAll('.insight-side-card'), { opacity: 0, x: 16 },
-                    { opacity: 1, x: 0, duration: 0.4, stagger: 0.08, ease: 'power2.out' });
-            }
-        }
+        (function () {
+            var SI_ARTICLES = [
+                { featured: true, category: 'Accounting & Finance', title: 'Strengthening Financial Reporting Standards Ahead of Audit Season', desc: 'Indonesian companies face tightening audit requirements in 2026. A proactive approach to financial reporting hygiene not only reduces compliance risk but strengthens stakeholder confidence.', image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80', read: '7 min read', date: 'Apr 08, 2026' },
+                { category: 'Tax Services', title: 'Global Minimum Tax: What It Means for Indonesian Companies', image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=300&q=80', read: '5 min read' },
+                { category: 'Business Transfer', title: 'Family Business Succession Planning: Key Considerations', image: 'https://images.unsplash.com/photo-1776057441344-38e0587ad1e6?auto=format&fit=crop&w=300&q=80', read: '6 min read' },
+                { category: 'Risk Management', title: 'Enterprise Risk Management in the Digital Age', image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=300&q=80', read: '4 min read' },
+                { category: 'Corporate Advisory', title: 'Navigating Corporate Restructuring for Sustainable Growth', image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=300&q=80', read: '5 min read' }
+            ];
+            var featured = SI_ARTICLES[0];
+            var list = SI_ARTICLES.slice(1);
+            document.getElementById('siFeatured').innerHTML =
+                '<a href="insights.html" class="si-featured block">' +
+                    '<div class="si-featured-img"><img src="' + featured.image + '" alt="' + featured.title + '" loading="lazy"></div>' +
+                    '<span class="si-featured-badge">' + featured.category + '</span>' +
+                    '<div class="si-featured-glass">' +
+                        '<p class="si-featured-eyebrow">' + featured.category + '</p>' +
+                        '<h3 class="si-featured-title">' + featured.title + '</h3>' +
+                        '<p class="si-featured-desc">' + featured.desc + '</p>' +
+                        '<div class="si-featured-footer">' +
+                            '<span class="si-featured-meta">' + featured.date + ' · ' + featured.read + '</span>' +
+                            '<span class="si-featured-cta">Read Insight <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>' +
+                        '</div></div></a>';
+            document.getElementById('siList').innerHTML =
+                '<div class="si-list">' + list.map(function (a) {
+                    return '<a href="insights.html" class="si-list-item">' +
+                        '<img src="' + a.image + '" alt="' + a.title + '" loading="lazy" class="si-list-thumb">' +
+                        '<div class="si-list-body"><p class="si-list-cat">' + a.category + '</p><h4 class="si-list-title">' + a.title + '</h4><p class="si-list-meta">' + a.read + '</p></div>' +
+                        '<svg class="si-list-arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>';
+                }).join('') + '</div>';
+        })();
 
-        /* =========================================================
-           6. Select a service -> update everything downstream
-        ========================================================= */
-        function selectService(key) {
-            if (key === currentServiceKey) return;
-            currentServiceKey = key;
-            renderServicePanel(true);
-            renderExperts(true);
-            renderInsights(true);
-        }
-
-        // Footer "Services" links jump straight to a given service
-        document.querySelectorAll('[data-jump-service]').forEach(function (link) {
-            link.addEventListener('click', function (e) {
-                e.preventDefault();
-                selectService(link.getAttribute('data-jump-service'));
-                document.getElementById('service-selector').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
-
-        // Initial render
-        renderServiceTabs();
-        renderServicePanel(false);
-        renderExperts(false);
-        renderInsights(false);
-
-        // Re-render dynamic sections on language change
-        window.addEventListener('langChange', function () {
-            renderServiceTabs();
-            renderServicePanel(false);
-            renderExperts(false);
-            renderInsights(false);
-        });
-
-        /* =========================================================
-           7. GSAP ScrollTrigger — scroll reveal (Framer-Motion-style
-              "animate on scroll" for this vanilla Tailwind site)
-        ========================================================= */
         if (typeof gsap === 'undefined') {
-            // Safety net: if the CDN failed to load, never leave content invisible
-            document.querySelectorAll('.reveal-up, .reveal-fade').forEach(function (el) {
-                el.style.opacity = 1; el.style.transform = 'none';
-            });
+            document.querySelectorAll('.reveal-up, .reveal-fade').forEach(function (el) { el.style.opacity = 1; el.style.transform = 'none'; });
         } else {
             gsap.registerPlugin(ScrollTrigger);
-
-            // Hero: play immediately on load, staggered
-            gsap.to('#hero-services .reveal-up', {
-                opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power2.out', delay: 0.15
-            });
-
-            // Everything else: batch-reveal as it scrolls into view
-            ScrollTrigger.batch('.reveal-up:not(#hero-services .reveal-up)', {
-                start: 'top 85%',
-                once: true,
-                onEnter: function (batch) {
-                    gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out' });
-                }
-            });
-
-            // Safety timeout in case a batch never triggers (e.g. very short page)
-            setTimeout(function () {
-                document.querySelectorAll('.reveal-up').forEach(function (el) {
-                    if (getComputedStyle(el).opacity === '0') { el.style.opacity = 1; el.style.transform = 'none'; }
-                });
-            }, 4000);
+            gsap.to('#hero-services .reveal-up', { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power2.out', delay: 0.15 });
+            ScrollTrigger.batch('.reveal-up:not(#hero-services .reveal-up)', { start: 'top 85%', once: true, onEnter: function (batch) { gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out' }); } });
+            setTimeout(function () { document.querySelectorAll('.reveal-up').forEach(function (el) { if (getComputedStyle(el).opacity === '0') { el.style.opacity = 1; el.style.transform = 'none'; } }); }, 4000);
         }
-
-        /* =========================================================
-           8. Three.js — hero signature element
-              A slow-rotating dotted spiral field, inspired directly
-              by the concentric dot-spiral mark in the Chatura logo.
-        ========================================================= */
-        (function initHeroSpiral() {
-            var canvas = document.getElementById('heroCanvas');
-            var heroSection = document.getElementById('hero-services');
-            if (!canvas || !heroSection || typeof THREE === 'undefined') return;
-
-            var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            var renderer;
-            try {
-                renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
-            } catch (e) {
-                return; // WebGL unsupported — hero still works without it
-            }
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-
-            var scene = new THREE.Scene();
-            var camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
-            camera.position.set(0, 0, 9);
-
-            // Build a spiral point field, echoing the logo's concentric dotted ring
-            var ARMS = 3;
-            var POINTS_PER_ARM = 420;
-            var TOTAL = ARMS * POINTS_PER_ARM;
-            var positions = new Float32Array(TOTAL * 3);
-            var colors = new Float32Array(TOTAL * 3);
-
-            var colorA = new THREE.Color('#0f5c40'); // deep green
-            var colorB = new THREE.Color('#e8f5ee'); // pale mint highlight
-
-            var idx = 0;
-            for (var arm = 0; arm < ARMS; arm++) {
-                var armOffset = (arm / ARMS) * Math.PI * 2;
-                for (var i = 0; i < POINTS_PER_ARM; i++) {
-                    var t = i / POINTS_PER_ARM;
-                    var angle = t * Math.PI * 6 + armOffset;
-                    var radius = 0.6 + t * 4.6;
-                    var jitter = (Math.random() - 0.5) * 0.12;
-                    var x = Math.cos(angle) * radius + jitter;
-                    var y = Math.sin(angle) * radius + jitter;
-                    var z = (Math.random() - 0.5) * 0.6;
-
-                    positions[idx * 3] = x;
-                    positions[idx * 3 + 1] = y;
-                    positions[idx * 3 + 2] = z;
-
-                    var c = colorA.clone().lerp(colorB, t);
-                    colors[idx * 3] = c.r;
-                    colors[idx * 3 + 1] = c.g;
-                    colors[idx * 3 + 2] = c.b;
-
-                    idx++;
-                }
-            }
-
-            var geometry = new THREE.BufferGeometry();
-            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-            var material = new THREE.PointsMaterial({
-                size: 0.045,
-                vertexColors: true,
-                transparent: true,
-                opacity: 0.55,
-                depthWrite: false,
-                blending: THREE.AdditiveBlending
-            });
-
-            var points = new THREE.Points(geometry, material);
-            points.position.set(3.2, -0.6, 0);
-            scene.add(points);
-
-            var mouseX = 0, mouseY = 0;
-            heroSection.addEventListener('mousemove', function (e) {
-                var rect = heroSection.getBoundingClientRect();
-                mouseX = ((e.clientX - rect.left) / rect.width - 0.5);
-                mouseY = ((e.clientY - rect.top) / rect.height - 0.5);
-            });
-
-            function resize() {
-                var w = heroSection.clientWidth;
-                var h = heroSection.clientHeight;
-                renderer.setSize(w, h, false);
-                camera.aspect = w / h;
-                camera.updateProjectionMatrix();
-            }
-            resize();
-            window.addEventListener('resize', resize);
-
-            var isVisible = true;
-            if ('IntersectionObserver' in window) {
-                var io = new IntersectionObserver(function (entries) {
-                    isVisible = entries[0].isIntersecting;
-                }, { threshold: 0.01 });
-                io.observe(heroSection);
-            }
-
-            var clock = new THREE.Clock();
-            function animate() {
-                requestAnimationFrame(animate);
-                if (!isVisible) return;
-                var dt = clock.getDelta();
-                if (!prefersReducedMotion) {
-                    points.rotation.z += dt * 0.06;
-                    camera.position.x += (mouseX * 1.2 - camera.position.x + 0) * 0.02;
-                    camera.position.y += (-mouseY * 1.2 - camera.position.y) * 0.02;
-                    camera.lookAt(points.position);
-                } else {
-                    camera.lookAt(points.position);
-                }
-                renderer.render(scene, camera);
-            }
-            animate();
-        })();
     </script>
-
     <script>
         (function () {
             var launcher = document.getElementById('waLauncher');
@@ -1360,17 +849,45 @@
             }
             launcher.addEventListener('click', togglePopup);
             close.addEventListener('click', function (e) { e.stopPropagation(); togglePopup(); });
-            document.addEventListener('click', function (e) {
-                if (!popup.contains(e.target) && !launcher.contains(e.target) && popup.classList.contains('is-open')) {
-                    togglePopup();
-                }
-            });
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && popup.classList.contains('is-open')) togglePopup();
-            });
+            document.addEventListener('click', function (e) { if (!popup.contains(e.target) && !launcher.contains(e.target) && popup.classList.contains('is-open')) togglePopup(); });
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && popup.classList.contains('is-open')) togglePopup(); });
+        })();
+    </script>
+    <script>
+        (function () {
+            var mm = document.getElementById('mobileMenu');
+            if (!mm) return;
+            window.addEventListener('resize', function () { if (window.innerWidth >= 768 && !mm.classList.contains('hidden')) { mm.classList.add('hidden'); document.body.classList.remove('overflow-hidden'); } });
+        })();
+    </script>
+    <script>
+        (function () {
+            var wrap = document.getElementById('marqueeWrap');
+            if (!wrap) return;
+            var logos = [{ name: 'BCA', label: 'BCA Logo' }, { name: 'MANDIRI', label: 'MANDIRI Logo' }, { name: 'PERTAMINA', label: 'PERTAMINA Logo' }, { name: 'APRIL', label: 'APRIL Logo' }, { name: 'ADARO', label: 'ADARO Logo' }, { name: 'TELKOM', label: 'TELKOM Logo' }];
+            var itemClass = 'grayscale opacity-45 hover:opacity-100 hover:scale-105 hover:text-emerald-800 transition-all duration-300 select-none cursor-default py-2 px-4 shrink-0';
+            function createSpan(logo, hidden) { var span = document.createElement('span'); span.className = itemClass; span.setAttribute('role', 'img'); span.setAttribute('aria-label', logo.label); if (hidden) span.setAttribute('aria-hidden', 'true'); span.textContent = logo.name; return span; }
+            var probe = document.createElement('div'); probe.style.cssText = 'position:absolute;visibility:hidden;display:flex;white-space:nowrap;pointer-events:none;'; logos.forEach(function (logo) { probe.appendChild(createSpan(logo, true)); }); wrap.appendChild(probe); var baseWidth = probe.offsetWidth || 600; wrap.removeChild(probe);
+            var wrapWidth = wrap.clientWidth || 1200; var repeats = Math.max(2, Math.ceil((wrapWidth * 1.5) / baseWidth));
+            var track = document.createElement('div'); track.className = 'marquee-track'; wrap.appendChild(track);
+            for (var half = 0; half < 2; half++) { for (var r = 0; r < repeats; r++) { logos.forEach(function (logo) { track.appendChild(createSpan(logo, half === 1)); }); } }
+            wrap.addEventListener('mouseenter', function () { track.style.animationPlayState = 'paused'; });
+            wrap.addEventListener('mouseleave', function () { if (!pr.matches) track.style.animationPlayState = 'running'; });
+            var pr = window.matchMedia('(prefers-reduced-motion: reduce)');
+            requestAnimationFrame(function () { var halfWidth = track.scrollWidth / 2; var pxPerSecond = 45; var duration = Math.max(halfWidth / pxPerSecond, 8); track.style.setProperty('--marquee-distance', '-' + halfWidth + 'px'); track.style.animationDuration = duration + 's'; if (!pr.matches) track.classList.add('is-ready'); });
+            pr.addEventListener('change', function (e) { if (e.matches) { track.classList.remove('is-ready'); track.style.animationPlayState = 'paused'; } else { track.classList.add('is-ready'); track.style.animationPlayState = 'running'; } });
         })();
     </script>
 
+    <script>
+    (function() {
+        document.querySelectorAll('.mobile-nav-group-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var group = this.closest('.mobile-nav-group');
+                group.classList.toggle('open');
+            });
+        });
+    })();
+    </script>
 </body>
-
 </html>

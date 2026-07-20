@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="../../site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology &amp; Digital Industry Advisory | Chatura Indonesia</title>
+    <meta name="description" content="Chatura Indonesia delivers strategic advisory for technology and digital companies — IPO readiness, cross-border expansion, M&amp;A, and growth strategy for Indonesia's digital economy.">
+    <link rel="canonical" href="https://www.chatura.co.id/industries/technology/">
+    <meta property="og:title" content="Technology &amp; Digital Industry Advisory | Chatura Indonesia">
+    <meta property="og:description" content="Strategic advisory for technology and digital companies: IPO readiness, cross-border expansion, and growth strategy for Indonesia's digital economy.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.chatura.co.id/industries/technology/">
+    <meta property="og:image" content="https://www.chatura.co.id/assets/chatura.jpg">
+    <meta property="og:site_name" content="Chatura Indonesia">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Technology &amp; Digital Industry Advisory | Chatura Indonesia">
+    <meta name="twitter:description" content="Strategic advisory for technology and digital companies in Indonesia.">
+    <meta name="twitter:image" content="https://www.chatura.co.id/assets/chatura.jpg">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Technology &amp; Digital Industry Advisory",
+      "description": "Chatura Indonesia delivers strategic advisory for technology and digital companies including IPO readiness, cross-border expansion, M&amp;A advisory, and growth strategy for Indonesia's digital economy.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Chatura Indonesia",
+        "url": "https://www.chatura.co.id"
+      },
+      "areaServed": "ID",
+      "serviceType": "Technology &amp; Digital Industry Advisory",
+      "url": "https://www.chatura.co.id/industries/technology/"
+    }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="../../assets/design-system.css">
+    <style type="text/tailwindcss">
+        a:has(> svg[data-lucide]),
+        a:has(> i[data-lucide]) {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        #mobileMenu:not(.hidden) {
+            display: flex;
+            flex-direction: column;
+        }
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(.22,.61,.36,1), padding 0.35s cubic-bezier(.22,.61,.36,1);
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .faq-item.open .faq-content {
+            max-height: 500px;
+            padding-bottom: 1.25rem;
+        }
+        .faq-item.open .faq-icon {
+            transform: rotate(180deg);
+        }
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 font-sans antialiased">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ============ HEADER ============ -->
+    <header id="navbar-sticky" class="sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="font-bold text-2xl tracking-wider text-[#004D34] flex items-center gap-2">
+                    <a href="../../index.html"><img width="487" height="350" src="../../assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
+                </div>
+            </div>
+            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
+                <i data-lucide="menu" class="text-xl"></i>
+            </button>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
+                <a href="../../index.html" class="hover:text-emerald-800 transition" data-i18n="nav.about_us">About Us</a>
+                <div class="nav-dropdown">
+                    <a href="../../services.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.services">Services</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="../../services.html" data-i18n="nav.services_overview">Overview</a>
+                        <a href="../../services/accounting-finance/">Accounting &amp; Finance</a>
+                        <a href="../../services/tax-services/">Tax Services</a>
+                        <a href="../../services/business-transfer/">Business Transfer</a>
+                        <a href="../../services/risk-management/">Risk Management</a>
+                        <a href="../../services/corporate-advisory/">Corporate Advisory</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../../industries.html" class="text-[#004D34] font-semibold inline-flex items-center gap-1"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="../../industries.html" data-i18n="nav.industries_overview">Overview</a>
+                        <a href="../../industries/energy/">Energy &amp; Resources</a>
+                        <a href="../../industries/manufacturing/">Manufacturing</a>
+                        <a href="../../industries/technology/" class="active">Technology &amp; Digital</a>
+                        <a href="../../industries/healthcare/">Healthcare</a>
+                        <a href="../../industries/consumer/">Consumer</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../../insights.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.insights">Insights</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="../../insights.html" data-i18n="nav.insights_latest">Latest Insights</a>
+                        <a href="../../insights.html#executive-intelligence">Executive Intelligence</a>
+                        <a href="../../insights.html#strategic-intelligence">Strategic Intelligence</a>
+                        <a href="../../insights.html#publications">Publications</a>
+                        <a href="../../insights.html#downloads">Downloads</a>
+                    </div>
+                </div>
+                <a href="../../our-people.html" class="hover:text-emerald-800 transition" data-i18n="nav.our_people">Our People</a>
+                <a href="../../career.html" class="hover:text-emerald-800 transition" data-i18n="nav.career">Join Us</a>
+                <a href="../../contact-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.contact">Contact</a>
+            </nav>
+            <div class="hidden md:flex items-center space-x-6 text-sm">
+                <div id="lang-selector">
+                    <a href="#" data-lang="en" class="lang-active">EN</a>
+                    <a href="#" data-lang="id" class="lang-inactive">ID</a>
+                </div>
+                <a href="../../contact-us.html" class="bg-[#004D34] text-white px-5 py-2 rounded font-medium hover:bg-[#003322] transition">
+                    <span data-i18n="nav.lets_talk">Let's Talk</span> <i data-lucide="arrow-right" class="text-xs ml-1"></i>
+                </a>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
+            <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
+                <a href="../../index.html"><img width="487" height="350" src="../../assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
+                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
+            </div>
+            <nav class="flex-1 overflow-y-auto p-6 space-y-1">
+                <a href="../../index.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium" data-i18n="nav.about_us">About Us</a>
+                <div class="mobile-nav-group">
+                    <button class="mobile-nav-group-btn" type="button"><span data-i18n="nav.services">Services</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="mobile-nav-submenu">
+                        <a href="../../services.html">Overview</a>
+                        <a href="../../services/accounting-finance/">Accounting &amp; Finance</a>
+                        <a href="../../services/tax-services/">Tax Services</a>
+                        <a href="../../services/business-transfer/">Business Transfer</a>
+                        <a href="../../services/risk-management/">Risk Management</a>
+                        <a href="../../services/corporate-advisory/">Corporate Advisory</a>
+                    </div>
+                </div>
+                <div class="mobile-nav-group open">
+                    <button class="mobile-nav-group-btn is-active-parent" type="button"><span data-i18n="nav.industries">Industries</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="mobile-nav-submenu">
+                        <a href="../../industries.html">Overview</a>
+                        <a href="../../industries/energy/">Energy &amp; Resources</a>
+                        <a href="../../industries/manufacturing/">Manufacturing</a>
+                        <a href="../../industries/technology/" class="is-active-sub">Technology &amp; Digital</a>
+                        <a href="../../industries/healthcare/">Healthcare</a>
+                        <a href="../../industries/consumer/">Consumer</a>
+                    </div>
+                </div>
+                <div class="mobile-nav-group">
+                    <button class="mobile-nav-group-btn" type="button"><span data-i18n="nav.insights">Insights</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <div class="mobile-nav-submenu">
+                        <a href="../../insights.html">Latest Insights</a>
+                        <a href="../../insights.html#executive-intelligence">Executive Intelligence</a>
+                        <a href="../../insights.html#strategic-intelligence">Strategic Intelligence</a>
+                        <a href="../../insights.html#publications">Publications</a>
+                        <a href="../../insights.html#downloads">Downloads</a>
+                    </div>
+                </div>
+                <a href="../../our-people.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium" data-i18n="nav.our_people">Our People</a>
+                <a href="../../career.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium" data-i18n="nav.career">Join Us</a>
+                <a href="../../contact-us.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium" data-i18n="nav.contact">Contact</a>
+            </nav>
+            <div class="p-6 border-t border-gray-100">
+                <a href="../../contact-us.html" class="block w-full bg-[#004D34] text-white text-center px-5 py-3 rounded font-medium hover:bg-[#003322] transition"><span data-i18n="nav.lets_talk">Let's Talk</span></a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+    <!-- ============ BREADCRUMBS ============ -->
+    <nav class="bg-gray-50 border-b border-gray-100 py-3">
+        <div class="container mx-auto px-6">
+            <ol class="flex items-center gap-2 text-xs text-gray-500">
+                <li><a href="../../index.html" class="hover:text-[#004D34] transition">Home</a></li>
+                <li aria-hidden="true">/</li>
+                <li><a href="../../industries.html" class="hover:text-[#004D34] transition">Industries</a></li>
+                <li aria-hidden="true">/</li>
+                <li class="text-gray-900 font-medium">Technology &amp; Digital</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <section id="hero-service" class="relative bg-[#004D34] text-white overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80');"></div>
+        <div class="absolute inset-0" style="background: linear-gradient(100deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.75) 35%, rgba(255,255,255,0.15) 60%, transparent 75%);"></div>
+        <div class="container mx-auto px-6 relative z-10 py-24 md:py-32">
+            <div class="max-w-3xl">
+                <span class="reveal-up inline-block text-[10px] font-bold uppercase tracking-[0.25em] text-emerald-900 mb-4" data-i18n="ind_lp.technology.label">Industry 03</span>
+                <h1 class="reveal-up text-3xl md:text-5xl font-serif font-light text-gray-900 mb-4 leading-tight" data-i18n="ind_lp.technology.title">
+                    Technology &amp; Digital
+                </h1>
+                <p class="reveal-up text-gray-700/80 text-base md:text-lg mb-2 max-w-xl font-serif italic" data-i18n="ind_lp.technology.subtitle">Accelerating digital growth with strategic financial and corporate advisory.</p>
+                <p class="reveal-up text-gray-600 text-sm mb-8 max-w-2xl leading-relaxed" data-i18n="ind_lp.technology.description">
+                    We partner with technology scale-ups, digital platforms, and fintech ventures to navigate IPO readiness, cross-border expansion, M&amp;A execution, and sustainable growth strategies across Southeast Asia's dynamic digital economy.
+                </p>
+                <div class="reveal-up flex flex-wrap gap-4">
+                    <a href="#challenges" class="bg-[#004D34] text-white px-6 py-3 rounded font-medium hover:bg-[#003322] transition text-sm" data-i18n="ind_lp.technology.cta_primary">
+                        Explore Our Approach
+                    </a>
+                    <a href="../../contact-us.html" class="border border-gray-300 text-gray-700 px-6 py-3 rounded font-medium hover:bg-gray-900 hover:text-white transition text-sm" data-i18n="ind_lp.technology.cta_secondary">
+                        Talk to Our Experts <i data-lucide="arrow-right" class="text-xs ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ EXECUTIVE SUMMARY ============ -->
+    <section class="py-20 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="reveal-up mb-6">
+                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="ind_lp.technology.exec_label">Our Practice</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="ind_lp.technology.exec_title">Technology Advisory as a Growth Catalyst</h2>
+                </div>
+                <div class="reveal-up space-y-5 text-sm text-gray-600 leading-[1.9]">
+                    <p data-i18n="ind_lp.technology.exec_p1">
+                        At Chatura Indonesia, our Technology &amp; Digital practice is built on the understanding that technology companies face unique financial, regulatory, and strategic challenges that require specialized advisory expertise. From early-stage ventures seeking seed funding to USD 130 million+ scale-ups preparing for cross-border IPO, we provide the strategic guidance that bridges ambition and execution.
+                    </p>
+                    <p data-i18n="ind_lp.technology.exec_p2">
+                        Our team works closely with founders, CEOs, CFOs, and boards of technology companies across Indonesia's thriving digital economy — spanning SaaS platforms, fintech, e-commerce enablers, health-tech, ed-tech, and AI/ML ventures. We understand the metrics that matter to technology investors and the governance standards required for public market readiness.
+                    </p>
+                    <p data-i18n="ind_lp.technology.exec_p3">
+                        Whether you are a fintech startup navigating Bank Indonesia licensing, a SaaS company preparing for Series B/C funding, or a digital platform eyeing a cross-border IPO on SGX or IDX, Chatura delivers the precision, transparency, and strategic depth your technology organization demands.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BUSINESS CHALLENGES ============ -->
+    <section id="challenges" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up text-center max-w-xl mx-auto mb-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="ind_lp.technology.challenges_label">The Challenge</span>
+                <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="ind_lp.technology.challenges_title">Common Technology Challenges We Address</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
+                    <div class="w-10 h-10 rounded-lg bg-red-50 text-red-600 flex items-center justify-center mb-5"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2" data-i18n="ind_lp.technology.c1_title">IPO Readiness &amp; Public Market Preparation</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed" data-i18n="ind_lp.technology.c1_desc">Scaling from startup to publicly listed company requires rigorous financial reporting, corporate governance upgrades, and compliance frameworks that satisfy exchange requirements and investor scrutiny.</p>
+                </div>
+                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
+                    <div class="w-10 h-10 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center mb-5"><i data-lucide="globe" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2" data-i18n="ind_lp.technology.c2_title">Cross-Border Expansion Complexity</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed" data-i18n="ind_lp.technology.c2_desc">Multi-jurisdictional IPO, cross-border M&amp;A, and regional market entry demand structured financial planning, tax optimization, and regulatory navigation across Southeast Asian markets.</p>
+                </div>
+                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
+                    <div class="w-10 h-10 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center mb-5"><i data-lucide="wallet" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2" data-i18n="ind_lp.technology.c3_title">Funding &amp; Capital Structure</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed" data-i18n="ind_lp.technology.c3_desc">Navigating Series funding rounds, convertible notes, SAFE agreements, and optimizing capital structure for growth while managing dilution and investor expectations requires specialized expertise.</p>
+                </div>
+                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
+                    <div class="w-10 h-10 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center mb-5"><i data-lucide="shield" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2" data-i18n="ind_lp.technology.c4_title">Regulatory &amp; Compliance Burden</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed" data-i18n="ind_lp.technology.c4_desc">Bank Indonesia fintech licensing, OJK digital financial regulations, data sovereignty requirements, and PDP Law compliance create complex regulatory landscapes for technology companies.</p>
+                </div>
+                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
+                    <div class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center mb-5"><i data-lucide="users" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2" data-i18n="ind_lp.technology.c5_title">Talent Acquisition &amp; Retention</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed" data-i18n="ind_lp.technology.c5_desc">Competing for elite engineering, product, and data science talent requires competitive compensation structures, ESOP design, and employer value propositions that resonate with top-tier professionals.</p>
+                </div>
+                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
+                    <div class="w-10 h-10 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center mb-5"><i data-lucide="refresh-cw" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2" data-i18n="ind_lp.technology.c6_title">Profitability &amp; Unit Economics</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed" data-i18n="ind_lp.technology.c6_desc">Transitioning from growth-at-all-costs to sustainable profitability requires restructuring unit economics, optimizing SaaS metrics, and demonstrating clear paths to cash flow breakeven.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SOLUTION ============ -->
+    <section class="py-20 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div class="reveal-up">
+                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-700 mb-3 block" data-i18n="ind_lp.technology.solution_label">Our Solution</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif mt-2 mb-5" data-i18n="ind_lp.technology.solution_title">Integrated Technology Advisory Practice</h2>
+                    <p class="text-sm text-gray-600 leading-[1.9] mb-5" data-i18n="ind_lp.technology.solution_p1">
+                        Our integrated technology advisory practice combines deep capital markets expertise with startup-specific financial acumen. We understand the unique metrics, timelines, and stakeholder dynamics that define technology company growth — from seed stage to public listing.
+                    </p>
+                    <p class="text-sm text-gray-600 leading-[1.9] mb-6" data-i18n="ind_lp.technology.solution_p2">
+                        From IPO readiness assessment and cross-border listing advisory to M&amp;A execution and growth financing, we provide the precision and strategic depth that technology companies need to scale successfully across Southeast Asia and beyond.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-full text-xs font-semibold text-emerald-800" data-i18n="ind_lp.technology.tag1">IPO Readiness</span>
+                        <span class="px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-full text-xs font-semibold text-emerald-800" data-i18n="ind_lp.technology.tag2">Cross-Border Advisory</span>
+                        <span class="px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-full text-xs font-semibold text-emerald-800" data-i18n="ind_lp.technology.tag3">Growth Financing</span>
+                        <span class="px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-full text-xs font-semibold text-emerald-800" data-i18n="ind_lp.technology.tag4">Regulatory Navigation</span>
+                    </div>
+                </div>
+                <div class="reveal-up">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80" alt="Technology advisory and digital strategy" class="rounded-xl shadow-lg w-full object-cover aspect-[4/3]" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ RELEVANT SERVICES ============ -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up text-center max-w-xl mx-auto mb-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="ind_lp.technology.services_label">What We Do</span>
+                <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="ind_lp.technology.services_title">Relevant Services</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <a href="../../services/accounting-finance/" class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col group">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5"><i data-lucide="file-text" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2 group-hover:text-emerald-800 transition">Technology Financial Reporting</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">IPO-grade financial statements, SaaS metrics dashboards, and investor-ready reporting tailored for technology companies and digital platforms.</p>
+                </a>
+                <a href="../../services/tax-services/" class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col group">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5"><i data-lucide="receipt" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2 group-hover:text-emerald-800 transition">Technology Tax Advisory</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Transfer pricing for cross-border tech operations, IP tax structuring, R&amp;D incentive optimization, and digital services tax compliance.</p>
+                </a>
+                <a href="../../services/risk-management/" class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col group">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2 group-hover:text-emerald-800 transition">Technology Risk Management</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Cybersecurity governance, data privacy compliance (PDP Law), SOC 2 readiness, and operational risk frameworks for digital enterprises.</p>
+                </a>
+                <a href="../../services/corporate-advisory/" class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col group">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5"><i data-lucide="briefcase" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2 group-hover:text-emerald-800 transition">M&amp;A and IPO Advisory</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Due diligence, valuation, deal structuring, and IPO preparation for technology companies pursuing multi-jurisdictional listings and strategic acquisitions.</p>
+                </a>
+                <a href="../../services/business-transfer/" class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col group">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5"><i data-lucide="repeat" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2 group-hover:text-emerald-800 transition">Equity &amp; Ownership Advisory</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">ESOP design, cap table optimization, founder equity restructuring, and shareholder agreement advisory for scaling technology ventures.</p>
+                </a>
+                <a href="../../services/corporate-advisory/" class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col group">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5"><i data-lucide="bar-chart-3" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-950 text-sm mb-2 group-hover:text-emerald-800 transition">Growth Strategy &amp; Governance</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Board governance design, board effectiveness reviews, and strategic growth planning for technology companies at every stage of maturity.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ INDUSTRY INSIGHTS ============ -->
+    <section class="py-20 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-10">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="ind_lp.technology.insights_label">Industry Insights</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="ind_lp.technology.insights_title">Latest From Our Practice</h2>
+                </div>
+                <a href="../../insights.html" class="text-xs font-bold text-[#004D34] hover:underline flex items-center gap-1">View All Insights <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <a href="../../insights.html" class="reveal-up bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition group">
+                    <div class="aspect-[16/9] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="IPO readiness for technology companies" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">Capital Markets</span>
+                        <h3 class="font-serif font-bold text-gray-950 text-sm mt-3 mb-2 group-hover:text-emerald-800 transition">IPO Readiness Playbook for Indonesian Technology Scale-Ups</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed">A practical framework for technology companies preparing for cross-border IPO — from financial reporting upgrades to corporate governance transformation.</p>
+                        <span class="text-[11px] text-gray-400 mt-3 block">8 min read</span>
+                    </div>
+                </a>
+                <a href="../../insights.html" class="reveal-up bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition group">
+                    <div class="aspect-[16/9] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Digital economy investment trends" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">Digital Economy</span>
+                        <h3 class="font-serif font-bold text-gray-950 text-sm mt-3 mb-2 group-hover:text-emerald-800 transition">Southeast Asia's Digital Economy: Investment Landscape &amp; Outlook 2026</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed">Analysis of key investment trends across Indonesia's digital ecosystem — from fintech and e-commerce to AI/ML and deep-tech ventures.</p>
+                        <span class="text-[11px] text-gray-400 mt-3 block">10 min read</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ MEET OUR EXPERTS ============ -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up text-center mb-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="ind_lp.technology.experts_label">Our Team</span>
+                <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="ind_lp.technology.experts_title">Meet Our Experts</h2>
+            </div>
+            <div class="reveal-up grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition group">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&h=500&q=80" alt="Andi Rio Ilhad Monry" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif font-bold text-gray-950 text-base mb-1">Andi Rio Ilhad Monry</h3>
+                        <p class="text-xs text-emerald-700 font-medium mb-3">Managing Partner</p>
+                        <p class="text-xs text-gray-500 leading-relaxed mb-4">Overseeing the firm's technology advisory practice with deep expertise in cross-border IPO, M&amp;A, and corporate finance for Southeast Asian digital economy ventures.</p>
+                        <a href="../../our-people.html" class="inline-flex items-center gap-1 text-xs font-bold text-[#004D34] hover:gap-2 transition-all">View Profile <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition group">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=500&q=80" alt="Dyna Agustina" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif font-bold text-gray-950 text-base mb-1">Dyna Agustina</h3>
+                        <p class="text-xs text-emerald-700 font-medium mb-3">Partner, Tax Services</p>
+                        <p class="text-xs text-gray-500 leading-relaxed mb-4">Specializing in technology company tax structuring, IP optimization, transfer pricing for digital businesses, and cross-border tax advisory for Southeast Asian tech operations.</p>
+                        <a href="../../our-people.html" class="inline-flex items-center gap-1 text-xs font-bold text-[#004D34] hover:gap-2 transition-all">View Profile <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section id="faq" class="py-20 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="reveal-up text-center mb-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="ind_lp.technology.faq_label">Questions &amp; Answers</span>
+                <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="ind_lp.technology.faq_title">Frequently Asked Questions</h2>
+            </div>
+            <div class="reveal-up max-w-3xl mx-auto space-y-3">
+                <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="this.closest('.faq-item').classList.toggle('open')">
+                        <span class="font-bold text-sm text-gray-950 pr-4" data-i18n="ind_lp.technology.faq1_q">What technology sub-sectors does Chatura advise?</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 shrink-0 faq-icon"></i>
+                    </button>
+                    <div class="faq-content px-6">
+                        <p class="text-xs text-gray-500 leading-relaxed" data-i18n="ind_lp.technology.faq1_a">We serve the full spectrum of the digital economy: SaaS and cloud platforms, fintech and digital banking, e-commerce enablers and logistics tech, health-tech and ed-tech ventures, AI/ML and deep-tech companies, cybersecurity firms, and digital infrastructure providers including data centers and connectivity platforms.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="this.closest('.faq-item').classList.toggle('open')">
+                        <span class="font-bold text-sm text-gray-950 pr-4" data-i18n="ind_lp.technology.faq2_q">How does Chatura prepare companies for IPO?</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 shrink-0 faq-icon"></i>
+                    </button>
+                    <div class="faq-content px-6">
+                        <p class="text-xs text-gray-500 leading-relaxed" data-i18n="ind_lp.technology.faq2_a">Our IPO readiness program spans 12–24 months and covers financial reporting upgrades (IFRS alignment), corporate governance restructuring (board composition, audit committee formation), due diligence preparation, prospectus advisory, valuation support, and investor roadshow coordination. We work across IDX, SGX, and other regional exchanges for multi-jurisdictional IPO mandates.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="this.closest('.faq-item').classList.toggle('open')">
+                        <span class="font-bold text-sm text-gray-950 pr-4" data-i18n="ind_lp.technology.faq3_q">Can Chatura support cross-border M&amp;A for tech companies?</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 shrink-0 faq-icon"></i>
+                    </button>
+                    <div class="faq-content px-6">
+                        <p class="text-xs text-gray-500 leading-relaxed" data-i18n="ind_lp.technology.faq3_a">Yes. Cross-border M&amp;A in technology involves unique considerations including IP valuation, talent retention, technology stack integration, and multi-jurisdictional regulatory approvals. Our team advises on target identification, due diligence, deal structuring, SPA negotiation, and post-merger integration for technology companies operating across Southeast Asian markets.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="this.closest('.faq-item').classList.toggle('open')">
+                        <span class="font-bold text-sm text-gray-950 pr-4" data-i18n="ind_lp.technology.faq4_q">Does Chatura advise on fintech licensing and regulatory compliance?</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 shrink-0 faq-icon"></i>
+                    </button>
+                    <div class="faq-content px-6">
+                        <p class="text-xs text-gray-500 leading-relaxed" data-i18n="ind_lp.technology.faq4_a">Absolutely. Fintech companies in Indonesia face complex regulatory requirements across Bank Indonesia (payment systems, e-money), OJK (lending, insurance, investment), and Bappebti (crypto assets). We guide fintech ventures through licensing pathways, compliance framework design, regulatory reporting, and ongoing compliance monitoring to ensure sustainable operations within Indonesia's evolving digital financial regulations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="py-16 bg-neutral-950 text-white">
+        <div class="container mx-auto px-6 text-center max-w-2xl relative z-10">
+            <h2 class="text-2xl md:text-3xl font-serif mb-4" data-i18n="ind_lp.technology.cta_title">Ready to Scale Your Technology Business?</h2>
+            <p class="text-neutral-400 text-xs md:text-sm mb-8 leading-relaxed" data-i18n="ind_lp.technology.cta_desc">
+                Engage with our Technology &amp; Digital industry experts to build a strategy that drives IPO readiness, cross-border expansion, and sustainable growth across your digital operations.
+            </p>
+            <a href="../../contact-us.html" class="inline-flex items-center bg-[#004D34] text-white text-xs px-6 py-3 rounded font-semibold hover:bg-emerald-700 transition">
+                Talk To Us <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- ============ SECONDARY CTA ============ -->
+    <section class="py-10 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <a href="../../industries.html" class="inline-flex items-center gap-2 text-sm font-medium text-[#004D34] hover:underline">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> View All Industries
+            </a>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- ============ WHATSAPP SUPPORT LAUNCHER ============ -->
+    <div class="wa-widget">
+        <button type="button" class="wa-launcher" id="waLauncher" aria-label="Chat via WhatsApp" aria-expanded="false" aria-controls="waPopup">
+            <svg viewBox="0 0 24 24" class="wa-icon" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19.11 4.93A9.9 9.9 0 0 0 3.6 16.88L2 22l5.24-1.54a9.89 9.89 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.79-6.84Zm-7.12 15.1h-.01c-1.53 0-3.03-.41-4.34-1.18l-.31-.18-3.11.91.84-3.03-.2-.32a8.26 8.26 0 1 1 7.13 3.8Zm4.53-6.18c-.25-.13-1.49-.74-1.72-.82-.23-.08-.4-.12-.57.13-.17.25-.66.82-.8.99-.15.17-.29.19-.54.06-.25-.13-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.36-1.69-.14-.25-.02-.38.11-.5.12-.12.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.57-1.37-.78-1.87-.21-.51-.42-.44-.57-.45h-.49c-.17 0-.45.06-.68.32-.23.25-.89.87-.89 2.11s.92 2.44 1.05 2.6c.13.17 1.82 2.77 4.42 3.89.62.27 1.11.43 1.49.55.63.2 1.2.17 1.65.1.5-.08 1.49-.61 1.7-1.2.21-.59.21-1.09.15-1.2-.06-.1-.23-.17-.48-.3Z"></path></svg>
+            <span class="wa-pulse" aria-hidden="true"></span>
+        </button>
+        <div id="waPopup" class="wa-popup" role="dialog" aria-modal="false" aria-labelledby="wa-title" aria-hidden="true">
+            <div class="wa-header">
+                <div>
+                    <p class="wa-eyebrow">CHATURA SUPPORT</p>
+                    <h2 id="wa-title" class="wa-title">How can we help?</h2>
+                </div>
+                <button type="button" class="wa-close" id="waClose" aria-label="Close WhatsApp contact options">
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+                </button>
+            </div>
+            <p class="wa-intro">Choose the department that best matches your enquiry and we'll connect you directly on WhatsApp.</p>
+            <div class="wa-options">
+                <a href="https://wa.me/6212345678?text=Hi+Chatura%2C+I+need+help+with+technology+industry+advisory." target="_blank" rel="noopener noreferrer" class="wa-option">
+                    <span class="wa-option-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 12a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><rect x="3.5" y="12" width="4" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"></rect><rect x="16.5" y="12" width="4" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"></rect><path d="M8 20c0 1.1.9 2 2 2h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                    <span class="wa-option-content"><strong>Technology Advisory</strong><span>IPO, M&amp;A &amp; growth strategy</span></span>
+                    <span class="wa-arrow" aria-hidden="true">→</span>
+                </a>
+                <a href="https://wa.me/6212345678?text=Hi+Chatura%2C+I+need+help+with+general+inquiry." target="_blank" rel="noopener noreferrer" class="wa-option">
+                    <span class="wa-option-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 2.7 7.6 7 10 4.3-2.4 7-5.5 7-10V6l-7-3Zm-3 9 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                    <span class="wa-option-content"><strong>General Inquiry</strong><span>Tax, advisory, and other services</span></span>
+                    <span class="wa-arrow" aria-hidden="true">→</span>
+                </a>
+            </div>
+            <div class="wa-notice">
+                <strong>CLIENT SUPPORT HOURS</strong>
+                <span>Monday – Friday, 9AM – 6PM WIB</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="bg-[#004D34] text-white/70">
+        <div class="container mx-auto px-6 pt-24 pb-20">
+            <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
+                <div class="reveal-up">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-white/50 block mb-6" data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
+                    <img width="487" height="350" src="../../assets/chatura-footer.webp" alt="Chatura Indonesia" class="h-36 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
+                    <p class="text-sm text-white/60 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated professional services providing accounting, tax, business advisory, and risk management solutions across the Indonesian archipelago and Southeast Asian markets.</p>
+                    <div class="flex items-center gap-5 mt-8 text-gray-500">
+                        <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-4.5 h-4.5"></i></a>
+                        <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-4.5 h-4.5"></i></a>
+                        <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-4.5 h-4.5"></i></a>
+                        <a href="mailto:hello@chatura.co.id" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4.5 h-4.5"></i></a>
+                    </div>
+                </div>
+                <div class="reveal-up grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-12">
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.services_heading">Services</h4>
+                        <ul class="space-y-3.5">
+                            <li><a href="../../services/accounting-finance/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group">Accounting &amp; Finance<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../services/tax-services/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group">Tax Services<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../services/business-transfer/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group">Business Transfer<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../services/risk-management/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group">Risk Management<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../services/corporate-advisory/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group">Corporate Advisory<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.industries_heading">Industries</h4>
+                        <ul class="space-y-3.5">
+                            <li><a href="../../industries/energy/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_1">Energy &amp; Resources<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../industries/manufacturing/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_2">Manufacturing<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../industries/technology/" class="text-xs text-white/80 font-semibold hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_3">Technology &amp; Digital<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../industries/healthcare/" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.industry_4">Healthcare<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6" data-i18n="footer.company_heading">Company</h4>
+                        <ul class="space-y-3.5">
+                            <li><a href="../../index.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_1">About Us<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../our-people.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_2">Our People<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../career.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_3">Careers<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                            <li><a href="../../insights.html" class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group" data-i18n="footer.company_4">Insights<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6"><div class="h-px bg-white/10"></div></div>
+
+        <div class="container mx-auto px-6 py-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-4">
+                    <img width="487" height="350" src="../../assets/chatura-footer.webp" alt="Chatura" class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
+                    <span class="text-[11px] text-white/50" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia. All rights reserved.</span>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-white/50">
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.privacy">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.terms">Terms of Use</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.cookies">Cookies</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.disclaimer">Disclaimer</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.sitemap">Sitemap</a>
+                    <a href="#" class="hover:text-white transition-colors duration-300" data-i18n="footer.conduct">Code of Conduct</a>
+                </div>
+                <div class="flex items-center gap-4 text-gray-500">
+                    <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                    <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                    <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+                    <a href="mailto:hello@chatura.co.id" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-white/10">
+            <div class="container mx-auto">
+                <p class="text-[10px] text-brand-green leading-relaxed text-center" data-i18n="footer.legal">Chatura Indonesia is an integrated professional services firm. This website is for general informational purposes only and does not constitute professional advice. All information is subject to change without notice.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/i18n/i18n.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function () { lucide.createIcons(); });</script>
+    <script>
+        // Sticky Navbar
+        (function () {
+            var nav = document.getElementById('navbar-sticky');
+            if (!nav) return;
+            function toggle() {
+                if (window.scrollY > 50) { nav.classList.add('scrolled'); }
+                else { nav.classList.remove('scrolled'); }
+            }
+            toggle();
+            window.addEventListener('scroll', toggle, { passive: true });
+        })();
+    </script>
+    <script>
+        // GSAP ScrollTrigger Animations
+        if (typeof gsap !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.to('#hero-service .reveal-up', { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power2.out', delay: 0.15 });
+            ScrollTrigger.batch('.reveal-up:not(#hero-service .reveal-up)', {
+                start: 'top 85%',
+                once: true,
+                onEnter: function (batch) {
+                    gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out' });
+                }
+            });
+            setTimeout(function () {
+                document.querySelectorAll('.reveal-up').forEach(function (el) {
+                    if (getComputedStyle(el).opacity === '0') { el.style.opacity = 1; el.style.transform = 'none'; }
+                });
+            }, 4000);
+        }
+    </script>
+    <script>
+        // WhatsApp Support Chat
+        (function () {
+            var launcher = document.getElementById('waLauncher');
+            var popup = document.getElementById('waPopup');
+            var close = document.getElementById('waClose');
+            if (!launcher || !popup) return;
+            function togglePopup() {
+                var isOpen = popup.classList.contains('is-open');
+                popup.classList.toggle('is-open');
+                launcher.setAttribute('aria-expanded', !isOpen);
+                popup.setAttribute('aria-hidden', isOpen);
+            }
+            launcher.addEventListener('click', togglePopup);
+            close.addEventListener('click', function (e) { e.stopPropagation(); togglePopup(); });
+            document.addEventListener('click', function (e) {
+                if (!popup.contains(e.target) && !launcher.contains(e.target) && popup.classList.contains('is-open')) {
+                    togglePopup();
+                }
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && popup.classList.contains('is-open')) togglePopup();
+            });
+        })();
+    </script>
+    <script>
+        // Mobile menu: close on resize to desktop
+        (function () {
+            var mm = document.getElementById('mobileMenu');
+            if (!mm) return;
+            window.addEventListener('resize', function () {
+                if (window.innerWidth >= 768 && !mm.classList.contains('hidden')) {
+                    mm.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                }
+            });
+        })();
+    </script>
+    <script>
+        // FAQ accordion - prefers-reduced-motion support
+        (function () {
+            var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReduced) {
+                document.querySelectorAll('.faq-content').forEach(function (el) {
+                    el.style.transition = 'none';
+                });
+            }
+        })();
+    </script>
+    <script>
+        (function() {
+            document.querySelectorAll('.mobile-nav-group-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var group = this.closest('.mobile-nav-group');
+                    group.classList.toggle('open');
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>

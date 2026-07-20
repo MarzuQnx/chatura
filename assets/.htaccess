@@ -18,7 +18,9 @@ Options -Indexes
     RewriteEngine On
     RewriteCond %{HTTP_REFERER} !^$
     RewriteCond %{HTTP_REFERER} !^https?://(www\.)?chatura\.co\.id [NC]
+    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?chatura\.local [NC]
     RewriteCond %{HTTP_REFERER} !^https?://localhost [NC]
     RewriteCond %{HTTP_REFERER} !^https?://127\.0\.0\.1 [NC]
-    RewriteRule \.(webp|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|css|js)$ - [F,NC]
+    RewriteCond %{HTTP_REFERER} !^$
+    RewriteRule \.(webp|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot)$ - [F,NC]
 </IfModule>
