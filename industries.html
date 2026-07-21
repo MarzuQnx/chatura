@@ -8,7 +8,7 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Industries | Chatura Indonesia - Sector Expertise Across Key Industries</title>
+    <title data-i18n="page.title.industries">Chatura Indonesia</title>
     <meta name="description" content="Chatura Indonesia delivers multi-disciplinary advisory across energy, manufacturing, technology, healthcare, and consumer sectors. Deep industry expertise for complex business challenges.">
     <link rel="canonical" href="https://www.chatura.co.id/industries.html">
     <meta property="og:title" content="Industries | Chatura Indonesia - Sector Expertise Across Key Industries">
@@ -137,7 +137,7 @@
 
 <body class="bg-white text-gray-800 font-sans antialiased">
 
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link" data-i18n="nav.skip">Skip to main content</a>
 
     <!-- ============ HEADER ============ -->
     <header id="navbar-sticky" class="sticky top-0 z-50">
@@ -156,21 +156,21 @@
                     <a href="services.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.services">Services</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
                     <div class="nav-dropdown-menu">
                         <a href="services.html" data-i18n="nav.services_overview">Overview</a>
-                        <a href="services/accounting-finance/">Accounting &amp; Finance</a>
-                        <a href="services/tax-services/">Tax Services</a>
-                        <a href="services/business-transfer/">Business Transfer</a>
-                        <a href="services/risk-management/">Risk Management</a>
-                        <a href="services/corporate-advisory/">Corporate Advisory</a>
+                        <a href="services/accounting-finance/" data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
+                        <a href="services/tax-services/" data-i18n="nav.service.tax">Tax Services</a>
+                        <a href="services/business-transfer/" data-i18n="nav.service.business_transfer">Business Transfer</a>
+                        <a href="services/risk-management/" data-i18n="nav.service.risk_management">Risk Management</a>
+                        <a href="services/corporate-advisory/" data-i18n="nav.service.corporate_advisory">Corporate Advisory</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
                     <a href="industries.html" class="text-[#004D34] font-semibold inline-flex items-center gap-1"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
                     <div class="nav-dropdown-menu">
                         <a href="industries.html" data-i18n="nav.industries_overview">Overview</a>
-                        <a href="industries/energy/">Energy &amp; Resources</a>
-                        <a href="industries/manufacturing/">Manufacturing</a>
-                        <a href="industries/technology/">Technology &amp; Digital</a>
-                        <a href="industries/healthcare/">Healthcare</a>
+                        <a href="industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
+                        <a href="industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a>
+                        <a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
+                        <a href="industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
                         <a href="industries/consumer/">Consumer &amp; Retail</a>
                     </div>
                 </div>
@@ -210,21 +210,21 @@
                     <button class="mobile-nav-group-btn" type="button"><span data-i18n="nav.services">Services</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
                         <a href="services.html">Overview</a>
-                        <a href="services/accounting-finance/">Accounting &amp; Finance</a>
-                        <a href="services/tax-services/">Tax Services</a>
-                        <a href="services/business-transfer/">Business Transfer</a>
-                        <a href="services/risk-management/">Risk Management</a>
-                        <a href="services/corporate-advisory/">Corporate Advisory</a>
+                        <a href="services/accounting-finance/" data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
+                        <a href="services/tax-services/" data-i18n="nav.service.tax">Tax Services</a>
+                        <a href="services/business-transfer/" data-i18n="nav.service.business_transfer">Business Transfer</a>
+                        <a href="services/risk-management/" data-i18n="nav.service.risk_management">Risk Management</a>
+                        <a href="services/corporate-advisory/" data-i18n="nav.service.corporate_advisory">Corporate Advisory</a>
                     </div>
                 </div>
                 <div class="mobile-nav-group open">
                     <button class="mobile-nav-group-btn is-active-parent" type="button"><span data-i18n="nav.industries">Industries</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
                         <a href="industries.html">Overview</a>
-                        <a href="industries/energy/">Energy &amp; Resources</a>
-                        <a href="industries/manufacturing/">Manufacturing</a>
-                        <a href="industries/technology/">Technology &amp; Digital</a>
-                        <a href="industries/healthcare/">Healthcare</a>
+                        <a href="industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
+                        <a href="industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a>
+                        <a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
+                        <a href="industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
                         <a href="industries/consumer/">Consumer &amp; Retail</a>
                     </div>
                 </div>
@@ -528,8 +528,7 @@
             </div>
         </div>
     </section>
-
-    <!-- ============ FINAL CTA ============ -->
+<!-- ============ FINAL CTA ============ -->
     <section id="final-cta" class="bg-gray-100 text-white py-16 relative overflow-hidden">
         <div class="container mx-auto px-6">
             <div class="reveal-up px-8 py-12 md:px-14 md:py-14 flex flex-col md:flex-row items-center justify-between gap-8 text-gray-900 relative overflow-hidden">
@@ -668,6 +667,17 @@
     <script src="assets/i18n/config.js"></script>
     <script src="assets/js/core/EventBus.js"></script>
     <script src="assets/js/core/Repository.js"></script>
+    <script src="assets/js/repositories/CategoryRepository.js"></script>
+    <script src="assets/js/repositories/PeopleRepository.js"></script>
+    <script src="assets/js/repositories/ServiceRepository.js"></script>
+    <script src="assets/js/repositories/IndustryRepository.js"></script>
+    <script src="assets/js/repositories/ArticleRepository.js"></script>
+    <script src="assets/js/repositories/ClientRepository.js"></script>
+    <script src="assets/js/repositories/FAQRepository.js"></script>
+    <script src="assets/js/repositories/ContactRepository.js"></script>
+    <script src="assets/js/repositories/SettingsRepository.js"></script>
+    <script src="assets/js/repositories/CareerRepository.js"></script>
+    <script src="assets/js/renderers/IndustryRenderer.js"></script>
     <script src="assets/js/core/TranslationRepository.js"></script>
     <script src="assets/js/core/PageLoader.js"></script>
     <script src="assets/i18n/locales/en.bundle.js"></script>
@@ -801,7 +811,7 @@
                 document.querySelectorAll('.reveal-up').forEach(function (el) {
                     if (getComputedStyle(el).opacity === '0') { el.style.opacity = 1; el.style.transform = 'none'; }
                 });
-            }, 4000);
+            }, 400);
         }
 
         /* =========================================================

@@ -7,7 +7,7 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insight Korporat Chatura Jakarta - Analisis Bisnis & Regulasi Terkini</title>
+    <title data-i18n="page.title.insights">Chatura Indonesia</title>
     <meta name="description" content="Insight korporat Chatura Jakarta: analisis regulasi, studi kasus, dan perspektif strategis untuk pengambilan keputusan bisnis di Indonesia.">
     <link rel="canonical" href="https://www.chatura.co.id/insights.html">
     <meta property="og:title" content="Insight Korporat Chatura Jakarta - Analisis Bisnis Terkini">
@@ -115,7 +115,7 @@
 </head>
 
 <body class="bg-white text-gray-800 font-sans antialiased">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link" data-i18n="nav.skip">Skip to main content</a>
 
     <!-- ============ HEADER ============ -->
         <header id="navbar-sticky" class="sticky top-0 z-50">
@@ -134,21 +134,21 @@
                     <a href="services.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.services">Services</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
                     <div class="nav-dropdown-menu">
                         <a href="services.html" data-i18n="nav.services_overview">Overview</a>
-                        <a href="services/accounting-finance/">Accounting &amp; Finance</a>
-                        <a href="services/tax-services/">Tax Services</a>
-                        <a href="services/business-transfer/">Business Transfer</a>
-                        <a href="services/risk-management/">Risk Management</a>
-                        <a href="services/corporate-advisory/">Corporate Advisory</a>
+                        <a href="services/accounting-finance/" data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
+                        <a href="services/tax-services/" data-i18n="nav.service.tax">Tax Services</a>
+                        <a href="services/business-transfer/" data-i18n="nav.service.business_transfer">Business Transfer</a>
+                        <a href="services/risk-management/" data-i18n="nav.service.risk_management">Risk Management</a>
+                        <a href="services/corporate-advisory/" data-i18n="nav.service.corporate_advisory">Corporate Advisory</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
                     <a href="industries.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
                     <div class="nav-dropdown-menu">
                         <a href="industries.html" data-i18n="nav.industries_overview">Overview</a>
-                        <a href="industries/manufacturing/">Manufacturing</a>
-                        <a href="industries/energy/">Energy &amp; Resources</a>
-                        <a href="industries/healthcare/">Healthcare</a>
-                        <a href="industries/technology/">Technology &amp; Digital</a>
+                        <a href="industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a>
+                        <a href="industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
+                        <a href="industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
+                        <a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
                         <a href="industries/consumer/">Consumer &amp; Retail</a>
                     </div>
                 </div>
@@ -187,21 +187,21 @@
                     <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.services">Services</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
                         <a href="services.html">Overview</a>
-                        <a href="services/accounting-finance/" class="">Accounting &amp; Finance</a>
-                        <a href="services/tax-services/" class="">Tax Services</a>
-                        <a href="services/business-transfer/" class="">Business Transfer</a>
-                        <a href="services/risk-management/" class="">Risk Management</a>
-                        <a href="services/corporate-advisory/" class="">Corporate Advisory</a>
+                        <a href="services/accounting-finance/" class="" data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
+                        <a href="services/tax-services/" class="" data-i18n="nav.service.tax">Tax Services</a>
+                        <a href="services/business-transfer/" class="" data-i18n="nav.service.business_transfer">Business Transfer</a>
+                        <a href="services/risk-management/" class="" data-i18n="nav.service.risk_management">Risk Management</a>
+                        <a href="services/corporate-advisory/" class="" data-i18n="nav.service.corporate_advisory">Corporate Advisory</a>
                     </div>
                 </div>
                 <div class="mobile-nav-group ">
                     <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.industries">Industries</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
                         <a href="industries.html">Overview</a>
-                        <a href="industries/manufacturing/">Manufacturing</a>
-                        <a href="industries/energy/">Energy &amp; Resources</a>
-                        <a href="industries/healthcare/">Healthcare</a>
-                        <a href="industries/technology/">Technology &amp; Digital</a>
+                        <a href="industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a>
+                        <a href="industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
+                        <a href="industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
+                        <a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
                         <a href="industries/consumer/">Consumer &amp; Retail</a>
                     </div>
                 </div>
@@ -440,10 +440,20 @@
     </footer>
 
     <!-- ============ PORTAL LOGIC FRAMEWORK ============ -->
-    <script src="assets/js/articles.js"></script>
     <script src="assets/i18n/config.js"></script>
     <script src="assets/js/core/EventBus.js"></script>
     <script src="assets/js/core/Repository.js"></script>
+    <script src="assets/js/repositories/CategoryRepository.js"></script>
+    <script src="assets/js/repositories/PeopleRepository.js"></script>
+    <script src="assets/js/repositories/ServiceRepository.js"></script>
+    <script src="assets/js/repositories/IndustryRepository.js"></script>
+    <script src="assets/js/repositories/ArticleRepository.js"></script>
+    <script src="assets/js/repositories/ClientRepository.js"></script>
+    <script src="assets/js/repositories/FAQRepository.js"></script>
+    <script src="assets/js/repositories/ContactRepository.js"></script>
+    <script src="assets/js/repositories/SettingsRepository.js"></script>
+    <script src="assets/js/repositories/CareerRepository.js"></script>
+    <script src="assets/js/renderers/ArticleRenderer.js"></script>
     <script src="assets/js/core/TranslationRepository.js"></script>
     <script src="assets/js/core/PageLoader.js"></script>
     <script src="assets/i18n/locales/en.bundle.js"></script>
@@ -463,157 +473,7 @@
             window.addEventListener('scroll', toggle, { passive: true });
         })();
 
-        // Unified Article Repository
-        var C = window.CHATURA;
-        if (!C) { document.body.innerHTML = '<p style="padding:2rem;text-align:center;">Article repository not loaded.</p>'; }
-
-        var lang = (window.I18N && window.I18N.currentLang) || 'en';
-        function t(obj) { if (!obj) return ''; if (typeof obj === 'string') return obj; return obj[lang] || obj.en || ''; }
-
-        // ─── Featured Article ───
-        (function renderFeatured() {
-            var featured = C.getFeaturedArticle();
-            var slot = document.getElementById('featured-article-slot');
-            if (!featured || !slot) return;
-            var cat = C.CATEGORIES[featured.category];
-            var catLabel = cat ? t(cat) : '';
-            slot.innerHTML = '<a href="' + C.getArticleUrl(featured) + '" class="featured-card reveal-up group grid md:grid-cols-[6fr_5fr] bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 hover:border-gray-300">' +
-                '<div class="relative overflow-hidden min-h-75 md:min-h-100">' +
-                '<img src="' + featured.image + '" alt="' + t(featured.title) + '" class="featured-image w-full h-full object-cover absolute inset-0" loading="lazy" width="1200" height="800">' +
-                '<div class="absolute inset-0 bg-linear-to-t from-black/20 to-transparent"></div>' +
-                '</div>' +
-                '<div class="p-8 md:p-10 lg:p-12 flex flex-col justify-between bg-white">' +
-                '<div><div class="flex items-center gap-3 mb-5">' +
-                '<span class="text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-900 px-3 py-1 rounded-full">' + catLabel + '</span>' +
-                '<span class="text-[10px] text-gray-400">' + t(featured.readingTime) + '</span>' +
-                '</div>' +
-                '<h3 class="text-xl md:text-2xl font-serif font-bold text-gray-950 mb-4 leading-snug group-hover:text-emerald-800 transition-colors duration-300">' + t(featured.title) + '</h3>' +
-                '<p class="text-gray-500 text-sm leading-[1.7] line-clamp-3 mb-6">' + t(featured.subtitle) + '</p>' +
-                '</div>' +
-                '<div><div class="flex items-center justify-between pt-5 border-t border-gray-100">' +
-                '<div class="flex items-center gap-3">' +
-                '<div class="w-8 h-8 rounded-full bg-gray-200 overflow-hidden"><img src="' + featured.author.image + '" alt="' + t(featured.author.name) + '" class="w-full h-full object-cover" width="80" height="80" loading="lazy"></div>' +
-                '<div><p class="text-xs font-semibold text-gray-950">' + t(featured.author.name) + '</p>' +
-                '<p class="text-gray-400">' + t(featured.dates.display) + '</p></div>' +
-                '</div>' +
-                '<span class="text-xs font-bold text-[#004D34] flex items-center gap-1 group-hover:gap-2 transition-all duration-300">Read <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>' +
-                '</div></div></div></a>';
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-        })();
-
-        // ─── Article Grid ───
-        var selectedType = "all";
-        var searchString = "";
-
-        function renderInsightsList() {
-            var grid = document.getElementById('insightsGrid');
-            var allArticles = C.getAllArticles();
-
-            var filtered = allArticles.filter(function(article) {
-                var matchesType = (selectedType === "all" || article.type === selectedType);
-                if (!matchesType) return false;
-                if (!searchString) return true;
-                var q = searchString.toLowerCase();
-                var titleEn = (article.title.en || '').toLowerCase();
-                var titleId = (article.title.id || '').toLowerCase();
-                var descEn = (article.description ? (article.description.en || '') : (article.subtitle ? (article.subtitle.en || '') : '')).toLowerCase();
-                var descId = (article.description ? (article.description.id || '') : (article.subtitle ? (article.subtitle.id || '') : '')).toLowerCase();
-                var catObj = C.CATEGORIES[article.category];
-                var catEn = catObj ? catObj.en.toLowerCase() : '';
-                var catId = catObj ? catObj.id.toLowerCase() : '';
-                var authorEn = (article.author && article.author.name) ? (article.author.name.en || '').toLowerCase() : '';
-                var authorId = (article.author && article.author.name) ? (article.author.name.id || '').toLowerCase() : '';
-                var roleEn = (article.author && article.author.role) ? (article.author.role.en || '').toLowerCase() : '';
-                var roleId = (article.author && article.author.role) ? (article.author.role.id || '').toLowerCase() : '';
-                var tags = (article.tags || []).join(' ').toLowerCase();
-                var bodyText = '';
-                if (article.body) {
-                    var bEn = article.body.en || '';
-                    var bId = article.body.id || '';
-                    bodyText = bEn.replace(/<[^>]*>/g, ' ').toLowerCase() + ' ' + bId.replace(/<[^>]*>/g, ' ').toLowerCase();
-                }
-                return titleEn.indexOf(q) > -1 || titleId.indexOf(q) > -1 || descEn.indexOf(q) > -1 || descId.indexOf(q) > -1 || catEn.indexOf(q) > -1 || catId.indexOf(q) > -1 || authorEn.indexOf(q) > -1 || authorId.indexOf(q) > -1 || roleEn.indexOf(q) > -1 || roleId.indexOf(q) > -1 || tags.indexOf(q) > -1 || bodyText.indexOf(q) > -1;
-            });
-
-            if (filtered.length === 0) {
-                grid.innerHTML = '<div class="col-span-full py-20 text-center empty-state">' +
-                    '<div class="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center mx-auto mb-5"><i data-lucide="search-x" class="w-7 h-7 text-gray-300"></i></div>' +
-                    '<p class="text-sm font-semibold text-gray-700 mb-1">No results found</p>' +
-                    '<p class="text-xs text-gray-400 mb-6">Try adjusting search or filter criteria.</p>' +
-                    '<button onclick="document.getElementById(\'search-input\').value=\'\'; document.getElementById(\'search-input\').dispatchEvent(new Event(\'input\')); document.querySelector(\'[data-type=all]\').click();" class="text-xs font-semibold text-[#004D34] hover:underline">Clear all filters</button>' +
-                    '</div>';
-                if (typeof lucide !== 'undefined') lucide.createIcons();
-                return;
-            }
-
-            grid.innerHTML = filtered.map(function(article) {
-                var catObj = C.CATEGORIES[article.category];
-                var badgeClass = catObj ? catObj.badgeClass : 'text-gray-600 bg-gray-50';
-                var badgeLabel = catObj ? t(catObj) : article.type;
-                var articleUrl = C.getArticleUrl(article);
-                var desc = t(article.description) || t(article.subtitle) || '';
-                return '<article class="insight-card bg-white rounded-2xl border border-gray-100 overflow-hidden flex flex-col">' +
-                    '<a href="' + articleUrl + '" class="block">' +
-                    '<div class="relative overflow-hidden aspect-16/10 bg-gray-100">' +
-                    '<img src="' + article.image + '" alt="' + t(article.title) + '" class="card-image w-full h-full object-cover" loading="lazy" width="600" height="375">' +
-                    '<div class="absolute top-4 left-4"><span class="text-[10px] font-bold uppercase tracking-wider ' + badgeClass + ' px-3 py-1 rounded-full">' + badgeLabel + '</span></div>' +
-                    '</div></a>' +
-                    '<div class="p-6 flex-col flex-1">' +
-                    '<h3 class="card-title font-serif font-bold text-base text-gray-950 mb-2 leading-snug"><a href="' + articleUrl + '" class="hover:text-emerald-800 transition-colors duration-200">' + t(article.title) + '</a></h3>' +
-                    '<p class="text-gray-500 text-xs leading-[1.7] line-clamp-2 mb-4 flex-1">' + desc + '</p>' +
-                    '<div class="flex items-center justify-between pt-4 border-t border-gray-50">' +
-                    '<div class="flex items-center gap-2">' +
-                    '<div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center"><i data-lucide="user" class="w-3 h-3 text-gray-400"></i></div>' +
-                    '<span class="text-xs text-gray-500">' + t(article.author.name) + '</span>' +
-                    '</div>' +
-                    '<span class="text-xs text-gray-400">' + t(article.readingTime) + '</span>' +
-                    '</div>' +
-                    '<div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-50">' +
-                    '<span class="text-xs text-gray-400">' + t(article.dates.display) + '</span>' +
-                    '<a href="' + articleUrl + '" class="text-xs font-bold text-[#004D34] flex items-center gap-1 hover:gap-2 transition-all duration-200">Read <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>' +
-                    '</div>' +
-                    '</div>' +
-                    '</article>';
-            }).join('');
-
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-        }
-
-        // Setup Filter Event Handlers
-        document.querySelectorAll('.filter-tab-btn').forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.filter-tab-btn').forEach(function(b) { b.setAttribute('aria-selected', 'false'); });
-                btn.setAttribute('aria-selected', 'true');
-                selectedType = btn.getAttribute('data-type');
-                if (typeof gsap !== 'undefined') {
-                    gsap.to('#insightsGrid', { opacity: 0, y: 10, duration: 0.15, onComplete: function() {
-                        renderInsightsList();
-                        gsap.to('#insightsGrid', { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
-                    }});
-                } else { renderInsightsList(); }
-            });
-        });
-
-        // Setup Search
-        document.getElementById('search-input').addEventListener('input', function(e) {
-            searchString = e.target.value;
-            renderInsightsList();
-        });
-
-        // Initial Run
-        renderInsightsList();
-
-        // GSAP
-        if (typeof gsap !== 'undefined') {
-            gsap.registerPlugin(ScrollTrigger);
-            gsap.to('#hero-insights .reveal-up', { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power2.out', delay: 0.15 });
-            ScrollTrigger.batch('.reveal-up:not(#hero-insights .reveal-up)', {
-                start: 'top 88%',
-                once: true,
-                onEnter: function (batch) { gsap.to(batch, { opacity: 1, y: 0, duration: 0.65, stagger: 0.08, ease: 'power2.out' }); }
-            });
-        }
-    </script>
+        </script>
 
     <!-- WhatsApp Operational Launcher Script -->
     <script>
@@ -663,6 +523,41 @@
             });
         });
     })();
+    </script>
+
+    <script>
+        // GSAP Animations
+        if (typeof gsap !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Hero animation
+            gsap.to('#hero-insights .reveal-up', {
+                opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out', delay: 0.2
+            });
+            
+            // Standard scroll reveal
+            ScrollTrigger.batch('.reveal-up:not(#hero-insights .reveal-up)', {
+                start: 'top 85%',
+                once: true,
+                onEnter: function (batch) {
+                    gsap.to(batch, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out' });
+                }
+            });
+            
+            // Failsafe
+            setTimeout(function () {
+                document.querySelectorAll('.reveal-up').forEach(function (el) {
+                    if (getComputedStyle(el).opacity === '0') {
+                        el.style.opacity = 1;
+                        el.style.transform = 'none';
+                    }
+                });
+            }, 300);
+        } else {
+            document.querySelectorAll('.reveal-up').forEach(function (el) {
+                el.style.opacity = 1; el.style.transform = 'none';
+            });
+        }
     </script>
 </body>
 
