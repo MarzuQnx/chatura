@@ -27,41 +27,44 @@
             
             for (var i = 0; i < services.length; i++) {
                 var s = services[i];
-                var title = loc(s, 'id_lang'); // uses s.en or s.id_lang
+                var title = loc(s, 'id_lang');
                 var desc = loc(s.description);
                 
-                var featuresHtml = '';
+                var capabilitiesHtml = '';
                 if (s.features) {
                     var feats = loc(s.features) || [];
                     for (var j = 0; j < feats.length; j++) {
-                        featuresHtml += '<li class="flex items-center gap-1.5 text-sm text-gray-600 group-hover:text-white/80 transition-colors duration-500">' +
-                                        '<span class="w-1 h-1 rounded-full bg-emerald-600 group-hover:bg-white/60 transition-colors duration-500 shrink-0"></span>' + feats[j] + '</li>';
+                        capabilitiesHtml += '<li class="svc-back-cap">' + feats[j] + '</li>';
                     }
                 }
 
-                html += '<a href="' + s.slug + '" class="svc-card group flex flex-col rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-500 ease-[cubic-bezier(.22,.61,.36,1)] hover:bg-[#004D34] hover:border-[#004D34] hover:shadow-2xl hover:-translate-y-1">' +
-                            '<div class="svc-header flex items-center gap-3 px-4 pt-5 pb-3">' +
-                                '<div class="w-10 h-10 rounded-lg bg-[#004D34]/10 group-hover:bg-white/15 flex items-center justify-center shrink-0 transition-all duration-500">' +
-                                    '<i data-lucide="' + s.icon + '" class="w-5 h-5 text-[#004D34] group-hover:text-white transition-colors duration-500"></i>' +
+                html += '<div class="svc-flip-card" role="group" aria-label="' + title + '">' +
+                            '<div class="svc-flip-inner">' +
+                                '<div class="svc-flip-front">' +
+                                    '<div class="svc-front-img" style="background-image:url(\'' + s.image + '\')"></div>' +
+                                    '<div class="svc-front-glass">' +
+                                        '<h3 class="svc-front-title">' + title + '</h3>' +
+                                        '<p class="svc-front-tagline">' + desc + '</p>' +
+                                    '</div>' +
                                 '</div>' +
-                                '<h3 class="text-sm font-bold text-gray-950 group-hover:text-white transition-colors duration-500 leading-tight">' + title + '</h3>' +
+                                '<div class="svc-flip-back">' +
+                                    '<div class="svc-back-content">' +
+                                        '<div class="svc-back-icon-wrap"><i data-lucide="' + s.icon + '" class="svc-back-icon"></i></div>' +
+                                        '<h3 class="svc-back-title">' + title + '</h3>' +
+                                        '<p class="svc-back-desc">' + desc + '</p>' +
+                                        '<ul class="svc-back-caps">' + capabilitiesHtml + '</ul>' +
+                                        '<a href="' + s.slug + '" class="svc-back-cta">' +
+                                            '<span data-i18n="services.explore_service">Explore This Service</span>' +
+                                            '<i data-lucide="arrow-right" class="svc-back-arrow"></i>' +
+                                        '</a>' +
+                                    '</div>' +
+                                '</div>' +
                             '</div>' +
-                            '<div class="svc-image relative h-36 overflow-hidden">' +
-                                '<img src="' + s.image + '" alt="' + title + '" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(.22,.61,.36,1)]">' +
-                            '</div>' +
-                            '<div class="svc-content flex flex-col flex-1 px-4 py-4">' +
-                                '<p class="text-sm text-gray-500 group-hover:text-white/70 transition-colors duration-500 leading-relaxed mb-3 line-clamp-2">' + desc + '</p>' +
-                                '<ul class="space-y-1 mb-auto">' + featuresHtml + '</ul>' +
-                            '</div>' +
-                            '<div class="svc-footer px-4 pb-5 pt-2 border-t border-gray-100 group-hover:border-white/15 transition-colors duration-500">' +
-                                '<span class="inline-flex items-center gap-1 text-sm font-bold text-[#004D34] group-hover:text-white transition-colors duration-500">Explore <i data-lucide="arrow-right" class="w-3 h-3 transition-transform group-hover:translate-x-0.5 duration-300"></i></span>' +
-                            '</div>' +
-                        '</a>';
+                        '</div>';
             }
             
             container.innerHTML = html;
             
-            // Reinitialize lucide icons if available
             if (window.lucide && window.lucide.createIcons) {
                 window.lucide.createIcons();
             }
@@ -107,7 +110,7 @@
                                         '<p class="text-gray-500 leading-relaxed mb-6 max-w-lg">' + desc + '</p>' +
                                         '<ul class="space-y-3 mb-8">' + featuresHtml + '</ul>' +
                                         '<a href="' + s.slug + '" class="inline-flex items-center gap-2 bg-[#004D34] text-white px-6 py-3 rounded font-medium text-sm hover:bg-[#003322] transition">' +
-                                            'Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i>' +
+                                            '<span data-i18n="services.learn_more">Learn More</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>' +
                                         '</a>' +
                                     '</div>' +
                                     '<div class="reveal-up relative ' + orderClass + '" style="--si-x:' + xVal + ';--si-rot:' + rotVal + ';--si-dur:14s;--si-sh-dur:11s">' +
@@ -131,17 +134,55 @@
         init: function() {
             this.renderServicesGrid('servicesGrid');
             this.renderDetailedServices('detailedServicesContainer');
+            this.initFlipCards();
             
             if (window.ChaturaBus) {
                 window.ChaturaBus.on('languageChange', function() {
                     ServiceRenderer.renderServicesGrid('servicesGrid');
                     ServiceRenderer.renderDetailedServices('detailedServicesContainer');
+                    ServiceRenderer.initFlipCards();
                     document.querySelectorAll('#detailedServicesContainer .reveal-up').forEach(function(el) {
                         el.style.opacity = 1;
                         el.style.transform = 'none';
                     });
                 });
             }
+        },
+
+        initFlipCards: function() {
+            var cards = document.querySelectorAll('.svc-flip-card');
+            if (!cards.length) return;
+
+            var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+            cards.forEach(function(card) {
+                card.setAttribute('tabindex', '0');
+
+                card.addEventListener('click', function(e) {
+                    if (e.target.closest('.svc-back-cta')) return;
+
+                    if (isTouch) {
+                        var wasFlipped = card.classList.contains('is-flipped');
+                        cards.forEach(function(c) { c.classList.remove('is-flipped'); });
+                        if (!wasFlipped) {
+                            card.classList.add('is-flipped');
+                        }
+                    }
+                });
+
+                card.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        card.classList.toggle('is-flipped');
+                    }
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.svc-flip-card')) {
+                    cards.forEach(function(c) { c.classList.remove('is-flipped'); });
+                }
+            });
         }
     };
 

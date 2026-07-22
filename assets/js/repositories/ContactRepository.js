@@ -6,7 +6,7 @@
   'use strict';
   
   var _data = {
-  "email": "contact@chatura.co.id",
+  "email": "contact@chatura-indonesia.com",
   "phone": "+62 21 1234 5678",
   "whatsapp": "+62 811 1234 5678",
   "address": {

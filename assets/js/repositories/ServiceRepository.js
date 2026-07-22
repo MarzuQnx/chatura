@@ -8,7 +8,7 @@
   var _data = {
     "accounting": {
       "id": "accounting",
-      "slug": "services.html#accounting",
+      "slug": "services/accounting-finance/",
       "en": "Accounting & Finance",
       "id_lang": "Akuntansi & Keuangan",
       "icon": "wallet",
@@ -24,7 +24,7 @@
     },
     "tax": {
       "id": "tax",
-      "slug": "services.html#tax",
+      "slug": "services/tax-services/",
       "en": "Tax Services",
       "id_lang": "Layanan Pajak",
       "icon": "file-text",
@@ -40,7 +40,7 @@
     },
     "transfer": {
       "id": "transfer",
-      "slug": "services.html#transfer",
+      "slug": "services/business-transfer/",
       "en": "Business Transfer",
       "id_lang": "Transfer Bisnis",
       "icon": "arrow-right-left",
@@ -56,7 +56,7 @@
     },
     "risk": {
       "id": "risk",
-      "slug": "services.html#risk",
+      "slug": "services/risk-management/",
       "en": "Risk Management",
       "id_lang": "Manajemen Risiko",
       "icon": "shield-check",
@@ -72,7 +72,7 @@
     },
     "advisory": {
       "id": "advisory",
-      "slug": "services.html#advisory",
+      "slug": "services/corporate-advisory/",
       "en": "Corporate Advisory",
       "id_lang": "Konsultasi Korporasi",
       "icon": "briefcase",

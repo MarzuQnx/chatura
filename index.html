@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -10,25 +11,25 @@
     <title data-i18n="page.title.home">Chatura Indonesia</title>
     <meta name="description"
         content="Chatura Indonesia: Konsultan korporat terpercaya di Jakarta untuk akuntansi, pajak, dan financial advisory. Solusi terintegrasi untuk pertumbuhan bisnis Anda.">
-    <link rel="canonical" href="https://www.chatura.co.id/">
+    <link rel="canonical" href="https://www.chatura-indonesia.com/">
     <meta property="og:title" content="Chatura Indonesia - Konsultan Korporat Terpercaya Jakarta">
     <meta property="og:description"
         content="Solusi terintegrasi akuntansi, pajak, dan business advisory untuk pertumbuhan bisnis di Indonesia dan Asia Tenggara.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.chatura.co.id/">
-    <meta property="og:image" content="https://www.chatura.co.id/assets/chatura.jpg">
+    <meta property="og:url" content="https://www.chatura-indonesia.com/">
+    <meta property="og:image" content="https://www.chatura-indonesia.com/assets/chatura.jpg">
     <meta property="og:site_name" content="Chatura Indonesia">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Chatura Indonesia - Konsultan Korporat Terpercaya Jakarta">
     <meta name="twitter:description" content="Solusi akuntansi, pajak, dan business advisory untuk bisnis Indonesia.">
-    <meta name="twitter:image" content="https://www.chatura.co.id/assets/chatura.jpg">
+    <meta name="twitter:image" content="https://www.chatura-indonesia.com/assets/chatura.jpg">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Chatura Indonesia",
-      "url": "https://www.chatura.co.id",
-      "logo": "https://www.chatura.co.id/assets/chatura.jpg",
+      "url": "https://www.chatura-indonesia.com",
+      "logo": "https://www.chatura-indonesia.com/assets/chatura.jpg",
       "description": "Konsultan korporat terpercaya di Jakarta untuk akuntansi, pajak, business advisory, dan risk management.",
       "address": {
         "@type": "PostalAddress",
@@ -61,7 +62,7 @@
         }
 
         /* ===== LATEST UPDATES CAROUSEL ===== */
-        #latestCarousel { gap: 1.25rem; }
+        #latestCarousel { gap: 20px; }
         .latest-card {
             position: relative;
             flex: 0 0 320px;
@@ -206,29 +207,33 @@
             transform: translateY(0);
         }
 
-        /* Arrow buttons */
-        .latest-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+        /* Carousel controls - top right */
+        .latest-carousel-controls {
+            gap: 6px;
+        }
+        .latest-ctrl-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
             background: rgba(255,255,255,0.92);
             backdrop-filter: blur(8px);
             border: 1px solid rgba(0,0,0,0.08);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-            display: flex;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            color: #333;
-            transition: background 200ms ease, box-shadow 200ms ease;
+            color: #444;
+            transition: background 200ms ease, box-shadow 200ms ease, color 200ms ease, transform 100ms ease;
         }
-        .latest-arrow:hover { background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
-        .latest-arrow-prev { left: -16px; }
-        .latest-arrow-next { right: -16px; }
+        .latest-ctrl-btn:hover {
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+            color: #111;
+        }
+        .latest-ctrl-btn:active {
+            transform: scale(0.93);
+        }
 
         /* Mobile: no hover, panel always expanded */
         @media (hover: none) and (pointer: coarse) {
@@ -248,7 +253,7 @@
                 opacity: 1 !important;
                 transform: none !important;
             }
-            .latest-arrow { display: none; }
+            .latest-carousel-controls { display: none; }
         }
         @media (max-width: 768px) {
             .latest-card { flex: 0 0 280px; height: auto; min-height: 360px; }
@@ -267,48 +272,326 @@
                 opacity: 1 !important;
                 transform: none !important;
             }
-            .latest-arrow { display: none; }
+            .latest-carousel-controls { display: none; }
+        }
+
+        /* ===== SERVICES FLIP CARDS ===== */
+        .svc-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            align-items: stretch;
+        }
+        @media (max-width: 1024px) {
+            .svc-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .svc-grid { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto; }
+        }
+
+        .svc-flip-card {
+            perspective: 1200px;
+            height: 420px;
+            cursor: pointer;
+            outline: none;
+        }
+        @media (max-width: 1024px) {
+            .svc-flip-card { height: 380px; }
+        }
+        @media (max-width: 640px) {
+            .svc-flip-card { height: 340px; }
+        }
+
+        .svc-flip-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 650ms cubic-bezier(.22,1,.36,1), box-shadow 400ms cubic-bezier(.22,1,.36,1);
+            will-change: transform;
+        }
+
+        .svc-flip-card:hover .svc-flip-inner,
+        .svc-flip-card.is-flipped .svc-flip-inner {
+            transform: rotateY(180deg);
+        }
+
+        .svc-flip-card:hover .svc-flip-front,
+        .svc-flip-card.is-flipped .svc-flip-front {
+            pointer-events: none;
+        }
+
+        .svc-flip-card:hover .svc-flip-inner {
+            box-shadow: 0 24px 48px -12px rgba(0,0,0,0.18);
+        }
+
+        .svc-flip-front,
+        .svc-flip-back {
+            position: absolute;
+            inset: 0;
+            border-radius: 22px;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            overflow: hidden;
+        }
+
+        .svc-flip-front {
+            background: #0a0a0a;
+            transition: box-shadow 400ms cubic-bezier(.22,1,.36,1);
+            box-shadow: 0 4px 20px -4px rgba(0,0,0,0.08);
+        }
+
+        .svc-flip-card:hover .svc-flip-front {
+            box-shadow: none;
+        }
+
+        .svc-front-img {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            filter: blur(10px);
+        }
+
+        .svc-front-glass {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            margin: 0;
+            padding: 32px 24px;
+            background: rgba(255,255,255,0.90);
+            border: none;
+            border-radius: 16px;
+            box-shadow: none;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+        }
+
+        .svc-front-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.25;
+            color: #022c22;
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+        }
+        @media (max-width: 1024px) {
+            .svc-front-title { font-size: 20px; }
+        }
+        @media (max-width: 640px) {
+            .svc-front-title { font-size: 18px; }
+        }
+
+        .svc-front-tagline {
+            font-size: 13px;
+            line-height: 1.55;
+            color: #064e3b;
+            display: -webkit-box;
+            line-clamp: 3;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .svc-flip-back {
+            background: #004D34;
+            transform: rotateY(180deg);
+            box-shadow: 0 4px 20px -4px rgba(0,0,0,0.08);
+            transition: box-shadow 400ms cubic-bezier(.22,1,.36,1);
+        }
+
+        .svc-flip-card:hover .svc-flip-back {
+            box-shadow: 0 24px 48px -12px rgba(0,0,0,0.18);
+        }
+
+        .svc-back-content {
+            position: absolute;
+            inset: 0;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .svc-back-icon-wrap {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .svc-back-icon {
+            width: 26px;
+            height: 26px;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .svc-back-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+        @media (max-width: 1024px) {
+            .svc-back-title { font-size: 18px; }
+        }
+
+        .svc-back-desc {
+            font-size: 13px;
+            line-height: 1.65;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 16px;
+            display: -webkit-box;
+            line-clamp: 3;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .svc-back-caps {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px;
+            width: 100%;
+        }
+
+        .svc-back-cap {
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.78);
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .svc-back-cap::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.40);
+            flex-shrink: 0;
+        }
+
+        .svc-back-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            margin-top: auto;
+            padding-top: 4px;
+            transition: gap 300ms cubic-bezier(.22,1,.36,1);
+        }
+
+        .svc-back-cta:hover {
+            gap: 10px;
+        }
+
+        .svc-back-arrow {
+            width: 14px;
+            height: 14px;
+            transition: transform 300ms cubic-bezier(.22,1,.36,1);
+        }
+
+        .svc-back-cta:hover .svc-back-arrow {
+            transform: translateX(3px);
+        }
+
+        /* Focus-visible: tap-to-flip */
+        .svc-flip-card:focus-visible {
+            outline: 2px solid #004D34;
+            outline-offset: 3px;
+            border-radius: 22px;
+        }
+        .svc-flip-card:focus-visible .svc-flip-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .svc-flip-inner {
+                transition: none !important;
+            }
+            .svc-flip-card:hover .svc-flip-inner,
+            .svc-flip-card.is-flipped .svc-flip-inner {
+                transform: none !important;
+            }
+            .svc-front-img { transition: none !important; }
+            .svc-front-glass { transition: none !important; }
+            .svc-back-cta { transition: none !important; }
+            .svc-back-arrow { transition: none !important; }
         }
     </style>
 </head>
+
 <body class="bg-white text-gray-800 font-sans antialiased">
     <a href="#main-content" class="skip-link" data-i18n="nav.skip">Skip to main content</a>
-        <header id="navbar-sticky" class="sticky top-0 z-50">
+    <header id="navbar-sticky" class="sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <div class="font-bold text-2xl tracking-wider text-[#004D34] flex items-center gap-2">
-                    <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
+                    <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia"
+                            class="h-10 w-auto"></a>
                 </div>
             </div>
-            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
+            <button aria-label="Open menu"
+                onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')"
+                class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
                 <i data-lucide="menu" class="text-xl"></i>
             </button>
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
-                <a href="index.html" class="text-[#004D34] font-semibold transition" data-i18n="nav.about_us">About Us</a>
+                <a href="index.html" class="text-[#004D34] font-semibold transition" data-i18n="nav.about_us">About
+                    Us</a>
                 <div class="nav-dropdown">
-                    <a href="services.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.services">Services</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <a href="services.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span
+                            data-i18n="nav.services">Services</span> <i data-lucide="chevron-down"
+                            class="text-xs"></i></a>
                     <div class="nav-dropdown-menu">
                         <a href="services.html" data-i18n="nav.services_overview">Overview</a>
-                        <a href="services/accounting-finance/" data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
+                        <a href="services/accounting-finance/" data-i18n="nav.service.accounting">Accounting &amp;
+                            Finance</a>
                         <a href="services/tax-services/" data-i18n="nav.service.tax">Tax Services</a>
-                        <a href="services/business-transfer/" data-i18n="nav.service.business_transfer">Business Transfer</a>
+                        <a href="services/business-transfer/" data-i18n="nav.service.business_transfer">Business
+                            Transfer</a>
                         <a href="services/risk-management/" data-i18n="nav.service.risk_management">Risk Management</a>
-                        <a href="services/corporate-advisory/" data-i18n="nav.service.corporate_advisory">Corporate Advisory</a>
+                        <a href="services/corporate-advisory/" data-i18n="nav.service.corporate_advisory">Corporate
+                            Advisory</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
-                    <a href="industries.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <a href="industries.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span
+                            data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down"
+                            class="text-xs"></i></a>
                     <div class="nav-dropdown-menu">
                         <a href="industries.html" data-i18n="nav.industries_overview">Overview</a>
                         <a href="industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a>
                         <a href="industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
                         <a href="industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
-                        <a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
+                        <a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp;
+                            Digital</a>
                         <a href="industries/consumer/">Consumer &amp; Retail</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
-                    <a href="insights.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.insights">Insights</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                    <a href="insights.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span
+                            data-i18n="nav.insights">Insights</span> <i data-lucide="chevron-down"
+                            class="text-xs"></i></a>
                     <div class="nav-dropdown-menu">
                         <a href="insights.html" data-i18n="nav.insights_latest">Latest Insights</a>
                         <a href="insights.html#executive-intelligence">Executive Intelligence</a>
@@ -317,7 +600,8 @@
                         <a href="insights.html#downloads">Downloads</a>
                     </div>
                 </div>
-                <a href="our-people.html" class="hover:text-emerald-800 transition" data-i18n="nav.our_people">Our People</a>
+                <a href="our-people.html" class="hover:text-emerald-800 transition" data-i18n="nav.our_people">Our
+                    People</a>
                 <a href="career.html" class="hover:text-emerald-800 transition" data-i18n="nav.career">Join Us</a>
                 <a href="contact-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.contact">Contact</a>
             </nav>
@@ -326,42 +610,59 @@
                     <a href="#" data-lang="en" class="lang-active">EN</a>
                     <a href="#" data-lang="id" class="lang-inactive">ID</a>
                 </div>
-                <a href="contact-us.html" class="bg-[#004D34] text-white px-5 py-2 rounded font-medium hover:bg-[#003322] transition">
-                    <span data-i18n="nav.lets_talk">Let's Talk</span> <i data-lucide="arrow-right" class="text-xs ml-1"></i>
+                <a href="contact-us.html"
+                    class="bg-[#004D34] text-white px-5 py-2 rounded font-medium hover:bg-[#003322] transition">
+                    <span data-i18n="nav.lets_talk">Let's Talk</span> <i data-lucide="arrow-right"
+                        class="text-xs ml-1"></i>
                 </a>
             </div>
         </div>
         <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
-                <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
-                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
+                <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia"
+                        class="h-10 w-auto"></a>
+                <button aria-label="Close menu"
+                    onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')"
+                    class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i
+                        data-lucide="x" class="text-xl"></i></button>
             </div>
             <nav class="flex-1 overflow-y-auto p-6 space-y-1">
-                <a href="index.html" class="bg-emerald-50 text-emerald-800 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.about_us">About Us</a>
+                <a href="index.html"
+                    class="bg-emerald-50 text-emerald-800 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50"
+                    data-i18n="nav.about_us">About Us</a>
                 <div class="mobile-nav-group ">
-                    <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.services">Services</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.services">Services</span><i
+                            data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
                         <a href="services.html">Overview</a>
-                        <a href="services/accounting-finance/" class="" data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
+                        <a href="services/accounting-finance/" class="" data-i18n="nav.service.accounting">Accounting
+                            &amp; Finance</a>
                         <a href="services/tax-services/" class="" data-i18n="nav.service.tax">Tax Services</a>
-                        <a href="services/business-transfer/" class="" data-i18n="nav.service.business_transfer">Business Transfer</a>
-                        <a href="services/risk-management/" class="" data-i18n="nav.service.risk_management">Risk Management</a>
-                        <a href="services/corporate-advisory/" class="" data-i18n="nav.service.corporate_advisory">Corporate Advisory</a>
+                        <a href="services/business-transfer/" class=""
+                            data-i18n="nav.service.business_transfer">Business Transfer</a>
+                        <a href="services/risk-management/" class="" data-i18n="nav.service.risk_management">Risk
+                            Management</a>
+                        <a href="services/corporate-advisory/" class=""
+                            data-i18n="nav.service.corporate_advisory">Corporate Advisory</a>
                     </div>
                 </div>
                 <div class="mobile-nav-group ">
-                    <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.industries">Industries</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <button class="mobile-nav-group-btn " type="button"><span
+                            data-i18n="nav.industries">Industries</span><i data-lucide="chevron-down"
+                            class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
                         <a href="industries.html">Overview</a>
                         <a href="industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a>
                         <a href="industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
                         <a href="industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
-                        <a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
+                        <a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp;
+                            Digital</a>
                         <a href="industries/consumer/">Consumer &amp; Retail</a>
                     </div>
                 </div>
                 <div class="mobile-nav-group ">
-                    <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.insights">Insights</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                    <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.insights">Insights</span><i
+                            data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
                         <a href="insights.html">Latest Insights</a>
                         <a href="insights.html#executive-intelligence">Executive Intelligence</a>
@@ -370,12 +671,20 @@
                         <a href="insights.html#downloads">Downloads</a>
                     </div>
                 </div>
-                <a href="our-people.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.our_people">Our People</a>
-                <a href="career.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.career">Join Us</a>
-                <a href="contact-us.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.contact">Contact</a>
+                <a href="our-people.html"
+                    class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50"
+                    data-i18n="nav.our_people">Our People</a>
+                <a href="career.html"
+                    class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50"
+                    data-i18n="nav.career">Join Us</a>
+                <a href="contact-us.html"
+                    class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50"
+                    data-i18n="nav.contact">Contact</a>
             </nav>
             <div class="p-6 border-t border-gray-100">
-                <a href="contact-us.html" class="block w-full bg-[#004D34] text-white text-center px-5 py-3 rounded font-medium hover:bg-[#003322] transition"><span data-i18n="nav.lets_talk">Let's Talk</span></a>
+                <a href="contact-us.html"
+                    class="block w-full bg-[#004D34] text-white text-center px-5 py-3 rounded font-medium hover:bg-[#003322] transition"><span
+                        data-i18n="nav.lets_talk">Let's Talk</span></a>
             </div>
         </div>
     </header>
@@ -405,10 +714,10 @@
                             class="bg-[#004D34] text-white px-6 py-3 rounded font-medium transition hover:bg-[#003322]">
                             <span data-i18n="hero.cta_services">Explore Our Services</span>
                         </a>
-                        <a href="#"
-                            class="border border-gray-300 text-gray-700 px-6 py-3 rounded font-medium hover:bg-gray-900 hover:text-white transition">
-                            <span data-i18n="hero.cta_transfer">Business Transfer</span> <i data-lucide="external-link"
-                                class="text-xs ml-2"></i>
+                        <a href="services/business-transfer/"
+                            class="premium-cta border border-gray-300 text-gray-700 px-8 py-4 rounded font-medium text-sm hover:bg-gray-50 transition hover:-translate-y-0.5">
+                            <span data-i18n="hero.cta_transfer">Business Transfer</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400"></i>
                         </a>
                     </div>
                 </div>
@@ -434,7 +743,8 @@
                         <path d="M3 10h18" />
                     </svg>
                     <div>
-                        <div class="text-3xl md:text-4xl font-bold text-[#004D34] leading-none mb-1" data-counter="12" data-suffix="+">0</div>
+                        <div class="text-3xl md:text-4xl font-bold text-[#004D34] leading-none mb-1" data-counter="12"
+                            data-suffix="+">0</div>
                         <div class="text-sm text-gray-500 font-medium" data-i18n="trust.years">Years of Experience</div>
                     </div>
                 </div>
@@ -447,7 +757,8 @@
                         <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                     </svg>
                     <div>
-                        <div class="text-3xl md:text-4xl font-bold text-[#004D34] leading-none mb-1" data-counter="500" data-suffix="+">0</div>
+                        <div class="text-3xl md:text-4xl font-bold text-[#004D34] leading-none mb-1" data-counter="500"
+                            data-suffix="+">0</div>
                         <div class="text-sm text-gray-500 font-medium" data-i18n="trust.clients">Satisfied Clients</div>
                     </div>
                 </div>
@@ -458,7 +769,8 @@
                         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
                     </svg>
                     <div>
-                        <div class="text-3xl md:text-4xl font-bold text-[#004D34] leading-none mb-1" data-counter="20" data-suffix="+">0</div>
+                        <div class="text-3xl md:text-4xl font-bold text-[#004D34] leading-none mb-1" data-counter="20"
+                            data-suffix="+">0</div>
                         <div class="text-sm text-gray-500 font-medium" data-i18n="trust.industries_served">Industries
                             Served
                         </div>
@@ -505,6 +817,53 @@
                         <li class="flex items-center"><i data-lucide="check-circle-2" class="mr-3"></i> <span
                                 data-i18n="about.bullet_3">Commitment to Long-Term Partnership</span></li>
                     </ul>
+                    <div class="mt-8 mb-8">
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-emerald-700 mb-4"
+                            data-i18n="about.values_label">Our Values</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i data-lucide="trending-up" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-gray-950 text-sm mb-0.5" data-i18n="about.value_1_title">
+                                        Sustainable Growth</h5>
+                                    <p class="text-xs text-gray-500 leading-relaxed" data-i18n="about.value_1_desc">We
+                                        help organizations build long-term, resilient value. By combining deep
+                                        professional expertise with strategic foresight, we guide our clients to unlock
+                                        new, sustainable paths for growth.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i data-lucide="users" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-gray-950 text-sm mb-0.5" data-i18n="about.value_2_title">
+                                        Integrated Excellence</h5>
+                                    <p class="text-xs text-gray-500 leading-relaxed" data-i18n="about.value_2_desc">We
+                                        believe that complex challenges require integrated solutions. Our
+                                        multidisciplinary specialists collaborate dynamically to deliver tailored,
+                                        data-driven insights.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i data-lucide="target" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-gray-950 text-sm mb-0.5" data-i18n="about.value_3_title">
+                                        Lasting Impact</h5>
+                                    <p class="text-xs text-gray-500 leading-relaxed" data-i18n="about.value_3_desc">Our
+                                        purpose is to create positive, permanent impact. We partner with businesses to
+                                        shape strategic opportunities, manage risks, and foster regional progress.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <a href="services.html"
                         class="border border-gray-300 text-gray-700 px-5 py-2.5 rounded hover:bg-gray-50 transition inline-block">
                         <span data-i18n="about.cta">Learn More About Us</span>
@@ -515,13 +874,15 @@
                         <source src="assets/about-vid.mp4" type="video/mp4">
                         Maaf, browser Anda tidak mendukung pemutaran video HTML5.
                     </video>
-                    <button id="aboutVideoToggle" class="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/70 cursor-pointer" aria-label="Pause video">
+                    <button id="aboutVideoToggle"
+                        class="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/70 cursor-pointer"
+                        aria-label="Pause video">
                         <svg id="aboutPauseIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                            <rect x="6" y="4" width="4" height="16" rx="1"/>
-                            <rect x="14" y="4" width="4" height="16" rx="1"/>
+                            <rect x="6" y="4" width="4" height="16" rx="1" />
+                            <rect x="14" y="4" width="4" height="16" rx="1" />
                         </svg>
                         <svg id="aboutPlayIcon" class="w-5 h-5 hidden!" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
+                            <path d="M8 5v14l11-7z" />
                         </svg>
                     </button>
                 </div>
@@ -530,7 +891,7 @@
         <!-- ============ REFACTORED: EXECUTIVE INTELLIGENCE CENTER SECTION ============ -->
         <section id="executive-intelligence" class="py-24 bg-gray-100 overflow-hidden">
             <div class="container mx-auto px-6">
-                <div class="reveal-up text-center max-w-3xl mx-auto mb-12">
+                <div class="reveal-up text-center max-w-3xl mx-auto mb-4">
                     <div class="flex items-center justify-center gap-2 mb-3">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-700"></span>
                         <span class="text-sm font-bold uppercase tracking-widest text-emerald-800"
@@ -539,38 +900,57 @@
                     <h2 class="text-3xl md:text-4xl font-serif font-light text-gray-950 mb-4"
                         data-i18n="latest_updates.title">Insights That Drive Better Business Decisions</h2>
                     <p class="text-sm text-gray-500 max-w-xl mx-auto leading-relaxed" data-i18n="latest_updates.desc">
-                        Weekly perspectives, regulatory insights, transaction advisory and strategic business intelligence.
+                        Weekly perspectives, regulatory insights, transaction advisory and strategic business
+                        intelligence.
                     </p>
+                </div>
+                <!-- Carousel controls: top-right -->
+                <div class="flex items-center justify-end gap-2 mb-6 reveal-up latest-carousel-controls">
+                    <button type="button" id="latestPrev" class="latest-ctrl-btn" aria-label="Previous slides">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m15 18-6-6 6-6" />
+                        </svg>
+                    </button>
+                    <button type="button" id="latestPlayPause" class="latest-ctrl-btn" aria-label="Pause carousel">
+                        <svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                            <rect x="6" y="4" width="4" height="16" rx="1" />
+                            <rect x="14" y="4" width="4" height="16" rx="1" />
+                        </svg>
+                        <svg class="icon-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="display:none">
+                            <path d="M6 4l14 8-14 8V4z" />
+                        </svg>
+                    </button>
+                    <button type="button" id="latestNext" class="latest-ctrl-btn" aria-label="Next slides">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m9 18 6-6-6-6" />
+                        </svg>
+                    </button>
                 </div>
                 <!-- Carousel -->
                 <div class="relative reveal-up">
-                    <div id="latestCarousel" class="flex gap-5 overflow-hidden cursor-grab select-none pb-4">
+                    <div id="latestCarousel" class="flex overflow-hidden cursor-grab select-none pb-4">
                     </div>
-                    <!-- Nav arrows -->
-                    <button type="button" id="latestPrev" class="latest-arrow latest-arrow-prev" aria-label="Previous slides">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-                    </button>
-                    <button type="button" id="latestNext" class="latest-arrow latest-arrow-next" aria-label="Next slides">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-                    </button>
                 </div>
             </div>
         </section>
-        <section id="services" class="py-20 bg-gray-50 border-t border-b border-gray-100">
+        <section id="services" class="py-20 bg-white border-t border-b border-gray-100">
             <div class="container mx-auto px-6">
                 <div class="mb-14 text-center max-w-2xl mx-auto reveal-up">
                     <span class="text-sm font-bold uppercase tracking-widest text-emerald-700"
                         data-i18n="services.section_label">Our Services</span>
-                    <h2 class="text-2xl sm:text-3xl font-serif mt-2 text-gray-950" data-i18n="services.section_title">Integrated
+                    <h2 class="text-2xl sm:text-3xl font-serif mt-2 text-gray-950" data-i18n="services.section_title">
+                        Integrated
                         Solutions Across Every Challenge</h2>
                 </div>
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 reveal-up" id="servicesGrid">
+                <div class="svc-grid reveal-up" id="servicesGrid">
                     <!-- Populated by ServiceRenderer -->
                 </div>
             </div>
         </section>
         <section id="industry-exposure"
-            class="py-24 bg-linear-to-b from-white to-neutral-50/60 border-t border-b border-gray-100 overflow-hidden">
+            class="py-24 bg-gray-100 border-t border-b border-gray-100 overflow-hidden">
             <div class="container mx-auto px-6">
                 <div class="reveal-up text-center max-w-2xl mx-auto mb-16">
                     <div class="flex items-center justify-center gap-2 mb-3">
@@ -586,7 +966,10 @@
                     </p>
                     <div class="w-12 h-px bg-gray-200 mx-auto mt-6"></div>
                 </div>
-                <div id="marqueeWrap" class="reveal-up relative w-full overflow-hidden mb-16" style="mask-image:linear-gradient(90deg,transparent,black 15%,black 85%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 15%,black 85%,transparent)"></div>
+                <div id="marqueeWrap" data-renderer="client-logos"
+                    class="reveal-up relative w-full overflow-hidden mb-16"
+                    style="mask-image:linear-gradient(90deg,transparent,black 15%,black 85%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 15%,black 85%,transparent)">
+                </div>
                 <div class="reveal-up grid grid-cols-2 md:grid-cols-4 gap-4 justify-center items-stretch text-center">
                     <div
                         class="bg-white border border-gray-100 p-6 rounded-xl shadow-2xs hover:border-emerald-200 transition duration-300 flex flex-col justify-between">
@@ -595,7 +978,8 @@
                             <p class="text-sm font-bold text-emerald-800 uppercase tracking-wider mt-1.5"
                                 data-i18n="transfer.m1">Industry Sectors</p>
                         </div>
-                        <p class="text-sm text-gray-400 mt-2 leading-relaxed" data-i18n="transfer.m1_desc">Cross-sector alignment adaptability
+                        <p class="text-sm text-gray-400 mt-2 leading-relaxed" data-i18n="transfer.m1_desc">Cross-sector
+                            alignment adaptability
                             index.</p>
                     </div>
                     <div
@@ -605,7 +989,8 @@
                             <p class="text-sm font-bold text-emerald-800 uppercase tracking-wider mt-1.5"
                                 data-i18n="transfer.m2">Advisory Projects</p>
                         </div>
-                        <p class="text-sm text-gray-400 mt-2 leading-relaxed" data-i18n="transfer.m2_desc">Successfully delivered structural
+                        <p class="text-sm text-gray-400 mt-2 leading-relaxed" data-i18n="transfer.m2_desc">Successfully
+                            delivered structural
                             mandates.</p>
                     </div>
                     <div
@@ -615,7 +1000,8 @@
                             <p class="text-sm font-bold text-emerald-800 uppercase tracking-wider mt-1.5"
                                 data-i18n="transfer.m3">Business Network</p>
                         </div>
-                        <p class="text-sm text-gray-400 mt-2 leading-relaxed" data-i18n="transfer.m3_desc">Strategic hub footprints spanning APAC
+                        <p class="text-sm text-gray-400 mt-2 leading-relaxed" data-i18n="transfer.m3_desc">Strategic hub
+                            footprints spanning APAC
                             desk channels.</p>
                     </div>
                     <div
@@ -625,7 +1011,8 @@
                             <p class="text-sm font-bold text-emerald-800 uppercase tracking-wider mt-1.5"
                                 data-i18n="transfer.m4">Engagements</p>
                         </div>
-                        <p class="text-sm text-gray-400 mt-2 leading-relaxed" data-i18n="transfer.m4_desc">Strict adherence to standard
+                        <p class="text-sm text-gray-400 mt-2 leading-relaxed" data-i18n="transfer.m4_desc">Strict
+                            adherence to standard
                             non-disclosure codes.</p>
                     </div>
                 </div>
@@ -644,6 +1031,9 @@
             #marqueeWrap .marquee-track.is-ready {
                 animation-play-state: running;
             }
+            #marqueeWrap:hover .marquee-track {
+                animation-play-state: paused !important;
+            }
             @keyframes marquee-scroll {
                 from { transform: translate3d(0, 0, 0); }
                 to { transform: translate3d(var(--marquee-distance, -50%), 0, 0); }
@@ -654,7 +1044,231 @@
                 transform: none !important;
             }
         }
+
+        /* ===== TESTIMONIALS VERTICAL CAROUSEL ===== */
+        .testi-section { overflow: hidden; }
+        .testi-viewport {
+            position: relative;
+            height: 260px;
+            overflow: hidden;
+        }
+        @media (max-width: 768px) {
+            .testi-viewport { height: auto; overflow: visible; }
+        }
+        .testi-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .testi-batch {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            will-change: transform, opacity;
+        }
+        @media (max-width: 768px) {
+            .testi-batch {
+                position: relative;
+                grid-template-columns: 1fr;
+            }
+        }
+        .testi-card {
+            background: #fff;
+            border: 1px solid #f0f0f0;
+            border-radius: 16px;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 400ms cubic-bezier(.22,1,.36,1), transform 400ms cubic-bezier(.22,1,.36,1);
+        }
+        .testi-card:hover {
+            box-shadow: 0 12px 32px -8px rgba(0,0,0,0.08);
+            transform: translateY(-4px);
+        }
+        .testi-stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 16px;
+        }
+        .testi-star {
+            width: 16px;
+            height: 16px;
+            color: #f59e0b;
+        }
+        .testi-quote {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #4b5563;
+            margin-bottom: 20px;
+            flex: 1;
+            font-style: italic;
+        }
+        .testi-quote::before { content: '\201C'; color: #d1d5db; font-size: 28px; line-height: 0; vertical-align: -6px; margin-right: 4px; font-style: normal; }
+        .testi-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-top: 16px;
+            border-top: 1px solid #f3f4f6;
+        }
+        .testi-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e5e7eb;
+            flex-shrink: 0;
+        }
+        .testi-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #111827;
+            line-height: 1.3;
+        }
+        .testi-role {
+            font-size: 11px;
+            color: #9ca3af;
+            margin-top: 1px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .testi-track { transform: none !important; animation: none !important; }
+        }
         </style>
+        <section id="testimonials" class="testi-section py-24 bg-white border-t border-b border-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="mb-14 text-center max-w-2xl mx-auto reveal-up">
+                    <div class="flex items-center justify-center gap-2 mb-3">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-700"></span>
+                        <span class="text-sm font-bold uppercase tracking-widest text-emerald-800"
+                            data-i18n="testimonials.label">Testimonials</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-serif font-light text-gray-950 mb-4"
+                        data-i18n="testimonials.title">Our Clients Testimony</h2>
+                    <p class="text-sm text-gray-500 max-w-xl mx-auto leading-relaxed"
+                        data-i18n="testimonials.desc">
+                        Trusted by leading organizations across Indonesia and the region.
+                    </p>
+                </div>
+                <div class="testi-viewport reveal-up" id="testiViewport">
+                    <div class="testi-track" id="testiTrack">
+                        <div class="testi-batch" id="testiBatchA">
+                            <div class="testi-card">
+                                <div class="testi-stars">
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                </div>
+                                <p class="testi-quote">Chatura delivered exceptional financial advisory that transformed our reporting structure. Their team's depth of knowledge in IFRS compliance gave us complete confidence.</p>
+                                <div class="testi-author">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ahmad Rizky" class="testi-avatar" loading="lazy">
+                                    <div>
+                                        <div class="testi-name">Ahmad Rizky</div>
+                                        <div class="testi-role">CFO, PT Maju Bersama</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testi-card">
+                                <div class="testi-stars">
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                </div>
+                                <p class="testi-quote">The tax restructuring advisory saved us significant compliance costs. Their strategic approach to transfer pricing was nothing short of brilliant.</p>
+                                <div class="testi-author">
+                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Wijaya" class="testi-avatar" loading="lazy">
+                                    <div>
+                                        <div class="testi-name">Sarah Wijaya</div>
+                                        <div class="testi-role">Director, PT Nusantara Energy</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testi-card">
+                                <div class="testi-stars">
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                </div>
+                                <p class="testi-quote">Their M&A due diligence was thorough and their deal structuring guidance was instrumental in our successful acquisition. Truly professional.</p>
+                                <div class="testi-author">
+                                    <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Budi Santoso" class="testi-avatar" loading="lazy">
+                                    <div>
+                                        <div class="testi-name">Budi Santoso</div>
+                                        <div class="testi-role">CEO, PT Harmoni Sejahtera</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testi-batch" id="testiBatchB" style="opacity:0;pointer-events:none;">
+                            <div class="testi-card">
+                                <div class="testi-stars">
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                </div>
+                                <p class="testi-quote">Chatura's risk management framework gave us the confidence to expand regionally. Their governance advisory is world-class.</p>
+                                <div class="testi-author">
+                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Maya Putri" class="testi-avatar" loading="lazy">
+                                    <div>
+                                        <div class="testi-name">Maya Putri</div>
+                                        <div class="testi-role">VP Operations, PT Global Industri</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testi-card">
+                                <div class="testi-stars">
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                </div>
+                                <p class="testi-quote">Outstanding corporate advisory that exceeded our expectations. Their restructuring insights helped us streamline operations significantly.</p>
+                                <div class="testi-author">
+                                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="David Chen" class="testi-avatar" loading="lazy">
+                                    <div>
+                                        <div class="testi-name">David Chen</div>
+                                        <div class="testi-role">Managing Director, PT Pacific Trade</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testi-card">
+                                <div class="testi-stars">
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                </div>
+                                <p class="testi-quote">The team's expertise in cross-border transactions made our international expansion seamless. Highly recommended for complex deals.</p>
+                                <div class="testi-author">
+                                    <img src="https://randomuser.me/api/portraits/women/25.jpg" alt="Rina Hartono" class="testi-avatar" loading="lazy">
+                                    <div>
+                                        <div class="testi-name">Rina Hartono</div>
+                                        <div class="testi-role">CFO, PT Sejatera Global</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section id="strategic-expertise" class="bg-gray-100 text-white py-16 relative overflow-hidden">
             <div class="container mx-auto px-6 grid lg:grid-cols-[1fr_2fr] gap-10 items-center relative z-10">
                 <div>
@@ -671,31 +1285,43 @@
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
                     <div>
                         <i data-lucide="mail" class="text-[#004D34] text-2xl"></i>
-                        <h4 class="font-semibold mb-1 text-sm text-emerald-500 " data-i18n="index.contact_inq_title">General Inquiries</h4>
-                        <p class="text-emerald-100/70 text-sm text-gray-900 leading-relaxed" data-i18n="index.contact_inq_desc">For
+                        <h4 class="font-semibold mb-1 text-sm text-emerald-500 " data-i18n="index.contact_inq_title">
+                            General Inquiries</h4>
+                        <p class="text-emerald-100/70 text-sm text-gray-900 leading-relaxed"
+                            data-i18n="index.contact_inq_desc">For
                             general questions, company information, or to be directed to the right team within Chatura,
                             please reach us at</p>
-                        <a href="mailto:info@chatura.co.id" class="text-emerald-800/90 text-sm font-medium hover:text-white transition mt-1 inline-block" data-i18n="index.contact_inq_email">info@chatura.co.id</a>
+                        <a href="mailto:info@chatura-indonesia.com"
+                            class="text-emerald-800/90 text-sm font-medium hover:text-white transition mt-1 inline-block"
+                            data-i18n="index.contact_inq_email">info@chatura-indonesia.com</a>
                     </div>
                     <div>
                         <i data-lucide="megaphone" class="text-[#004D34] text-2xl"></i>
-                        <h4 class="font-semibold mb-1 text-sm text-emerald-500" data-i18n="index.contact_media_title">Media &amp; Communications</h4>
-                        <p class="text-emerald-100/70 text-sm lea text-gray-900 ding-relaxed" data-i18n="index.contact_media_desc">For
+                        <h4 class="font-semibold mb-1 text-sm text-emerald-500" data-i18n="index.contact_media_title">
+                            Media &amp; Communications</h4>
+                        <p class="text-emerald-100/70 text-sm lea text-gray-900 ding-relaxed"
+                            data-i18n="index.contact_media_desc">For
                             matters involving marketing initiatives, media relations, event partnerships, sponsorships,
                             or strategic alliances, please contact</p>
-                        <a href="mailto:marketing@chatura.co.id" class="text-emerald-800/90 text-sm font-medium hover:text-white transition mt-1 inline-block" data-i18n="index.contact_media_email">marketing@chatura.co.id</a>
+                        <a href="mailto:marketing@chatura-indonesia.com"
+                            class="text-emerald-800/90 text-sm font-medium hover:text-white transition mt-1 inline-block"
+                            data-i18n="index.contact_media_email">marketing@chatura-indonesia.com</a>
                     </div>
                     <div>
                         <i data-lucide="briefcase" class="text-[#004D34] text-2xl"></i>
-                        <h4 class="font-semibold mb-1 text-sm text-emerald-500" data-i18n="index.contact_career_title">Career Opportunities</h4>
-                        <p class="text-emerald-100/70 text-sm text-gray-900 leading-relaxed" data-i18n="index.contact_career_desc">Chatura
+                        <h4 class="font-semibold mb-1 text-sm text-emerald-500" data-i18n="index.contact_career_title">
+                            Career Opportunities</h4>
+                        <p class="text-emerald-100/70 text-sm text-gray-900 leading-relaxed"
+                            data-i18n="index.contact_career_desc">Chatura
                             welcomes talented professionals who share our commitment to excellence. Submit your resume
                             to</p>
-                        <a href="mailto:hrd@chatura.co.id" class="text-emerald-900/90 text-sm font-medium hover:text-white transition mt-1 inline-block" data-i18n="index.contact_career_email">hrd@chatura.co.id</a>
+                        <a href="mailto:hrd@chatura-indonesia.com"
+                            class="text-emerald-900/90 text-sm font-medium hover:text-white transition mt-1 inline-block"
+                            data-i18n="index.contact_career_email">hrd@chatura-indonesia.com</a>
                     </div>
                 </div>
             </div>
-        <!-- </section>
+            <!-- </section>
         <section id="final-cta" class="py-14 bg-gray-50 border-b border-gray-100">
             <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
                 <div>
@@ -775,7 +1401,7 @@
         </div>
     </div>
     <!-- ============ FOOTER ============ -->
-    <footer class="bg-[#004D34] text-white/70">
+    <footer class="bg-[#004D34] text-gray-50">
         <!-- Brand Manifesto -->
         <div class="container mx-auto px-6 pt-24 pb-20">
             <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
@@ -784,10 +1410,10 @@
                         data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
                     <img width="487" height="350" src="assets/chatura-footer.webp" alt="Chatura Indonesia"
                         class="h-36 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
-                    <p class="text-sm text-white/60 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated
+                    <p class="text-sm text-gray-50 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated
                         professional services providing accounting, tax, business advisory, and risk management
                         solutions across the Indonesian archipelago and Southeast Asian markets.</p>
-                    <div class="flex items-center gap-5 mt-8 text-gray-500">
+                    <div class="flex items-center gap-5 mt-8 text-gray-50/60">
                         <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"
                             class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin"
                                 class="w-4.5 h-4.5"></i></a>
@@ -797,7 +1423,7 @@
                         <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer"
                             class="hover:text-white transition-colors duration-300"><i data-lucide="youtube"
                                 class="w-4.5 h-4.5"></i></a>
-                        <a href="mailto:hello@chatura.co.id" aria-label="Email"
+                        <a href="mailto:info@chatura-indonesia.com" aria-label="Email"
                             class="hover:text-white transition-colors duration-300"><i data-lucide="mail"
                                 class="w-4.5 h-4.5"></i></a>
                     </div>
@@ -817,7 +1443,7 @@
                                     data-i18n="footer.service_2">Tax Services<span
                                         class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
                             </li>
-                            <li><a href="#"
+                            <li><a href="services/business-transfer/"
                                     class="text-sm text-white/60 hover:text-white transition-colors duration-300 relative group"
                                     data-i18n="footer.service_3">Business Transfer<span
                                         class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
@@ -919,13 +1545,14 @@
                 <div class="flex items-center gap-4">
                     <img width="487" height="350" src="assets/chatura-footer.webp" alt="Chatura"
                         class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
-                    <span class="text-sm text-gray-500" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia.
+                    <span class="text-sm text-gray-50/60" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia.
                         All rights reserved.</span>
                 </div>
-                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-500">
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-50/60">
                     <a href="privacy.html" class="hover:text-white transition-colors duration-300"
                         data-i18n="footer.privacy">Privacy Policy</a>
-                    <a href="terms.html" class="hover:text-white transition-colors duration-300" data-i18n="footer.terms">Terms
+                    <a href="terms.html" class="hover:text-white transition-colors duration-300"
+                        data-i18n="footer.terms">Terms
                         of Use</a>
                     <a href="cookies.html" class="hover:text-white transition-colors duration-300"
                         data-i18n="footer.cookies">Cookies</a>
@@ -933,10 +1560,11 @@
                         data-i18n="footer.disclaimer">Disclaimer</a>
                     <a href="sitemap.html" class="hover:text-white transition-colors duration-300"
                         data-i18n="footer.sitemap">Sitemap</a>
-                    <a href="code-of-conduct.html" class="hover:text-white transition-colors duration-300" data-i18n="footer.conduct">Code
+                    <a href="code-of-conduct.html" class="hover:text-white transition-colors duration-300"
+                        data-i18n="footer.conduct">Code
                         of Conduct</a>
                 </div>
-                <div class="flex items-center gap-4 text-gray-500">
+                <div class="flex items-center gap-4 text-gray-50/60">
                     <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"
                         class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin"
                             class="w-4 h-4"></i></a>
@@ -946,7 +1574,7 @@
                     <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer"
                         class="hover:text-white transition-colors duration-300"><i data-lucide="youtube"
                             class="w-4 h-4"></i></a>
-                    <a href="mailto:hello@chatura.co.id" aria-label="Email"
+                    <a href="mailto:info@chatura-indonesia.com" aria-label="Email"
                         class="hover:text-white transition-colors duration-300"><i data-lucide="mail"
                             class="w-4 h-4"></i></a>
                 </div>
@@ -962,9 +1590,9 @@
             </div>
         </div>
     </footer>
-    
-        
-    
+
+
+
     <script>
         // ===== Scroll handlers (deferred to Section Snap Engine if available) =====
         (function () {
@@ -1210,266 +1838,267 @@
         })();
     </script>
     <script>
-    // ================================================================
-    // PREMIUM SECTION SNAP SCROLL ENGINE v1.0
-    // Spring physics · GSAP ScrollTo + Observer · Framer Motion feel
-    // ================================================================
-    (function () {
-        'use strict';
-        if (typeof gsap === 'undefined' || typeof ScrollToPlugin === 'undefined') return;
+        // ================================================================
+        // PREMIUM SECTION SNAP SCROLL ENGINE v1.0
+        // Spring physics · GSAP ScrollTo + Observer · Framer Motion feel
+        // ================================================================
+        (function () {
+            'use strict';
+            if (typeof gsap === 'undefined' || typeof ScrollToPlugin === 'undefined') return;
 
-        gsap.registerPlugin(ScrollToPlugin);
+            gsap.registerPlugin(ScrollToPlugin);
 
-        // ——— CONFIG ———
-        var NAVBAR_HEIGHT  = 80;
-        var SNAP_THRESHOLD = 50;       // min px/s for wheel/touch to register
-        var SPRING         = { stiffness: 0.06, damping: 0.92, mass: 1 };
-        var DURATION       = 1.1;      // seconds (GSAP duration cap)
-        var reducedMotion  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            // ——— CONFIG ———
+            var NAVBAR_HEIGHT = 80;
+            var SNAP_THRESHOLD = 50;       // min px/s for wheel/touch to register
+            var SPRING = { stiffness: 0.06, damping: 0.92, mass: 1 };
+            var DURATION = 1.1;      // seconds (GSAP duration cap)
+            var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        // ——— STATE MACHINE ———
-        // IDLE → LOCK → ANIMATING → UNLOCK → IDLE
-        var state    = 'IDLE';
-        var sections = Array.prototype.slice.call(document.querySelectorAll('main > section[id]'));
-        var current  = 0;
-        var len      = sections.length;
-        if (!len) return;
+            // ——— STATE MACHINE ———
+            // IDLE → LOCK → ANIMATING → UNLOCK → IDLE
+            var state = 'IDLE';
+            var sections = Array.prototype.slice.call(document.querySelectorAll('main > section[id]'));
+            var current = 0;
+            var len = sections.length;
+            if (!len) return;
 
-        // ——— SPRING CURVE (Framer Motion inspired) ———
-        // Overshoot: -0.08, settle, small bounce
-        function springEase(progress) {
-            if (progress >= 1) return 1;
-            var p  = progress;
-            var p2 = p * p;
-            var p3 = p2 * p;
-            // Custom damped sine with overshoot
-            return 1 + Math.exp(-6.5 * p) * Math.sin(12.5 * p) * 0.08;
-        }
-
-        // ——— GET SECTION TOP (native offset) ———
-        function sectionTop(idx) {
-            if (idx < 0) idx = 0;
-            if (idx >= len) idx = len - 1;
-            return sections[idx].offsetTop - NAVBAR_HEIGHT;
-        }
-
-        // ——— LOCK INPUT ———
-        function lock()   { state = 'LOCKING'; state = 'ANIMATING'; }
-
-        // ——— UNLOCK INPUT ———
-        function unlock() { state = 'IDLE'; }
-
-        // ——— SCROLL TO SECTION ———
-        function scrollTo(idx, immediate) {
-            if (idx < 0 || idx >= len) return;
-            if (state === 'ANIMATING') return;
-
-            var prev = current;
-            current  = idx;
-            state    = 'ANIMATING';
-            var target = sectionTop(idx);
-
-            // Section transition: outgoing fade, incoming fade
-            if (prev !== idx && sections[prev]) {
-                var outEl = sections[prev].querySelector('.container, .max-w-2xl, [class*="reveal"]');
-                var inEl  = sections[idx].querySelector('.container, .max-w-2xl, [class*="reveal"]');
-                if (outEl && !reducedMotion) {
-                    gsap.to(outEl, { opacity: 0.92, scale: 0.985, duration: 0.3, ease: 'power2.out' });
-                    gsap.set(inEl, { opacity: 0.94, scale: 0.985 });
-                }
+            // ——— SPRING CURVE (Framer Motion inspired) ———
+            // Overshoot: -0.08, settle, small bounce
+            function springEase(progress) {
+                if (progress >= 1) return 1;
+                var p = progress;
+                var p2 = p * p;
+                var p3 = p2 * p;
+                // Custom damped sine with overshoot
+                return 1 + Math.exp(-6.5 * p) * Math.sin(12.5 * p) * 0.08;
             }
 
-            gsap.to(window, {
-                scrollTo: { y: target, autoKill: false },
-                duration: immediate ? 0.25 : DURATION,
-                ease: reducedMotion ? 'power2.inOut' : springEase,
-                onComplete: function () {
-                    // Restore section elements
-                    if (prev !== idx && sections[prev]) {
-                        var outEl2 = sections[prev].querySelector('.container, .max-w-2xl, [class*="reveal"]');
-                        if (outEl2) gsap.set(outEl2, { opacity: 1, scale: 1 });
+            // ——— GET SECTION TOP (native offset) ———
+            function sectionTop(idx) {
+                if (idx < 0) idx = 0;
+                if (idx >= len) idx = len - 1;
+                return sections[idx].offsetTop - NAVBAR_HEIGHT;
+            }
+
+            // ——— LOCK INPUT ———
+            function lock() { state = 'LOCKING'; state = 'ANIMATING'; }
+
+            // ——— UNLOCK INPUT ———
+            function unlock() { state = 'IDLE'; }
+
+            // ——— SCROLL TO SECTION ———
+            function scrollTo(idx, immediate) {
+                if (idx < 0 || idx >= len) return;
+                if (state === 'ANIMATING') return;
+
+                var prev = current;
+                current = idx;
+                state = 'ANIMATING';
+                var target = sectionTop(idx);
+
+                // Section transition: outgoing fade, incoming fade
+                if (prev !== idx && sections[prev]) {
+                    var outEl = sections[prev].querySelector('.container, .max-w-2xl, [class*="reveal"]');
+                    var inEl = sections[idx].querySelector('.container, .max-w-2xl, [class*="reveal"]');
+                    if (outEl && !reducedMotion) {
+                        gsap.to(outEl, { opacity: 0.92, scale: 0.985, duration: 0.3, ease: 'power2.out' });
+                        gsap.set(inEl, { opacity: 0.94, scale: 0.985 });
                     }
-                    var inEl2 = sections[idx].querySelector('.container, .max-w-2xl, [class*="reveal"]');
-                    if (inEl2) gsap.to(inEl2, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' });
+                }
 
+                gsap.to(window, {
+                    scrollTo: { y: target, autoKill: false },
+                    duration: immediate ? 0.25 : DURATION,
+                    ease: reducedMotion ? 'power2.inOut' : springEase,
+                    onComplete: function () {
+                        // Restore section elements
+                        if (prev !== idx && sections[prev]) {
+                            var outEl2 = sections[prev].querySelector('.container, .max-w-2xl, [class*="reveal"]');
+                            if (outEl2) gsap.set(outEl2, { opacity: 1, scale: 1 });
+                        }
+                        var inEl2 = sections[idx].querySelector('.container, .max-w-2xl, [class*="reveal"]');
+                        if (inEl2) gsap.to(inEl2, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' });
+
+                        state = 'IDLE';
+                        updateHash(idx);
+                        updateDots(idx);
+                        updateNav(idx);
+                    }
+                });
+            }
+
+            // ——— NEXT / PREV ———
+            function next() { if (current < len - 1) scrollTo(current + 1); }
+            function prev() { if (current > 0) scrollTo(current - 1); }
+
+            // ——— HASH ———
+            function updateHash(idx) {
+                var id = sections[idx].id;
+                if (id && history.replaceState) {
+                    history.replaceState(null, '', '#' + id);
+                }
+            }
+            function hashIndex() {
+                var h = location.hash.replace('#', '');
+                for (var i = 0; i < len; i++) {
+                    if (sections[i].id === h) return i;
+                }
+                return 0;
+            }
+
+            // ——— NAVBAR SCROLL STATE ———
+            function updateNav(idx) {
+                var nav = document.getElementById('navbar-sticky');
+                if (nav) {
+                    if (idx > 0) nav.classList.add('scrolled');
+                    else nav.classList.remove('scrolled');
+                }
+            }
+
+            // ——— SCROLL-DOWN BUTTON ———
+            var scrollBtn = document.getElementById('scroll-down');
+            if (scrollBtn) {
+                scrollBtn.addEventListener('click', function () { scrollTo(1); });
+                function updateScrollBtn() {
+                    if (current > 0) { scrollBtn.style.opacity = '0'; scrollBtn.style.pointerEvents = 'none'; }
+                    else { scrollBtn.style.opacity = '1'; scrollBtn.style.pointerEvents = 'auto'; }
+                }
+            }
+
+            // ——— HERO PARALLAX ———
+            var heroBg = document.getElementById('hero-bg');
+            function updateHeroParallax() {
+                if (!heroBg) return;
+                var y = window.scrollY || window.pageYOffset || 0;
+                if (y < 1200) heroBg.style.transform = 'translateY(' + (y * 0.3) + 'px) scale(1.1)';
+            }
+
+            // ——— PROGRESS DOTS ———
+            var dotsWrap = document.createElement('div');
+            dotsWrap.className = 'snap-dots';
+            dotsWrap.setAttribute('role', 'navigation');
+            dotsWrap.setAttribute('aria-label', 'Section navigation');
+            sections.forEach(function (sec, i) {
+                var dot = document.createElement('button');
+                dot.className = 'snap-dot';
+                dot.setAttribute('aria-label', 'Go to ' + (sec.id || 'section ' + (i + 1)));
+                dot.setAttribute('data-index', i);
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', function () { scrollTo(i); });
+                dotsWrap.appendChild(dot);
+            });
+            document.body.appendChild(dotsWrap);
+
+            function updateDots(idx) {
+                var dots = dotsWrap.querySelectorAll('.snap-dot');
+                dots.forEach(function (d, i) {
+                    d.classList.toggle('active', i === idx);
+                });
+                if (scrollBtn) updateScrollBtn();
+            }
+
+            // ——— GSAP OBSERVER (wheel, touch, pointer) ———
+            var observer = Observer.create({
+                type: 'wheel,touch,pointer',
+                wheelSpeed: -1,
+                tolerance: SNAP_THRESHOLD,
+                preventDefault: true,
+                onUp: function () { prev(); },
+                onDown: function () { next(); },
+                ignore: "#latestCarousel, .wa-popup, .wa-widget, #mobileMenu, #loginModal, .nav-dropdown-menu",
+                onClick: function () { /* allow native clicks */ },
+                ignoreMobileScroll: true
+            });
+
+            // ——— KEYBOARD ———
+            document.addEventListener('keydown', function (e) {
+                if (state === 'ANIMATING') return;
+                switch (e.key) {
+                    case 'ArrowDown':
+                    case 'PageDown':
+                    case ' ':
+                        e.preventDefault();
+                        next();
+                        break;
+                    case 'ArrowUp':
+                    case 'PageUp':
+                        e.preventDefault();
+                        prev();
+                        break;
+                    case 'Home':
+                        e.preventDefault();
+                        scrollTo(0);
+                        break;
+                    case 'End':
+                        e.preventDefault();
+                        scrollTo(len - 1);
+                        break;
+                }
+            });
+
+            // ——— ANCHOR LINKS ———
+            document.addEventListener('click', function (e) {
+                var link = e.target.closest('a[href^="#"]');
+                if (!link) return;
+                var hash = link.getAttribute('href');
+                if (!hash || hash === '#' || hash.length < 2) return;
+                e.preventDefault();
+                // Find section index
+                for (var i = 0; i < len; i++) {
+                    if ('#' + sections[i].id === hash) {
+                        scrollTo(i);
+                        break;
+                    }
+                }
+                // Close mobile menu
+                var mm = document.getElementById('mobileMenu');
+                if (mm && !mm.classList.contains('hidden')) {
+                    mm.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                }
+            });
+
+            // ——— SCROLL LISTENER (parallax + navbar) ———
+            window.addEventListener('scroll', function () {
+                updateHeroParallax();
+                updateNav(current);
+                if (scrollBtn) updateScrollBtn();
+            }, { passive: true });
+
+            // ——— RESIZE ———
+            var resizeTimer;
+            window.addEventListener('resize', function () {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function () {
+                    sections = Array.prototype.slice.call(document.querySelectorAll('main > section[id]'));
+                    len = sections.length;
+                }, 200);
+            });
+
+            // ——— VISIBILITY CHANGE ———
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden && state === 'ANIMATING') {
+                    gsap.killTweensOf(window);
                     state = 'IDLE';
-                    updateHash(idx);
-                    updateDots(idx);
-                    updateNav(idx);
                 }
             });
-        }
 
-        // ——— NEXT / PREV ———
-        function next() { if (current < len - 1) scrollTo(current + 1); }
-        function prev() { if (current > 0)      scrollTo(current - 1); }
-
-        // ——— HASH ———
-        function updateHash(idx) {
-            var id = sections[idx].id;
-            if (id && history.replaceState) {
-                history.replaceState(null, '', '#' + id);
-            }
-        }
-        function hashIndex() {
-            var h = location.hash.replace('#', '');
-            for (var i = 0; i < len; i++) {
-                if (sections[i].id === h) return i;
-            }
-            return 0;
-        }
-
-        // ——— NAVBAR SCROLL STATE ———
-        function updateNav(idx) {
-            var nav = document.getElementById('navbar-sticky');
-            if (nav) {
-                if (idx > 0) nav.classList.add('scrolled');
-                else nav.classList.remove('scrolled');
-            }
-        }
-
-        // ——— SCROLL-DOWN BUTTON ———
-        var scrollBtn = document.getElementById('scroll-down');
-        if (scrollBtn) {
-            scrollBtn.addEventListener('click', function () { scrollTo(1); });
-            function updateScrollBtn() {
-                if (current > 0) { scrollBtn.style.opacity = '0'; scrollBtn.style.pointerEvents = 'none'; }
-                else { scrollBtn.style.opacity = '1'; scrollBtn.style.pointerEvents = 'auto'; }
-            }
-        }
-
-        // ——— HERO PARALLAX ———
-        var heroBg = document.getElementById('hero-bg');
-        function updateHeroParallax() {
-            if (!heroBg) return;
-            var y = window.scrollY || window.pageYOffset || 0;
-            if (y < 1200) heroBg.style.transform = 'translateY(' + (y * 0.3) + 'px) scale(1.1)';
-        }
-
-        // ——— PROGRESS DOTS ———
-        var dotsWrap = document.createElement('div');
-        dotsWrap.className = 'snap-dots';
-        dotsWrap.setAttribute('role', 'navigation');
-        dotsWrap.setAttribute('aria-label', 'Section navigation');
-        sections.forEach(function (sec, i) {
-            var dot = document.createElement('button');
-            dot.className = 'snap-dot';
-            dot.setAttribute('aria-label', 'Go to ' + (sec.id || 'section ' + (i + 1)));
-            dot.setAttribute('data-index', i);
-            if (i === 0) dot.classList.add('active');
-            dot.addEventListener('click', function () { scrollTo(i); });
-            dotsWrap.appendChild(dot);
-        });
-        document.body.appendChild(dotsWrap);
-
-        function updateDots(idx) {
-            var dots = dotsWrap.querySelectorAll('.snap-dot');
-            dots.forEach(function (d, i) {
-                d.classList.toggle('active', i === idx);
-            });
-            if (scrollBtn) updateScrollBtn();
-        }
-
-        // ——— GSAP OBSERVER (wheel, touch, pointer) ———
-        var observer = Observer.create({
-            type: 'wheel,touch,pointer',
-            wheelSpeed: -1,
-            tolerance: SNAP_THRESHOLD,
-            preventDefault: true,
-            onUp: function () { prev(); },
-            onDown: function () { next(); },
-            onClick: function () { /* allow native clicks */ },
-            ignoreMobileScroll: true
-        });
-
-        // ——— KEYBOARD ———
-        document.addEventListener('keydown', function (e) {
-            if (state === 'ANIMATING') return;
-            switch (e.key) {
-                case 'ArrowDown':
-                case 'PageDown':
-                case ' ':
-                    e.preventDefault();
-                    next();
-                    break;
-                case 'ArrowUp':
-                case 'PageUp':
-                    e.preventDefault();
-                    prev();
-                    break;
-                case 'Home':
-                    e.preventDefault();
-                    scrollTo(0);
-                    break;
-                case 'End':
-                    e.preventDefault();
-                    scrollTo(len - 1);
-                    break;
-            }
-        });
-
-        // ——— ANCHOR LINKS ———
-        document.addEventListener('click', function (e) {
-            var link = e.target.closest('a[href^="#"]');
-            if (!link) return;
-            var hash = link.getAttribute('href');
-            if (!hash || hash === '#' || hash.length < 2) return;
-            e.preventDefault();
-            // Find section index
-            for (var i = 0; i < len; i++) {
-                if ('#' + sections[i].id === hash) {
-                    scrollTo(i);
-                    break;
-                }
-            }
-            // Close mobile menu
-            var mm = document.getElementById('mobileMenu');
-            if (mm && !mm.classList.contains('hidden')) {
-                mm.classList.add('hidden');
-                document.body.classList.remove('overflow-hidden');
-            }
-        });
-
-        // ——— SCROLL LISTENER (parallax + navbar) ———
-        window.addEventListener('scroll', function () {
-            updateHeroParallax();
+            // ——— INIT ———
+            current = hashIndex();
+            scrollTo(current, true);
+            updateDots(current);
             updateNav(current);
-            if (scrollBtn) updateScrollBtn();
-        }, { passive: true });
 
-        // ——— RESIZE ———
-        var resizeTimer;
-        window.addEventListener('resize', function () {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function () {
-                sections = Array.prototype.slice.call(document.querySelectorAll('main > section[id]'));
-                len = sections.length;
-            }, 200);
-        });
-
-        // ——— VISIBILITY CHANGE ———
-        document.addEventListener('visibilitychange', function () {
-            if (document.hidden && state === 'ANIMATING') {
-                gsap.killTweensOf(window);
-                state = 'IDLE';
-            }
-        });
-
-        // ——— INIT ———
-        current = hashIndex();
-        scrollTo(current, true);
-        updateDots(current);
-        updateNav(current);
-
-        // ——— EXPOSE ———
-        window.__snapEngine = {
-            scrollTo: scrollTo,
-            next: next,
-            prev: prev,
-            getCurrent: function () { return current; },
-            getSections: function () { return sections; }
-        };
-    })();
+            // ——— EXPOSE ———
+            window.__snapEngine = {
+                scrollTo: scrollTo,
+                next: next,
+                prev: prev,
+                getCurrent: function () { return current; },
+                getSections: function () { return sections; }
+            };
+        })();
     </script>
     <script>
         // ===== GSAP ScrollTrigger: reveal-up batch =====
@@ -1503,15 +2132,15 @@
     <script src="assets/js/repositories/CareerRepository.js"></script>
 
     <script src="assets/js/components/LatestCarousel.js"></script>
-    <script src="assets/js/renderers/ArticleRenderer.js"></script>
-    <script src="assets/js/renderers/ClientRenderer.js"></script>
+    <script src="assets/js/renderers/ArticleRenderer.js?v=1.1"></script>
+    <script src="assets/js/renderers/ClientRenderer.js?v=1.1"></script>
     <script src="assets/js/renderers/FAQRenderer.js"></script>
 
     <script src="assets/js/core/PageLoader.js"></script>
     <script src="assets/i18n/locales/en.bundle.js"></script>
     <script src="assets/i18n/locales/id.bundle.js"></script>
     <script src="assets/i18n/loader.js"></script>
-    <script>document.addEventListener("DOMContentLoaded", function () { if(typeof lucide !== 'undefined') { lucide.createIcons(); } });</script>
+    <script>document.addEventListener("DOMContentLoaded", function () { if (typeof lucide !== 'undefined') { lucide.createIcons(); } });</script>
 
     <script>
         (function () {
@@ -1598,7 +2227,7 @@
             observer.observe(document.getElementById('trust-indicators'));
         })();
     </script>
-        <script>
+    <script>
         // Mobile menu: close on resize to desktop + body scroll lock
         (function () {
             var mm = document.getElementById('mobileMenu');
@@ -1610,24 +2239,68 @@
                 }
             });
         })();
-        </script>
-
-    <script>
-    (function() {
-        document.querySelectorAll('.mobile-nav-group-btn').forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                var group = this.closest('.mobile-nav-group');
-                group.classList.toggle('open');
-            });
-        });
-    })();
     </script>
 
-    <!-- Components -->
-    <script src="assets/js/components/LatestCarousel.js"></script>
+    <script>
+        (function () {
+            document.querySelectorAll('.mobile-nav-group-btn').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var group = this.closest('.mobile-nav-group');
+                    group.classList.toggle('open');
+                });
+            });
+        })();
+    </script>
+    <script>
+        (function () {
+            var viewport = document.getElementById('testiViewport');
+            var batchA = document.getElementById('testiBatchA');
+            var batchB = document.getElementById('testiBatchB');
+            if (!viewport || !batchA || !batchB) return;
+            if (window.matchMedia('(max-width: 768px)').matches) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            var active = 'A';
+            var delay = 4500;
+            var paused = false;
+            var timer = null;
+
+            function swap() {
+                if (paused) { timer = setTimeout(swap, 500); return; }
+                var out = active === 'A' ? batchA : batchB;
+                var inp = active === 'A' ? batchB : batchA;
+
+                inp.style.transition = 'none';
+                inp.style.opacity = '0';
+                inp.style.transform = 'translateY(30px)';
+                inp.style.pointerEvents = 'none';
+                inp.style.zIndex = '2';
+                out.style.zIndex = '1';
+
+                void inp.offsetHeight;
+                inp.style.transition = 'opacity 500ms cubic-bezier(.22,1,.36,1), transform 600ms cubic-bezier(.34,1.2,.64,1)';
+                inp.style.opacity = '1';
+                inp.style.transform = 'translateY(0)';
+                inp.style.pointerEvents = '';
+
+                out.style.transition = 'opacity 400ms cubic-bezier(.22,1,.36,1)';
+                out.style.opacity = '0';
+                out.style.pointerEvents = 'none';
+
+                active = active === 'A' ? 'B' : 'A';
+                timer = setTimeout(swap, delay);
+            }
+
+            viewport.addEventListener('mouseenter', function () { paused = true; });
+            viewport.addEventListener('mouseleave', function () { paused = false; });
+
+            timer = setTimeout(swap, delay);
+        })();
+    </script>
+
     <!-- Renderers -->
-    <script src="assets/js/renderers/ArticleRenderer.js"></script>
     <script src="assets/js/renderers/ServiceRenderer.js"></script>
 
 </body>
+
 </html>

@@ -20,7 +20,8 @@
             var container = document.getElementById(containerId);
             if (!container || !window.ArticleRepository) return;
             
-            var articles = window.ArticleRepository.find(function() { return true; }) || [];
+            var allArticles = window.ArticleRepository.find(function() { return true; }) || [];
+            var articles = allArticles.slice(0, 7);
             var html = '';
             
             for (var i = 0; i < articles.length; i++) {

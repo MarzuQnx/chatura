@@ -428,7 +428,7 @@
       "initials": "CH",
       "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&h=500&q=80",
       "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&h=500&q=80",
-      "email": "hello@chatura.co.id",
+      "email": "info@chatura-indonesia.com",
       "linkedin": "https://linkedin.com",
       "location": {
         "en": "Jakarta",
@@ -749,7 +749,7 @@
       "initials": "CH",
       "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&h=500&q=80",
       "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&h=500&q=80",
-      "email": "hello@chatura.co.id",
+      "email": "info@chatura-indonesia.com",
       "linkedin": "https://linkedin.com",
       "location": {
         "en": "Jakarta",

@@ -66,7 +66,7 @@
                 "image": img,
                 "datePublished": article.dates.published,
                 "author": { "@type": "Person", "name": loc(article.author ? article.author.name : '') },
-                "publisher": { "@type": "Organization", "name": "Chatura Indonesia", "logo": { "@type": "ImageObject", "url": "https://www.chatura.co.id/assets/chatura.webp" } },
+                "publisher": { "@type": "Organization", "name": "Chatura Indonesia", "logo": { "@type": "ImageObject", "url": "https://www.chatura-indonesia.com/assets/chatura.webp" } },
                 "mainEntityOfPage": { "@type": "WebPage", "@id": url }
             };
             if (article.dates.updated) {
@@ -81,8 +81,8 @@
                 "@context": "https://schema.org",
                 "@type": "BreadcrumbList",
                 "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.chatura.co.id/" },
-                    { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://www.chatura.co.id/insights.html" },
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.chatura-indonesia.com/" },
+                    { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://www.chatura-indonesia.com/insights.html" },
                     { "@type": "ListItem", "position": 3, "name": loc(article.title).substring(0, 60), "item": url }
                 ]
             };
