@@ -32,17 +32,20 @@
                 var badgeLoc = a.badge || catObj || { en: 'ARTICLE', id: 'ARTIKEL' };
                 var badgeClass = catObj && catObj.badgeClass ? catObj.badgeClass : 'bg-[#004D34]/10 text-[#004D34]';
                 
-                html += '<article class="latest-card group overflow-hidden bg-white border border-gray-100 rounded-2xl flex flex-col transition-all duration-300 hover:shadow-lg hover:-translate-y-1">' +
-                        '<div class="relative overflow-hidden aspect-16/10 bg-gray-100">' +
-                            '<img src="' + a.image + '" alt="' + loc(a.title) + '" class="latest-card-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="600" height="375">' +
-                            '<div class="absolute top-4 left-4 z-10"><span class="text-[10px] font-bold uppercase tracking-wider ' + badgeClass + ' px-3 py-1 rounded-full">' + loc(badgeLoc) + '</span></div>' +
+                html += '<article class="latest-card group">' +
+                        '<div class="latest-card-img">' +
+                            '<img src="' + a.image + '" alt="' + loc(a.title).replace(/"/g, '&quot;') + '" loading="lazy" width="600" height="375">' +
                         '</div>' +
-                        '<div class="p-6 flex flex-col flex-1">' +
-                            '<h3 class="font-serif font-bold text-base text-gray-950 mb-2 leading-snug"><a href="insight-detail.html?slug=' + a.slug + '" class="hover:text-emerald-800 transition-colors duration-200">' + loc(a.title) + '</a></h3>' +
-                            '<p class="text-gray-500 text-xs leading-[1.7] line-clamp-2 mb-4 flex-1">' + (loc(a.description) || loc(a.subtitle) || '') + '</p>' +
-                            '<div class="flex items-center justify-between pt-4 border-t border-gray-50">' +
-                                '<span class="text-xs text-gray-400">' + (a.dates && a.dates.display ? loc(a.dates.display) : '') + '</span>' +
-                                '<a href="insight-detail.html?slug=' + a.slug + '" class="latest-cta text-xs font-bold text-[#004D34] flex items-center gap-1 hover:gap-2 transition-all duration-200" aria-label="Read: ' + loc(a.title).replace(/"/g, '&quot;') + '">Read Insight <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>' +
+                        '<span class="latest-badge">' + loc(badgeLoc) + '</span>' +
+                        '<div class="latest-glass">' +
+                            '<div>' +
+                                '<span class="latest-eyebrow">' + loc(badgeLoc) + '</span>' +
+                                '<h3 class="latest-title"><a href="insight-detail.html?slug=' + a.slug + '">' + loc(a.title) + '</a></h3>' +
+                                '<p class="latest-desc">' + (loc(a.description) || loc(a.subtitle) || '') + '</p>' +
+                            '</div>' +
+                            '<div class="latest-glass-footer">' +
+                                '<span class="latest-meta">' + (a.dates && a.dates.display ? loc(a.dates.display) : '') + '</span>' +
+                                '<a href="insight-detail.html?slug=' + a.slug + '" class="latest-cta" aria-label="Read: ' + loc(a.title).replace(/"/g, '&quot;') + '">Read Insight <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>' +
                             '</div>' +
                         '</div>' +
                     '</article>';
