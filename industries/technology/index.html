@@ -41,7 +41,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="../../assets/design-system.css">
-    <style type="text/tailwindcss">
+    <style>
+        .expert-card { display: flex; align-items: center; gap: 10px; background: #E8EFEC; border: 1px solid #E8EFEC; border-radius:1%; padding: 10px; cursor: pointer; transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform; }
+        .expert-card:hover { background: #004D34; border-color: #004D34; transform: translateY(-8px); box-shadow: 0 12px 32px rgba(0, 77, 52, 0.12); }
+        .expert-card:hover .expert-card__name, .expert-card:hover .expert-card__role, .expert-card:hover .expert-card__expertise, .expert-card:hover .expert-card__cta { color: #ffffff; }
+        .expert-card:hover .expert-card__expertise { color: rgba(255,255,255,0.8); }
+        .expert-card:hover .expert-card__arrow { color: #ffffff; transform: translateX(4px); }
+        .expert-card:hover .expert-card__img { transform: scale(1.04); }
+        .expert-card__img { width: 100px; height: 100%; border-radius: 1%; object-fit: cover; object-position: top; flex-shrink: 0; transition: transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .expert-card__body { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+        .expert-card__name { font-weight: 600; font-size: 1rem; line-height: 1.3; color: #111827; transition: color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-bottom: 6px; }
+        .expert-card__role { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #6B7280; transition: color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-bottom: 14px; }
+        .expert-card__expertise { font-size: 0.75rem; color: #004D34; font-weight: 500; transition: color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-bottom: 18px; }
+        .expert-card__cta { display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 600; color: #004D34; transition: color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .expert-card__arrow { transition: color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        @media (max-width: 1024px) { .expert-card__img { width: 80px; height: 104px; border-radius: 14px; } .expert-card { padding: 1.25rem; gap: 1rem; } }
+        @media (max-width: 640px) { .expert-card { padding: 1.25rem; gap: 1rem; } .expert-card__img { width: 72px; height: 96px; border-radius: 12px; } .expert-card__name { font-size: 0.9375rem; } }
         a:has(> svg[data-lucide]),
         a:has(> i[data-lucide]) {
             display: inline-flex;
@@ -396,33 +411,29 @@
     </section>
 
     <!-- ============ MEET OUR EXPERTS ============ -->
-    <section class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
+    <section class="py-20 bg-gray-50 border-b border-gray-100">
+        <div class="container mx-auto px-6" style="max-width: 1280px;">
             <div class="reveal-up text-center mb-14">
-                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="ind_lp.technology.experts_label">Our Team</span>
-                <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="ind_lp.technology.experts_title">Meet Our Experts</h2>
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="ind_lp.technology.experts_label">Related Experts</span>
+                <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="ind_lp.technology.experts_title">Technology &amp; Digital Leadership</h2>
             </div>
-            <div class="reveal-up grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition group">
-                    <div class="aspect-[4/5] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&h=500&q=80" alt="Andi Rio Ilhad Monry" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-serif font-bold text-gray-950 text-base mb-1">Andi Rio Ilhad Monry</h3>
-                        <p class="text-xs text-emerald-700 font-medium mb-3">Managing Partner</p>
-                        <p class="text-xs text-gray-500 leading-relaxed mb-4">Overseeing the firm's technology advisory practice with deep expertise in cross-border IPO, M&amp;A, and corporate finance for Southeast Asian digital economy ventures.</p>
-                        <a href="../../our-people.html" class="inline-flex items-center gap-1 text-xs font-bold text-[#004D34] hover:gap-2 transition-all">View Profile <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
+            <div class="reveal-up grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
+                <div class="expert-card" onclick="window.location.href='../../our-people.html'">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&h=500&q=80" alt="Andi Rio Ilhad Monry" loading="lazy" class="expert-card__img">
+                    <div class="expert-card__body">
+                        <h3 class="expert-card__name">Andi Rio Ilhad Monry</h3>
+                        <p class="expert-card__role">Managing Partner</p>
+                        <p class="expert-card__expertise">M&amp;A · Corporate Advisory</p>
+                        <span class="expert-card__cta"><span data-i18n="people.view_profile">View Profile</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5 expert-card__arrow"></i></span>
                     </div>
                 </div>
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition group">
-                    <div class="aspect-[4/5] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=500&q=80" alt="Dyna Agustina" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-serif font-bold text-gray-950 text-base mb-1">Dyna Agustina</h3>
-                        <p class="text-xs text-emerald-700 font-medium mb-3">Partner, Tax Services</p>
-                        <p class="text-xs text-gray-500 leading-relaxed mb-4">Specializing in technology company tax structuring, IP optimization, transfer pricing for digital businesses, and cross-border tax advisory for Southeast Asian tech operations.</p>
-                        <a href="../../our-people.html" class="inline-flex items-center gap-1 text-xs font-bold text-[#004D34] hover:gap-2 transition-all">View Profile <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
+                <div class="expert-card" onclick="window.location.href='../../our-people.html'">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=500&q=80" alt="Dyna Agustina" loading="lazy" class="expert-card__img">
+                    <div class="expert-card__body">
+                        <h3 class="expert-card__name">Dyna Agustina</h3>
+                        <p class="expert-card__role">Partner, Tax Services</p>
+                        <p class="expert-card__expertise">International Tax · Transfer Pricing</p>
+                        <span class="expert-card__cta"><span data-i18n="people.view_profile">View Profile</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5 expert-card__arrow"></i></span>
                     </div>
                 </div>
             </div>

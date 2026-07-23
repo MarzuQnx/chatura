@@ -43,6 +43,239 @@
     <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        /* ===== CINEMATIC HERO SLIDESHOW ===== */
+        #hero {
+            position: relative;
+            background: #091e17;
+            color: #111827;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-slides-layer {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1500ms ease-in-out;
+            will-change: opacity;
+            z-index: 1;
+        }
+
+        .hero-slide.is-active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .hero-slide img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
+        /* Layer 1: Dark Overlay */
+        .hero-overlay-dark {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.010);
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        /* Layer 2: White Gradient Overlay */
+        .hero-overlay-gradient {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0.96),
+                    rgba(255, 255, 255, 0.72),
+                    transparent 55%);
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        /* KEN BURNS ANIMATIONS FOR EACH SLIDE (20s duration, unique movements) */
+        .hero-slide:nth-child(10n+1) img {
+            animation: kenburns-1 20s ease-in-out infinite alternate;
+        }
+
+        .hero-slide:nth-child(10n+2) img {
+            animation: kenburns-2 20s ease-in-out infinite alternate;
+        }
+
+        .hero-slide:nth-child(10n+3) img {
+            animation: kenburns-3 20s ease-in-out infinite alternate;
+        }
+
+        .hero-slide:nth-child(10n+4) img {
+            animation: kenburns-4 20s ease-in-out infinite alternate;
+        }
+
+        .hero-slide:nth-child(10n+5) img {
+            animation: kenburns-5 20s ease-in-out infinite alternate;
+        }
+
+        .hero-slide:nth-child(10n+6) img {
+            animation: kenburns-6 20s ease-in-out infinite alternate;
+        }
+
+        .hero-slide:nth-child(10n+7) img {
+            animation: kenburns-7 20s ease-in-out infinite alternate;
+        }
+
+        .hero-slide:nth-child(10n+8) img {
+            animation: kenburns-8 20s ease-in-out infinite alternate;
+        }
+
+        .hero-slide:nth-child(10n+9) img {
+            animation: kenburns-9 20s ease-in-out infinite alternate;
+        }
+
+        .hero-slide:nth-child(10n+0) img {
+            animation: kenburns-10 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes kenburns-1 {
+            0% {
+                transform: scale(1) translate(0%, 0%);
+            }
+
+            100% {
+                transform: scale(1.12) translate(3%, 2%);
+            }
+        }
+
+        @keyframes kenburns-2 {
+            0% {
+                transform: scale(1.03) translate(0%, 0%);
+            }
+
+            100% {
+                transform: scale(1.15) translate(-2%, -2%);
+            }
+        }
+
+        @keyframes kenburns-3 {
+            0% {
+                transform: scale(1) translate(0%, 0%);
+            }
+
+            100% {
+                transform: scale(1.10) translateY(-3%);
+            }
+        }
+
+        @keyframes kenburns-4 {
+            0% {
+                transform: scale(1.05) translate(0%, 0%);
+            }
+
+            100% {
+                transform: scale(1.14) translateX(4%);
+            }
+        }
+
+        @keyframes kenburns-5 {
+            0% {
+                transform: scale(1.02) translate(0%, 0%);
+            }
+
+            100% {
+                transform: scale(1.13) translate(-3%, 2%);
+            }
+        }
+
+        @keyframes kenburns-6 {
+            0% {
+                transform: scale(1) translate(0%, 0%);
+            }
+
+            100% {
+                transform: scale(1.11) translate(2%, -3%);
+            }
+        }
+
+        @keyframes kenburns-7 {
+            0% {
+                transform: scale(1.04) translate(0%, 0%);
+            }
+
+            100% {
+                transform: scale(1.16) translateY(3%);
+            }
+        }
+
+        @keyframes kenburns-8 {
+            0% {
+                transform: scale(1.01) translate(0%, 0%);
+            }
+
+            100% {
+                transform: scale(1.12) translateX(-4%);
+            }
+        }
+
+        @keyframes kenburns-9 {
+            0% {
+                transform: scale(1.03) translate(0%, 0%);
+            }
+
+            100% {
+                transform: scale(1.15) translate(3%, -2%);
+            }
+        }
+
+        @keyframes kenburns-10 {
+            0% {
+                transform: scale(1) translate(0%, 0%);
+            }
+
+            100% {
+                transform: scale(1.13) translate(-2%, 3%);
+            }
+        }
+
+        /* Reduced motion accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .hero-slide {
+                transition: none !important;
+                animation: none !important;
+            }
+
+            .hero-slide:not(:first-child) {
+                display: none !important;
+                opacity: 0 !important;
+            }
+
+            .hero-slide:first-child {
+                opacity: 1 !important;
+            }
+
+            .hero-slide img {
+                animation: none !important;
+                transform: none !important;
+            }
+        }
+    </style>
     <style type="text/tailwindcss">
         a:has(> svg[data-lucide]),
         a:has(> i[data-lucide]) {
@@ -689,14 +922,56 @@
         </div>
     </header>
     <main id="main-content">
-        <section id="hero-big"
-            class="relative bg-white text-gray-900 min-h-screen flex items-center overflow-hidden -mt-32">
-            <div id="hero-bg" class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url('assets/hero-landing.webp');">
+        <section id="hero"
+            class="relative bg-[#091e17] text-gray-900 min-h-screen flex items-center overflow-hidden -mt-32">
+            <!-- Hero Slides Layer -->
+            <div class="hero-slides-layer" id="heroSlides">
+                <div class="hero-slide is-active">
+                    <img src="assets/hero-landing.webp" alt="Chatura Indonesia Corporate Advisory" loading="eager"
+                        width="1920" height="1080">
+                </div>
+                <div class="hero-slide">
+                    <img src="assets/hero-services.webp" alt="Chatura Services" loading="lazy" width="1920"
+                        height="1080">
+                </div>
+                <div class="hero-slide">
+                    <img src="assets/hero-business.webp" alt="Business Transfer" loading="lazy" width="1920"
+                        height="1080">
+                </div>
+                <div class="hero-slide">
+                    <img src="assets/hero-industries.webp" alt="Chatura Industries" loading="lazy" width="1920"
+                        height="1080">
+                </div>
+                <div class="hero-slide">
+                    <img src="assets/hero-insights.webp" alt="Corporate Insights" loading="lazy" width="1920"
+                        height="1080">
+                </div>
+                <div class="hero-slide">
+                    <img src="assets/hero-people.webp" alt="Our Experts" loading="lazy" width="1920" height="1080">
+                </div>
+                <div class="hero-slide">
+                    <img src="assets/hero-casestudies.webp" alt="Case Studies" loading="lazy" width="1920"
+                        height="1080">
+                </div>
+                <div class="hero-slide">
+                    <img src="assets/hero-contact.webp" alt="Contact Advisory" loading="lazy" width="1920"
+                        height="1080">
+                </div>
+                <div class="hero-slide">
+                    <img src="assets/hero-join.webp" alt="Careers at Chatura" loading="lazy" width="1920" height="1080">
+                </div>
+                <div class="hero-slide">
+                    <img src="assets/hero-join-01.webp" alt="Join Our Team" loading="lazy" width="1920" height="1080">
+                </div>
             </div>
-            <div class="absolute inset-0"
-                style="background: linear-gradient(100deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 30%, transparent 50%);">
-            </div>
+
+            <!-- Dark Overlay (Layer 1: rgba(0,0,0,.30)) -->
+            <div class="hero-overlay-dark"></div>
+
+            <!-- White Gradient Overlay (Layer 2) -->
+            <div class="hero-overlay-gradient"></div>
+
+            <!-- Hero Content -->
             <div class="container mx-auto px-6 relative z-10 py-20">
                 <div class="max-w-2xl">
                     <h1 class="text-4xl md:text-6xl font-serif font-light mb-6 leading-tight text-gray-900"
@@ -913,11 +1188,13 @@
                         </svg>
                     </button>
                     <button type="button" id="latestPlayPause" class="latest-ctrl-btn" aria-label="Pause carousel">
-                        <svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                        <svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                            stroke="none">
                             <rect x="6" y="4" width="4" height="16" rx="1" />
                             <rect x="14" y="4" width="4" height="16" rx="1" />
                         </svg>
-                        <svg class="icon-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="display:none">
+                        <svg class="icon-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                            stroke="none" style="display:none">
                             <path d="M6 4l14 8-14 8V4z" />
                         </svg>
                     </button>
@@ -949,8 +1226,7 @@
                 </div>
             </div>
         </section>
-        <section id="industry-exposure"
-            class="py-24 bg-gray-100 border-t border-b border-gray-100 overflow-hidden">
+        <section id="industry-exposure" class="py-24 bg-gray-100 border-t border-b border-gray-100 overflow-hidden">
             <div class="container mx-auto px-6">
                 <div class="reveal-up text-center max-w-2xl mx-auto mb-16">
                     <div class="flex items-center justify-center gap-2 mb-3">
@@ -1148,8 +1424,7 @@
                     </div>
                     <h2 class="text-3xl md:text-4xl font-serif font-light text-gray-950 mb-4"
                         data-i18n="testimonials.title">Our Clients Testimony</h2>
-                    <p class="text-sm text-gray-500 max-w-xl mx-auto leading-relaxed"
-                        data-i18n="testimonials.desc">
+                    <p class="text-sm text-gray-500 max-w-xl mx-auto leading-relaxed" data-i18n="testimonials.desc">
                         Trusted by leading organizations across Indonesia and the region.
                     </p>
                 </div>
@@ -1158,15 +1433,33 @@
                         <div class="testi-batch" id="testiBatchA">
                             <div class="testi-card">
                                 <div class="testi-stars">
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
                                 </div>
-                                <p class="testi-quote">Chatura delivered exceptional financial advisory that transformed our reporting structure. Their team's depth of knowledge in IFRS compliance gave us complete confidence.</p>
+                                <p class="testi-quote">Chatura delivered exceptional financial advisory that transformed
+                                    our reporting structure. Their team's depth of knowledge in IFRS compliance gave us
+                                    complete confidence.</p>
                                 <div class="testi-author">
-                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ahmad Rizky" class="testi-avatar" loading="lazy">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ahmad Rizky"
+                                        class="testi-avatar" loading="lazy">
                                     <div>
                                         <div class="testi-name">Ahmad Rizky</div>
                                         <div class="testi-role">CFO, PT Maju Bersama</div>
@@ -1175,15 +1468,33 @@
                             </div>
                             <div class="testi-card">
                                 <div class="testi-stars">
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
                                 </div>
-                                <p class="testi-quote">The tax restructuring advisory saved us significant compliance costs. Their strategic approach to transfer pricing was nothing short of brilliant.</p>
+                                <p class="testi-quote">The tax restructuring advisory saved us significant compliance
+                                    costs. Their strategic approach to transfer pricing was nothing short of brilliant.
+                                </p>
                                 <div class="testi-author">
-                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Wijaya" class="testi-avatar" loading="lazy">
+                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Wijaya"
+                                        class="testi-avatar" loading="lazy">
                                     <div>
                                         <div class="testi-name">Sarah Wijaya</div>
                                         <div class="testi-role">Director, PT Nusantara Energy</div>
@@ -1192,15 +1503,32 @@
                             </div>
                             <div class="testi-card">
                                 <div class="testi-stars">
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
                                 </div>
-                                <p class="testi-quote">Their M&A due diligence was thorough and their deal structuring guidance was instrumental in our successful acquisition. Truly professional.</p>
+                                <p class="testi-quote">Their M&A due diligence was thorough and their deal structuring
+                                    guidance was instrumental in our successful acquisition. Truly professional.</p>
                                 <div class="testi-author">
-                                    <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Budi Santoso" class="testi-avatar" loading="lazy">
+                                    <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Budi Santoso"
+                                        class="testi-avatar" loading="lazy">
                                     <div>
                                         <div class="testi-name">Budi Santoso</div>
                                         <div class="testi-role">CEO, PT Harmoni Sejahtera</div>
@@ -1211,15 +1539,32 @@
                         <div class="testi-batch" id="testiBatchB" style="opacity:0;pointer-events:none;">
                             <div class="testi-card">
                                 <div class="testi-stars">
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
                                 </div>
-                                <p class="testi-quote">Chatura's risk management framework gave us the confidence to expand regionally. Their governance advisory is world-class.</p>
+                                <p class="testi-quote">Chatura's risk management framework gave us the confidence to
+                                    expand regionally. Their governance advisory is world-class.</p>
                                 <div class="testi-author">
-                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Maya Putri" class="testi-avatar" loading="lazy">
+                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Maya Putri"
+                                        class="testi-avatar" loading="lazy">
                                     <div>
                                         <div class="testi-name">Maya Putri</div>
                                         <div class="testi-role">VP Operations, PT Global Industri</div>
@@ -1228,15 +1573,32 @@
                             </div>
                             <div class="testi-card">
                                 <div class="testi-stars">
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
                                 </div>
-                                <p class="testi-quote">Outstanding corporate advisory that exceeded our expectations. Their restructuring insights helped us streamline operations significantly.</p>
+                                <p class="testi-quote">Outstanding corporate advisory that exceeded our expectations.
+                                    Their restructuring insights helped us streamline operations significantly.</p>
                                 <div class="testi-author">
-                                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="David Chen" class="testi-avatar" loading="lazy">
+                                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="David Chen"
+                                        class="testi-avatar" loading="lazy">
                                     <div>
                                         <div class="testi-name">David Chen</div>
                                         <div class="testi-role">Managing Director, PT Pacific Trade</div>
@@ -1245,15 +1607,32 @@
                             </div>
                             <div class="testi-card">
                                 <div class="testi-stars">
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
                                 </div>
-                                <p class="testi-quote">The team's expertise in cross-border transactions made our international expansion seamless. Highly recommended for complex deals.</p>
+                                <p class="testi-quote">The team's expertise in cross-border transactions made our
+                                    international expansion seamless. Highly recommended for complex deals.</p>
                                 <div class="testi-author">
-                                    <img src="https://randomuser.me/api/portraits/women/25.jpg" alt="Rina Hartono" class="testi-avatar" loading="lazy">
+                                    <img src="https://randomuser.me/api/portraits/women/25.jpg" alt="Rina Hartono"
+                                        class="testi-avatar" loading="lazy">
                                     <div>
                                         <div class="testi-name">Rina Hartono</div>
                                         <div class="testi-role">CFO, PT Sejatera Global</div>
@@ -1262,11 +1641,12 @@
                             </div>
                         </div>
                     </div>
-                </div>                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
             </div>
         </section>
         <section id="strategic-expertise" class="bg-gray-100 text-white py-16 relative overflow-hidden">
@@ -2295,6 +2675,41 @@
             viewport.addEventListener('mouseleave', function () { paused = false; });
 
             timer = setTimeout(swap, delay);
+        })();
+    </script>
+
+    <!-- Cinematic Hero Slideshow Controller -->
+    <script>
+        (function () {
+            var container = document.getElementById('heroSlides');
+            if (!container) return;
+
+            var slides = Array.from(container.querySelectorAll('.hero-slide'));
+            if (slides.length <= 1) return;
+
+            var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReduced) return;
+
+            var currentIndex = 0;
+            var slideInterval = 20000; // 20s display per slide
+
+            function advanceSlide() {
+                var prevIndex = currentIndex;
+                currentIndex = (currentIndex + 1) % slides.length;
+
+                slides[prevIndex].classList.remove('is-active');
+                slides[currentIndex].classList.add('is-active');
+            }
+
+            var timer = setInterval(advanceSlide, slideInterval);
+
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    clearInterval(timer);
+                } else {
+                    timer = setInterval(advanceSlide, slideInterval);
+                }
+            });
         })();
     </script>
 

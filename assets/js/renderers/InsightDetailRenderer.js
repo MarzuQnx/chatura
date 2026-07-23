@@ -104,9 +104,55 @@
             var heroDesc = document.getElementById('hero-desc');
             if (heroDesc) heroDesc.textContent = desc;
 
-            // Author
+            // Author resolution from PeopleRepository
+            var author = null;
+            if (window.PeopleRepository) {
+                var peopleMap = {
+                    'dyna': 'p6',
+                    'bezaliel': 'p4',
+                    'adine': 'p5',
+                    'andi': 'p3',
+                    'schweizer': 'p1',
+                    'bolden': 'p2'
+                };
+                var pId = peopleMap[article.authorId] || article.authorId || (article.author ? article.author.peopleId : null);
+                if (pId) {
+                    var person = window.PeopleRepository.getAll().find(function(x) { return x.id === pId; });
+                    if (person) {
+                        author = {
+                            peopleId: person.id,
+                            name: person.nameKey,
+                            role: person.titleKey,
+                            practice: person.practiceKey,
+                            photo: person.photo,
+                            email: person.email,
+                            linkedin: person.linkedin,
+                            location: person.locationKey,
+                            bio: person.bioKey,
+                            expertise: person.expertiseKeys,
+                            experience: person.experienceKeys,
+                            publications: person.publicationKeys,
+                            publicationDates: person.publicationDates
+                        };
+                    }
+                }
+            }
+            if (!author && article.author) {
+                author = article.author;
+            }
+            article.author = author;
+
+            var tStr = function(key) {
+                var d = window.TranslationRepository ? window.TranslationRepository.getAllTranslations() : {};
+                return d[key] || key;
+            };
+
             var authorNameEl = document.getElementById('author-name');
-            if (authorNameEl) authorNameEl.textContent = loc(article.author ? article.author.name : '') + ' — ' + loc(article.author ? article.author.role : '');
+            if (authorNameEl) {
+                var nameVal = author ? (author.peopleId ? tStr(author.name) : loc(author.name)) : '';
+                var roleVal = author ? (author.peopleId ? (tStr(author.role) + ' — ' + tStr(author.practice)) : loc(author.role)) : '';
+                authorNameEl.textContent = nameVal + (roleVal ? ' — ' + roleVal : '');
+            }
             
             var articleDate = document.getElementById('article-date');
             if (articleDate) articleDate.textContent = article.dates && article.dates.display ? loc(article.dates.display) : '';
@@ -116,9 +162,9 @@
 
             // Author photo
             var authorPhotoImg = document.getElementById('author-photo-img');
-            if (authorPhotoImg && article.author) {
-                authorPhotoImg.src = article.author.photo || article.author.image || '';
-                authorPhotoImg.alt = loc(article.author.name);
+            if (authorPhotoImg && author) {
+                authorPhotoImg.src = author.photo || author.image || '';
+                authorPhotoImg.alt = author.peopleId ? tStr(author.name) : loc(author.name);
             }
 
             // Hero image
@@ -184,19 +230,20 @@
             }
 
             // Share links
-            var shareUrl = encodeURIComponent(url);
             var shareTitle = encodeURIComponent(loc(article.title));
-            var linkedin = document.getElementById('share-linkedin');
-            if (linkedin) linkedin.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + shareUrl;
+            var shareUrl = encodeURIComponent(url);
             
-            var facebook = document.getElementById('share-facebook');
-            if (facebook) facebook.href = 'https://www.facebook.com/sharer/sharer.php?u=' + shareUrl;
+            var shLi = document.getElementById('share-linkedin');
+            if (shLi) shLi.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + shareUrl;
             
-            var twitter = document.getElementById('share-twitter');
-            if (twitter) twitter.href = 'https://twitter.com/intent/tweet?url=' + shareUrl + '&text=' + shareTitle;
+            var shFb = document.getElementById('share-facebook');
+            if (shFb) shFb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + shareUrl;
             
-            var emailShare = document.getElementById('share-email');
-            if (emailShare) emailShare.href = 'mailto:?subject=' + shareTitle + '&body=' + shareUrl;
+            var shTw = document.getElementById('share-twitter');
+            if (shTw) shTw.href = 'https://twitter.com/intent/tweet?url=' + shareUrl + '&text=' + shareTitle;
+            
+            var shEm = document.getElementById('share-email');
+            if (shEm) shEm.href = 'mailto:?subject=' + shareTitle + '&body=' + shareUrl;
             
             var copyBtn = document.getElementById('share-copy');
             if (copyBtn && !copyBtn.dataset.listener) {
@@ -213,38 +260,62 @@
                 });
             }
 
-            // Related Services
-            if (article.relatedServices && article.relatedServices.length) {
-                var rsSec = document.getElementById('related-services-section');
-                if (rsSec) rsSec.style.display = '';
-                var rsList = document.getElementById('related-services-list');
-                if (rsList && window.ServiceRepository) {
-                    rsList.innerHTML = article.relatedServices.map(function(sk) {
-                        var svc = window.ServiceRepository.getById(sk);
-                        if (!svc) return '';
-                        return '<a href="services/' + svc.slug + '/" class="inline-flex items-center gap-1.5 bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1.5 rounded-lg hover:bg-emerald-50 hover:text-emerald-800 transition">' + loc(svc.title) + '</a>';
-                    }).join('');
+            // Related Services Articles
+            var rsSec = document.getElementById('related-services-section');
+            var rsList = document.getElementById('related-services-list');
+            if (rsSec && rsList) {
+                var svcArticles = [];
+                if (article.relatedServices && article.relatedServices.length && window.ArticleRepository) {
+                    svcArticles = window.ArticleRepository.getAll().filter(function(a) {
+                        if (a.slug === article.slug) return false;
+                        if (!a.relatedServices) return false;
+                        return a.relatedServices.some(function(s) { return article.relatedServices.includes(s); });
+                    });
                 }
-            } else {
-                var rsSec = document.getElementById('related-services-section');
-                if (rsSec) rsSec.style.display = 'none';
+                if (svcArticles.length > 0) {
+                    rsSec.style.display = '';
+                    rsList.innerHTML = svcArticles.slice(0, 4).map(function(item) {
+                        return '<a href="insight-detail.html?slug=' + item.slug + '" class="group flex items-center gap-3 p-3 bg-gray-50 border border-gray-100 rounded-xl hover:border-emerald-700/40 hover:bg-emerald-50/30 transition duration-300">' +
+                            '<div class="w-14 h-14 rounded-lg overflow-hidden shrink-0 bg-gray-200">' +
+                            '<img src="' + item.image + '" alt="' + loc(item.title) + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">' +
+                            '</div>' +
+                            '<div class="min-w-0 flex-1">' +
+                            '<h5 class="text-xs font-bold text-gray-900 leading-snug group-hover:text-[#004D34] transition-colors line-clamp-2 mb-1">' + loc(item.title) + '</h5>' +
+                            '<span class="text-[10px] text-gray-400 block">' + (item.dates && item.dates.display ? loc(item.dates.display) : '') + ' • ' + loc(item.readingTime) + '</span>' +
+                            '</div></a>';
+                    }).join('');
+                } else {
+                    rsSec.style.display = 'none';
+                }
             }
 
-            // Related Industries
-            if (article.relatedIndustries && article.relatedIndustries.length) {
-                var riSec = document.getElementById('related-industries-section');
-                if (riSec) riSec.style.display = '';
-                var riList = document.getElementById('related-industries-list');
-                if (riList && window.IndustryRepository) {
-                    riList.innerHTML = article.relatedIndustries.map(function(ik) {
-                        var ind = window.IndustryRepository.getById(ik);
-                        if (!ind) return '';
-                        return '<a href="industries/' + ind.slug + '/" class="inline-flex items-center gap-1.5 bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1.5 rounded-lg hover:bg-emerald-50 hover:text-emerald-800 transition">' + loc(ind.title) + '</a>';
-                    }).join('');
+            // Related Industries Articles
+            var riSec = document.getElementById('related-industries-section');
+            var riList = document.getElementById('related-industries-list');
+            if (riSec && riList) {
+                var indArticles = [];
+                if (article.relatedIndustries && article.relatedIndustries.length && window.ArticleRepository) {
+                    indArticles = window.ArticleRepository.getAll().filter(function(a) {
+                        if (a.slug === article.slug) return false;
+                        if (!a.relatedIndustries) return false;
+                        return a.relatedIndustries.some(function(i) { return article.relatedIndustries.includes(i); });
+                    });
                 }
-            } else {
-                var riSec = document.getElementById('related-industries-section');
-                if (riSec) riSec.style.display = 'none';
+                if (indArticles.length > 0) {
+                    riSec.style.display = '';
+                    riList.innerHTML = indArticles.slice(0, 4).map(function(item) {
+                        return '<a href="insight-detail.html?slug=' + item.slug + '" class="group flex items-center gap-3 p-3 bg-gray-50 border border-gray-100 rounded-xl hover:border-emerald-700/40 hover:bg-emerald-50/30 transition duration-300">' +
+                            '<div class="w-14 h-14 rounded-lg overflow-hidden shrink-0 bg-gray-200">' +
+                            '<img src="' + item.image + '" alt="' + loc(item.title) + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">' +
+                            '</div>' +
+                            '<div class="min-w-0 flex-1">' +
+                            '<h5 class="text-xs font-bold text-gray-900 leading-snug group-hover:text-[#004D34] transition-colors line-clamp-2 mb-1">' + loc(item.title) + '</h5>' +
+                            '<span class="text-[10px] text-gray-400 block">' + (item.dates && item.dates.display ? loc(item.dates.display) : '') + ' • ' + loc(item.readingTime) + '</span>' +
+                            '</div></a>';
+                    }).join('');
+                } else {
+                    riSec.style.display = 'none';
+                }
             }
 
             // Prev / Next
@@ -297,6 +368,17 @@
             }
 
             if (typeof lucide !== 'undefined') lucide.createIcons();
+            if (typeof window.ScrollTrigger !== 'undefined') {
+                setTimeout(function() { window.ScrollTrigger.refresh(); }, 100);
+            }
+            setTimeout(function() {
+                document.querySelectorAll('#article-body, #article-hero-image, .reveal-up, .related-drop-row').forEach(function(el) {
+                    if (window.getComputedStyle(el).opacity === '0' || el.style.opacity === '0') {
+                        el.style.opacity = '1';
+                        el.style.transform = 'none';
+                    }
+                });
+            }, 200);
         },
         
         init: function() {

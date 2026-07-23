@@ -7,6 +7,29 @@
 (function(){
 var d=window.__CHATURA_LOCALES=window.__CHATURA_LOCALES||{};
 d['en']=d['en']||{};
+d['en']['insight.disclaimer_title']='Article Disclaimer';
+d['en']['insight.disclaimer_desc']='An article disclaimer is a statement of limitation intended to restrict legal liability, clarify the purpose of written content, and protect authors and the platform from reader claims.';
+d['en']['insight.disclaimer_functions_title']='Primary Functions of Disclaimer';
+d['en']['insight.disclaimer_func1_title']='Legal Protection';
+d['en']['insight.disclaimer_func1_desc']='Protects authors from litigation in case of misunderstandings or losses.';
+d['en']['insight.disclaimer_func2_title']='Limiting Liability';
+d['en']['insight.disclaimer_func2_desc']='Emphasizes that risks of utilizing information rest on the reader.';
+d['en']['insight.disclaimer_func3_title']='Content Clarification';
+d['en']['insight.disclaimer_func3_desc']='Informs readers of content nature such as opinion, affiliation, or unofficial data.';
+d['en']['insight.disclaimer_types_title']='Disclaimer Types in Articles';
+d['en']['insight.disclaimer_type1_title']='Health / Medical';
+d['en']['insight.disclaimer_type1_desc']='States that articles are not a substitute for professional medical advice.';
+d['en']['insight.disclaimer_type2_title']='Financial / Investment';
+d['en']['insight.disclaimer_type2_desc']='Reminds readers that financial tips are not guarantees or formal directives.';
+d['en']['insight.disclaimer_type3_title']='Affiliation';
+d['en']['insight.disclaimer_type3_desc']='Notifies readers that authors may receive commissions from specific product links.';
+d['en']['insight.disclaimer_type4_title']='Copyright';
+d['en']['insight.disclaimer_type4_desc']='Clarifies ownership status of assets or materials within the article.';
+d['en']['insight.published_label']='Published';
+d['en']['insight.updated_label']='Updated';
+d['en']['insight.related_services']='Related Services Articles';
+d['en']['insight.related_industries']='Related Industries Articles';
+
 d['en']['transfer.page_title']='Business Transfer Platform - Chatura Indonesia';
 d['en']['transfer.hero_label']='Business Transfer Platform';
 d['en']['transfer.hero_title']='Connecting High-Potential Business Assets with';

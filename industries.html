@@ -47,7 +47,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="assets/design-system.css">
-    <style type="text/tailwindcss">
+    <style>
         @keyframes si-float {
             0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--si-rot, 0deg)) scale(1); }
             25%      { transform: translate3d(var(--si-x, 0px), -6px, 0) rotate(var(--si-rot, 0deg)) scale(1.008); }
@@ -61,10 +61,35 @@
         .si-float { animation: si-float var(--si-dur, 12s) cubic-bezier(.45,.05,.55,.95) infinite; will-change: transform; transform: translate3d(0, 0, 0); }
         .si-shadow { animation: si-shadow var(--si-sh-dur, 10s) ease-in-out infinite; will-change: box-shadow; transition: transform 400ms cubic-bezier(.22,.61,.36,1), box-shadow 400ms cubic-bezier(.22,.61,.36,1); }
         .si-shadow:hover { transform: scale(1.015); box-shadow: 0 20px 48px -4px rgba(0,0,0,0.14), 0 8px 20px -2px rgba(0,0,0,0.07); }
+        
+        /* Composition container must NEVER transform (strictly transform: none) */
+        .svc-img-composition {
+            transform: none !important;
+        }
+
+        /* Initial states of child elements before timeline animation */
+        .svc-img-composition:not(.animated) .absolute {
+            opacity: 0;
+            transform: scale(0.92);
+        }
+        .svc-img-composition:not(.animated) .si-shadow.si-slide-from-right {
+            opacity: 0;
+            transform: translateX(180px);
+        }
+        .svc-img-composition:not(.animated) .si-shadow.si-slide-from-left {
+            opacity: 0;
+            transform: translateX(-180px);
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .si-float { animation: none !important; transform: none !important; }
             .si-shadow { animation: none !important; }
             .si-shadow:hover { transform: scale(1.01); }
+            .svc-img-composition .absolute,
+            .svc-img-composition .si-shadow {
+                opacity: 1 !important;
+                transform: none !important;
+            }
         }
         a:has(> svg[data-lucide]),
         a:has(> i[data-lucide]) {
@@ -310,9 +335,9 @@
                         <span data-i18n="services.learn_more">Learn More</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
-                <div class="reveal-up relative" style="--si-x:0px;--si-rot:-2deg;--si-dur:14s;--si-sh-dur:11s">
-                    <div class="absolute -inset-4 bg-emerald-50 rounded-3xl -rotate-2 si-float"></div>
-                    <div class="si-shadow relative rounded-2xl overflow-hidden">
+                <div class="svc-img-composition relative" style="--si-x:0px;--si-rot:-2deg;--si-dur:14s;--si-sh-dur:11s">
+                    <div class="absolute -inset-4 bg-emerald-50 rounded-3xl -rotate-2"></div>
+                    <div class="si-shadow si-slide-from-right relative rounded-2xl overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=900&q=80" alt="Energy and Natural Resources" class="relative rounded-2xl w-full h-80 md:h-96 object-cover" loading="lazy" width="900" height="600">
                     </div>
                 </div>
@@ -324,9 +349,9 @@
     <section id="manufacturing" class="py-24 bg-gray-50 overflow-hidden">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-                <div class="reveal-up relative order-2 md:order-1" style="--si-x:5px;--si-rot:2deg;--si-dur:11s;--si-sh-dur:9s">
-                    <div class="absolute -inset-4 bg-amber-50 rounded-3xl rotate-2 si-float"></div>
-                    <div class="si-shadow relative rounded-2xl overflow-hidden">
+                <div class="svc-img-composition relative order-2 md:order-1" style="--si-x:5px;--si-rot:2deg;--si-dur:11s;--si-sh-dur:9s">
+                    <div class="absolute -inset-4 bg-amber-50 rounded-3xl rotate-2"></div>
+                    <div class="si-shadow si-slide-from-left relative rounded-2xl overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=900&q=80" alt="Manufacturing sector" class="relative rounded-2xl w-full h-80 md:h-96 object-cover" loading="lazy" width="900" height="600">
                     </div>
                 </div>
@@ -378,9 +403,9 @@
                         <span data-i18n="services.learn_more">Learn More</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
-                <div class="reveal-up relative" style="--si-x:4px;--si-rot:-1deg;--si-dur:12s;--si-sh-dur:10s">
-                    <div class="absolute -inset-4 bg-sky-50 rounded-3xl -rotate-1 si-float"></div>
-                    <div class="si-shadow relative rounded-2xl overflow-hidden">
+                <div class="svc-img-composition relative" style="--si-x:4px;--si-rot:-1deg;--si-dur:12s;--si-sh-dur:10s">
+                    <div class="absolute -inset-4 bg-sky-50 rounded-3xl -rotate-1"></div>
+                    <div class="si-shadow si-slide-from-right relative rounded-2xl overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80" alt="Technology and Digital sector" class="relative rounded-2xl w-full h-80 md:h-96 object-cover" loading="lazy" width="900" height="600">
                     </div>
                 </div>
@@ -392,9 +417,9 @@
     <section id="healthcare" class="py-24 bg-gray-50 overflow-hidden">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-                <div class="reveal-up relative order-2 md:order-1" style="--si-x:2px;--si-rot:1deg;--si-dur:13s;--si-sh-dur:12s">
-                    <div class="absolute -inset-4 bg-rose-50 rounded-3xl rotate-1 si-float"></div>
-                    <div class="si-shadow relative rounded-2xl overflow-hidden">
+                <div class="svc-img-composition relative order-2 md:order-1" style="--si-x:2px;--si-rot:1deg;--si-dur:13s;--si-sh-dur:12s">
+                    <div class="absolute -inset-4 bg-rose-50 rounded-3xl rotate-1"></div>
+                    <div class="si-shadow si-slide-from-left relative rounded-2xl overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=80" alt="Healthcare sector" class="relative rounded-2xl w-full h-80 md:h-96 object-cover" loading="lazy" width="900" height="600">
                     </div>
                 </div>
@@ -446,9 +471,9 @@
                         <span data-i18n="services.learn_more">Learn More</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
-                <div class="reveal-up relative" style="--si-x:3px;--si-rot:-2deg;--si-dur:10s;--si-sh-dur:8s">
-                    <div class="absolute -inset-4 bg-indigo-50 rounded-3xl -rotate-2 si-float"></div>
-                    <div class="si-shadow relative rounded-2xl overflow-hidden">
+                <div class="svc-img-composition relative" style="--si-x:3px;--si-rot:-2deg;--si-dur:10s;--si-sh-dur:8s">
+                    <div class="absolute -inset-4 bg-indigo-50 rounded-3xl -rotate-2"></div>
+                    <div class="si-shadow si-slide-from-right relative rounded-2xl overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80" alt="Consumer and Retail sector" class="relative rounded-2xl w-full h-80 md:h-96 object-cover" loading="lazy" width="900" height="600">
                     </div>
                 </div>
@@ -795,23 +820,103 @@
             document.querySelectorAll('.reveal-up, .reveal-fade').forEach(function (el) {
                 el.style.opacity = 1; el.style.transform = 'none';
             });
+            document.querySelectorAll('.svc-img-composition').forEach(function (el) {
+                el.style.opacity = 1;
+            });
         } else {
             gsap.registerPlugin(ScrollTrigger);
+
+            // ── Hero reveal (immediate, on load) ──────────────────────────────────
             gsap.to('#hero-industry .reveal-up', {
                 opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power2.out', delay: 0.15
             });
-            ScrollTrigger.batch('.reveal-up:not(#hero-industry .reveal-up)', {
+
+            // ── Generic batch for ALL reveal-up elements outside detailed industry sections ──
+            ScrollTrigger.batch('.reveal-up:not(#hero-industry .reveal-up):not(#energy .reveal-up):not(#manufacturing .reveal-up):not(#technology .reveal-up):not(#healthcare .reveal-up):not(#consumer .reveal-up)', {
                 start: 'top 85%',
                 once: true,
                 onEnter: function (batch) {
                     gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out' });
                 }
             });
+
+            // ── Industry Image Composition timelines ──────────────────────────────
+            function initIndustryAnimations() {
+                var industrySections = document.querySelectorAll('#energy, #manufacturing, #technology, #healthcare, #consumer');
+                industrySections.forEach(function (section) {
+                    var textColumn        = section.querySelector('.reveal-up');
+                    var composition       = section.querySelector('.svc-img-composition');
+                    if (!composition) return;
+
+                    var shape             = composition.querySelector('.absolute');
+                    var imageContainer    = composition.querySelector('.si-shadow');
+                    if (!shape || !imageContainer) return;
+
+                    // Ensure composition container itself NEVER has transform or vertical movement
+                    gsap.set(composition, { clearProps: 'transform', opacity: 1 });
+
+                    // Stop CSS floating during entrance so it doesn't fight GSAP
+                    shape.classList.remove('si-float');
+                    composition.classList.remove('animated');
+
+                    // Direction: si-slide-from-left → slide from left (-180px); otherwise → from right (+180px)
+                    var isLeft = imageContainer.classList.contains('si-slide-from-left');
+                    var slideX = isLeft ? -180 : 180;
+
+                    // Initial states
+                    gsap.set(textColumn,     { opacity: 0, y: 48 });
+                    gsap.set(shape,          { opacity: 0, scale: 0.92 });
+                    gsap.set(imageContainer, { opacity: 0, x: slideX });
+
+                    // Timeline for section
+                    var tl = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: section,
+                            start:   'top 75%',
+                            once:    true
+                        }
+                    });
+
+                    // Step 1 — Text Reveal-Up (only the text column moves vertically)
+                    if (textColumn) {
+                        tl.to(textColumn, { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out' });
+                    }
+
+                    // Step 2 — Decorative shape: fade + scale (NO Y movement, NO translation)
+                    tl.to(shape, { opacity: 1, scale: 1, duration: 0.6, ease: 'power3.out' }, '-=0.3')
+
+                    // Step 3 — Image Container: PURE horizontal slide (NO Y, NO scale, NO rotation)
+                      .to(imageContainer, { opacity: 1, x: 0, duration: 1.1, ease: 'power3.out' }, '-=0.3')
+
+                    // Step 4 — Hand control back to CSS: enable floating
+                      .add(function () {
+                          composition.classList.add('animated');
+                          shape.classList.add('si-float');
+                          gsap.set([shape, imageContainer], { clearProps: 'transform,opacity' });
+                          if (textColumn) {
+                              textColumn.style.opacity = '1';
+                              gsap.set(textColumn, { clearProps: 'transform' });
+                          }
+                      });
+                });
+
+                ScrollTrigger.refresh();
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initIndustryAnimations);
+            } else {
+                initIndustryAnimations();
+            }
+
             setTimeout(function () {
                 document.querySelectorAll('.reveal-up').forEach(function (el) {
-                    if (getComputedStyle(el).opacity === '0') { el.style.opacity = 1; el.style.transform = 'none'; }
+                    if (getComputedStyle(el).opacity === '0') {
+                        el.style.opacity  = '1';
+                        el.style.transform = 'none';
+                    }
                 });
-            }, 400);
+            }, 1500);
         }
 
         /* =========================================================

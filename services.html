@@ -220,7 +220,7 @@
     </section>
 
     <!-- ============ IMAGE COMPOSITION MOTION SYSTEM ============ -->
-    <style type="text/tailwindcss">
+    <style>
         @keyframes si-float {
             0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--si-rot, 0deg)) scale(1); }
             25%      { transform: translate3d(var(--si-x, 0px), -6px, 0) rotate(var(--si-rot, 0deg)) scale(1.008); }
@@ -234,10 +234,35 @@
         .si-float { animation: si-float var(--si-dur, 12s) cubic-bezier(.45,.05,.55,.95) infinite; will-change: transform; transform: translate3d(0, 0, 0); }
         .si-shadow { animation: si-shadow var(--si-sh-dur, 10s) ease-in-out infinite; will-change: box-shadow; transition: transform 400ms cubic-bezier(.22,.61,.36,1), box-shadow 400ms cubic-bezier(.22,.61,.36,1); }
         .si-shadow:hover { transform: scale(1.015); box-shadow: 0 20px 48px -4px rgba(0,0,0,0.14), 0 8px 20px -2px rgba(0,0,0,0.07); }
+        
+        /* Composition container must NEVER transform (strictly transform: none) */
+        .svc-img-composition {
+            transform: none !important;
+        }
+
+        /* Initial states of child elements before timeline animation */
+        .svc-img-composition:not(.animated) .absolute {
+            opacity: 0;
+            transform: scale(0.92);
+        }
+        .svc-img-composition:not(.animated) .si-shadow.si-slide-from-right {
+            opacity: 0;
+            transform: translateX(180px);
+        }
+        .svc-img-composition:not(.animated) .si-shadow.si-slide-from-left {
+            opacity: 0;
+            transform: translateX(-180px);
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .si-float { animation: none !important; transform: none !important; }
             .si-shadow { animation: none !important; }
             .si-shadow:hover { transform: scale(1.01); }
+            .svc-img-composition .absolute,
+            .svc-img-composition .si-shadow {
+                opacity: 1 !important;
+                transform: none !important;
+            }
         }
     </style>
 
@@ -728,11 +753,135 @@
 
         if (typeof gsap === 'undefined') {
             document.querySelectorAll('.reveal-up, .reveal-fade').forEach(function (el) { el.style.opacity = 1; el.style.transform = 'none'; });
+            document.querySelectorAll('.svc-img-composition').forEach(function (el) { el.style.opacity = 1; });
         } else {
             gsap.registerPlugin(ScrollTrigger);
-            gsap.to('#hero-services .reveal-up', { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power2.out', delay: 0.15 });
-            ScrollTrigger.batch('.reveal-up:not(#hero-services .reveal-up)', { start: 'top 85%', once: true, onEnter: function (batch) { gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out' }); } });
-            setTimeout(function () { document.querySelectorAll('.reveal-up').forEach(function (el) { if (getComputedStyle(el).opacity === '0') { el.style.opacity = 1; el.style.transform = 'none'; } }); }, 400);
+
+            // ── Hero reveal (immediate, on load) ──────────────────────────────────
+            gsap.to('#hero-services .reveal-up', {
+                opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power2.out', delay: 0.15
+            });
+
+            // ── Generic batch for ALL reveal-up elements outside detailed services 
+            // Exclude detailed services elements so text column is handled exclusively by its section timeline
+            ScrollTrigger.batch('.reveal-up:not(#hero-services .reveal-up):not(#detailedServicesContainer .reveal-up)', {
+                start: 'top 85%',
+                once: true,
+                onEnter: function (batch) {
+                    gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out' });
+                }
+            });
+
+            // ── Service Image Composition timelines ───────────────────────────────
+            // Composition containers are selected by .svc-img-composition — they are
+            // completely outside the Reveal-Up system and receive ZERO vertical movement.
+            var activeTriggers = [];
+            function initDetailedAnimations() {
+                var container = document.getElementById('detailedServicesContainer');
+                if (!container) return;
+
+                // Wait until the ServiceRenderer has dynamically inserted the sections
+                if (container.children.length === 0) {
+                    setTimeout(initDetailedAnimations, 50);
+                    return;
+                }
+
+                // Clean up previous ScrollTriggers to prevent memory leaks and duplicate animations
+                activeTriggers.forEach(function (trigger) { trigger.kill(); });
+                activeTriggers = [];
+
+                var serviceSections = document.querySelectorAll('#detailedServicesContainer section');
+                serviceSections.forEach(function (section) {
+                    var textColumn        = section.querySelector('.reveal-up');
+                    var composition       = section.querySelector('.svc-img-composition');
+                    if (!composition) return;
+
+                    var shape             = composition.querySelector('.absolute');
+                    var imageContainer    = composition.querySelector('.si-shadow');
+                    if (!shape || !imageContainer) return;
+
+                    // Ensure composition container itself NEVER has transform or vertical movement
+                    gsap.set(composition, { clearProps: 'transform', opacity: 1 });
+
+                    // Stop CSS floating during entrance so it doesn't fight GSAP
+                    shape.classList.remove('si-float');
+                    composition.classList.remove('animated');
+
+                    // Direction: si-slide-from-left → slide from left (-180px); otherwise → from right (+180px)
+                    var isLeft = imageContainer.classList.contains('si-slide-from-left');
+                    var slideX = isLeft ? -180 : 180;
+
+                    // ── Initial states ────────────────────────────────────────────
+                    gsap.set(textColumn,     { opacity: 0, y: 48 });
+                    gsap.set(shape,          { opacity: 0, scale: 0.92 });
+                    gsap.set(imageContainer, { opacity: 0, x: slideX });
+
+                    // ── Timeline ──────────────────────────────────────────────────
+                    var tl = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: section,
+                            start:   'top 75%',
+                            once:    true
+                        }
+                    });
+
+                    // Track ScrollTrigger instance for lifecycle management
+                    if (tl.scrollTrigger) {
+                        activeTriggers.push(tl.scrollTrigger);
+                    }
+
+                    // Step 1 — Text Reveal-Up (only the text column moves vertically)
+                    if (textColumn) {
+                        tl.to(textColumn, { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out' });
+                    }
+
+                    // Step 2 — Decorative shape: fade + scale (NO Y movement, NO translation)
+                    tl.to(shape, { opacity: 1, scale: 1, duration: 0.6, ease: 'power3.out' }, '-=0.3')
+
+                    // Step 3 — Image Container: PURE horizontal slide (NO Y, NO scale, NO rotation)
+                      .to(imageContainer, { opacity: 1, x: 0, duration: 1.1, ease: 'power3.out' }, '-=0.3')
+
+                    // Step 4 — Hand control back to CSS: enable floating, clear GSAP inline transforms
+                      .add(function () {
+                          composition.classList.add('animated');
+                          shape.classList.add('si-float');
+                          gsap.set([shape, imageContainer], { clearProps: 'transform,opacity' });
+                          if (textColumn) {
+                              textColumn.style.opacity = '1';
+                              gsap.set(textColumn, { clearProps: 'transform' });
+                          }
+                      });
+                });
+
+                // Refresh ScrollTrigger positions after content is dynamically injected
+                ScrollTrigger.refresh();
+            }
+
+            // Run initialization on load
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initDetailedAnimations);
+            } else {
+                initDetailedAnimations();
+            }
+
+            // Re-initialize animations after translation/language change
+            if (window.ChaturaBus) {
+                window.ChaturaBus.on('languageChange', function () {
+                    // Let the language renderer finish rendering first
+                    setTimeout(initDetailedAnimations, 80);
+                });
+            }
+
+            // ── Fallback: force-reveal any reveal-up that didn't animate ──────────
+            // .svc-img-composition is not in this list — it is handled above.
+            setTimeout(function () {
+                document.querySelectorAll('.reveal-up').forEach(function (el) {
+                    if (getComputedStyle(el).opacity === '0') {
+                        el.style.opacity  = '1';
+                        el.style.transform = 'none';
+                    }
+                });
+            }, 1500);
         }
     </script>
     <script>

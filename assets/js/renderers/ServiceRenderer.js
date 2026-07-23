@@ -99,6 +99,8 @@
                 var xVal = isEven ? '5px' : '0px';
                 var rotVal = isEven ? '2deg' : '-2deg';
 
+                var slideClass = isEven ? 'si-slide-from-left' : 'si-slide-from-right';
+
                 html += '<section id="' + s.id + '" class="py-24 ' + bgClass + ' overflow-hidden">' +
                             '<div class="container mx-auto px-6">' +
                                 '<div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">' +
@@ -113,9 +115,9 @@
                                             '<span data-i18n="services.learn_more">Learn More</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>' +
                                         '</a>' +
                                     '</div>' +
-                                    '<div class="reveal-up relative ' + orderClass + '" style="--si-x:' + xVal + ';--si-rot:' + rotVal + ';--si-dur:14s;--si-sh-dur:11s">' +
-                                        '<div class="absolute -inset-4 ' + bgShape + ' rounded-3xl ' + rotateClass1 + ' si-float"></div>' +
-                                        '<div class="si-shadow relative rounded-2xl overflow-hidden">' +
+                                    '<div class="svc-img-composition relative ' + orderClass + '" style="--si-x:' + xVal + ';--si-rot:' + rotVal + ';--si-dur:14s;--si-sh-dur:11s">' +
+                                        '<div class="absolute -inset-4 ' + bgShape + ' rounded-3xl ' + rotateClass1 + '"></div>' +
+                                        '<div class="si-shadow ' + slideClass + ' relative rounded-2xl overflow-hidden">' +
                                             '<img src="' + s.image + '" alt="' + title + '" class="relative rounded-2xl w-full h-80 md:h-96 object-cover" loading="lazy">' +
                                         '</div>' +
                                     '</div>' +

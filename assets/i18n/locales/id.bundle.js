@@ -7,6 +7,30 @@
 (function(){
 var d=window.__CHATURA_LOCALES=window.__CHATURA_LOCALES||{};
 d['id']=d['id']||{};
+d['id']['insights.load_more']='Tampilkan Lebih Banyak Artikel';
+d['id']['insight.disclaimer_title']='Disclaimer Artikel';
+d['id']['insight.disclaimer_desc']='Disclaimer pada artikel adalah pernyataan penyangkalan yang bertujuan untuk membatasi tanggung jawab hukum, memperjelas maksud isi tulisan, dan melindungi penulis atau situs dari tuntutan pembaca.';
+d['id']['insight.disclaimer_functions_title']='Fungsi Utama Disclaimer';
+d['id']['insight.disclaimer_func1_title']='Melindungi hukum';
+d['id']['insight.disclaimer_func1_desc']='Menjaga penulis dari risiko gugatan jika terjadi salah paham atau kerugian.';
+d['id']['insight.disclaimer_func2_title']='Membatasi tanggung jawab';
+d['id']['insight.disclaimer_func2_desc']='Menegaskan bahwa risiko penggunaan informasi ada pada pembaca.';
+d['id']['insight.disclaimer_func3_title']='Klarifikasi isi';
+d['id']['insight.disclaimer_func3_desc']='Memberi tahu sifat asli konten seperti opini, iklan afiliasi, atau data non-resmi.';
+d['id']['insight.disclaimer_types_title']='Jenis-Jenis Disclaimer dalam Artikel';
+d['id']['insight.disclaimer_type1_title']='Kesehatan / Medis';
+d['id']['insight.disclaimer_type1_desc']='Menyatakan artikel bukan pengganti nasihat dokter profesional.';
+d['id']['insight.disclaimer_type2_title']='Keuangan';
+d['id']['insight.disclaimer_type2_desc']='Mengingatkan bahwa tips investasi atau finansial bukan jaminan atau perintah resmi.';
+d['id']['insight.disclaimer_type3_title']='Afiliasi';
+d['id']['insight.disclaimer_type3_desc']='Memberitahu pembaca bahwa penulis mendapat komisi dari tautan produk tertentu.';
+d['id']['insight.disclaimer_type4_title']='Hak Cipta';
+d['id']['insight.disclaimer_type4_desc']='Menjelaskan status kepemilikan aset atau materi dalam tulisan.';
+d['id']['insight.published_label']='Diterbitkan';
+d['id']['insight.updated_label']='Diperbarui';
+d['id']['insight.related_services']='Artikel Layanan Terkait';
+d['id']['insight.related_industries']='Artikel Industri Terkait';
+
 d['id']['transfer.page_title']='Platform Transfer Bisnis - Chatura Indonesia';
 d['id']['transfer.hero_label']='Platform Transfer Bisnis';
 d['id']['transfer.hero_title']='Menghubungkan Aset Bisnis Potensial dengan';

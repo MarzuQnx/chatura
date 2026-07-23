@@ -38,7 +38,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="../../assets/design-system.css">
-</head>
+    <style>
+        .svc-img-composition { transform: none !important; }
+        .svc-img-composition:not(.animated) .absolute { opacity: 0; transform: scale(0.92); }
+        .svc-img-composition:not(.animated) .si-shadow.si-slide-from-right { opacity: 0; transform: translateX(180px); }
+        .svc-img-composition:not(.animated) .si-shadow.si-slide-from-left { opacity: 0; transform: translateX(-180px); }
+
+        .expert-card { display: flex; align-items: center; gap: 10px; background: #E8EFEC; border: 1px solid #E8EFEC; border-radius:1%; padding: 10px; cursor: pointer; transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform; }
+        .expert-card:hover { background: #004D34; border-color: #004D34; transform: translateY(-8px); box-shadow: 0 12px 32px rgba(0, 77, 52, 0.12); }
+        .expert-card:hover .expert-card__name, .expert-card:hover .expert-card__role, .expert-card:hover .expert-card__expertise, .expert-card:hover .expert-card__cta { color: #ffffff; }
+        .expert-card:hover .expert-card__expertise { color: rgba(255,255,255,0.8); }
+        .expert-card:hover .expert-card__arrow { color: #ffffff; transform: translateX(4px); }
+        .expert-card:hover .expert-card__img { transform: scale(1.04); }
+        .expert-card__img { width: 100px; height: 100%; border-radius: 1%; object-fit: cover; object-position: top; flex-shrink: 0; transition: transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .expert-card__body { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+        .expert-card__name { font-weight: 600; font-size: 1rem; line-height: 1.3; color: #111827; transition: color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-bottom: 6px; }
+        .expert-card__role { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #6B7280; transition: color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-bottom: 14px; }
+        .expert-card__expertise { font-size: 0.75rem; color: #004D34; font-weight: 500; transition: color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-bottom: 18px; }
+        .expert-card__cta { display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 600; color: #004D34; transition: color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .expert-card__arrow { transition: color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        @media (max-width: 1024px) { .expert-card__img { width: 80px; height: 104px; border-radius: 14px; } .expert-card { padding: 1.25rem; gap: 1rem; } }
+        @media (max-width: 640px) { .expert-card { padding: 1.25rem; gap: 1rem; } .expert-card__img { width: 72px; height: 96px; border-radius: 12px; } .expert-card__name { font-size: 0.9375rem; } }
+    </style>
 
 <body class="bg-white text-gray-800 font-sans antialiased">
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -402,31 +423,29 @@
 
     <!-- ============ EXPERTS ============ -->
     <section id="contact-advisors" class="py-20 bg-gray-50 border-b border-gray-100">
-        <div class="container mx-auto px-6">
+        <div class="container mx-auto px-6" style="max-width: 1280px;">
             <div class="reveal-up text-center mb-14">
                 <span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="bt.experts_label">Your Advisors</span>
                 <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="bt.experts_title">Business Transfer Team</h2>
             </div>
-            <div class="reveal-up flex flex-wrap justify-center gap-8 max-w-3xl mx-auto">
-                <!-- Expert 1 -->
-                <div class="text-center flex-1 min-w-[260px] max-w-[320px]">
-                    <div class="relative overflow-hidden rounded-2xl mb-5 mx-auto w-full aspect-[4/5]">
-                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&h=500&q=80" alt="Bezaliel B. Erlan" loading="lazy" class="w-full h-full object-cover">
+            <div class="reveal-up grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
+                <div class="expert-card" onclick="window.location.href='../../our-people.html'">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&h=500&q=80" alt="Bezaliel B. Erlan" loading="lazy" class="expert-card__img">
+                    <div class="expert-card__body">
+                        <h3 class="expert-card__name" data-i18n="bt.expert_1_name">Bezaliel B. Erlan</h3>
+                        <p class="expert-card__role" data-i18n="bt.expert_1_role">Partner, Business Transfer</p>
+                        <p class="expert-card__expertise">Deal Structuring · M&amp;A Due Diligence</p>
+                        <span class="expert-card__cta"><span data-i18n="people.view_profile">View Profile</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5 expert-card__arrow"></i></span>
                     </div>
-                    <h3 class="font-bold text-gray-950 text-lg" data-i18n="bt.expert_1_name">Bezaliel B. Erlan</h3>
-                    <p class="text-xs text-emerald-700 font-semibold mt-1" data-i18n="bt.expert_1_role">Partner, Business Transfer</p>
-                    <p class="text-xs text-gray-400 mt-2 max-w-xs mx-auto" data-i18n="bt.expert_1_desc">Specializes in deal structuring, due diligence coordination, and transaction execution for mid-market M&amp;A.</p>
-                    <a href="mailto:erlan.b@chatura-indonesia.com" class="inline-flex items-center gap-1 text-xs font-semibold text-[#004D34] mt-3 hover:underline">Contact <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
                 </div>
-                <!-- Expert 2 -->
-                <div class="text-center flex-1 min-w-[260px] max-w-[320px]">
-                    <div class="relative overflow-hidden rounded-2xl mb-5 mx-auto w-full aspect-[4/5]">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&h=500&q=80" alt="Andi Rio Ilhad Monry" loading="lazy" class="w-full h-full object-cover">
+                <div class="expert-card" onclick="window.location.href='../../our-people.html'">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&h=500&q=80" alt="Andi Rio Ilhad Monry" loading="lazy" class="expert-card__img">
+                    <div class="expert-card__body">
+                        <h3 class="expert-card__name" data-i18n="bt.expert_2_name">Andi Rio Ilhad Monry</h3>
+                        <p class="expert-card__role" data-i18n="bt.expert_2_role">Managing Partner</p>
+                        <p class="expert-card__expertise">M&amp;A · Corporate Advisory</p>
+                        <span class="expert-card__cta"><span data-i18n="people.view_profile">View Profile</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5 expert-card__arrow"></i></span>
                     </div>
-                    <h3 class="font-bold text-gray-950 text-lg" data-i18n="bt.expert_2_name">Andi Rio Ilhad Monry</h3>
-                    <p class="text-xs text-emerald-700 font-semibold mt-1" data-i18n="bt.expert_2_role">Managing Partner</p>
-                    <p class="text-xs text-gray-400 mt-2 max-w-xs mx-auto" data-i18n="bt.expert_2_desc">Leads the firm's M&amp;A and corporate advisory practice with deep experience across cross-border transactions.</p>
-                    <a href="mailto:monry.a@chatura-indonesia.com" class="inline-flex items-center gap-1 text-xs font-semibold text-[#004D34] mt-3 hover:underline">Contact <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
                 </div>
             </div>
         </div>
