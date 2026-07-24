@@ -11,6 +11,10 @@
         if (typeof obj === 'string') return obj;
         return obj[currentLang()] || obj.en || '';
     };
+    var t = function (key) {
+        var d = window.TranslationRepository ? window.TranslationRepository.getAllTranslations() : {};
+        return d[key] || key;
+    };
 
     var InsightDetailRenderer = {
         render: function() {
@@ -20,7 +24,7 @@
             if (!window.ArticleRepository) return;
             var article = window.ArticleRepository.getBySlug(slug);
             if (!article) {
-                document.getElementById('main-content').innerHTML = '<div class="container mx-auto px-6 py-32 text-center"><h2>Article Not Found</h2><a href="insights.html" class="text-[#004D34] hover:underline mt-4 inline-block">Back to Insights</a></div>';
+                document.getElementById('main-content').innerHTML = '<div class="container mx-auto px-6 py-32 text-center"><h2>' + t('insight.not_found_title') + '</h2><a href="insights.html" class="text-[#004D34] hover:underline mt-4 inline-block">' + t('insight.back_to_insights') + '</a></div>';
                 return;
             }
 
@@ -81,8 +85,8 @@
                 "@context": "https://schema.org",
                 "@type": "BreadcrumbList",
                 "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.chatura-indonesia.com/" },
-                    { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://www.chatura-indonesia.com/insights.html" },
+                    { "@type": "ListItem", "position": 1, "name": t('nav.home'), "item": "https://www.chatura-indonesia.com/" },
+                    { "@type": "ListItem", "position": 2, "name": t('nav.latest_insights'), "item": "https://www.chatura-indonesia.com/insights.html" },
                     { "@type": "ListItem", "position": 3, "name": loc(article.title).substring(0, 60), "item": url }
                 ]
             };
@@ -325,14 +329,14 @@
                 var nextSlot = document.getElementById('next-article-slot');
                 if (prevSlot) {
                     if (adj.prev) {
-                        prevSlot.innerHTML = '<a href="insight-detail.html?slug=' + adj.prev.slug + '" class="prev-next-link block p-4 border border-gray-200 rounded-xl"><span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 block mb-2">← Previous</span><span class="text-xs font-bold text-gray-900 leading-snug block line-clamp-2">' + loc(adj.prev.title) + '</span></a>';
+                        prevSlot.innerHTML = '<a href="insight-detail.html?slug=' + adj.prev.slug + '" class="prev-next-link block p-4 border border-gray-200 rounded-xl"><span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 block mb-2">' + t('insight.prev') + '</span><span class="text-xs font-bold text-gray-900 leading-snug block line-clamp-2">' + loc(adj.prev.title) + '</span></a>';
                     } else {
                         prevSlot.innerHTML = '';
                     }
                 }
                 if (nextSlot) {
                     if (adj.next) {
-                        nextSlot.innerHTML = '<a href="insight-detail.html?slug=' + adj.next.slug + '" class="prev-next-link block p-4 border border-gray-200 rounded-xl text-right"><span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 block mb-2">Next →</span><span class="text-xs font-bold text-gray-900 leading-snug block line-clamp-2">' + loc(adj.next.title) + '</span></a>';
+                        nextSlot.innerHTML = '<a href="insight-detail.html?slug=' + adj.next.slug + '" class="prev-next-link block p-4 border border-gray-200 rounded-xl text-right"><span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 block mb-2">' + t('insight.next') + '</span><span class="text-xs font-bold text-gray-900 leading-snug block line-clamp-2">' + loc(adj.next.title) + '</span></a>';
                     } else {
                         nextSlot.innerHTML = '';
                     }
@@ -389,6 +393,224 @@
                     self.render();
                 });
             }
+        }
+    };
+
+    window.openAuthorModal = function(overrideId) {
+        var params = new URLSearchParams(window.location.search);
+        var slug = params.get('slug') || 'tax-reform-2026';
+        var article = window.ArticleRepository ? window.ArticleRepository.getBySlug(slug) : null;
+
+        var author = article ? article.author : null;
+        var peopleMap = {
+            'dyna': 'p6',
+            'bezaliel': 'p4',
+            'adine': 'p5',
+            'andi': 'p3',
+            'schweizer': 'p1',
+            'bolden': 'p2'
+        };
+        var pId = overrideId || (article ? (peopleMap[article.authorId] || article.authorId || (author ? author.peopleId : null)) : null);
+        var person = (pId && window.PeopleRepository) ? window.PeopleRepository.getAll().find(function(x) { return x.id === pId; }) : null;
+
+        var tr = function(k) {
+            if (!k) return '';
+            var d = window.TranslationRepository ? window.TranslationRepository.getAllTranslations() : {};
+            return d[k] || k;
+        };
+
+        var nameStr = person ? tr(person.nameKey) : (author ? loc(author.name) : '');
+        var titleStr = person ? (tr(person.titleKey) + ' — ' + tr(person.practiceKey)) : (author ? loc(author.role) : '');
+        var photoSrc = person ? person.photo : (author ? (author.photo || author.image) : '');
+        var locationStr = person ? tr(person.locationKey) : (author && author.location ? loc(author.location) : 'Jakarta');
+        var linkedinHref = person ? person.linkedin : (author ? (author.linkedin || '#') : '#');
+        var emailHref = person ? person.email : (author ? (author.email || '') : '');
+
+        var imgEl = document.getElementById('amodal-img') || document.getElementById('modal-img');
+        if (imgEl) { imgEl.src = photoSrc; imgEl.alt = nameStr; }
+        
+        var nameEl = document.getElementById('amodal-name') || document.getElementById('modal-name');
+        if (nameEl) nameEl.textContent = nameStr;
+
+        var titleEl = document.getElementById('amodal-title') || document.getElementById('modal-title');
+        if (titleEl) titleEl.textContent = titleStr;
+
+        var locEl = document.getElementById('amodal-location') || document.getElementById('modal-location');
+        if (locEl) {
+            var span = locEl.querySelector('span');
+            if (span) span.textContent = locationStr;
+        }
+
+        var liEl = document.getElementById('amodal-linkedin') || document.getElementById('modal-linkedin');
+        if (liEl) liEl.href = linkedinHref;
+
+        var emEl = document.getElementById('amodal-email') || document.getElementById('modal-email');
+        if (emEl) emEl.href = emailHref ? ('mailto:' + emailHref) : '#';
+
+        var bioStr = person ? tr(person.bioKey) : (author ? loc(author.bio) : '');
+        var bioEl = document.getElementById('amodal-bio') || document.getElementById('modal-bio');
+        if (bioEl) bioEl.textContent = bioStr;
+
+        function resolveTopicLink(text) {
+            if (!text) return null;
+            var lower = text.toLowerCase();
+            if (lower.indexOf('tax') !== -1 || lower.indexOf('pajak') !== -1 || lower.indexOf('fiscal') !== -1 || lower.indexOf('fiskal') !== -1) {
+                return { url: 'services/tax-services/', label: 'Tax Services' };
+            }
+            if (lower.indexOf('transfer') !== -1 || lower.indexOf('m&a') !== -1 || lower.indexOf('merger') !== -1 || lower.indexOf('acquisition') !== -1 || lower.indexOf('akuisi') !== -1 || lower.indexOf('succession') !== -1 || lower.indexOf('suksesi') !== -1) {
+                return { url: 'services/business-transfer/', label: 'Business Transfer' };
+            }
+            if (lower.indexOf('risk') !== -1 || lower.indexOf('risiko') !== -1 || lower.indexOf('erm') !== -1 || lower.indexOf('cyber') !== -1 || lower.indexOf('siber') !== -1 || lower.indexOf('grc') !== -1) {
+                return { url: 'services/risk-management/', label: 'Risk Management' };
+            }
+            if (lower.indexOf('account') !== -1 || lower.indexOf('akuntan') !== -1 || lower.indexOf('finance') !== -1 || lower.indexOf('keuangan') !== -1 || lower.indexOf('credit') !== -1 || lower.indexOf('kredit') !== -1) {
+                return { url: 'services/accounting-finance/', label: 'Accounting & Finance' };
+            }
+            if (lower.indexOf('advisory') !== -1 || lower.indexOf('consulting') !== -1 || lower.indexOf('konsultasi') !== -1 || lower.indexOf('strategy') !== -1 || lower.indexOf('strategi') !== -1) {
+                return { url: 'services/corporate-advisory/', label: 'Corporate Advisory' };
+            }
+            if (lower.indexOf('energy') !== -1 || lower.indexOf('energi') !== -1 || lower.indexOf('mining') !== -1 || lower.indexOf('tambang') !== -1) {
+                return { url: 'industries/energy/', label: 'Energy & Natural Resources' };
+            }
+            if (lower.indexOf('manufacturing') !== -1 || lower.indexOf('manufaktur') !== -1 || lower.indexOf('automotive') !== -1 || lower.indexOf('otomotif') !== -1) {
+                return { url: 'industries/manufacturing/', label: 'Manufacturing' };
+            }
+            if (lower.indexOf('financial') !== -1 || lower.indexOf('bank') !== -1 || lower.indexOf('perbankan') !== -1) {
+                return { url: 'industries/financial/', label: 'Financial Services' };
+            }
+            if (lower.indexOf('tech') !== -1 || lower.indexOf('teknologi') !== -1 || lower.indexOf('digital') !== -1) {
+                return { url: 'industries/technology/', label: 'Technology' };
+            }
+            if (lower.indexOf('health') !== -1 || lower.indexOf('kesehatan') !== -1 || lower.indexOf('farmasi') !== -1) {
+                return { url: 'industries/healthcare/', label: 'Healthcare' };
+            }
+            if (lower.indexOf('consumer') !== -1 || lower.indexOf('fmcg') !== -1 || lower.indexOf('ritel') !== -1) {
+                return { url: 'industries/consumer/', label: 'Consumer Goods' };
+            }
+            return null;
+        }
+
+        var expList = person ? person.expertiseKeys.map(function(k) { return tr(k); }) : (author && author.expertise ? author.expertise : []);
+        var expContainer = document.getElementById('amodal-expertise') || document.getElementById('modal-expertise');
+        if (expContainer) {
+            expContainer.innerHTML = expList.map(function(k) {
+                var res = resolveTopicLink(k);
+                if (res) {
+                    return '<a href="' + res.url + '" class="text-[11px] font-medium bg-emerald-50 text-emerald-900 border border-emerald-100/60 px-2.5 py-0.5 rounded-full hover:bg-[#004D34] hover:text-white transition-colors duration-200 inline-flex items-center gap-1 group">' + k + ' <i data-lucide="external-link" class="w-2.5 h-2.5 opacity-60 group-hover:opacity-100"></i></a>';
+                }
+                var escapedKey = k.replace(/'/g, "\\'");
+                return '<button onclick="showArticleNotAvailableModal(\'' + escapedKey + '\')" class="text-[11px] font-medium bg-emerald-50 text-emerald-900 border border-emerald-100/60 px-2.5 py-0.5 rounded-full hover:bg-emerald-100 transition-colors duration-200 text-left">' + k + '</button>';
+            }).join('');
+        }
+
+        var expList2 = person ? person.experienceKeys.map(function(k) { return tr(k); }) : (author && author.experience ? author.experience : []);
+        var expContainer2 = document.getElementById('amodal-experience') || document.getElementById('modal-experience');
+        if (expContainer2) {
+            expContainer2.innerHTML = expList2.map(function(k) {
+                var res = resolveTopicLink(k);
+                var escapedK = k.replace(/'/g, "\\'");
+                if (res) {
+                    return '<li class="flex items-start gap-2 mb-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-emerald-700 shrink-0"></i> <a href="' + res.url + '" class="hover:text-[#004D34] hover:underline transition-colors flex items-center gap-1">' + k + ' <i data-lucide="arrow-up-right" class="w-3 h-3 text-emerald-600"></i></a></li>';
+                }
+                return '<li class="flex items-start gap-2 mb-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-emerald-700 shrink-0"></i> <button onclick="showArticleNotAvailableModal(\'' + escapedK + '\')" class="text-left hover:text-[#004D34] hover:underline transition-colors">' + k + '</button></li>';
+            }).join('');
+        }
+
+        var PUBLICATION_SLUGS = {
+            'people.p1_pub_1': 'digital-economy-regulations',
+            'people.p1_pub_2': 'manufacturing-transformation',
+            'people.p2_pub_1': 'manufacturing-transformation',
+            'people.p3_pub_1': 'tax-reform-2026',
+            'people.p3_pub_2': 'cross-border-tax-planning',
+            'people.p4_pub_1': 'business-acquisition-guide',
+            'people.p4_pub_2': 'family-business-succession',
+            'people.p5_pub_1': 'risk-management-framework',
+            'people.p6_pub_1': 'indonesia-tax-incentives-2026',
+            'people.p6_pub_2': 'tax-implications-business-transfer'
+        };
+
+        var pubItems = [];
+        if (person && person.publicationKeys) {
+            pubItems = person.publicationKeys.map(function(k, idx) {
+                return { key: k, title: tr(k), date: person.publicationDates[idx] || '' };
+            });
+        }
+        var pubContainer = document.getElementById('amodal-publications') || document.getElementById('modal-publications');
+        if (pubContainer) {
+            if (pubItems.length) {
+                pubContainer.innerHTML = pubItems.map(function(p) {
+                    var slug = PUBLICATION_SLUGS[p.key];
+                    var articleUrl = slug ? ('insight-detail.html?slug=' + slug) : null;
+                    var escapedTitle = (p.title || '').replace(/'/g, "\\'");
+
+                    if (articleUrl) {
+                        return '<a href="' + articleUrl + '" class="block bg-gray-50 border border-gray-100 rounded-lg p-3 hover:border-emerald-700/60 hover:bg-emerald-50/40 transition group">' +
+                            '<h5 class="font-semibold text-gray-900 leading-tight mb-1.5 text-xs group-hover:text-[#004D34] transition-colors flex items-center justify-between gap-1">' + p.title + ' <i data-lucide="arrow-up-right" class="w-3 h-3 text-emerald-700 opacity-0 group-hover:opacity-100 transition-opacity"></i></h5>' +
+                            '<span class="text-[10px] text-gray-400 block">' + p.date + '</span></a>';
+                    }
+                    return '<div onclick="showArticleNotAvailableModal(\'' + escapedTitle + '\')" class="bg-gray-50 border border-gray-100 rounded-lg p-3 hover:border-emerald-700/40 hover:bg-gray-100/80 transition cursor-pointer group">' +
+                        '<h5 class="font-semibold text-gray-900 leading-tight mb-1.5 text-xs group-hover:text-[#004D34] transition-colors">' + p.title + '</h5>' +
+                        '<span class="text-[10px] text-gray-400 block">' + p.date + '</span></div>';
+                }).join('');
+            } else {
+                pubContainer.innerHTML = '<p class="text-xs text-gray-400 italic">' + (tr('people.no_publications') || 'No publications available.') + '</p>';
+            }
+        }
+
+        var authorModal = document.getElementById('authorModal') || document.getElementById('bioModal');
+        if (authorModal) {
+            authorModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+    };
+
+    window.closeAuthorModal = function() {
+        var authorModal = document.getElementById('authorModal') || document.getElementById('bioModal');
+        if (authorModal) {
+            authorModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+
+    window.openBioModal = function(id) {
+        if (window.openAuthorModal) {
+            window.openAuthorModal(id);
+        }
+    };
+
+    window.showArticleNotAvailableModal = function(topicTitle) {
+        var modalEl = document.getElementById('articleNotAvailableModal');
+        if (!modalEl) return;
+        var topicEl = document.getElementById('notAvailableTopic');
+        var topicBadge = document.getElementById('notAvailableTopicBadge');
+        if (topicEl && topicBadge) {
+            if (topicTitle) {
+                topicEl.textContent = topicTitle;
+                topicBadge.classList.remove('hidden');
+            } else {
+                topicBadge.classList.add('hidden');
+            }
+        }
+        modalEl.classList.remove('opacity-0', 'pointer-events-none');
+        modalEl.classList.add('opacity-100', 'pointer-events-auto');
+        var content = modalEl.querySelector('#articleNotAvailableContent');
+        if (content) {
+            content.classList.remove('scale-95');
+            content.classList.add('scale-100');
+        }
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+    };
+
+    window.closeArticleNotAvailableModal = function() {
+        var modalEl = document.getElementById('articleNotAvailableModal');
+        if (!modalEl) return;
+        modalEl.classList.remove('opacity-100', 'pointer-events-auto');
+        modalEl.classList.add('opacity-0', 'pointer-events-none');
+        var content = modalEl.querySelector('#articleNotAvailableContent');
+        if (content) {
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
         }
     };
 

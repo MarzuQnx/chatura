@@ -14,6 +14,15 @@
     return CONFIG.supportedLangs.indexOf(stored) !== -1 ? stored : CONFIG.defaultLang;
   })();
 
+  var I18N_DEBUG = (function () {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('i18n_debug') === '1') {
+      localStorage.setItem('I18N_DEBUG', '1');
+      return true;
+    }
+    return localStorage.getItem('I18N_DEBUG') === '1';
+  })();
+
   function getLocaleData() {
     return window.__CHATURA_LOCALES || {};
   }
@@ -26,6 +35,11 @@
     if (currentLang !== CONFIG.defaultLang) {
       var fallback = locales[CONFIG.defaultLang];
       if (fallback && fallback[key] !== undefined) return fallback[key];
+    }
+
+    if (I18N_DEBUG) {
+      console.warn('[i18n] missing key:', key);
+      return '[' + key + ']';
     }
 
     return key;
@@ -69,6 +83,13 @@
     setLanguage: setLanguage,
     getCurrentLanguage: getCurrentLanguage,
     exists: exists,
-    getAllTranslations: getAllTranslations
+    getAllTranslations: getAllTranslations,
+    setDebug: function (enabled) {
+      I18N_DEBUG = !!enabled;
+      localStorage.setItem('I18N_DEBUG', I18N_DEBUG ? '1' : '0');
+    },
+    isDebug: function () { return I18N_DEBUG; }
   };
+
+  window.I18N_DEBUG = I18N_DEBUG;
 })();

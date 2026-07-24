@@ -3,6 +3,8 @@
 > Highest implementation authority. Every architectural, UI, UX, frontend, animation, accessibility, localization, coding decision MUST comply.
 > Violation = incorrect implementation.
 
+> **📌 Referensi Implementasi**: Untuk spesifikasi teknis modular (component loader, page controller, i18n architecture, migration checklist), lihat **`MODULAR_COMPONENTS_SPECIFICATION.md`**.
+
 ---
 
 ## 1. ARCHITECTURE
@@ -49,6 +51,8 @@ Services page (`services.html`) is an **EXECUTIVE EDITORIAL OVERVIEW**.
 ## 2. SERVICES PAGE — FIVE SERVICES AS SECTIONS (NOT CARDS)
 
 Each primary service is a **FULL EDITORIAL SECTION**. This is mandatory.
+
+> **🔄 Implementasi**: Services section harus diimplementasikan sebagai komponen modular (`services/service-section-01.html` dst) menggunakan component loader pattern dari MODULAR_COMPONENTS_SPECIFICATION.md.
 
 ### 2.1 Section Structure
 
@@ -109,6 +113,8 @@ This creates natural editorial reading rhythm.
 ---
 
 ## 3. DEDICATED SERVICE PAGES
+
+> **🔄 Status Migrasi**: Dedicated service pages sedang/migrasi ke arsitektur modular (`{page}-modular.html`). Gunakan **MODULAR_COMPONENTS_SPECIFICATION.md** Section 13 sebagai panduan konversi. Layout template di bawah tetap berlaku sebagai referensi konten, tapi implementasi teknis mengikuti pola modular (component slots, page controller, shared components).
 
 ### 3.1 Template Structure (ALL service pages follow this EXACT template)
 
@@ -246,7 +252,7 @@ Accordion-style expandable sections. Services, Industries, Insights expand/colla
 
 Every section uses:
 - `container mx-auto px-6` for width
-- `reveal-up` class for scroll animation
+- `data-motion="reveal-up"` attribute for scroll-triggered animation (Motion Engine — **bukan** class `reveal-up` manual)
 - `data-i18n` attributes for all visible text
 - Consistent padding: `py-20` or `py-24`
 

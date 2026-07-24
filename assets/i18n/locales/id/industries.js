@@ -1,4 +1,4 @@
-(function(){
+﻿(function(){
 var d=window.__CHATURA_LOCALES=window.__CHATURA_LOCALES||{};
 d['id']=d['id']||{};
 d['id']['industries.page_title']='Industri - Chatura Indonesia';
@@ -44,7 +44,7 @@ d['id']['industries.ma_tag']='Konsultasi M&A';
 d['id']['industries.case_title']='Konsultasi Akuisisi PT XYZ';
 d['id']['industries.case_desc']='Chatura bertindak sebagai penasihat keuangan eksklusif dalam transaksi akuisisi 100% saham perusahaan penyedia infrastruktur pertambangan. Kami mengawal struktur transaksi dari proses due diligence keuangan komprehensif hingga minimalisasi eksposur risiko perpajakan pasca-akuisisi.';
 d['id']['industries.deal_value']='Nilai Transaksi';
-d['id']['industries.read_case']='Baca Studi Kasus ’';
+d['id']['industries.read_case']='Baca Studi Kasus ';
 d['id']['industries.other_engagements']='Engagement Terbaru Lainnya';
 d['id']['industries.engagement_1_label']='Pembiayaan Proyek';
 d['id']['industries.engagement_1']='Pendanaan Proyek PLTS 200MW di Indonesia Timur (USD 120M)';

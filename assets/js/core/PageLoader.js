@@ -21,7 +21,7 @@
         }
       });
 
-      if (targets === '.reveal-up' || targets === '.reveal-up:not(#hero-service .reveal-up)' || targets === '#valuesContainer .reveal-up' || targets === '.reveal-up:not(#hero-transfer .reveal-up)') {
+      if (typeof targets === 'string' && targets.indexOf('.reveal-up') !== -1) {
         var userOnEnter = vars.onEnter;
         vars.onEnter = function (batch) {
           window.gsap.to(batch, {
@@ -95,6 +95,55 @@
     document.querySelectorAll('[data-i18n-title]').forEach(function (el) {
       var key = el.getAttribute('data-i18n-title');
       if (data[key] !== undefined) el.title = data[key];
+    });
+
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-html');
+      if (data[key] !== undefined) el.innerHTML = data[key];
+    });
+
+    document.querySelectorAll('[data-i18n-alt]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-alt');
+      if (data[key] !== undefined) el.alt = data[key];
+    });
+
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-aria-label');
+      if (data[key] !== undefined) el.setAttribute('aria-label', data[key]);
+    });
+
+    document.querySelectorAll('[data-i18n-aria-description]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-aria-description');
+      if (data[key] !== undefined) el.setAttribute('aria-description', data[key]);
+    });
+
+    document.querySelectorAll('[data-i18n-tooltip]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-tooltip');
+      if (data[key] !== undefined) {
+        el.setAttribute('data-tooltip', data[key]);
+        el.title = data[key];
+      }
+    });
+
+    document.querySelectorAll('[data-i18n-value]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-value');
+      if (data[key] !== undefined) el.value = data[key];
+    });
+
+    document.querySelectorAll('meta[name="description"]').forEach(function (el) {
+      if (data['meta.description']) el.setAttribute('content', data['meta.description']);
+    });
+    document.querySelectorAll('meta[property="og:title"]').forEach(function (el) {
+      if (data['meta.og_title']) el.setAttribute('content', data['meta.og_title']);
+    });
+    document.querySelectorAll('meta[property="og:description"]').forEach(function (el) {
+      if (data['meta.og_description']) el.setAttribute('content', data['meta.og_description']);
+    });
+    document.querySelectorAll('meta[name="twitter:title"]').forEach(function (el) {
+      if (data['meta.twitter_title']) el.setAttribute('content', data['meta.twitter_title']);
+    });
+    document.querySelectorAll('meta[name="twitter:description"]').forEach(function (el) {
+      if (data['meta.twitter_description']) el.setAttribute('content', data['meta.twitter_description']);
     });
 
     document.documentElement.lang = Repo.getCurrentLanguage();
@@ -182,5 +231,11 @@
   window.PageLoader = {
     initialize: initialize,
     applyTranslations: applyTranslations
+  };
+
+  window.i18nLoader = {
+    translatePage: function () {
+      applyTranslations();
+    }
   };
 })();

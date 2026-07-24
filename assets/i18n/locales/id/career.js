@@ -1,4 +1,4 @@
-(function(){
+﻿(function(){
 var d=window.__CHATURA_LOCALES=window.__CHATURA_LOCALES||{};
 d['id']=d['id']||{};
 d['id']['career.page_title']='Karir - Chatura Indonesia';
@@ -91,7 +91,6 @@ d['id']['career.internship_desc']='Program magang 3-6 bulan yang dirancang untuk
 d['id']['career.internship_bullet_1']='Keterlibatan proyek langsung';
 d['id']['career.internship_bullet_2']='Terbuka untuk mahasiswa hukum/ekonomi';
 d['id']['career.internship_bullet_3']='Peluang penawaran karyawan tetap';
-d['id']['career.explore_program']='Jelajahi Program ’';
 d['id']['career.leaders_title']='Program Pemimpin Masa Depan';
 d['id']['career.leaders_desc']='Jalur rotasi terstruktur yang intensif untuk lulusan baru bertalenta tinggi guna mempercepat kesiapan kepemimpinan dalam operasional korporasi.';
 d['id']['career.leaders_bullet_1']='Rotasi fungsi silang (cross-functional)';
@@ -126,4 +125,7 @@ d['id']['career.form_cv']='Unggah CV / Resume (PDF, maks 5MB) *';
 d['id']['career.form_message']='Pesan Tambahan / Cover Letter';
 d['id']['career.form_message_placeholder']='Ceritakan singkat mengenai motivasi Anda bergabung...';
 d['id']['career.form_submit']='Kirim Lamaran';
+d['id']['career.empty_positions']='Tidak ada posisi terbuka aktif di kategori jalur ini saat ini.';
+d['id']['career.no_similar']='Tidak ada posisi serupa yang ditemukan.';
+d['id']['career.view_details']='Lihat Detail';
 })();

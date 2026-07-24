@@ -1,0 +1,35 @@
+<div id="expertBioModal" class="expert-modal-overlay fixed inset-0 z-50 transition-all duration-300 flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-gray-900/60 backdrop-blur-xs" onclick="closeExpertModal()"></div>
+    <div class="expert-modal-content bg-white max-w-4xl w-full z-10 shadow-2xl overflow-hidden border border-gray-100 flex flex-col md:flex-row transition-all duration-300 max-h-[90vh] md:max-h-[85vh]">
+        <button onclick="closeExpertModal()" class="absolute top-4 right-4 bg-white/80 p-1.5 rounded-full text-gray-500 hover:text-gray-800 shadow-xs border border-gray-100 transition z-20">
+            <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div class="w-full md:w-1/3 bg-gray-50 p-8 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-gray-100 shrink-0 text-center">
+            <img id="expertModalImg" src="" alt="" class="w-36 h-48 rounded-xl object-cover shadow-md border-4 border-white mb-4 bg-gray-200">
+            <h3 id="expertModalName" class="text-xl font-bold text-gray-900 leading-tight"></h3>
+            <p id="expertModalTitle" class="text-xs font-bold text-[#004D34] uppercase tracking-wide mt-1 mb-2"></p>
+            <div class="flex gap-2.5 w-full mt-4">
+                <a id="expertModalLinkedin" href="#" target="_blank" rel="noopener noreferrer" class="flex-1 bg-white border border-gray-200 rounded-lg py-2 text-xs font-semibold text-gray-600 hover:text-emerald-900 hover:border-emerald-700 flex justify-center items-center gap-1 transition">
+                    <i data-lucide="linkedin" class="w-3.5 h-3.5"></i> LinkedIn
+                </a>
+                <a id="expertModalEmail" href="#" class="flex-1 bg-white border border-gray-200 rounded-lg py-2 text-xs font-semibold text-gray-600 hover:text-emerald-900 hover:border-emerald-700 flex justify-center items-center gap-1 transition">
+                    <i data-lucide="mail" class="w-3.5 h-3.5"></i> Email
+                </a>
+            </div>
+        </div>
+        <div class="w-full md:w-2/3 p-8 overflow-y-auto expert-custom-scroll flex flex-col gap-6">
+            <div>
+                <h4 class="text-xs font-bold uppercase text-gray-400 tracking-wider mb-2" data-i18n="people.modal_bio">Biography</h4>
+                <p id="expertModalBio" class="text-gray-600 text-sm leading-relaxed"></p>
+            </div>
+            <div>
+                <h4 class="text-xs font-bold uppercase text-gray-400 tracking-wider mb-2" data-i18n="people.modal_expertise">Expertise &amp; Practice Focus</h4>
+                <div id="expertModalExpertise" class="flex flex-wrap gap-1.5"></div>
+            </div>
+            <div>
+                <h4 class="text-xs font-bold uppercase text-gray-400 tracking-wider mb-3" data-i18n="people.modal_experience">Representative Experience</h4>
+                <ul id="expertModalExperience" class="space-y-2 text-xs text-gray-600"></ul>
+            </div>
+        </div>
+    </div>
+</div>

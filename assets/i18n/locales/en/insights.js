@@ -51,4 +51,5 @@ d['en']['insights.hero_title_1']='Strategic Perspectives';
 d['en']['insights.hero_title_2']='to Navigate';
 d['en']['insights.subscribe']='Subscribe';
 d['en']['insights.services_cta']='Our Services';
+d['en']['insights.load_more']='Load More Articles';
 })();

@@ -35,7 +35,23 @@
       'business-transfer.html': ['business-transfer'],
       'case-studies.html': ['case-studies'],
       'access-portal.html': ['portal'],
-      'insight-detail.html': ['insight-detail']
+      'insight-detail.html': ['insight-detail'],
+      'privacy.html': ['legal'],
+      'terms.html': ['legal'],
+      'cookies.html': ['legal'],
+      'disclaimer.html': ['legal'],
+      'code-of-conduct.html': ['legal'],
+      'sitemap.html': ['legal'],
+      'services/accounting-finance/index.html': ['service-detail'],
+      'services/tax-services/index.html': ['service-detail'],
+      'services/business-transfer/index.html': ['service-detail'],
+      'services/risk-management/index.html': ['service-detail'],
+      'services/corporate-advisory/index.html': ['service-detail'],
+      'industries/consumer/index.html': ['industry-detail'],
+      'industries/energy/index.html': ['industry-detail'],
+      'industries/healthcare/index.html': ['industry-detail'],
+      'industries/manufacturing/index.html': ['industry-detail'],
+      'industries/technology/index.html': ['industry-detail']
     }
   };
 

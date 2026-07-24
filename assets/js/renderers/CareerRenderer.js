@@ -89,7 +89,7 @@
                     '<h3 class="text-xl font-bold text-gray-950 mb-3">' + t(p.i18nTitle) + '</h3>' +
                     '<p class="text-sm text-gray-500 leading-relaxed mb-6">' + t(p.i18nDesc) + '</p>' +
                     '<ul class="text-sm text-gray-600 space-y-2.5 mb-8">' + bullets + '</ul>' +
-                    '<a href="#apply-form" onclick="prefillPosition(\'General Interest\')" class="text-sm text-[#004D34] font-semibold hover:underline flex items-center gap-1">' + t('join.explore_program') + '</a>' +
+                    '<a href="#apply-form" onclick="prefillPosition(\'General Interest\')" class="text-sm text-[#004D34] font-semibold hover:underline flex items-center gap-1">' + t('career.explore_program') + '</a>' +
                     '</div></div>';
             }
             c.innerHTML = html;
@@ -104,7 +104,7 @@
             var t = window.TranslationRepository ? window.TranslationRepository.t.bind(window.TranslationRepository) : function(k) { return k; };
             
             if (filtered.length === 0) { 
-                c.innerHTML = '<p class="text-xs text-gray-400 italic text-center py-6 bg-white border border-gray-200 rounded-xl">No active open positions on this specific track category presently.</p>'; 
+                c.innerHTML = '<p class="text-xs text-gray-400 italic text-center py-6 bg-white border border-gray-200 rounded-xl">' + t('career.empty_positions') + '</p>'; 
                 return; 
             }
             var deptIcons = { advisory: 'briefcase', tax: 'file-text', finance: 'calculator', risk: 'shield' };
@@ -288,7 +288,7 @@
                 similarHtml += '<a href="javascript:void(0)" onclick="openJobModal(\'' + s.id + '\')" class="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:border-emerald-700 hover:shadow-sm transition text-left"><div><p class="text-xs font-bold text-gray-950">' + loc(s.title) + '</p><p class="text-[10px] text-gray-400 mt-0.5">' + loc(s.location) + ' · ' + loc(s.type) + '</p></div></a>';
             }
         } else {
-            similarHtml = '<p class="text-xs text-gray-400 italic">No similar roles found.</p>';
+            similarHtml = '<p class="text-xs text-gray-400 italic">' + t('career.no_similar') + '</p>';
         }
         document.getElementById('modalSimilar').innerHTML = similarHtml;
         

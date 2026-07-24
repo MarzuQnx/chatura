@@ -65,7 +65,7 @@
                     <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
                 </div>
             </div>
-            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
+            <button data-i18n-aria-label="aria.open_menu" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
                 <i data-lucide="menu" class="text-xl"></i>
             </button>
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
@@ -89,7 +89,7 @@
                         <a href="industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
                         <a href="industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
                         <a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
-                        <a href="industries/consumer/">Consumer &amp; Retail</a>
+                        <a href="industries/consumer/" data-i18n="nav.industry.consumer">Consumer &amp; Retail</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -119,14 +119,14 @@
         <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
                 <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
-                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
+                <button data-i18n-aria-label="aria.close_menu" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
             </div>
             <nav class="flex-1 overflow-y-auto p-6 space-y-1">
                 <a href="index.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.about_us">About Us</a>
                 <div class="mobile-nav-group ">
                     <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.services">Services</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
-                        <a href="services.html">Overview</a>
+                        <a href="services.html" data-i18n="nav.overview">Overview</a>
                         <a href="services/accounting-finance/" class="" data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
                         <a href="services/tax-services/" class="" data-i18n="nav.service.tax">Tax Services</a>
                         <a href="services/business-transfer/" class="" data-i18n="nav.service.business_transfer">Business Transfer</a>
@@ -137,18 +137,18 @@
                 <div class="mobile-nav-group ">
                     <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.industries">Industries</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
-                        <a href="industries.html">Overview</a>
+                        <a href="industries.html" data-i18n="nav.overview">Overview</a>
                         <a href="industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a>
                         <a href="industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
                         <a href="industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
                         <a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
-                        <a href="industries/consumer/">Consumer &amp; Retail</a>
+                        <a href="industries/consumer/" data-i18n="nav.industry.consumer">Consumer &amp; Retail</a>
                     </div>
                 </div>
                 <div class="mobile-nav-group ">
                     <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.insights">Insights</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
-                        <a href="insights.html">Latest Insights</a>
+                        <a href="insights.html" data-i18n="nav.latest_insights">Latest Insights</a>
                         <a href="insights.html#executive-intelligence">Executive Intelligence</a>
                         <a href="insights.html#strategic-intelligence">Strategic Intelligence</a>
                         <a href="insights.html#publications">Publications</a>
@@ -251,6 +251,36 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+
+    <!-- ============ ARTICLE / POST NOT AVAILABLE MODAL POPUP ============ -->
+    <div id="articleNotAvailableModal" class="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-gray-950/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+        <div id="articleNotAvailableContent" class="relative w-full max-w-md bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 md:p-8 transform scale-95 transition-all duration-300">
+            <button onclick="closeArticleNotAvailableModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 p-1.5 rounded-full hover:bg-gray-100 transition" aria-label="Close">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="w-12 h-12 rounded-xl bg-emerald-50 text-[#004D34] flex items-center justify-center mb-4">
+                <i data-lucide="file-text" class="w-6 h-6"></i>
+            </div>
+            <h3 id="notAvailableTitle" class="font-serif text-xl font-bold text-gray-950 mb-2">
+                Article / Post Not Available Yet
+            </h3>
+            <div id="notAvailableTopicBadge" class="hidden mb-3">
+                <span id="notAvailableTopic" class="text-[11px] font-semibold text-emerald-900 bg-emerald-50 border border-emerald-100/80 rounded-md px-2.5 py-1 inline-block"></span>
+            </div>
+            <p id="notAvailableDesc" class="text-sm text-gray-600 leading-relaxed mb-6">
+                The detailed article or publication for this topic is currently being prepared by our editorial team and will be released soon. In the meantime, feel free to explore our published insights.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center gap-3">
+                <a href="insights.html" id="notAvailableExploreBtn" class="w-full sm:w-auto flex-1 bg-[#004D34] text-white px-5 py-2.5 rounded-xl text-xs font-semibold text-center hover:bg-emerald-900 transition flex items-center justify-center gap-1.5">
+                    <span data-i18n="people.explore_insights">Explore Insights</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <button onclick="closeArticleNotAvailableModal()" id="notAvailableCloseBtn" class="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-semibold text-gray-600 bg-gray-100 hover:bg-gray-200 transition text-center" data-i18n="people.close">
+                    Close
+                </button>
+            </div>
         </div>
     </div>
 
@@ -392,7 +422,7 @@
                         <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-4.5 h-4.5"></i></a>
                         <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-4.5 h-4.5"></i></a>
                         <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-4.5 h-4.5"></i></a>
-                        <a href="mailto:info@chatura-indonesia.com" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4.5 h-4.5"></i></a>
+                        <a href="mailto:info@chatura-indonesia.com" data-i18n-aria-label="aria.email" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4.5 h-4.5"></i></a>
                     </div>
                 </div>
 
@@ -452,7 +482,7 @@
                     <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
                     <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-4 h-4"></i></a>
                     <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-4 h-4"></i></a>
-                    <a href="mailto:info@chatura-indonesia.com" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4 h-4"></i></a>
+                    <a href="mailto:info@chatura-indonesia.com" data-i18n-aria-label="aria.email" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4 h-4"></i></a>
                 </div>
             </div>
         </div>
@@ -623,6 +653,115 @@
             if (typeof lucide !== 'undefined') lucide.createIcons();
         }
 
+        // ─── TOPIC RESOLVER & MODAL POPUP SYSTEMS ───────────────────────────
+        var PUBLICATION_SLUGS = {
+            'people.p1_pub_1': 'digital-economy-regulations',
+            'people.p1_pub_2': 'manufacturing-transformation',
+            'people.p2_pub_1': 'manufacturing-transformation',
+            'people.p3_pub_1': 'tax-reform-2026',
+            'people.p3_pub_2': 'cross-border-tax-planning',
+            'people.p4_pub_1': 'business-acquisition-guide',
+            'people.p4_pub_2': 'family-business-succession',
+            'people.p5_pub_1': 'risk-management-framework',
+            'people.p6_pub_1': 'indonesia-tax-incentives-2026',
+            'people.p6_pub_2': 'tax-implications-business-transfer'
+        };
+
+        function resolveTopicLink(text) {
+            if (!text) return null;
+            var lower = text.toLowerCase();
+            if (lower.indexOf('tax') !== -1 || lower.indexOf('pajak') !== -1 || lower.indexOf('fiscal') !== -1 || lower.indexOf('fiskal') !== -1) {
+                return { url: 'services/tax-services/', label: 'Tax Services' };
+            }
+            if (lower.indexOf('transfer') !== -1 || lower.indexOf('m&a') !== -1 || lower.indexOf('merger') !== -1 || lower.indexOf('acquisition') !== -1 || lower.indexOf('akuisi') !== -1 || lower.indexOf('succession') !== -1 || lower.indexOf('suksesi') !== -1) {
+                return { url: 'services/business-transfer/', label: 'Business Transfer' };
+            }
+            if (lower.indexOf('risk') !== -1 || lower.indexOf('risiko') !== -1 || lower.indexOf('erm') !== -1 || lower.indexOf('cyber') !== -1 || lower.indexOf('siber') !== -1 || lower.indexOf('grc') !== -1) {
+                return { url: 'services/risk-management/', label: 'Risk Management' };
+            }
+            if (lower.indexOf('account') !== -1 || lower.indexOf('akuntan') !== -1 || lower.indexOf('finance') !== -1 || lower.indexOf('keuangan') !== -1 || lower.indexOf('credit') !== -1 || lower.indexOf('kredit') !== -1) {
+                return { url: 'services/accounting-finance/', label: 'Accounting & Finance' };
+            }
+            if (lower.indexOf('advisory') !== -1 || lower.indexOf('consulting') !== -1 || lower.indexOf('konsultasi') !== -1 || lower.indexOf('strategy') !== -1 || lower.indexOf('strategi') !== -1) {
+                return { url: 'services/corporate-advisory/', label: 'Corporate Advisory' };
+            }
+            if (lower.indexOf('energy') !== -1 || lower.indexOf('energi') !== -1 || lower.indexOf('mining') !== -1 || lower.indexOf('tambang') !== -1) {
+                return { url: 'industries/energy/', label: 'Energy & Natural Resources' };
+            }
+            if (lower.indexOf('manufacturing') !== -1 || lower.indexOf('manufaktur') !== -1 || lower.indexOf('automotive') !== -1 || lower.indexOf('otomotif') !== -1) {
+                return { url: 'industries/manufacturing/', label: 'Manufacturing' };
+            }
+            if (lower.indexOf('financial') !== -1 || lower.indexOf('bank') !== -1 || lower.indexOf('perbankan') !== -1) {
+                return { url: 'industries/financial/', label: 'Financial Services' };
+            }
+            if (lower.indexOf('tech') !== -1 || lower.indexOf('teknologi') !== -1 || lower.indexOf('digital') !== -1) {
+                return { url: 'industries/technology/', label: 'Technology' };
+            }
+            if (lower.indexOf('health') !== -1 || lower.indexOf('kesehatan') !== -1 || lower.indexOf('farmasi') !== -1) {
+                return { url: 'industries/healthcare/', label: 'Healthcare' };
+            }
+            if (lower.indexOf('consumer') !== -1 || lower.indexOf('fmcg') !== -1 || lower.indexOf('ritel') !== -1) {
+                return { url: 'industries/consumer/', label: 'Consumer Goods' };
+            }
+            return null;
+        }
+
+        function getCurrentLang() {
+            return document.documentElement.lang === 'id' ? 'id' : 'en';
+        }
+
+        window.showArticleNotAvailableModal = function(topicTitle) {
+            var lang = getCurrentLang();
+            var modalEl = document.getElementById('articleNotAvailableModal');
+            var titleEl = document.getElementById('notAvailableTitle');
+            var topicBadge = document.getElementById('notAvailableTopicBadge');
+            var topicEl = document.getElementById('notAvailableTopic');
+            var descEl = document.getElementById('notAvailableDesc');
+            var exploreBtn = document.getElementById('notAvailableExploreBtn');
+            var closeBtn = document.getElementById('notAvailableCloseBtn');
+            if (!modalEl) return;
+
+            if (lang === 'id') {
+                titleEl.textContent = 'Artikel atau Post Belum Tersedia';
+                descEl.textContent = 'Artikel, publikasi, atau post detail untuk topik ini sedang disiapkan oleh tim editorial kami dan akan segera diterbitkan. Sementara itu, Anda dapat menjelajahi wawasan yang telah dipublikasikan.';
+                if (exploreBtn) exploreBtn.querySelector('span').textContent = 'Jelajahi Wawasan';
+                if (closeBtn) closeBtn.textContent = 'Tutup';
+            } else {
+                titleEl.textContent = 'Article / Post Not Available Yet';
+                descEl.textContent = 'The detailed article, publication, or post for this topic is currently being prepared by our editorial team and will be released soon. In the meantime, feel free to explore our published insights.';
+                if (exploreBtn) exploreBtn.querySelector('span').textContent = 'Explore Insights';
+                if (closeBtn) closeBtn.textContent = 'Close';
+            }
+
+            if (topicTitle) {
+                topicEl.textContent = topicTitle;
+                topicBadge.classList.remove('hidden');
+            } else {
+                topicBadge.classList.add('hidden');
+            }
+
+            modalEl.classList.remove('opacity-0', 'pointer-events-none');
+            modalEl.classList.add('opacity-100', 'pointer-events-auto');
+            var content = modalEl.querySelector('#articleNotAvailableContent');
+            if (content) {
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        };
+
+        window.closeArticleNotAvailableModal = function() {
+            var modalEl = document.getElementById('articleNotAvailableModal');
+            if (!modalEl) return;
+            modalEl.classList.remove('opacity-100', 'pointer-events-auto');
+            modalEl.classList.add('opacity-0', 'pointer-events-none');
+            var content = modalEl.querySelector('#articleNotAvailableContent');
+            if (content) {
+                content.classList.remove('scale-100');
+                content.classList.add('scale-95');
+            }
+        };
+
         // Modal Action Systems
         var modal = document.getElementById('bioModal');
         
@@ -639,20 +778,77 @@
             document.getElementById('modal-email').href = "mailto:" + p.email;
             document.getElementById('modal-bio').textContent = t(p.bioKey);
 
+            // 1. EXPERTISE TAGS WITH LINKS OR FALLBACK MODAL
             document.getElementById('modal-expertise').innerHTML = p.expertiseKeys.map(function(k) {
-                return '<span class="text-[11px] font-medium bg-emerald-50 text-emerald-900 border border-emerald-100/60 px-2.5 py-0.5 rounded-full">' + t(k) + '</span>';
+                var label = t(k);
+                var targetLink = resolveTopicLink(label);
+                if (targetLink) {
+                    return '<a href="' + targetLink.url + '" class="inline-flex items-center gap-1 text-[11px] font-medium bg-emerald-50 text-emerald-900 border border-emerald-200/80 hover:bg-emerald-100 hover:border-emerald-300 px-2.5 py-1 rounded-full transition group" title="' + targetLink.label + '">' +
+                        '<span>' + label + '</span>' +
+                        '<i data-lucide="arrow-up-right" class="w-3 h-3 text-emerald-700 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>' +
+                        '</a>';
+                } else {
+                    var escapedLabel = label.replace(/'/g, "\\'");
+                    return '<button onclick="showArticleNotAvailableModal(\'' + escapedLabel + '\')" class="inline-flex items-center gap-1 text-[11px] font-medium bg-gray-50 text-gray-700 border border-gray-200 hover:bg-emerald-50 hover:text-emerald-900 hover:border-emerald-200 px-2.5 py-1 rounded-full transition cursor-pointer group">' +
+                        '<span>' + label + '</span>' +
+                        '<i data-lucide="info" class="w-3 h-3 text-gray-400 group-hover:text-emerald-700 transition-colors"></i>' +
+                        '</button>';
+                }
             }).join('');
 
+            // 2. REPRESENTATIVE EXPERIENCE WITH LINKS OR FALLBACK MODAL
             document.getElementById('modal-experience').innerHTML = p.experienceKeys.map(function(k) {
-                return '<li class="flex items-start gap-2 mb-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-emerald-700 shrink-0"></i> <span>' + t(k) + '</span></li>';
+                var expText = t(k);
+                var targetLink = resolveTopicLink(expText);
+                if (targetLink) {
+                    return '<li class="flex items-start gap-2 mb-2 group">' +
+                        '<i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-emerald-700 shrink-0"></i>' +
+                        '<a href="' + targetLink.url + '" class="text-xs text-gray-700 hover:text-emerald-800 hover:underline flex items-center gap-1 transition">' +
+                        '<span>' + expText + '</span>' +
+                        '<i data-lucide="external-link" class="w-3 h-3 text-emerald-700 shrink-0 inline-block"></i>' +
+                        '</a>' +
+                        '</li>';
+                } else {
+                    var escapedText = expText.replace(/'/g, "\\'");
+                    return '<li class="flex items-start gap-2 mb-2 group cursor-pointer" onclick="showArticleNotAvailableModal(\'' + escapedText + '\')">' +
+                        '<i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-emerald-700 shrink-0"></i>' +
+                        '<span class="text-xs text-gray-700 group-hover:text-emerald-800 transition-colors">' + expText + '</span>' +
+                        '<i data-lucide="info" class="w-3 h-3 text-gray-300 group-hover:text-emerald-700 shrink-0 mt-0.5 transition-colors"></i>' +
+                        '</li>';
+                }
             }).join('');
 
+            // 3. PUBLICATIONS & INSIGHTS CARDS WITH LINKS OR FALLBACK MODAL
             if (p.publicationKeys && p.publicationKeys.length > 0) {
                 document.getElementById('modal-publications').innerHTML = p.publicationKeys.map(function(k, i) {
-                    return '<div class="bg-gray-50 border border-gray-100 rounded-lg p-3 hover:border-emerald-700/40 transition">' +
-                        '<h5 class="font-semibold text-gray-900 leading-tight mb-1 mb-1.5">' + t(k) + '</h5>' +
-                        '<span class="text-[10px] text-gray-400 block">' + p.publicationDates[i] + '</span>' +
-                        '</div>';
+                    var pubTitle = t(k);
+                    var slug = PUBLICATION_SLUGS[k];
+                    if (slug) {
+                        var url = 'insight-detail.html?slug=' + slug;
+                        return '<a href="' + url + '" class="group block bg-gray-50 border border-gray-100 rounded-xl p-3.5 hover:border-emerald-700/40 hover:bg-emerald-50/30 hover:shadow-md transition">' +
+                            '<div class="flex items-start justify-between gap-2 mb-1.5">' +
+                            '<h5 class="font-serif font-bold text-xs text-gray-950 leading-snug group-hover:text-emerald-900 transition-colors line-clamp-2">' + pubTitle + '</h5>' +
+                            '<span class="w-5 h-5 rounded-full bg-white border border-gray-200 flex items-center justify-center shrink-0 group-hover:bg-[#004D34] group-hover:text-white group-hover:border-transparent transition">' +
+                            '<i data-lucide="arrow-up-right" class="w-3 h-3"></i>' +
+                            '</span>' +
+                            '</div>' +
+                            '<span class="text-[10px] text-gray-400 block">' + p.publicationDates[i] + '</span>' +
+                            '</a>';
+                    } else {
+                        var escapedTitle = pubTitle.replace(/'/g, "\\'");
+                        return '<div onclick="showArticleNotAvailableModal(\'' + escapedTitle + '\')" class="group cursor-pointer bg-gray-50 border border-gray-100 rounded-xl p-3.5 hover:border-emerald-200 hover:bg-gray-100/80 transition">' +
+                            '<div class="flex items-start justify-between gap-2 mb-1.5">' +
+                            '<h5 class="font-serif font-bold text-xs text-gray-950 leading-snug group-hover:text-emerald-800 transition-colors line-clamp-2">' + pubTitle + '</h5>' +
+                            '<span class="w-5 h-5 rounded-full bg-white border border-gray-200 flex items-center justify-center shrink-0 text-gray-400 group-hover:text-emerald-700 group-hover:border-emerald-300 transition">' +
+                            '<i data-lucide="info" class="w-3 h-3"></i>' +
+                            '</span>' +
+                            '</div>' +
+                            '<div class="flex items-center justify-between text-[10px] text-gray-400">' +
+                            '<span>' + p.publicationDates[i] + '</span>' +
+                            '<span class="text-emerald-800 font-semibold text-[9px] uppercase tracking-wider">' + (getCurrentLang() === 'id' ? 'Belum Rilis' : 'Upcoming') + '</span>' +
+                            '</div>' +
+                            '</div>';
+                    }
                 }).join('');
             } else {
                 document.getElementById('modal-publications').innerHTML = '<p class="text-xs text-gray-400 italic">' + (t('people.no_publications') || 'No publications available.') + '</p>';
@@ -667,6 +863,7 @@
             modal.classList.remove('active');
             document.body.style.overflow = '';
         };
+
 
         // Initialize Rendering Pipeline
         renderPeopleGrid();
@@ -935,8 +1132,6 @@
         // GSAP Animate Initialization Pipeline
         if (typeof gsap !== 'undefined') {
             gsap.registerPlugin(ScrollTrigger);
-            gsap.to('#hero-people .reveal-up', { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power2.out', delay: 0.1 });
-            
             ScrollTrigger.batch('.reveal-up:not(#hero-people .reveal-up)', {
                 start: 'top 88%',
                 once: true,

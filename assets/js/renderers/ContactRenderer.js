@@ -15,25 +15,30 @@
 
                     var name = document.getElementById('form-name').value;
                     var email = document.getElementById('form-email').value;
-                    var title = document.getElementById('form-title').value || 'Not Specified';
-                    var company = document.getElementById('form-company').value || 'Not Specified';
+                    var t = function (key) {
+                        var d = window.TranslationRepository ? window.TranslationRepository.getAllTranslations() : {};
+                        return d[key] || key;
+                    };
+                    var notSpecified = t('contact.not_specified');
+                    var title = document.getElementById('form-title').value || notSpecified;
+                    var company = document.getElementById('form-company').value || notSpecified;
                     var service = document.getElementById('form-service').value;
                     var location = document.getElementById('form-location').value;
-                    var referral = document.getElementById('form-referral').value || 'Not Specified';
+                    var referral = document.getElementById('form-referral').value || notSpecified;
                     var message = document.getElementById('form-message').value;
 
                     // Structured text block blueprint formatting
-                    var textBlock = "*CHAtURA BUSINESS ADVISORY INQUIRY FORM*" + "\n" +
+                    var textBlock = "*" + t('contact.wa_header') + "*" + "\n" +
                                     "----------------------------------------" + "\n" +
-                                    "• *Client Name:* " + name + "\n" +
-                                    "• *Business Email:* " + email + "\n" +
-                                    "• *Job Position:* " + title + "\n" +
-                                    "• *Enterprise Entity:* " + company + "\n" +
-                                    "• *Practice Track:* " + service + "\n" +
-                                    "• *Target Desk:* " + location + "\n" +
-                                    "• *Referral Source:* " + referral + "\n" +
+                                    "• *" + t('contact.wa_client_name') + ":* " + name + "\n" +
+                                    "• *" + t('contact.wa_email') + ":* " + email + "\n" +
+                                    "• *" + t('contact.wa_position') + ":* " + title + "\n" +
+                                    "• *" + t('contact.wa_company') + ":* " + company + "\n" +
+                                    "• *" + t('contact.wa_track') + ":* " + service + "\n" +
+                                    "• *" + t('contact.wa_desk') + ":* " + location + "\n" +
+                                    "• *" + t('contact.wa_referral') + ":* " + referral + "\n" +
                                     "----------------------------------------" + "\n" +
-                                    "*Core Strategic Challenge Dossier:*" + "\n" + message;
+                                    "*" + t('contact.wa_challenge') + ":*" + "\n" + message;
 
                     var encodedText = encodeURIComponent(textBlock);
                     

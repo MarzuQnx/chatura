@@ -75,7 +75,7 @@
                     <a href="index.html"><img id="navbar-logo" width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
                 </div>
             </div>
-            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="menu" class="text-xl"></i></button>
+            <button data-i18n-aria-label="aria.open_menu" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="menu" class="text-xl"></i></button>
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
                 <a href="index.html" class="hover:text-emerald-800 transition" data-i18n="nav.about_us">About Us</a>
                 <div class="nav-dropdown">
@@ -97,7 +97,7 @@
                         <a href="industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
                         <a href="industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
                         <a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
-                        <a href="industries/consumer/">Consumer &amp; Retail</a>
+                        <a href="industries/consumer/" data-i18n="nav.industry.consumer">Consumer &amp; Retail</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -132,13 +132,13 @@
         <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
                 <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
-                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
+                <button data-i18n-aria-label="aria.close_menu" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
             </div>
             <nav class="flex-1 overflow-y-auto p-6 space-y-1">
                 <a href="index.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium" data-i18n="nav.about_us">About Us</a>
-                <div class="mobile-nav-group"><button class="mobile-nav-group-btn" type="button"><span data-i18n="nav.services">Services</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button><div class="mobile-nav-submenu"><a href="services.html">Overview</a><a href="services/accounting-finance/" data-i18n="nav.service.accounting">Accounting &amp; Finance</a><a href="services/tax-services/" data-i18n="nav.service.tax">Tax Services</a><a href="services/business-transfer/" data-i18n="nav.service.business_transfer">Business Transfer</a><a href="services/risk-management/" data-i18n="nav.service.risk_management">Risk Management</a><a href="services/corporate-advisory/" data-i18n="nav.service.corporate_advisory">Corporate Advisory</a></div></div>
-                <div class="mobile-nav-group"><button class="mobile-nav-group-btn" type="button"><span data-i18n="nav.industries">Industries</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button><div class="mobile-nav-submenu"><a href="industries.html">Overview</a><a href="industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a><a href="industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a><a href="industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a><a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a><a href="industries/consumer/">Consumer &amp; Retail</a></div></div>
-                <div class="mobile-nav-group open"><button class="mobile-nav-group-btn is-active-parent" type="button"><span data-i18n="nav.insights">Insights</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button><div class="mobile-nav-submenu"><a href="insights.html">Latest Insights</a><a href="insights.html">Executive Intelligence</a><a href="insights.html">Strategic Intelligence</a><a href="insights.html">Publications</a><a href="insights.html">Downloads</a></div></div>
+                <div class="mobile-nav-group"><button class="mobile-nav-group-btn" type="button"><span data-i18n="nav.services">Services</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button><div class="mobile-nav-submenu"><a href="services.html" data-i18n="nav.overview">Overview</a><a href="services/accounting-finance/" data-i18n="nav.service.accounting">Accounting &amp; Finance</a><a href="services/tax-services/" data-i18n="nav.service.tax">Tax Services</a><a href="services/business-transfer/" data-i18n="nav.service.business_transfer">Business Transfer</a><a href="services/risk-management/" data-i18n="nav.service.risk_management">Risk Management</a><a href="services/corporate-advisory/" data-i18n="nav.service.corporate_advisory">Corporate Advisory</a></div></div>
+                <div class="mobile-nav-group"><button class="mobile-nav-group-btn" type="button"><span data-i18n="nav.industries">Industries</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button><div class="mobile-nav-submenu"><a href="industries.html" data-i18n="nav.overview">Overview</a><a href="industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a><a href="industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a><a href="industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a><a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a><a href="industries/consumer/" data-i18n="nav.industry.consumer">Consumer &amp; Retail</a></div></div>
+                <div class="mobile-nav-group open"><button class="mobile-nav-group-btn is-active-parent" type="button"><span data-i18n="nav.insights">Insights</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button><div class="mobile-nav-submenu"><a href="insights.html" data-i18n="nav.latest_insights">Latest Insights</a><a href="insights.html">Executive Intelligence</a><a href="insights.html">Strategic Intelligence</a><a href="insights.html">Publications</a><a href="insights.html">Downloads</a></div></div>
                 <a href="our-people.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium" data-i18n="nav.our_people">Our People</a>
                 <a href="career.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium" data-i18n="nav.career">Join Us</a>
                 <a href="contact-us.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium" data-i18n="nav.contact">Contact</a>
@@ -341,6 +341,36 @@
         </div>
     </div>
 
+    <!-- ============ ARTICLE / POST NOT AVAILABLE MODAL POPUP ============ -->
+    <div id="articleNotAvailableModal" class="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-gray-950/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+        <div id="articleNotAvailableContent" class="relative w-full max-w-md bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 md:p-8 transform scale-95 transition-all duration-300">
+            <button onclick="closeArticleNotAvailableModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 p-1.5 rounded-full hover:bg-gray-100 transition" aria-label="Close">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="w-12 h-12 rounded-xl bg-emerald-50 text-[#004D34] flex items-center justify-center mb-4">
+                <i data-lucide="file-text" class="w-6 h-6"></i>
+            </div>
+            <h3 id="notAvailableTitle" class="font-serif text-xl font-bold text-gray-950 mb-2">
+                Article / Post Not Available Yet
+            </h3>
+            <div id="notAvailableTopicBadge" class="hidden mb-3">
+                <span id="notAvailableTopic" class="text-[11px] font-semibold text-emerald-900 bg-emerald-50 border border-emerald-100/80 rounded-md px-2.5 py-1 inline-block"></span>
+            </div>
+            <p id="notAvailableDesc" class="text-sm text-gray-600 leading-relaxed mb-6">
+                The detailed article or publication for this topic is currently being prepared by our editorial team and will be released soon. In the meantime, feel free to explore our published insights.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center gap-3">
+                <a href="insights.html" id="notAvailableExploreBtn" class="w-full sm:w-auto flex-1 bg-[#004D34] text-white px-5 py-2.5 rounded-xl text-xs font-semibold text-center hover:bg-emerald-900 transition flex items-center justify-center gap-1.5">
+                    <span data-i18n="people.explore_insights">Explore Insights</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <button onclick="closeArticleNotAvailableModal()" id="notAvailableCloseBtn" class="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-semibold text-gray-600 bg-gray-100 hover:bg-gray-200 transition text-center" data-i18n="people.close">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- WhatsApp Widget -->
     <div class="wa-widget">
         <button type="button" class="wa-launcher" id="waLauncher" aria-label="Chat via WhatsApp" aria-expanded="false" aria-controls="waPopup">
@@ -373,7 +403,7 @@
                         <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-4.5 h-4.5"></i></a>
                         <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-4.5 h-4.5"></i></a>
                         <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-4.5 h-4.5"></i></a>
-                        <a href="mailto:info@chatura-indonesia.com" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4.5 h-4.5"></i></a>
+                        <a href="mailto:info@chatura-indonesia.com" aria-label="Email" data-i18n-aria-label="aria.email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4.5 h-4.5"></i></a>
                     </div>
                 </div>
                 <div class="reveal-up grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-12">
@@ -427,7 +457,7 @@
                     <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
                     <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-4 h-4"></i></a>
                     <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-4 h-4"></i></a>
-                    <a href="mailto:info@chatura-indonesia.com" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4 h-4"></i></a>
+                    <a href="mailto:info@chatura-indonesia.com" aria-label="Email" data-i18n-aria-label="aria.email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4 h-4"></i></a>
                 </div>
             </div>
         </div>
@@ -452,296 +482,28 @@
     <script src="assets/js/repositories/ContactRepository.js"></script>
     <script src="assets/js/repositories/SettingsRepository.js"></script>
     <script src="assets/js/repositories/CareerRepository.js"></script>
-    <script src="assets/js/renderers/InsightDetailRenderer.js"></script>
+    <script src="assets/js/renderers/InsightDetailRenderer.js?v=1.2"></script>
     <script src="assets/js/core/TranslationRepository.js"></script>
     <script src="assets/js/core/PageLoader.js"></script>
     <script src="assets/i18n/locales/en.bundle.js"></script>
     <script src="assets/i18n/locales/id.bundle.js"></script>
     <script src="assets/i18n/loader.js"></script>
     <script>
-    (function () {
-        try {
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-
-        var C = window.CHATURA;
-        if (!C) return;
-
-        // Extract slug from query param: ?slug=[slug]
-        var sp = new URLSearchParams(window.location.search);
-        var slug = sp.get('slug');
-
-        var article = slug ? C.getArticleBySlug(slug) : null;
-        if (!article) { article = C.getFeaturedArticle(); slug = article.slug; }
-
-        var lang = document.documentElement.lang || 'en';
-        if (window.I18N && window.I18N.currentLang) lang = window.I18N.currentLang;
-
-        function t(obj) {
-            if (!obj) return '';
-            if (typeof obj === 'string') return obj;
-            return obj[lang] || obj.en || '';
-        }
-
-        // SEO
-        var title = t(article.title) + ' - Chatura Indonesia';
-        var desc = t(article.subtitle) || t(article.description) || '';
-        var url = C.SITE_URL + '/insight-detail.html?slug=' + article.slug;
-        var img = article.image;
-        document.getElementById('page-title').textContent = title;
-        document.getElementById('meta-desc').content = desc;
-        document.getElementById('meta-canonical').href = url;
-        document.getElementById('og-title').content = title;
-        document.getElementById('og-desc').content = desc;
-        document.getElementById('og-url').content = url;
-        document.getElementById('og-image').content = img;
-        document.getElementById('twitter-title').content = title;
-        document.getElementById('twitter-desc').content = desc;
-        document.getElementById('twitter-image').content = img;
-        document.title = title;
-
-        // Article Schema
-        var schema = {
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": t(article.title),
-            "description": desc,
-            "image": img,
-            "datePublished": article.dates.published,
-            "author": { "@type": "Person", "name": t(article.author.name) },
-            "publisher": { "@type": "Organization", "name": "Chatura Indonesia", "logo": { "@type": "ImageObject", "url": C.SITE_URL + "/assets/chatura.webp" } },
-            "mainEntityOfPage": { "@type": "WebPage", "@id": url }
-        };
-        if (article.dates.updated) {
-            var updEn = article.dates.updated.en;
-            if (updEn) schema.dateModified = article.dates.updated;
-        }
-        document.getElementById('article-schema').textContent = JSON.stringify(schema);
-
-        // Breadcrumb Schema
-        var breadcrumbSchema = {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Home", "item": C.SITE_URL + "/" },
-                { "@type": "ListItem", "position": 2, "name": "Insights", "item": C.SITE_URL + "/insights.html" },
-                { "@type": "ListItem", "position": 3, "name": t(article.title).substring(0, 60), "item": url }
-            ]
-        };
-        document.getElementById('breadcrumb-schema').textContent = JSON.stringify(breadcrumbSchema);
-
-        // Breadcrumb
-        document.getElementById('breadcrumb-current').textContent = t(article.title).substring(0, 50);
-
-        // Hero
-        var cat = C.CATEGORIES[article.category];
-        document.getElementById('hero-label').textContent = cat ? t(cat) : '';
-        document.getElementById('hero-title').textContent = t(article.title);
-        document.getElementById('hero-desc').textContent = desc;
-
-        // Author
-        document.getElementById('author-name').textContent = t(article.author.name) + ' — ' + t(article.author.role);
-        document.getElementById('article-date').textContent = t(article.dates.display);
-        document.getElementById('article-readtime').textContent = t(article.readingTime);
-
-        // Author photo
-        var authorPhotoImg = document.getElementById('author-photo-img');
-        authorPhotoImg.src = article.author.photo || article.author.image;
-        authorPhotoImg.alt = t(article.author.name);
-
-        // Hero image
-        var imgEl = document.getElementById('article-hero-image');
-        imgEl.src = article.image;
-        imgEl.alt = t(article.title);
-
-        // Executive Summary
-        var es = article.execSummary ? (article.execSummary[lang] || article.execSummary.en) : null;
-        if (es) {
-            document.getElementById('exec-summary-section').style.display = '';
-            document.getElementById('exec-summary-text').textContent = es.summary || '';
-            if (es.findings && es.findings.length) {
-                document.getElementById('exec-summary-findings').style.display = '';
-                document.getElementById('exec-findings-list').innerHTML = es.findings.map(function(f){ return '<li>'+f+'</li>'; }).join('');
-            }
-            if (es.impact) {
-                document.getElementById('exec-summary-impact').style.display = '';
-                document.getElementById('exec-impact-text').textContent = es.impact;
-            }
-            if (es.recommendations && es.recommendations.length) {
-                document.getElementById('exec-summary-recs').style.display = '';
-                document.getElementById('exec-recs-list').innerHTML = es.recommendations.map(function(r){ return '<li>'+r+'</li>'; }).join('');
-            }
-        }
-
-        // Article body
-        document.getElementById('article-body').innerHTML = t(article.body);
-
-        // Tags
-        var tagsEl = document.getElementById('article-tags');
-        tagsEl.innerHTML = (article.tags || []).map(function(tag) {
-            return '<span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-md">#' + tag + '</span>';
-        }).join('');
-
-        // Share links
-        var shareUrl = encodeURIComponent(url);
-        var shareTitle = encodeURIComponent(t(article.title));
-        document.getElementById('share-linkedin').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + shareUrl;
-        document.getElementById('share-facebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + shareUrl;
-        document.getElementById('share-twitter').href = 'https://twitter.com/intent/tweet?url=' + shareUrl + '&text=' + shareTitle;
-        document.getElementById('share-email').href = 'mailto:?subject=' + shareTitle + '&body=' + shareUrl;
-        document.getElementById('share-copy').addEventListener('click', function() {
-            navigator.clipboard.writeText(url).then(function() {
-                var btn = document.getElementById('share-copy');
-                btn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i>';
-                lucide.createIcons();
-                setTimeout(function() { btn.innerHTML = '<i data-lucide="link" class="w-4 h-4"></i>'; lucide.createIcons(); }, 2000);
-            });
-        });
-
-        // Related Services
-        if (article.relatedServices && article.relatedServices.length) {
-            document.getElementById('related-services-section').style.display = '';
-            document.getElementById('related-services-list').innerHTML = article.relatedServices.map(function(sk) {
-                var svc = C.SERVICES[sk];
-                if (!svc) return '';
-                var svcLang = lang === 'id' ? svc.id : svc.en;
-                return '<a href="' + svc.slug + '" class="inline-flex items-center gap-1.5 bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1.5 rounded-lg hover:bg-emerald-50 hover:text-emerald-800 transition">' + svcLang + '</a>';
-            }).join('');
-        }
-
-        // Related Industries
-        if (article.relatedIndustries && article.relatedIndustries.length) {
-            document.getElementById('related-industries-section').style.display = '';
-            document.getElementById('related-industries-list').innerHTML = article.relatedIndustries.map(function(ik) {
-                var ind = C.INDUSTRIES[ik];
-                if (!ind) return '';
-                var indLang = lang === 'id' ? ind.id : ind.en;
-                return '<a href="' + ind.slug + '" class="inline-flex items-center gap-1.5 bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1.5 rounded-lg hover:bg-emerald-50 hover:text-emerald-800 transition">' + indLang + '</a>';
-            }).join('');
-        }
-
-        // Prev / Next
-        var adj = C.getAdjacentArticles(slug);
-        var prevSlot = document.getElementById('prev-article-slot');
-        var nextSlot = document.getElementById('next-article-slot');
-        if (adj.prev) {
-            prevSlot.innerHTML = '<a href="' + C.getArticleUrl(adj.prev) + '" class="prev-next-link block p-4 border border-gray-200 rounded-xl"><span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 block mb-2">← Previous</span><span class="text-xs font-bold text-gray-900 leading-snug block line-clamp-2">' + t(adj.prev.title) + '</span></a>';
-        }
-        if (adj.next) {
-            nextSlot.innerHTML = '<a href="' + C.getArticleUrl(adj.next) + '" class="prev-next-link block p-4 border border-gray-200 rounded-xl text-right"><span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 block mb-2">Next →</span><span class="text-xs font-bold text-gray-900 leading-snug block line-clamp-2">' + t(adj.next.title) + '</span></a>';
-        }
-
-        // Related Insights Sidebar
-        var related = C.getRelatedArticles(article, 5);
-        var relList = document.getElementById('relatedInsightsList');
-        if (relList && related.length) {
-            relList.innerHTML = related.map(function(item, i) {
-                var num = String(i + 1).padStart(2, '0');
-                var cat2 = C.CATEGORIES[item.category];
-                var badgeColor = '#059669';
-                if (cat2 && cat2.badgeClass) {
-                    if (cat2.badgeClass.indexOf('blue') > -1) badgeColor = '#1d4ed8';
-                    else if (cat2.badgeClass.indexOf('amber') > -1) badgeColor = '#b45309';
-                    else if (cat2.badgeClass.indexOf('purple') > -1) badgeColor = '#7c3aed';
-                    else if (cat2.badgeClass.indexOf('teal') > -1) badgeColor = '#0d9488';
-                }
-                return '<a href="' + C.getArticleUrl(item) + '" class="related-drop-row">' +
-                    '<span class="related-drop-num">' + num + '</span>' +
-                    '<div class="related-drop-thumb w-16 h-16 rounded-lg shrink-0">' +
-                    '<img src="' + item.image + '" alt="' + t(item.title) + '" class="w-full h-full object-cover" loading="lazy">' +
-                    '</div>' +
-                    '<div class="min-w-0 flex-1">' +
-                    '<h5 class="related-drop-title text-xs font-bold text-gray-950 leading-snug mb-1 line-clamp-2">' + t(item.title) + '</h5>' +
-                    '<span class="text-[10px] text-gray-400">' + t(item.dates.display) + ' &nbsp;&bull;&nbsp; ' + t(item.readingTime) + '</span>' +
-                    '</div></a>';
-            }).join('');
-
-            var rows = relList.querySelectorAll('.related-drop-row');
-            if (typeof gsap !== 'undefined') {
-                gsap.fromTo(rows,
-                    { opacity: 0, y: 16 },
-                    { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: 'power2.out', clearProps: 'transform' }
-                );
-            } else {
-                rows.forEach(function(el) { el.style.opacity = '1'; });
-            }
-        }
-
-        // Author Bio Modal
-        var authorModal = document.getElementById('authorModal');
-        window.openAuthorModal = function() {
-            var a = article.author;
-            if (!a) return;
-
-            var person = null;
-            if (window.PeopleRepository && a.peopleId) {
-                person = window.PeopleRepository.getAll().find(function(x) { return x.id === a.peopleId; });
-            }
-
-            var tr = function(k) {
-                if (!k) return '';
-                var d = window.TranslationRepository ? window.TranslationRepository.getAllTranslations() : {};
-                return d[k] || k;
+        if (!window.openAuthorModal) {
+            window.openAuthorModal = function(id) {
+                var modal = document.getElementById('authorModal') || document.getElementById('bioModal');
+                if (modal) { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
             };
-
-            var nameStr = person ? tr(person.nameKey) : (typeof a.name === 'object' ? (a.name[lang] || a.name.en) : tr(a.name));
-            var titleStr = person ? (tr(person.titleKey) + ' — ' + tr(person.practiceKey)) : (typeof a.role === 'object' ? (a.role[lang] || a.role.en) : tr(a.role));
-            var photoSrc = person ? person.photo : (a.photo || a.image || '');
-            var locationStr = person ? tr(person.locationKey) : (a.location ? (typeof a.location === 'object' ? (a.location[lang] || a.location.en) : a.location) : 'Jakarta');
-            var linkedinHref = person ? person.linkedin : (a.linkedin || '#');
-            var emailHref = person ? person.email : (a.email || '');
-
-            document.getElementById('amodal-img').src = photoSrc;
-            document.getElementById('amodal-img').alt = nameStr;
-            document.getElementById('amodal-name').textContent = nameStr;
-            document.getElementById('amodal-title').textContent = titleStr;
-            document.getElementById('amodal-location').querySelector('span').textContent = locationStr;
-            document.getElementById('amodal-linkedin').href = linkedinHref;
-            document.getElementById('amodal-email').href = 'mailto:' + emailHref;
-
-            var bioStr = person ? tr(person.bioKey) : (a.bio ? (typeof a.bio === 'object' ? (a.bio[lang] || a.bio.en) : a.bio) : '');
-            document.getElementById('amodal-bio').textContent = bioStr;
-
-            var expList = person ? person.expertiseKeys.map(function(k) { return tr(k); }) : (a.expertise ? (typeof a.expertise === 'object' ? (a.expertise[lang] || a.expertise.en || []) : a.expertise) : []);
-            document.getElementById('amodal-expertise').innerHTML = expList.map(function(k) {
-                return '<span class="text-[11px] font-medium bg-emerald-50 text-emerald-900 border border-emerald-100/60 px-2.5 py-0.5 rounded-full">' + k + '</span>';
-            }).join('');
-
-            var expList2 = person ? person.experienceKeys.map(function(k) { return tr(k); }) : (a.experience ? (typeof a.experience === 'object' ? (a.experience[lang] || a.experience.en || []) : a.experience) : []);
-            document.getElementById('amodal-experience').innerHTML = expList2.map(function(k) {
-                return '<li class="flex items-start gap-2 mb-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-emerald-700 shrink-0"></i> <span>' + k + '</span></li>';
-            }).join('');
-
-            var pubList = [];
-            if (person && person.publicationKeys) {
-                pubList = person.publicationKeys.map(function(k, idx) {
-                    return { title: tr(k), date: person.publicationDates[idx] || '' };
-                });
-            } else if (a.publications) {
-                pubList = typeof a.publications === 'object' ? (a.publications[lang] || a.publications.en || []) : a.publications;
-            }
-
-            if (pubList.length) {
-                document.getElementById('amodal-publications').innerHTML = pubList.map(function(p) {
-                    return '<div class="bg-gray-50 border border-gray-100 rounded-lg p-3 hover:border-emerald-700/40 transition">' +
-                        '<h5 class="font-semibold text-gray-900 leading-tight mb-1.5 text-xs">' + p.title + '</h5>' +
-                        '<span class="text-[10px] text-gray-400 block">' + p.date + '</span></div>';
-                }).join('');
-            } else {
-                document.getElementById('amodal-publications').innerHTML = '<p class="text-xs text-gray-400 italic">' + (tr('people.no_publications') || 'No publications available.') + '</p>';
-            }
-
-            authorModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-        };
-        window.closeAuthorModal = function() {
-            authorModal.classList.remove('active');
-            document.body.style.overflow = '';
-        };
-        } catch (err) {
-            console.warn('Legacy script safely caught:', err);
         }
-    })();
+        if (!window.closeAuthorModal) {
+            window.closeAuthorModal = function() {
+                var modal = document.getElementById('authorModal') || document.getElementById('bioModal');
+                if (modal) { modal.classList.remove('active'); document.body.style.overflow = ''; }
+            };
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
     </script>
 
     <!-- Dedicated Sticky Navbar & Reading Progress Engine Script -->
@@ -795,10 +557,6 @@
         // GSAP animations & Failsafe Reveal
         if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
             gsap.registerPlugin(ScrollTrigger);
-
-            gsap.to('#hero-label, #hero-title, #hero-desc', {
-                opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out', overwrite: 'auto'
-            });
 
             ScrollTrigger.batch('.reveal-up:not(#hero-label):not(#hero-title):not(#hero-desc)', {
                 start: 'top 92%',

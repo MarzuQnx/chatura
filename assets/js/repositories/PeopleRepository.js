@@ -124,12 +124,14 @@
     getExpertise: function() { return EXPERTISE; },
 
     getById: function (id) {
-      return this._data[id] || null;
+      for (var i = 0; i < this._data.length; i++) {
+        if (this._data[i].id === id) return this._data[i];
+      }
+      return null;
     },
     getByPeopleId: function (peopleId) {
-      var keys = Object.keys(this._data);
-      for (var i = 0; i < keys.length; i++) {
-        if (this._data[keys[i]].peopleId === peopleId) return this._data[keys[i]];
+      for (var i = 0; i < this._data.length; i++) {
+        if (this._data[i].id === peopleId) return this._data[i];
       }
       return null;
     }

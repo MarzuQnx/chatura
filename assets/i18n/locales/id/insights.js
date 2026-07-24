@@ -1,4 +1,4 @@
-(function(){
+﻿(function(){
 var d=window.__CHATURA_LOCALES=window.__CHATURA_LOCALES||{};
 d['id']=d['id']||{};
 d['id']['insights.page_title']='Wawasan & Pembaruan - Chatura Indonesia';
@@ -41,7 +41,7 @@ d['id']['insights.card_6_tag']='Pembaruan Klien';
 d['id']['insights.card_6_title']='Menavigasi Regulasi dalam Ekonomi Digital Indonesia';
 d['id']['insights.card_6_desc']='Bagaimana perusahaan rintisan teknologi dan platform digital menyelaraskan kepatuhan perlindungan data dengan regulasi finansial baru.';
 d['id']['insights.card_6_date']='Maret 22, 2026';
-d['id']['insights.read']='Baca ’';
+d['id']['insights.read']='Baca ';
 d['id']['insights.newsletter_title']='Dapatkan Analisis Strategis Langsung di Inbox Anda';
 d['id']['insights.newsletter_desc']='Bergabunglah dengan para eksekutif dan pemimpin korporasi yang menerima rangkuman berkala mengenai taksasi, audit, serta tren M&A di Indonesia.';
 d['id']['insights.newsletter_placeholder']='Masukkan alamat email bisnis Anda';
@@ -51,4 +51,5 @@ d['id']['insights.hero_title_1']='Perspektif Strategis';
 d['id']['insights.hero_title_2']='untuk Menavigasi';
 d['id']['insights.subscribe']='Berlangganan';
 d['id']['insights.services_cta']='Layanan Kami';
+d['id']['insights.load_more']='Tampilkan Lebih Banyak Artikel';
 })();

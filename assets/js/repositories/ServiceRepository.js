@@ -9,8 +9,7 @@
     "accounting": {
       "id": "accounting",
       "slug": "services/accounting-finance/",
-      "en": "Accounting & Finance",
-      "id_lang": "Akuntansi & Keuangan",
+      "name": { "en": "Accounting & Finance", "id": "Akuntansi & Keuangan" },
       "icon": "wallet",
       "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=400&q=80",
       "description": {
@@ -25,8 +24,7 @@
     "tax": {
       "id": "tax",
       "slug": "services/tax-services/",
-      "en": "Tax Services",
-      "id_lang": "Layanan Pajak",
+      "name": { "en": "Tax Services", "id": "Layanan Pajak" },
       "icon": "file-text",
       "image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=400&q=80",
       "description": {
@@ -41,8 +39,7 @@
     "transfer": {
       "id": "transfer",
       "slug": "services/business-transfer/",
-      "en": "Business Transfer",
-      "id_lang": "Transfer Bisnis",
+      "name": { "en": "Business Transfer", "id": "Transfer Bisnis" },
       "icon": "arrow-right-left",
       "image": "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=400&q=80",
       "description": {
@@ -57,8 +54,7 @@
     "risk": {
       "id": "risk",
       "slug": "services/risk-management/",
-      "en": "Risk Management",
-      "id_lang": "Manajemen Risiko",
+      "name": { "en": "Risk Management", "id": "Manajemen Risiko" },
       "icon": "shield-check",
       "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80",
       "description": {
@@ -73,8 +69,7 @@
     "advisory": {
       "id": "advisory",
       "slug": "services/corporate-advisory/",
-      "en": "Corporate Advisory",
-      "id_lang": "Konsultasi Korporasi",
+      "name": { "en": "Corporate Advisory", "id": "Konsultasi Korporasi" },
       "icon": "briefcase",
       "image": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80",
       "description": {

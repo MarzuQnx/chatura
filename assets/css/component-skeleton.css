@@ -1,0 +1,57 @@
+/* ===== COMPONENT LOADER & SKELETON STYLES (CLS MITIGATION) ===== */
+
+.component-slot {
+    display: block;
+    position: relative;
+    width: 100%;
+    transition: min-height 0.3s ease;
+}
+
+.component-slot:not(.component-loaded) {
+    background: linear-gradient(90deg, #f0f4f2 25%, #e2eae6 50%, #f0f4f2 75%);
+    background-size: 200% 100%;
+    animation: skeleton-pulse 1.2s ease-in-out infinite;
+    pointer-events: none;
+    border-radius: 4px;
+}
+
+/* Skeleton state for dark component slots (like navbar/footer) */
+.component-slot.component-dark:not(.component-loaded) {
+    background: linear-gradient(90deg, #003826 25%, #004D34 50%, #003826 75%);
+    background-size: 200% 100%;
+}
+
+.component-slot.component-error {
+    min-height: auto !important;
+    animation: none !important;
+}
+
+@keyframes skeleton-pulse {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Accessibility: Disable skeleton pulse when reduced motion is preferred */
+@media (prefers-reduced-motion: reduce) {
+    .component-slot:not(.component-loaded) {
+        animation: none !important;
+        background: #f0f4f2 !important;
+    }
+    .component-slot.component-dark:not(.component-loaded) {
+        background: #003826 !important;
+    }
+}
+
+/* Responsive adjustment for default slot heights on smaller screens */
+@media (max-width: 768px) {
+    [data-component="navbar"].component-slot {
+        min-height: 64px !important;
+    }
+    [data-component="footer"].component-slot {
+        min-height: 480px !important;
+    }
+}

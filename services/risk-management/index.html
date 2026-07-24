@@ -129,7 +129,7 @@
                     <a href="../../index.html"><img width="487" height="350" src="../../assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
                 </div>
             </div>
-            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
+            <button data-i18n-aria-label="aria.open_menu" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
                 <i data-lucide="menu" class="text-xl"></i>
             </button>
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
@@ -138,22 +138,22 @@
                     <a href="../../services.html" class="text-[#004D34] font-semibold inline-flex items-center gap-1"><span data-i18n="nav.services">Services</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
                     <div class="nav-dropdown-menu">
                         <a href="../../services.html" data-i18n="nav.services_overview">Overview</a>
-                        <a href="../../services/accounting-finance/">Accounting &amp; Finance</a>
-                        <a href="../../services/tax-services/">Tax Services</a>
-                        <a href="../../services/business-transfer/">Business Transfer</a>
-                        <a href="../../services/risk-management/" class="active">Risk Management</a>
-                        <a href="../../services/corporate-advisory/">Corporate Advisory</a>
+                        <a href="../../services/accounting-finance/" data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
+                        <a href="../../services/tax-services/" data-i18n="nav.service.tax">Tax Services</a>
+                        <a href="../../services/business-transfer/" data-i18n="nav.service.business_transfer">Business Transfer</a>
+                        <a href="../../services/risk-management/" class="active" data-i18n="nav.service.risk_management">Risk Management</a>
+                        <a href="../../services/corporate-advisory/" data-i18n="nav.service.corporate_advisory">Corporate Advisory</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
                     <a href="../../industries.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
                     <div class="nav-dropdown-menu">
                         <a href="../../industries.html" data-i18n="nav.industries_overview">Overview</a>
-                        <a href="../../industries/manufacturing/">Manufacturing</a>
-                        <a href="../../industries/energy/">Energy &amp; Resources</a>
-                        <a href="../../industries/healthcare/">Healthcare</a>
-                        <a href="../../industries/technology/">Technology &amp; Digital</a>
-                        <a href="../../industries/consumer/">Consumer &amp; Retail</a>
+                        <a href="../../industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a>
+                        <a href="../../industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
+                        <a href="../../industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
+                        <a href="../../industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
+                        <a href="../../industries/consumer/" data-i18n="nav.industry.consumer">Consumer &amp; Retail</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -183,7 +183,7 @@
         <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
                 <a href="../../index.html"><img width="487" height="350" src="../../assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
-                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
+                <button data-i18n-aria-label="aria.close_menu" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
             </div>
             <nav class="flex-1 overflow-y-auto p-6 space-y-1">
                 <a href="../../index.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.about_us">About Us</a>
@@ -191,22 +191,22 @@
                     <button class="mobile-nav-group-btn is-active-parent" type="button"><span data-i18n="nav.services">Services</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
                         <a href="../../services.html">Overview</a>
-                        <a href="../../services/accounting-finance/" class="">Accounting &amp; Finance</a>
-                        <a href="../../services/tax-services/" class="">Tax Services</a>
-                        <a href="../../services/business-transfer/" class="">Business Transfer</a>
-                        <a href="../../services/risk-management/" class="is-active-sub">Risk Management</a>
-                        <a href="../../services/corporate-advisory/" class="">Corporate Advisory</a>
+                        <a href="../../services/accounting-finance/" class="" data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
+                        <a href="../../services/tax-services/" class="" data-i18n="nav.service.tax">Tax Services</a>
+                        <a href="../../services/business-transfer/" class="" data-i18n="nav.service.business_transfer">Business Transfer</a>
+                        <a href="../../services/risk-management/" class="is-active-sub" data-i18n="nav.service.risk_management">Risk Management</a>
+                        <a href="../../services/corporate-advisory/" class="" data-i18n="nav.service.corporate_advisory">Corporate Advisory</a>
                     </div>
                 </div>
                 <div class="mobile-nav-group ">
                     <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.industries">Industries</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
                         <a href="../../industries.html">Overview</a>
-                        <a href="../../industries/manufacturing/">Manufacturing</a>
-                        <a href="../../industries/energy/">Energy &amp; Resources</a>
-                        <a href="../../industries/healthcare/">Healthcare</a>
-                        <a href="../../industries/technology/">Technology &amp; Digital</a>
-                        <a href="../../industries/consumer/">Consumer &amp; Retail</a>
+                        <a href="../../industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a>
+                        <a href="../../industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
+                        <a href="../../industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
+                        <a href="../../industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
+                        <a href="../../industries/consumer/" data-i18n="nav.industry.consumer">Consumer &amp; Retail</a>
                     </div>
                 </div>
                 <div class="mobile-nav-group ">
@@ -230,445 +230,18 @@
     </header>
 
     <main id="main-content">
-        <!-- HERO -->
-        <section id="hero" class="relative min-h-[85vh] flex items-center overflow-hidden">
-            <div class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80" alt="Risk Management Advisory" class="w-full h-full object-cover">
-                <div class="absolute inset-0" style="background: linear-gradient(100deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.75) 40%, rgba(0,77,52,0.08) 100%);"></div>
-            </div>
-            <div class="container mx-auto px-6 relative z-10 py-24">
-                <div class="max-w-2xl">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="w-8 h-0.5 bg-[#004D34]"></span>
-                        <span class="text-sm font-bold uppercase tracking-widest text-[#004D34]" data-i18n="rm.hero_label">Service 04</span>
-                    </div>
-                    <h1 class="text-4xl md:text-6xl font-serif font-light mb-6 leading-tight text-gray-900 reveal-up">
-                        <span data-i18n="rm.hero_title_1">Building Resilience</span><br>
-                        <span class="italic font-normal text-[#004D34]" data-i18n="rm.hero_title_green">Through Proactive Risk</span><br>
-                        <span data-i18n="rm.hero_title_2">Intelligence</span>
-                    </h1>
-                    <p class="text-gray-600 text-lg mb-8 max-w-xl leading-relaxed reveal-up" data-i18n="rm.hero_desc">
-                        We identify, assess, and manage business risks to build resilience and support sustainable, confident growth.
-                    </p>
-                    <div class="flex flex-wrap gap-4 reveal-up">
-                        <a href="#core-services" class="bg-[#004D34] text-white px-6 py-3 rounded font-medium transition hover:bg-[#003322]">
-                            <span data-i18n="rm.hero_cta">Explore Our Services</span>
-                        </a>
-                        <a href="../../contact-us.html" class="border border-gray-300 text-gray-700 px-6 py-3 rounded font-medium hover:bg-gray-900 hover:text-white transition">
-                            <span data-i18n="rm.hero_cta_2">Talk to Our Experts</span> <i data-lucide="arrow-right" class="text-xs ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- BUSINESS CHALLENGES -->
-        <section id="challenges" class="py-24 bg-white">
-            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-start">
-                <div class="reveal-up">
-                    <span class="text-sm font-bold uppercase tracking-widest text-emerald-700" data-i18n="rm.challenges_label">Business Challenges</span>
-                    <h2 class="text-3xl md:text-4xl font-serif font-normal mt-2 mb-6" data-i18n="rm.challenges_title">The Risks You Face Today</h2>
-                    <p class="text-gray-600 leading-relaxed mb-8" data-i18n="rm.challenges_desc">
-                        Modern businesses navigate an increasingly complex risk landscape. Without a proactive approach, these challenges can erode value, expose your organization to regulatory penalties, and undermine stakeholder confidence.
-                    </p>
-                </div>
-                <div class="space-y-4 reveal-up">
-                    <div class="flex items-start gap-4 p-5 rounded-xl bg-gray-50 hover:bg-emerald-50 transition-colors duration-300 border border-transparent hover:border-emerald-100">
-                        <div class="w-10 h-10 rounded-lg bg-[#004D34]/10 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="eye-off" class="w-5 h-5 text-[#004D34]"></i></div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900" data-i18n="rm.challenge_1_title">Incomplete Risk Visibility</h4>
-                            <p class="text-sm text-gray-500 mt-1" data-i18n="rm.challenge_1_desc">Blind spots in risk identification leave organizations vulnerable to unforeseen threats.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4 p-5 rounded-xl bg-gray-50 hover:bg-emerald-50 transition-colors duration-300 border border-transparent hover:border-emerald-100">
-                        <div class="w-10 h-10 rounded-lg bg-[#004D34]/10 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="shield-off" class="w-5 h-5 text-[#004D34]"></i></div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900" data-i18n="rm.challenge_2_title">Weak Internal Controls</h4>
-                            <p class="text-sm text-gray-500 mt-1" data-i18n="rm.challenge_2_desc">Inadequate control environments allow errors, inefficiencies, and fraud to persist undetected.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4 p-5 rounded-xl bg-gray-50 hover:bg-emerald-50 transition-colors duration-300 border border-transparent hover:border-emerald-100">
-                        <div class="w-10 h-10 rounded-lg bg-[#004D34]/10 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="scale" class="w-5 h-5 text-[#004D34]"></i></div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900" data-i18n="rm.challenge_3_title">Regulatory Compliance Gaps</h4>
-                            <p class="text-sm text-gray-500 mt-1" data-i18n="rm.challenge_3_desc">Evolving regulations demand continuous monitoring and adaptation to remain compliant.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4 p-5 rounded-xl bg-gray-50 hover:bg-emerald-50 transition-colors duration-300 border border-transparent hover:border-emerald-100">
-                        <div class="w-10 h-10 rounded-lg bg-[#004D34]/10 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="building-2" class="w-5 h-5 text-[#004D34]"></i></div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900" data-i18n="rm.challenge_4_title">Inadequate Governance</h4>
-                            <p class="text-sm text-gray-500 mt-1" data-i18n="rm.challenge_4_desc">Weak governance structures compromise decision-making quality and accountability.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4 p-5 rounded-xl bg-gray-50 hover:bg-emerald-50 transition-colors duration-300 border border-transparent hover:border-emerald-100">
-                        <div class="w-10 h-10 rounded-lg bg-[#004D34]/10 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="alert-triangle" class="w-5 h-5 text-[#004D34]"></i></div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900" data-i18n="rm.challenge_5_title">No Business Continuity Approach</h4>
-                            <p class="text-sm text-gray-500 mt-1" data-i18n="rm.challenge_5_desc">Without continuity planning, disruptions can cascade into prolonged operational failures.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SOLUTION / APPROACH -->
-        <section id="approach" class="py-24 bg-gray-100">
-            <div class="container mx-auto px-6 grid md:grid-cols-[3fr_2fr] gap-16 items-center">
-                <div class="reveal-up">
-                    <span class="text-sm font-bold uppercase tracking-widest text-emerald-700" data-i18n="rm.approach_label">Our Approach</span>
-                    <h2 class="text-3xl md:text-4xl font-serif font-normal mt-2 mb-6" data-i18n="rm.approach_title">A Holistic Risk Management Framework</h2>
-                    <p class="text-gray-600 leading-relaxed mb-6" data-i18n="rm.approach_desc">
-                        Our risk management practice takes a holistic approach. We build practical frameworks that protect your business while enabling confident growth. Rather than applying one-size-fits-all solutions, we tailor every engagement to your organization's unique risk profile, industry context, and strategic objectives.
-                    </p>
-                    <ul class="space-y-3 text-gray-700 mb-8">
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-[#004D34] shrink-0"></i> <span data-i18n="rm.approach_bullet_1">Tailored to your risk appetite and business context</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-[#004D34] shrink-0"></i> <span data-i18n="rm.approach_bullet_2">Aligned with international standards (ISO 31000, COSO)</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-[#004D34] shrink-0"></i> <span data-i18n="rm.approach_bullet_3">Driven by measurable outcomes and continuous improvement</span></li>
-                    </ul>
-                    <a href="#core-services" class="bg-[#004D34] text-white px-6 py-3 rounded font-medium transition hover:bg-[#003322] inline-flex items-center gap-2">
-                        <span data-i18n="rm.approach_cta">Learn More About Our Approach</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
-                </div>
-                <div class="reveal-up relative">
-                    <div class="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
-                        <div class="text-center mb-6">
-                            <div class="w-16 h-16 rounded-2xl bg-[#004D34]/10 flex items-center justify-center mx-auto mb-4"><i data-lucide="shield-check" class="w-8 h-8 text-[#004D34]"></i></div>
-                            <h3 class="text-lg font-semibold text-gray-900" data-i18n="rm.stat_title">Risk Intelligence at Scale</h3>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="text-center p-4 bg-gray-50 rounded-xl">
-                                <div class="text-3xl font-bold text-[#004D34]" data-counter="200" data-suffix="+">0</div>
-                                <div class="text-xs text-gray-500 mt-1" data-i18n="rm.stat_1">Risk Assessments Delivered</div>
-                            </div>
-                            <div class="text-center p-4 bg-gray-50 rounded-xl">
-                                <div class="text-3xl font-bold text-[#004D34]" data-counter="95" data-suffix="%">0</div>
-                                <div class="text-xs text-gray-500 mt-1" data-i18n="rm.stat_2">Client Retention Rate</div>
-                            </div>
-                            <div class="text-center p-4 bg-gray-50 rounded-xl">
-                                <div class="text-3xl font-bold text-[#004D34]" data-counter="6" data-suffix="">0</div>
-                                <div class="text-xs text-gray-500 mt-1" data-i18n="rm.stat_3">Core Service Lines</div>
-                            </div>
-                            <div class="text-center p-4 bg-gray-50 rounded-xl">
-                                <div class="text-3xl font-bold text-[#004D34]" data-counter="12" data-suffix="+">0</div>
-                                <div class="text-xs text-gray-500 mt-1" data-i18n="rm.stat_4">Years of Experience</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CORE SERVICES -->
-        <section id="core-services" class="py-24 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
-                    <span class="text-sm font-bold uppercase tracking-widest text-emerald-700" data-i18n="rm.services_label">What We Do</span>
-                    <h2 class="text-3xl md:text-4xl font-serif font-normal mt-2 mb-4" data-i18n="rm.services_title">Core Risk Management Services</h2>
-                    <p class="text-gray-500 leading-relaxed" data-i18n="rm.services_desc">Comprehensive risk advisory solutions designed to strengthen your organization's resilience and governance posture.</p>
-                </div>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="group p-8 rounded-2xl border border-gray-200 hover:border-emerald-200 hover:shadow-lg transition-all duration-300 reveal-up">
-                        <div class="w-12 h-12 rounded-xl bg-[#004D34]/10 flex items-center justify-center mb-5 group-hover:bg-[#004D34] transition-colors duration-300"><i data-lucide="scan-search" class="w-6 h-6 text-[#004D34] group-hover:text-white transition-colors duration-300"></i></div>
-                        <h3 class="text-lg font-semibold text-gray-900 mb-2" data-i18n="rm.service_1_title">Enterprise Risk Assessment & Mapping</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed" data-i18n="rm.service_1_desc">Systematic identification, analysis, and prioritization of risks across your organization with comprehensive risk heatmaps and registers.</p>
-                    </div>
-                    <div class="group p-8 rounded-2xl border border-gray-200 hover:border-emerald-200 hover:shadow-lg transition-all duration-300 reveal-up">
-                        <div class="w-12 h-12 rounded-xl bg-[#004D34]/10 flex items-center justify-center mb-5 group-hover:bg-[#004D34] transition-colors duration-300"><i data-lucide="settings-2" class="w-6 h-6 text-[#004D34] group-hover:text-white transition-colors duration-300"></i></div>
-                        <h3 class="text-lg font-semibold text-gray-900 mb-2" data-i18n="rm.service_2_title">Internal Controls Design & Testing</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed" data-i18n="rm.service_2_desc">Design, implementation, and testing of internal control mechanisms to safeguard assets, ensure accuracy, and drive operational efficiency.</p>
-                    </div>
-                    <div class="group p-8 rounded-2xl border border-gray-200 hover:border-emerald-200 hover:shadow-lg transition-all duration-300 reveal-up">
-                        <div class="w-12 h-12 rounded-xl bg-[#004D34]/10 flex items-center justify-center mb-5 group-hover:bg-[#004D34] transition-colors duration-300"><i data-lucide="search-code" class="w-6 h-6 text-[#004D34] group-hover:text-white transition-colors duration-300"></i></div>
-                        <h3 class="text-lg font-semibold text-gray-900 mb-2" data-i18n="rm.service_3_title">Fraud Investigation & Forensic Analysis</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed" data-i18n="rm.service_3_desc">Thorough forensic investigations into suspected fraud, financial misconduct, and irregularities with actionable, evidence-based findings.</p>
-                    </div>
-                    <div class="group p-8 rounded-2xl border border-gray-200 hover:border-emerald-200 hover:shadow-lg transition-all duration-300 reveal-up">
-                        <div class="w-12 h-12 rounded-xl bg-[#004D34]/10 flex items-center justify-center mb-5 group-hover:bg-[#004D34] transition-colors duration-300"><i data-lucide="landmark" class="w-6 h-6 text-[#004D34] group-hover:text-white transition-colors duration-300"></i></div>
-                        <h3 class="text-lg font-semibold text-gray-900 mb-2" data-i18n="rm.service_4_title">Governance Framework Development</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed" data-i18n="rm.service_4_desc">Design and implementation of governance structures, charters, and policies that establish clear accountability and strategic oversight.</p>
-                    </div>
-                    <div class="group p-8 rounded-2xl border border-gray-200 hover:border-emerald-200 hover:shadow-lg transition-all duration-300 reveal-up">
-                        <div class="w-12 h-12 rounded-xl bg-[#004D34]/10 flex items-center justify-center mb-5 group-hover:bg-[#004D34] transition-colors duration-300"><i data-lucide="clipboard-check" class="w-6 h-6 text-[#004D34] group-hover:text-white transition-colors duration-300"></i></div>
-                        <h3 class="text-lg font-semibold text-gray-900 mb-2" data-i18n="rm.service_5_title">Compliance Advisory & Monitoring</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed" data-i18n="rm.service_5_desc">End-to-end compliance programs covering regulatory gap analysis, monitoring, reporting, and corrective action planning.</p>
-                    </div>
-                    <div class="group p-8 rounded-2xl border border-gray-200 hover:border-emerald-200 hover:shadow-lg transition-all duration-300 reveal-up">
-                        <div class="w-12 h-12 rounded-xl bg-[#004D34]/10 flex items-center justify-center mb-5 group-hover:bg-[#004D34] transition-colors duration-300"><i data-lucide="siren" class="w-6 h-6 text-[#004D34] group-hover:text-white transition-colors duration-300"></i></div>
-                        <h3 class="text-lg font-semibold text-gray-900 mb-2" data-i18n="rm.service_6_title">Business Continuity Planning</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed" data-i18n="rm.service_6_desc">Development and testing of business continuity and disaster recovery plans to ensure operational resilience during disruptions.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- WORKFLOW / PROCESS -->
-        <section id="workflow" class="py-24 bg-[#004D34] text-white overflow-hidden">
-            <div class="container mx-auto px-6">
-                <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
-                    <span class="text-sm font-bold uppercase tracking-widest text-emerald-300" data-i18n="rm.workflow_label">Our Process</span>
-                    <h2 class="text-3xl md:text-4xl font-serif font-normal mt-2 mb-4" data-i18n="rm.workflow_title">How We Engage</h2>
-                    <p class="text-emerald-100/70 leading-relaxed" data-i18n="rm.workflow_desc">A structured, transparent process that delivers measurable risk management outcomes at every stage.</p>
-                </div>
-                <div class="relative grid md:grid-cols-5 gap-8 md:gap-4">
-                    <div class="process-line hidden md:block"></div>
-                    <div class="relative text-center reveal-up">
-                        <div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mx-auto mb-4 relative z-10"><span class="text-lg font-bold text-white">01</span></div>
-                        <h4 class="font-semibold mb-1" data-i18n="rm.wf_step_1_title">Discovery</h4>
-                        <p class="text-sm text-emerald-100/60" data-i18n="rm.wf_step_1_desc">Understand your business, objectives, and risk landscape</p>
-                    </div>
-                    <div class="relative text-center reveal-up">
-                        <div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mx-auto mb-4 relative z-10"><span class="text-lg font-bold text-white">02</span></div>
-                        <h4 class="font-semibold mb-1" data-i18n="rm.wf_step_2_title">Assessment</h4>
-                        <p class="text-sm text-emerald-100/60" data-i18n="rm.wf_step_2_desc">Comprehensive risk identification, analysis, and evaluation</p>
-                    </div>
-                    <div class="relative text-center reveal-up">
-                        <div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mx-auto mb-4 relative z-10"><span class="text-lg font-bold text-white">03</span></div>
-                        <h4 class="font-semibold mb-1" data-i18n="rm.wf_step_3_title">Strategy</h4>
-                        <p class="text-sm text-emerald-100/60" data-i18n="rm.wf_step_3_desc">Design tailored risk response and mitigation strategies</p>
-                    </div>
-                    <div class="relative text-center reveal-up">
-                        <div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mx-auto mb-4 relative z-10"><span class="text-lg font-bold text-white">04</span></div>
-                        <h4 class="font-semibold mb-1" data-i18n="rm.wf_step_4_title">Implementation</h4>
-                        <p class="text-sm text-emerald-100/60" data-i18n="rm.wf_step_4_desc">Deploy frameworks, controls, and governance structures</p>
-                    </div>
-                    <div class="relative text-center reveal-up">
-                        <div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mx-auto mb-4 relative z-10"><span class="text-lg font-bold text-white">05</span></div>
-                        <h4 class="font-semibold mb-1" data-i18n="rm.wf_step_5_title">Monitoring</h4>
-                        <p class="text-sm text-emerald-100/60" data-i18n="rm.wf_step_5_desc">Ongoing review, testing, and continuous improvement</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- DELIVERABLES -->
-        <section id="deliverables" class="py-24 bg-white">
-            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-start">
-                <div class="reveal-up">
-                    <span class="text-sm font-bold uppercase tracking-widest text-emerald-700" data-i18n="rm.deliverables_label">Deliverables</span>
-                    <h2 class="text-3xl md:text-4xl font-serif font-normal mt-2 mb-6" data-i18n="rm.deliverables_title">What You Receive</h2>
-                    <p class="text-gray-600 leading-relaxed" data-i18n="rm.deliverables_desc">
-                        Every engagement produces tangible, actionable outputs designed to strengthen your risk posture and inform strategic decision-making.
-                    </p>
-                </div>
-                <div class="grid grid-cols-2 gap-4 reveal-up">
-                    <div class="p-5 rounded-xl bg-gray-50 border border-gray-100">
-                        <i data-lucide="file-text" class="w-5 h-5 text-[#004D34] mb-3"></i>
-                        <h4 class="font-semibold text-sm text-gray-900" data-i18n="rm.del_1">Risk Assessment Reports</h4>
-                        <p class="text-xs text-gray-500 mt-1" data-i18n="rm.del_1_desc">Comprehensive risk registers with heatmaps and prioritization</p>
-                    </div>
-                    <div class="p-5 rounded-xl bg-gray-50 border border-gray-100">
-                        <i data-lucide="table-2" class="w-5 h-5 text-[#004D34] mb-3"></i>
-                        <h4 class="font-semibold text-sm text-gray-900" data-i18n="rm.del_2">Control Matrices</h4>
-                        <p class="text-xs text-gray-500 mt-1" data-i18n="rm.del_2_desc">Detailed control design, testing results, and gap remediation plans</p>
-                    </div>
-                    <div class="p-5 rounded-xl bg-gray-50 border border-gray-100">
-                        <i data-lucide="scroll-text" class="w-5 h-5 text-[#004D34] mb-3"></i>
-                        <h4 class="font-semibold text-sm text-gray-900" data-i18n="rm.del_3">Governance Charters</h4>
-                        <p class="text-xs text-gray-500 mt-1" data-i18n="rm.del_3_desc">Board and committee charters defining roles and oversight</p>
-                    </div>
-                    <div class="p-5 rounded-xl bg-gray-50 border border-gray-100">
-                        <i data-lucide="search" class="w-5 h-5 text-[#004D34] mb-3"></i>
-                        <h4 class="font-semibold text-sm text-gray-900" data-i18n="rm.del_4">Fraud Investigation Reports</h4>
-                        <p class="text-xs text-gray-500 mt-1" data-i18n="rm.del_4_desc">Evidence-based findings and recommendations for corrective action</p>
-                    </div>
-                    <div class="p-5 rounded-xl bg-gray-50 border border-gray-100">
-                        <i data-lucide="list-checks" class="w-5 h-5 text-[#004D34] mb-3"></i>
-                        <h4 class="font-semibold text-sm text-gray-900" data-i18n="rm.del_5">Compliance Gap Analyses</h4>
-                        <p class="text-xs text-gray-500 mt-1" data-i18n="rm.del_5_desc">Regulatory mapping with prioritized remediation roadmaps</p>
-                    </div>
-                    <div class="p-5 rounded-xl bg-gray-50 border border-gray-100">
-                        <i data-lucide="hard-drive" class="w-5 h-5 text-[#004D34] mb-3"></i>
-                        <h4 class="font-semibold text-sm text-gray-900" data-i18n="rm.del_6">Business Continuity Plans</h4>
-                        <p class="text-xs text-gray-500 mt-1" data-i18n="rm.del_6_desc">Actionable continuity and disaster recovery playbooks</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- INDUSTRY APPLICATIONS -->
-        <section id="industries" class="py-24 bg-gray-100">
-            <div class="container mx-auto px-6">
-                <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
-                    <span class="text-sm font-bold uppercase tracking-widest text-emerald-700" data-i18n="rm.industry_label">Industry Expertise</span>
-                    <h2 class="text-3xl md:text-4xl font-serif font-normal mt-2 mb-4" data-i18n="rm.industry_title">Sectors We Serve</h2>
-                    <p class="text-gray-500 leading-relaxed" data-i18n="rm.industry_desc">Cross-sector experience enabling tailored risk frameworks for specific regulatory and operational contexts.</p>
-                </div>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="flex items-center gap-4 p-6 rounded-xl bg-white border border-gray-200 hover:border-emerald-300 hover:shadow-md transition-all duration-300 reveal-up">
-                        <div class="w-11 h-11 rounded-lg bg-[#004D34]/10 flex items-center justify-center shrink-0"><i data-lucide="landmark" class="w-5 h-5 text-[#004D34]"></i></div>
-                        <div>
-                            <h4 class="font-semibold text-sm text-gray-900" data-i18n="rm.ind_1">Financial Services</h4>
-                            <p class="text-xs text-gray-500 mt-0.5" data-i18n="rm.ind_1_desc">Banks, insurers, and financial institutions</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4 p-6 rounded-xl bg-white border border-gray-200 hover:border-emerald-300 hover:shadow-md transition-all duration-300 reveal-up">
-                        <div class="w-11 h-11 rounded-lg bg-[#004D34]/10 flex items-center justify-center shrink-0"><i data-lucide="factory" class="w-5 h-5 text-[#004D34]"></i></div>
-                        <div>
-                            <h4 class="font-semibold text-sm text-gray-900" data-i18n="rm.ind_2">Manufacturing</h4>
-                            <p class="text-xs text-gray-500 mt-0.5" data-i18n="rm.ind_2_desc">Industrial and consumer goods producers</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4 p-6 rounded-xl bg-white border border-gray-200 hover:border-emerald-300 hover:shadow-md transition-all duration-300 reveal-up">
-                        <div class="w-11 h-11 rounded-lg bg-[#004D34]/10 flex items-center justify-center shrink-0"><i data-lucide="cpu" class="w-5 h-5 text-[#004D34]"></i></div>
-                        <div>
-                            <h4 class="font-semibold text-sm text-gray-900" data-i18n="rm.ind_3">Technology</h4>
-                            <p class="text-xs text-gray-500 mt-0.5" data-i18n="rm.ind_3_desc">Digital platforms and tech enterprises</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4 p-6 rounded-xl bg-white border border-gray-200 hover:border-emerald-300 hover:shadow-md transition-all duration-300 reveal-up">
-                        <div class="w-11 h-11 rounded-lg bg-[#004D34]/10 flex items-center justify-center shrink-0"><i data-lucide="zap" class="w-5 h-5 text-[#004D34]"></i></div>
-                        <div>
-                            <h4 class="font-semibold text-sm text-gray-900" data-i18n="rm.ind_4">Energy & Resources</h4>
-                            <p class="text-xs text-gray-500 mt-0.5" data-i18n="rm.ind_4_desc">Oil, gas, mining, and renewable energy</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4 p-6 rounded-xl bg-white border border-gray-200 hover:border-emerald-300 hover:shadow-md transition-all duration-300 reveal-up">
-                        <div class="w-11 h-11 rounded-lg bg-[#004D34]/10 flex items-center justify-center shrink-0"><i data-lucide="heart-pulse" class="w-5 h-5 text-[#004D34]"></i></div>
-                        <div>
-                            <h4 class="font-semibold text-sm text-gray-900" data-i18n="rm.ind_5">Healthcare</h4>
-                            <p class="text-xs text-gray-500 mt-0.5" data-i18n="rm.ind_5_desc">Hospitals, clinics, and health systems</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4 p-6 rounded-xl bg-white border border-gray-200 hover:border-emerald-300 hover:shadow-md transition-all duration-300 reveal-up">
-                        <div class="w-11 h-11 rounded-lg bg-[#004D34]/10 flex items-center justify-center shrink-0"><i data-lucide="building" class="w-5 h-5 text-[#004D34]"></i></div>
-                        <div>
-                            <h4 class="font-semibold text-sm text-gray-900" data-i18n="rm.ind_6">Government & SOE</h4>
-                            <p class="text-xs text-gray-500 mt-0.5" data-i18n="rm.ind_6_desc">Public sector and state-owned enterprises</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- INSIGHTS -->
-        <section id="insights" class="py-24 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
-                    <span class="text-sm font-bold uppercase tracking-widest text-emerald-700" data-i18n="rm.insights_label">Insights & Updates</span>
-                    <h2 class="text-3xl md:text-4xl font-serif font-normal mt-2 mb-4" data-i18n="rm.insights_title">Perspectives Worth Your Time</h2>
-                </div>
-                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                    <a href="../../insights.html" class="group block rounded-2xl overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300 reveal-up">
-                        <div class="h-48 bg-gray-100 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80" alt="Enterprise Risk Management in Digital Age" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="p-6">
-                            <span class="text-xs font-bold uppercase tracking-wider text-[#004D34] mb-2 block" data-i18n="rm.insight_tag">Article</span>
-                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-[#004D34] transition-colors" data-i18n="rm.insight_1_title">Enterprise Risk Management in the Digital Age</h3>
-                            <p class="text-sm text-gray-500 mt-2 leading-relaxed" data-i18n="rm.insight_1_desc">How digital transformation reshapes risk landscapes and why modern ERM frameworks must evolve to address cyber, data, and operational risks.</p>
-                        </div>
-                    </a>
-                    <a href="../../insights.html" class="group block rounded-2xl overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300 reveal-up">
-                        <div class="h-48 bg-gray-100 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80" alt="Strengthening Internal Controls" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="p-6">
-                            <span class="text-xs font-bold uppercase tracking-wider text-[#004D34] mb-2 block" data-i18n="rm.insight_tag">Publication</span>
-                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-[#004D34] transition-colors" data-i18n="rm.insight_2_title">Strengthening Internal Controls for Sustainable Growth</h3>
-                            <p class="text-sm text-gray-500 mt-2 leading-relaxed" data-i18n="rm.insight_2_desc">A practical guide to designing and testing internal controls that balance operational efficiency with robust risk mitigation.</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- EXPERTS -->
-        <section id="experts" class="py-24 bg-gray-100">
-            <div class="container mx-auto px-6" style="max-width: 1280px;">
-                <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
-                    <span class="text-sm font-bold uppercase tracking-widest text-emerald-700" data-i18n="rm.experts_label">Our Experts</span>
-                    <h2 class="text-3xl md:text-4xl font-serif font-normal mt-2 mb-4" data-i18n="rm.experts_title">People Behind Your Risk Strategy</h2>
-                    <p class="text-gray-500 leading-relaxed" data-i18n="rm.experts_desc">Professional advisors with deep expertise in enterprise risk, governance, and compliance.</p>
-                </div>
-                <div class="reveal-up grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
-                    <div class="expert-card" onclick="window.location.href='../../our-people.html'">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&h=500&q=80" alt="Adine K. Nadya" loading="lazy" class="expert-card__img">
-                        <div class="expert-card__body">
-                            <h3 class="expert-card__name" data-i18n="rm.expert_1_name">Adine K. Nadya</h3>
-                            <p class="expert-card__role" data-i18n="rm.expert_1_role">Partner, Risk Management</p>
-                            <p class="expert-card__expertise">Enterprise Risk · Governance</p>
-                            <span class="expert-card__cta"><span data-i18n="people.view_profile">View Profile</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5 expert-card__arrow"></i></span>
-                        </div>
-                    </div>
-                    <div class="expert-card" onclick="window.location.href='../../our-people.html'">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&h=500&q=80" alt="Andi Rio Ilhad Monry" loading="lazy" class="expert-card__img">
-                        <div class="expert-card__body">
-                            <h3 class="expert-card__name" data-i18n="rm.expert_2_name">Andi Rio Ilhad Monry</h3>
-                            <p class="expert-card__role" data-i18n="rm.expert_2_role">Managing Partner</p>
-                            <p class="expert-card__expertise">M&amp;A · Corporate Advisory</p>
-                            <span class="expert-card__cta"><span data-i18n="people.view_profile">View Profile</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5 expert-card__arrow"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ -->
-        <section id="faq" class="py-24 bg-white">
-            <div class="container mx-auto px-6 max-w-3xl">
-                <div class="text-center mb-12 reveal-up">
-                    <span class="text-sm font-bold uppercase tracking-widest text-emerald-700" data-i18n="rm.faq_label">Questions</span>
-                    <h2 class="text-3xl md:text-4xl font-serif font-normal mt-2" data-i18n="rm.faq_title">Frequently Asked Questions</h2>
-                </div>
-                <div class="space-y-4 reveal-up">
-                    <div class="faq-item border border-gray-200 rounded-xl overflow-hidden">
-                        <button class="faq-toggle w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors" onclick="this.parentElement.classList.toggle('open')">
-                            <span class="font-semibold text-gray-900 pr-4" data-i18n="rm.faq_1_q">What is enterprise risk management and why does my business need it?</span>
-                            <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 text-gray-400 shrink-0"></i>
-                        </button>
-                        <div class="faq-answer px-5 pb-5">
-                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="rm.faq_1_a">Enterprise risk management (ERM) is a structured approach to identifying, assessing, and responding to risks that could affect your organization's objectives. Our practice designs practical frameworks that protect your business while enabling confident, informed growth.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item border border-gray-200 rounded-xl overflow-hidden">
-                        <button class="faq-toggle w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors" onclick="this.parentElement.classList.toggle('open')">
-                            <span class="font-semibold text-gray-900 pr-4" data-i18n="rm.faq_2_q">How does Chatura approach internal controls design and testing?</span>
-                            <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 text-gray-400 shrink-0"></i>
-                        </button>
-                        <div class="faq-answer px-5 pb-5">
-                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="rm.faq_2_a">We take a holistic approach that goes beyond checkbox compliance. Our team evaluates your operational processes, maps control gaps, designs tailored control mechanisms, and conducts rigorous testing to ensure effectiveness and regulatory alignment.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item border border-gray-200 rounded-xl overflow-hidden">
-                        <button class="faq-toggle w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors" onclick="this.parentElement.classList.toggle('open')">
-                            <span class="font-semibold text-gray-900 pr-4" data-i18n="rm.faq_3_q">Can Chatura assist with fraud investigation and forensic analysis?</span>
-                            <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 text-gray-400 shrink-0"></i>
-                        </button>
-                        <div class="faq-answer px-5 pb-5">
-                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="rm.faq_3_a">Yes. Our forensic team conducts thorough investigations into suspected fraud, financial misconduct, and irregularities. We deliver actionable findings, evidence-based reports, and recommendations to strengthen your anti-fraud posture and support legal proceedings if needed.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item border border-gray-200 rounded-xl overflow-hidden">
-                        <button class="faq-toggle w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors" onclick="this.parentElement.classList.toggle('open')">
-                            <span class="font-semibold text-gray-900 pr-4" data-i18n="rm.faq_4_q">Which industries does Chatura's risk management practice serve?</span>
-                            <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 text-gray-400 shrink-0"></i>
-                        </button>
-                        <div class="faq-answer px-5 pb-5">
-                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="rm.faq_4_a">We serve a wide range of industries including Financial Services, Manufacturing, Technology, Energy & Resources, Healthcare, and Government & State-Owned Enterprises (SOEs). Our cross-sector experience allows us to tailor risk frameworks to specific regulatory and operational contexts.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA -->
-        <section id="cta" class="py-24 bg-[#004D34]">
-            <div class="container mx-auto px-6 text-center reveal-up">
-                <h2 class="text-3xl md:text-4xl font-serif font-normal text-white mb-4" data-i18n="rm.cta_title">Ready to Strengthen Your Risk Posture?</h2>
-                <p class="text-emerald-100/70 max-w-xl mx-auto mb-8 leading-relaxed" data-i18n="rm.cta_desc">Our team is ready to help you navigate complex risk challenges and build lasting organizational resilience.</p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="../../contact-us.html" class="bg-white text-[#004D34] px-8 py-3 rounded font-semibold transition hover:bg-gray-100">
-                        <span data-i18n="rm.cta_button">Talk To Us</span> <i data-lucide="arrow-right" class="text-xs ml-1 inline-flex"></i>
-                    </a>
-                    <a href="tel:+622112345678" class="border border-white/30 text-white px-8 py-3 rounded font-medium hover:bg-white/10 transition inline-flex items-center gap-2">
-                        <i data-lucide="phone" class="w-4 h-4"></i> <span data-i18n="rm.cta_call">Call Us</span>
-                    </a>
-                </div>
-            </div>
-        </section>
+        <div data-component="sub-services/risk-management/hero" class="component-slot component-dark" style="min-height: 600px;"></div>
+        <div data-component="sub-services/risk-management/challenges" class="component-slot"></div>
+        <div data-component="sub-services/risk-management/solution" class="component-slot"></div>
+        <div data-component="sub-services/risk-management/core-services" class="component-slot"></div>
+        <div data-component="sub-services/risk-management/workflow" class="component-slot"></div>
+        <div data-component="sub-services/risk-management/deliverables" class="component-slot"></div>
+        <div data-component="sub-services/risk-management/industries" class="component-slot"></div>
+        <div data-component="sub-services/risk-management/insights" class="component-slot"></div>
+        <div data-component="sub-services/risk-management/experts" class="component-slot"></div>
+        <div data-component="sub-services/risk-management/faq" class="component-slot"></div>
+        <div data-component="sub-services/risk-management/cta" class="component-slot"></div>
     </main>
-
     <!-- FOOTER -->
     <footer class="bg-gray-950 text-white pt-20 pb-8">
         <div class="container mx-auto px-6">
@@ -700,7 +273,7 @@
                             <li><a href="../../industries.html" class="text-sm text-white/60 hover:text-white transition-colors duration-300" data-i18n="footer.industry_1">Manufacturing</a></li>
                             <li><a href="../../industries.html" class="text-sm text-white/60 hover:text-white transition-colors duration-300" data-i18n="footer.industry_2">Energy & Resources</a></li>
                             <li><a href="../../industries.html" class="text-sm text-white/60 hover:text-white transition-colors duration-300" data-i18n="footer.industry_3">Consumer & Retail</a></li>
-                            <li><a href="../../industries/healthcare/" class="text-sm text-white/60 hover:text-white transition-colors duration-300" data-i18n="footer.industry_4">Healthcare</a></li>
+                            <li><a href="../../industries/healthcare/" class="text-sm text-white/60 hover:text-white transition-colors duration-300" data-i18n="footer.industry_4" data-i18n="nav.industry.healthcare">Healthcare</a></li>
                         </ul>
                     </div>
                     <div>
@@ -787,136 +360,8 @@
     <script src="../../assets/i18n/locales/en.bundle.js"></script>
     <script src="../../assets/i18n/locales/id.bundle.js"></script>
     <script src="../../assets/i18n/loader.js"></script>
-    <script>document.addEventListener("DOMContentLoaded", function () { lucide.createIcons(); });</script>
-
-    <!-- Navbar scroll state -->
-    <script>
-    (function () {
-        var nav = document.getElementById('navbar-sticky');
-        if (!nav) return;
-        function toggle() {
-            if (window.scrollY > 50) { nav.classList.add('scrolled'); }
-            else { nav.classList.remove('scrolled'); }
-        }
-        toggle();
-        window.addEventListener('scroll', toggle, { passive: true });
-    })();
-    </script>
-
-    <!-- GSAP reveal animations -->
-    <script>
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-        ScrollTrigger.batch('.reveal-up', {
-            start: 'top 88%',
-            once: true,
-            onEnter: function (batch) {
-                gsap.to(batch, { opacity: 1, y: 0, duration: 0.65, stagger: 0.08, ease: 'power2.out' });
-            }
-        });
-    }
-    </script>
-
-    <!-- IntersectionObserver fallback for .fm-hidden elements -->
-    <script>
-    (function () {
-        var obs = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) {
-                if (e.isIntersecting) {
-                    e.target.classList.remove('fm-hidden');
-                    e.target.classList.add('fm-visible');
-                    obs.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('.fm-hidden').forEach(function (el) { obs.observe(el); });
-    })();
-    </script>
-
-    <!-- Counter animation -->
-    <script>
-    (function () {
-        var counters = document.querySelectorAll('[data-counter]');
-        if (!counters.length) return;
-        var animated = false;
-        function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
-        function animateCounter(el) {
-            var target = parseInt(el.getAttribute('data-counter'), 10);
-            var suffix = el.getAttribute('data-suffix') || '';
-            var duration = 2000;
-            var start = performance.now();
-            function tick(now) {
-                var elapsed = now - start;
-                var progress = Math.min(elapsed / duration, 1);
-                var value = Math.round(easeOutCubic(progress) * target);
-                el.textContent = value.toLocaleString() + suffix;
-                if (progress < 1) requestAnimationFrame(tick);
-            }
-            requestAnimationFrame(tick);
-        }
-        var observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting && !animated) {
-                    animated = true;
-                    counters.forEach(function (c) { animateCounter(c); });
-                    observer.disconnect();
-                }
-            });
-        }, { threshold: 0.3 });
-        var statsSection = document.getElementById('approach');
-        if (statsSection) observer.observe(statsSection);
-    })();
-    </script>
-
-    <!-- WhatsApp widget toggle -->
-    <script>
-    (function () {
-        var launcher = document.getElementById('waLauncher');
-        var popup = document.getElementById('waPopup');
-        var close = document.getElementById('waClose');
-        if (!launcher || !popup) return;
-        function togglePopup() {
-            var isOpen = popup.classList.contains('is-open');
-            popup.classList.toggle('is-open');
-            launcher.setAttribute('aria-expanded', !isOpen);
-            popup.setAttribute('aria-hidden', isOpen);
-        }
-        launcher.addEventListener('click', togglePopup);
-        close.addEventListener('click', function (e) { e.stopPropagation(); togglePopup(); });
-        document.addEventListener('click', function (e) {
-            if (!popup.contains(e.target) && !launcher.contains(e.target) && popup.classList.contains('is-open')) {
-                togglePopup();
-            }
-        });
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && popup.classList.contains('is-open')) togglePopup();
-        });
-    })();
-    </script>
-
-    <!-- Mobile menu close on resize -->
-    <script>
-    (function () {
-        var mm = document.getElementById('mobileMenu');
-        if (!mm) return;
-        window.addEventListener('resize', function () {
-            if (window.innerWidth >= 768 && !mm.classList.contains('hidden')) {
-                mm.classList.add('hidden');
-                document.body.classList.remove('overflow-hidden');
-            }
-        });
-    })();
-    </script>
-
-    <script>
-    (function() {
-        document.querySelectorAll('.mobile-nav-group-btn').forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                var group = this.closest('.mobile-nav-group');
-                group.classList.toggle('open');
-            });
-        });
-    })();
-    </script>
+    <script>window.__SKIP_COMPONENT_GSAP = true;</script>
+    <script src="../../assets/js/core/component-loader.js"></script>
+    <script src="../../assets/js/pages/sub-service-init.js"></script>
 </body>
 </html>

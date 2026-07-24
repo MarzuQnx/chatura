@@ -49,7 +49,7 @@
                     <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
                 </div>
             </div>
-            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
+            <button data-i18n-aria-label="aria.open_menu" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
                 <i data-lucide="menu" class="text-xl"></i>
             </button>
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
@@ -73,7 +73,7 @@
                         <a href="industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
                         <a href="industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
                         <a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
-                        <a href="industries/consumer/">Consumer &amp; Retail</a>
+                        <a href="industries/consumer/" data-i18n="nav.industry.consumer">Consumer &amp; Retail</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -103,14 +103,14 @@
         <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
                 <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
-                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
+                <button data-i18n-aria-label="aria.close_menu" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
             </div>
             <nav class="flex-1 overflow-y-auto p-6 space-y-1">
                 <a href="index.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-50" data-i18n="nav.about_us">About Us</a>
                 <div class="mobile-nav-group open">
                     <button class="mobile-nav-group-btn is-active-parent" type="button"><span data-i18n="nav.services">Services</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
-                        <a href="services.html">Overview</a>
+                        <a href="services.html" data-i18n="nav.overview">Overview</a>
                         <a href="services/accounting-finance/" class="" data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
                         <a href="services/tax-services/" class="" data-i18n="nav.service.tax">Tax Services</a>
                         <a href="services/business-transfer/" class="" data-i18n="nav.service.business_transfer">Business Transfer</a>
@@ -121,18 +121,18 @@
                 <div class="mobile-nav-group ">
                     <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.industries">Industries</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
-                        <a href="industries.html">Overview</a>
+                        <a href="industries.html" data-i18n="nav.overview">Overview</a>
                         <a href="industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a>
                         <a href="industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
                         <a href="industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
                         <a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
-                        <a href="industries/consumer/">Consumer &amp; Retail</a>
+                        <a href="industries/consumer/" data-i18n="nav.industry.consumer">Consumer &amp; Retail</a>
                     </div>
                 </div>
                 <div class="mobile-nav-group ">
                     <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.insights">Insights</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
-                        <a href="insights.html">Latest Insights</a>
+                        <a href="insights.html" data-i18n="nav.latest_insights">Latest Insights</a>
                         <a href="insights.html#executive-intelligence">Executive Intelligence</a>
                         <a href="insights.html#strategic-intelligence">Strategic Intelligence</a>
                         <a href="insights.html#publications">Publications</a>
@@ -718,7 +718,7 @@
                         <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-4.5 h-4.5"></i></a>
                         <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-4.5 h-4.5"></i></a>
                         <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-4.5 h-4.5"></i></a>
-                        <a href="mailto:info@chatura-indonesia.com" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4.5 h-4.5"></i></a>
+                        <a href="mailto:info@chatura-indonesia.com" aria-label="Email" data-i18n-aria-label="aria.email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4.5 h-4.5"></i></a>
                     </div>
                 </div>
 
@@ -778,7 +778,7 @@
                     <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
                     <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-4 h-4"></i></a>
                     <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-4 h-4"></i></a>
-                    <a href="mailto:info@chatura-indonesia.com" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4 h-4"></i></a>
+                    <a href="mailto:info@chatura-indonesia.com" aria-label="Email" data-i18n-aria-label="aria.email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4 h-4"></i></a>
                 </div>
             </div>
         </div>
@@ -860,8 +860,6 @@
         // GSAP Scroll Trigger Framework Logic Configuration
         if (typeof gsap !== 'undefined') {
             gsap.registerPlugin(ScrollTrigger);
-            gsap.to('#hero-transfer .reveal-up', { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power2.out', delay: 0.1 });
-
             ScrollTrigger.batch('.reveal-up:not(#hero-transfer .reveal-up)', {
                 start: 'top 88%',
                 once: true,

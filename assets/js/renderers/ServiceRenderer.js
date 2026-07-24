@@ -27,7 +27,7 @@
             
             for (var i = 0; i < services.length; i++) {
                 var s = services[i];
-                var title = loc(s, 'id_lang');
+                var title = loc(s.name);
                 var desc = loc(s.description);
                 
                 var capabilitiesHtml = '';
@@ -79,7 +79,7 @@
             
             for (var i = 0; i < services.length; i++) {
                 var s = services[i];
-                var title = loc(s, 'id_lang');
+                var title = loc(s.name);
                 var desc = loc(s.description);
                 
                 var featuresHtml = '';

@@ -1,0 +1,131 @@
+<header id="navbar-sticky" class="fixed top-0 left-0 right-0 w-full" style="z-index:9999">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <div class="font-bold text-2xl tracking-wider text-[#004D34] flex items-center gap-2">
+                <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia"
+                        class="h-10 w-auto"></a>
+            </div>
+        </div>
+        <button data-i18n-aria-label="aria.open_menu" aria-label="Open menu"
+            onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')"
+            class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
+            <i data-lucide="menu" class="text-xl"></i>
+        </button>
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
+            <a href="index.html" class="text-[#004D34] font-semibold transition" data-i18n="nav.about_us">About Us</a>
+            <div class="nav-dropdown">
+                <a href="services.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span
+                        data-i18n="nav.services">Services</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="services.html" data-i18n="nav.services_overview">Overview</a>
+                    <a href="services/accounting-finance/" data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
+                    <a href="services/tax-services/" data-i18n="nav.service.tax">Tax Services</a>
+                    <a href="services/business-transfer/" data-i18n="nav.service.business_transfer">Business Transfer</a>
+                    <a href="services/risk-management/" data-i18n="nav.service.risk_management">Risk Management</a>
+                    <a href="services/corporate-advisory/" data-i18n="nav.service.corporate_advisory">Corporate Advisory</a>
+                </div>
+            </div>
+            <div class="nav-dropdown">
+                <a href="industries.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span
+                        data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="industries.html" data-i18n="nav.industries_overview">Overview</a>
+                    <a href="industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a>
+                    <a href="industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
+                    <a href="industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
+                    <a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
+                    <a href="industries/consumer/" data-i18n="nav.industry.consumer">Consumer &amp; Retail</a>
+                </div>
+            </div>
+            <div class="nav-dropdown">
+                <a href="insights.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span
+                        data-i18n="nav.insights">Insights</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="insights.html" data-i18n="nav.insights_latest">Latest Insights</a>
+                    <a href="insights.html#executive-intelligence" data-i18n="nav.executive_intelligence">Executive Intelligence</a>
+                    <a href="insights.html#strategic-intelligence" data-i18n="nav.strategic_intelligence">Strategic Intelligence</a>
+                    <a href="insights.html#publications" data-i18n="nav.publications">Publications</a>
+                    <a href="insights.html#downloads" data-i18n="nav.downloads">Downloads</a>
+                </div>
+            </div>
+            <a href="our-people.html" class="hover:text-emerald-800 transition" data-i18n="nav.our_people">Our People</a>
+            <a href="career.html" class="hover:text-emerald-800 transition" data-i18n="nav.career">Join Us</a>
+            <a href="contact-us.html" class="hover:text-emerald-800 transition" data-i18n="nav.contact">Contact</a>
+        </nav>
+        <div class="hidden md:flex items-center space-x-6 text-sm">
+            <div id="lang-selector">
+                <a href="#" data-lang="en" class="lang-active">EN</a>
+                <a href="#" data-lang="id" class="lang-inactive">ID</a>
+            </div>
+            <a href="contact-us.html"
+                class="bg-[#004D34] text-white px-5 py-2 rounded font-medium hover:bg-[#003322] transition">
+                <span data-i18n="nav.lets_talk">Let's Talk</span> <i data-lucide="arrow-right" class="text-xs ml-1"></i>
+            </a>
+        </div>
+    </div>
+    <div id="mobileMenu" class="hidden fixed inset-0 flex flex-col w-full h-full min-h-screen" style="background-color: #ffffff; z-index: 999999; top:0; left:0; right:0; bottom:0;">
+        <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100 bg-white shrink-0">
+            <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia"
+                    class="h-10 w-auto"></a>
+            <button data-i18n-aria-label="aria.close_menu" aria-label="Close menu"
+                onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')"
+                class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-2 hover:bg-gray-100"><i
+                    data-lucide="x" class="text-2xl"></i></button>
+        </div>
+        <nav class="flex-1 overflow-y-auto p-6 space-y-2">
+            <a href="index.html"
+                class="bg-emerald-50 text-emerald-800 block py-3 px-4 rounded-lg text-base font-semibold hover:bg-emerald-100"
+                data-i18n="nav.about_us">About Us</a>
+            <div class="mobile-nav-group">
+                <button class="mobile-nav-group-btn w-full flex justify-between items-center py-3 px-4 rounded-lg text-base font-semibold text-gray-800 hover:bg-gray-50" type="button"><span data-i18n="nav.services">Services</span><i
+                        data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                <div class="mobile-nav-submenu pl-4 space-y-1">
+                    <a href="services.html" class="block py-2 text-sm text-gray-600 hover:text-emerald-800" data-i18n="nav.services_overview">Overview</a>
+                    <a href="services/accounting-finance/" class="block py-2 text-sm text-gray-600 hover:text-emerald-800" data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
+                    <a href="services/tax-services/" class="block py-2 text-sm text-gray-600 hover:text-emerald-800" data-i18n="nav.service.tax">Tax Services</a>
+                    <a href="services/business-transfer/" class="block py-2 text-sm text-gray-600 hover:text-emerald-800" data-i18n="nav.service.business_transfer">Business Transfer</a>
+                    <a href="services/risk-management/" class="block py-2 text-sm text-gray-600 hover:text-emerald-800" data-i18n="nav.service.risk_management">Risk Management</a>
+                    <a href="services/corporate-advisory/" class="block py-2 text-sm text-gray-600 hover:text-emerald-800" data-i18n="nav.service.corporate_advisory">Corporate Advisory</a>
+                </div>
+            </div>
+            <div class="mobile-nav-group">
+                <button class="mobile-nav-group-btn w-full flex justify-between items-center py-3 px-4 rounded-lg text-base font-semibold text-gray-800 hover:bg-gray-50" type="button"><span data-i18n="nav.industries">Industries</span><i
+                        data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                <div class="mobile-nav-submenu pl-4 space-y-1">
+                    <a href="industries.html" class="block py-2 text-sm text-gray-600 hover:text-emerald-800" data-i18n="nav.industries_overview">Overview</a>
+                    <a href="industries/manufacturing/" class="block py-2 text-sm text-gray-600 hover:text-emerald-800" data-i18n="nav.industry.manufacturing">Manufacturing</a>
+                    <a href="industries/energy/" class="block py-2 text-sm text-gray-600 hover:text-emerald-800" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
+                    <a href="industries/healthcare/" class="block py-2 text-sm text-gray-600 hover:text-emerald-800" data-i18n="nav.industry.healthcare">Healthcare</a>
+                    <a href="industries/technology/" class="block py-2 text-sm text-gray-600 hover:text-emerald-800" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
+                    <a href="industries/consumer/" class="block py-2 text-sm text-gray-600 hover:text-emerald-800" data-i18n="nav.industry.consumer">Consumer &amp; Retail</a>
+                </div>
+            </div>
+            <div class="mobile-nav-group">
+                <button class="mobile-nav-group-btn w-full flex justify-between items-center py-3 px-4 rounded-lg text-base font-semibold text-gray-800 hover:bg-gray-50" type="button"><span data-i18n="nav.insights">Insights</span><i
+                        data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                <div class="mobile-nav-submenu pl-4 space-y-1">
+                    <a href="insights.html" class="block py-2 text-sm text-gray-600 hover:text-emerald-800" data-i18n="nav.insights_latest">Latest Insights</a>
+                    <a href="insights.html#executive-intelligence" class="block py-2 text-sm text-gray-600 hover:text-emerald-800" data-i18n="nav.executive_intelligence">Executive Intelligence</a>
+                    <a href="insights.html#strategic-intelligence" class="block py-2 text-sm text-gray-600 hover:text-emerald-800" data-i18n="nav.strategic_intelligence">Strategic Intelligence</a>
+                    <a href="insights.html#publications" class="block py-2 text-sm text-gray-600 hover:text-emerald-800" data-i18n="nav.publications">Publications</a>
+                    <a href="insights.html#downloads" class="block py-2 text-sm text-gray-600 hover:text-emerald-800" data-i18n="nav.downloads">Downloads</a>
+                </div>
+            </div>
+            <a href="our-people.html" class="block py-3 px-4 rounded-lg text-base font-semibold text-gray-800 hover:bg-gray-50"
+                data-i18n="nav.our_people">Our People</a>
+            <a href="career.html" class="block py-3 px-4 rounded-lg text-base font-semibold text-gray-800 hover:bg-gray-50"
+                data-i18n="nav.career">Join Us</a>
+            <a href="contact-us.html" class="block py-3 px-4 rounded-lg text-base font-semibold text-gray-800 hover:bg-gray-50"
+                data-i18n="nav.contact">Contact</a>
+        </nav>
+        <div class="p-6 border-t border-gray-100 bg-gray-50 shrink-0 flex items-center justify-between gap-4">
+            <div id="lang-selector-mobile">
+                <a href="#" data-lang="en" class="lang-active">EN</a>
+                <a href="#" data-lang="id" class="lang-inactive">ID</a>
+            </div>
+            <a href="contact-us.html" class="flex-1 bg-[#004D34] text-white py-2.5 rounded-lg font-semibold text-center block hover:bg-[#003322] transition text-sm">
+                <span data-i18n="nav.lets_talk">Let's Talk</span> <i data-lucide="arrow-right" class="text-xs ml-1 inline"></i>
+            </a>
+        </div>
+    </div>
+</header>

@@ -172,7 +172,7 @@
                     <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
                 </div>
             </div>
-            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
+            <button data-i18n-aria-label="aria.open_menu" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
                 <i data-lucide="menu" class="text-xl"></i>
             </button>
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
@@ -196,17 +196,17 @@
                         <a href="industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a>
                         <a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
                         <a href="industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
-                        <a href="industries/consumer/">Consumer &amp; Retail</a>
+                        <a href="industries/consumer/" data-i18n="nav.industry.consumer">Consumer &amp; Retail</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
                     <a href="insights.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.insights">Insights</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
                     <div class="nav-dropdown-menu">
                         <a href="insights.html" data-i18n="nav.insights_latest">Latest Insights</a>
-                        <a href="insights.html#executive-intelligence">Executive Intelligence</a>
-                        <a href="insights.html#strategic-intelligence">Strategic Intelligence</a>
-                        <a href="insights.html#publications">Publications</a>
-                        <a href="insights.html#downloads">Downloads</a>
+                        <a href="insights.html#executive-intelligence" data-i18n="nav.executive_intelligence">Executive Intelligence</a>
+                        <a href="insights.html#strategic-intelligence" data-i18n="nav.strategic_intelligence">Strategic Intelligence</a>
+                        <a href="insights.html#publications" data-i18n="nav.publications">Publications</a>
+                        <a href="insights.html#downloads" data-i18n="nav.downloads">Downloads</a>
                     </div>
                 </div>
                 <a href="our-people.html" class="hover:text-emerald-800 transition" data-i18n="nav.our_people">Our People</a>
@@ -227,14 +227,14 @@
         <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
                 <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
-                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
+                <button data-i18n-aria-label="aria.close_menu" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
             </div>
             <nav class="flex-1 overflow-y-auto p-6 space-y-1">
                 <a href="index.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium" data-i18n="nav.about_us">About Us</a>
                 <div class="mobile-nav-group">
                     <button class="mobile-nav-group-btn" type="button"><span data-i18n="nav.services">Services</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
-                        <a href="services.html">Overview</a>
+                        <a href="services.html" data-i18n="nav.services_overview">Overview</a>
                         <a href="services/accounting-finance/" data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
                         <a href="services/tax-services/" data-i18n="nav.service.tax">Tax Services</a>
                         <a href="services/business-transfer/" data-i18n="nav.service.business_transfer">Business Transfer</a>
@@ -245,22 +245,22 @@
                 <div class="mobile-nav-group open">
                     <button class="mobile-nav-group-btn is-active-parent" type="button"><span data-i18n="nav.industries">Industries</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
-                        <a href="industries.html">Overview</a>
+                        <a href="industries.html" data-i18n="nav.industries_overview">Overview</a>
                         <a href="industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
                         <a href="industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a>
                         <a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
                         <a href="industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
-                        <a href="industries/consumer/">Consumer &amp; Retail</a>
+                        <a href="industries/consumer/" data-i18n="nav.industry.consumer">Consumer &amp; Retail</a>
                     </div>
                 </div>
                 <div class="mobile-nav-group">
                     <button class="mobile-nav-group-btn" type="button"><span data-i18n="nav.insights">Insights</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
-                        <a href="insights.html">Latest Insights</a>
-                        <a href="insights.html#executive-intelligence">Executive Intelligence</a>
-                        <a href="insights.html#strategic-intelligence">Strategic Intelligence</a>
-                        <a href="insights.html#publications">Publications</a>
-                        <a href="insights.html#downloads">Downloads</a>
+                        <a href="insights.html" data-i18n="nav.insights_latest">Latest Insights</a>
+                        <a href="insights.html#executive-intelligence" data-i18n="nav.executive_intelligence">Executive Intelligence</a>
+                        <a href="insights.html#strategic-intelligence" data-i18n="nav.strategic_intelligence">Strategic Intelligence</a>
+                        <a href="insights.html#publications" data-i18n="nav.publications">Publications</a>
+                        <a href="insights.html#downloads" data-i18n="nav.downloads">Downloads</a>
                     </div>
                 </div>
                 <a href="our-people.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium" data-i18n="nav.our_people">Our People</a>
@@ -536,6 +536,37 @@
         </div>
     </div>
 
+    <!-- ============ ARTICLE / POST NOT AVAILABLE MODAL POPUP ============ -->
+    <div id="articleNotAvailableModal" class="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-gray-950/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+        <div id="articleNotAvailableContent" class="relative w-full max-w-md bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 md:p-8 transform scale-95 transition-all duration-300">
+            <button onclick="closeArticleNotAvailableModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 p-1.5 rounded-full hover:bg-gray-100 transition" aria-label="Close">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="w-12 h-12 rounded-xl bg-emerald-50 text-[#004D34] flex items-center justify-center mb-4">
+                <i data-lucide="file-text" class="w-6 h-6"></i>
+            </div>
+            <h3 id="notAvailableTitle" class="font-serif text-xl font-bold text-gray-950 mb-2">
+                Article / Post Not Available Yet
+            </h3>
+            <div id="notAvailableTopicBadge" class="hidden mb-3">
+                <span id="notAvailableTopic" class="text-[11px] font-semibold text-emerald-900 bg-emerald-50 border border-emerald-100/80 rounded-md px-2.5 py-1 inline-block"></span>
+            </div>
+            <p id="notAvailableDesc" class="text-sm text-gray-600 leading-relaxed mb-6">
+                The detailed article or publication for this topic is currently being prepared by our editorial team and will be released soon. In the meantime, feel free to explore our published insights.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center gap-3">
+                <a href="insights.html" id="notAvailableExploreBtn" class="w-full sm:w-auto flex-1 bg-[#004D34] text-white px-5 py-2.5 rounded-xl text-xs font-semibold text-center hover:bg-emerald-900 transition flex items-center justify-center gap-1.5">
+                    <span data-i18n="people.explore_insights">Explore Insights</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <button onclick="closeArticleNotAvailableModal()" id="notAvailableCloseBtn" class="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-semibold text-gray-600 bg-gray-100 hover:bg-gray-200 transition text-center" data-i18n="people.close">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+
     <!-- ============ STRATEGIC INTELLIGENCE ============ -->
     <section id="strategic-intelligence" class="py-24" style="background: #ffffff;">
         <div class="container mx-auto px-6">
@@ -623,7 +654,7 @@
                         <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-4.5 h-4.5"></i></a>
                         <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-4.5 h-4.5"></i></a>
                         <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-4.5 h-4.5"></i></a>
-                        <a href="mailto:info@chatura-indonesia.com" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4.5 h-4.5"></i></a>
+                        <a href="mailto:info@chatura-indonesia.com" data-i18n-aria-label="aria.email" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4.5 h-4.5"></i></a>
                     </div>
                 </div>
                 <div class="reveal-up grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-12">
@@ -678,7 +709,7 @@
                     <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
                     <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-4 h-4"></i></a>
                     <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300"><i data-lucide="youtube" class="w-4 h-4"></i></a>
-                    <a href="mailto:info@chatura-indonesia.com" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4 h-4"></i></a>
+                    <a href="mailto:info@chatura-indonesia.com" data-i18n-aria-label="aria.email" aria-label="Email" class="hover:text-white transition-colors duration-300"><i data-lucide="mail" class="w-4 h-4"></i></a>
                 </div>
             </div>
         </div>
@@ -702,7 +733,7 @@
     <script src="assets/js/repositories/ContactRepository.js"></script>
     <script src="assets/js/repositories/SettingsRepository.js"></script>
     <script src="assets/js/repositories/CareerRepository.js"></script>
-    <script src="assets/js/renderers/IndustryRenderer.js"></script>
+    <script src="assets/js/renderers/IndustryRenderer.js?v=1.2"></script>
     <script src="assets/js/core/TranslationRepository.js"></script>
     <script src="assets/js/core/PageLoader.js"></script>
     <script src="assets/i18n/locales/en.bundle.js"></script>
@@ -750,33 +781,200 @@
             if (typeof lucide !== 'undefined') lucide.createIcons();
         }
 
-        var _expertModal = document.getElementById('expertBioModal');
+        // Topic Link Resolver Engine
+        function resolveTopicLink(text) {
+            if (!text) return null;
+            var lower = text.toLowerCase();
+            if (lower.indexOf('tax') !== -1 || lower.indexOf('pajak') !== -1 || lower.indexOf('fiscal') !== -1 || lower.indexOf('fiskal') !== -1) {
+                return { url: 'services/tax-services/', label: 'Tax Services' };
+            }
+            if (lower.indexOf('transfer') !== -1 || lower.indexOf('m&a') !== -1 || lower.indexOf('merger') !== -1 || lower.indexOf('acquisition') !== -1 || lower.indexOf('akuisi') !== -1 || lower.indexOf('succession') !== -1 || lower.indexOf('suksesi') !== -1) {
+                return { url: 'services/business-transfer/', label: 'Business Transfer' };
+            }
+            if (lower.indexOf('risk') !== -1 || lower.indexOf('risiko') !== -1 || lower.indexOf('erm') !== -1 || lower.indexOf('cyber') !== -1 || lower.indexOf('siber') !== -1 || lower.indexOf('grc') !== -1) {
+                return { url: 'services/risk-management/', label: 'Risk Management' };
+            }
+            if (lower.indexOf('account') !== -1 || lower.indexOf('akuntan') !== -1 || lower.indexOf('finance') !== -1 || lower.indexOf('keuangan') !== -1 || lower.indexOf('credit') !== -1 || lower.indexOf('kredit') !== -1) {
+                return { url: 'services/accounting-finance/', label: 'Accounting & Finance' };
+            }
+            if (lower.indexOf('advisory') !== -1 || lower.indexOf('consulting') !== -1 || lower.indexOf('konsultasi') !== -1 || lower.indexOf('strategy') !== -1 || lower.indexOf('strategi') !== -1) {
+                return { url: 'services/corporate-advisory/', label: 'Corporate Advisory' };
+            }
+            if (lower.indexOf('energy') !== -1 || lower.indexOf('energi') !== -1 || lower.indexOf('mining') !== -1 || lower.indexOf('tambang') !== -1) {
+                return { url: 'industries/energy/', label: 'Energy & Natural Resources' };
+            }
+            if (lower.indexOf('manufacturing') !== -1 || lower.indexOf('manufaktur') !== -1 || lower.indexOf('automotive') !== -1 || lower.indexOf('otomotif') !== -1) {
+                return { url: 'industries/manufacturing/', label: 'Manufacturing' };
+            }
+            if (lower.indexOf('financial') !== -1 || lower.indexOf('bank') !== -1 || lower.indexOf('perbankan') !== -1) {
+                return { url: 'industries/financial/', label: 'Financial Services' };
+            }
+            if (lower.indexOf('tech') !== -1 || lower.indexOf('teknologi') !== -1 || lower.indexOf('digital') !== -1) {
+                return { url: 'industries/technology/', label: 'Technology' };
+            }
+            if (lower.indexOf('health') !== -1 || lower.indexOf('kesehatan') !== -1 || lower.indexOf('farmasi') !== -1) {
+                return { url: 'industries/healthcare/', label: 'Healthcare' };
+            }
+            if (lower.indexOf('consumer') !== -1 || lower.indexOf('fmcg') !== -1 || lower.indexOf('ritel') !== -1) {
+                return { url: 'industries/consumer/', label: 'Consumer Goods' };
+            }
+            return null;
+        }
+
+        window.showArticleNotAvailableModal = function(topicTitle) {
+            var modal = document.getElementById('articleNotAvailableModal');
+            var content = document.getElementById('articleNotAvailableContent');
+            var titleEl = document.getElementById('notAvailableTitle');
+            var descEl = document.getElementById('notAvailableDesc');
+            var topicBadge = document.getElementById('notAvailableTopicBadge');
+            var topicEl = document.getElementById('notAvailableTopic');
+
+            if (!modal) return;
+
+            var isIndonesian = document.documentElement.lang === 'id' || (window.TranslationRepository && window.TranslationRepository.getCurrentLanguage() === 'id');
+
+            if (isIndonesian) {
+                titleEl.textContent = 'Artikel / Post Belum Tersedia';
+                descEl.textContent = 'Artikel, publikasi, atau post detail untuk topik ini sedang disiapkan oleh tim editorial kami dan akan segera diterbitkan. Silakan jelajahi wawasan lain yang telah tersedia.';
+            } else {
+                titleEl.textContent = 'Article / Post Not Available Yet';
+                descEl.textContent = 'The detailed article or publication for this topic is currently being prepared by our editorial team and will be released soon. In the meantime, feel free to explore our published insights.';
+            }
+
+            if (topicTitle) {
+                topicEl.textContent = topicTitle;
+                topicBadge.classList.remove('hidden');
+            } else {
+                topicBadge.classList.add('hidden');
+            }
+
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100', 'pointer-events-auto');
+            if (content) {
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        };
+
+        window.closeArticleNotAvailableModal = function() {
+            var modal = document.getElementById('articleNotAvailableModal');
+            var content = document.getElementById('articleNotAvailableContent');
+            if (!modal) return;
+            modal.classList.remove('opacity-100', 'pointer-events-auto');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            if (content) {
+                content.classList.remove('scale-100');
+                content.classList.add('scale-95');
+            }
+        };
+
         window.openExpertModal = function (idx) {
-            var e = EXPERTS[idx];
+            var modal = document.getElementById('expertBioModal') || document.getElementById('bioModal');
+            if (!modal) return;
+
+            var e = null;
+            if (typeof idx === 'number' || (typeof idx === 'string' && !isNaN(idx) && idx.trim() !== '')) {
+                var numIdx = parseInt(idx, 10);
+                if (typeof EXPERTS !== 'undefined' && EXPERTS[numIdx]) {
+                    e = EXPERTS[numIdx];
+                } else if (window.PeopleRepository) {
+                    e = window.PeopleRepository.getAll()[numIdx];
+                }
+            }
+            if (!e && window.PeopleRepository) {
+                e = window.PeopleRepository.getAll().find(function(x) { return x.id === idx || x.peopleId === idx; });
+            }
+            if (!e && typeof EXPERTS !== 'undefined') {
+                e = EXPERTS.find(function(x) { return x.id === idx || x.peopleId === idx || x.name === idx; });
+            }
             if (!e) return;
-            var t = window.getTranslations() || {};
-            document.getElementById('expertModalImg').src = e.photo;
-            document.getElementById('expertModalImg').alt = e.name;
-            document.getElementById('expertModalName').textContent = e.name;
-            document.getElementById('expertModalTitle').textContent = e.role;
-            document.getElementById('expertModalLinkedin').href = e.linkedin;
-            document.getElementById('expertModalEmail').href = 'mailto:' + e.email;
-            document.getElementById('expertModalBio').textContent = t[e.bioKey] || e.bioKey;
-            document.getElementById('expertModalExpertise').innerHTML = (e.expertiseKeys || []).map(function (k) {
-                return '<span class="text-[11px] font-medium bg-emerald-50 text-emerald-900 border border-emerald-100/60 px-2.5 py-0.5 rounded-full">' + (t[k] || k) + '</span>';
-            }).join('');
-            document.getElementById('expertModalExperience').innerHTML = (e.experienceKeys || []).map(function (k) {
-                return '<li class="flex items-start gap-2 mb-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-emerald-700 shrink-0"></i> <span>' + (t[k] || k) + '</span></li>';
-            }).join('');
-            _expertModal.classList.add('active');
+
+            var t = (window.TranslationRepository ? window.TranslationRepository.getAllTranslations() : null) || (window.getTranslations ? window.getTranslations() : {}) || {};
+            var imgEl = document.getElementById('expertModalImg') || document.getElementById('modal-img');
+            if (imgEl) { imgEl.src = e.photo || e.image || ''; imgEl.alt = e.name || (e.nameKey ? t[e.nameKey] : ''); }
+
+            var nameEl = document.getElementById('expertModalName') || document.getElementById('modal-name');
+            if (nameEl) nameEl.textContent = e.name || (e.nameKey ? t[e.nameKey] : '');
+
+            var titleEl = document.getElementById('expertModalTitle') || document.getElementById('modal-title');
+            if (titleEl) titleEl.textContent = e.role || (e.titleKey ? (t[e.titleKey] + (e.practiceKey ? ' — ' + t[e.practiceKey] : '')) : '');
+
+            var liEl = document.getElementById('expertModalLinkedin') || document.getElementById('modal-linkedin');
+            if (liEl) liEl.href = e.linkedin || '#';
+
+            var emEl = document.getElementById('expertModalEmail') || document.getElementById('modal-email');
+            if (emEl) emEl.href = e.email ? ('mailto:' + e.email) : '#';
+
+            var bioEl = document.getElementById('expertModalBio') || document.getElementById('modal-bio');
+            if (bioEl) bioEl.textContent = e.bioKey ? (t[e.bioKey] || e.bioKey) : (e.bio || '');
+
+            var expKeys = e.expertiseKeys || e.expertise || [];
+            var expContainer = document.getElementById('expertModalExpertise') || document.getElementById('modal-expertise');
+            if (expContainer) {
+                expContainer.innerHTML = expKeys.map(function (k) {
+                    var translated = typeof k === 'string' && k.indexOf('.') > -1 ? (t[k] || k) : k;
+                    var res = resolveTopicLink(translated);
+                    if (res) {
+                        return '<a href="' + res.url + '" class="text-[11px] font-medium bg-emerald-50 text-emerald-900 border border-emerald-100/60 px-2.5 py-0.5 rounded-full hover:bg-[#004D34] hover:text-white transition-colors duration-200 inline-flex items-center gap-1 group">' + translated + ' <i data-lucide="external-link" class="w-2.5 h-2.5 opacity-60 group-hover:opacity-100"></i></a>';
+                    }
+                    var escapedVal = translated.replace(/'/g, "\\'");
+                    return '<button onclick="showArticleNotAvailableModal(\'' + escapedVal + '\')" class="text-[11px] font-medium bg-emerald-50 text-emerald-900 border border-emerald-100/60 px-2.5 py-0.5 rounded-full hover:bg-emerald-100 transition-colors duration-200 text-left">' + translated + '</button>';
+                }).join('');
+            }
+
+            var exprKeys = e.experienceKeys || e.experience || [];
+            var expContainer2 = document.getElementById('expertModalExperience') || document.getElementById('modal-experience');
+            if (expContainer2) {
+                expContainer2.innerHTML = exprKeys.map(function (k) {
+                    var translated = typeof k === 'string' && k.indexOf('.') > -1 ? (t[k] || k) : k;
+                    var res = resolveTopicLink(translated);
+                    var escapedVal = translated.replace(/'/g, "\\'");
+                    if (res) {
+                        return '<li class="flex items-start gap-2 mb-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-emerald-700 shrink-0"></i> <a href="' + res.url + '" class="hover:text-[#004D34] hover:underline transition-colors flex items-center gap-1">' + translated + ' <i data-lucide="arrow-up-right" class="w-3 h-3 text-emerald-600"></i></a></li>';
+                    }
+                    return '<li class="flex items-start gap-2 mb-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-emerald-700 shrink-0"></i> <button onclick="showArticleNotAvailableModal(\'' + escapedVal + '\')" class="text-left hover:text-[#004D34] hover:underline transition-colors">' + translated + '</button></li>';
+                }).join('');
+            }
+
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100', 'pointer-events-auto', 'active');
+
+            var content = modal.querySelector('.expert-modal-content') || modal.querySelector('.modal-content');
+            if (content) {
+                content.classList.remove('scale-95', 'translate-y-[15px]');
+                content.classList.add('scale-100', 'translate-y-0');
+            }
+
             document.body.style.overflow = 'hidden';
             if (typeof lucide !== 'undefined') lucide.createIcons();
         };
+
         window.closeExpertModal = function () {
-            _expertModal.classList.remove('active');
-            document.body.style.overflow = '';
+            var modal = document.getElementById('expertBioModal') || document.getElementById('bioModal');
+            if (modal) {
+                modal.classList.remove('opacity-100', 'pointer-events-auto', 'active');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+
+                var content = modal.querySelector('.expert-modal-content') || modal.querySelector('.modal-content');
+                if (content) {
+                    content.classList.remove('scale-100', 'translate-y-0');
+                    content.classList.add('scale-95', 'translate-y-[15px]');
+                }
+                document.body.style.overflow = '';
+            }
         };
-        renderExperts();
+
+        window.openBioModal = window.openExpertModal;
+        window.openAuthorModal = window.openExpertModal;
+        window.closeBioModal = window.closeExpertModal;
+        window.closeAuthorModal = window.closeExpertModal;
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', renderExperts);
+        } else {
+            renderExperts();
+        }
         window.addEventListener('langChange', function () { renderExperts(); });
 
         /* =========================================================
@@ -825,11 +1023,6 @@
             });
         } else {
             gsap.registerPlugin(ScrollTrigger);
-
-            // ── Hero reveal (immediate, on load) ──────────────────────────────────
-            gsap.to('#hero-industry .reveal-up', {
-                opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power2.out', delay: 0.15
-            });
 
             // ── Generic batch for ALL reveal-up elements outside detailed industry sections ──
             ScrollTrigger.batch('.reveal-up:not(#hero-industry .reveal-up):not(#energy .reveal-up):not(#manufacturing .reveal-up):not(#technology .reveal-up):not(#healthcare .reveal-up):not(#consumer .reveal-up)', {

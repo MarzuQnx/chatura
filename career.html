@@ -146,7 +146,7 @@
                             class="h-10 w-auto"></a>
                 </div>
             </div>
-            <button aria-label="Open menu"
+            <button data-i18n-aria-label="aria.open_menu" aria-label="Open menu"
                 onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')"
                 class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
                 <i data-lucide="menu" class="text-xl"></i>
@@ -176,7 +176,7 @@
                         <a href="industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
                         <a href="industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
                         <a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
-                        <a href="industries/consumer/">Consumer &amp; Retail</a>
+                        <a href="industries/consumer/" data-i18n="nav.industry.consumer">Consumer &amp; Retail</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -212,7 +212,7 @@
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
                 <a href="index.html"><img width="487" height="350" src="assets/chatura.webp" alt="Chatura Indonesia"
                         class="h-10 w-auto"></a>
-                <button aria-label="Close menu"
+                <button data-i18n-aria-label="aria.close_menu" aria-label="Close menu"
                     onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')"
                     class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i
                         data-lucide="x" class="text-xl"></i></button>
@@ -225,7 +225,7 @@
                     <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.services">Services</span><i
                             data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
-                        <a href="services.html">Overview</a>
+                        <a href="services.html" data-i18n="nav.overview">Overview</a>
                         <a href="services/accounting-finance/" class="" data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
                         <a href="services/tax-services/" class="" data-i18n="nav.service.tax">Tax Services</a>
                         <a href="services/business-transfer/" class="" data-i18n="nav.service.business_transfer">Business Transfer</a>
@@ -238,19 +238,19 @@
                             data-i18n="nav.industries">Industries</span><i data-lucide="chevron-down"
                             class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
-                        <a href="industries.html">Overview</a>
+                        <a href="industries.html" data-i18n="nav.overview">Overview</a>
                         <a href="industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a>
                         <a href="industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
                         <a href="industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
                         <a href="industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
-                        <a href="industries/consumer/">Consumer &amp; Retail</a>
+                        <a href="industries/consumer/" data-i18n="nav.industry.consumer">Consumer &amp; Retail</a>
                     </div>
                 </div>
                 <div class="mobile-nav-group ">
                     <button class="mobile-nav-group-btn " type="button"><span data-i18n="nav.insights">Insights</span><i
                             data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
-                        <a href="insights.html">Latest Insights</a>
+                        <a href="insights.html" data-i18n="nav.latest_insights">Latest Insights</a>
                         <a href="insights.html#executive-intelligence">Executive Intelligence</a>
                         <a href="insights.html#strategic-intelligence">Strategic Intelligence</a>
                         <a href="insights.html#publications">Publications</a>
@@ -692,7 +692,7 @@
                         <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer"
                             class="hover:text-white transition-colors duration-300"><i data-lucide="youtube"
                                 class="w-4.5 h-4.5"></i></a>
-                        <a href="mailto:info@chatura-indonesia.com" aria-label="Email"
+                        <a href="mailto:info@chatura-indonesia.com" data-i18n-aria-label="aria.email" aria-label="Email"
                             class="hover:text-white transition-colors duration-300"><i data-lucide="mail"
                                 class="w-4.5 h-4.5"></i></a>
                     </div>
@@ -819,7 +819,7 @@
                     <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer"
                         class="hover:text-white transition-colors duration-300"><i data-lucide="youtube"
                             class="w-4 h-4"></i></a>
-                    <a href="mailto:info@chatura-indonesia.com" aria-label="Email"
+                    <a href="mailto:info@chatura-indonesia.com" data-i18n-aria-label="aria.email" aria-label="Email"
                         class="hover:text-white transition-colors duration-300"><i data-lucide="mail"
                             class="w-4 h-4"></i></a>
                 </div>
@@ -1276,7 +1276,6 @@
             /* ── GSAP animations ── */
             if (typeof gsap !== 'undefined') {
                 gsap.registerPlugin(ScrollTrigger);
-                gsap.to('#hero-careers .reveal-up', { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power2.out', delay: 0.15 });
                 ScrollTrigger.batch('.reveal-up:not(#hero-careers .reveal-up)', { start: 'top 85%', once: true, onEnter: function (batch) { gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out' }); } });
                 setTimeout(function () { document.querySelectorAll('.reveal-up').forEach(function (el) { if (getComputedStyle(el).opacity === '0') { el.style.opacity = 1; el.style.transform = 'none'; } }); }, 400);
             } else {

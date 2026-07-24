@@ -60,10 +60,15 @@
         @media (max-width: 640px) { .expert-card { padding: 1.25rem; gap: 1rem; } .expert-card__img { width: 72px; height: 96px; border-radius: 12px; } .expert-card__name { font-size: 0.9375rem; } }
 
         #mobileMenu:not(.hidden) { display: flex; flex-direction: column; }
-        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(.22,.61,.36,1), padding 0.35s cubic-bezier(.22,.61,.36,1); padding-top: 0; padding-bottom: 0; }
-        .faq-item.open .faq-content { max-height: 500px; padding-bottom: 1.25rem; }
-        .faq-item.open .faq-icon { transform: rotate(180deg); }
-        .faq-icon { transition: transform 0.3s ease; }
+        
+        .faq-item.open 
+        
+        
+    
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(.22,.61,.36,1), padding 0.3s ease; }
+        .faq-item.open .faq-answer { max-height: 600px; }
+        .faq-item.open .faq-chevron { transform: rotate(180deg); }
+        .faq-chevron { transition: transform 0.3s ease; }
     </style>
 </head>
 
@@ -77,7 +82,7 @@
                     <a href="../../index.html"><img width="487" height="350" src="../../assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
                 </div>
             </div>
-            <button aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
+            <button data-i18n-aria-label="aria.open_menu" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="md:hidden text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1">
                 <i data-lucide="menu" class="text-xl"></i>
             </button>
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
@@ -86,22 +91,22 @@
                     <a href="../../services.html" class="text-[#004D34] font-semibold inline-flex items-center gap-1"><span data-i18n="nav.services">Services</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
                     <div class="nav-dropdown-menu">
                         <a href="../../services.html" data-i18n="nav.services_overview">Overview</a>
-                        <a href="../../services/accounting-finance/">Accounting &amp; Finance</a>
-                        <a href="../../services/tax-services/" class="active">Tax Services</a>
-                        <a href="../../services/business-transfer/">Business Transfer</a>
-                        <a href="../../services/risk-management/">Risk Management</a>
-                        <a href="../../services/corporate-advisory/">Corporate Advisory</a>
+                        <a href="../../services/accounting-finance/" data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
+                        <a href="../../services/tax-services/" class="active" data-i18n="nav.service.tax">Tax Services</a>
+                        <a href="../../services/business-transfer/" data-i18n="nav.service.business_transfer">Business Transfer</a>
+                        <a href="../../services/risk-management/" data-i18n="nav.service.risk_management">Risk Management</a>
+                        <a href="../../services/corporate-advisory/" data-i18n="nav.service.corporate_advisory">Corporate Advisory</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
                     <a href="../../industries.html" class="hover:text-emerald-800 inline-flex items-center gap-1"><span data-i18n="nav.industries">Industries</span> <i data-lucide="chevron-down" class="text-xs"></i></a>
                     <div class="nav-dropdown-menu">
                         <a href="../../industries.html" data-i18n="nav.industries_overview">Overview</a>
-                        <a href="../../industries/manufacturing/">Manufacturing</a>
-                        <a href="../../industries/energy/">Energy &amp; Resources</a>
-                        <a href="../../industries/healthcare/">Healthcare</a>
-                        <a href="../../industries/technology/">Technology &amp; Digital</a>
-                        <a href="../../industries/consumer/">Consumer &amp; Retail</a>
+                        <a href="../../industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a>
+                        <a href="../../industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
+                        <a href="../../industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
+                        <a href="../../industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
+                        <a href="../../industries/consumer/" data-i18n="nav.industry.consumer">Consumer &amp; Retail</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -131,7 +136,7 @@
         <div id="mobileMenu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100">
                 <a href="../../index.html"><img width="487" height="350" src="../../assets/chatura.webp" alt="Chatura Indonesia" class="h-10 w-auto"></a>
-                <button aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
+                <button data-i18n-aria-label="aria.close_menu" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-600 focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"><i data-lucide="x" class="text-xl"></i></button>
             </div>
             <nav class="flex-1 overflow-y-auto p-6 space-y-1">
                 <a href="../../index.html" class="text-gray-600 hover:bg-gray-50 block py-3 px-4 rounded-lg text-base font-medium" data-i18n="nav.about_us">About Us</a>
@@ -139,22 +144,22 @@
                     <button class="mobile-nav-group-btn is-active-parent" type="button"><span data-i18n="nav.services">Services</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
                         <a href="../../services.html">Overview</a>
-                        <a href="../../services/accounting-finance/">Accounting &amp; Finance</a>
-                        <a href="../../services/tax-services/" class="is-active-sub">Tax Services</a>
-                        <a href="../../services/business-transfer/">Business Transfer</a>
-                        <a href="../../services/risk-management/">Risk Management</a>
-                        <a href="../../services/corporate-advisory/">Corporate Advisory</a>
+                        <a href="../../services/accounting-finance/" data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
+                        <a href="../../services/tax-services/" class="is-active-sub" data-i18n="nav.service.tax">Tax Services</a>
+                        <a href="../../services/business-transfer/" data-i18n="nav.service.business_transfer">Business Transfer</a>
+                        <a href="../../services/risk-management/" data-i18n="nav.service.risk_management">Risk Management</a>
+                        <a href="../../services/corporate-advisory/" data-i18n="nav.service.corporate_advisory">Corporate Advisory</a>
                     </div>
                 </div>
                 <div class="mobile-nav-group">
                     <button class="mobile-nav-group-btn" type="button"><span data-i18n="nav.industries">Industries</span><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
                         <a href="../../industries.html">Overview</a>
-                        <a href="../../industries/manufacturing/">Manufacturing</a>
-                        <a href="../../industries/energy/">Energy &amp; Resources</a>
-                        <a href="../../industries/healthcare/">Healthcare</a>
-                        <a href="../../industries/technology/">Technology &amp; Digital</a>
-                        <a href="../../industries/consumer/">Consumer &amp; Retail</a>
+                        <a href="../../industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a>
+                        <a href="../../industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
+                        <a href="../../industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
+                        <a href="../../industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
+                        <a href="../../industries/consumer/" data-i18n="nav.industry.consumer">Consumer &amp; Retail</a>
                     </div>
                 </div>
                 <div class="mobile-nav-group">
@@ -178,387 +183,20 @@
     </header>
 
     <main id="main-content">
-
-    <!-- ============ 1. HERO ============ -->
-    <section id="hero-service" class="relative bg-[#004D34] text-white overflow-hidden -mt-32 pt-32">
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80');"></div>
-        <div class="absolute inset-0" style="background: linear-gradient(100deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.75) 35%, rgba(255,255,255,0.15) 60%, transparent 75%);"></div>
-        <div class="container mx-auto px-6 relative z-10 py-24 md:py-32">
-            <div class="max-w-3xl">
-                <span class="reveal-up inline-block text-[10px] font-bold uppercase tracking-[0.25em] text-emerald-900 mb-4">Service 02</span>
-                <h1 class="reveal-up text-3xl md:text-5xl font-serif font-light text-gray-900 mb-4 leading-tight">
-                    Tax <span class="italic font-normal text-[#004D34]">Services</span>
-                </h1>
-                <p class="reveal-up text-gray-700/80 text-base md:text-lg mb-2 max-w-xl font-serif italic">Navigating Tax Complexity with Precision and Confidence.</p>
-                <p class="reveal-up text-gray-600 text-sm mb-8 max-w-2xl leading-relaxed">
-                    We help businesses manage their tax obligations, optimize tax positions, and ensure compliance with applicable regulations across domestic and international frameworks.
-                </p>
-                <div class="reveal-up flex flex-wrap gap-4">
-                    <a href="#challenges" class="bg-[#004D34] text-white px-6 py-3 rounded font-medium hover:bg-[#003322] transition text-sm">
-                        Explore Our Approach
-                    </a>
-                    <a href="../../contact-us.html" class="border border-gray-300 text-gray-700 px-6 py-3 rounded font-medium hover:bg-gray-900 hover:text-white transition text-sm">
-                        Talk to Our Experts <i data-lucide="arrow-right" class="text-xs ml-2"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ 2. EXECUTIVE SUMMARY ============ -->
-    <section class="py-20 bg-white border-b border-gray-100">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto">
-                <div class="reveal-up mb-6">
-                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-700">Our Practice</span>
-                    <h2 class="text-2xl sm:text-3xl font-serif mt-2">Tax Advisory as a Strategic Advantage</h2>
-                </div>
-                <div class="reveal-up space-y-5 text-sm text-gray-600 leading-[1.9]">
-                    <p>At Chatura Indonesia, our Tax Services practice is built on the principle that proactive tax management is not merely a compliance obligation — it is a strategic advantage. We combine deep knowledge of Indonesian tax law with international tax expertise to help businesses navigate an increasingly complex regulatory landscape.</p>
-                    <p>Our team works closely with CFOs, tax directors, and business owners to ensure full compliance while identifying legitimate optimization opportunities. From corporate income tax and VAT to transfer pricing documentation and cross-border structuring, we provide comprehensive tax services that protect your business and enhance shareholder value.</p>
-                    <p>Whether you are a multinational navigating Indonesia's transfer pricing requirements, a listed company managing complex tax obligations, or a growing enterprise seeking to optimize your effective tax rate, Chatura delivers the precision, foresight, and strategic guidance your business demands.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ 3. BUSINESS CHALLENGES ============ -->
-    <section id="challenges" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="reveal-up text-center max-w-xl mx-auto mb-14">
-                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700">The Challenge</span>
-                <h2 class="text-2xl sm:text-3xl font-serif mt-2">Common Tax Challenges We Address</h2>
-            </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
-                    <div class="w-10 h-10 rounded-lg bg-red-50 text-red-600 flex items-center justify-center mb-5"><i data-lucide="alert-triangle" class="w-5 h-5"></i></div>
-                    <h3 class="font-bold text-gray-950 text-sm mb-2">Evolving Tax Regulations</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Frequent changes in Indonesian tax law create compliance risk and require constant monitoring and adaptation.</p>
-                </div>
-                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
-                    <div class="w-10 h-10 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center mb-5"><i data-lucide="scale" class="w-5 h-5"></i></div>
-                    <h3 class="font-bold text-gray-950 text-sm mb-2">Complex Transfer Pricing</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Multinational operations face stringent transfer pricing documentation requirements and potential double taxation risks.</p>
-                </div>
-                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
-                    <div class="w-10 h-10 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center mb-5"><i data-lucide="gavel" class="w-5 h-5"></i></div>
-                    <h3 class="font-bold text-gray-950 text-sm mb-2">Tax Dispute Risk</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Misinterpretation of tax regulations can lead to disputes, penalties, and costly litigation with tax authorities.</p>
-                </div>
-                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
-                    <div class="w-10 h-10 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center mb-5"><i data-lucide="globe" class="w-5 h-5"></i></div>
-                    <h3 class="font-bold text-gray-950 text-sm mb-2">Cross-Border Obligations</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">International operations create overlapping tax obligations across multiple jurisdictions with different treaty frameworks.</p>
-                </div>
-                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
-                    <div class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center mb-5"><i data-lucide="trending-down" class="w-5 h-5"></i></div>
-                    <h3 class="font-bold text-gray-950 text-sm mb-2">Missed Optimization</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Without specialized tax planning, businesses often overlook legitimate opportunities to reduce their effective tax rate.</p>
-                </div>
-                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
-                    <div class="w-10 h-10 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center mb-5"><i data-lucide="clock" class="w-5 h-5"></i></div>
-                    <h3 class="font-bold text-gray-950 text-sm mb-2">Indirect Tax Complexity</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">VAT, customs duties, and other indirect taxes require precise treatment to avoid overpayment or non-compliance.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ 4. SOLUTION ============ -->
-    <section class="py-20 bg-white border-b border-gray-100">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-                <div class="reveal-up">
-                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-700 mb-3 block">Our Solution</span>
-                    <h2 class="text-2xl sm:text-3xl font-serif mt-2 mb-5">Integrated Tax Advisory Practice</h2>
-                    <p class="text-sm text-gray-600 leading-[1.9] mb-5">Our tax practice combines deep regulatory knowledge with practical business understanding. We help you stay compliant while optimizing your tax position — turning tax from a burden into a strategic advantage.</p>
-                    <p class="text-sm text-gray-600 leading-[1.9] mb-6">From corporate income tax compliance and transfer pricing documentation to international tax structuring and dispute resolution, we provide the full spectrum of tax services required to protect your business and enhance value.</p>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-full text-xs font-semibold text-emerald-800">Indonesian Tax Law</span>
-                        <span class="px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-full text-xs font-semibold text-emerald-800">Transfer Pricing</span>
-                        <span class="px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-full text-xs font-semibold text-emerald-800">International Tax</span>
-                        <span class="px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-full text-xs font-semibold text-emerald-800">Dispute Resolution</span>
-                    </div>
-                </div>
-                <div class="reveal-up">
-                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80" alt="Tax advisory and compliance" class="rounded-xl shadow-lg w-full object-cover aspect-[4/3]" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ 5. CORE SERVICES ============ -->
-    <section class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="reveal-up text-center max-w-xl mx-auto mb-14">
-                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700">What We Do</span>
-                <h2 class="text-2xl sm:text-3xl font-serif mt-2">Core Services</h2>
-            </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5"><i data-lucide="file-text" class="w-5 h-5"></i></div>
-                    <h3 class="font-bold text-gray-950 text-sm mb-2">Corporate Tax Compliance &amp; Filing</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Accurate preparation and timely filing of corporate income tax returns, monthly VAT returns, and all statutory tax obligations.</p>
-                </div>
-                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5"><i data-lucide="git-compare" class="w-5 h-5"></i></div>
-                    <h3 class="font-bold text-gray-950 text-sm mb-2">Transfer Pricing Documentation &amp; Planning</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Comprehensive transfer pricing documentation, benchmarking studies, and planning to ensure arm's-length compliance and minimize double taxation.</p>
-                </div>
-                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
-                    <h3 class="font-bold text-gray-950 text-sm mb-2">Tax Dispute Resolution &amp; Litigation</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Expert representation in tax disputes, objection proceedings, and litigation support to protect your business interests.</p>
-                </div>
-                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5"><i data-lucide="globe" class="w-5 h-5"></i></div>
-                    <h3 class="font-bold text-gray-950 text-sm mb-2">International Tax &amp; Cross-Border Advisory</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Strategic guidance on withholding taxes, tax treaties, repatriation of profits, and cross-border transaction structuring.</p>
-                </div>
-                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5"><i data-lucide="lightbulb" class="w-5 h-5"></i></div>
-                    <h3 class="font-bold text-gray-950 text-sm mb-2">Tax Planning &amp; Optimization</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Proactive tax planning strategies to legally minimize tax burden, maximize available incentives, and improve after-tax returns.</p>
-                </div>
-                <div class="reveal-up bg-white p-7 rounded-xl border border-gray-200 hover:shadow-md transition flex flex-col">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center mb-5"><i data-lucide="receipt" class="w-5 h-5"></i></div>
-                    <h3 class="font-bold text-gray-950 text-sm mb-2">VAT &amp; Indirect Tax Advisory</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Comprehensive VAT planning, customs duty optimization, and indirect tax compliance across all business operations.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ 6. SERVICE WORKFLOW ============ -->
-    <section class="py-20 bg-white border-b border-gray-100">
-        <div class="container mx-auto px-6">
-            <div class="reveal-up text-center mb-14">
-                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700">Our Process</span>
-                <h2 class="text-2xl sm:text-3xl font-serif mt-2">Service Workflow</h2>
-            </div>
-            <div class="reveal-up flex flex-col sm:flex-row justify-center items-start sm:items-center gap-0 max-w-5xl mx-auto">
-                <div class="flex flex-col items-center text-center flex-1 min-w-[140px] max-w-[170px]">
-                    <div class="w-12 h-12 rounded-full bg-[#004D34] text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">1</div>
-                    <h4 class="font-bold text-xs text-gray-950 mb-1">Discovery</h4>
-                    <p class="text-[10px] text-gray-400 leading-tight">Review current tax posture and obligations</p>
-                </div>
-                <div class="hidden sm:flex items-center pt-5 text-gray-300"><i data-lucide="chevron-right" class="w-4 h-4"></i></div>
-                <div class="flex flex-col items-center text-center flex-1 min-w-[140px] max-w-[170px]">
-                    <div class="w-12 h-12 rounded-full bg-[#004D34] text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">2</div>
-                    <h4 class="font-bold text-xs text-gray-950 mb-1">Assessment</h4>
-                    <p class="text-[10px] text-gray-400 leading-tight">Analyze compliance gaps and opportunities</p>
-                </div>
-                <div class="hidden sm:flex items-center pt-5 text-gray-300"><i data-lucide="chevron-right" class="w-4 h-4"></i></div>
-                <div class="flex flex-col items-center text-center flex-1 min-w-[140px] max-w-[170px]">
-                    <div class="w-12 h-12 rounded-full bg-[#004D34] text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">3</div>
-                    <h4 class="font-bold text-xs text-gray-950 mb-1">Strategy</h4>
-                    <p class="text-[10px] text-gray-400 leading-tight">Develop tax-efficient structures and plans</p>
-                </div>
-                <div class="hidden sm:flex items-center pt-5 text-gray-300"><i data-lucide="chevron-right" class="w-4 h-4"></i></div>
-                <div class="flex flex-col items-center text-center flex-1 min-w-[140px] max-w-[170px]">
-                    <div class="w-12 h-12 rounded-full bg-[#004D34] text-white flex items-center justify-center text-xs font-bold mb-3 shadow-sm">4</div>
-                    <h4 class="font-bold text-xs text-gray-950 mb-1">Implementation</h4>
-                    <p class="text-[10px] text-gray-400 leading-tight">Execute filings, documentation, planning</p>
-                </div>
-                <div class="hidden sm:flex items-center pt-5 text-gray-300"><i data-lucide="chevron-right" class="w-4 h-4"></i></div>
-                <div class="flex flex-col items-center text-center flex-1 min-w-[140px] max-w-[170px]">
-                    <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center text-xs font-bold mb-3"><i data-lucide="check" class="w-4 h-4"></i></div>
-                    <h4 class="font-bold text-xs text-gray-950 mb-1">Monitoring</h4>
-                    <p class="text-[10px] text-gray-400 leading-tight">Ongoing compliance tracking and updates</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ 7. DELIVERABLES ============ -->
-    <section class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
-                <div class="reveal-up">
-                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-700 mb-3 block">What You Receive</span>
-                    <h2 class="text-2xl sm:text-3xl font-serif mt-2 mb-8">Key Deliverables</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
-                            <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0"><i data-lucide="file-check" class="w-4 h-4"></i></div>
-                            <div><p class="text-sm font-semibold text-gray-950">Annual Tax Returns &amp; Filings</p><p class="text-[11px] text-gray-400">Corporate income tax, VAT, and withholding tax returns</p></div>
-                        </div>
-                        <div class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
-                            <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0"><i data-lucide="book-open" class="w-4 h-4"></i></div>
-                            <div><p class="text-sm font-semibold text-gray-950">Transfer Pricing Documentation</p><p class="text-[11px] text-gray-400">Local files, master files, and benchmarking reports</p></div>
-                        </div>
-                        <div class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
-                            <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0"><i data-lucide="lightbulb" class="w-4 h-4"></i></div>
-                            <div><p class="text-sm font-semibold text-gray-950">Tax Planning Reports</p><p class="text-[11px] text-gray-400">Strategic recommendations for tax optimization</p></div>
-                        </div>
-                        <div class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
-                            <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0"><i data-lucide="clipboard-check" class="w-4 h-4"></i></div>
-                            <div><p class="text-sm font-semibold text-gray-950">Compliance Gap Analysis</p><p class="text-[11px] text-gray-400">Identification of compliance risks and remediation steps</p></div>
-                        </div>
-                        <div class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
-                            <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0"><i data-lucide="shield" class="w-4 h-4"></i></div>
-                            <div><p class="text-sm font-semibold text-gray-950">Dispute Resolution Support</p><p class="text-[11px] text-gray-400">Objection filings, appeals, and litigation documentation</p></div>
-                        </div>
-                        <div class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-emerald-200 hover:shadow-sm transition">
-                            <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0"><i data-lucide="bell" class="w-4 h-4"></i></div>
-                            <div><p class="text-sm font-semibold text-gray-950">Regulatory Update Briefings</p><p class="text-[11px] text-gray-400">Timely alerts on tax law changes affecting your business</p></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="svc-img-composition relative max-w-md w-full mx-auto" style="--si-x:-3px;--si-rot:2deg;--si-dur:12s;--si-sh-dur:10s">
-                    <div class="absolute -inset-4 bg-emerald-50 rounded-3xl rotate-2"></div>
-                    <div class="si-shadow si-slide-from-right relative rounded-2xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80" alt="Tax documentation and compliance" class="relative rounded-2xl w-full h-72 md:h-80 object-cover" loading="lazy">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ 8. INDUSTRY APPLICATIONS ============ -->
-    <section class="py-20 bg-white border-b border-gray-100">
-        <div class="container mx-auto px-6">
-            <div class="reveal-up text-center mb-10">
-                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700">Industry Reach</span>
-                <h2 class="text-2xl sm:text-3xl font-serif mt-2">Industries We Serve</h2>
-            </div>
-            <div class="reveal-up flex flex-wrap justify-center gap-3">
-                <a href="../../industries.html" class="px-6 py-3 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition inline-flex items-center gap-2"><i data-lucide="factory" class="w-3.5 h-3.5"></i> Manufacturing</a>
-                <a href="../../industries.html" class="px-6 py-3 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition inline-flex items-center gap-2"><i data-lucide="landmark" class="w-3.5 h-3.5"></i> Financial Services</a>
-                <a href="../../industries.html" class="px-6 py-3 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition inline-flex items-center gap-2"><i data-lucide="cpu" class="w-3.5 h-3.5"></i> Technology</a>
-                <a href="../../industries.html" class="px-6 py-3 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition inline-flex items-center gap-2"><i data-lucide="zap" class="w-3.5 h-3.5"></i> Energy &amp; Resources</a>
-                <a href="../../industries.html" class="px-6 py-3 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition inline-flex items-center gap-2"><i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i> Consumer Goods</a>
-                <a href="../../industries.html" class="px-6 py-3 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-gray-700 hover:border-emerald-700 hover:text-emerald-800 transition inline-flex items-center gap-2"><i data-lucide="heart-pulse" class="w-3.5 h-3.5"></i> Healthcare</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ 9. RELATED INSIGHTS ============ -->
-    <section class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="reveal-up flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-10">
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-700">Related Insights</span>
-                    <h2 class="text-2xl sm:text-3xl font-serif mt-2">Latest From Our Practice</h2>
-                </div>
-                <a href="../../insights.html" class="text-xs font-bold text-[#004D34] hover:underline flex items-center gap-1">View All Insights <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
-            </div>
-            <div class="grid sm:grid-cols-2 gap-4">
-                <a href="../../insights.html" class="reveal-up bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition group">
-                    <div class="aspect-[16/9] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&q=80" alt="Global minimum tax" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-                    </div>
-                    <div class="p-6">
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">Tax Services</span>
-                        <h3 class="font-serif font-bold text-gray-950 text-sm mt-3 mb-2 group-hover:text-emerald-800 transition">Global Minimum Tax: What It Means for Indonesian Companies</h3>
-                        <p class="text-xs text-gray-500 leading-relaxed">An analysis of OECD Pillar Two implications for multinational enterprises operating in Indonesia.</p>
-                        <span class="text-[11px] text-gray-400 mt-3 block">5 min read</span>
-                    </div>
-                </a>
-                <a href="../../insights.html" class="reveal-up bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition group">
-                    <div class="aspect-[16/9] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80" alt="Tax incentives Indonesia" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-                    </div>
-                    <div class="p-6">
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">Tax Advisory</span>
-                        <h3 class="font-serif font-bold text-gray-950 text-sm mt-3 mb-2 group-hover:text-emerald-800 transition">Indonesia's New Tax Incentives in 2026</h3>
-                        <p class="text-xs text-gray-500 leading-relaxed">A comprehensive overview of the latest fiscal incentives including super-deduction schemes and green energy tax holidays.</p>
-                        <span class="text-[11px] text-gray-400 mt-3 block">8 min read</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ 10. MEET OUR EXPERTS ============ -->
-    <section class="py-20 bg-white border-b border-gray-100">
-        <div class="container mx-auto px-6" style="max-width: 1280px;">
-            <div class="reveal-up text-center mb-14">
-                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700" data-i18n="services.experts_label">Our Team</span>
-                <h2 class="text-2xl sm:text-3xl font-serif mt-2" data-i18n="services.related_experts_label">Meet Our Experts</h2>
-            </div>
-            <div class="reveal-up grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
-                <div class="expert-card" onclick="window.location.href='../../our-people.html'">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=500&q=80" alt="Dyna Agustina" loading="lazy" class="expert-card__img">
-                    <div class="expert-card__body">
-                        <h3 class="expert-card__name">Dyna Agustina</h3>
-                        <p class="expert-card__role">Partner, Tax Services</p>
-                        <p class="expert-card__expertise">International Tax · Transfer Pricing</p>
-                        <span class="expert-card__cta"><span data-i18n="people.view_profile">View Profile</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5 expert-card__arrow"></i></span>
-                    </div>
-                </div>
-                <div class="expert-card" onclick="window.location.href='../../our-people.html'">
-                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&h=500&q=80" alt="Andi Rio Ilhad Monry" loading="lazy" class="expert-card__img">
-                    <div class="expert-card__body">
-                        <h3 class="expert-card__name">Andi Rio Ilhad Monry</h3>
-                        <p class="expert-card__role">Managing Partner</p>
-                        <p class="expert-card__expertise">M&amp;A · Corporate Advisory</p>
-                        <span class="expert-card__cta"><span data-i18n="people.view_profile">View Profile</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5 expert-card__arrow"></i></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ 11. FAQ ============ -->
-    <section id="faq" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="reveal-up text-center mb-14">
-                <span class="text-xs font-bold uppercase tracking-widest text-emerald-700">Questions &amp; Answers</span>
-                <h2 class="text-2xl sm:text-3xl font-serif mt-2">Frequently Asked Questions</h2>
-            </div>
-            <div class="reveal-up max-w-3xl mx-auto space-y-3">
-                <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
-                    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="this.closest('.faq-item').classList.toggle('open')">
-                        <span class="font-bold text-sm text-gray-950 pr-4">How does Chatura stay current with evolving Indonesian tax regulations?</span>
-                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 shrink-0 faq-icon"></i>
-                    </button>
-                    <div class="faq-content px-6"><p class="text-xs text-gray-500 leading-relaxed">Our tax team monitors regulatory developments continuously through direct engagement with tax authorities, professional networks, and ongoing training programs. We provide proactive briefings to clients before new regulations take effect.</p></div>
-                </div>
-                <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
-                    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="this.closest('.faq-item').classList.toggle('open')">
-                        <span class="font-bold text-sm text-gray-950 pr-4">Does Chatura handle tax disputes with the Directorate General of Taxes?</span>
-                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 shrink-0 faq-icon"></i>
-                    </button>
-                    <div class="faq-content px-6"><p class="text-xs text-gray-500 leading-relaxed">Yes. We provide full representation in tax disputes, from administrative objections through the Tax Court and appeals process. Our team has extensive experience defending client positions and achieving favorable outcomes.</p></div>
-                </div>
-                <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
-                    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="this.closest('.faq-item').classList.toggle('open')">
-                        <span class="font-bold text-sm text-gray-950 pr-4">Can you help with transfer pricing documentation for multinational operations?</span>
-                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 shrink-0 faq-icon"></i>
-                    </button>
-                    <div class="faq-content px-6"><p class="text-xs text-gray-500 leading-relaxed">Transfer pricing is a core specialty. We prepare local files, master files, and country-by-country reports in compliance with Indonesian regulations and OECD guidelines. We also defend transfer pricing positions during audits.</p></div>
-                </div>
-                <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
-                    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left" onclick="this.closest('.faq-item').classList.toggle('open')">
-                        <span class="font-bold text-sm text-gray-950 pr-4">What size companies do your tax services cater to?</span>
-                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 shrink-0 faq-icon"></i>
-                    </button>
-                    <div class="faq-content px-6"><p class="text-xs text-gray-500 leading-relaxed">We serve mid-market to large enterprises, including publicly listed companies, multinational corporations, state-owned enterprises, and growing businesses with complex tax needs. Our approach scales to match your organization's complexity.</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ 12. FINAL CTA ============ -->
-    <section class="py-16 bg-neutral-950 text-white">
-        <div class="container mx-auto px-6 text-center max-w-2xl relative z-10">
-            <h2 class="text-2xl md:text-3xl font-serif mb-4">Ready to Optimize Your Tax Position?</h2>
-            <p class="text-neutral-400 text-xs md:text-sm mb-8 leading-relaxed">Engage with our Tax Services experts to ensure compliance, minimize risk, and unlock legitimate tax optimization opportunities for your business.</p>
-            <a href="../../contact-us.html" class="inline-flex items-center bg-[#004D34] text-white text-xs px-6 py-3 rounded font-semibold hover:bg-emerald-700 transition">
-                Start the Conversation <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-2"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- Secondary CTA -->
-    <section class="py-10 bg-white border-b border-gray-100">
-        <div class="container mx-auto px-6 text-center">
-            <a href="../../services.html" class="inline-flex items-center gap-2 text-sm font-medium text-[#004D34] hover:underline">
-                <i data-lucide="arrow-left" class="w-4 h-4"></i> View All Services
-            </a>
-        </div>
-    </section>
-
+    <main id="main-content">
+        <div data-component="sub-services/tax-services/hero" class="component-slot" style="min-height: 600px;"></div>
+        <div data-component="sub-services/tax-services/summary" class="component-slot"></div>
+        <div data-component="sub-services/tax-services/challenges" class="component-slot"></div>
+        <div data-component="sub-services/tax-services/solution" class="component-slot"></div>
+        <div data-component="sub-services/tax-services/core-services" class="component-slot"></div>
+        <div data-component="sub-services/tax-services/workflow" class="component-slot"></div>
+        <div data-component="sub-services/tax-services/deliverables" class="component-slot"></div>
+        <div data-component="sub-services/tax-services/industries" class="component-slot"></div>
+        <div data-component="sub-services/tax-services/insights" class="component-slot"></div>
+        <div data-component="sub-services/tax-services/experts" class="component-slot"></div>
+        <div data-component="sub-services/tax-services/faq" class="component-slot"></div>
+        <div data-component="sub-services/tax-services/cta" class="component-slot"></div>
+    </main>
     </main>
 
     <!-- WhatsApp Widget -->
@@ -659,56 +297,8 @@
     <script src="../../assets/i18n/locales/en.bundle.js"></script>
     <script src="../../assets/i18n/locales/id.bundle.js"></script>
     <script src="../../assets/i18n/loader.js"></script>
-    <script>document.addEventListener("DOMContentLoaded", function () { lucide.createIcons(); });</script>
-    <script>
-        (function () { var nav = document.getElementById('navbar-sticky'); if (!nav) return; function toggle() { if (window.scrollY > 50) { nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); } } toggle(); window.addEventListener('scroll', toggle, { passive: true }); })();
-    </script>
-    <script>
-        if (typeof gsap === 'undefined') {
-            document.querySelectorAll('.reveal-up, .reveal-fade').forEach(function (el) { el.style.opacity = 1; el.style.transform = 'none'; });
-            document.querySelectorAll('.svc-img-composition').forEach(function (el) { el.style.opacity = 1; });
-        } else {
-            gsap.registerPlugin(ScrollTrigger);
-            gsap.to('#hero-service .reveal-up', { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power2.out', delay: 0.15 });
-            ScrollTrigger.batch('.reveal-up:not(#hero-service .reveal-up)', {
-                start: 'top 85%',
-                once: true,
-                onEnter: function (batch) { gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out' }); }
-            });
-            function initPageCompositions() {
-                document.querySelectorAll('.svc-img-composition').forEach(function (composition) {
-                    var shape = composition.querySelector('.absolute');
-                    var imageContainer = composition.querySelector('.si-shadow');
-                    if (!shape || !imageContainer) return;
-                    gsap.set(composition, { clearProps: 'transform', opacity: 1 });
-                    shape.classList.remove('si-float');
-                    composition.classList.remove('animated');
-                    var isLeft = imageContainer.classList.contains('si-slide-from-left');
-                    var slideX = isLeft ? -180 : 180;
-                    gsap.set(shape, { opacity: 0, scale: 0.92 });
-                    gsap.set(imageContainer, { opacity: 0, x: slideX });
-                    var tl = gsap.timeline({ scrollTrigger: { trigger: composition, start: 'top 75%', once: true } });
-                    tl.to(shape, { opacity: 1, scale: 1, duration: 0.6, ease: 'power3.out' })
-                      .to(imageContainer, { opacity: 1, x: 0, duration: 1.1, ease: 'power3.out' }, '-=0.3')
-                      .add(function () { composition.classList.add('animated'); shape.classList.add('si-float'); gsap.set([shape, imageContainer], { clearProps: 'transform,opacity' }); });
-                });
-                ScrollTrigger.refresh();
-            }
-            if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initPageCompositions); } else { initPageCompositions(); }
-            setTimeout(function () { document.querySelectorAll('.reveal-up').forEach(function (el) { if (getComputedStyle(el).opacity === '0') { el.style.opacity = 1; el.style.transform = 'none'; } }); }, 1500);
-        }
-    </script>
-    <script>
-        (function () { var launcher = document.getElementById('waLauncher'); var popup = document.getElementById('waPopup'); var close = document.getElementById('waClose'); if (!launcher || !popup) return; function togglePopup() { var isOpen = popup.classList.contains('is-open'); popup.classList.toggle('is-open'); launcher.setAttribute('aria-expanded', !isOpen); popup.setAttribute('aria-hidden', isOpen); } launcher.addEventListener('click', togglePopup); close.addEventListener('click', function (e) { e.stopPropagation(); togglePopup(); }); document.addEventListener('click', function (e) { if (!popup.contains(e.target) && !launcher.contains(e.target) && popup.classList.contains('is-open')) togglePopup(); }); document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && popup.classList.contains('is-open')) togglePopup(); }); })();
-    </script>
-    <script>
-        (function () { var mm = document.getElementById('mobileMenu'); if (!mm) return; window.addEventListener('resize', function () { if (window.innerWidth >= 768 && !mm.classList.contains('hidden')) { mm.classList.add('hidden'); document.body.classList.remove('overflow-hidden'); } }); })();
-    </script>
-    <script>
-        (function () { var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; if (prefersReduced) { document.querySelectorAll('.faq-content').forEach(function (el) { el.style.transition = 'none'; }); } })();
-    </script>
-    <script>
-    (function() { document.querySelectorAll('.mobile-nav-group-btn').forEach(function(btn) { btn.addEventListener('click', function() { var group = this.closest('.mobile-nav-group'); group.classList.toggle('open'); }); }); })();
-    </script>
+    <script>window.__SKIP_COMPONENT_GSAP = true;</script>
+    <script src="../../assets/js/core/component-loader.js"></script>
+    <script src="../../assets/js/pages/sub-service-init.js"></script>
 </body>
 </html>
