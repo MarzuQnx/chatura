@@ -62,18 +62,11 @@
         var nav = document.getElementById('navbar-sticky');
         if (!nav) return;
 
-        // Inject spacer to compensate for fixed positioning
         if (!document.getElementById('navbar-spacer')) {
             var spacer = document.createElement('div');
             spacer.id = 'navbar-spacer';
-            spacer.style.height = nav.offsetHeight + 'px';
-            spacer.style.width = '100%';
-            spacer.style.flexShrink = '0';
+            spacer.style.height = '0px';
             nav.parentNode.insertBefore(spacer, nav.nextSibling);
-            // Update spacer on resize
-            window.addEventListener('resize', function () {
-                spacer.style.height = nav.offsetHeight + 'px';
-            }, { passive: true });
         }
 
         var isScrolled = false;

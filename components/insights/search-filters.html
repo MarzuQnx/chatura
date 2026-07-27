@@ -1,0 +1,33 @@
+<section class="py-8 bg-white border-b border-gray-100 sticky top-26 z-30">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+            <div class="flex flex-wrap gap-2" role="tablist" id="filterTabWrap">
+                <button type="button" data-type="all" aria-selected="true"
+                    class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-xs font-semibold rounded-lg text-gray-700 hover:border-emerald-700 transition"
+                    data-i18n="insights.filter_all">All</button>
+                <button type="button" data-type="article" aria-selected="false"
+                    class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-xs font-semibold rounded-lg text-gray-700 hover:border-emerald-700 transition"
+                    data-i18n="insights.filter_articles">Articles</button>
+                <button type="button" data-type="publication" aria-selected="false"
+                    class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-xs font-semibold rounded-lg text-gray-700 hover:border-emerald-700 transition"
+                    data-i18n="insights.filter_publications">Publications</button>
+                <button type="button" data-type="update" aria-selected="false"
+                    class="filter-tab-btn px-4 py-2 border border-gray-200 bg-white text-xs font-semibold rounded-lg text-gray-700 hover:border-emerald-700 transition"
+                    data-i18n="insights.filter_client_updates">Client Updates</button>
+            </div>
+            <div class="relative w-full lg:w-80">
+                <label for="search-input" class="sr-only">Search insights</label>
+                <i data-lucide="search"
+                    class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4 pointer-events-none"></i>
+                <input id="search-input" type="text" placeholder="Search insights, articles, reports..."
+                    data-i18n-placeholder="insights.search_placeholder"
+                    class="search-input w-full bg-white border border-gray-200 pl-10 pr-9 py-2.5 rounded-lg text-xs focus:outline-none shadow-md">
+                <button type="button"
+                    class="search-clear absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    onclick="document.getElementById('search-input').value=''; document.getElementById('search-input').dispatchEvent(new Event('input'));">
+                    <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

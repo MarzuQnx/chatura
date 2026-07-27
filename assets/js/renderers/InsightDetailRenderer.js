@@ -4,27 +4,60 @@
 (function () {
     'use strict';
 
-    var CR = window.TranslationRepository;
-    var currentLang = function () { return CR ? CR.getCurrentLanguage() : 'en'; };
-    var loc = function (obj) {
-        if (!obj) return '';
-        if (typeof obj === 'string') return obj;
-        return obj[currentLang()] || obj.en || '';
+    var currentLang = function () { 
+        return (window.TranslationRepository && typeof window.TranslationRepository.getCurrentLanguage === 'function') 
+            ? window.TranslationRepository.getCurrentLanguage() 
+            : 'en'; 
     };
     var t = function (key) {
-        var d = window.TranslationRepository ? window.TranslationRepository.getAllTranslations() : {};
-        return d[key] || key;
+        if (window.TranslationRepository && typeof window.TranslationRepository.t === 'function') {
+            return window.TranslationRepository.t(key);
+        }
+        return key;
+    };
+    var loc = function (obj) {
+        if (!obj) return '';
+        if (typeof obj === 'string') {
+            if (window.TranslationRepository && typeof window.TranslationRepository.t === 'function') {
+                var translated = window.TranslationRepository.t(obj);
+                if (translated && translated !== obj) return translated;
+            }
+            return obj;
+        }
+        if (typeof obj === 'object') {
+            var lang = currentLang();
+            var val = obj[lang] || obj.en || obj.id || '';
+            if (typeof val === 'string') return val;
+            if (val && typeof val === 'object') return loc(val);
+        }
+        return String(obj);
     };
 
     var InsightDetailRenderer = {
-        render: function() {
+        getSlug: function() {
             var params = new URLSearchParams(window.location.search);
-            var slug = params.get('slug') || 'tax-reform-2026'; // fallback to featured
+            var hash = (window.location.hash || '').replace(/^#\/?/, '').trim();
+            var rawSlug = params.get('slug') || params.get('id') || params.get('article') || hash || 'tax-reform-2026';
+            return rawSlug.trim().toLowerCase().replace(/\/+$|^\/+/g, '');
+        },
+
+        render: function() {
+            var slug = this.getSlug();
             
             if (!window.ArticleRepository) return;
             var article = window.ArticleRepository.getBySlug(slug);
             if (!article) {
-                document.getElementById('main-content').innerHTML = '<div class="container mx-auto px-6 py-32 text-center"><h2>' + t('insight.not_found_title') + '</h2><a href="insights.html" class="text-[#004D34] hover:underline mt-4 inline-block">' + t('insight.back_to_insights') + '</a></div>';
+                var allArticles = window.ArticleRepository.getAll();
+                article = allArticles.find(function(a) {
+                    return a.slug.toLowerCase() === slug;
+                });
+            }
+
+            if (!article) {
+                var mainContent = document.getElementById('main-content');
+                if (mainContent) {
+                    mainContent.innerHTML = '<div class="container mx-auto px-6 py-32 text-center"><h2>' + t('insight.not_found_title') + '</h2><a href="insights.html" class="text-[#004D34] hover:underline mt-4 inline-block">' + t('insight.back_to_insights') + '</a></div>';
+                }
                 return;
             }
 
@@ -146,15 +179,10 @@
             }
             article.author = author;
 
-            var tStr = function(key) {
-                var d = window.TranslationRepository ? window.TranslationRepository.getAllTranslations() : {};
-                return d[key] || key;
-            };
-
             var authorNameEl = document.getElementById('author-name');
             if (authorNameEl) {
-                var nameVal = author ? (author.peopleId ? tStr(author.name) : loc(author.name)) : '';
-                var roleVal = author ? (author.peopleId ? (tStr(author.role) + ' — ' + tStr(author.practice)) : loc(author.role)) : '';
+                var nameVal = author ? (author.peopleId ? t(author.name) : loc(author.name)) : '';
+                var roleVal = author ? (author.peopleId ? (t(author.role) + ' — ' + t(author.practice)) : loc(author.role)) : '';
                 authorNameEl.textContent = nameVal + (roleVal ? ' — ' + roleVal : '');
             }
             
@@ -168,7 +196,7 @@
             var authorPhotoImg = document.getElementById('author-photo-img');
             if (authorPhotoImg && author) {
                 authorPhotoImg.src = author.photo || author.image || '';
-                authorPhotoImg.alt = author.peopleId ? tStr(author.name) : loc(author.name);
+                authorPhotoImg.alt = author.peopleId ? t(author.name) : loc(author.name);
             }
 
             // Hero image
@@ -229,7 +257,7 @@
             var tagsEl = document.getElementById('article-tags');
             if (tagsEl) {
                 tagsEl.innerHTML = (article.tags || []).map(function(tag) {
-                    return '<span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-md">#' + tag + '</span>';
+                    return '<span class="article-tag bg-gray-100 text-gray-600 hover:bg-[#004D34] hover:text-white px-3 py-1 rounded-md transition-all duration-200 cursor-pointer inline-block">#' + tag + '</span>';
                 }).join('');
             }
 
@@ -324,7 +352,7 @@
 
             // Prev / Next
             if (window.ArticleRepository.getAdjacentArticles) {
-                var adj = window.ArticleRepository.getAdjacentArticles(slug);
+                var adj = window.ArticleRepository.getAdjacentArticles(article.slug);
                 var prevSlot = document.getElementById('prev-article-slot');
                 var nextSlot = document.getElementById('next-article-slot');
                 if (prevSlot) {
@@ -386,19 +414,33 @@
         },
         
         init: function() {
-            this.render();
+            var self = this;
+            self.render();
+
+            document.addEventListener('component:loaded', function(e) {
+                if (e.detail && (e.detail.name === 'insights/detail-hero' || e.detail.name === 'insights/detail-content')) {
+                    self.render();
+                }
+            });
+
+            document.addEventListener('components:all-loaded', function() {
+                self.render();
+            });
+
             if (window.ChaturaBus) {
-                var self = this;
                 window.ChaturaBus.on('languageChange', function() {
                     self.render();
                 });
             }
+
+            window.addEventListener('hashchange', function() {
+                self.render();
+            });
         }
     };
 
     window.openAuthorModal = function(overrideId) {
-        var params = new URLSearchParams(window.location.search);
-        var slug = params.get('slug') || 'tax-reform-2026';
+        var slug = InsightDetailRenderer.getSlug();
         var article = window.ArticleRepository ? window.ArticleRepository.getBySlug(slug) : null;
 
         var author = article ? article.author : null;
@@ -413,16 +455,10 @@
         var pId = overrideId || (article ? (peopleMap[article.authorId] || article.authorId || (author ? author.peopleId : null)) : null);
         var person = (pId && window.PeopleRepository) ? window.PeopleRepository.getAll().find(function(x) { return x.id === pId; }) : null;
 
-        var tr = function(k) {
-            if (!k) return '';
-            var d = window.TranslationRepository ? window.TranslationRepository.getAllTranslations() : {};
-            return d[k] || k;
-        };
-
-        var nameStr = person ? tr(person.nameKey) : (author ? loc(author.name) : '');
-        var titleStr = person ? (tr(person.titleKey) + ' — ' + tr(person.practiceKey)) : (author ? loc(author.role) : '');
+        var nameStr = person ? t(person.nameKey) : (author ? loc(author.name) : '');
+        var titleStr = person ? (t(person.titleKey) + ' — ' + t(person.practiceKey)) : (author ? loc(author.role) : '');
         var photoSrc = person ? person.photo : (author ? (author.photo || author.image) : '');
-        var locationStr = person ? tr(person.locationKey) : (author && author.location ? loc(author.location) : 'Jakarta');
+        var locationStr = person ? t(person.locationKey) : (author && author.location ? loc(author.location) : 'Jakarta');
         var linkedinHref = person ? person.linkedin : (author ? (author.linkedin || '#') : '#');
         var emailHref = person ? person.email : (author ? (author.email || '') : '');
 
@@ -447,7 +483,7 @@
         var emEl = document.getElementById('amodal-email') || document.getElementById('modal-email');
         if (emEl) emEl.href = emailHref ? ('mailto:' + emailHref) : '#';
 
-        var bioStr = person ? tr(person.bioKey) : (author ? loc(author.bio) : '');
+        var bioStr = person ? t(person.bioKey) : (author ? loc(author.bio) : '');
         var bioEl = document.getElementById('amodal-bio') || document.getElementById('modal-bio');
         if (bioEl) bioEl.textContent = bioStr;
 
@@ -490,29 +526,31 @@
             return null;
         }
 
-        var expList = person ? person.expertiseKeys.map(function(k) { return tr(k); }) : (author && author.expertise ? author.expertise : []);
+        var expList = person ? person.expertiseKeys.map(function(k) { return t(k); }) : (author && author.expertise ? author.expertise : []);
         var expContainer = document.getElementById('amodal-expertise') || document.getElementById('modal-expertise');
         if (expContainer) {
             expContainer.innerHTML = expList.map(function(k) {
-                var res = resolveTopicLink(k);
+                var val = loc(k);
+                var res = resolveTopicLink(val);
                 if (res) {
-                    return '<a href="' + res.url + '" class="text-[11px] font-medium bg-emerald-50 text-emerald-900 border border-emerald-100/60 px-2.5 py-0.5 rounded-full hover:bg-[#004D34] hover:text-white transition-colors duration-200 inline-flex items-center gap-1 group">' + k + ' <i data-lucide="external-link" class="w-2.5 h-2.5 opacity-60 group-hover:opacity-100"></i></a>';
+                    return '<a href="' + res.url + '" class="text-[11px] font-medium bg-emerald-50 text-emerald-900 border border-emerald-100/60 px-2.5 py-0.5 rounded-full hover:bg-[#004D34] hover:text-white transition-colors duration-200 inline-flex items-center gap-1 group">' + val + ' <i data-lucide="external-link" class="w-2.5 h-2.5 opacity-60 group-hover:opacity-100"></i></a>';
                 }
-                var escapedKey = k.replace(/'/g, "\\'");
-                return '<button onclick="showArticleNotAvailableModal(\'' + escapedKey + '\')" class="text-[11px] font-medium bg-emerald-50 text-emerald-900 border border-emerald-100/60 px-2.5 py-0.5 rounded-full hover:bg-emerald-100 transition-colors duration-200 text-left">' + k + '</button>';
+                var escapedKey = val.replace(/'/g, "\\'");
+                return '<button onclick="showArticleNotAvailableModal(\'' + escapedKey + '\')" class="text-[11px] font-medium bg-emerald-50 text-emerald-900 border border-emerald-100/60 px-2.5 py-0.5 rounded-full hover:bg-emerald-100 transition-colors duration-200 text-left">' + val + '</button>';
             }).join('');
         }
 
-        var expList2 = person ? person.experienceKeys.map(function(k) { return tr(k); }) : (author && author.experience ? author.experience : []);
+        var expList2 = person ? person.experienceKeys.map(function(k) { return t(k); }) : (author && author.experience ? author.experience : []);
         var expContainer2 = document.getElementById('amodal-experience') || document.getElementById('modal-experience');
         if (expContainer2) {
             expContainer2.innerHTML = expList2.map(function(k) {
-                var res = resolveTopicLink(k);
-                var escapedK = k.replace(/'/g, "\\'");
+                var val = loc(k);
+                var res = resolveTopicLink(val);
+                var escapedK = val.replace(/'/g, "\\'");
                 if (res) {
-                    return '<li class="flex items-start gap-2 mb-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-emerald-700 shrink-0"></i> <a href="' + res.url + '" class="hover:text-[#004D34] hover:underline transition-colors flex items-center gap-1">' + k + ' <i data-lucide="arrow-up-right" class="w-3 h-3 text-emerald-600"></i></a></li>';
+                    return '<li class="flex items-start gap-2 mb-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-emerald-700 shrink-0"></i> <a href="' + res.url + '" class="hover:text-[#004D34] hover:underline transition-colors flex items-center gap-1">' + val + ' <i data-lucide="arrow-up-right" class="w-3 h-3 text-emerald-600"></i></a></li>';
                 }
-                return '<li class="flex items-start gap-2 mb-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-emerald-700 shrink-0"></i> <button onclick="showArticleNotAvailableModal(\'' + escapedK + '\')" class="text-left hover:text-[#004D34] hover:underline transition-colors">' + k + '</button></li>';
+                return '<li class="flex items-start gap-2 mb-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-emerald-700 shrink-0"></i> <button onclick="showArticleNotAvailableModal(\'' + escapedK + '\')" class="text-left hover:text-[#004D34] hover:underline transition-colors">' + val + '</button></li>';
             }).join('');
         }
 
@@ -532,7 +570,7 @@
         var pubItems = [];
         if (person && person.publicationKeys) {
             pubItems = person.publicationKeys.map(function(k, idx) {
-                return { key: k, title: tr(k), date: person.publicationDates[idx] || '' };
+                return { key: k, title: t(k), date: person.publicationDates[idx] || '' };
             });
         }
         var pubContainer = document.getElementById('amodal-publications') || document.getElementById('modal-publications');
@@ -553,7 +591,7 @@
                         '<span class="text-[10px] text-gray-400 block">' + p.date + '</span></div>';
                 }).join('');
             } else {
-                pubContainer.innerHTML = '<p class="text-xs text-gray-400 italic">' + (tr('people.no_publications') || 'No publications available.') + '</p>';
+                pubContainer.innerHTML = '<p class="text-xs text-gray-400 italic">' + (t('people.no_publications') || 'No publications available.') + '</p>';
             }
         }
 

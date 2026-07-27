@@ -206,37 +206,32 @@
             flex-direction: column;
         }
 
-        
-
-        .faq-item.open 
-
-        
-
-        
-
-        .workflow-step {
-            position: relative;
+        .faq-answer {
+            max-height: 0;
+            opacity: 0;
+            visibility: hidden;
+            overflow: hidden;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            transition: max-height 0.4s cubic-bezier(.22, .61, .36, 1), opacity 0.3s ease, padding 0.3s ease, visibility 0.4s;
         }
 
-        .workflow-step::after {
-            content: '';
-            position: absolute;
-            top: 24px;
-            right: -50%;
-            width: 100%;
-            height: 2px;
-            background: #d1d5db;
-            z-index: 0;
+        .faq-item.open .faq-answer {
+            max-height: 600px;
+            opacity: 1;
+            visibility: visible;
+            padding-bottom: 1.25rem !important;
         }
 
-        .workflow-step:last-child::after {
-            display: none;
+        .faq-item.open .faq-chevron,
+        .faq-item.open .faq-icon {
+            transform: rotate(180deg);
         }
-    
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(.22,.61,.36,1), padding 0.3s ease; }
-        .faq-item.open .faq-answer { max-height: 600px; }
-        .faq-item.open .faq-chevron { transform: rotate(180deg); }
-        .faq-chevron { transition: transform 0.3s ease; }
+
+        .faq-chevron,
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
     </style>
 </head>
 
@@ -267,11 +262,15 @@
                             class="text-xs"></i></a>
                     <div class="nav-dropdown-menu">
                         <a href="../../services.html" data-i18n="nav.services_overview">Overview</a>
-                        <a href="../../services/accounting-finance/" class="active" data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
+                        <a href="../../services/accounting-finance/" class="active"
+                            data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
                         <a href="../../services/tax-services/" data-i18n="nav.service.tax">Tax Services</a>
-                        <a href="../../services/business-transfer/" data-i18n="nav.service.business_transfer">Business Transfer</a>
-                        <a href="../../services/risk-management/" data-i18n="nav.service.risk_management">Risk Management</a>
-                        <a href="../../services/corporate-advisory/" data-i18n="nav.service.corporate_advisory">Corporate Advisory</a>
+                        <a href="../../services/business-transfer/" data-i18n="nav.service.business_transfer">Business
+                            Transfer</a>
+                        <a href="../../services/risk-management/" data-i18n="nav.service.risk_management">Risk
+                            Management</a>
+                        <a href="../../services/corporate-advisory/"
+                            data-i18n="nav.service.corporate_advisory">Corporate Advisory</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -280,10 +279,12 @@
                             class="text-xs"></i></a>
                     <div class="nav-dropdown-menu">
                         <a href="../../industries.html" data-i18n="nav.industries_overview">Overview</a>
-                        <a href="../../industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a>
+                        <a href="../../industries/manufacturing/"
+                            data-i18n="nav.industry.manufacturing">Manufacturing</a>
                         <a href="../../industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
                         <a href="../../industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
-                        <a href="../../industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
+                        <a href="../../industries/technology/" data-i18n="nav.industry.technology">Technology &amp;
+                            Digital</a>
                         <a href="../../industries/consumer/" data-i18n="nav.industry.consumer">Consumer &amp; Retail</a>
                     </div>
                 </div>
@@ -336,11 +337,15 @@
                             class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
                         <a href="../../services.html">Overview</a>
-                        <a href="../../services/accounting-finance/" class="is-active-sub" data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
+                        <a href="../../services/accounting-finance/" class="is-active-sub"
+                            data-i18n="nav.service.accounting">Accounting &amp; Finance</a>
                         <a href="../../services/tax-services/" class="" data-i18n="nav.service.tax">Tax Services</a>
-                        <a href="../../services/business-transfer/" class="" data-i18n="nav.service.business_transfer">Business Transfer</a>
-                        <a href="../../services/risk-management/" class="" data-i18n="nav.service.risk_management">Risk Management</a>
-                        <a href="../../services/corporate-advisory/" class="" data-i18n="nav.service.corporate_advisory">Corporate Advisory</a>
+                        <a href="../../services/business-transfer/" class=""
+                            data-i18n="nav.service.business_transfer">Business Transfer</a>
+                        <a href="../../services/risk-management/" class="" data-i18n="nav.service.risk_management">Risk
+                            Management</a>
+                        <a href="../../services/corporate-advisory/" class=""
+                            data-i18n="nav.service.corporate_advisory">Corporate Advisory</a>
                     </div>
                 </div>
                 <div class="mobile-nav-group ">
@@ -349,10 +354,12 @@
                             class="w-4 h-4"></i></button>
                     <div class="mobile-nav-submenu">
                         <a href="../../industries.html">Overview</a>
-                        <a href="../../industries/manufacturing/" data-i18n="nav.industry.manufacturing">Manufacturing</a>
+                        <a href="../../industries/manufacturing/"
+                            data-i18n="nav.industry.manufacturing">Manufacturing</a>
                         <a href="../../industries/energy/" data-i18n="nav.industry.energy">Energy &amp; Resources</a>
                         <a href="../../industries/healthcare/" data-i18n="nav.industry.healthcare">Healthcare</a>
-                        <a href="../../industries/technology/" data-i18n="nav.industry.technology">Technology &amp; Digital</a>
+                        <a href="../../industries/technology/" data-i18n="nav.industry.technology">Technology &amp;
+                            Digital</a>
                         <a href="../../industries/consumer/" data-i18n="nav.industry.consumer">Consumer &amp; Retail</a>
                     </div>
                 </div>
@@ -385,7 +392,8 @@
         </div>
     </header>
     <main id="main-content">
-        <div data-component="sub-services/accounting-finance/hero" class="component-slot" style="min-height: 600px;"></div>
+        <div data-component="sub-services/accounting-finance/hero" class="component-slot">
+        </div>
         <div data-component="sub-services/accounting-finance/summary" class="component-slot"></div>
         <div data-component="sub-services/accounting-finance/challenges" class="component-slot"></div>
         <div data-component="sub-services/accounting-finance/solution" class="component-slot"></div>
@@ -461,173 +469,14 @@
         </div>
     </div>
 
-    <!-- ============ FOOTER ============ -->
-    <footer class="bg-[#004D34] text-gray-50">
-        <div class="container mx-auto px-6 pt-24 pb-20">
-            <div class="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
-                <div class="reveal-up">
-                    <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-white/50 block mb-6"
-                        data-i18n="footer.manifesto_label">Corporate Strategic Partner</span>
-                    <img width="487" height="350" src="../../assets/chatura-footer.webp" alt="Chatura Indonesia"
-                        class="h-36 w-auto mb-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
-                    <p class="text-sm text-gray-50 leading-[1.9] max-w-md" data-i18n="footer.manifesto_desc">Integrated
-                        professional services providing accounting, tax, business advisory, and risk management
-                        solutions across the Indonesian archipelago and Southeast Asian markets.</p>
-                    <div class="flex items-center gap-5 mt-8 text-gray-50/60">
-                        <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"
-                            class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin"
-                                class="w-4.5 h-4.5"></i></a>
-                        <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer"
-                            class="hover:text-white transition-colors duration-300"><i data-lucide="instagram"
-                                class="w-4.5 h-4.5"></i></a>
-                        <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer"
-                            class="hover:text-white transition-colors duration-300"><i data-lucide="youtube"
-                                class="w-4.5 h-4.5"></i></a>
-                        <a href="mailto:info@chatura-indonesia.com" aria-label="Email"
-                            class="hover:text-white transition-colors duration-300"><i data-lucide="mail"
-                                class="w-4.5 h-4.5"></i></a>
-                    </div>
-                </div>
-                <div class="reveal-up grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-12">
-                    <div>
-                        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6"
-                            data-i18n="footer.services_heading">Services</h4>
-                        <ul class="space-y-3.5">
-                            <li><a href="../../services/accounting-finance/"
-                                    class="text-xs text-white/80 font-semibold hover:text-white transition-colors duration-300 relative group">Accounting
-                                    &amp; Finance<span
-                                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
-                            </li>
-                            <li><a href="../../services/tax-services/"
-                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group">Tax
-                                    Services<span
-                                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
-                            </li>
-                            <li><a href="../../services/business-transfer/"
-                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group">Business
-                                    Transfer<span
-                                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
-                            </li>
-                            <li><a href="../../services/risk-management/"
-                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group">Risk
-                                    Management<span
-                                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
-                            </li>
-                            <li><a href="../../services/corporate-advisory/"
-                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group">Corporate
-                                    Advisory<span
-                                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6"
-                            data-i18n="footer.industries_heading">Industries</h4>
-                        <ul class="space-y-3.5">
-                            <li><a href="../../industries/energy/"
-                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
-                                    data-i18n="footer.industry_1">Energy &amp; Resources<span
-                                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
-                            </li>
-                            <li><a href="../../industries/manufacturing/"
-                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
-                                    data-i18n="footer.industry_2">Manufacturing<span
-                                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
-                            </li>
-                            <li><a href="../../industries/technology/"
-                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
-                                    data-i18n="footer.industry_3">Technology &amp; Digital<span
-                                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
-                            </li>
-                            <li><a href="../../industries/healthcare/"
-                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
-                                    data-i18n="footer.industry_4">Healthcare<span
-                                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-6"
-                            data-i18n="footer.company_heading">Company</h4>
-                        <ul class="space-y-3.5">
-                            <li><a href="../../index.html"
-                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
-                                    data-i18n="footer.company_1">About Us<span
-                                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
-                            </li>
-                            <li><a href="../../our-people.html"
-                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
-                                    data-i18n="footer.company_2">Our People<span
-                                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
-                            </li>
-                            <li><a href="../../career.html"
-                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
-                                    data-i18n="footer.company_3">Careers<span
-                                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
-                            </li>
-                            <li><a href="../../insights.html"
-                                    class="text-xs text-white/60 hover:text-white transition-colors duration-300 relative group"
-                                    data-i18n="footer.company_4">Insights<span
-                                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-400"></span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container mx-auto px-6">
-            <div class="h-px bg-white/10"></div>
-        </div>
-
-        <div class="container mx-auto px-6 py-10">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                <div class="flex items-center gap-4">
-                    <img width="487" height="350" src="../../assets/chatura-footer.webp" alt="Chatura"
-                        class="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-500">
-                    <span class="text-[11px] text-white/50" data-i18n="footer.copyright">&copy; 2026 Chatura Indonesia.
-                        All rights reserved.</span>
-                </div>
-                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-white/50">
-                    <a href="../../privacy.html" class="hover:text-white transition-colors duration-300"
-                        data-i18n="footer.privacy">Privacy Policy</a>
-                    <a href="../../terms.html" class="hover:text-white transition-colors duration-300"
-                        data-i18n="footer.terms">Terms of Use</a>
-                    <a href="../../cookies.html" class="hover:text-white transition-colors duration-300"
-                        data-i18n="footer.cookies">Cookies</a>
-                    <a href="../../disclaimer.html" class="hover:text-white transition-colors duration-300"
-                        data-i18n="footer.disclaimer">Disclaimer</a>
-                    <a href="../../sitemap.html" class="hover:text-white transition-colors duration-300"
-                        data-i18n="footer.sitemap">Sitemap</a>
-                    <a href="../../code-of-conduct.html" class="hover:text-white transition-colors duration-300"
-                        data-i18n="footer.conduct">Code of Conduct</a>
-                </div>
-                <div class="flex items-center gap-4 text-gray-50/60">
-                    <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"
-                        class="hover:text-white transition-colors duration-300"><i data-lucide="linkedin"
-                            class="w-4 h-4"></i></a>
-                    <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer"
-                        class="hover:text-white transition-colors duration-300"><i data-lucide="instagram"
-                            class="w-4 h-4"></i></a>
-                    <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer"
-                        class="hover:text-white transition-colors duration-300"><i data-lucide="youtube"
-                            class="w-4 h-4"></i></a>
-                    <a href="mailto:info@chatura-indonesia.com" aria-label="Email"
-                        class="hover:text-white transition-colors duration-300"><i data-lucide="mail"
-                            class="w-4 h-4"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="border-t border-white/10">
-            <div class="container mx-auto">
-                <p class="text-[10px] text-brand-green leading-relaxed text-center" data-i18n="footer.legal">Chatura
-                    Indonesia is an integrated professional services firm. This website is for general informational
-                    purposes only and does not constitute professional advice. All information is subject to change
-                    without notice.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- MODULAR FOOTER COMPONENT -->
+    <div data-component="shared/footer-sub" data-class_af="font-semibold !text-white/90"
+        class="component-slot component-dark"></div>
+    <noscript>
+        <footer class="bg-[#004D34] text-gray-50 py-10 px-6 text-center text-sm">
+            <p>&copy; 2026 Chatura Indonesia. All rights reserved.</p>
+        </footer>
+    </noscript>
 
     <script src="../../assets/i18n/config.js"></script>
     <script src="../../assets/js/core/EventBus.js"></script>

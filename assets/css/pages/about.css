@@ -9,6 +9,14 @@
     overflow: hidden;
 }
 
+@media (min-width: 768px) {
+    #hero {
+        min-height: 100vh !important;
+        max-height: 100vh !important;
+        height: 100vh !important;
+    }
+}
+
 .hero-slides-layer {
     position: absolute;
     inset: 0;

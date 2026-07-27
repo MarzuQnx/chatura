@@ -4,18 +4,30 @@
 (function () {
     'use strict';
 
-    var CR = window.TranslationRepository;
-    var currentLang = function () { return CR ? CR.getCurrentLanguage() : 'en'; };
+    var currentLang = function () { 
+        return (window.TranslationRepository && typeof window.TranslationRepository.getCurrentLanguage === 'function') 
+            ? window.TranslationRepository.getCurrentLanguage() 
+            : 'en'; 
+    };
     var t = function (key) {
-        var d = window.TranslationRepository ? window.TranslationRepository.getAllTranslations() : {};
-        return d[key] || key;
+        if (window.TranslationRepository && typeof window.TranslationRepository.t === 'function') {
+            return window.TranslationRepository.t(key);
+        }
+        return key;
     };
     var loc = function (obj, keyFallback) {
         if (!obj) return '';
-        if (typeof obj === 'string') return obj;
-        if (obj[currentLang()]) return obj[currentLang()];
+        if (typeof obj === 'string') {
+            if (window.TranslationRepository && typeof window.TranslationRepository.t === 'function') {
+                var translated = window.TranslationRepository.t(obj);
+                if (translated && translated !== obj) return translated;
+            }
+            return obj;
+        }
+        var lang = currentLang();
+        if (obj[lang]) return obj[lang];
         if (keyFallback && obj[keyFallback]) return obj[keyFallback];
-        return obj.en || '';
+        return obj.en || obj.id || '';
     };
 
     var PeopleRenderer = {

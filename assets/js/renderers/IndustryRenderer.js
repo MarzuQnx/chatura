@@ -4,18 +4,30 @@
 (function () {
     'use strict';
 
-    var CR = window.TranslationRepository;
-    var currentLang = function () { return CR ? CR.getCurrentLanguage() : 'en'; };
+    var currentLang = function () { 
+        return (window.TranslationRepository && typeof window.TranslationRepository.getCurrentLanguage === 'function') 
+            ? window.TranslationRepository.getCurrentLanguage() 
+            : 'en'; 
+    };
     var t = function (key) {
-        var d = window.TranslationRepository ? window.TranslationRepository.getAllTranslations() : {};
-        return d[key] || key;
+        if (window.TranslationRepository && typeof window.TranslationRepository.t === 'function') {
+            return window.TranslationRepository.t(key);
+        }
+        return key;
     };
     var loc = function (obj, keyFallback) {
         if (!obj) return '';
-        if (typeof obj === 'string') return obj;
-        if (obj[currentLang()]) return obj[currentLang()];
+        if (typeof obj === 'string') {
+            if (window.TranslationRepository && typeof window.TranslationRepository.t === 'function') {
+                var translated = window.TranslationRepository.t(obj);
+                if (translated && translated !== obj) return translated;
+            }
+            return obj;
+        }
+        var lang = currentLang();
+        if (obj[lang]) return obj[lang];
         if (keyFallback && obj[keyFallback]) return obj[keyFallback];
-        return obj.en || '';
+        return obj.en || obj.id || '';
     };
 
     var IndustryRenderer = {
@@ -174,6 +186,10 @@
     // Bind Expert Modal
     window.openExpertModal = function (arg) {
         var _expertModal = document.getElementById('expertBioModal') || document.getElementById('bioModal') || document.getElementById('authorModal');
+        if (!_expertModal && window.PeopleRenderer && typeof window.PeopleRenderer.openBioModal === 'function') {
+            window.PeopleRenderer.openBioModal(arg);
+            return;
+        }
         if (!_expertModal) return;
 
         var e = null;
@@ -253,14 +269,28 @@
             }).join('');
         }
 
-        _expertModal.classList.add('active');
+        _expertModal.classList.remove('opacity-0', 'pointer-events-none');
+        _expertModal.classList.add('opacity-100', 'pointer-events-auto', 'active');
+        var content = _expertModal.querySelector('.expert-modal-content') || _expertModal.querySelector('.modal-content');
+        if (content) {
+            content.classList.remove('scale-95', 'translate-y-[15px]');
+            content.classList.add('scale-100', 'translate-y-0');
+        }
         document.body.style.overflow = 'hidden';
         if (typeof lucide !== 'undefined') lucide.createIcons();
     };
 
     window.closeExpertModal = function () {
         var _expertModal = document.getElementById('expertBioModal') || document.getElementById('bioModal') || document.getElementById('authorModal');
-        if (_expertModal) _expertModal.classList.remove('active');
+        if (_expertModal) {
+            _expertModal.classList.remove('opacity-100', 'pointer-events-auto', 'active');
+            _expertModal.classList.add('opacity-0', 'pointer-events-none');
+            var content = _expertModal.querySelector('.expert-modal-content') || _expertModal.querySelector('.modal-content');
+            if (content) {
+                content.classList.remove('scale-100', 'translate-y-0');
+                content.classList.add('scale-95', 'translate-y-[15px]');
+            }
+        }
         document.body.style.overflow = '';
     };
 

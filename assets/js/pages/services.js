@@ -57,11 +57,8 @@
         if (!document.getElementById('navbar-spacer')) {
             var spacer = document.createElement('div');
             spacer.id = 'navbar-spacer';
-            spacer.style.height = nav.offsetHeight + 'px';
-            spacer.style.width = '100%';
-            spacer.style.flexShrink = '0';
+            spacer.style.height = '0px';
             nav.parentNode.insertBefore(spacer, nav.nextSibling);
-            window.addEventListener('resize', function () { spacer.style.height = nav.offsetHeight + 'px'; }, { passive: true });
         }
 
         var isScrolled = false;
@@ -281,16 +278,22 @@
         // Hero animation — hanya jika elemen sudah ada di DOM
         var heroEls = document.querySelectorAll('#hero-services .reveal-up');
         if (heroEls.length > 0) {
+            gsap.set(heroEls, { opacity: 0, y: 30 });
             gsap.to(heroEls, {
                 opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power2.out', delay: 0.15
             });
+        }
+
+        var revealEls = document.querySelectorAll('.reveal-up:not(#hero-services .reveal-up):not(#detailedServicesContainer .reveal-up)');
+        if (revealEls.length > 0) {
+            gsap.set(revealEls, { opacity: 0, y: 30 });
         }
 
         ScrollTrigger.batch('.reveal-up:not(#hero-services .reveal-up):not(#detailedServicesContainer .reveal-up)', {
             start: 'top 85%',
             once: true,
             onEnter: function (batch) {
-                gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: 'power2.out', delay: 0.3 });
+                gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: 'power2.out', delay: 0.1 });
             }
         });
 

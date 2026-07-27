@@ -1,0 +1,180 @@
+/**
+ * CHATURA INSIGHTS & INSIGHT DETAIL PAGE STYLESHEET
+ * Dedicated stylesheet for insights.html and insight-detail.html
+ */
+
+/* ============================================================================
+   01. CARD & GRID LAYOUT STYLES
+   ============================================================================ */
+.insight-card {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+}
+.insight-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+}
+.insight-card:hover .card-image {
+    transform: scale(1.05);
+}
+.insight-card:hover .card-title {
+    color: #004D34;
+}
+.card-image {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-title {
+    transition: color 0.25s ease;
+}
+.featured-card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+.featured-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.1);
+}
+.featured-card:hover .featured-image {
+    transform: scale(1.03);
+}
+.featured-image {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* CTA Micro-Interaction Rules */
+.cta-text {
+    display: inline-block !important;
+    transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), color 300ms ease !important;
+    will-change: transform;
+}
+.cta-arrow {
+    display: inline-block !important;
+    transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), opacity 300ms ease !important;
+    will-change: transform, opacity;
+}
+.featured-card:hover .cta-text,
+.featured-cta:hover .cta-text,
+.insight-card:hover .cta-text,
+.group\/cta:hover .cta-text,
+.group\/btn:hover .cta-text,
+.group\/navbtn:hover .cta-text,
+a:hover:has(.cta-arrow) > span,
+button:hover:has(.cta-arrow) > span {
+    transform: translateX(20px) !important;
+}
+.featured-card:hover .cta-arrow,
+.featured-cta:hover .cta-arrow,
+.insight-card:hover .cta-arrow,
+.group\/cta:hover .cta-arrow,
+.group\/btn:hover .cta-arrow,
+.group\/navbtn:hover .cta-arrow,
+a:hover:has(.cta-arrow) i[data-lucide*="arrow"],
+a:hover:has(.cta-arrow) svg[data-lucide*="arrow"],
+button:hover:has(.cta-arrow) i[data-lucide*="arrow"],
+button:hover:has(.cta-arrow) svg[data-lucide*="arrow"] {
+    opacity: 0 !important;
+    transform: translateX(24px) !important;
+}
+.search-input:focus {
+    box-shadow: 0 0 0 3px rgba(0,77,52,0.1);
+    border-color: #004D34;
+}
+.search-clear {
+    display: none;
+}
+.search-input:not(:placeholder-shown) ~ .search-clear {
+    display: flex;
+}
+.filter-tab-btn {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.filter-tab-btn:hover:not([aria-selected="true"]) {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.newsletter-block {
+    transition: all 0.3s ease;
+}
+.newsletter-block:focus-within {
+    box-shadow: 0 0 0 4px rgba(0,77,52,0.08);
+}
+.empty-state {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: emptyFadeIn 0.4s ease forwards;
+}
+@keyframes emptyFadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.relative.overflow-hidden[class*="aspect-"] img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+}
+
+/* ============================================================================
+   02. ARTICLE DETAIL & READING TYPOGRAPHY STYLES
+   ============================================================================ */
+.progress-bar-container { position: fixed; top: 0; left: 0; width: 100%; height: 4px; background: transparent; z-index: 100; }
+.progress-bar { height: 100%; background: #004D34; width: 0%; transition: width 0.1s ease-out; }
+.article-body p { margin-bottom: 1.5rem; font-size: 1.0625rem; line-height: 1.8; color: #374151; }
+.article-body h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.75rem; font-weight: 700; color: #004D34; margin-top: 2.5rem; margin-bottom: 1rem; }
+.article-body h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.35rem; font-weight: 600; color: #1f2937; margin-top: 2rem; margin-bottom: 0.75rem; }
+.article-body blockquote { border-left: 4px solid #004D34; background-color: #f9fafb; padding: 1.25rem 1.5rem; margin: 2rem 0; font-style: italic; color: #4b5563; border-radius: 0 8px 8px 0; }
+.article-body ol { list-style-type: decimal; padding-left: 1.25rem; margin-bottom: 1.5rem; }
+.article-body ol li { margin-bottom: 0.5rem; color: #4b5563; font-size: 1rem; line-height: 1.7; }
+.article-body strong { color: #1f2937; }
+
+.related-drop-row { position: relative; display: flex; align-items: center; gap: 0.9rem; padding: 0.85rem 0.85rem 0.85rem 1rem; border: 1px solid #f0f1ef; border-radius: 0.85rem; background: #fff; text-decoration: none; overflow: hidden; transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease; }
+.related-drop-row::before { content: ""; position: absolute; left: 0; top: 50%; width: 3px; height: 0%; background: #004D34; transform: translateY(-50%); transition: height .4s cubic-bezier(.16,1,.3,1); }
+.related-drop-row:hover, .related-drop-row:focus-visible { border-color: #d7ddda; box-shadow: 0 12px 28px rgba(0,0,0,0.06); transform: translateY(-2px); }
+.related-drop-row:hover::before, .related-drop-row:focus-visible::before { height: 60%; }
+.related-drop-num { font-family: ui-serif, Georgia, serif; font-weight: 300; font-size: 1.1rem; color: #d1d5db; min-width: 1.5rem; transition: color .3s ease; }
+.related-drop-row:hover .related-drop-num { color: #004D34; }
+.related-drop-thumb { overflow: hidden; border-radius: 0.5rem; }
+.related-drop-thumb img { transition: transform .5s cubic-bezier(.16,1,.3,1); }
+.related-drop-row:hover .related-drop-thumb img { transform: scale(1.08); }
+.related-drop-title { transition: color .25s ease; }
+.related-drop-row:hover .related-drop-title { color: #004D34; }
+
+.exec-summary-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 1rem; padding: 1.5rem 2rem; }
+.exec-summary-box h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.125rem; font-weight: 600; color: #004D34; margin-bottom: 0.75rem; }
+.exec-summary-box ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 0.5rem; }
+.exec-summary-box ul li { font-size: 0.9rem; color: #4b5563; line-height: 1.6; margin-bottom: 0.35rem; }
+.prev-next-link { transition: border-color .3s ease, box-shadow .3s ease; }
+.prev-next-link:hover { border-color: #d1d5db; box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+
+#authorModal.active, #bioModal.active { opacity: 1; pointer-events: auto; }
+#authorModal.active .modal-content, #bioModal.active .modal-content { transform: scale(1) translateY(0); }
+
+.custom-scrollbar::-webkit-scrollbar { width: 6px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 4px; }
+
+/* Article Tag Invert Color Hover Effect */
+.article-tag,
+#article-tags span {
+    display: inline-block !important;
+    background-color: #f3f4f6 !important;
+    color: #4b5563 !important;
+    border: 1px solid #e5e7eb !important;
+    transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease, transform 200ms ease !important;
+    cursor: pointer !important;
+}
+
+.article-tag:hover,
+#article-tags span:hover {
+    background-color: #004D34 !important;
+    color: #ffffff !important;
+    border-color: #004D34 !important;
+    transform: translateY(-1.5px) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .insight-card, .featured-card, .card-image, .featured-image, .card-title, .filter-tab-btn, .newsletter-block, .empty-state,
+    .related-drop-row, .related-drop-row::before, .related-drop-num, .related-drop-thumb img, .related-drop-title, .prev-next-link, #authorModal, #authorModal .modal-content { 
+        transition: none !important; 
+        transform: none !important; 
+    }
+}

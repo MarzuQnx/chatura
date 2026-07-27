@@ -1,0 +1,130 @@
+<section class="py-12 md:py-20">
+    <article class="container mx-auto px-6 max-w-7xl">
+        <div class="grid lg:grid-cols-12 gap-12 items-start">
+            <!-- LEFT: Main Article (Span 8) -->
+            <div class="lg:col-span-8 space-y-8">
+                <!-- Author Metadata -->
+                <div class="reveal-up flex items-center gap-4 cursor-pointer group" id="author-meta" onclick="openAuthorModal()">
+                    <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-200 ring-2 ring-transparent group-hover:ring-emerald-300 transition-all" id="author-photo-wrap"><img id="author-photo-img" src="" alt="" class="w-full h-full object-cover"></div>
+                    <div>
+                        <p class="text-sm font-bold text-gray-900 group-hover:text-emerald-800 transition-colors" id="author-name"></p>
+                        <p class="text-xs text-gray-400">
+                            <span data-i18n="insight.published_label">Published</span> <span id="article-date"></span> &nbsp;&bull;&nbsp; <span id="article-readtime"></span>
+                        </p>
+                    </div>
+                </div>
+                <!-- Hero Image -->
+                <div class="reveal-up relative overflow-hidden aspect-video rounded-2xl bg-gray-100 border border-gray-200 shadow-xs">
+                    <img id="article-hero-image" src="" alt="" class="w-full h-full object-cover object-center" loading="lazy">
+                </div>
+                <!-- Executive Summary -->
+                <div class="reveal-up exec-summary-box" id="exec-summary-section" style="display:none;">
+                    <h4 data-i18n="insight.exec_title">Executive Summary</h4>
+                    <p id="exec-summary-text" class="text-sm text-gray-600 leading-relaxed mb-4"></p>
+                    <div id="exec-summary-findings" style="display:none;">
+                        <h4 data-i18n="insight.exec_findings">Key Findings</h4>
+                        <ul id="exec-findings-list"></ul>
+                    </div>
+                    <div id="exec-summary-impact" style="display:none;">
+                        <h4 data-i18n="insight.exec_impact">Business Impact</h4>
+                        <p id="exec-impact-text" class="text-sm text-gray-600 leading-relaxed mb-4"></p>
+                    </div>
+                    <div id="exec-summary-recs" style="display:none;">
+                        <h4 data-i18n="insight.exec_recommendations">Recommendations</h4>
+                        <ul id="exec-recs-list"></ul>
+                    </div>
+                </div>
+                <!-- Article Body -->
+                <div class="reveal-up article-body text-justify" id="article-body"></div>
+                <!-- Tags & Share -->
+                <div class="reveal-up pt-6 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
+                    <div class="flex flex-wrap gap-2" id="article-tags"></div>
+                    <div class="flex items-center gap-3 text-gray-500">
+                        <span data-i18n="insight.share_label">Share:</span>
+                        <a id="share-linkedin" href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#004D34] transition" aria-label="Share on LinkedIn"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                        <a id="share-facebook" href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#004D34] transition" aria-label="Share on Facebook"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                        <a id="share-twitter" href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#004D34] transition" aria-label="Share on X"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                        <a id="share-email" href="#" class="hover:text-[#004D34] transition" aria-label="Share via Email"><i data-lucide="mail" class="w-4 h-4"></i></a>
+                        <button id="share-copy" type="button" class="hover:text-[#004D34] transition" aria-label="Copy link"><i data-lucide="link" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+                <!-- Disclaimer Section -->
+                <div class="reveal-up pt-6 border-t border-gray-100" id="article-disclaimer-section">
+                    <div class="bg-gray-50/90 rounded-2xl p-6 border border-gray-200/80 text-xs text-gray-600 leading-relaxed shadow-xs">
+                        <div class="flex items-center gap-2 mb-3 text-emerald-800 font-bold">
+                            <i data-lucide="shield-alert" class="w-4 h-4 text-emerald-700 shrink-0"></i>
+                            <span class="uppercase tracking-wider text-[11px]" data-i18n="insight.disclaimer_title">Disclaimer Artikel</span>
+                        </div>
+                        <p class="mb-4 text-gray-600 leading-relaxed" data-i18n="insight.disclaimer_desc">
+                            Disclaimer pada artikel adalah pernyataan penyangkalan yang bertujuan untuk membatasi tanggung jawab hukum, memperjelas maksud isi tulisan, dan melindungi penulis atau situs dari tuntutan pembaca.
+                        </p>
+                        <div class="grid sm:grid-cols-2 gap-5 pt-4 border-t border-gray-200/60">
+                            <div>
+                                <h5 class="font-bold text-gray-900 mb-2 flex items-center gap-1.5 text-[11px]">
+                                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600"></i> <span data-i18n="insight.disclaimer_functions_title">Fungsi Utama Disclaimer</span>
+                                </h5>
+                                <ul class="space-y-1.5 text-gray-500 text-[11px] leading-normal">
+                                    <li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600 mt-1 shrink-0"></span><span><strong data-i18n="insight.disclaimer_func1_title">Melindungi hukum:</strong> <span data-i18n="insight.disclaimer_func1_desc">Menjaga penulis dari risiko gugatan jika terjadi salah paham atau kerugian.</span></span></li>
+                                    <li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600 mt-1 shrink-0"></span><span><strong data-i18n="insight.disclaimer_func2_title">Membatasi tanggung jawab:</strong> <span data-i18n="insight.disclaimer_func2_desc">Menegaskan bahwa risiko penggunaan informasi ada pada pembaca.</span></span></li>
+                                    <li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600 mt-1 shrink-0"></span><span><strong data-i18n="insight.disclaimer_func3_title">Klarifikasi isi:</strong> <span data-i18n="insight.disclaimer_func3_desc">Memberi tahu sifat asli konten seperti opini, iklan afiliasi, atau data non-resmi.</span></span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-gray-900 mb-2 flex items-center gap-1.5 text-[11px]">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 text-emerald-600"></i> <span data-i18n="insight.disclaimer_types_title">Jenis-Jenis Disclaimer dalam Artikel</span>
+                                </h5>
+                                <ul class="space-y-1.5 text-gray-500 text-[11px] leading-normal">
+                                    <li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600 mt-1 shrink-0"></span><span><strong data-i18n="insight.disclaimer_type1_title">Kesehatan/Medis:</strong> <span data-i18n="insight.disclaimer_type1_desc">Menyatakan artikel bukan pengganti nasihat dokter profesional.</span></span></li>
+                                    <li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600 mt-1 shrink-0"></span><span><strong data-i18n="insight.disclaimer_type2_title">Keuangan:</strong> <span data-i18n="insight.disclaimer_type2_desc">Mengingatkan bahwa tips investasi atau finansial bukan jaminan atau perintah resmi.</span></span></li>
+                                    <li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600 mt-1 shrink-0"></span><span><strong data-i18n="insight.disclaimer_type3_title">Afiliasi:</strong> <span data-i18n="insight.disclaimer_type3_desc">Memberitahu pembaca bahwa penulis mendapat komisi dari tautan produk tertentu.</span></span></li>
+                                    <li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600 mt-1 shrink-0"></span><span><strong data-i18n="insight.disclaimer_type4_title">Hak Cipta:</strong> <span data-i18n="insight.disclaimer_type4_desc">Menjelaskan status kepemilikan aset atau materi dalam tulisan.</span></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Related Services Articles -->
+                <div class="reveal-up pt-6 border-t border-gray-100" id="related-services-section" style="display:none;">
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4" data-i18n="insight.related_services">Related Services Articles</h4>
+                    <div class="grid sm:grid-cols-2 gap-4" id="related-services-list"></div>
+                </div>
+                <!-- Related Industries Articles -->
+                <div class="reveal-up pt-6 border-t border-gray-100" id="related-industries-section" style="display:none;">
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4" data-i18n="insight.related_industries">Related Industries Articles</h4>
+                    <div class="grid sm:grid-cols-2 gap-4" id="related-industries-list"></div>
+                </div>
+                <!-- Previous / Next Article -->
+                <div class="reveal-up pt-8 border-t border-gray-100 grid grid-cols-2 gap-4" id="prev-next-section">
+                    <div id="prev-article-slot"></div>
+                    <div id="next-article-slot"></div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Sidebar (Span 4) -->
+            <aside class="lg:col-span-4 space-y-8">
+                <!-- CTA Box -->
+                <div class="reveal-up bg-neutral-900 text-white rounded-2xl p-6 md:p-8 border border-neutral-800 shadow-xl flex flex-col justify-between relative overflow-hidden group">
+                    <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-[#004D34]/30 rounded-full blur-xl group-hover:scale-125 transition-transform duration-500"></div>
+                    <div class="relative z-10">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 block mb-2" data-i18n="insight.cta_desk_label">Practice Advisory Desk</span>
+                        <h4 class="font-serif font-bold text-lg mb-4 text-white leading-snug" data-i18n="insight.cta_desk_title">Need Strategic Fiscal Readiness for Your Company?</h4>
+                        <p class="text-xs text-neutral-400 leading-relaxed mb-6" data-i18n="insight.cta_desk_desc">Consult your corporate tax restructuring, M&A transaction valuation, or business risk management with our senior expert advisory team at Jakarta Head Office.</p>
+                        <a href="contact-us.html" class="inline-flex items-center justify-center gap-2 bg-[#004D34] hover:bg-emerald-600 text-white text-xs font-bold w-full py-3 rounded-lg transition shadow-md group/btn">
+                            <span class="cta-text inline-block transition-transform duration-300 group-hover/btn:translate-x-1" data-i18n="insight.cta_desk_button">Start Confidential Consultation</span>
+                            <i data-lucide="arrow-right" class="cta-arrow inline-block w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Related Insights Sidebar -->
+                <div class="reveal-up space-y-4">
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-gray-400" data-i18n="insight.rec_title">Recommended Reading</h4>
+                    <div id="relatedInsightsList" class="grid gap-3"></div>
+                    <a href="insights.html" class="flex items-center justify-center gap-2 text-xs font-bold text-[#004D34] group/btn transition-all duration-300 pt-2">
+                        <span class="cta-text inline-block transition-transform duration-300 group-hover/btn:translate-x-1" data-i18n="insight.view_all_insights">View All Insights</span>
+                        <i data-lucide="arrow-right" class="cta-arrow inline-block w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-2"></i>
+                    </a>
+                </div>
+            </aside>
+        </div>
+    </article>
+</section>

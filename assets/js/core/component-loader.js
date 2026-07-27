@@ -94,6 +94,8 @@
         if (window.gsap && !window.__SKIP_COMPONENT_GSAP) {
             var revealUpEls = el.querySelectorAll('.reveal-up');
             if (revealUpEls.length > 0) {
+                // Set initial hidden state so element doesn't flash before ScrollTrigger fires
+                window.gsap.set(revealUpEls, { opacity: 0, y: 30 });
                 if (window.ScrollTrigger) {
                     window.ScrollTrigger.batch(revealUpEls, {
                         start: 'top 90%',
@@ -102,8 +104,8 @@
                             window.gsap.to(batch, {
                                 opacity: 1,
                                 y: 0,
-                                duration: 0.65,
-                                stagger: 0.08,
+                                duration: 0.75,
+                                stagger: 0.1,
                                 ease: 'power2.out'
                             });
                         }
@@ -114,8 +116,8 @@
                     window.gsap.to(revealUpEls, {
                         opacity: 1,
                         y: 0,
-                        duration: 0.65,
-                        stagger: 0.08,
+                        duration: 0.75,
+                        stagger: 0.1,
                         ease: 'power2.out'
                     });
                 }
@@ -146,6 +148,20 @@
             // Replace container innerHTML
             el.innerHTML = processedHtml;
             el.classList.add('component-loaded');
+            el.removeAttribute('style');
+
+            // Execute inline <script> tags (innerHTML does not auto-execute them)
+            var scripts = el.querySelectorAll('script');
+            scripts.forEach(function (oldScript) {
+                var newScript = document.createElement('script');
+                if (oldScript.src) {
+                    newScript.src = oldScript.src;
+                } else {
+                    newScript.textContent = oldScript.textContent;
+                }
+                if (oldScript.type) newScript.type = oldScript.type;
+                oldScript.parentNode.replaceChild(newScript, oldScript);
+            });
 
             // Initialize plugins for newly injected DOM
             initComponentPlugins(el);

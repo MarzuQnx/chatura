@@ -347,10 +347,15 @@ button:has(> i[data-lucide]) {
    ENTERPRISE STICKY NAVBAR SYSTEM (Global Component)
    ============================================================ */
 #navbar-sticky {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 50;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
   background-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border-bottom: 1px solid transparent;
   box-shadow: none;
   transition: background-color 320ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -362,11 +367,20 @@ button:has(> i[data-lucide]) {
 }
 
 #navbar-sticky.scrolled {
-  background-color: rgba(255, 255, 255, 0.7) !important;
-  backdrop-filter: blur(16px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  background-color: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(20px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(190%) !important;
   border-bottom: 1px solid rgba(0, 77, 52, 0.08) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 77, 52, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+}
+
+#navbar-spacer {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 #navbar-inner {
@@ -429,6 +443,104 @@ button:has(> i[data-lucide]) {
   .nav-progress-bar {
     transition: none !important;
     animation: none !important;
+  }
+}
+
+/* ============================================================
+   ENTERPRISE STANDARDIZED HERO SYSTEM (Max Screen Height Standard)
+   ============================================================ */
+.hero-section,
+#hero,
+#hero-industry,
+#hero-services,
+#hero-service,
+#hero-people,
+#hero-insights,
+#hero-career,
+#hero-contact,
+#hero-business,
+#hero-about,
+#hero-transfer,
+#hero-case,
+#hero-careers,
+section[id*="hero"],
+section[class*="hero"] {
+  position: relative !important;
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  margin-top: 0 !important; /* CRITICAL FIX: Overrides -mt-32 negative margin pull bug */
+}
+
+@media (min-width: 768px) {
+  .hero-section,
+  #hero,
+  #hero-industry,
+  #hero-services,
+  #hero-service,
+  #hero-people,
+  #hero-insights,
+  #hero-career,
+  #hero-contact,
+  #hero-business,
+  #hero-about,
+  #hero-transfer,
+  #hero-case,
+  #hero-careers,
+  section[id*="hero"],
+  section[class*="hero"] {
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+    height: 100vh !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .hero-section > .container,
+  #hero > .container,
+  #hero-industry > .container,
+  #hero-services > .container,
+  #hero-service > .container,
+  #hero-people > .container,
+  #hero-insights > .container,
+  #hero-career > .container,
+  #hero-contact > .container,
+  #hero-business > .container,
+  #hero-about > .container,
+  #hero-transfer > .container,
+  #hero-case > .container,
+  #hero-careers > .container,
+  section[id*="hero"] > .container,
+  section[class*="hero"] > .container {
+    padding-top: 5.5rem !important; /* Clears fixed navbar height cleanly */
+    padding-bottom: 2.5rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-section,
+  #hero,
+  #hero-industry,
+  #hero-services,
+  #hero-service,
+  #hero-people,
+  #hero-insights,
+  #hero-career,
+  #hero-contact,
+  #hero-business,
+  #hero-about,
+  #hero-transfer,
+  #hero-case,
+  #hero-careers,
+  section[id*="hero"],
+  section[class*="hero"] {
+    min-height: 100vh;
+    max-height: none;
+    height: auto;
+    padding-top: 6.5rem !important;
+    padding-bottom: 3.5rem !important;
   }
 }
 
@@ -1380,316 +1492,6 @@ p {
   border-color: rgba(0, 77, 52, 0.35);
   box-shadow: 0 12px 30px -10px rgba(0, 77, 52, 0.15);
 }
-
-/* --- BCG-Style Premium Single-Arrow Looping Animation --- */
-@keyframes bcg-arrow-hover-in {
-  0% {
-    left: auto;
-    right: var(--arrow-resting-position);
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  35% {
-    left: auto;
-    right: var(--arrow-resting-position);
-    transform: translateX(35px);
-    opacity: 0;
-  }
-
-  36% {
-    left: var(--arrow-resting-position);
-    right: auto;
-    transform: translateX(-35px);
-    opacity: 0;
-  }
-
-  100% {
-    left: var(--arrow-resting-position);
-    right: auto;
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes bcg-arrow-hover-out {
-  0% {
-    left: var(--arrow-resting-position);
-    right: auto;
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  35% {
-    left: var(--arrow-resting-position);
-    right: auto;
-    transform: translateX(-35px);
-    opacity: 0;
-  }
-
-  36% {
-    left: auto;
-    right: var(--arrow-resting-position);
-    transform: translateX(35px);
-    opacity: 0;
-  }
-
-  100% {
-    left: auto;
-    right: var(--arrow-resting-position);
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Common Layout Rules for all animated CTA links and buttons */
-a.bg-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]),
-a[class*="bg-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]),
-a.bg-gray-900:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]),
-a.btn-primary:has([data-lucide="arrow-right"]),
-button.btn-primary:has([data-lucide="arrow-right"]),
-button.bg-gray-900:has([data-lucide="arrow-right"]),
-a.border-gray-300:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]),
-a[class*="border-white"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]),
-button.border-gray-300:has([data-lucide="arrow-right"]),
-button[class*="border-white"]:has([data-lucide="arrow-right"]),
-a.text-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):not([class*="bg-"]):not([class*="border"]):has([data-lucide="arrow-right"]),
-a[class*="text-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):not([class*="bg-"]):not([class*="border"]):has([data-lucide="arrow-right"]),
-.premium-cta {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  overflow: hidden !important;
-  position: relative !important;
-}
-
-/* Button CTA specific variables and padding */
-a.bg-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]),
-a[class*="bg-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]),
-a.bg-gray-900:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]),
-a.btn-primary:has([data-lucide="arrow-right"]),
-button.btn-primary:has([data-lucide="arrow-right"]),
-button.bg-gray-900:has([data-lucide="arrow-right"]),
-a.border-gray-300:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]),
-a[class*="border-white"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]),
-button.border-gray-300:has([data-lucide="arrow-right"]),
-button[class*="border-white"]:has([data-lucide="arrow-right"]),
-.premium-cta {
-  --arrow-resting-position: 20px;
-  padding-left: 2.5rem !important;
-  /* Ensure adequate padding for centered text & absolute arrow placement */
-  padding-right: 2.5rem !important;
-}
-
-/* Inline Link CTA specific variables and padding */
-a.text-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):not([class*="bg-"]):not([class*="border"]):has([data-lucide="arrow-right"]),
-a[class*="text-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):not([class*="bg-"]):not([class*="border"]):has([data-lucide="arrow-right"]) {
-  --arrow-resting-position: 0px;
-  padding-left: 1.5rem !important;
-  /* Center padding to allow symmetric loop without reflow */
-  padding-right: 1.5rem !important;
-}
-
-a.bg-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"])::before,
-a[class*="bg-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"])::before,
-a.bg-gray-900:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"])::before,
-a.btn-primary:has([data-lucide="arrow-right"])::before,
-button.btn-primary:has([data-lucide="arrow-right"])::before,
-button.bg-gray-900:has([data-lucide="arrow-right"])::before,
-a.border-gray-300:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"])::before,
-a[class*="border-white"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"])::before,
-button.border-gray-300:has([data-lucide="arrow-right"])::before,
-button[class*="border-white"]:has([data-lucide="arrow-right"])::before,
-a.text-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"])::before,
-a[class*="text-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"])::before,
-.premium-cta::before {
-  content: none !important;
-  /* Disable any pseudo-element arrows to satisfy single-SVG requirement */
-}
-
-a.bg-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) span,
-a[class*="bg-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) span,
-a.bg-gray-900:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) span,
-a.btn-primary:has([data-lucide="arrow-right"]) span,
-button.btn-primary:has([data-lucide="arrow-right"]) span,
-button.bg-gray-900:has([data-lucide="arrow-right"]) span,
-a.border-gray-300:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) span,
-a[class*="border-white"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) span,
-button.border-gray-300:has([data-lucide="arrow-right"]) span,
-button[class*="border-white"]:has([data-lucide="arrow-right"]) span,
-a.text-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) span,
-a[class*="text-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) span,
-.premium-cta span {
-  display: inline-block !important;
-  transform: none !important;
-  /* Text remains perfectly stationary */
-  transition: none !important;
-}
-
-a.bg-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) i,
-a[class*="bg-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) i,
-a.bg-gray-900:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) i,
-a.btn-primary:has([data-lucide="arrow-right"]) i,
-button.btn-primary:has([data-lucide="arrow-right"]) i,
-button.bg-gray-900:has([data-lucide="arrow-right"]) i,
-a.bg-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) svg,
-a[class*="bg-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) svg,
-a.bg-gray-900:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) svg,
-a.btn-primary:has([data-lucide="arrow-right"]) svg,
-button.btn-primary:has([data-lucide="arrow-right"]) svg,
-button.bg-gray-900:has([data-lucide="arrow-right"]) svg,
-a.border-gray-300:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) i,
-a.border-gray-300:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) svg,
-a[class*="border-white"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) i,
-a[class*="border-white"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) svg,
-button.border-gray-300:has([data-lucide="arrow-right"]) i,
-button.border-gray-300:has([data-lucide="arrow-right"]) svg,
-button[class*="border-white"]:has([data-lucide="arrow-right"]) i,
-button[class*="border-white"]:has([data-lucide="arrow-right"]) svg,
-a.text-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) i,
-a.text-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) svg,
-a[class*="text-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) i,
-a[class*="text-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) svg,
-.premium-cta i,
-.premium-cta svg {
-  position: absolute !important;
-  top: 0 !important;
-  bottom: 0 !important;
-  margin-top: auto !important;
-  margin-bottom: auto !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  width: 14px !important;
-  height: 14px !important;
-  display: inline-block !important;
-  /* Static right-resting state by default on page load/refresh to prevent flash */
-  left: auto;
-  right: var(--arrow-resting-position);
-  transform: translateX(0);
-  opacity: 1;
-}
-
-/* Only run the reset hover-out animation if the button has been hovered at least once */
-a.bg-\[\#004D34\].has-interacted:not(.svc-card):not(.insight-card):not(.career-card):not(:hover):not(:focus-visible) i,
-a[class*="bg-emerald-"].has-interacted:not(.svc-card):not(.insight-card):not(.career-card):not(:hover):not(:focus-visible) i,
-a.bg-gray-900.has-interacted:not(.svc-card):not(.insight-card):not(.career-card):not(:hover):not(:focus-visible) i,
-a.btn-primary.has-interacted:not(:hover):not(:focus-visible) i,
-button.btn-primary.has-interacted:not(:hover):not(:focus-visible) i,
-button.bg-gray-900.has-interacted:not(:hover):not(:focus-visible) i,
-a.bg-\[\#004D34\].has-interacted:not(.svc-card):not(.insight-card):not(.career-card):not(:hover):not(:focus-visible) svg,
-a[class*="bg-emerald-"].has-interacted:not(.svc-card):not(.insight-card):not(.career-card):not(:hover):not(:focus-visible) svg,
-a.bg-gray-900.has-interacted:not(.svc-card):not(.insight-card):not(.career-card):not(:hover):not(:focus-visible) svg,
-a.btn-primary.has-interacted:not(:hover):not(:focus-visible) svg,
-button.btn-primary.has-interacted:not(:hover):not(:focus-visible) svg,
-button.bg-gray-900.has-interacted:not(:hover):not(:focus-visible) svg,
-a.border-gray-300.has-interacted:not(.svc-card):not(.insight-card):not(.career-card):not(:hover):not(:focus-visible) i,
-a.border-gray-300.has-interacted:not(.svc-card):not(.insight-card):not(.career-card):not(:hover):not(:focus-visible) svg,
-a[class*="border-white"].has-interacted:not(.svc-card):not(.insight-card):not(.career-card):not(:hover):not(:focus-visible) i,
-a[class*="border-white"].has-interacted:not(.svc-card):not(.insight-card):not(.career-card):not(:hover):not(:focus-visible) svg,
-button.border-gray-300.has-interacted:not(:hover):not(:focus-visible) i,
-button.border-gray-300.has-interacted:not(:hover):not(:focus-visible) svg,
-button[class*="border-white"].has-interacted:not(:hover):not(:focus-visible) i,
-button[class*="border-white"].has-interacted:not(:hover):not(:focus-visible) svg,
-a.text-\[\#004D34\].has-interacted:not(.svc-card):not(.insight-card):not(.career-card):not(:hover):not(:focus-visible) i,
-a.text-\[\#004D34\].has-interacted:not(.svc-card):not(.insight-card):not(.career-card):not(:hover):not(:focus-visible) svg,
-a[class*="text-emerald-"].has-interacted:not(.svc-card):not(.insight-card):not(.career-card):not(:hover):not(:focus-visible) i,
-a[class*="text-emerald-"].has-interacted:not(.svc-card):not(.insight-card):not(.career-card):not(:hover):not(:focus-visible) svg,
-.premium-cta.has-interacted:not(:hover):not(:focus-visible) i,
-.premium-cta.has-interacted:not(:hover):not(:focus-visible) svg {
-  animation: bcg-arrow-hover-out 0.35s cubic-bezier(.22, 1, .36, 1) forwards !important;
-}
-
-a.bg-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):hover i,
-a[class*="bg-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):hover i,
-a.bg-gray-900:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):hover i,
-a.btn-primary:has([data-lucide="arrow-right"]):hover i,
-button.btn-primary:has([data-lucide="arrow-right"]):hover i,
-button.bg-gray-900:has([data-lucide="arrow-right"]):hover i,
-a.bg-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):hover svg,
-a[class*="bg-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):hover svg,
-a.bg-gray-900:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):hover svg,
-a.btn-primary:has([data-lucide="arrow-right"]):hover svg,
-button.btn-primary:has([data-lucide="arrow-right"]):hover svg,
-button.bg-gray-900:has([data-lucide="arrow-right"]):hover svg,
-a.border-gray-300:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):hover i,
-a.border-gray-300:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):hover svg,
-a[class*="border-white"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):hover i,
-a[class*="border-white"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):hover svg,
-button.border-gray-300:has([data-lucide="arrow-right"]):hover i,
-button.border-gray-300:has([data-lucide="arrow-right"]):hover svg,
-button[class*="border-white"]:has([data-lucide="arrow-right"]):hover i,
-button[class*="border-white"]:has([data-lucide="arrow-right"]):hover svg,
-a.text-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):hover i,
-a.text-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):hover svg,
-a[class*="text-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):hover i,
-a[class*="text-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):hover svg,
-.premium-cta:hover i,
-.premium-cta:hover svg,
-a.bg-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):focus-visible i,
-a[class*="bg-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):focus-visible i,
-a.bg-gray-900:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):focus-visible i,
-a.btn-primary:has([data-lucide="arrow-right"]):focus-visible i,
-button.btn-primary:has([data-lucide="arrow-right"]):focus-visible i,
-button.bg-gray-900:has([data-lucide="arrow-right"]):focus-visible i,
-a.bg-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):focus-visible svg,
-a[class*="bg-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):focus-visible svg,
-a.bg-gray-900:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):focus-visible svg,
-a.btn-primary:has([data-lucide="arrow-right"]):focus-visible svg,
-button.btn-primary:has([data-lucide="arrow-right"]):focus-visible svg,
-button.bg-gray-900:has([data-lucide="arrow-right"]):focus-visible svg,
-a.border-gray-300:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):focus-visible i,
-a.border-gray-300:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):focus-visible svg,
-a[class*="border-white"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):focus-visible i,
-a[class*="border-white"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):focus-visible svg,
-button.border-gray-300:has([data-lucide="arrow-right"]):focus-visible i,
-button.border-gray-300:has([data-lucide="arrow-right"]):focus-visible svg,
-button[class*="border-white"]:has([data-lucide="arrow-right"]):focus-visible i,
-button[class*="border-white"]:has([data-lucide="arrow-right"]):focus-visible svg,
-a.text-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):focus-visible i,
-a.text-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):focus-visible svg,
-a[class*="text-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):focus-visible i,
-a[class*="text-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]):focus-visible svg,
-.premium-cta:focus-visible i,
-.premium-cta:focus-visible svg {
-  animation: bcg-arrow-hover-in 0.35s cubic-bezier(.22, 1, .36, 1) forwards !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-  a.bg-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) i,
-  a[class*="bg-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) i,
-  a.bg-gray-900:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) i,
-  a.btn-primary:has([data-lucide="arrow-right"]) i,
-  button.btn-primary:has([data-lucide="arrow-right"]) i,
-  button.bg-gray-900:has([data-lucide="arrow-right"]) i,
-  a.bg-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) svg,
-  a[class*="bg-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) svg,
-  a.bg-gray-900:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) svg,
-  a.btn-primary:has([data-lucide="arrow-right"]) svg,
-  button.btn-primary:has([data-lucide="arrow-right"]) svg,
-  button.bg-gray-900:has([data-lucide="arrow-right"]) svg,
-  a.border-gray-300:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) i,
-  a.border-gray-300:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) svg,
-  a[class*="border-white"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) i,
-  a[class*="border-white"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) svg,
-  button.border-gray-300:has([data-lucide="arrow-right"]) i,
-  button.border-gray-300:has([data-lucide="arrow-right"]) svg,
-  button[class*="border-white"]:has([data-lucide="arrow-right"]) i,
-  button[class*="border-white"]:has([data-lucide="arrow-right"]) svg,
-  a.text-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) i,
-  a.text-\[\#004D34\]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) svg,
-  a[class*="text-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) i,
-  a[class*="text-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):has([data-lucide="arrow-right"]) svg,
-  .premium-cta i,
-  .premium-cta svg {
-    animation: none !important;
-    position: static !important;
-    opacity: 1 !important;
-    transform: none !important;
-    margin-left: 8px !important;
-  }
-}
-
 /* --- Hamburger Menu Desktop Hide Fallback --- */
 @media (min-width: 768px) {
 
@@ -1755,8 +1557,173 @@ a[class*="text-emerald-"]:not(.svc-card):not(.insight-card):not(.career-card):ha
   background: rgba(255, 255, 255, 0.2);
   z-index: 0;
 }
+
 @media (max-width: 768px) {
   .process-line {
     display: none;
   }
+}
+
+/* ===== FAQ ACCORDION COMPONENT ===== */
+.faq-item {
+  transition: border-color var(--duration-normal) var(--ease-smooth), box-shadow var(--duration-normal) var(--ease-smooth);
+}
+
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 350ms cubic-bezier(0.16, 1, 0.3, 1), padding 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.faq-item.open .faq-content {
+  max-height: 600px;
+  padding-bottom: 1.5rem;
+}
+
+.faq-icon {
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(180deg);
+}
+
+.faq-item.open {
+  border-color: rgba(0, 77, 52, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 77, 52, 0.06);
+}
+
+/* ============================================================================
+   BCG / MCKINSEY ENTERPRISE CTA ARROW RE-ARRANGEMENT LOOPING STANDARD
+   Normal: | Teks -> |
+   Hover:  | -> Teks |
+   ============================================================================ */
+
+/* CTA Container */
+a:has(.cta-arrow),
+button:has(.cta-arrow),
+a:has(.cta-text),
+button:has(.cta-text),
+.featured-cta,
+.latest-cta,
+.group\/cta,
+.group\/btn,
+.group\/navbtn {
+  position: relative !important;
+  overflow: hidden !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+/* 1. Text Label Container - Absolute Anchor for Left Arrow */
+.cta-text,
+a:has(.cta-arrow) > span,
+button:has(.cta-arrow) > span {
+  position: relative !important;
+  display: inline-block !important;
+  transform: translateX(0) !important;
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), color 300ms ease !important;
+  will-change: transform;
+}
+
+/* 2. Left Arrow (::before) - Vertically Centered to Text Line-Height */
+.cta-text::before,
+a:has(.cta-arrow) > span::before,
+button:has(.cta-arrow) > span::before,
+a:has(.cta-arrow)::before,
+button:has(.cta-arrow)::before {
+  content: '' !important;
+  position: absolute !important;
+  left: -20px !important;
+  top: 50% !important;
+  width: 14px !important;
+  height: 14px !important;
+  background-color: currentColor !important;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E") no-repeat center / contain !important;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E") no-repeat center / contain !important;
+  opacity: 0 !important;
+  transform: translateY(-50%) translateX(-16px) !important;
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), opacity 350ms ease !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+}
+
+/* 3. Right Arrow (.cta-arrow or svg/i) */
+.cta-arrow,
+a:has(.cta-arrow) > i[data-lucide*="arrow"],
+a:has(.cta-arrow) > svg[data-lucide*="arrow"],
+button:has(.cta-arrow) > i[data-lucide*="arrow"],
+button:has(.cta-arrow) > svg[data-lucide*="arrow"] {
+  display: inline-block !important;
+  width: 14px !important;
+  height: 14px !important;
+  min-width: 14px !important;
+  min-height: 14px !important;
+  max-width: 14px !important;
+  max-height: 14px !important;
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), opacity 300ms ease !important;
+  will-change: transform, opacity;
+}
+
+/* ============================================================================
+   HOVER STATE: | -> Teks |
+   ============================================================================ */
+
+/* Step 2 & 3: Left Arrow slides in and stays 100% vertically centered */
+a:hover .cta-text::before,
+button:hover .cta-text::before,
+a:hover:has(.cta-arrow) > span::before,
+button:hover:has(.cta-arrow) > span::before,
+a:hover::before,
+button:hover::before,
+.featured-card:hover .cta-text::before,
+.insight-card:hover .cta-text::before,
+.latest-card:hover .cta-text::before,
+.featured-cta:hover .cta-text::before,
+.latest-cta:hover .cta-text::before,
+.group\/cta:hover .cta-text::before,
+.group\/btn:hover .cta-text::before,
+.group\/navbtn:hover .cta-text::before {
+  opacity: 1 !important;
+  transform: translateY(-50%) translateX(0) !important;
+}
+
+/* Step 2 & 3: Text label shifts right to sit after the incoming left arrow */
+a:hover .cta-text,
+button:hover .cta-text,
+.featured-card:hover .cta-text,
+.insight-card:hover .cta-text,
+.latest-card:hover .cta-text,
+.featured-cta:hover .cta-text,
+.latest-cta:hover .cta-text,
+.group\/cta:hover .cta-text,
+.group\/btn:hover .cta-text,
+.group\/navbtn:hover .cta-text,
+a:hover:has(.cta-arrow) > span,
+button:hover:has(.cta-arrow) > span {
+  transform: translateX(20px) !important;
+}
+
+/* Step 2 & 3: Right Arrow slides out right edge and fades out */
+a:hover .cta-arrow,
+button:hover .cta-arrow,
+.featured-card:hover .cta-arrow,
+.insight-card:hover .cta-arrow,
+.latest-card:hover .cta-arrow,
+.featured-cta:hover .cta-arrow,
+.latest-cta:hover .cta-arrow,
+.group\/cta:hover .cta-arrow,
+.group\/btn:hover .cta-arrow,
+.group\/navbtn:hover .cta-arrow,
+a:hover:has(.cta-arrow) > i[data-lucide*="arrow"],
+a:hover:has(.cta-arrow) > svg[data-lucide*="arrow"],
+button:hover:has(.cta-arrow) > i[data-lucide*="arrow"],
+button:hover:has(.cta-arrow) > svg[data-lucide*="arrow"] {
+  opacity: 0 !important;
+  transform: translateX(24px) !important;
 }

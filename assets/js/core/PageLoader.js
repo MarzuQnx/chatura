@@ -44,7 +44,7 @@
 
   function animateHeroElements() {
     if (typeof window.gsap !== 'undefined') {
-      var heroSelector = '[id*="hero"] .reveal-up, [class*="hero"] .reveal-up, main > section:first-of-type .reveal-up';
+      var heroSelector = '[id*="hero"] .reveal-up, [class*="hero"] .reveal-up, .hero-section .reveal-up';
       var heroElements = document.querySelectorAll(heroSelector);
       if (heroElements.length > 0) {
         heroElements.forEach(function (el) {
@@ -151,40 +151,142 @@
   }
 
   function updateLangSelector(lang) {
-    ['lang-selector', 'lang-selector-mobile'].forEach(function (id) {
-      var el = document.getElementById(id);
-      if (el) updateSelectorLinks(el, lang);
-    });
-
-    var portalSelector = document.querySelector('.portal-footer-lang');
-    if (portalSelector) updateSelectorLinks(portalSelector, lang);
-  }
-
-  function updateSelectorLinks(selector, lang) {
-    selector.querySelectorAll('a').forEach(function (a) {
-      var linkLang = (a.getAttribute('data-lang') || a.textContent).trim().toLowerCase();
-      if (CONFIG.supportedLangs.indexOf(linkLang) === -1) return;
-      a.className = linkLang === lang ? 'lang-active' : 'lang-inactive';
-    });
-  }
-
-  function bindSelectorEvents() {
-    ['lang-selector', 'lang-selector-mobile'].forEach(function (id) {
-      var el = document.getElementById(id);
-      if (el) bindSelector(el);
-    });
-
-    var portalSelector = document.querySelector('.portal-footer-lang');
-    if (portalSelector) bindSelector(portalSelector);
-  }
-
-  function bindSelector(selector) {
-    selector.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function (e) {
-        e.preventDefault();
-        var newLang = (a.getAttribute('data-lang') || a.textContent).trim().toLowerCase();
-        Repo.setLanguage(newLang);
+    var activeLang = lang || (Repo ? Repo.getCurrentLanguage() : 'en');
+    var containers = document.querySelectorAll('#lang-selector, #lang-selector-mobile, .portal-footer-lang, [data-lang-switcher]');
+    containers.forEach(function (container) {
+      container.querySelectorAll('a[data-lang]').forEach(function (a) {
+        var linkLang = (a.getAttribute('data-lang') || a.textContent).trim().toLowerCase();
+        if (CONFIG && CONFIG.supportedLangs && CONFIG.supportedLangs.indexOf(linkLang) === -1) return;
+        a.className = linkLang === activeLang ? 'lang-active' : 'lang-inactive';
       });
+    });
+  }
+
+  // Global event delegation for language switching on click
+  document.addEventListener('click', function (e) {
+    var target = e.target;
+    var langLink = (target && typeof target.closest === 'function')
+      ? target.closest('#lang-selector a[data-lang], #lang-selector-mobile a[data-lang], .portal-footer-lang a[data-lang], [data-lang-switcher] a[data-lang]')
+      : null;
+    if (langLink) {
+      e.preventDefault();
+      var newLang = (langLink.getAttribute('data-lang') || langLink.textContent).trim().toLowerCase();
+      if (Repo && typeof Repo.setLanguage === 'function') {
+        Repo.setLanguage(newLang);
+      }
+    }
+  });
+
+  function initNavbarScroll() {
+    var nav = document.getElementById('navbar-sticky');
+    if (!nav) return;
+
+    var isScrolled = false;
+    function update() {
+      var y = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+      var shouldBeScrolled = y > 40;
+      if (shouldBeScrolled !== isScrolled) {
+        isScrolled = shouldBeScrolled;
+        nav.classList.toggle('scrolled', shouldBeScrolled);
+      }
+    }
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+
+  function initWhatsAppWidget() {
+    var launcher = document.getElementById('waLauncher');
+    var popup = document.getElementById('waPopup');
+    var close = document.getElementById('waClose');
+    if (!launcher || !popup) return;
+
+    if (launcher.getAttribute('data-wa-bound') === 'true') return;
+    launcher.setAttribute('data-wa-bound', 'true');
+
+    function togglePopup() {
+      var isOpen = popup.classList.contains('is-open');
+      popup.classList.toggle('is-open');
+      launcher.setAttribute('aria-expanded', !isOpen);
+      popup.setAttribute('aria-hidden', isOpen);
+    }
+
+    launcher.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      togglePopup();
+    });
+
+    if (close) {
+      close.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        togglePopup();
+      });
+    }
+
+    document.addEventListener('click', function (e) {
+      if (popup.classList.contains('is-open') && !popup.contains(e.target) && !launcher.contains(e.target)) {
+        togglePopup();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && popup.classList.contains('is-open')) {
+        togglePopup();
+      }
+    });
+  }
+
+  function enhanceCtaMicroInteractions() {
+    var ctaElements = document.querySelectorAll('a, button');
+    ctaElements.forEach(function (cta) {
+      var arrow = cta.querySelector('i[data-lucide*="arrow"], svg[data-lucide*="arrow"], i.lucide-arrow-right, svg.lucide-arrow-right, .cta-arrow');
+      if (!arrow) return;
+
+      if (!cta.classList.contains('group/cta') && !cta.classList.contains('group/btn') && !cta.classList.contains('group/navbtn')) {
+        cta.classList.add('group/cta');
+      }
+
+      if (!arrow.classList.contains('cta-arrow')) {
+        arrow.classList.add('cta-arrow');
+      }
+      if (!arrow.classList.contains('inline-block')) {
+        arrow.classList.add('inline-block');
+      }
+
+      if (arrow.tagName.toLowerCase() === 'svg') {
+        arrow.setAttribute('width', '14');
+        arrow.setAttribute('height', '14');
+        arrow.style.width = '14px';
+        arrow.style.height = '14px';
+      }
+
+      var existingCtaText = cta.querySelector('.cta-text');
+      if (!existingCtaText) {
+        var spanNode = cta.querySelector('span');
+        if (spanNode) {
+          spanNode.classList.add('cta-text');
+          if (!spanNode.classList.contains('inline-block')) {
+            spanNode.classList.add('inline-block');
+          }
+        } else {
+          var textNode = null;
+          for (var i = 0; i < cta.childNodes.length; i++) {
+            var node = cta.childNodes[i];
+            if (node.nodeType === 3 && node.nodeValue.trim() !== '') {
+              textNode = node;
+              break;
+            }
+          }
+          if (textNode) {
+            var span = document.createElement('span');
+            span.className = 'cta-text inline-block';
+            span.textContent = textNode.nodeValue;
+            cta.insertBefore(span, textNode);
+            cta.removeChild(textNode);
+          }
+        }
+      }
     });
   }
 
@@ -193,6 +295,27 @@
     updateLangSelector(lang);
     applyTranslations();
     animateHeroElements();
+    initNavbarScroll();
+    initWhatsAppWidget();
+    enhanceCtaMicroInteractions();
+
+    document.addEventListener('component:loaded', function (e) {
+      initWhatsAppWidget();
+      enhanceCtaMicroInteractions();
+      if (e.detail && (e.detail.name === 'shared/navbar' || e.detail.name === 'shared/navbar-sub' || e.detail.name === 'shared/footer' || e.detail.name === 'shared/footer-sub')) {
+        initNavbarScroll();
+        updateLangSelector(Repo ? Repo.getCurrentLanguage() : 'en');
+        applyTranslations();
+      }
+    });
+
+    document.addEventListener('components:all-loaded', function () {
+      initNavbarScroll();
+      initWhatsAppWidget();
+      enhanceCtaMicroInteractions();
+      updateLangSelector(Repo ? Repo.getCurrentLanguage() : 'en');
+      applyTranslations();
+    });
 
     // Event delegation to mark CTA buttons as interacted on hover, preventing page-load animation flash
     document.addEventListener('mouseenter', function (e) {
@@ -217,20 +340,21 @@
       }
     }, true);
 
-    Bus.on('languageChange', function () {
-      updateLangSelector(Repo.getCurrentLanguage());
+    Bus.on('languageChange', function (payload) {
+      var activeLang = (payload && payload.lang) ? payload.lang : (Repo ? Repo.getCurrentLanguage() : 'en');
+      updateLangSelector(activeLang);
       applyTranslations();
       window.dispatchEvent(new CustomEvent('langChange', {
-        detail: { lang: Repo.getCurrentLanguage(), data: Repo.getAllTranslations() }
+        detail: { lang: activeLang, data: Repo.getAllTranslations() }
       }));
     });
-
-    bindSelectorEvents();
   }
 
   window.PageLoader = {
     initialize: initialize,
-    applyTranslations: applyTranslations
+    applyTranslations: applyTranslations,
+    initNavbarScroll: initNavbarScroll,
+    initWhatsAppWidget: initWhatsAppWidget
   };
 
   window.i18nLoader = {

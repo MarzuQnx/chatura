@@ -4,16 +4,30 @@
 (function () {
     'use strict';
 
-    var CR = window.TranslationRepository;
-    var currentLang = function () { return CR ? CR.getCurrentLanguage() : 'en'; };
+    var currentLang = function () {
+        return (window.TranslationRepository && typeof window.TranslationRepository.getCurrentLanguage === 'function')
+            ? window.TranslationRepository.getCurrentLanguage()
+            : 'en';
+    };
+
+    var t = function (key) {
+        if (window.TranslationRepository && typeof window.TranslationRepository.t === 'function') {
+            return window.TranslationRepository.t(key);
+        }
+        return key;
+    };
+
     var loc = function (obj) {
         if (!obj) return '';
-        if (typeof obj === 'string') return obj;
-        return obj[currentLang()] || obj.en || '';
-    };
-    var t = function (key) {
-        var d = window.TranslationRepository ? window.TranslationRepository.getAllTranslations() : {};
-        return d[key] || key;
+        if (typeof obj === 'string') {
+            if (window.TranslationRepository && typeof window.TranslationRepository.t === 'function') {
+                var translated = window.TranslationRepository.t(obj);
+                if (translated && translated !== obj) return translated;
+            }
+            return obj;
+        }
+        var lang = currentLang();
+        return obj[lang] || obj.en || obj.id || '';
     };
 
     var peopleMap = {
@@ -44,9 +58,10 @@
         }
         
         if (person) {
+            var personName = person.nameKey ? t(person.nameKey) : (person.name ? loc(person.name) : '');
             return {
                 peopleId: person.id,
-                name: (CR ? loc(person.nameKey) : '') || t(person.nameKey) || (article.author ? loc(article.author.name) : ''),
+                name: personName || (article.author ? loc(article.author.name) : ''),
                 photo: person.photo || (article.author ? (article.author.photo || article.author.image) : '')
             };
         }
@@ -95,7 +110,7 @@
                             '</div>' +
                             '<div class="latest-glass-footer">' +
                                 '<span class="latest-meta">' + (a.dates && a.dates.display ? loc(a.dates.display) : '') + '</span>' +
-                                '<a href="insight-detail.html?slug=' + a.slug + '" class="latest-cta" aria-label="' + t('insight.read_cta') + ': ' + loc(a.title).replace(/"/g, '&quot;') + '">' + t('insight.read_cta') + ' <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>' +
+                                '<a href="insight-detail.html?slug=' + a.slug + '" class="latest-cta group/cta" aria-label="' + t('insight.read_cta') + ': ' + loc(a.title).replace(/"/g, '&quot;') + '"><span class="cta-text inline-block transition-transform duration-300 group-hover:translate-x-1 group-hover/cta:translate-x-1">' + t('insight.read_cta') + '</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cta-arrow inline-block transition-transform duration-300 group-hover:translate-x-2 group-hover/cta:translate-x-2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>' +
                             '</div>' +
                         '</div>' +
                     '</article>';
@@ -129,7 +144,7 @@
             var clickAttr = peopleId ? ' onclick="event.preventDefault(); event.stopPropagation(); if(window.openBioModal){window.openBioModal(\'' + peopleId + '\');}else if(window.openAuthorModal){window.openAuthorModal(\'' + peopleId + '\');}"' : '';
             var cursorClass = peopleId ? ' cursor-pointer hover:opacity-90' : '';
 
-            var html = '<div class="featured-card reveal-up group grid md:grid-cols-[6fr_5fr] bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 hover:border-emerald-800 transition-all duration-500">' +
+            var html = '<div class="featured-card group grid md:grid-cols-[6fr_5fr] bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 hover:border-emerald-800 transition-all duration-500">' +
                 '<a href="' + articleUrl + '" class="relative overflow-hidden min-h-75 md:min-h-100 block">' +
                 '<img src="' + featured.image + '" alt="' + loc(featured.title) + '" class="featured-image w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800">' +
                 '<div class="absolute inset-0 bg-linear-to-t from-black/20 to-transparent"></div>' +
@@ -157,11 +172,14 @@
             html += '<div><p class="featured-author-name text-xs font-semibold text-gray-950 group-hover:text-white group-hover/author:underline transition-colors duration-500">' + authorName + '</p>' +
                 '<p class="featured-meta-text text-gray-400 group-hover:text-white/70 text-xs transition-colors duration-500">' + (featured.dates && featured.dates.display ? loc(featured.dates.display) : '') + '</p></div>' +
                 '</div>' +
-                '<a href="' + articleUrl + '" class="featured-cta text-xs font-bold text-[#004D34] group-hover:text-white flex items-center gap-1 group-hover:gap-2 transition-all duration-500">' + t('insight.read_cta') + ' <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1.5"></i></a>' +
+                '<a href="' + articleUrl + '" class="featured-cta group/cta text-xs font-bold text-[#004D34] group-hover:text-white flex items-center gap-1.5 transition-all duration-500"><span class="cta-text inline-block transition-transform duration-300 group-hover:translate-x-1 group-hover/cta:translate-x-1">' + t('insight.read_cta') + '</span> <i data-lucide="arrow-right" class="cta-arrow inline-block w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-2 group-hover/cta:translate-x-2"></i></a>' +
                 '</div></div></div></div>';
                 
             container.innerHTML = html;
             if (typeof lucide !== 'undefined') lucide.createIcons();
+            if (typeof gsap !== 'undefined' && container.firstElementChild) {
+                gsap.fromTo(container.firstElementChild, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' });
+            }
         },
 
         renderInsightsGrid: function(containerId) {
@@ -270,7 +288,7 @@
                     '</div>' +
                     '<div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-50">' +
                     '<span class="text-xs text-gray-400">' + (article.dates && article.dates.display ? loc(article.dates.display) : '') + '</span>' +
-                    '<a href="' + articleUrl + '" class="text-xs font-bold text-[#004D34] flex items-center gap-1 hover:gap-2 transition-all duration-200">' + t('insight.read_cta') + ' <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>' +
+                    '<a href="' + articleUrl + '" class="group/cta text-xs font-bold text-[#004D34] flex items-center gap-1.5 hover:text-emerald-800 transition-all duration-200"><span class="cta-text inline-block transition-transform duration-300 group-hover:translate-x-1 group-hover/cta:translate-x-1">' + t('insight.read_cta') + '</span> <i data-lucide="arrow-right" class="cta-arrow inline-block w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-2 group-hover/cta:translate-x-2"></i></a>' +
                     '</div>' +
                     '</div>' +
                     '</article>';
@@ -350,20 +368,24 @@
         },
 
         init: function() {
+            var self = this;
+            var reRender = function() {
+                self.renderLatestArticles('latestCarousel');
+                self.renderFeaturedArticle('featured-article-slot');
+                self.renderInsightsGrid('insightsGrid');
+            };
+
             // Render on initial load
-            this.renderLatestArticles('latestCarousel');
-            this.renderFeaturedArticle('featured-article-slot');
-            this.renderInsightsGrid('insightsGrid');
+            reRender();
             this.bindEvents();
             
+            // Re-render when modular components finish loading asynchronously
+            document.addEventListener('component:loaded', reRender);
+            document.addEventListener('components:all-loaded', reRender);
+
             // Re-render when language changes
             if (window.ChaturaBus) {
-                var self = this;
-                window.ChaturaBus.on('languageChange', function() {
-                    self.renderLatestArticles('latestCarousel');
-                    self.renderFeaturedArticle('featured-article-slot');
-                    self.renderInsightsGrid('insightsGrid');
-                });
+                window.ChaturaBus.on('languageChange', reRender);
             }
         }
     };

@@ -7,12 +7,41 @@
     transition: min-height 0.3s ease;
 }
 
+.component-slot.component-loaded {
+    min-height: 0 !important;
+    transition: none !important;
+}
+
+/* Mitigate CLS on refresh for modular Hero Component Slots */
+[data-component*="hero"].component-slot:not(.component-loaded) {
+    min-height: 100vh !important;
+}
+
+/* ===== REVEAL-UP MOTION INITIAL STATE ===== */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    will-change: opacity, transform;
+}
+
 .component-slot:not(.component-loaded) {
     background: linear-gradient(90deg, #f0f4f2 25%, #e2eae6 50%, #f0f4f2 75%);
     background-size: 200% 100%;
     animation: skeleton-pulse 1.2s ease-in-out infinite;
     pointer-events: none;
     border-radius: 4px;
+}
+
+/* Modal, Popup & Floating Widget Component Slots (No skeleton pulse background, no layout shift) */
+.component-slot[data-component*="modal"]:not(.component-loaded),
+.component-slot[data-component*="widget"]:not(.component-loaded),
+.component-slot[data-component*="popup"]:not(.component-loaded),
+.component-slot-hidden:not(.component-loaded) {
+    background: transparent !important;
+    animation: none !important;
+    min-height: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
 }
 
 /* Skeleton state for dark component slots (like navbar/footer) */

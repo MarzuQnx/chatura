@@ -1,6 +1,13 @@
 # Dependencies
 node_modules/
 
+# Docs
+docs/
+
+# files
+access-portal.html
+business-transfer.html
+case-studies.html
 
 # OS files
 .DS_Store
@@ -14,7 +21,6 @@ desktop.ini
 
 # Build temp
 package-lock.json
-component/
 
 # Unused PNG (converted to WebP, keep only chatura.png for og:image)
 assets/hero-*.png

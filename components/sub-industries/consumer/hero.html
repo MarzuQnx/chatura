@@ -1,0 +1,80 @@
+<section id="hero-industry" class="relative bg-[#004D34] text-white overflow-hidden -mt-[1px]">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&amp;fit=crop&amp;w=900&amp;q=80');"></div>
+
+    <!-- YouTube Video Background Container (Optional Embed via data-youtube-id or data-youtube-url) -->
+    <div id="hero-youtube-wrap" 
+         class="hero-video-wrap absolute inset-0 overflow-hidden pointer-events-none opacity-0 transition-opacity duration-1000 z-0" 
+         data-youtube-id="" 
+         data-youtube-url="">
+        <div id="hero-youtube-player" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="width: max(100vw, 177.78vh); height: max(100vh, 56.25vw);"></div>
+    </div>
+    <div class="absolute inset-0" style="background: linear-gradient(100deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.75) 35%, rgba(255,255,255,0.15) 60%, transparent 75%);"></div>
+        <div class="container mx-auto px-6 relative z-10 py-24 md:py-32">
+            <div class="max-w-3xl">
+                <span class="reveal-up inline-block text-[10px] font-bold uppercase tracking-[0.25em] text-emerald-900 mb-4" data-i18n="ind_lp.consumer.label">Industry 05</span>
+                <h1 class="reveal-up text-3xl md:text-5xl font-serif font-light text-gray-900 mb-4 leading-tight">Consumer <span class="italic font-normal text-[#004D34]">&amp; Retail</span></h1>
+                <p class="reveal-up text-gray-700/80 text-base md:text-lg mb-2 max-w-xl font-serif italic" data-i18n="ind_lp.consumer.statement">Powering Growth in Indonesia's Dynamic Consumer Landscape.</p>
+                <p class="reveal-up text-gray-600 text-sm mb-8 max-w-2xl leading-relaxed" data-i18n="ind_lp.consumer.hero_desc">We help consumer and retail businesses navigate e-commerce expansion, optimize FMCG operations, structure tax-efficient cross-border supply chains, and execute brand acquisitions with confidence.</p>
+                <div class="reveal-up flex flex-wrap gap-4">
+                    <a href="#challenges" class="bg-[#004D34] text-white px-6 py-3 rounded font-medium hover:bg-[#003322] transition text-sm" data-i18n="ind_lp.consumer.cta_explore">Explore Sector Solutions</a>
+                    <a href="../../contact-us.html" class="border border-gray-300 text-gray-700 px-6 py-3 rounded font-medium hover:bg-gray-900 hover:text-white transition text-sm"><span data-i18n="ind_lp.consumer.cta_talk">Talk to Consumer Experts</span> <i data-lucide="arrow-right" class="text-xs ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+    
+    <!-- YouTube Embed Video Manager Handler Script -->
+    <script>
+        (function initHeroYouTube() {
+            var wrap = document.getElementById('hero-youtube-wrap');
+            if (!wrap) return;
+
+            var videoId = wrap.getAttribute('data-youtube-id') || '';
+            var videoUrl = wrap.getAttribute('data-youtube-url') || '';
+
+            if (!videoId && videoUrl) {
+                var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                var match = videoUrl.match(regExp);
+                if (match && match[2].length === 11) {
+                    videoId = match[2];
+                }
+            }
+
+            if (!videoId || videoId.trim() === '') return;
+
+            function createPlayer() {
+                if (window.YT && window.YT.Player) {
+                    new window.YT.Player('hero-youtube-player', {
+                        videoId: videoId.trim(),
+                        playerVars: {
+                            autoplay: 1, controls: 0, showinfo: 0, rel: 0,
+                            loop: 1, mute: 1, playlist: videoId.trim(),
+                            playsinline: 1, disablekb: 1, fs: 0
+                        },
+                        events: {
+                            onReady: function (event) {
+                                event.target.mute();
+                                event.target.playVideo();
+                            },
+                            onStateChange: function (event) {
+                                if (event.data === window.YT.PlayerState.PLAYING) {
+                                    wrap.classList.remove('opacity-0');
+                                    wrap.classList.add('opacity-100');
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+
+            if (!window.YT) {
+                var tag = document.createElement('script');
+                tag.src = "https://youtube.com/iframe_api";
+                var firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                window.onYouTubeIframeAPIReady = createPlayer;
+            } else {
+                createPlayer();
+            }
+        })();
+    </script>
+</section>

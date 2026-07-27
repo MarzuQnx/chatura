@@ -1,10 +1,27 @@
-<section id="hero-services" class="relative bg-[#004D34] text-white overflow-hidden -mt-32 pt-32">
-    <div id="hero-bg" class="absolute inset-0 bg-cover bg-center"
+<section id="hero-services" class="relative bg-[#004D34] text-white min-h-screen flex items-center overflow-hidden">
+    <!-- Image Fallback Layer (Active by default) -->
+    <div id="hero-bg" class="hero-bg-image absolute inset-0 bg-cover bg-center transition-opacity duration-1000 z-0"
         style="background-image: url('assets/hero-services.webp');">
     </div>
-    <div class="absolute inset-0"
-        style="background: linear-gradient(100deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 30%, transparent 50%);">
+
+    <!-- YouTube Video Background Container (Optional Embed) -->
+    <!-- Management Instructions:
+         - To use a YouTube Video background, set data-youtube-id="YOUR_VIDEO_ID" (e.g. data-youtube-id="dQw4w9WgXcQ") or data-youtube-url="https://www.youtube.com/watch?v=..."
+         - If data-youtube-id is empty, it seamlessly defaults to the static image fallback above.
+    -->
+    <div id="hero-youtube-wrap" 
+         class="hero-video-wrap absolute inset-0 overflow-hidden pointer-events-none opacity-0 transition-opacity duration-1000 z-0" 
+         data-youtube-id="sk7sfYG0a2A" 
+         data-youtube-url="https://www.youtube.com/embed/sk7sfYG0a2A?si=hFydbU4Gg-B-c0zb">
+        <div id="hero-youtube-player" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="width: max(100vw, 177.78vh); height: max(100vh, 56.25vw);"></div>
     </div>
+
+    <!-- White Gradient Overlay Layer (Layer 2) -->
+    <div class="absolute inset-0 z-1"
+        style="background: linear-gradient(100deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.75) 35%, transparent 65%);">
+    </div>
+
+    <!-- Hero Content Layer -->
     <div class="container mx-auto px-6 relative z-10 py-24 md:py-32">
         <div class="max-w-3xl">
             <span class="reveal-up inline-block text-xs font-bold uppercase tracking-widest text-emerald-900 mb-4"
@@ -13,7 +30,7 @@
                 <span data-i18n="services.hero_title_1">Integrated Solutions for</span> <span
                     class="italic font-normal text-[#004D34]" data-i18n="services.hero_title_green">Business Growth in Jakarta</span>
             </h1>
-            <p class="reveal-up text-gray-700/80 text-lg mb-8 max-w-2xl pr-20" data-i18n="services.hero_desc">
+            <p class="reveal-up text-gray-700/80 text-lg mb-8 max-w-2xl md:pr-20" data-i18n="services.hero_desc">
                 Five pillars of expertise. One integrated approach. We combine deep domain knowledge with strategic insight to help businesses navigate complexity and unlock opportunity.
             </p>
             <div class="reveal-up flex flex-wrap gap-4">
@@ -30,4 +47,69 @@
             </div>
         </div>
     </div>
+
+    <!-- YouTube Embed Video Manager Handler Script -->
+    <script>
+        (function initHeroYouTube() {
+            var wrap = document.getElementById('hero-youtube-wrap');
+            if (!wrap) return;
+
+            var videoId = wrap.getAttribute('data-youtube-id') || '';
+            var videoUrl = wrap.getAttribute('data-youtube-url') || '';
+
+            // Extract YouTube Video ID from URL if full URL was provided
+            if (!videoId && videoUrl) {
+                var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                var match = videoUrl.match(regExp);
+                if (match && match[2].length === 11) {
+                    videoId = match[2];
+                }
+            }
+
+            // If no video ID configured, retain fallback image cleanly
+            if (!videoId || videoId.trim() === '') return;
+
+            function createPlayer() {
+                if (window.YT && window.YT.Player) {
+                    new window.YT.Player('hero-youtube-player', {
+                        videoId: videoId.trim(),
+                        playerVars: {
+                            autoplay: 1,
+                            controls: 0,
+                            showinfo: 0,
+                            rel: 0,
+                            loop: 1,
+                            mute: 1,
+                            playlist: videoId.trim(),
+                            playsinline: 1,
+                            disablekb: 1,
+                            fs: 0
+                        },
+                        events: {
+                            onReady: function (event) {
+                                event.target.mute();
+                                event.target.playVideo();
+                            },
+                            onStateChange: function (event) {
+                                if (event.data === window.YT.PlayerState.PLAYING) {
+                                    wrap.classList.remove('opacity-0');
+                                    wrap.classList.add('opacity-100');
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+
+            if (!window.YT) {
+                var tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                var firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                window.onYouTubeIframeAPIReady = createPlayer;
+            } else {
+                createPlayer();
+            }
+        })();
+    </script>
 </section>
