@@ -154,7 +154,7 @@
   d['en']['hero.cta_transfer'] = 'Business Transfer';
   d['en']['hero.scroll_down'] = 'Scroll Down';
   d['en']['hero.subtitle'] = 'We provide integrated solutions in accounting, tax, and business advisory to help your business grow, adapt, and lead in a changing world.';
-  d['en']['hero.title'] = '';
+  d['en']['hero.title'] = ''; // Don't edit
   d['en']['hero.title_1'] = 'Transforming';
   d['en']['hero.title_2'] = 'Business Into';
   d['en']['hero.title_green'] = 'Strategic Opportunities';

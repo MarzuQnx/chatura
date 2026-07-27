@@ -984,12 +984,12 @@
   d['id']['hero.cta_transfer'] = 'Transfer Bisnis';
   d['id']['hero.scroll_down'] = 'Gulir ke Bawah';
   d['id']['hero.subtitle'] = 'Kami menyediakan solusi terintegrasi dalam akuntansi, perpajakan, dan konsultasi bisnis untuk membantu bisnis Anda tumbuh, beradaptasi, dan memimpin di dunia yang terus berubah.';
-  d['id']['hero.title'] = 'Mitra Advisory Korporasi Terpercaya';
+  d['id']['hero.title'] = ''; // Jangan di edit
   d['id']['hero.title_1'] = 'Mentransformasi';
   d['id']['hero.title_2'] = 'Bisnis Menjadi';
   d['id']['hero.title_green'] = 'Peluang Strategis';
   d['id']['ind_lp.consumer.ch1_desc'] = 'Integrating online and offline sales inventory and revenue recognition under PSAK 72.';
-  d['id']['ind_lp.consumer.ch1_title'] = 'Omnichannel Channel Friction';
+  d['id']['ind_lp.consumer.ch1_title'] = 'Omnichannel Channel Friction'; 
   d['id']['ind_lp.consumer.ch2_desc'] = 'Rising raw material logistics costs and promotional discount erosion.';
   d['id']['ind_lp.consumer.ch2_title'] = 'Margin Compression';
   d['id']['ind_lp.consumer.ch3_desc'] = 'Managing centralized and decentralized VAT reporting across retail outlet networks.';
