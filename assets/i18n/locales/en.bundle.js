@@ -1718,7 +1718,7 @@
   d['en']['ind_lp.technology.c2_title'] = 'SaaS Recurring Revenue Accounting (PSAK 72)';
   d['en']['ind_lp.technology.c3_desc'] = 'Determining development cost capitalization criteria under PSAK 19 intangible asset rules.';
   d['en']['ind_lp.technology.c3_title'] = 'Software R&D Capitalization vs Expense';
-  d['en']['ind_lp.technology.c4_desc'] = 'Structuring Singapore or Cayman holding entities with compliant Indonesian operating subsidiaries.';
+  d['en']['ind_lp.technology.c4_desc'] = 'Structuring Jakarta or Cayman holding entities with compliant Indonesian operating subsidiaries.';
   d['en']['ind_lp.technology.c4_title'] = 'Cross-Border Offshore IP Holding Structuring';
   d['en']['ind_lp.technology.c5_desc'] = 'Managing PPh 21 employee tax liabilities on stock option vesting and exercise events.';
   d['en']['ind_lp.technology.c5_title'] = 'ESOP & Equity-Based Compensation Tax';
@@ -2013,7 +2013,7 @@
   d['en']['people.p1_exp_3'] = 'Public Policy Framework';
   d['en']['people.p1_exp_4'] = 'Led comprehensive post-merger integration cross-border financial entities valued above USD 2.5 Billion.';
   d['en']['people.p1_exp_5'] = 'Strategic advisor multinational boards regarding European market expansion frameworks.';
-  d['en']['people.p1_location'] = 'Munich';
+  d['en']['people.p1_location'] = 'Jakarta';
   d['en']['people.p1_name'] = 'Christoph Schweizer';
   d['en']['people.p1_practice'] = 'Executive Management';
   d['en']['people.p1_pub_1'] = 'Navigating Global Trade Transitions 2026';
@@ -2025,7 +2025,7 @@
   d['en']['people.p2_exp_3'] = 'Performance Metric Systems';
   d['en']['people.p2_exp_4'] = 'Drove global process efficiency changes automotive component manufacturers resulting in 22% overhead preservation.';
   d['en']['people.p2_exp_5'] = 'Configured unified manufacturing data pipelines across';
-  d['en']['people.p2_location'] = 'Dallas';
+  d['en']['people.p2_location'] = 'Jakarta';
   d['en']['people.p2_name'] = 'Dylan Bolden';
   d['en']['people.p2_practice'] = 'Functional Practices';
   d['en']['people.p2_pub_1'] = 'Industrial Efficiency: 2026 Outlook';
@@ -2048,7 +2048,7 @@
   d['en']['people.p4_exp_3'] = 'Strategic Investor Matching';
   d['en']['people.p4_exp_4'] = 'Advised family-owned enterprises on intergenerational succession structuring.';
   d['en']['people.p4_exp_5'] = 'Successfully facilitated cross-border asset transfer engagements across APAC.';
-  d['en']['people.p4_location'] = 'Singapore';
+  d['en']['people.p4_location'] = 'Jakarta';
   d['en']['people.p4_name'] = 'Bezaliel B. Erlan';
   d['en']['people.p4_practice'] = 'Business Transfer';
   d['en']['people.p4_pub_1'] = 'Transfer: Planning Seamless Transition';
@@ -2253,7 +2253,7 @@
   d['en']['casestudies.cs2_value'] = 'Valuation: USD 35 Million';
   d['en']['casestudies.cs3_p1'] = 'Chatura served as financial advisor for a leading Indonesian fintech company in its Series C funding round, structuring the deal to optimize valuation while maintaining founder control and investor alignment.';
   d['en']['casestudies.cs3_p2'] = 'In this engagement, we focused on structuring the deal to optimize valuation while preserving founder control and investor alignment. This alignment provides long-term technology expansion flexibility for corporations in the ASEAN regional market.';
-  d['en']['casestudies.cs3_p3'] = 'OJK compliance validation, digital asset escrow structures, and intangible asset valuation became critical components that we handled in parallel to ensure smooth cross-border transactions between Singapore regional entities and local Indonesian technology companies.';
+  d['en']['casestudies.cs3_p3'] = 'OJK compliance validation, digital asset escrow structures, and intangible asset valuation became critical components that we handled in parallel to ensure smooth cross-border transactions between Jakarta regional entities and local Indonesian technology companies.';
   d['en']['casestudies.cs3_tag'] = 'Technology';
   d['en']['casestudies.cs3_title'] = 'Series C Funding Advisory FinTech Unicorn';
   d['en']['casestudies.cs3_value'] = 'Valuation: USD 80 Million';
@@ -2348,7 +2348,7 @@
   d['en']['contact.opt_crossborder'] = 'Cross-Border';
   d['en']['contact.opt_jakarta'] = 'Jakarta';
   d['en']['contact.opt_risk'] = 'Risk Management';
-  d['en']['contact.opt_singapore'] = 'Singapore';
+  d['en']['contact.opt_singapore'] = 'Jakarta';
   d['en']['contact.opt_tax'] = 'Tax Advisory';
   d['en']['contact.page_title'] = 'Contact Us - Chatura Indonesia';
   d['en']['contact.phone_desc'] = 'Call our office';

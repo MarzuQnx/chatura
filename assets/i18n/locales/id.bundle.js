@@ -1370,7 +1370,7 @@
   d['id']['ind_lp.technology.c2_title'] = 'SaaS Recurring Revenue Accounting (PSAK 72)';
   d['id']['ind_lp.technology.c3_desc'] = 'Determining development cost capitalization criteria under PSAK 19 intangible asset rules.';
   d['id']['ind_lp.technology.c3_title'] = 'Software R&D Capitalization vs Expense';
-  d['id']['ind_lp.technology.c4_desc'] = 'Structuring Singapore or Cayman holding entities with compliant Indonesian operating subsidiaries.';
+  d['id']['ind_lp.technology.c4_desc'] = 'Structuring Jakarta or Cayman holding entities with compliant Indonesian operating subsidiaries.';
   d['id']['ind_lp.technology.c4_title'] = 'Cross-Border Offshore IP Holding Structuring';
   d['id']['ind_lp.technology.c5_desc'] = 'Managing PPh 21 employee tax liabilities on stock option vesting and exercise events.';
   d['id']['ind_lp.technology.c5_title'] = 'ESOP & Equity-Based Compensation Tax';
@@ -1869,7 +1869,7 @@
   d['id']['people.p1_exp_3'] = 'Kerangka Kebijakan Publik';
   d['id']['people.p1_exp_4'] = 'Memimpin integrasi pasca-merger komprehensif entitas keuangan lintas batas bernilai di atas USD 2,5 Miliar.';
   d['id']['people.p1_exp_5'] = 'Penasihat strategis dewan multinasional mengenai kerangka ekspansi pasar Eropa.';
-  d['id']['people.p1_location'] = 'Munich';
+  d['id']['people.p1_location'] = 'Jakarta';
   d['id']['people.p1_name'] = 'Christoph Schweizer';
   d['id']['people.p1_practice'] = 'Manajemen Eksekutif';
   d['id']['people.p1_pub_1'] = 'Menavigasi Transisi Perdagangan Global 2026';
@@ -1881,7 +1881,7 @@
   d['id']['people.p2_exp_3'] = 'Sistem Metrik Kinerja';
   d['id']['people.p2_exp_4'] = 'Mendorong perubahan efisiensi proses global pada produsen komponen otomotif yang menghasilkan penghematan overhead sebesar 22%.';
   d['id']['people.p2_exp_5'] = 'Mengonfigurasi pipeline data manufaktur terpadu';
-  d['id']['people.p2_location'] = 'Dallas';
+  d['id']['people.p2_location'] = 'Jakarta';
   d['id']['people.p2_name'] = 'Dylan Bolden';
   d['id']['people.p2_practice'] = 'Praktik Fungsional';
   d['id']['people.p2_pub_1'] = 'Efisiensi Industri: Pandangan 2026';
@@ -1904,7 +1904,7 @@
   d['id']['people.p4_exp_3'] = 'Pencocokan Investor Strategis';
   d['id']['people.p4_exp_4'] = 'Menasihati usaha keluarga dalam strukturisasi suksesi antargenerasi.';
   d['id']['people.p4_exp_5'] = 'Berhasil memfasilitasi transaksi transfer aset lintas batas di seluruh kawasan APAC.';
-  d['id']['people.p4_location'] = 'Singapore';
+  d['id']['people.p4_location'] = 'Jakarta';
   d['id']['people.p4_name'] = 'Bezaliel B. Erlan';
   d['id']['people.p4_practice'] = 'Transfer Bisnis';
   d['id']['people.p4_pub_1'] = 'Transfer: Merencanakan Transisi yang Mulus';
