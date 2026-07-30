@@ -940,7 +940,7 @@
   d['id']['filter.tax'] = 'Konsultasi Pajak';
   d['id']['filter.transfer'] = 'Jual Beli & Alih Kepemilikan Perusahaan';
   d['id']['footer.address'] = 'Jl. Jend. Sudirman Kav. 52-53, Jakarta, Indonesia';
-  d['id']['footer.company_1'] = 'Tentang Kami';
+  d['id']['footer.company_1'] = 'Beranda';
   d['id']['footer.company_2'] = 'Tim Kami';
   d['id']['footer.company_3'] = 'Karir';
   d['id']['footer.company_4'] = 'Berita';

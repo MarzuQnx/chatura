@@ -65,7 +65,7 @@
   // 03. FOOTER (footer)
   // ============================================================================
   d['en']['footer.address'] = 'Jl. Jend. Sudirman Kav. 52-53, Jakarta, Indonesia';
-  d['en']['footer.company_1'] = 'About Us';
+  d['en']['footer.company_1'] = 'Home';
   d['en']['footer.company_2'] = 'Our People';
   d['en']['footer.company_3'] = 'Careers';
   d['en']['footer.company_4'] = 'Newsroom';
