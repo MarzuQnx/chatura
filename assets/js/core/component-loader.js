@@ -218,6 +218,12 @@
         if (window.FAQRenderer && typeof window.FAQRenderer.init === 'function') {
             try { window.FAQRenderer.init(); } catch (e) { console.warn(e); }
         }
+        if (window.CareerRenderer && typeof window.CareerRenderer.init === 'function') {
+            try { window.CareerRenderer.init(); } catch (e) { console.warn(e); }
+        }
+        if (window.ContactRenderer && typeof window.ContactRenderer.init === 'function') {
+            try { window.ContactRenderer.init(); } catch (e) { console.warn(e); }
+        }
         if (window.lucide && typeof window.lucide.createIcons === 'function') {
             try { window.lucide.createIcons(); } catch (e) { console.warn(e); }
         }

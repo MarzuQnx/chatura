@@ -4,7 +4,11 @@
 (function () {
     'use strict';
 
+    var _careerInitialized = false;
+
     function initCareerPage() {
+        if (_careerInitialized) return;
+        _careerInitialized = true;
         if (window.CareerRenderer && typeof window.CareerRenderer.init === 'function') {
             window.CareerRenderer.init();
         }

@@ -36,9 +36,10 @@
             if (!c || !window.CareerRepository) return;
             var jobs = window.CareerRepository.getPositions().filter(function (p) { return p.featured; });
             var html = '';
+            var t = window.TranslationRepository ? window.TranslationRepository.t.bind(window.TranslationRepository) : function(k) { return k; };
             for (var i = 0; i < jobs.length; i++) {
                 var j = jobs[i];
-                html += '<div class="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg hover:border-[#004D34] transition duration-300 group flex flex-col h-full cursor-pointer" onclick="openJobModal(\'' + j.id + '\')">' +
+                html += '<div class="reveal-up bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg hover:border-[#004D34] transition duration-300 group flex flex-col h-full">' +
                     '<div class="flex justify-between items-start mb-6">' +
                     '<span class="text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 px-3 py-1 rounded-full">' + loc(j.deptLabel) + '</span>' +
                     '<div class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#004D34] group-hover:text-white transition duration-300"><i data-lucide="arrow-up-right" class="w-5 h-5"></i></div>' +
@@ -48,6 +49,10 @@
                     '<div class="flex flex-wrap gap-4 pt-6 border-t border-gray-100 mt-auto">' +
                     '<div class="flex items-center gap-1.5 text-xs font-medium text-gray-600"><i data-lucide="map-pin" class="w-4 h-4 text-emerald-700"></i> ' + loc(j.location) + '</div>' +
                     '<div class="flex items-center gap-1.5 text-xs font-medium text-gray-600"><i data-lucide="clock" class="w-4 h-4 text-emerald-700"></i> ' + loc(j.type) + '</div>' +
+                    '</div>' +
+                    '<div class="mt-5 pt-5 border-t border-gray-100 flex gap-2">' +
+                    '<button onclick="openJobModal(\'' + j.id + '\')" class="flex-1 border border-gray-300 text-gray-700 text-xs px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition whitespace-nowrap flex items-center justify-center gap-1"><span data-i18n="career.view_details">' + t('career.view_details') + '</span> <i data-lucide="arrow-right" class="w-3 h-3"></i></button>' +
+                    '<button onclick="scrollToApply(\'' + loc(j.title).replace(/'/g, "\\'") + '\')" class="flex-1 bg-[#004D34] text-white text-xs px-4 py-2 rounded-lg font-medium hover:bg-[#003322] transition whitespace-nowrap">' + t('career.apply_now') + '</button>' +
                     '</div></div>';
             }
             c.innerHTML = html;
@@ -56,31 +61,37 @@
         renderGallery: function() {
             var c = document.getElementById('galleryContainer');
             if (!c || !window.CareerRepository || !window.CareerGallery) return;
-            
-            var items = window.CareerRepository.getGallery();
-            var smSizes = window.CareerGallery.generateLayout(items, 'sm');
-            var mdSizes = window.CareerGallery.generateLayout(items, 'md');
-            var lgSizes = window.CareerGallery.generateLayout(items, 'lg');
 
-            var html = '';
-            for (var i = 0; i < items.length; i++) {
-                var g = items[i];
-                var sm = smSizes[i], md = mdSizes[i], lg = lgSizes[i];
-                var cls = 'col-span-' + sm.w + ' row-span-' + sm.h +
-                    ' md:col-span-' + md.w + ' md:row-span-' + md.h +
-                    ' lg:col-span-' + lg.w + ' lg:row-span-' + lg.h +
-                    ' shadow-sm group bg-gray-900 cursor-pointer';
-                var inner = '<img src="' + g.thumb + '" alt="' + loc(g.alt) + '" class="absolute inset-0 w-full !h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy">';
-                
-                if (g.hasSideAccent) inner += '<div class="absolute inset-y-0 left-0 w-1 bg-[#004D34]"></div>';
+            var isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+            var isTablet = window.matchMedia('(min-width: 640px)').matches;
+            var columns = isDesktop ? 5 : (isTablet ? 3 : 1);
+            var items = window.CareerRepository.getGallery();
+            var positions = columns >= 5 ? window.CareerGallery.generateLayout(items, columns) : null;
+
+            function buildItem(g, gridStyle) {
+                var inner = '<img src="' + g.thumb + '" alt="' + loc(g.alt) + '" class="w-full h-full block object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy">';
+
                 if (g.hasBlendOverlay) inner += '<div class="absolute inset-0 bg-[#004D34]/10 mix-blend-multiply"></div>';
                 if (g.hasGradient) inner += '<div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-gray-950/60 to-transparent"></div>';
                 if (g.labelBadge) {
                     var badge = loc(g.labelBadge);
                     inner += '<div class="absolute bottom-4 left-4 bg-white/95 backdrop-blur text-[10px] font-bold uppercase tracking-wider text-[#004D34] px-2 py-1 rounded shadow-sm">' + badge + '</div>';
                 }
-                
-                html += '<div class="relative overflow-hidden rounded-xl ' + cls + '" onclick="openLightbox(\'' + g.image + '\')">' + inner + '</div>';
+
+                return '<div class="gallery-item relative overflow-hidden rounded-xl group bg-gray-100 cursor-pointer"' + (gridStyle ? ' style="' + gridStyle + '"' : '') + ' onclick="openLightbox(\'' + g.image + '\')">' + inner + '</div>';
+            }
+
+            var html = '';
+            if (positions) {
+                for (var i = 0; i < items.length; i++) {
+                    var pos = positions[i] || { col: 0, row: 0, w: 1, h: 1 };
+                    var gs = 'grid-column: ' + (pos.col + 1) + ' / ' + (pos.col + pos.w + 1) + '; grid-row: ' + (pos.row + 1) + ' / ' + (pos.row + pos.h + 1) + ';';
+                    html += buildItem(items[i], gs);
+                }
+            } else {
+                for (var i = 0; i < items.length; i++) {
+                    html += buildItem(items[i], '');
+                }
             }
             c.innerHTML = html;
         },
@@ -123,13 +134,13 @@
                 c.innerHTML = '<p class="text-xs text-gray-400 italic text-center py-6 bg-white border border-gray-200 rounded-xl">' + t('career.empty_positions') + '</p>'; 
                 return; 
             }
-            var deptIcons = { advisory: 'briefcase', tax: 'file-text', finance: 'calculator', risk: 'shield' };
-            var deptColors = { advisory: 'bg-indigo-50 text-indigo-700', tax: 'bg-blue-50 text-blue-700', finance: 'bg-emerald-50 text-emerald-700', risk: 'bg-amber-50 text-amber-700' };
+            var deptIcons = { advisory: 'briefcase', tax: 'file-text', finance: 'calculator', risk: 'shield', legal: 'scale' };
+            var deptColors = { advisory: 'bg-indigo-50 text-indigo-700', tax: 'bg-blue-50 text-blue-700', finance: 'bg-emerald-50 text-emerald-700', risk: 'bg-amber-50 text-amber-700', legal: 'bg-purple-50 text-purple-700' };
             
             var html = '';
             for (var i = 0; i < filtered.length; i++) {
                 var j = filtered[i];
-                html += '<div class="bg-white border border-gray-200 p-6 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:shadow-md hover:border-emerald-700 transition duration-300">' +
+                html += '<div class="reveal-up bg-white border border-gray-200 p-6 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:shadow-md hover:border-emerald-700 transition duration-300">' +
                     '<div class="flex items-start gap-4"><div class="w-11 h-11 rounded-xl ' + (deptColors[j.dept] || 'bg-gray-100 text-gray-600') + ' flex items-center justify-center shrink-0"><i data-lucide="' + (deptIcons[j.dept] || 'briefcase') + '" class="w-5 h-5"></i></div>' +
                     '<div><h3 class="font-bold text-gray-950 text-sm leading-tight">' + loc(j.title) + '</h3><div class="flex flex-wrap gap-3 text-[11px] text-gray-400 mt-1.5"><span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i>' + loc(j.location) + '</span><span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i>' + loc(j.type) + '</span><span class="flex items-center gap-1"><i data-lucide="folder" class="w-3 h-3"></i>' + loc(j.deptLabel) + '</span></div></div></div>' +
                     '<div class="flex items-center gap-2 w-full sm:w-auto flex-row-reverse sm:flex-row"><button onclick="openJobModal(\'' + j.id + '\')" class="flex-1 sm:flex-none border border-gray-300 text-gray-700 text-xs px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition whitespace-nowrap flex items-center gap-1"><span data-i18n="career.view_details">' + t('career.view_details') + '</span> <i data-lucide="arrow-right" class="w-3 h-3"></i></button><button onclick="scrollToApply(\'' + loc(j.title).replace(/'/g, "\\'") + '\')" class="flex-1 sm:flex-none bg-[#004D34] text-white text-xs px-4 py-2 rounded-lg font-medium hover:bg-[#003322] transition whitespace-nowrap">' + t('career.apply_now') + '</button></div></div>';
@@ -287,12 +298,12 @@
         
         var currentLangCode = currentLang();
         var tasksHtml = '';
-        var tasks = j.tasks[currentLangCode] || j.tasks.en;
+        var tasks = j.tasks ? (j.tasks[currentLangCode] || j.tasks.en || []) : [];
         for (var i = 0; i < tasks.length; i++) tasksHtml += '<li>' + tasks[i] + '</li>';
         document.getElementById('modalTasks').innerHTML = tasksHtml;
         
         var reqHtml = '';
-        var reqs = j.requirements[currentLangCode] || j.requirements.en;
+        var reqs = j.requirements ? (j.requirements[currentLangCode] || j.requirements.en || []) : [];
         for (var i = 0; i < reqs.length; i++) reqHtml += '<li>' + reqs[i] + '</li>';
         document.getElementById('modalRequirements').innerHTML = reqHtml;
         
@@ -345,30 +356,6 @@
         }
         if (!matched) dd.selectedIndex = dd.options.length - 1;
     };
-    
-    // Bind Filter Tabs globally
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-            var filterBtns = document.querySelectorAll('.job-tab-btn');
-            for(var i=0; i<filterBtns.length; i++) {
-                filterBtns[i].addEventListener('click', function(e) {
-                    var btn = e.currentTarget;
-                    document.querySelectorAll('.job-tab-btn').forEach(function (b) { b.setAttribute('aria-selected', 'false'); });
-                    btn.setAttribute('aria-selected', 'true');
-                    var activeFilter = btn.getAttribute('data-filter');
-                    
-                    if (typeof gsap !== 'undefined') {
-                        gsap.to('#positionsContainer', { opacity: 0, y: 12, duration: 0.15, onComplete: function () { 
-                            CareerRenderer.renderPositions(activeFilter); 
-                            gsap.to('#positionsContainer', { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' }); 
-                        } });
-                    } else { 
-                        CareerRenderer.renderPositions(activeFilter); 
-                    }
-                });
-            }
-        });
-    }
 
     window.CareerRenderer = CareerRenderer;
 })();

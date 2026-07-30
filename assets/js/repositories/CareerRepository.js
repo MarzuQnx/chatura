@@ -17,7 +17,15 @@
       type: { en: 'Full-Time', id: 'Penuh Waktu' },
       about: { en: 'Join our Legal team to assist in corporate law and compliance cases.', id: 'Bergabunglah dengan tim Hukum kami untuk membantu dalam kasus hukum korporasi dan kepatuhan.' },
       summary: { en: 'Join our Legal team to assist in corporate law and compliance cases.', id: 'Bergabunglah dengan tim Hukum kami untuk membantu dalam kasus hukum korporasi dan kepatuhan.' },
-      featured: true
+      featured: true,
+      tasks: {
+        en: ['Draft and review corporate agreements', 'Assist with regulatory compliance filings', 'Conduct legal research on Indonesian business law', 'Support M&A due diligence processes'],
+        id: ['Menyusun dan meninjau perjanjian korporasi', 'Membantu pengajuan kepatuhan regulasi', 'Melakukan riset hukum tentang hukum bisnis Indonesia', 'Mendukung proses uji tuntas M&A']
+      },
+      requirements: {
+        en: ['Min. 2 years experience in corporate law', 'Bar admission in Indonesia', 'Strong command of English and Bahasa', 'Experience with cross-border transactions preferred'],
+        id: ['Min. 2 tahun pengalaman di hukum korporasi', 'Izin advokat di Indonesia', 'Penguasaan bahasa Inggris dan Bahasa yang kuat', 'Pengalaman transaksi lintas negara lebih disukai']
+      }
     },
     {
       id: 'job2',
@@ -30,7 +38,15 @@
       type: { en: 'Full-Time', id: 'Penuh Waktu' },
       about: { en: 'Provide strategic tax advice and compliance solutions for multinational clients.', id: 'Memberikan saran pajak strategis dan solusi kepatuhan untuk klien multinasional.' },
       summary: { en: 'Provide strategic tax advice and compliance solutions for multinational clients.', id: 'Memberikan saran pajak strategis dan solusi kepatuhan untuk klien multinasional.' },
-      featured: true
+      featured: true,
+      tasks: {
+        en: ['Prepare tax compliance reports and filings', 'Advise on tax-efficient corporate structures', 'Handle tax disputes and audits', 'Monitor changes in Indonesian tax regulations'],
+        id: ['Menyiapkan laporan kepatuhan pajak dan pengajuan', 'Memberikan saran tentang struktur korporasi yang efisien pajak', 'Menangani sengketa pajak dan audit', 'Memantau perubahan peraturan pajak Indonesia']
+      },
+      requirements: {
+        en: ['Min. 3 years experience in tax consulting', 'Certified tax consultant (Brevet A/B/C)', 'Strong analytical and numerical skills', 'Experience with multinational clients preferred'],
+        id: ['Min. 3 tahun pengalaman di konsultasi pajak', 'Konsultan pajak bersertifikat (Brevet A/B/C)', 'Kemampuan analitis dan numerik yang kuat', 'Pengalaman dengan klien multinasional lebih disukai']
+      }
     },
     {
       id: 'job3',
@@ -43,7 +59,15 @@
       type: { en: 'Full-Time', id: 'Penuh Waktu' },
       about: { en: 'Analyze financial data and support business restructuring operations.', id: 'Menganalisis data keuangan dan mendukung operasi restrukturisasi bisnis.' },
       summary: { en: 'Analyze financial data and support business restructuring operations.', id: 'Menganalisis data keuangan dan mendukung operasi restrukturisasi bisnis.' },
-      featured: true
+      featured: true,
+      tasks: {
+        en: ['Build financial models for business valuation', 'Prepare financial statements and reports', 'Conduct variance analysis and forecasting', 'Support restructuring and refinancing projects'],
+        id: ['Membangun model keuangan untuk valuasi bisnis', 'Menyiapkan laporan keuangan dan laporan', 'Melakukan analisis varian dan peramalan', 'Mendukung proyek restrukturisasi dan pembiayaan kembali']
+      },
+      requirements: {
+        en: ['Min. 2 years experience in financial analysis', 'CFA or CPA certification preferred', 'Advanced Excel and financial modeling skills', 'Strong understanding of Indonesian accounting standards'],
+        id: ['Min. 2 tahun pengalaman di analisis keuangan', 'Sertifikasi CFA atau CPA lebih disukai', 'Kemampuan Excel dan pemodelan keuangan tingkat lanjut', 'Pemahaman yang kuat tentang standar akuntansi Indonesia']
+      }
     },
     {
       id: 'job4',
@@ -56,7 +80,15 @@
       type: { en: 'Full-Time', id: 'Penuh Waktu' },
       about: { en: 'Identify and mitigate enterprise risks for our corporate clients.', id: 'Mengidentifikasi dan memitigasi risiko perusahaan untuk klien korporat kami.' },
       summary: { en: 'Identify and mitigate enterprise risks for our corporate clients.', id: 'Mengidentifikasi dan memitigasi risiko perusahaan untuk klien korporat kami.' },
-      featured: true
+      featured: true,
+      tasks: {
+        en: ['Conduct enterprise risk assessments', 'Develop risk mitigation frameworks', 'Monitor regulatory compliance risks', 'Prepare risk reports for senior management'],
+        id: ['Melakukan penilaian risiko perusahaan', 'Mengembangkan kerangka mitigasi risiko', 'Memantau risiko kepatuhan regulasi', 'Menyiapkan laporan risiko untuk manajemen senior']
+      },
+      requirements: {
+        en: ['Min. 2 years experience in risk management', 'FRM or equivalent certification preferred', 'Knowledge of Indonesian regulatory landscape', 'Strong analytical and communication skills'],
+        id: ['Min. 2 tahun pengalaman di manajemen risiko', 'Sertifikasi FRM atau setara lebih disukai', 'Pengetahuan tentang lanskap regulasi Indonesia', 'Kemampuan analitis dan komunikasi yang kuat']
+      }
     }
   ];
   
@@ -79,18 +111,18 @@
         { icon: 'target', i18nTitle: 'career.value_3_title', i18nDesc: 'career.value_3_desc' }
     ]; },
     getGallery: function() { return [
-        { thumb: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80', image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Team Collaboration', id: 'Kolaborasi Tim' }, labelBadge: { en: 'Team Collaboration', id: 'Kolaborasi Tim' }, hasSideAccent: true, hasBlendOverlay: false },
-        { thumb: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80', image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Corporate Meeting', id: 'Rapat Korporat' }, labelBadge: { en: 'Corporate Meeting', id: 'Rapat Korporat' }, hasSideAccent: false, hasBlendOverlay: true },
-        { thumb: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=600&q=80', image: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Office Space', id: 'Ruang Kantor' }, labelBadge: { en: 'Office Space', id: 'Ruang Kantor' }, hasSideAccent: false, hasBlendOverlay: false },
-        { thumb: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80', image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Team Brainstorming', id: 'Tukar Pikiran' }, labelBadge: { en: 'Team Brainstorming', id: 'Tukar Pikiran' }, hasSideAccent: false, hasBlendOverlay: true },
-        { thumb: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Professional Discussion', id: 'Diskusi Profesional' }, labelBadge: { en: 'Professional Discussion', id: 'Diskusi Profesional' }, hasSideAccent: true, hasBlendOverlay: false },
-        { thumb: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=600&q=80', image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Networking Event', id: 'Acara Jaringan' }, labelBadge: { en: 'Networking Event', id: 'Acara Jaringan' }, hasSideAccent: false, hasBlendOverlay: true },
-        { thumb: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80', image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Strategy Session', id: 'Sesi Strategi' }, labelBadge: { en: 'Strategy Session', id: 'Sesi Strategi' }, hasSideAccent: false, hasBlendOverlay: false },
-        { thumb: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80', image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Digital Analytics', id: 'Analisis Digital' }, labelBadge: { en: 'Digital Analytics', id: 'Analisis Digital' }, hasSideAccent: true, hasBlendOverlay: false },
-        { thumb: 'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&w=600&q=80', image: 'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Modern Workspace', id: 'Ruang Kerja Modern' }, labelBadge: { en: 'Modern Workspace', id: 'Ruang Kerja Modern' }, hasSideAccent: false, hasBlendOverlay: true },
-        { thumb: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Corporate Architecture', id: 'Arsitektur Korporat' }, labelBadge: { en: 'Corporate Architecture', id: 'Arsitektur Korporat' }, hasSideAccent: false, hasBlendOverlay: false },
-        { thumb: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=600&q=80', image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Team Work', id: 'Kerja Tim' }, labelBadge: { en: 'Team Work', id: 'Kerja Tim' }, hasSideAccent: true, hasBlendOverlay: false },
-        { thumb: 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=600&q=80', image: 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Business Meeting', id: 'Rapat Bisnis' }, labelBadge: { en: 'Business Meeting', id: 'Rapat Bisnis' }, hasSideAccent: false, hasBlendOverlay: true }
+        { thumb: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80', image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Team Collaboration', id: 'Kolaborasi Tim' }, labelBadge: { en: 'Team Collaboration', id: 'Kolaborasi Tim' }, hasSideAccent: true, hasBlendOverlay: false },
+        { thumb: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80', image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Corporate Meeting', id: 'Rapat Korporat' }, labelBadge: { en: 'Corporate Meeting', id: 'Rapat Korporat' }, hasSideAccent: false, hasBlendOverlay: true },
+        { thumb: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1200&q=80', image: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Office Space', id: 'Ruang Kantor' }, labelBadge: { en: 'Office Space', id: 'Ruang Kantor' }, hasSideAccent: false, hasBlendOverlay: false },
+        { thumb: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80', image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Team Brainstorming', id: 'Tukar Pikiran' }, labelBadge: { en: 'Team Brainstorming', id: 'Tukar Pikiran' }, hasSideAccent: false, hasBlendOverlay: true },
+        { thumb: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Professional Discussion', id: 'Diskusi Profesional' }, labelBadge: { en: 'Professional Discussion', id: 'Diskusi Profesional' }, hasSideAccent: true, hasBlendOverlay: false },
+        { thumb: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80', image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Networking Event', id: 'Acara Jaringan' }, labelBadge: { en: 'Networking Event', id: 'Acara Jaringan' }, hasSideAccent: false, hasBlendOverlay: true },
+        { thumb: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80', image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Strategy Session', id: 'Sesi Strategi' }, labelBadge: { en: 'Strategy Session', id: 'Sesi Strategi' }, hasSideAccent: false, hasBlendOverlay: false },
+        { thumb: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80', image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Digital Analytics', id: 'Analisis Digital' }, labelBadge: { en: 'Digital Analytics', id: 'Analisis Digital' }, hasSideAccent: true, hasBlendOverlay: false },
+        { thumb: 'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&w=1200&q=80', image: 'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Modern Workspace', id: 'Ruang Kerja Modern' }, labelBadge: { en: 'Modern Workspace', id: 'Ruang Kerja Modern' }, hasSideAccent: false, hasBlendOverlay: true },
+        { thumb: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Corporate Architecture', id: 'Arsitektur Korporat' }, labelBadge: { en: 'Corporate Architecture', id: 'Arsitektur Korporat' }, hasSideAccent: false, hasBlendOverlay: false },
+        { thumb: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80', image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Team Work', id: 'Kerja Tim' }, labelBadge: { en: 'Team Work', id: 'Kerja Tim' }, hasSideAccent: true, hasBlendOverlay: false },
+        { thumb: 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=1200&q=80', image: 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=1200&q=80', alt: { en: 'Business Meeting', id: 'Rapat Bisnis' }, labelBadge: { en: 'Business Meeting', id: 'Rapat Bisnis' }, hasSideAccent: false, hasBlendOverlay: true }
     ]; },
     getPrograms: function() { return [
         { image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80', alt: { en: 'Internship', id: 'Program Magang' }, labelBadge: { en: 'Internship', id: 'Program Magang' }, icon: 'graduation-cap', i18nTitle: 'career.internship_title', i18nDesc: 'career.internship_desc', bullets: ['career.internship_bullet_1', 'career.internship_bullet_2', 'career.internship_bullet_3'] },

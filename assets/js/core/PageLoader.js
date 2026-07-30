@@ -70,7 +70,12 @@
       if (el.childNodes[i].nodeType === 3) textNodes.push(el.childNodes[i]);
     }
     if (textNodes.length === 0) {
-      el.insertBefore(document.createTextNode(text), el.firstChild);
+      var ctaText = el.querySelector('.cta-text');
+      if (ctaText) {
+        ctaText.textContent = text;
+      } else {
+        el.insertBefore(document.createTextNode(text), el.firstChild);
+      }
     } else if (textNodes.length === 1) {
       textNodes[0].textContent = text;
     } else {
