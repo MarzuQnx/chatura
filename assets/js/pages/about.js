@@ -387,17 +387,22 @@
         var batchA = document.getElementById('testiBatchA');
         var batchB = document.getElementById('testiBatchB');
         if (!viewport || !batchA || !batchB) return;
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+        var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         var active = 'A';
         var delay = 5000;
         var paused = false;
         var timer = null;
 
         // Initial positions setup
-        if (window.gsap) {
+        if (window.gsap && !reducedMotion) {
             gsap.set(batchB, { y: 60, opacity: 0, pointerEvents: 'none' });
             gsap.set(batchA, { y: 0, opacity: 1, pointerEvents: 'auto' });
+        } else {
+            batchA.style.opacity = '1';
+            batchA.style.pointerEvents = 'auto';
+            batchB.style.opacity = '0';
+            batchB.style.pointerEvents = 'none';
         }
 
         function swap() {
@@ -405,8 +410,7 @@
             var out = active === 'A' ? batchA : batchB;
             var inp = active === 'A' ? batchB : batchA;
 
-            if (window.gsap) {
-                // Outgoing batch slides UP (-60px) and fades OUT
+            if (window.gsap && !reducedMotion) {
                 gsap.set(out, { zIndex: 1, pointerEvents: 'none' });
                 gsap.to(out, {
                     y: -60,
@@ -415,7 +419,6 @@
                     ease: 'power2.inOut'
                 });
 
-                // Incoming batch slides UP from below (+60px -> 0) and fades IN
                 gsap.set(inp, { y: 60, opacity: 0, pointerEvents: 'none', zIndex: 2 });
                 gsap.to(inp, {
                     y: 0,
@@ -428,9 +431,10 @@
                     }
                 });
             } else {
-                // Vanilla fallback
                 out.style.opacity = '0';
+                out.style.pointerEvents = 'none';
                 inp.style.opacity = '1';
+                inp.style.pointerEvents = 'auto';
             }
 
             active = active === 'A' ? 'B' : 'A';

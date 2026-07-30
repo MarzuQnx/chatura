@@ -43,12 +43,10 @@
 .cta-text {
     display: inline-block !important;
     transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), color 300ms ease !important;
-    will-change: transform;
 }
 .cta-arrow {
     display: inline-block !important;
     transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), opacity 300ms ease !important;
-    will-change: transform, opacity;
 }
 .featured-card:hover .cta-text,
 .featured-cta:hover .cta-text,

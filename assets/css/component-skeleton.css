@@ -21,7 +21,6 @@
 .reveal-up {
     opacity: 0;
     transform: translateY(30px);
-    will-change: opacity, transform;
 }
 
 .component-slot:not(.component-loaded) {

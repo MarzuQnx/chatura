@@ -49,7 +49,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
 }
@@ -213,7 +212,6 @@ a:has(> i[data-lucide]) {
     background: #ffffff;
     border: 1px solid #e2e8f0;
     box-shadow: 0 4px 20px -4px rgba(0,0,0,0.06);
-    will-change: transform;
 }
 .latest-card-img {
     position: absolute;
@@ -225,7 +223,6 @@ a:has(> i[data-lucide]) {
     height: 100%;
     object-fit: cover;
     transition: transform 460ms cubic-bezier(.22,.61,.36,1);
-    will-change: transform;
 }
 .latest-badge {
     position: absolute;
@@ -267,7 +264,6 @@ a:has(> i[data-lucide]) {
         padding 460ms cubic-bezier(.22,.61,.36,1),
         overflow 0ms 0ms;
     overflow: hidden;
-    will-change: transform, height;
 }
 .latest-eyebrow {
     font-size: 10px;
@@ -360,6 +356,7 @@ a:has(> i[data-lucide]) {
     border-radius: 10px;
     background: rgba(255,255,255,0.92);
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(0,0,0,0.08);
     box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     display: inline-flex;
@@ -451,7 +448,6 @@ a:has(> i[data-lucide]) {
     height: 100%;
     transform-style: preserve-3d;
     transition: transform 650ms cubic-bezier(.22,1,.36,1), box-shadow 400ms cubic-bezier(.22,1,.36,1);
-    will-change: transform;
 }
 
 .svc-flip-card:hover .svc-flip-inner,
@@ -475,6 +471,7 @@ a:has(> i[data-lucide]) {
     border-radius: 22px;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
     overflow: hidden;
 }
 
@@ -490,7 +487,7 @@ a:has(> i[data-lucide]) {
 
 .svc-front-img {
     position: absolute;
-    inset: 0;
+    inset: -15px;
     background-size: cover;
     background-position: center;
     filter: blur(10px);
@@ -541,7 +538,7 @@ a:has(> i[data-lucide]) {
 
 .svc-flip-back {
     background: #004D34;
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) translateZ(0);
     box-shadow: 0 4px 20px -4px rgba(0,0,0,0.08);
     transition: box-shadow 400ms cubic-bezier(.22,1,.36,1);
 }
@@ -658,8 +655,8 @@ a:has(> i[data-lucide]) {
 
 /* Focus-visible: tap-to-flip */
 .svc-flip-card:focus-visible {
-    outline: 2px solid #004D34;
-    outline-offset: 3px;
+    outline: none;
+    box-shadow: 0 0 0 3px #004D34;
     border-radius: 22px;
 }
 .svc-flip-card:focus-visible .svc-flip-inner {
@@ -728,7 +725,6 @@ a:has(> i[data-lucide]) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    will-change: transform, opacity;
 }
 
 /* MOBILE STYLES (Screen <= 768px: 1 Card Slider) */

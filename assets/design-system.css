@@ -79,6 +79,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
 }
 
 /* ===== SECTION HIDES DON'T TOUCH, DON'T DELETE, DON'T CHANGES ===== */
@@ -363,7 +364,6 @@ button:has(> i[data-lucide]) {
     box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1),
     backdrop-filter 320ms cubic-bezier(0.16, 1, 0.3, 1),
     -webkit-backdrop-filter 320ms cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: background-color, border-color, box-shadow, backdrop-filter;
 }
 
 #navbar-sticky.scrolled {
@@ -431,7 +431,6 @@ button:has(> i[data-lucide]) {
   width: 0%;
   background-color: #004D34;
   transform-origin: left center;
-  will-change: width;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -801,7 +800,6 @@ section[class*="hero"] {
 .reveal-up {
   opacity: 0;
   transform: translateY(20px) scale(0.98);
-  will-change: transform, opacity;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1651,7 +1649,6 @@ button:has(.cta-arrow) > span {
   display: inline-block !important;
   transform: translateX(0) !important;
   transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), color 300ms ease !important;
-  will-change: transform;
 }
 
 /* 2. Left Arrow (::before) - Vertically Centered to Text Line-Height */
@@ -1692,7 +1689,6 @@ button:has(.cta-arrow) > svg[data-lucide*="arrow"] {
   opacity: 1 !important;
   transform: translateX(0) !important;
   transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), opacity 300ms ease !important;
-  will-change: transform, opacity;
 }
 
 /* ============================================================================
