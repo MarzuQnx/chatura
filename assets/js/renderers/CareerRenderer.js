@@ -74,7 +74,7 @@
                 
                 if (g.hasSideAccent) inner += '<div class="absolute inset-y-0 left-0 w-1 bg-[#004D34]"></div>';
                 if (g.hasBlendOverlay) inner += '<div class="absolute inset-0 bg-[#004D34]/10 mix-blend-multiply"></div>';
-                if (g.hasGradient) inner += '<div class="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-gray-950/60 to-transparent"></div>';
+                if (g.hasGradient) inner += '<div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-gray-950/60 to-transparent"></div>';
                 if (g.labelBadge) {
                     var badge = loc(g.labelBadge);
                     inner += '<div class="absolute bottom-4 left-4 bg-white/95 backdrop-blur text-[10px] font-bold uppercase tracking-wider text-[#004D34] px-2 py-1 rounded shadow-sm">' + badge + '</div>';

@@ -194,6 +194,68 @@
     window.addEventListener('scroll', update, { passive: true });
   }
 
+  function initDesktopDropdowns() {
+    if (window.__desktopDropdownsBound) return;
+    window.__desktopDropdownsBound = true;
+
+    document.addEventListener('click', function (e) {
+      // Find if a top-level link inside .nav-dropdown was clicked
+      var toggle = e.target.closest('.nav-dropdown > a, .nav-dropdown-toggle');
+      if (toggle) {
+        var dropdown = toggle.closest('.nav-dropdown');
+        if (dropdown) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          var isOpen = dropdown.classList.contains('is-open');
+
+          // Close all open dropdowns
+          document.querySelectorAll('.nav-dropdown.is-open, .nav-dropdown.active').forEach(function (d) {
+            d.classList.remove('is-open', 'active');
+          });
+
+          // Toggle clicked dropdown if it wasn't open
+          if (!isOpen) {
+            dropdown.classList.add('is-open', 'active');
+          }
+          return;
+        }
+      }
+
+      // Close dropdowns when clicking outside
+      if (!e.target.closest('.nav-dropdown')) {
+        document.querySelectorAll('.nav-dropdown.is-open, .nav-dropdown.active').forEach(function (d) {
+          d.classList.remove('is-open', 'active');
+        });
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.nav-dropdown.is-open, .nav-dropdown.active').forEach(function (d) {
+          d.classList.remove('is-open', 'active');
+        });
+      }
+    });
+  }
+
+  function initMobileAccordion() {
+    if (window.__mobileAccordionBound) return;
+    window.__mobileAccordionBound = true;
+
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('.mobile-nav-group-btn');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        var group = btn.closest('.mobile-nav-group');
+        if (group) {
+          group.classList.toggle('open');
+        }
+      }
+    });
+  }
+
   function initWhatsAppWidget() {
     var launcher = document.getElementById('waLauncher');
     var popup = document.getElementById('waPopup');
@@ -296,6 +358,8 @@
     applyTranslations();
     animateHeroElements();
     initNavbarScroll();
+    initDesktopDropdowns();
+    initMobileAccordion();
     initWhatsAppWidget();
     enhanceCtaMicroInteractions();
 
@@ -349,6 +413,16 @@
       }));
     });
   }
+
+  // Safety fallback for cross-browser GSAP initialization (Firefox, Chrome Mac)
+  setTimeout(function () {
+    document.querySelectorAll('.reveal-up').forEach(function (el) {
+      if (window.getComputedStyle(el).opacity === '0') {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      }
+    });
+  }, 1200);
 
   window.PageLoader = {
     initialize: initialize,

@@ -46,17 +46,20 @@
             var html = '';
             for (var i = 0; i < people.length; i++) {
                 var p = people[i];
-                html += '<div class="profile-card bg-white border border-gray-100 rounded-2xl p-3 hover:shadow-xl cursor-pointer flex flex-col justify-between" onclick="openBioModal(\'' + p.id + '\')">' +
+                html += '<div class="profile-card group bg-white border border-gray-100/80 rounded-2xl p-4 sm:p-5 hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between text-center" onclick="openBioModal(\'' + p.id + '\')">' +
                     '<div>' +
-                    '<div class="aspect-[3/4] w-full rounded-xl overflow-hidden mb-4 bg-gray-50">' +
-                    '<img src="' + p.photo + '" alt="' + t(p.nameKey) + '" loading="lazy" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">' +
+                    '<div class="relative aspect-square w-full max-w-[140px] sm:max-w-[160px] mx-auto mb-5 flex items-center justify-center shrink-0">' +
+                    '<div class="absolute top-1/2 left-1/2 w-[220px] h-[220px] sm:w-[250px] sm:h-[250px] bg-contain bg-center bg-no-repeat opacity-75 pointer-events-none animate-particle-spin" style="background-image: url(\'assets/bg-section-anim.webp\');"></div>' +
+                    '<div class="relative w-full h-full rounded-full overflow-hidden border-2 border-emerald-100/90 shadow-md group-hover:border-emerald-600 transition-all duration-300 bg-gray-50 shrink-0 z-10">' +
+                    '<img src="' + p.photo + '" alt="' + t(p.nameKey) + '" loading="lazy" class="w-full h-full rounded-full object-cover object-top transition-transform duration-500 group-hover:scale-105">' +
                     '</div>' +
-                    '<h3 class="font-serif text-[16px] font-bold text-gray-950 leading-snug mb-0.5">' + t(p.nameKey) + '</h3>' +
-                    '<p class="!text-[13px] text-emerald-800 font-semibold mb-2">' + t(p.titleKey) + ' — <span class="text-gray-500 font-normal">' + t(p.practiceKey) + '</span></p>' +
                     '</div>' +
-                    '<div class="flex items-center justify-between pt-4 border-t border-gray-50 text-gray-400 text-xs">' +
-                    '<span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i>' + t(p.locationKey) + '</span>' +
-                    '<span class="text-[#004D34] font-semibold group-hover:underline flex items-center gap-0.5">' + (t('people.view_all') || 'Profile') + ' <i data-lucide="chevron-right" class="w-3 h-3"></i></span>' +
+                    '<h3 class="font-serif text-[15px] sm:text-[16px] font-bold text-gray-950 leading-snug mb-1 group-hover:text-emerald-800 transition-colors">' + t(p.nameKey) + '</h3>' +
+                    '<p class="!text-[12px] sm:!text-[12.5px] text-emerald-800 font-semibold mb-2">' + t(p.titleKey) + ' — <span class="text-gray-500 font-normal">' + t(p.practiceKey) + '</span></p>' +
+                    '</div>' +
+                    '<div class="flex items-center justify-between pt-3.5 border-t border-gray-100 text-gray-400 text-xs mt-3">' +
+                    '<span class="flex items-center gap-1 text-[11px]"><i data-lucide="map-pin" class="w-3 h-3 text-emerald-700"></i>' + t(p.locationKey) + '</span>' +
+                    '<span class="text-[#004D34] font-semibold text-[11px] group-hover:underline flex items-center gap-0.5">' + (t('people.view_all') || 'Profile') + ' <i data-lucide="chevron-right" class="w-3 h-3"></i></span>' +
                     '</div>' +
                     '</div>';
             }
@@ -143,83 +146,63 @@
             var latest = sorted.slice(0, 5);
             if (latest.length === 0) return;
 
-            var lang = document.documentElement.lang === 'id' ? 'id' : 'en';
+            var getCatLabel = function (catId) {
+                if (window.CategoryRepository && typeof window.CategoryRepository.getById === 'function') {
+                    var catObj = window.CategoryRepository.getById(catId);
+                    if (catObj) return loc(catObj);
+                }
+                if (window.CHATURA && window.CHATURA.CATEGORIES && window.CHATURA.CATEGORIES[catId]) {
+                    return loc(window.CHATURA.CATEGORIES[catId]);
+                }
+                return catId ? catId.toUpperCase() : '';
+            };
+
+            var getArticleUrl = function (article) {
+                if (window.CHATURA && typeof window.CHATURA.getArticleUrl === 'function') {
+                    return window.CHATURA.getArticleUrl(article);
+                }
+                return 'insight-detail.html?slug=' + (article.slug || article.id);
+            };
 
             // Featured article (first)
             var featured = latest[0];
-            var catInfo = PeopleRenderer.getArticleCategoryLabel(featured.category);
-            var articleUrl = (window.CHATURA && window.CHATURA.getArticleUrl) ? window.CHATURA.getArticleUrl(featured) : 'insight-detail.html?slug=' + featured.slug;
-            var featAuthor = PeopleRenderer._resolveAuthor(featured);
-            var authorName = featAuthor ? featAuthor.name : '';
-            var authorRole = featAuthor ? featAuthor.role : '';
-            var authorPhoto = featAuthor ? featAuthor.photo : '';
-            var title = typeof featured.title === 'string' ? featured.title : featured.title[lang];
-            var subtitle = featured.subtitle ? (typeof featured.subtitle === 'string' ? featured.subtitle : featured.subtitle[lang]) : '';
-            var displayDate = featured.dates && featured.dates.display ? (typeof featured.dates.display === 'string' ? featured.dates.display : featured.dates.display[lang]) : '';
-            var readTime = featured.readingTime ? (typeof featured.readingTime === 'string' ? featured.readingTime : featured.readingTime[lang]) : '';
+            var fCatLabel = getCatLabel(featured.category);
+            var articleUrl = getArticleUrl(featured);
+            var title = loc(featured.title);
+            var subtitle = loc(featured.subtitle) || (featured.execSummary ? loc(featured.execSummary.summary) : '');
+            var displayDate = featured.dates && featured.dates.display ? loc(featured.dates.display) : (featured.dates ? featured.dates.published : '');
+            var readTime = loc(featured.readingTime) || (featured.readTime ? featured.readTime + ' ' + (t('common.min_read') || 'min read') : '');
+            var readCtaText = t('insight.read_cta') || 'Read Insight';
 
-            featuredEl.innerHTML = '<a href="' + articleUrl + '" class="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1.5 hover:border-emerald-200 hover:shadow-xl flex flex-col justify-between min-h-145">' +
-                '<span class="absolute right-6 top-4 text-7xl font-serif font-bold text-gray-900 opacity-5 pointer-events-none select-none z-10">01</span>' +
-                '<div>' +
-                '<div class="relative overflow-hidden aspect-16/10 bg-neutral-900 w-full">' +
-                '<img src="' + (featured.image || '') + '" alt="' + title + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">' +
-                '<div class="absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>' +
-                '</div>' +
-                '<div class="p-8">' +
-                '<div class="flex items-center gap-2 mb-4 transition-transform duration-300 group-hover:-translate-y-0.5">' +
-                '<span class="text-[9px] font-bold uppercase tracking-widest bg-emerald-800 text-white px-2.5 py-0.5 rounded-sm">NEW</span>' +
-                '<span class="text-[10px] font-bold uppercase tracking-wider ' + catInfo.badgeClass + ' px-2 py-0.5 rounded">' + catInfo.label + '</span>' +
-                '</div>' +
-                '<div class="border-l-2 border-emerald-700 pl-4">' +
-                '<h3 class="font-serif font-bold text-xl md:text-2xl text-gray-950 leading-tight mb-4 group-hover:text-emerald-800 transition-colors duration-300">' + title + '</h3>' +
-                '</div>' +
-                '<p class="text-xs text-gray-500 leading-relaxed mb-6 pl-4 line-clamp-3">' + subtitle + '</p>' +
-                '</div>' +
-                '</div>' +
-                '<div class="px-8 pb-8 pt-4 border-t border-gray-100 flex items-center justify-between">' +
-                '<div class="flex items-center gap-3">' +
-                '<img class="w-8 h-8 rounded-full object-cover bg-gray-100 border border-gray-200" src="' + authorPhoto + '" alt="' + authorName + '" loading="lazy">' +
-                '<div class="text-left">' +
-                '<p class="text-xs font-bold text-gray-900 leading-none">' + authorName + '</p>' +
-                '<p class="text-[10px] text-gray-400 mt-1">' + authorRole + '</p>' +
-                '</div>' +
-                '</div>' +
-                '<div class="text-right text-[10px] font-medium text-gray-400 uppercase tracking-wider space-y-0.5">' +
-                '<p>' + displayDate + '</p>' +
-                '<p class="text-[#004D34] font-bold text-right flex items-center justify-end gap-0.5">' + readTime + ' <i data-lucide="clock" class="w-3 h-3"></i></p>' +
-                '</div>' +
-                '</div>' +
-                '</a>';
+            featuredEl.innerHTML =
+                '<a href="' + articleUrl + '" class="si-featured block">' +
+                    '<div class="si-featured-img"><img src="' + (featured.heroImage || featured.image || '') + '" alt="' + title + '" loading="lazy"></div>' +
+                    '<span class="si-featured-badge">' + fCatLabel + '</span>' +
+                    '<div class="si-featured-glass">' +
+                        '<p class="si-featured-eyebrow">' + fCatLabel + '</p>' +
+                        '<h3 class="si-featured-title">' + title + '</h3>' +
+                        '<p class="si-featured-desc">' + subtitle + '</p>' +
+                        '<div class="si-featured-footer">' +
+                            '<span class="si-featured-meta">' + displayDate + ' · ' + readTime + '</span>' +
+                            '<span class="si-featured-cta">' + readCtaText + ' <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>' +
+                        '</div></div></a>';
 
-            // Next 4 articles
-            var bgAlternates = ['bg-neutral-50', 'bg-white', 'bg-neutral-50', 'bg-white'];
-            nextEl.innerHTML = latest.slice(1, 5).map(function (article, i) {
-                var aCatInfo = PeopleRenderer.getArticleCategoryLabel(article.category);
-                var aUrl = (window.CHATURA && window.CHATURA.getArticleUrl) ? window.CHATURA.getArticleUrl(article) : 'insight-detail.html?slug=' + article.slug;
-                var aAuthorInfo = PeopleRenderer._resolveAuthor(article);
-                var aAuthor = aAuthorInfo ? aAuthorInfo.name : '';
-                var aRole = aAuthorInfo ? aAuthorInfo.role : '';
-                var aTitle = typeof article.title === 'string' ? article.title : article.title[lang];
-                var aDate = article.dates && article.dates.display ? (typeof article.dates.display === 'string' ? article.dates.display : article.dates.display[lang]) : '';
-                var aReadTime = article.readingTime ? (typeof article.readingTime === 'string' ? article.readingTime : article.readingTime[lang]) : '';
-                var num = String(i + 2).padStart(2, '0');
-                return '<a href="' + aUrl + '" class="group relative ' + bgAlternates[i] + ' border border-gray-200 rounded-2xl overflow-hidden transition-all duration-400 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-lg p-6 flex flex-col justify-between min-h-42">' +
-                    '<span class="absolute right-6 top-4 text-5xl font-serif font-bold text-gray-900 opacity-5 pointer-events-none select-none">' + num + '</span>' +
-                    '<div>' +
-                    '<div class="flex items-center gap-3 mb-2.5">' +
-                    '<span class="text-[10px] font-bold uppercase tracking-wider ' + aCatInfo.badgeClass + ' px-2 py-0.5 rounded">' + aCatInfo.label + '</span>' +
-                    '<span class="text-[11px] text-gray-400">• &nbsp; ' + aReadTime + '</span>' +
-                    '</div>' +
-                    '<div class="border-l-2 border-gray-300 group-hover:border-emerald-700 pl-3 transition-colors duration-300">' +
-                    '<h4 class="font-serif font-bold text-sm md:text-base text-gray-950 leading-snug group-hover:text-emerald-800 transition-colors duration-300 line-clamp-2">' + aTitle + '</h4>' +
-                    '</div>' +
-                    '</div>' +
-                    '<div class="pt-4 border-t border-gray-200/40 flex justify-between items-center text-[11px] text-gray-400">' +
-                    '<span class="font-semibold text-gray-600">' + aAuthor + ' &nbsp;<span class="text-gray-300 font-normal">|</span>&nbsp; <span class="text-gray-400 font-normal text-[10px]">' + aRole + '</span></span>' +
-                    '<span>' + aDate + '</span>' +
-                    '</div>' +
-                    '</a>';
-            }).join('');
+            // Next 4 articles (list)
+            var listHtml = '<div class="si-list">';
+            for (var i = 1; i < latest.length; i++) {
+                var article = latest[i];
+                var aCatLabel = getCatLabel(article.category);
+                var aUrl = getArticleUrl(article);
+                var aTitle = loc(article.title);
+                var aReadTime = loc(article.readingTime) || (article.readTime ? article.readTime + ' ' + (t('common.min_read') || 'min read') : '');
+
+                listHtml += '<a href="' + aUrl + '" class="si-list-item">' +
+                    '<img src="' + (article.thumbnail || article.image || '') + '" alt="' + aTitle + '" loading="lazy" class="si-list-thumb">' +
+                    '<div class="si-list-body"><p class="si-list-cat">' + aCatLabel + '</p><h4 class="si-list-title">' + aTitle + '</h4><p class="si-list-meta">' + aReadTime + '</p></div>' +
+                    '<svg class="si-list-arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>';
+            }
+            listHtml += '</div>';
+            nextEl.innerHTML = listHtml;
 
             if (typeof lucide !== 'undefined') lucide.createIcons();
         },

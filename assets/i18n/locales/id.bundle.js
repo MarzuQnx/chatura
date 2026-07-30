@@ -1754,7 +1754,7 @@
   d['id']['legal.terms.text_7'] = 'All content on this website, including text, graphics, logos, and images, is the property of Chatura Indonesia and is protected by applicable intellectual property laws.';
   d['id']['legal.terms.text_8'] = 'Limitation of Liability';
   d['id']['legal.terms.text_9'] = 'Chatura Indonesia shall not be liable for any damages arising from the use of or inability to use this website.';
-  d['id']['nav.about_us'] = 'Tentang Kami';
+  d['id']['nav.about_us'] = 'Beranda';
   d['id']['nav.business_transfer'] = 'Transfer Bisnis';
   d['id']['nav.career'] = 'Karir';
   d['id']['nav.contact'] = 'Kontak';
@@ -1856,6 +1856,7 @@
   d['id']['people.industries_title'] = 'Keahlian Sektor yang Menghasilkan';
   d['id']['people.insights_label'] = 'Dari Para Ahli Kami';
   d['id']['people.insights_title'] = 'Wawasan Terbaru';
+  d['id']['people.insights_subtitle'] = 'Jelajahi analisis pasar, pandangan strategis, dan publikasi yang ditulis oleh penasihat utama dan pakar Chatura.';
   d['id']['people.leadership_title'] = 'Kepemimpinan & Partner';
   d['id']['people.linkedin'] = 'LinkedIn';
   d['id']['people.modal_bio'] = 'Biografi';

@@ -147,7 +147,7 @@
             var html = '<div class="featured-card group grid md:grid-cols-[6fr_5fr] bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 hover:border-emerald-800 transition-all duration-500">' +
                 '<a href="' + articleUrl + '" class="relative overflow-hidden min-h-75 md:min-h-100 block">' +
                 '<img src="' + featured.image + '" alt="' + loc(featured.title) + '" class="featured-image w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800">' +
-                '<div class="absolute inset-0 bg-linear-to-t from-black/20 to-transparent"></div>' +
+                '<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>' +
                 '</a>' +
                 '<div class="featured-content-bg p-8 md:p-10 lg:p-12 flex flex-col justify-between bg-white group-hover:bg-[#004D34] transition-colors duration-500">' +
                 '<div>' +

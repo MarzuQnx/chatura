@@ -87,37 +87,56 @@
             if (articles.length === 0) return;
             
             var getCatLabel = function(catId) {
-                if (window.CategoryRepository) { var catObj = window.CategoryRepository.getById(catId); if (catObj) {
-                    var lang = currentLang();
-                    return catObj[lang] || catId;
+                if (window.CategoryRepository && typeof window.CategoryRepository.getById === 'function') {
+                    var catObj = window.CategoryRepository.getById(catId);
+                    if (catObj) return loc(catObj);
                 }
+                if (window.CHATURA && window.CHATURA.CATEGORIES && window.CHATURA.CATEGORIES[catId]) {
+                    return loc(window.CHATURA.CATEGORIES[catId]);
                 }
-                return catId;
+                return catId ? catId.toUpperCase() : '';
+            };
+
+            var getArticleUrl = function (article) {
+                if (window.CHATURA && typeof window.CHATURA.getArticleUrl === 'function') {
+                    return window.CHATURA.getArticleUrl(article);
+                }
+                return 'insight-detail.html?slug=' + (article.slug || article.id);
             };
             
             var featured = articles[0];
             var fCatLabel = getCatLabel(featured.category);
-            
+            var articleUrl = getArticleUrl(featured);
+            var title = loc(featured.title);
+            var subtitle = loc(featured.subtitle) || (featured.execSummary ? loc(featured.execSummary.summary) : loc(featured.excerpt));
+            var displayDate = featured.dates && featured.dates.display ? loc(featured.dates.display) : (featured.dates ? featured.dates.published : '');
+            var readTime = loc(featured.readingTime) || (featured.readTime ? featured.readTime + ' ' + (t('common.min_read') || 'min read') : '');
+            var readCtaText = t('insight.read_cta') || 'Read Insight';
+
             featuredContainer.innerHTML =
-                '<a href="insight-detail.html?id=' + featured.id + '" class="si-featured block">' +
-                    '<div class="si-featured-img"><img src="' + (featured.heroImage || featured.image) + '" alt="' + loc(featured.title) + '" loading="lazy"></div>' +
+                '<a href="' + articleUrl + '" class="si-featured block">' +
+                    '<div class="si-featured-img"><img src="' + (featured.heroImage || featured.image || '') + '" alt="' + title + '" loading="lazy"></div>' +
                     '<span class="si-featured-badge">' + fCatLabel + '</span>' +
                     '<div class="si-featured-glass">' +
                         '<p class="si-featured-eyebrow">' + fCatLabel + '</p>' +
-                        '<h3 class="si-featured-title">' + loc(featured.title) + '</h3>' +
-                        '<p class="si-featured-desc">' + loc(featured.excerpt) + '</p>' +
+                        '<h3 class="si-featured-title">' + title + '</h3>' +
+                        '<p class="si-featured-desc">' + subtitle + '</p>' +
                         '<div class="si-featured-footer">' +
-                            '<span class="si-featured-meta">' + featured.dates.published + ' · ' + featured.readTime + ' ' + t('common.min_read') + '</span>' +
-                            '<span class="si-featured-cta">' + t('insight.read_cta') + ' <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>' +
+                            '<span class="si-featured-meta">' + displayDate + (readTime ? ' · ' + readTime : '') + '</span>' +
+                            '<span class="si-featured-cta">' + readCtaText + ' <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>' +
                         '</div></div></a>';
                         
             var listHtml = '<div class="si-list">';
             for (var i = 1; i < articles.length; i++) {
                 var a = articles[i];
                 var catLabel = getCatLabel(a.category);
-                listHtml += '<a href="insight-detail.html?id=' + a.id + '" class="si-list-item">' +
-                    '<img src="' + (a.thumbnail || a.image) + '" alt="' + loc(a.title) + '" loading="lazy" class="si-list-thumb">' +
-                    '<div class="si-list-body"><p class="si-list-cat">' + catLabel + '</p><h4 class="si-list-title">' + loc(a.title) + '</h4><p class="si-list-meta">' + a.readTime + ' ' + t('common.min_read') + '</p></div>' +
+                var aUrl = getArticleUrl(a);
+                var aTitle = loc(a.title);
+                var aReadTime = loc(a.readingTime) || (a.readTime ? a.readTime + ' ' + (t('common.min_read') || 'min read') : '');
+
+                listHtml += '<a href="' + aUrl + '" class="si-list-item">' +
+                    '<img src="' + (a.thumbnail || a.image || '') + '" alt="' + aTitle + '" loading="lazy" class="si-list-thumb">' +
+                    '<div class="si-list-body"><p class="si-list-cat">' + catLabel + '</p><h4 class="si-list-title">' + aTitle + '</h4><p class="si-list-meta">' + aReadTime + '</p></div>' +
                     '<svg class="si-list-arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>';
             }
             listHtml += '</div>';
@@ -136,6 +155,17 @@
             }
         }
     };
+
+    document.addEventListener('component:loaded', function (e) {
+        var name = e.detail && e.detail.name;
+        if (name && (name === 'industries/insights' || name === 'industries/experts')) {
+            IndustryRenderer.init();
+        }
+    });
+
+    document.addEventListener('components:all-loaded', function () {
+        IndustryRenderer.init();
+    });
 
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function() { IndustryRenderer.init(); });

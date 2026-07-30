@@ -1,0 +1,9 @@
+<!-- Lightbox Modal -->
+<div id="lightboxModal"
+    class="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
+    onclick="closeLightbox()">
+    <button class="absolute top-4 right-4 text-white hover:text-gray-300 transition"
+        aria-label="Close"><i data-lucide="x" class="w-8 h-8"></i></button>
+    <img id="lightboxImg" src="" alt="" class="max-w-[90vw] max-h-[85vh] object-contain"
+        onclick="event.stopPropagation()">
+</div>

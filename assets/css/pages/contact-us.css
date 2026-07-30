@@ -1,0 +1,22 @@
+/* ============================================================================
+   CHATURA INDONESIA — CONTACT US PAGE STYLESHEET
+   Page: contact-us.html
+   ============================================================================ */
+
+/* FAQ Accordion Styling */
+.faq-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+
+.faq-accordion-item.active .faq-accordion-content {
+    max-height: 160px;
+    padding-top: 1rem;
+}
+
+.faq-accordion-item.active .faq-icon {
+    transform: rotate(45deg);
+    border-color: #004D34;
+    color: #004D34;
+}

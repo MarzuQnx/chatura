@@ -659,7 +659,8 @@ section[class*="hero"] {
   }
 }
 
-.nav-dropdown:hover .nav-dropdown-menu {
+.nav-dropdown.is-open .nav-dropdown-menu,
+.nav-dropdown.active .nav-dropdown-menu {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -801,6 +802,13 @@ section[class*="hero"] {
   opacity: 0;
   transform: translateY(20px) scale(0.98);
   will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* --- Service Image Composition Motion --- */
@@ -1157,6 +1165,23 @@ section[class*="hero"] {
 
 .animate-floating {
   animation: float 10s ease-in-out infinite;
+}
+
+@keyframes particleSpin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.06);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+  }
+}
+
+.animate-particle-spin {
+  animation: particleSpin 20s linear infinite;
+  will-change: transform;
 }
 
 /* --- Insight Card Animations --- */
@@ -1726,4 +1751,35 @@ button:hover:has(.cta-arrow) > i[data-lucide*="arrow"],
 button:hover:has(.cta-arrow) > svg[data-lucide*="arrow"] {
   opacity: 0 !important;
   transform: translateX(24px) !important;
+}
+
+/* ===== MOBILE MENU FULLSCREEN FIX ===== */
+#mobileMenu {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  height: 100vh !important;
+  min-height: -webkit-fill-available !important;
+  max-height: 100dvh !important;
+  z-index: 999999 !important;
+  background-color: #ffffff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+#mobileMenu:not(.hidden) {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+#mobileMenu nav {
+  flex: 1 1 auto !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding-bottom: 3rem !important;
 }

@@ -10,7 +10,7 @@
 (function (window, document) {
     'use strict';
 
-    var BUILD_VERSION = 'v20260724';
+    var BUILD_VERSION = 'v' + Date.now();
     var FETCH_TIMEOUT_MS = 5000;
     var componentCache = new Map();
 
@@ -52,7 +52,13 @@
                 reject(new Error('Fetch request timed out'));
             }, FETCH_TIMEOUT_MS);
 
-            fetch(url)
+            fetch(url, {
+                cache: 'no-store',
+                headers: {
+                    'Cache-Control': 'no-cache, no-store, must-revalidate',
+                    'Pragma': 'no-cache'
+                }
+            })
                 .then(function (res) {
                     clearTimeout(timer);
                     if (!res.ok) {
@@ -137,7 +143,7 @@
         try {
             var html = componentCache.get(name);
             if (!html) {
-                var url = _basePath + 'components/' + name + '.html?v=' + BUILD_VERSION;
+                var url = _basePath + 'components/' + name + '.html?t=' + Date.now();
                 html = await fetchWithTimeout(url);
                 componentCache.set(name, html);
             }
@@ -211,6 +217,9 @@
         }
         if (window.FAQRenderer && typeof window.FAQRenderer.init === 'function') {
             try { window.FAQRenderer.init(); } catch (e) { console.warn(e); }
+        }
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            try { window.lucide.createIcons(); } catch (e) { console.warn(e); }
         }
 
         // Dispatch global components:all-loaded event

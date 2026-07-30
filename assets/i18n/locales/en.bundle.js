@@ -9,7 +9,7 @@
   // ============================================================================
   // 01. NAVIGATION & ACCESSIBILITY (nav, aria, site)
   // ============================================================================
-  d['en']['nav.about_us'] = 'About Us';
+  d['en']['nav.about_us'] = 'Home';
   d['en']['nav.business_transfer'] = 'Business Transfer';
   d['en']['nav.career'] = 'Career';
   d['en']['nav.contact'] = 'Contact';
@@ -2000,6 +2000,7 @@
   d['en']['people.industries_title'] = 'Sector Expertise That Drives Results';
   d['en']['people.insights_label'] = 'From Our Experts';
   d['en']['people.insights_title'] = 'Latest Insights';
+  d['en']['people.insights_subtitle'] = 'Explore strategic commentary, market analysis, and thought leadership authored by Chatura\'s lead advisors and subject matter experts.';
   d['en']['people.leadership_title'] = 'Leadership & Partners';
   d['en']['people.linkedin'] = 'LinkedIn';
   d['en']['people.modal_bio'] = 'Biography';

@@ -813,11 +813,12 @@ a:has(> i[data-lucide]) {
     z-index: 100;
 }
 
-.nav-dropdown:hover .nav-dropdown-menu,
-.nav-dropdown:focus-within .nav-dropdown-menu {
+.nav-dropdown.is-open .nav-dropdown-menu,
+.nav-dropdown.active .nav-dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(4px) scale(1);
+    pointer-events: auto;
 }
 
 .nav-dropdown-menu a {

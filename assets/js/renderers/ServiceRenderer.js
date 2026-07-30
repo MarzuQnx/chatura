@@ -83,64 +83,80 @@
             }
         },
 
-        renderDetailedServices: function(containerId) {
+        renderDetailedServices: function (containerId) {
             var container = document.getElementById(containerId);
             if (!container || !window.ServiceRepository) return;
-            
+
             var services = window.ServiceRepository.getAll();
-            var html = '';
-            
+            if (!services || services.length === 0) return;
+
+            var count = services.length;
+            // Dynamic Grid Columns logic for 2 rows:
+            // <= 6 items (e.g. current 5 items): 3 columns per row (grid-cols-1 md:grid-cols-3) -> 2 rows
+            // >= 7 items (e.g. future 8 items): 4 columns per row (grid-cols-1 md:grid-cols-2 lg:grid-cols-4) -> 2 rows
+            var gridColsClass = count <= 6 
+                ? 'grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8' 
+                : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8';
+
+            var html = '<div class="' + gridColsClass + '">';
+
             for (var i = 0; i < services.length; i++) {
                 var s = services[i];
                 var title = loc(s.name);
                 var desc = loc(s.description);
-                
+
                 var featuresHtml = '';
                 if (s.features) {
                     var feats = loc(s.features) || [];
                     for (var j = 0; j < feats.length; j++) {
-                        featuresHtml += '<li class="flex items-center gap-3 text-sm text-gray-700"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i> ' + feats[j] + '</li>';
+                        featuresHtml += '<li class="flex items-start gap-2.5 text-xs text-gray-600 leading-relaxed">' +
+                            '<i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-700 shrink-0 mt-0.5"></i>' +
+                            '<span>' + feats[j] + '</span>' +
+                            '</li>';
                     }
                 }
 
-                var isEven = (i % 2 !== 0); // Alternate layout
-                var bgClass = isEven ? 'bg-gray-50' : 'bg-white';
-                var orderClass = isEven ? 'order-2 md:order-1' : '';
-                var orderClass2 = isEven ? 'order-1 md:order-2' : '';
-                var rotateClass1 = isEven ? 'rotate-2' : '-rotate-2';
-                var bgShape = isEven ? 'bg-amber-50' : 'bg-emerald-50';
-                var xVal = isEven ? '5px' : '0px';
-                var rotVal = isEven ? '2deg' : '-2deg';
+                var numStr = (i + 1) < 10 ? '0' + (i + 1) : (i + 1);
 
-                var slideClass = isEven ? 'si-slide-from-left' : 'si-slide-from-right';
+                html += '<div id="' + s.id + '" class="svc-detail-card group bg-white border border-gray-100/90 rounded-2xl p-6 md:p-7 hover:border-emerald-200 hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden">' +
+                    /* Top Hover Accent Bar */
+                    '<div class="absolute top-0 left-0 right-0 h-1 bg-[#004D34] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>' +
+                    
+                    '<div>' +
+                    /* Header: Corporate Badge & Icon */
+                    '<div class="flex items-center justify-between mb-5">' +
+                    '<span class="text-xs font-bold font-mono tracking-widest text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-100/60">' + numStr + '</span>' +
+                    '<div class="w-10 h-10 rounded-xl bg-gray-50 group-hover:bg-emerald-50 text-gray-600 group-hover:text-emerald-800 flex items-center justify-center transition-colors duration-300">' +
+                    '<i data-lucide="' + (s.icon || 'briefcase') + '" class="w-5 h-5"></i>' +
+                    '</div>' +
+                    '</div>' +
 
-                html += '<section id="' + s.id + '" class="py-24 ' + bgClass + ' overflow-hidden">' +
-                            '<div class="container mx-auto px-6">' +
-                                '<div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">' +
-                                    '<div class="reveal-up ' + orderClass2 + '">' +
-                                        '<span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-700 mb-4">' +
-                                            '<span class="w-8 h-px bg-emerald-700"></span> 0' + (i + 1) +
-                                        '</span>' +
-                                        '<h2 class="text-3xl md:text-4xl font-serif text-gray-950 mb-5 leading-snug">' + title + '</h2>' +
-                                        '<p class="text-gray-500 leading-relaxed mb-6 max-w-lg">' + desc + '</p>' +
-                                        '<ul class="space-y-3 mb-8">' + featuresHtml + '</ul>' +
-                                        '<a href="' + s.slug + '" class="inline-flex items-center gap-2 bg-[#004D34] text-white px-6 py-3 rounded font-medium text-sm hover:bg-[#003322] transition">' +
-                                            '<span data-i18n="services.learn_more">Learn More</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>' +
-                                        '</a>' +
-                                    '</div>' +
-                                    '<div class="svc-img-composition relative ' + orderClass + '" style="--si-x:' + xVal + ';--si-rot:' + rotVal + ';--si-dur:14s;--si-sh-dur:11s">' +
-                                        '<div class="absolute -inset-4 ' + bgShape + ' rounded-3xl ' + rotateClass1 + '"></div>' +
-                                        '<div class="si-shadow ' + slideClass + ' relative rounded-2xl overflow-hidden">' +
-                                            '<img src="' + s.image + '" alt="' + title + '" class="relative rounded-2xl w-full h-80 md:h-96 object-cover" loading="lazy">' +
-                                        '</div>' +
-                                    '</div>' +
-                                '</div>' +
-                            '</div>' +
-                        '</section>';
+                    /* Service Title */
+                    '<h3 class="font-serif text-xl font-bold text-gray-950 mb-3 leading-snug group-hover:text-emerald-950 transition-colors duration-300">' + title + '</h3>' +
+
+                    /* Service Description */
+                    '<p class="text-gray-600 text-xs md:text-sm leading-relaxed mb-6">' + desc + '</p>' +
+
+                    /* Hidden Image Comment for Future Development */
+                    '<!-- <img src="' + s.image + '" alt="' + title + '" class="hidden"> -->' +
+
+                    /* Capabilities Checklist */
+                    '<ul class="space-y-2.5 mb-8 pt-4 border-t border-gray-100">' + featuresHtml + '</ul>' +
+                    '</div>' +
+
+                    /* Action Link CTA */
+                    '<a href="' + s.slug + '" class="inline-flex items-center justify-between w-full pt-4 border-t border-gray-100 text-xs font-bold text-[#004D34] group-hover:text-emerald-900 transition-colors duration-300 group/cta">' +
+                    '<span class="cta-text inline-block" data-i18n="services.learn_more">Learn More</span>' +
+                    '<i data-lucide="arrow-right" class="w-4 h-4 text-emerald-700 group-hover/cta:translate-x-1 transition-transform duration-200"></i>' +
+                    '</a>' +
+
+                    '</div>';
             }
-            
+
+            html += '</div>';
+
             container.innerHTML = html;
-            
+
             if (window.lucide && window.lucide.createIcons) {
                 window.lucide.createIcons();
             }

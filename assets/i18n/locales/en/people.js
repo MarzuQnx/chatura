@@ -107,6 +107,7 @@ d['en']['people.standards_label']='Global Standards';
 d['en']['people.standards_title']='Frameworks We Operate Within';
 d['en']['people.insights_label']='From Our Experts';
 d['en']['people.insights_title']='Latest Insights';
+d['en']['people.insights_subtitle']='Explore strategic commentary, market analysis, and thought leadership authored by Chatura\'s lead advisors and subject matter experts.';
 d['en']['people.view_all_insights']='View All Insights';
 d['en']['people.cta_title']='Looking for the Right Advisor?';
 d['en']['people.cta_desc']='Connect with our specialists for a confidential discussion on how Chatura can support your business objectives.';

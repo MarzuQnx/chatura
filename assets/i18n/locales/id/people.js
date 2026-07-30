@@ -107,6 +107,7 @@ d['id']['people.standards_label']='Standar Global';
 d['id']['people.standards_title']='Kerangka Kerja yang Kami Operasikan';
 d['id']['people.insights_label']='Dari Para Ahli Kami';
 d['id']['people.insights_title']='Wawasan Terbaru';
+d['id']['people.insights_subtitle']='Jelajahi analisis pasar, pandangan strategis, dan publikasi yang ditulis oleh penasihat utama dan pakar Chatura.';
 d['id']['people.view_all_insights']='Lihat Semua Wawasan';
 d['id']['people.cta_title']='Mencari Penasihat yang Tepat?';
 d['id']['people.cta_desc']='Hubungi spesialis kami untuk diskusi konfidensial tentang bagaimana Chatura dapat mendukung tujuan bisnis Anda.';

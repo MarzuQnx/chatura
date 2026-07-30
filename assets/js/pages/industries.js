@@ -5,6 +5,92 @@
     'use strict';
     var _initialized = false;
 
+    // ===== STRATEGIC INTELLIGENCE RENDERER =====
+    function renderSI() {
+        var grid = document.getElementById('siGrid');
+        if (!grid) return;
+        var featuredEl = document.getElementById('siFeatured');
+        var listEl = document.getElementById('siList');
+        if (!featuredEl || !listEl) return;
+
+        if (window.IndustryRenderer && typeof window.IndustryRenderer.renderInsights === 'function') {
+            window.IndustryRenderer.renderInsights();
+            return;
+        }
+
+        var articles = window.ArticleRepository ? window.ArticleRepository.getAll() : [];
+        if (!articles || articles.length === 0) return;
+
+        var sorted = articles.slice().sort(function (a, b) {
+            return new Date(b.dates.published) - new Date(a.dates.published);
+        });
+        var latest = sorted.slice(0, 5);
+
+        var lang = (window.TranslationRepository && typeof window.TranslationRepository.getCurrentLanguage === 'function')
+            ? window.TranslationRepository.getCurrentLanguage()
+            : 'en';
+
+        var locStr = function (obj) {
+            if (!obj) return '';
+            if (typeof obj === 'string') {
+                if (window.TranslationRepository && typeof window.TranslationRepository.t === 'function') {
+                    var tr = window.TranslationRepository.t(obj);
+                    if (tr && tr !== obj) return tr;
+                }
+                return obj;
+            }
+            return obj[lang] || obj.en || obj.id || '';
+        };
+
+        var getCat = function (catId) {
+            if (window.CategoryRepository && typeof window.CategoryRepository.getById === 'function') {
+                var catObj = window.CategoryRepository.getById(catId);
+                if (catObj) return locStr(catObj);
+            }
+            return catId ? catId.toUpperCase() : '';
+        };
+
+        // Featured article
+        var feat = latest[0];
+        var fCat = getCat(feat.category);
+        var fTitle = locStr(feat.title);
+        var fDesc = locStr(feat.subtitle) || (feat.execSummary ? locStr(feat.execSummary.summary) : '');
+        var fDate = feat.dates && feat.dates.display ? locStr(feat.dates.display) : (feat.dates ? feat.dates.published : '');
+        var fRead = locStr(feat.readingTime) || (feat.readTime ? feat.readTime + ' min read' : '');
+        var readText = lang === 'id' ? 'Baca Wawasan' : 'Read Insight';
+        var fUrl = 'insight-detail.html?slug=' + (feat.slug || feat.id);
+
+        featuredEl.innerHTML =
+            '<a href="' + fUrl + '" class="si-featured block">' +
+                '<div class="si-featured-img"><img src="' + (feat.heroImage || feat.image || '') + '" alt="' + fTitle + '" loading="lazy"></div>' +
+                '<span class="si-featured-badge">' + fCat + '</span>' +
+                '<div class="si-featured-glass">' +
+                    '<p class="si-featured-eyebrow">' + fCat + '</p>' +
+                    '<h3 class="si-featured-title">' + fTitle + '</h3>' +
+                    '<p class="si-featured-desc">' + fDesc + '</p>' +
+                    '<div class="si-featured-footer">' +
+                        '<span class="si-featured-meta">' + fDate + ' · ' + fRead + '</span>' +
+                        '<span class="si-featured-cta">' + readText + ' <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>' +
+                    '</div></div></a>';
+
+        // List articles
+        var listHtml = '<div class="si-list">';
+        for (var i = 1; i < latest.length; i++) {
+            var a = latest[i];
+            var cCat = getCat(a.category);
+            var aTitle = locStr(a.title);
+            var aRead = locStr(a.readingTime) || (a.readTime ? a.readTime + ' min read' : '');
+            var aUrl = 'insight-detail.html?slug=' + (a.slug || a.id);
+
+            listHtml += '<a href="' + aUrl + '" class="si-list-item">' +
+                '<img src="' + (a.thumbnail || a.image || '') + '" alt="' + aTitle + '" loading="lazy" class="si-list-thumb">' +
+                '<div class="si-list-body"><p class="si-list-cat">' + cCat + '</p><h4 class="si-list-title">' + aTitle + '</h4><p class="si-list-meta">' + aRead + '</p></div>' +
+                '<svg class="si-list-arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>';
+        }
+        listHtml += '</div>';
+        listEl.innerHTML = listHtml;
+    }
+
     function initPage() {
         if (_initialized) return;
         _initialized = true;
@@ -12,12 +98,17 @@
         if (window.IndustryRenderer) { try { window.IndustryRenderer.init(); } catch (e) {} }
         if (window.PeopleRenderer) { try { window.PeopleRenderer.init(); } catch (e) {} }
         if (window.ArticleRenderer) { try { window.ArticleRenderer.init(); } catch (e) {} }
+        renderSI();
 
         if (window.lucide) window.lucide.createIcons();
         if (window.i18nLoader) { try { window.i18nLoader.translatePage(); } catch (e) {} }
         if (window.PageLoader && typeof window.PageLoader.initNavbarScroll === 'function') { window.PageLoader.initNavbarScroll(); }
 
         initGSAPAnimations();
+
+        if (window.ChaturaBus) {
+            window.ChaturaBus.on('languageChange', function () { renderSI(); });
+        }
     }
 
     function initGSAPAnimations() {

@@ -314,43 +314,37 @@
         _activeTriggers.forEach(function (trigger) { trigger.kill(); });
         _activeTriggers = [];
 
-        var serviceSections = document.querySelectorAll('#detailedServicesContainer section');
-        serviceSections.forEach(function (section) {
-            var textColumn = section.querySelector('.reveal-up');
-            var composition = section.querySelector('.svc-img-composition');
-            if (!composition) return;
+        var cards = container.querySelectorAll('.svc-detail-card');
+        if (cards.length > 0) {
+            gsap.set(cards, { opacity: 0, y: 36 });
 
-            var shape = composition.querySelector('.absolute');
-            var imageContainer = composition.querySelector('.si-shadow');
-            if (!shape || !imageContainer) return;
-
-            gsap.set(composition, { clearProps: 'transform', opacity: 1 });
-            shape.classList.remove('si-float');
-            composition.classList.remove('animated');
-
-            var isLeft = imageContainer.classList.contains('si-slide-from-left');
-            var slideX = isLeft ? -180 : 180;
-
-            gsap.set(textColumn, { opacity: 0, y: 48 });
-            gsap.set(shape, { opacity: 0, scale: 0.92 });
-            gsap.set(imageContainer, { opacity: 0, x: slideX });
-
-            var tl = gsap.timeline({
-                scrollTrigger: { trigger: section, start: 'top 75%', once: true }
+            var st = ScrollTrigger.batch(cards, {
+                start: 'top 85%',
+                once: true,
+                onEnter: function (batch) {
+                    gsap.to(batch, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.75,
+                        stagger: 0.1,
+                        ease: 'power2.out',
+                        onComplete: function () {
+                            batch.forEach(function (el) {
+                                el.style.opacity = '1';
+                                gsap.set(el, { clearProps: 'transform' });
+                            });
+                        }
+                    });
+                }
             });
-
-            if (tl.scrollTrigger) _activeTriggers.push(tl.scrollTrigger);
-
-            if (textColumn) tl.to(textColumn, { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out' });
-            tl.to(shape, { opacity: 1, scale: 1, duration: 0.6, ease: 'power3.out' }, '-=0.3')
-              .to(imageContainer, { opacity: 1, x: 0, duration: 1.1, ease: 'power3.out' }, '-=0.3')
-              .add(function () {
-                  composition.classList.add('animated');
-                  shape.classList.add('si-float');
-                  gsap.set([shape, imageContainer], { clearProps: 'transform,opacity' });
-                  if (textColumn) { textColumn.style.opacity = '1'; gsap.set(textColumn, { clearProps: 'transform' }); }
-              });
-        });
+            if (st) {
+                if (Array.isArray(st)) {
+                    st.forEach(function (t) { _activeTriggers.push(t); });
+                } else {
+                    _activeTriggers.push(st);
+                }
+            }
+        }
 
         ScrollTrigger.refresh();
     }
